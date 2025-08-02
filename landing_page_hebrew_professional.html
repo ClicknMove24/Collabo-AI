@@ -1,0 +1,3101 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Collabo AI Pro - הסוכן הדיגיטלי המתקדם לעסקים</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-blue: #1e40af;
+            --primary-blue-hover: #1d4ed8;
+            --secondary-blue: #3b82f6;
+            --success-green: #10b981;
+            --text-primary: #1f2937;
+            --text-secondary: #64748b;
+            --text-muted: #94a3b8;
+            --border-light: #e2e8f0;
+            --bg-light: #f8fafc;
+            --primary-gradient: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
+            --shadow-sm: 0 4px 12px rgba(30, 64, 175, 0.3);
+            --shadow-md: 0 8px 24px rgba(30, 64, 175, 0.5);
+            --shadow-lg: 0 20px 40px rgba(0, 0, 0, 0.1);
+            --border-radius: 8px;
+            --border-radius-lg: 12px;
+            --border-radius-xl: 16px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: var(--text-primary);
+            direction: rtl;
+            background: #ffffff;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Professional Header */
+        .header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 16px 0;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            font-size: 28px;
+            font-weight: 800;
+            color: var(--primary-blue);
+        }
+
+
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: #4b5563;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 16px;
+            transition: color 0.2s;
+            font-family: 'Rajdhani', sans-serif;
+            letter-spacing: 0.5px;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-blue);
+        }
+
+        /* Base Button Styles */
+        .btn-base {
+            display: inline-block;
+            padding: 12px 24px;
+            border-radius: var(--border-radius);
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            text-align: center;
+            font-family: 'Rajdhani', sans-serif;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            font-size: 14px;
+        }
+
+        .btn-primary {
+            background: var(--primary-blue);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: var(--primary-blue-hover);
+            transform: translateY(-1px);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .btn-gradient {
+            background: var(--primary-gradient);
+            color: white;
+        }
+
+        .btn-gradient:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .btn-lg {
+            padding: 16px 32px;
+            font-size: 16px;
+            border-radius: var(--border-radius-lg);
+        }
+
+        .header-cta {
+            font-size: 14px;
+        }
+
+        /* Hero Section - Enterprise Grade */
+        .hero {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 25%, #334155 75%, #475569 100%);
+            color: white;
+            padding: 140px 0 100px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(30, 64, 175, 0.3) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(99, 102, 241, 0.3) 0%, transparent 50%),
+                radial-gradient(circle at 40% 40%, rgba(59, 130, 246, 0.2) 0%, transparent 50%);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            padding: 8px 16px;
+            border-radius: 24px;
+            font-size: 14px;
+            font-weight: 500;
+            margin-bottom: 24px;
+            color: #e2e8f0;
+            font-family: 'Rajdhani', sans-serif;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .hero-badge i {
+            margin-left: 8px;
+            color: var(--success-green);
+        }
+
+        .hero h1 {
+            font-size: 56px;
+            font-weight: 700;
+            margin-bottom: 24px;
+            line-height: 1.1;
+            background: linear-gradient(135deg, #ffffff 0%, #e2e8f0 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-family: 'Orbitron', 'Rajdhani', sans-serif;
+            letter-spacing: 1px;
+        }
+
+        .hero .subtitle {
+            font-size: 20px;
+            margin-bottom: 32px;
+            opacity: 0.9;
+            font-weight: 400;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            color: #cbd5e1;
+            font-family: 'Rajdhani', sans-serif;
+            letter-spacing: 0.5px;
+            line-height: 1.5;
+        }
+
+        .hero-cta-group {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            margin-bottom: 48px;
+            flex-wrap: wrap;
+        }
+
+        .cta-primary {
+            box-shadow: rgba(30, 64, 175, 0.4) 0 4px 12px;
+        }
+
+        .cta-secondary {
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            padding: 16px 32px;
+            font-size: 16px;
+            font-weight: 600;
+            text-decoration: none;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            transition: all 0.3s;
+        }
+
+        .cta-secondary:hover {
+            background: rgba(255, 255, 255, 0.15);
+            transform: translateY(-1px);
+        }
+
+        .hero-metrics {
+            display: flex;
+            justify-content: center;
+            gap: 48px;
+            margin-top: 48px;
+            flex-wrap: wrap;
+        }
+
+        .metric-item {
+            text-align: center;
+        }
+
+        .metric-number {
+            font-size: 32px;
+            font-weight: 800;
+            color: var(--success-green);
+            margin-bottom: 4px;
+        }
+
+        .metric-label {
+            font-size: 14px;
+            color: var(--text-muted);
+            font-weight: 500;
+        }
+
+        /* Trust Indicators */
+        .trust-section {
+            background: var(--bg-light);
+            padding: 48px 0;
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        .trust-content {
+            text-align: center;
+        }
+
+        .trust-label {
+            font-size: 14px;
+            color: var(--text-secondary);
+            font-weight: 500;
+            margin-bottom: 24px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .trust-logos {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 48px;
+            flex-wrap: wrap;
+            opacity: 0.6;
+        }
+
+        .trust-logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--text-secondary);
+        }
+
+        /* Features Section - Enterprise */
+        .features {
+            padding: 120px 0;
+            background: white;
+        }
+
+        .section-header {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 80px;
+        }
+
+        .section-badge {
+            display: inline-block;
+            background: #eff6ff;
+            color: var(--primary-blue);
+            padding: 8px 16px;
+            border-radius: var(--border-radius-xl);
+            font-size: 12px;
+            font-weight: 600;
+            margin-bottom: 16px;
+            font-family: 'Rajdhani', sans-serif;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            border: 1px solid rgba(59, 130, 246, 0.2);
+        }
+
+        .section-title {
+            font-size: 48px;
+            font-weight: 700;
+            margin-bottom: 24px;
+            color: #0f172a;
+            line-height: 1.2;
+            font-family: 'Orbitron', 'Rajdhani', sans-serif;
+            letter-spacing: 0.5px;
+        }
+
+        .section-subtitle {
+            font-size: 20px;
+            color: var(--text-secondary);
+            font-weight: 400;
+            line-height: 1.6;
+            font-family: 'Rajdhani', sans-serif;
+            letter-spacing: 0.3px;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+            gap: 32px;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 40px;
+            border-radius: var(--border-radius-xl);
+            border: 1px solid var(--border-light);
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--primary-gradient);
+            transform: scaleX(0);
+            transition: transform 0.3s;
+        }
+
+        .feature-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+            border-color: #cbd5e1;
+        }
+
+        .feature-icon {
+            width: 64px;
+            height: 64px;
+            background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+            border-radius: var(--border-radius-xl);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 24px;
+        }
+
+        .feature-icon i {
+            font-size: 28px;
+            color: var(--primary-blue);
+        }
+
+        .feature-title {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 12px;
+            color: #0f172a;
+        }
+
+        .feature-description {
+            font-size: 16px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        /* Demo Section */
+        .demo {
+            background: var(--bg-light);
+            padding: 120px 0;
+        }
+
+        .demo-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        .demo-content h2 {
+            font-size: 40px;
+            font-weight: 800;
+            margin-bottom: 24px;
+            color: #0f172a;
+            line-height: 1.3;
+        }
+
+        .demo-content p {
+            font-size: 18px;
+            color: var(--text-secondary);
+            margin-bottom: 32px;
+            line-height: 1.6;
+        }
+
+        .demo-features {
+            list-style: none;
+            margin-bottom: 32px;
+        }
+
+        .demo-features li {
+            display: flex;
+            align-items: center;
+            margin-bottom: 16px;
+            font-size: 16px;
+            color: #374151;
+        }
+
+        .demo-features i {
+            color: var(--success-green);
+            margin-left: 12px;
+            font-weight: 600;
+        }
+
+        .demo-content h2 {
+            font-size: 40px;
+            font-weight: 800;
+            margin-bottom: 24px;
+            color: #0f172a;
+            line-height: 1.3;
+        }
+
+        .demo-content p {
+            font-size: 18px;
+            color: var(--text-secondary);
+            margin-bottom: 32px;
+            line-height: 1.6;
+        }
+
+        .demo-features {
+            list-style: none;
+            margin-bottom: 32px;
+        }
+
+        .demo-features li {
+            display: flex;
+            align-items: center;
+            margin-bottom: 16px;
+            font-size: 16px;
+            color: #374151;
+        }
+
+        .demo-features i {
+            color: var(--success-green);
+            margin-left: 12px;
+            font-weight: 600;
+        }
+
+        /* Feature list animations */
+        .demo-features.updating {
+            animation: featuresFadeOut 0.6s ease-out forwards;
+        }
+
+        .demo-features.updated {
+            animation: featuresFadeIn 1.2s ease-out forwards;
+        }
+
+        .demo-features li {
+            transition: all 0.5s ease;
+        }
+
+        .demo-features.highlight li {
+            animation: featureHighlight 1.5s ease-in-out;
+            animation-delay: calc(var(--delay, 0) * 0.3s);
+        }
+
+        @keyframes featuresFadeOut {
+            0% { opacity: 1; transform: translateX(0); }
+            100% { opacity: 0.3; transform: translateX(-10px); }
+        }
+
+        @keyframes featuresFadeIn {
+            0% { opacity: 0.3; transform: translateX(-10px); }
+            50% { opacity: 0.7; transform: translateX(5px); }
+            100% { opacity: 1; transform: translateX(0); }
+        }
+
+        @keyframes featureHighlight {
+            0%, 100% { 
+                background: transparent;
+                transform: scale(1);
+                box-shadow: none;
+            }
+            50% { 
+                background: rgba(30, 64, 175, 0.08);
+                transform: scale(1.02);
+                box-shadow: 0 2px 8px rgba(30, 64, 175, 0.15);
+                border-radius: 8px;
+            }
+        }
+
+        /* Checkmark pulse animation */
+        .demo-features li.animate-check i {
+            animation: checkPulse 1s ease-in-out;
+        }
+
+        @keyframes checkPulse {
+            0%, 100% { 
+                transform: scale(1);
+                color: var(--success-green);
+            }
+            50% { 
+                transform: scale(1.2);
+                color: #059669;
+                text-shadow: 0 0 8px rgba(5, 150, 105, 0.4);
+            }
+        }
+
+        /* Highlight animation for analysis reasons */
+        .analysis-highlight {
+            animation: reasonHighlight 1s ease-in-out;
+        }
+
+        @keyframes reasonHighlight {
+            0% { 
+                background: transparent; 
+            }
+            50% { 
+                background: rgba(239, 68, 68, 0.15);
+                box-shadow: 0 0 8px rgba(239, 68, 68, 0.3);
+            }
+            100% { 
+                background: transparent; 
+            }
+        }
+
+        .demo-video {
+            background: white;
+            border-radius: 20px;
+            padding: 24px;
+            box-shadow: var(--shadow-lg);
+            border: 1px solid var(--border-light);
+        }
+
+        .demo-status {
+            text-align: center;
+            padding: 16px 0;
+        }
+
+        .status-indicator {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            font-size: 16px;
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+
+        /* Agent Setup Form Styles */
+        .agent-setup-form {
+            max-width: 100%;
+        }
+
+        .form-step {
+            display: none;
+            animation: fadeInUp 0.5s ease-out;
+        }
+
+        .form-step.active {
+            display: block;
+        }
+
+        .form-group {
+            margin-bottom: 24px;
+        }
+
+        .form-label {
+            display: block;
+            font-weight: 600;
+            color: #374151;
+            margin-bottom: 8px;
+            font-size: 16px;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 16px;
+            border: 2px solid #e5e7eb;
+            border-radius: var(--border-radius);
+            font-size: 16px;
+            transition: border-color 0.3s;
+            background: white;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: var(--primary-blue);
+            box-shadow: 0 0 0 3px rgba(30, 64, 175, 0.1);
+        }
+
+        .form-select {
+            width: 100%;
+            padding: 16px;
+            border: 2px solid #e5e7eb;
+            border-radius: var(--border-radius);
+            font-size: 16px;
+            background: white;
+            cursor: pointer;
+            transition: border-color 0.3s;
+        }
+
+        .form-select:focus {
+            outline: none;
+            border-color: var(--primary-blue);
+            box-shadow: 0 0 0 3px rgba(30, 64, 175, 0.1);
+        }
+
+        .agent-preview {
+            background: #f8fafc;
+            border-radius: var(--border-radius-lg);
+            padding: 24px;
+            margin-top: 24px;
+            border: 2px dashed #cbd5e1;
+            text-align: center;
+        }
+
+        .agent-avatar-preview {
+            width: 64px;
+            height: 64px;
+            margin: 0 auto 16px;
+            font-size: 24px;
+            border: 3px solid white;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .agent-name-preview {
+            font-size: 20px;
+            font-weight: 700;
+            color: #0f172a;
+            margin-bottom: 8px;
+        }
+
+        .agent-field-preview {
+            font-size: 14px;
+            color: var(--text-secondary);
+            margin-bottom: 16px;
+        }
+
+        .agent-status {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            font-size: 14px;
+            color: var(--success-green);
+            font-weight: 600;
+        }
+
+        .pulse-dot {
+            width: 8px;
+            height: 8px;
+            background: var(--success-green);
+            border-radius: 50%;
+            animation: pulseGlow 2s infinite;
+        }
+
+        @keyframes pulseGlow {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        /* Social Feed Demo */
+        .social-feed-demo {
+            background: #f0f2f5;
+            border-radius: 12px;
+            height: 500px;
+            overflow-y: auto;
+            padding: 16px;
+            position: relative;
+            scroll-behavior: smooth;
+        }
+
+        .facebook-post {
+            background: white;
+            border-radius: var(--border-radius-lg);
+            padding: 16px;
+            margin-bottom: 16px;
+            border: 1px solid var(--border-light);
+            transition: all 0.3s;
+            margin-right: 8px;
+        }
+
+        .post-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+
+        /* Avatar Component */
+        .avatar {
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 600;
+            background: var(--primary-gradient);
+        }
+
+        .avatar-sm {
+            width: 32px;
+            height: 32px;
+            font-size: 12px;
+        }
+
+        .avatar-md {
+            width: 40px;
+            height: 40px;
+            font-size: 14px;
+        }
+
+        .avatar-lg {
+            width: 48px;
+            height: 48px;
+            font-size: 16px;
+        }
+
+        .post-avatar {
+            margin-left: 12px;
+        }
+
+        .post-info h3 {
+            font-size: 14px;
+            font-weight: 600;
+            color: #1f2937;
+            margin-bottom: 2px;
+        }
+
+        .post-info span {
+            font-size: 12px;
+            color: #6b7280;
+        }
+
+        .post-content {
+            font-size: 14px;
+            color: #374151;
+            line-height: 1.5;
+            margin-bottom: 12px;
+        }
+
+        .post-actions {
+            display: flex;
+            gap: 24px;
+            padding-top: 12px;
+            border-top: 1px solid #f3f4f6;
+        }
+
+        .post-action {
+            display: flex;
+            align-items: center;
+            color: #6b7280;
+            font-size: 13px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: color 0.2s;
+        }
+
+        .post-action:hover {
+            color: var(--primary-blue);
+        }
+
+        .post-action i {
+            margin-left: 6px;
+        }
+
+        .hot-post {
+            border: 2px solid #ef4444 !important;
+            animation: pulse 2s infinite;
+            position: relative;
+        }
+
+        .fire-icon {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background: #ef4444;
+            color: white;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            animation: bounce 1s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.4); }
+            50% { box-shadow: 0 0 0 8px rgba(239, 68, 68, 0); }
+        }
+
+
+        /* Testimonials */
+        .testimonials {
+            padding: 120px 0;
+            background: white;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 32px;
+            margin-top: 80px;
+        }
+
+        .testimonial-card {
+            background: white;
+            padding: 32px;
+            border-radius: var(--border-radius-xl);
+            border: 1px solid var(--border-light);
+            position: relative;
+        }
+
+        .testimonial-card::before {
+            content: '"';
+            position: absolute;
+            top: -10px;
+            right: 24px;
+            font-size: 60px;
+            color: var(--primary-blue);
+            font-weight: 700;
+            opacity: 0.3;
+        }
+
+        .testimonial-text {
+            font-size: 16px;
+            color: #374151;
+            line-height: 1.6;
+            margin-bottom: 24px;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+        }
+
+        .author-avatar {
+            margin-left: 16px;
+        }
+
+        .author-info h4 {
+            font-size: 16px;
+            font-weight: 600;
+            color: #1f2937;
+            margin-bottom: 2px;
+        }
+
+        .author-info span {
+            font-size: 14px;
+            color: #6b7280;
+        }
+
+        .stars {
+            color: #fbbf24;
+            margin-bottom: 16px;
+        }
+
+
+        /* Pricing */
+        .pricing {
+            background: #0f172a;
+            color: white;
+            padding: 120px 0;
+            text-align: center;
+        }
+
+        .pricing-header {
+            margin-bottom: 80px;
+        }
+
+        .pricing-header h2 {
+            font-size: 48px;
+            font-weight: 700;
+            margin-bottom: 24px;
+            font-family: 'Orbitron', 'Rajdhani', sans-serif;
+            letter-spacing: 0.5px;
+        }
+
+        .pricing-header p {
+            font-size: 20px;
+            color: #cbd5e1;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .pricing-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 32px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .pricing-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 40px;
+            position: relative;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s;
+        }
+
+        .pricing-card.featured {
+            border-color: var(--secondary-blue);
+            box-shadow: 0 0 40px rgba(59, 130, 246, 0.3);
+        }
+
+        .pricing-card.featured::before {
+            content: 'הכי פופולרי';
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(50%);
+            background: var(--secondary-blue);
+            color: white;
+            padding: 6px 16px;
+            border-radius: var(--border-radius-xl);
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .pricing-plan {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            font-family: 'Rajdhani', sans-serif;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+
+        .pricing-price {
+            font-size: 48px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: var(--secondary-blue);
+            font-family: 'Orbitron', 'Rajdhani', sans-serif;
+            letter-spacing: 1px;
+        }
+
+        .pricing-period {
+            color: var(--text-muted);
+            margin-bottom: 32px;
+        }
+
+        .pricing-features {
+            list-style: none;
+            text-align: right;
+            margin-bottom: 32px;
+        }
+
+        .pricing-features li {
+            display: flex;
+            align-items: center;
+            margin-bottom: 12px;
+            font-size: 15px;
+            font-family: 'Rajdhani', sans-serif;
+            font-weight: 500;
+            letter-spacing: 0.3px;
+        }
+
+        .pricing-features i {
+            color: var(--success-green);
+            margin-left: 12px;
+            width: 16px;
+        }
+
+        .pricing-cta {
+            background: var(--secondary-blue);
+            width: 100%;
+            display: block;
+        }
+
+        .pricing-cta:hover {
+            background: #2563eb;
+            transform: translateY(-2px);
+        }
+
+        /* Footer */
+        .footer {
+            background: #0f172a;
+            color: white;
+            padding: 80px 0 40px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 48px;
+            margin-bottom: 48px;
+        }
+
+        .footer-brand h3 {
+            font-size: 28px;
+            font-weight: 800;
+            margin-bottom: 16px;
+            color: var(--secondary-blue);
+        }
+
+        .footer-brand p {
+            color: var(--text-muted);
+            line-height: 1.6;
+            margin-bottom: 24px;
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 16px;
+        }
+
+        .footer-social a {
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .footer-social a:hover {
+            background: var(--secondary-blue);
+            transform: translateY(-2px);
+        }
+
+        .footer-section h4 {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 16px;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section li {
+            margin-bottom: 12px;
+        }
+
+        .footer-section a {
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-section a:hover {
+            color: white;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 32px;
+            text-align: center;
+            color: var(--text-secondary);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 36px;
+            }
+            
+            .hero-cta-group {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .demo-container {
+                grid-template-columns: 1fr;
+                gap: 48px;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 32px;
+            }
+            
+            .section-title {
+                font-size: 32px;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in-up {
+            animation: fadeInUp 0.6s ease-out;
+        }
+
+        @keyframes bannerSlideIn {
+            from {
+                opacity: 0;
+                transform: translate(-50%, -50%) scale(0.8);
+            }
+            to {
+                opacity: 1;
+                transform: translate(-50%, -50%) scale(1);
+            }
+        }
+
+        @keyframes bannerSlideOut {
+            from {
+                opacity: 1;
+                transform: translate(-50%, -50%) scale(1);
+            }
+            to {
+                opacity: 0;
+                transform: translate(-50%, -50%) scale(0.8);
+            }
+        }
+
+        /* Demo Progress and Focus Styles */
+        .demo-progress {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 0 auto 40px auto;
+            padding: 14px 30px;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            max-width: 720px;
+        }
+
+        .progress-step {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 3px;
+            padding: 10px 16px;
+            border-radius: 8px;
+            font-size: 11px;
+            font-weight: 500;
+            color: #6b7280;
+            transition: all 0.3s ease;
+            position: relative;
+            text-align: center;
+            min-width: 95px;
+            flex: 1;
+        }
+
+        .progress-step span:first-child {
+            font-size: 15px;
+            line-height: 1;
+            margin-bottom: 1px;
+        }
+
+        .progress-step.active {
+            background: linear-gradient(135deg, #1e40af, #3b82f6);
+            color: white;
+            animation: progressPulse 2s infinite;
+        }
+
+        .progress-step.completed {
+            color: #059669;
+            background: rgba(16, 185, 129, 0.1);
+        }
+
+        .progress-arrow {
+            color: #cbd5e1;
+            margin: 0 10px;
+            transition: color 0.3s ease;
+            font-size: 13px;
+            font-weight: bold;
+        }
+
+        .progress-step.active + .progress-arrow {
+            color: #1e40af;
+        }
+
+        @keyframes progressPulse {
+            0%, 100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(30, 64, 175, 0.4); }
+            50% { transform: scale(1.05); box-shadow: 0 0 0 8px rgba(30, 64, 175, 0); }
+        }
+
+        .demo-side {
+            transition: all 0.4s ease;
+            border-radius: 12px;
+            position: relative;
+        }
+        
+        /* Make right side match left side height with proper spacing */
+        #demoRightSide {
+            min-height: 500px;
+            height: 500px;
+            border: 2px solid transparent;
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            box-sizing: content-box;
+        }
+        
+        #demoRightSide.focused {
+            border-color: rgba(30, 64, 175, 0.4);
+            background: rgba(30, 64, 175, 0.02);
+            box-shadow: 0 0 0 2px rgba(30, 64, 175, 0.1);
+        }
+
+        .demo-side.focused {
+            filter: brightness(1.05);
+            box-shadow: 0 0 0 2px rgba(30, 64, 175, 0.3);
+        }
+
+        .demo-side.dimmed {
+            opacity: 0.7;
+            filter: brightness(0.95);
+        }
+
+        @keyframes sidePulse {
+            0% { box-shadow: 0 0 0 0 rgba(30, 64, 175, 0.4); }
+            70% { box-shadow: 0 0 0 8px rgba(30, 64, 175, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(30, 64, 175, 0); }
+        }
+
+        @keyframes postPulse {
+            0% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.4); }
+            70% { box-shadow: 0 0 0 8px rgba(16, 185, 129, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
+        }
+
+        .demo-side.pulse-blue {
+            animation: sidePulse 1.5s ease-out;
+        }
+
+        .facebook-post.pulse-green {
+            animation: postPulse 1.5s ease-out;
+        }
+
+        /* Custom Scrollbar */
+        .social-feed-demo::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .social-feed-demo::-webkit-scrollbar-track {
+            background: #f1f5f9;
+            border-radius: 3px;
+        }
+
+        .social-feed-demo::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 3px;
+        }
+
+        .social-feed-demo::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <nav class="nav-links">
+                    <a href="#features">תכונות</a>
+                    <a href="#demo">הדגמה</a>
+                    <a href="#testimonials">המלצות</a>
+                    <a href="#pricing">מחירים</a>
+                    <button class="btn-base btn-primary header-cta" onclick="startDemo()">התחל ניסיון חינם</button>
+                </nav>
+                <div class="logo">
+                    <span class="dot-matrix">Collabo AI Pro</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content fade-in-up">
+                <div class="hero-badge">
+                    <i class="fas fa-bolt"></i>
+                    טכנולוגיה מתקדמת של בינה מלאכותית
+                </div>
+                <h1 class="dot-matrix">הסוכן הדיגיטלי המתקדם<br>לעסקים מהשורה הראשונה</h1>
+                <p class="subtitle">פלטפורמת AI חדשנית שמזהה, מנתחת ומגיבה ללידים ברשתות חברתיות בזמן אמת. הפתרון המקצועי לעסקים שרוצים להישאר מקוונים 24/7</p>
+                
+                <div class="hero-cta-group">
+                    <button class="btn-base btn-gradient btn-lg cta-primary" onclick="startDemo()">התחל ניסיון חינם למשך 14 יום</button>
+                    <a href="#demo" class="btn-base btn-lg cta-secondary">צפה בהדגמה</a>
+                </div>
+                
+                <div class="hero-metrics">
+                    <div class="metric-item">
+                        <div class="metric-number">2,847+</div>
+                        <div class="metric-label">עסקים פעילים</div>
+                    </div>
+                    <div class="metric-item">
+                        <div class="metric-number">147K+</div>
+                        <div class="metric-label">לידים שנוצרו החודש</div>
+                    </div>
+                    <div class="metric-item">
+                        <div class="metric-number">94%</div>
+                        <div class="metric-label">שיעור שביעות רצון</div>
+                    </div>
+                    <div class="metric-item">
+                        <div class="metric-number">₪12.4M</div>
+                        <div class="metric-label">הכנסות לעסקים</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Demo Section -->
+    <section class="demo" id="demo">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="digital-text" data-text="הדגמה חיה - צפה בסוכן הדיגיטלי בפעולה">הדגמה חיה - צפה בסוכן הדיגיטלי בפעולה</h2>
+                <p>ראה איך הסוכן שלנו מזהה לקוחות פוטנציאליים ומגיב אליהם בזמן אמת</p>
+            </div>
+
+            <!-- Progress Breadcrumb -->
+            <div class="demo-progress" id="demoProgress">
+                <div class="progress-step active" id="step-analysis">
+                    <span>🔍</span>
+                    <span>ניתוח פוסטים</span>
+                </div>
+                <div class="progress-arrow">→</div>
+                <div class="progress-step" id="step-response">
+                    <span>📝</span>
+                    <span>יצירת תגובה</span>
+                </div>
+                <div class="progress-arrow">→</div>
+                <div class="progress-step" id="step-messenger">
+                    <span>💬</span>
+                    <span>מעבר למסנג'ר</span>
+                </div>
+                <div class="progress-arrow">→</div>
+                <div class="progress-step" id="step-complete">
+                    <span>🎯</span>
+                    <span>סיום</span>
+                </div>
+            </div>
+
+            <div class="demo-container">
+                <div class="demo-content demo-side" id="demoRightSide">
+                    <div class="section-badge">הדגמה חיה</div>
+                    <h3>ראה את הסוכן הדיגיטלי בפעולה</h3>
+                    <p>הסוכן סורק מיליוני פוסטים בפייסבוק, מזהה לקוחות פוטנציאליים ומגיב אליהם בתוך דקות. כל זה אוטומטית, בלי התערבות שלך.</p>
+                    
+                    <ul class="demo-features">
+                        <li><i class="fas fa-check"></i> זיהוי אוטומטי של לקוחות פוטנציאליים</li>
+                        <li><i class="fas fa-check"></i> יצירת תגובות מותאמות אישית</li>
+                        <li><i class="fas fa-check"></i> מעבר חלק לשיחה פרטית ב-Messenger</li>
+                        <li><i class="fas fa-check"></i> מעקב וניתוח מתקדמים</li>
+                    </ul>
+                    
+                    <div class="demo-status" style="margin-top: auto;">
+                        <div class="status-indicator" style="background: rgba(16, 185, 129, 0.05); padding: 12px 16px; border-radius: 8px; border: 1px solid rgba(16, 185, 129, 0.2);">
+                            <div class="pulse-dot"></div>
+                            <span id="demoStatus">הדגמה תתחיל בקרוב...</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="demo-video demo-side" id="demoLeftSide">
+                    <div class="social-feed-demo" id="socialFeed">
+                        <!-- Demo posts will be populated here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trust Indicators -->
+    <section class="trust-section">
+        <div class="container">
+            <div class="trust-content">
+                <div class="trust-label">בטוח על ידי עסקים מובילים</div>
+                <div class="trust-logos">
+                    <div class="trust-logo">Microsoft</div>
+                    <div class="trust-logo">Salesforce</div>
+                    <div class="trust-logo">HubSpot</div>
+                    <div class="trust-logo">AWS</div>
+                    <div class="trust-logo">Google Cloud</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features" id="features">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-badge">יכולות מתקדמות</div>
+                <h2 class="section-title">פלטפורמת AI מלאה לניהול לידים</h2>
+                <p class="section-subtitle">טכנולוגיות מתקדמות של בינה מלאכותית ולמידת מכונה המספקות תוצאות מדויקות ורלוונטיות לעסק שלך</p>
+            </div>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h3 class="feature-title">בינה מלאכותית מתקדמת</h3>
+                    <p class="feature-description">אלגוריתמי NLP מתקדמים המבינים הקשר, רגש וכוונה בכל פוסט. הסוכן מזהה הזדמנויות עסקיות בדיוק של 96%.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <h3 class="feature-title">מעקב בזמן אמת 24/7</h3>
+                    <p class="feature-description">מערכת ניטור רציפה הסורקת מיליוני פוסטים בפייסבוק, אינסטגרם ולינקדאין. זיהוי הזדמנויות תוך פחות מ-90 שניות מהפרסום.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-rocket"></i>
+                    </div>
+                    <h3 class="feature-title">תגובות מותאמות אישית</h3>
+                    <p class="feature-description">יצירת ריד מותאמים אישית לכל לקוח פוטנציאלי. הסוכן מנתח את הפרופיל, ההיסטוריה והעדפות ויוצר תגובה רלוונטית.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3 class="feature-title">ניתוחים ודוחות מתקדמים</h3>
+                    <p class="feature-description">לוח בקרה מפורט עם מדדי ביצוע, טרנדים, תחזיות והמלצות. נתונים מקצועיים להחלטות עסקיות חכמות.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3 class="feature-title">אבטחת מידע ברמה ארגונית</h3>
+                    <p class="feature-description">הצפנת 256-bit, תקני SOC 2 Type II, GDPR compliant. נתוני הלקוחות שלך מוגנים בטכנולוגיות אבטחה מתקדמות.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-cogs"></i>
+                    </div>
+                    <h3 class="feature-title">אינטגרציה עם CRM</h3>
+                    <p class="feature-description">חיבור ישיר ל-Salesforce, HubSpot, Microsoft Dynamics ועוד. העברת לידים אוטומטית למערכות הניהול הקיימות שלך.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Testimonials -->
+    <section class="testimonials" id="testimonials">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-badge">המלצות לקוחות</div>
+                <h2 class="section-title">מה אומרים הלקוחות שלנו</h2>
+                <p class="section-subtitle">אלפי עסקים כבר השתכנעו בכוח של הסוכן הדיגיטלי. ראה איך הם הגדילו את המכירות והחסכו זמן יקר</p>
+            </div>
+            
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="testimonial-text">"הסוכן הדיגיטלי פשוט שינה לנו את המשחק. במקום לבזבז שעות על סריקה ידנית, אנחנו מקבלים לידים איכותיים ישירות ל-CRM. העסק גדל ב-340% בחצי שנה."</p>
+                    <div class="testimonial-author">
+                        <div class="avatar avatar-lg author-avatar">ד.כ</div>
+                        <div class="author-info">
+                            <h4>דני כהן</h4>
+                            <span>מנכ"ל, חברת שיפוצים מובילה</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="testimonial-text">"כמו שאמר שותף שלי - זה כמו שיש לנא עובד במשמרת לילה שעובד רק על לידים. הטכנולוגיה מדהימה והתמיכה מעולה. השקעה שמחזירה את עצמה תוך חודש."</p>
+                    <div class="testimonial-author">
+                        <div class="avatar avatar-lg author-avatar">ר.ל</div>
+                        <div class="author-info">
+                            <h4>רונית לוי</h4>
+                            <span>מייסדת, סטודיו לעיצוב פנים</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="testimonial-text">"הפלטפורמה הכי מתקדמת שראיתי. הAI מבין בדיוק מה הלקוחות רוצים ומגיב בצורה טבעית. הפכנו מעסק מקומי לברנד לאומי בזכות הסוכן הדיגיטלי."</p>
+                    <div class="testimonial-author">
+                        <div class="avatar avatar-lg author-avatar">מ.ג</div>
+                        <div class="author-info">
+                            <h4>מיכאל גולן</h4>
+                            <span>בעלים, רשת מוסכים</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Pricing -->
+    <section class="pricing" id="pricing">
+        <div class="container">
+            <div class="pricing-header">
+                <h2 class="digital-text" data-text="תוכנית הסוכן הדיגיטלי המתקדם">תוכנית הסוכן הדיגיטלי המתקדם</h2>
+                <p>פתרון מקצועי ומשתלם לעסקים שרוצים לגדול עם ליווי אישי מלא</p>
+            </div>
+            
+            <div class="pricing-cards" style="max-width: 500px;">
+                <div class="pricing-card featured">
+                    <h3 class="pricing-plan">הסוכן הדיגיטלי</h3>
+                    <div class="pricing-price">₪250</div>
+                    <div class="pricing-period">לחודש + מע"מ</div>
+                    <ul class="pricing-features">
+                        <li><i class="fas fa-check"></i> סריקה אוטומטית של פוסטים ברשתות חברתיות</li>
+                        <li><i class="fas fa-check"></i> זיהוי לקוחות פוטנציאליים בזמן אמת</li>
+                        <li><i class="fas fa-check"></i> תגובות מותאמות אישית לכל פוסט</li>
+                        <li><i class="fas fa-check"></i> מעבר אוטומטי לשיחה פרטית ב-Messenger</li>
+                        <li><i class="fas fa-check"></i> איסוף פרטי קשר ואיכות לידים</li>
+                        <li><i class="fas fa-check"></i> העברה אוטומטית ל-CRM או WhatsApp</li>
+                        <li><i class="fas fa-check"></i> פעילות 24/7 ללא הפסקות או חופשות</li>
+                        <li><i class="fas fa-check"></i> דוחות יומיים ושבועיים מפורטים</li>
+                        <li><i class="fas fa-check"></i> התאמה מלאה לתחום ואיזור הפעילות</li>
+                        <li><i class="fas fa-check"></i> ליווי אישי וטכני מלא</li>
+                        <li><i class="fas fa-check"></i> 7 ימים ניסיון חינם ללא התחייבות</li>
+                        <li><i class="fas fa-check"></i> אפשרות ביטול בכל עת</li>
+                    </ul>
+                    <button class="btn-base btn-primary btn-lg pricing-cta" onclick="selectPlan('digital-agent')">התחל ניסיון חינם עכשיו</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <h3>LeadBot Pro</h3>
+                    <p>הפלטפורמה המתקדמת לניהול לידים אוטומטי. טכנולוגיית AI מתקדמת לעסקים מהשורה הראשונה.</p>
+                    <div class="footer-social">
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>המוצר</h4>
+                    <ul>
+                        <li><a href="#features">תכונות</a></li>
+                        <li><a href="#demo">הדגמה</a></li>
+                        <li><a href="#pricing">מחירים</a></li>
+                        <li><a href="#">אינטגרציות</a></li>
+                        <li><a href="#">API</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>החברה</h4>
+                    <ul>
+                        <li><a href="#">אודות</a></li>
+                        <li><a href="#">הבלוג</a></li>
+                        <li><a href="#">קריירה</a></li>
+                        <li><a href="#">עדכונים</a></li>
+                        <li><a href="#">צור קשר</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>תמיכה</h4>
+                    <ul>
+                        <li><a href="#">מרכז עזרה</a></li>
+                        <li><a href="#">תיעוד טכני</a></li>
+                        <li><a href="#">קהילה</a></li>
+                        <li><a href="#">סטטוס המערכת</a></li>
+                        <li><a href="#">צור קשר</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 LeadBot Pro. כל הזכויות שמורות. | <a href="#">תנאי שימוש</a> | <a href="#">מדיניות פרטיות</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Demo Examples
+        const demoExamples = [
+            {
+                name: "שרה לוי",
+                avatar: "ש.ל",
+                time: "2 דקות",
+                content: "חיפש המון אבל לא מוצאת מישהו טוב לעיצוב המטבח שלי... כל המעצבים שפגשתי עד עכשיו לא הבינו מה אני רוצה 😕",
+                isLead: true,
+                category: "relevant"
+            },
+            {
+                name: "דוד כהן",
+                avatar: "ד.כ",
+                time: "5 דקות",
+                content: "מה דעתכם על אתרי אינטרנט לעסקים קטנים? שווה להשקיע או בזבוז כסף?",
+                isLead: false,
+                category: "field_irrelevant"
+            },
+            {
+                name: "רונית גולן",
+                avatar: "ר.ג",
+                time: "8 דקות",
+                content: "המכונית שלי שוב התקלקלה... פעם שלישית החודש! אני חייבת מוסך אמין באזור המרכז 🚗💸",
+                isLead: true,
+                category: "relevant"
+            },
+            {
+                name: "מיכל אברמוב",
+                avatar: "מ.א",
+                time: "12 דקות",
+                content: "יש לי פגישה עם לקוח חשוב מחר ואין לי מה ללבוש... צריכה חנות בגדים מקצועית בדחיפות!",
+                isLead: false,
+                category: "area_irrelevant"
+            },
+            {
+                name: "אבי שמיר",
+                avatar: "א.ש",
+                time: "15 דקות",
+                content: "הרצפות בבית נראות נוראי, זקוקות לחידוש דחוף. מישהו יכול להמליץ על חברת שיפוצים מהימנה?",
+                isLead: true,
+                category: "relevant"
+            },
+            {
+                name: "נטלי רוזן",
+                avatar: "ן.ר",
+                time: "18 דקות",
+                content: "הילדים שלי נהנים מהשיעורים החדשים בפיאנו. המורה שלהם מדהימה!",
+                isLead: false,
+                category: "free_help"
+            },
+            {
+                name: "יוסי מלכא",
+                avatar: "י.מ",
+                time: "22 דקות",
+                content: "נמאס לי מהבוס שלי! חושב על לפתוח עסק בתחום הקייטרינג, אבל לא יודע איך מתחילים...",
+                isLead: true,
+                category: "relevant"
+            },
+            {
+                name: "ליאת כץ",
+                avatar: "ל.כ",
+                time: "25 דקות",
+                content: "הסתובבתי היום בקניון וראיתי כמה דברים יפים! הקניות עושות לי טוב 😊",
+                isLead: false,
+                category: "bot_post"
+            },
+            {
+                name: "איתן לבי",
+                avatar: "א.ל",
+                time: "3 ימים",
+                content: "מחפש מוסך טוב ברמת גן לתיקון הרכב. מישהו מכיר מקום אמין?",
+                isLead: false,
+                category: "old_post"
+            },
+            // Additional posts for manual scrolling
+            {
+                name: "רונית פרץ",
+                avatar: "ר.פ",
+                time: "28 דקות",
+                content: "האוטו של הבעל התקלקל השבוע, נזקקת למוסך אמין במרכז שיטפל בזה ב-משי ובמחיר הוגן. עדיפות לגם יותר מקצועיים!",
+                isLead: true,
+                category: "relevant"
+            },
+            {
+                name: "שמעון רודה",
+                avatar: "ש.ר",
+                time: "32 דקות",
+                content: "הקירות בסלון צריכים צביעה חדשה לפני החגים. מכירים צבע איכותי שלא יתקלף?",
+                isLead: true,
+                category: "relevant"
+            },
+            {
+                name: "עדי גולן",
+                avatar: "ע.ג",
+                time: "35 דקות",
+                content: "פרסום: קורס יוגה חדש בסטודיו שלנו! הרשמה עד סוף החודש במחיר מיוחד 💪",
+                isLead: false,
+                category: "bot_post"
+            },
+            {
+                name: "גל משה",
+                avatar: "ג.מ",
+                time: "40 דקות",
+                content: "מטבח הבית שלי נראה מיושן, חולמת על שיפוץ מקצועי שיהפוך אותו למטבח חלומותי. יש מישהו שמכיר מעצב פנים מוכשר?",
+                isLead: true,
+                category: "relevant"
+            },
+            {
+                name: "תמר לוי",
+                avatar: "ת.ל",
+                time: "45 דקות",
+                content: "האיזור שלי הוא בצפון, אז אני לא חושבת שיש פה שירותים מקצועיים בתחום השיפוצים שאני צריכה...",
+                isLead: false,
+                category: "area_irrelevant"
+            }
+        ];
+
+        let currentDemo = null;
+        let feedPosts = [];
+
+        function createPost(example, index) {
+            const timeAgo = Math.floor(Math.random() * 30) + 1;
+            return `
+                <div class="facebook-post" data-index="${index}" ${example.isLead ? 'data-potential-lead="true"' : ''}>
+                    <div class="post-header">
+                        <div class="avatar avatar-md post-avatar">${example.avatar}</div>
+                        <div class="post-info">
+                            <h3>${example.name}</h3>
+                            <span>${timeAgo} דקות</span>
+                        </div>
+                    </div>
+                    <div class="post-content">${example.content}</div>
+                    <div class="post-actions">
+                        <div class="post-action">
+                            <i class="far fa-thumbs-up"></i>
+                            Like
+                        </div>
+                        <div class="post-action">
+                            <i class="far fa-comment"></i>
+                            Comment
+                        </div>
+                        <div class="post-action">
+                            <i class="far fa-share"></i>
+                            Share
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        function populateFeed() {
+            const feed = document.getElementById('socialFeed');
+            if (!feed) return;
+            
+            feedPosts = [];
+            
+            // Create exactly 5 posts for demo: 4 irrelevant + 1 relevant (5th post)
+            const demoPosts = [
+                demoExamples[1], // דוד כהן - field_irrelevant (אתרי אינטרנט)
+                demoExamples[3], // מיכל אברמוב - area_irrelevant (בגדים)
+                demoExamples[5], // נטלי רוזן - free_help (פיאנו)
+                demoExamples[8], // איתן לבי - old_post (מוסך ישן)
+                demoExamples[4]  // אבי שמיר - relevant (שיפוצים) - THE RELEVANT ONE
+            ];
+            
+            // Add 5 additional posts for manual scrolling (indices 9-13 from demoExamples)
+            const additionalPosts = [
+                demoExamples[9],  // רונית פרץ - relevant (מוסך)
+                demoExamples[10], // שמעון רודה - relevant (צביעה)
+                demoExamples[11], // עדי גולן - bot_post (יוגה)
+                demoExamples[12], // גל משה - relevant (עיצוב מטבח)
+                demoExamples[13]  // תמר לוי - area_irrelevant (צפון)
+            ];
+            
+            // Combine demo posts with additional posts
+            const allPosts = [...demoPosts, ...additionalPosts];
+            
+            allPosts.forEach((example, i) => {
+                feedPosts.push({...example, index: i});
+            });
+            
+            feed.innerHTML = feedPosts.map((post, index) => createPost(post, index)).join('');
+            
+            // Add hover effects for additional posts (indices 5-9)
+            setTimeout(() => {
+                addHoverAnalysisToAdditionalPosts();
+            }, 500);
+            
+            // Start detection demo with safety check
+            setTimeout(() => {
+                if (demoStarted) {
+                    detectAndMarkPosts();
+                }
+            }, 2000);
+        }
+
+        function detectAndMarkPosts() {
+            const allPosts = document.querySelectorAll('.facebook-post');
+            let processedCount = 0;
+            let relevantPostIndex = null;
+            
+            // Only process the first 5 posts (demo posts), leave the rest for manual scrolling
+            const demoPosts = Array.from(allPosts).slice(0, 5);
+            
+            demoPosts.forEach((post, index) => {
+                setTimeout(() => {
+                    if (!post || post.querySelector('.analysis-icon')) return;
+                    
+                    const postIndex = parseInt(post.dataset.index);
+                    const postData = feedPosts[postIndex];
+                    if (!postData) return;
+                    
+                    const { icon, reason, isRelevant, highlightField } = getPostAnalysis(postData);
+                    
+                    // First, highlight the current post being analyzed
+                    highlightCurrentPost(post, true);
+                    
+                    // Show explanation banner on the post after a brief moment
+                    setTimeout(() => {
+                        showPostExplanationBanner(post, reason, isRelevant, postData.name, icon, highlightField);
+                        
+                        // Add analysis icon after showing the explanation
+                        setTimeout(() => {
+                            const analysisIcon = document.createElement('div');
+                            analysisIcon.className = 'analysis-icon';
+                            analysisIcon.innerHTML = icon;
+                            analysisIcon.style.cssText = `
+                                position: absolute;
+                                top: -8px;
+                                right: -8px;
+                                width: 24px;
+                                height: 24px;
+                                border-radius: 50%;
+                                display: flex;
+                                align-items: center;
+                                justify-content: center;
+                                font-size: 12px;
+                                z-index: 10;
+                            `;
+                            
+                            if (isRelevant) {
+                                post.classList.add('hot-post');
+                                analysisIcon.style.background = '#ef4444';
+                                analysisIcon.style.animation = 'bounce 1s infinite';
+                                relevantPostIndex = postIndex;
+                            } else {
+                                analysisIcon.style.background = '#6b7280';
+                            }
+                            
+                            post.style.position = 'relative';
+                            post.appendChild(analysisIcon);
+                            
+                            // Only remove highlight after analysis is complete, keep banner
+                            setTimeout(() => {
+                                highlightCurrentPost(post, false);
+                            }, 2000);
+                            
+                        }, 2000);
+                        
+                    }, 1000); // Show post first, then explanation
+                    
+                    // Track relevant posts
+                    if (isRelevant && processedCount === 0) {
+                        processedCount++;
+                    }
+                    
+                    // If this is the last demo post (index 4), start response generation for the relevant one
+                    if (index === demoPosts.length - 1) {
+                        setTimeout(() => {
+                            if (relevantPostIndex !== null) {
+                                startResponseGeneration(relevantPostIndex);
+                            }
+                        }, 4000);
+                    }
+                    
+                }, (index + 1) * 3000); // Longer delay to show each analysis clearly
+            });
+        }
+        
+        function highlightCurrentPost(post, highlight) {
+            if (highlight) {
+                post.style.border = '2px solid #1e40af';
+                post.style.boxShadow = '0 0 20px rgba(30, 64, 175, 0.3)';
+                post.style.transform = 'scale(1.02)';
+                post.style.transition = 'all 0.3s ease';
+                
+                // Scroll within the feed container only, not the main page
+                const feedContainer = document.getElementById('socialFeed');
+                if (feedContainer) {
+                    const postRect = post.getBoundingClientRect();
+                    const containerRect = feedContainer.getBoundingClientRect();
+                    const scrollOffset = postRect.top - containerRect.top - (containerRect.height / 2) + (postRect.height / 2);
+                    
+                    // Use smooth scrolling within the feed container
+                    feedContainer.scrollTo({
+                        top: feedContainer.scrollTop + scrollOffset,
+                        behavior: 'smooth'
+                    });
+                }
+            } else {
+                post.style.border = '1px solid var(--border-light)';
+                post.style.boxShadow = '';
+                post.style.transform = 'scale(1)';
+            }
+        }
+
+        function showPostExplanationBanner(post, reason, isRelevant, customerName, icon, highlightField = null) {
+            // Remove any existing banner first
+            removePostExplanationBanner(post);
+            
+            const banner = document.createElement('div');
+            banner.className = 'post-explanation-banner';
+            banner.style.cssText = `
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                background: ${isRelevant ? 
+                    'linear-gradient(135deg, #f0fdf4, #dcfce7)' : 
+                    'linear-gradient(135deg, #f1f5f9, #e2e8f0)'};
+                border: 1px solid ${isRelevant ? '#d1fae5' : '#cbd5e1'};
+                border-radius: 12px;
+                padding: 16px 20px;
+                max-width: 280px;
+                width: 90%;
+                z-index: 20;
+                box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+                animation: bannerSlideIn 0.4s ease-out;
+                direction: rtl;
+                text-align: right;
+            `;
+            
+            // Get structured classification
+            const classification = getPostClassification(post.dataset.index);
+            
+            banner.innerHTML = `
+                <button onclick="this.parentElement.remove()" style="
+                    position: absolute;
+                    top: 8px;
+                    left: 8px;
+                    background: rgba(0, 0, 0, 0.1);
+                    border: none;
+                    border-radius: 50%;
+                    width: 24px;
+                    height: 24px;
+                    cursor: pointer;
+                    font-size: 14px;
+                    color: #6b7280;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    transition: all 0.2s ease;
+                " onmouseover="this.style.background='rgba(0, 0, 0, 0.2)'" onmouseout="this.style.background='rgba(0, 0, 0, 0.1)'">×</button>
+                <div style="display: flex; align-items: center; justify-content: center; gap: 8px; margin-bottom: 12px;">
+                    <span style="font-size: 18px;">${icon}</span>
+                    <span style="font-weight: 700; color: ${isRelevant ? '#059669' : '#dc2626'}; font-size: 15px;">
+                        ${isRelevant ? 'פוסט רלוונטי' : 'פוסט לא רלוונטי'}
+                    </span>
+                </div>
+                <div style="font-size: 13px; line-height: 1.6; color: #374151;">
+                    ${classification.map(item => {
+                        const shouldHighlight = highlightField && (
+                            (highlightField === 'field' && item.label.includes('תחום')) ||
+                            (highlightField === 'location' && item.label.includes('איזור')) ||
+                            (highlightField === 'timing' && item.label.includes('זמן')) ||
+                            (highlightField === 'intent' && item.label.includes('כוונת')) ||
+                            (highlightField === 'authenticity' && item.label.includes('אמיתות'))
+                        );
+                        
+                        return `
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 4px; ${shouldHighlight ? 'border-radius: 4px; padding: 2px;' : ''}" ${shouldHighlight ? 'class="analysis-highlight"' : ''}>
+                            <span style="color: #6b7280;">${item.label}:</span>
+                            <span style="font-weight: 500; color: ${item.match ? '#059669' : '#dc2626'};">
+                                ${item.match ? '✓' : '✗'} ${item.value}
+                            </span>
+                        </div>
+                        `;
+                    }).join('')}
+                </div>
+            `;
+            
+            post.style.position = 'relative';
+            post.appendChild(banner);
+        }
+
+        function removePostExplanationBanner(post) {
+            const existingBanner = post.querySelector('.post-explanation-banner');
+            if (existingBanner) {
+                existingBanner.style.animation = 'bannerSlideOut 0.3s ease-out';
+                setTimeout(() => {
+                    if (existingBanner.parentNode) {
+                        existingBanner.remove();
+                    }
+                }, 300);
+            }
+        }
+
+        function addHoverAnalysisToAdditionalPosts() {
+            const allPosts = document.querySelectorAll('.facebook-post');
+            
+            // Add hover effects to additional posts (indices 5-9)
+            for (let i = 5; i < allPosts.length && i < 10; i++) {
+                const post = allPosts[i];
+                if (!post) continue;
+                
+                const postIndex = parseInt(post.dataset.index);
+                const postData = feedPosts[postIndex];
+                if (!postData) continue;
+                
+                let hoverTimeout;
+                
+                post.addEventListener('mouseenter', () => {
+                    // Clear any existing timeout
+                    if (hoverTimeout) clearTimeout(hoverTimeout);
+                    
+                    // Show analysis after short delay
+                    hoverTimeout = setTimeout(() => {
+                        if (!post.querySelector('.post-explanation-banner')) {
+                            const { icon, reason, isRelevant, highlightField } = getPostAnalysis(postData);
+                            showPostExplanationBanner(post, reason, isRelevant, postData.name, icon, highlightField);
+                            
+                            // Add analysis icon if not already present
+                            if (!post.querySelector('.analysis-icon')) {
+                                const analysisIcon = document.createElement('div');
+                                analysisIcon.className = 'analysis-icon';
+                                analysisIcon.innerHTML = icon;
+                                analysisIcon.style.cssText = `
+                                    position: absolute;
+                                    top: -8px;
+                                    right: -8px;
+                                    width: 24px;
+                                    height: 24px;
+                                    background: white;
+                                    border-radius: 50%;
+                                    display: flex;
+                                    align-items: center;
+                                    justify-content: center;
+                                    font-size: 14px;
+                                    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+                                    z-index: 10;
+                                `;
+                                post.style.position = 'relative';
+                                post.appendChild(analysisIcon);
+                            }
+                        }
+                    }, 800);
+                });
+                
+                post.addEventListener('mouseleave', () => {
+                    // Clear timeout if mouse leaves before analysis shows
+                    if (hoverTimeout) clearTimeout(hoverTimeout);
+                    
+                    // Remove banner after short delay
+                    setTimeout(() => {
+                        removePostExplanationBanner(post);
+                    }, 1500);
+                });
+            }
+        }
+
+        function getPostClassification(postIndex) {
+            const postData = feedPosts[postIndex];
+            if (!postData) return [];
+            
+            // Define our business criteria (this would come from user settings)
+            const businessCriteria = {
+                field: 'שיפוצים ובנייה', // Our business field
+                area: 'תל אביב והמרכז'      // Our service area
+            };
+            
+            let classification = [];
+            
+            // Always show field analysis
+            let fieldMatch = false;
+            let detectedField = '';
+            
+            if (postData.content.includes('עיצוב המטבח') || postData.content.includes('שיפוצים')) {
+                detectedField = 'שיפוצים ובנייה';
+                fieldMatch = true;
+            } else if (postData.content.includes('אתרי אינטרנט')) {
+                detectedField = 'בניית אתרים';
+                fieldMatch = false;
+            } else if (postData.content.includes('מוסך') || postData.content.includes('מכונית')) {
+                detectedField = 'שירותי רכב';
+                fieldMatch = false;
+            } else if (postData.content.includes('בגדים')) {
+                detectedField = 'אופנה ובגדים';
+                fieldMatch = false;
+            } else if (postData.content.includes('קייטרינג')) {
+                detectedField = 'שיפוצים ובנייה';
+                fieldMatch = true;
+            } else if (postData.content.includes('פיאנו') || postData.content.includes('קניון')) {
+                detectedField = 'לא רלוונטי';
+                fieldMatch = false;
+            } else {
+                detectedField = 'לא מזוהה';
+                fieldMatch = false;
+            }
+            
+            classification.push({
+                label: 'תחום פעילות',
+                value: detectedField,
+                match: fieldMatch
+            });
+            
+            // Always show area analysis (simplified for demo)
+            let areaMatch = true; // Most posts are in relevant area
+            let detectedArea = 'תל אביב והמרכז';
+            
+            if (postData.category === 'area_irrelevant') {
+                detectedArea = 'מחוץ לאזור';
+                areaMatch = false;
+            }
+            
+            classification.push({
+                label: 'איזור פעילות',
+                value: detectedArea,
+                match: areaMatch
+            });
+            
+            // Add additional criteria based on category
+            switch (postData.category) {
+                case 'bot_post':
+                    classification.push({
+                        label: 'סוג פרופיל',
+                        value: 'פרופיל מזויף',
+                        match: false
+                    });
+                    break;
+                case 'old_post':
+                    classification.push({
+                        label: 'זמן פרסום',
+                        value: 'יותר מ-24 שעות',
+                        match: false
+                    });
+                    break;
+                case 'free_help':
+                    classification.push({
+                        label: 'כוונת הפוסט',
+                        value: 'חיפוש עזרה חינם',
+                        match: false
+                    });
+                    break;
+                case 'relevant':
+                    classification.push({
+                        label: 'כוונת הפוסט',
+                        value: 'חיפוש שירות בתשלום',
+                        match: true
+                    });
+                    break;
+            }
+            
+            return classification;
+        }
+        
+        function getPostAnalysis(postData) {
+            switch (postData.category) {
+                case 'relevant':
+                    return {
+                        icon: '🔥',
+                        reason: 'פוסט רלוונטי - לקוח פוטנציאלי בתחום הפעילות ובאיזור המתאים',
+                        isRelevant: true,
+                        highlightField: null
+                    };
+                case 'bot_post':
+                    return {
+                        icon: '🚫',
+                        reason: 'פוסט לא אמיתי - נוצר על ידי בוט',
+                        isRelevant: false,
+                        highlightField: 'authenticity'
+                    };
+                case 'field_irrelevant':
+                    return {
+                        icon: '🚫',
+                        reason: 'פוסט לא רלוונטי - לא מתאים לתחום הפעילות',
+                        isRelevant: false,
+                        highlightField: 'field'
+                    };
+                case 'area_irrelevant':
+                    return {
+                        icon: '🚫',
+                        reason: 'פוסט לא רלוונטי - מחוץ לאיזור הפעילות',
+                        isRelevant: false,
+                        highlightField: 'location'
+                    };
+                case 'old_post':
+                    return {
+                        icon: '🚫',
+                        reason: 'פוסט ישן - נוצר לפני יותר מ-24 שעות',
+                        isRelevant: false,
+                        highlightField: 'timing'
+                    };
+                case 'free_help':
+                    return {
+                        icon: '🚫',
+                        reason: 'פוסט לא רלוונטי - מחפש עזרה חינם',
+                        isRelevant: false,
+                        highlightField: 'intent'
+                    };
+                default:
+                    return {
+                        icon: '🚫',
+                        reason: 'פוסט לא מזוהה',
+                        isRelevant: false,
+                        highlightField: null
+                    };
+            }
+        }
+        
+        let currentDemoStage = 'analysis';
+        
+        // Focus Management System
+        function setDemoFocus(side, pulseColor = null) {
+            const leftSide = document.getElementById('demoLeftSide');
+            const rightSide = document.getElementById('demoRightSide');
+            
+            if (!leftSide || !rightSide) return;
+            
+            // Clear previous states
+            leftSide.classList.remove('focused', 'dimmed', 'pulse-blue', 'pulse-green');
+            rightSide.classList.remove('focused', 'dimmed', 'pulse-blue', 'pulse-green');
+            
+            if (side === 'left') {
+                leftSide.classList.add('focused');
+                rightSide.classList.add('dimmed');
+                if (pulseColor) leftSide.classList.add(`pulse-${pulseColor}`);
+            } else if (side === 'right') {
+                rightSide.classList.add('focused');
+                leftSide.classList.add('dimmed');
+                if (pulseColor) rightSide.classList.add(`pulse-${pulseColor}`);
+            } else {
+                // Both sides neutral
+                leftSide.classList.remove('focused', 'dimmed');
+                rightSide.classList.remove('focused', 'dimmed');
+            }
+        }
+        
+        function updateProgressStep(currentStep) {
+            const steps = ['analysis', 'response', 'messenger', 'complete'];
+            
+            steps.forEach((step, index) => {
+                const stepElement = document.getElementById(`step-${step}`);
+                if (!stepElement) return;
+                
+                stepElement.classList.remove('active', 'completed');
+                
+                if (step === currentStep) {
+                    stepElement.classList.add('active');
+                } else if (steps.indexOf(step) < steps.indexOf(currentStep)) {
+                    stepElement.classList.add('completed');
+                }
+            });
+        }
+        
+        function pulseSpecificPost(postIndex) {
+            const post = document.querySelector(`[data-index="${postIndex}"]`);
+            if (post) {
+                post.classList.remove('pulse-green');
+                // Force reflow to restart animation
+                post.offsetHeight;
+                post.classList.add('pulse-green');
+            }
+        }
+
+        
+        function updateDemoStageText(stage, text) {
+            const explanationElement = document.querySelector('.demo-content p');
+            const featuresElement = document.querySelector('.demo-features');
+            
+            if (!explanationElement) return;
+            
+            currentDemoStage = stage;
+            
+            // Update progress step
+            updateProgressStep(stage);
+            
+            // Focus on right side when text updates
+            setDemoFocus('right', 'blue');
+            
+            // Animate text change
+            explanationElement.style.opacity = '0.5';
+            explanationElement.style.transform = 'translateY(-10px)';
+            
+            setTimeout(() => {
+                explanationElement.textContent = text;
+                explanationElement.style.opacity = '1';
+                explanationElement.style.transform = 'translateY(0)';
+                explanationElement.style.transition = 'all 0.3s ease';
+                explanationElement.style.color = '#1e40af';
+                explanationElement.style.fontWeight = '600';
+                
+                // Update features list based on stage
+                if (featuresElement) {
+                    updateFeaturesList(stage);
+                }
+                
+                // After text is updated, shift focus back to left side after a delay
+                setTimeout(() => {
+                    if (stage === 'analysis') {
+                        setDemoFocus('left');
+                    } else if (stage === 'response' || stage === 'messenger') {
+                        setDemoFocus('left', 'green');
+                    }
+                }, 2000);
+            }, 300);
+        }
+        
+        function updateFeaturesList(stage) {
+            const featuresElement = document.querySelector('.demo-features');
+            if (!featuresElement) return;
+            
+            // Add updating animation
+            featuresElement.classList.add('updating');
+            featuresElement.classList.remove('updated', 'highlight');
+            
+            let featuresHTML = '';
+            
+            switch (stage) {
+                case 'analysis':
+                    featuresHTML = `
+                        <li style="--delay: 0"><i class="fas fa-check"></i> סריקת מיליוני פוסטים בזמן אמת</li>
+                        <li style="--delay: 1"><i class="fas fa-check"></i> זיהוי לקוחות פוטנציאליים ברמת דיוק של 96%</li>
+                        <li style="--delay: 2"><i class="fas fa-check"></i> סינון אוטומטי של פוסטים לא רלוונטיים</li>
+                        <li style="--delay: 3"><i class="fas fa-check"></i> מיקוד גיאוגרפי ותחומי מדויק</li>
+                    `;
+                    break;
+                case 'response':
+                    featuresHTML = `
+                        <li style="--delay: 0"><i class="fas fa-check"></i> יצירת תגובות מותאמות אישית</li>
+                        <li style="--delay: 1"><i class="fas fa-check"></i> ניתוח הקשר וכוונה של הפוסט</li>
+                        <li style="--delay: 2"><i class="fas fa-check"></i> סגנון תגובה מקצועי ורלוונטי</li>
+                        <li style="--delay: 3"><i class="fas fa-check"></i> המלצות ספציפיות למוצר/שירות</li>
+                    `;
+                    break;
+                case 'messenger':
+                    featuresHTML = `
+                        <li style="--delay: 0"><i class="fas fa-check"></i> מעבר חלק לשיחה פרטית</li>
+                        <li style="--delay: 1"><i class="fas fa-check"></i> שיחת ייעוץ מקצועית</li>
+                        <li style="--delay: 2"><i class="fas fa-check"></i> איסוף פרטים לקביעת פגישה</li>
+                        <li style="--delay: 3"><i class="fas fa-check"></i> העברה אוטומטית למערכת CRM</li>
+                    `;
+                    break;
+                case 'complete':
+                    featuresHTML = `
+                        <li style="--delay: 0"><i class="fas fa-check"></i> הסוכן פועל 24/7 ללא הפסקה</li>
+                        <li style="--delay: 1"><i class="fas fa-check"></i> מעקב וניתוח מתקדמים</li>
+                        <li style="--delay: 2"><i class="fas fa-check"></i> דוחות ביצוע בזמן אמת</li>
+                        <li style="--delay: 3"><i class="fas fa-check"></i> ROI מוכח ומדיד</li>
+                    `;
+                    break;
+            }
+            
+            // Update content after fade out animation
+            setTimeout(() => {
+                featuresElement.innerHTML = featuresHTML;
+                featuresElement.classList.remove('updating');
+                featuresElement.classList.add('updated');
+                
+                // Add highlight animation after content is updated
+                setTimeout(() => {
+                    featuresElement.classList.add('highlight');
+                    
+                    // Add individual checkmark animations
+                    const listItems = featuresElement.querySelectorAll('li');
+                    listItems.forEach((item, index) => {
+                        setTimeout(() => {
+                            item.classList.add('animate-check');
+                            setTimeout(() => {
+                                item.classList.remove('animate-check');
+                            }, 1000);
+                        }, index * 300);
+                    });
+                    
+                    // Remove highlight class after animation
+                    setTimeout(() => {
+                        featuresElement.classList.remove('highlight');
+                    }, 3500);
+                }, 600);
+            }, 600);
+        }
+
+        function autoHandleComment(postIndex) {
+            const post = document.querySelector(`[data-index="${postIndex}"]`);
+            if (!post || !post.classList.contains('hot-post')) return;
+            
+            // Prevent duplicate comment boxes and processing same post multiple times
+            if (post.querySelector('.typing-indicator') || processedPosts.has(postIndex)) return;
+            
+            processedPosts.add(postIndex);
+            
+            // Remove analysis banner automatically when agent starts responding
+            removePostExplanationBanner(post);
+            
+            // Focus on the specific post with green pulse
+            pulseSpecificPost(postIndex);
+            setDemoFocus('left', 'green');
+            
+            // Create comment box
+            const commentBox = document.createElement('div');
+            commentBox.style.cssText = `
+                margin-top: 12px;
+                padding-top: 12px;
+                border-top: 1px solid #e2e8f0;
+            `;
+            
+            commentBox.innerHTML = `
+                <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 8px;">
+                    <div class="avatar avatar-sm">
+                        AI
+                    </div>
+                    <div style="flex: 1; background: #f3f4f6; border-radius: 16px; padding: 8px 12px; position: relative;">
+                        <div id="aiResponse${postIndex}" style="font-size: 14px; color: #374151;"></div>
+                        <div class="typing-indicator" style="display: flex; align-items: center; gap: 4px;">
+                            <span style="color: #6b7280; font-size: 12px;">הסוכן כותב</span>
+                            <div style="display: flex; gap: 2px;">
+                                <div style="width: 4px; height: 4px; background: #6b7280; border-radius: 50%; animation: bounce 1.4s infinite;"></div>
+                                <div style="width: 4px; height: 4px; background: #6b7280; border-radius: 50%; animation: bounce 1.4s infinite 0.2s;"></div>
+                                <div style="width: 4px; height: 4px; background: #6b7280; border-radius: 50%; animation: bounce 1.4s infinite 0.4s;"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+            
+            post.appendChild(commentBox);
+            
+            // Scroll to show the entire post + comment area properly
+            setTimeout(() => {
+                const feedContainer = document.getElementById('socialFeed');
+                if (feedContainer && post) {
+                    // Calculate the space needed for post + comment
+                    const postRect = post.getBoundingClientRect();
+                    const containerRect = feedContainer.getBoundingClientRect();
+                    
+                    // Account for comment box height (approximately 80px)
+                    const commentHeight = 80;
+                    const totalHeight = postRect.height + commentHeight;
+                    
+                    // Calculate scroll position to center the entire post+comment area
+                    const scrollOffset = postRect.top - containerRect.top - (containerRect.height / 2) + (totalHeight / 2);
+                    
+                    feedContainer.scrollTo({
+                        top: feedContainer.scrollTop + scrollOffset,
+                        behavior: 'smooth'
+                    });
+                }
+            }, 100);
+            
+            // Generate AI response based on post content
+            const postContent = feedPosts[postIndex].content;
+            let response = "";
+            
+            if (postContent.includes("עיצוב המטבח")) {
+                response = "שלום שרה! אני מבין שאת מחפשת מעצב מטבח מקצועי. יש לי המלצה מעולה על צוות עיצוב שמתמחה בדיוק במטבחים מודרניים ופונקציונליים. הם עובדים איתך צעד אחר צעד עד שאת מרוצה 100%. רוצה שאשלח לך פרטים?";
+            } else if (postContent.includes("מוסך אמין")) {
+                response = "היי רונית! מבין שאת צריכה מוסך מהימן באזור המרכז. יש לי בדיוק את מה שאת מחפשת - מוסך עם מומחים שיודעים לטפל בכל סוג של תקלה, עם אחריות מלאה ומחירים הוגנים. בואי נקבע פגישה מהירה כדי שתכירי אותם?";
+            } else if (postContent.includes("שיפוצים מהימנה") || postContent.includes("חברת שיפוצים")) {
+                response = "שלום אבי! רואה שאתה מחפש חברת שיפוצים איכותית לרצפות. יש לי המלצה מעולה על צוות מקצועי שמתמחה בדיוק בשיפוץ רצפות - הם עובדים עם חומרים מהמעלה הראשונה ונותנים אחריות מלאה על העבודה. מעוניין לשמוע פרטים נוספים?";
+            }
+            
+            // Type the response automatically
+            setTimeout(() => {
+                if (document.getElementById(`aiResponse${postIndex}`)) {
+                    typeResponse(`aiResponse${postIndex}`, response, () => {
+                        // Hide typing indicator safely
+                        const typingIndicator = commentBox.querySelector('.typing-indicator');
+                        if (typingIndicator) {
+                            typingIndicator.style.display = 'none';
+                        }
+                        
+                        // Show messenger transition after 2 seconds automatically (only if no conversation is active)
+                        setTimeout(() => {
+                            if (feedPosts[postIndex] && feedPosts[postIndex].name && !messengerConversationActive) {
+                                // Update to messenger stage
+                                const statusElement = document.getElementById('demoStatus');
+                                if (statusElement) {
+                                    statusElement.textContent = 'מעביר לשיחה פרטית...';
+                                }
+                                updateDemoStageText('messenger', 'הסוכן מעביר את השיחה ל-Messenger לייעוץ אישי ואיסוף פרטים.');
+                                
+                                messengerConversationActive = true;
+                                showMessengerTransition(feedPosts[postIndex].name);
+                            }
+                        }, 2000);
+                    });
+                }
+            }, 1500);
+        }
+
+        function typeResponse(elementId, text, callback) {
+            const element = document.getElementById(elementId);
+            if (!element || !text) {
+                callback && callback();
+                return;
+            }
+            
+            let i = 0;
+            element.textContent = '';
+            
+            function typeChar() {
+                if (i < text.length && element) {
+                    element.textContent += text.charAt(i);
+                    i++;
+                    setTimeout(typeChar, 30);
+                } else {
+                    callback && callback();
+                }
+            }
+            
+            typeChar();
+        }
+
+        // Reusable popup creation function
+        function createPopup(config) {
+            const overlay = document.createElement('div');
+            overlay.style.cssText = `
+                position: fixed;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background: rgba(0, 0, 0, 0.7);
+                backdrop-filter: blur(5px);
+                z-index: ${config.zIndex || 1003};
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                padding: 20px;
+            `;
+            
+            overlay.innerHTML = `
+                <div style="${config.containerStyle}">
+                    ${config.closeButton ? `<button onclick="this.parentElement.parentElement.remove()" style="position: absolute; top: 16px; left: 16px; background: none; border: none; font-size: 24px; color: #6b7280; cursor: pointer;">×</button>` : ''}
+                    ${config.content}
+                </div>
+            `;
+            
+            document.body.appendChild(overlay);
+            return overlay;
+        }
+
+        function showMessengerTransition(customerName) {
+            // Remove any existing notifications and popups first
+            const existingNotifications = document.querySelectorAll('[style*="position: fixed"][style*="top: 80px"]');
+            const existingPopups = document.querySelectorAll('[style*="position: fixed"][style*="bottom: 20px"]');
+            
+            existingNotifications.forEach(el => el.remove());
+            existingPopups.forEach(el => el.remove());
+            
+            // Create messenger notification
+            const notification = document.createElement('div');
+            notification.style.cssText = `
+                position: fixed;
+                top: 80px;
+                left: 20px;
+                background: var(--primary-blue);
+                color: white;
+                padding: 16px 20px;
+                border-radius: var(--border-radius-lg);
+                box-shadow: var(--shadow-md);
+                z-index: 1001;
+                font-weight: 500;
+                animation: slideIn 0.3s ease-out;
+            `;
+            
+            notification.innerHTML = `
+                <div style="display: flex; align-items: center; gap: 8px;">
+                    <i class="fab fa-facebook-messenger" style="font-size: 20px;"></i>
+                    <span>${customerName} התחיל/ה שיחה חדשה</span>
+                </div>
+            `;
+            
+            document.body.appendChild(notification);
+            
+            // Show messenger popup after notification
+            setTimeout(() => {
+                if (messengerConversationActive) {
+                    showMessengerPopup(customerName);
+                    notification.remove();
+                }
+            }, 3000);
+        }
+
+        function showMessengerPopup(customerName) {
+            const popup = document.createElement('div');
+            popup.style.cssText = `
+                position: fixed;
+                bottom: 20px;
+                left: 20px;
+                width: 360px;
+                height: 540px;
+                background: white;
+                border-radius: 12px;
+                box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15), 0 0 0 1px rgba(0, 0, 0, 0.05);
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+                z-index: 1002;
+                overflow: hidden;
+                animation: popupSlideIn 0.4s ease-out;
+            `;
+            
+            popup.innerHTML = `
+                <div style="background: linear-gradient(135deg, #0084ff, #0066cc); color: white; padding: 12px 16px; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid rgba(255,255,255,0.1);">
+                    <div style="display: flex; align-items: center; gap: 10px;">
+                        <div style="width: 32px; height: 32px; background: rgba(255,255,255,0.2); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+                            <i class="fab fa-facebook-messenger" style="font-size: 16px;"></i>
+                        </div>
+                        <div>
+                            <div style="font-weight: 600; font-size: 14px;">${customerName}</div>
+                            <div style="font-size: 12px; opacity: 0.8;">פעיל עכשיו</div>
+                        </div>
+                    </div>
+                    <button onclick="this.parentElement.parentElement.remove()" style="background: rgba(255,255,255,0.2); border: none; color: white; font-size: 16px; cursor: pointer; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center;">×</button>
+                </div>
+                <div style="padding: 12px 16px; height: 420px; overflow-y: auto; background: #f8f9fa;" id="messengerChat">
+                    <!-- Messages will be added here -->
+                </div>
+                <div style="padding: 12px 16px; border-top: 1px solid #e4e6ea; min-height: 64px; display: flex; align-items: center; background: white;" id="typingArea">
+                    <!-- Typing indicators will be shown here -->
+                </div>
+            `;
+            
+            document.body.appendChild(popup);
+            
+            // Start the conversation sequence
+            startMessengerConversation(customerName);
+        }
+        
+        function startMessengerConversation(customerName) {
+            const chat = document.getElementById('messengerChat');
+            const typingArea = document.getElementById('typingArea');
+            if (!chat || !typingArea) return;
+            
+            // Step 1: Show agent typing first
+            showTypingIndicator(typingArea, 'agent');
+            
+            // Step 2: Agent sends first message after 2 seconds
+            setTimeout(async () => {
+                hideTypingIndicator(typingArea);
+                
+                // Wait for agent to finish typing before customer starts
+                await addAgentMessage(chat, `שלום אבי! ראיתי שחיפשת לחדש את הרצפות בביתך, והייתי שמח לתת לך הצעת מחיר ללא התחייבות. מאמין שנצליח להגיע לעמק השווה בנינו.\nמחכה לעדכון.\nיוסי שיפוצים :)`);
+                
+                // Step 3: Now that agent finished typing, wait 2 seconds then show customer typing
+                setTimeout(() => {
+                    showTypingIndicator(typingArea, 'customer', customerName);
+                    
+                    // Step 4: Customer responds after 2 seconds
+                    setTimeout(() => {
+                        hideTypingIndicator(typingArea);
+                        addCustomerMessage(chat, customerName, 'שלום! כן, אשמח לשמוע עוד פרטים. איך אפשר להתחיל?');
+                        
+                        // Step 5: Close messenger and show final stage (3 seconds)
+                        setTimeout(() => {
+                            document.querySelector('[style*="position: fixed"][style*="bottom: 20px"]')?.remove();
+                            messengerConversationActive = false;
+                            
+                            // Update to completion stage
+                            const statusElement = document.getElementById('demoStatus');
+                            if (statusElement) {
+                                statusElement.textContent = 'הסוכן פועל 24/7 ללא הפסקה!';
+                            }
+                            updateDemoStageText('complete', 'הסוכן ממשיך לעבוד בספר רשתות חברתיות, מזהה לידים חדשים ומעביר אותם למערכת CRM שלך.');
+                            
+                            // Show onboarding form after demo completion explanation + 3 seconds
+                            setTimeout(() => {
+                                showOnboardingForm();
+                            }, 7000);
+                        }, 3000);
+                    }, 2000);
+                }, 2000);
+            }, 2000);
+        }
+        
+        function showTypingIndicator(typingArea, sender, customerName = '') {
+            const isAgent = sender === 'agent';
+            const senderName = isAgent ? 'הסוכן' : customerName.split(' ')[0];
+            
+            typingArea.innerHTML = `
+                <div style="display: flex; gap: 8px; align-items: center;">
+                    <div style="background: #e4e6ea; border-radius: 18px; padding: 8px 12px; font-size: 13px; color: #65676b; display: flex; align-items: center; gap: 6px;">
+                        <span>${senderName} מקליד</span>
+                        <div class="typing-dots" style="display: flex; gap: 2px;">
+                            <div style="width: 3px; height: 3px; background: #65676b; border-radius: 50%; animation: bounce 1.4s infinite;"></div>
+                            <div style="width: 3px; height: 3px; background: #65676b; border-radius: 50%; animation: bounce 1.4s infinite 0.2s;"></div>
+                            <div style="width: 3px; height: 3px; background: #65676b; border-radius: 50%; animation: bounce 1.4s infinite 0.4s;"></div>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+        
+        function hideTypingIndicator(typingArea) {
+            typingArea.innerHTML = '';
+        }
+        
+        function addAgentMessage(chat, message) {
+            const uniqueId = `agentTyping${Date.now()}`;
+            const messageDiv = document.createElement('div');
+            messageDiv.style.cssText = `
+                display: flex;
+                gap: 8px;
+                margin-bottom: 16px;
+                flex-direction: row-reverse;
+            `;
+            
+            messageDiv.innerHTML = `
+                <div class="avatar avatar-sm" style="width: 28px; height: 28px; background: #0084ff; color: white; font-size: 12px; font-weight: 600;">
+                    יוסי
+                </div>
+                <div style="background: #0084ff; color: white; border-radius: 18px; padding: 8px 12px; max-width: 240px; font-size: 14px; line-height: 1.3;">
+                    <div id="${uniqueId}"></div>
+                </div>
+            `;
+            
+            chat.appendChild(messageDiv);
+            chat.scrollTop = chat.scrollHeight;
+            
+            // Type the message with animation and return when done
+            return new Promise((resolve) => {
+                typeMessageWithAnimation(uniqueId, message, resolve);
+            });
+        }
+        
+        function addCustomerMessage(chat, customerName, message) {
+            const uniqueId = `customerTyping${Date.now()}`;
+            const messageDiv = document.createElement('div');
+            messageDiv.style.cssText = `
+                display: flex;
+                gap: 8px;
+                margin-bottom: 16px;
+            `;
+            
+            messageDiv.innerHTML = `
+                <div class="avatar avatar-sm" style="width: 28px; height: 28px; background: #e4e6ea; color: #65676b; font-size: 12px; font-weight: 600;">
+                    ${customerName.split(' ').map(n => n[0]).join('')}
+                </div>
+                <div style="background: #e4e6ea; color: #050505; border-radius: 18px; padding: 8px 12px; max-width: 240px; font-size: 14px; line-height: 1.3;">
+                    <div id="${uniqueId}"></div>
+                </div>
+            `;
+            
+            chat.appendChild(messageDiv);
+            chat.scrollTop = chat.scrollHeight;
+            
+            // Type the message with animation using the unique ID
+            typeMessageWithAnimation(uniqueId, message);
+        }
+        
+        function typeMessageWithAnimation(elementId, text, callback) {
+            const element = document.getElementById(elementId);
+            if (!element || !text) {
+                callback && callback();
+                return;
+            }
+            
+            let i = 0;
+            element.textContent = '';
+            
+            function typeChar() {
+                if (i < text.length && element) {
+                    element.textContent += text.charAt(i);
+                    i++;
+                    setTimeout(typeChar, 50);
+                } else {
+                    callback && callback();
+                }
+            }
+            
+            typeChar();
+        }
+
+        function showOnboardingForm() {
+            const formContent = `
+                <div style="text-align: center; margin-bottom: 32px;">
+                    <div class="avatar" style="width: 80px; height: 80px; margin: 0 auto 16px;">
+                        <i class="fas fa-rocket" style="font-size: 32px; color: white;"></i>
+                    </div>
+                    <h3 style="font-size: 24px; font-weight: 700; color: #0f172a; margin-bottom: 8px;">מוכן להטיס את העסק שלך?</h3>
+                    <p style="color: var(--text-secondary); font-size: 16px;">רק צריך כמה פרטים קטנים כדי להתאים את הסוכן הדיגיטלי בדיוק לעסק שלך</p>
+                </div>
+                    
+                    <form id="onboardingForm" style="display: flex; flex-direction: column; gap: 20px;">
+                        <div>
+                            <label style="display: block; font-weight: 600; color: #374151; margin-bottom: 8px;">איזה תחום עסקי?</label>
+                            <select style="width: 100%; padding: 12px 16px; border: 2px solid #e5e7eb; border-radius: 8px; font-size: 14px; background: white;" required>
+                                <option value="">בחר תחום...</option>
+                                <option value="design">עיצוב פנים</option>
+                                <option value="construction">שיפוצים ובנייה</option>
+                                <option value="automotive">מוסכים ואוטו</option>
+                                <option value="legal">משרדי עורכי דין</option>
+                                <option value="medical">שירותי רפואה</option>
+                                <option value="consulting">ייעוץ עסקי</option>
+                                <option value="other">אחר</option>
+                            </select>
+                        </div>
+                        
+                        <div>
+                            <label style="display: block; font-weight: 600; color: #374151; margin-bottom: 8px;">איזור פעילות עיקרי?</label>
+                            <select style="width: 100%; padding: 12px 16px; border: 2px solid #e5e7eb; border-radius: 8px; font-size: 14px; background: white;" required>
+                                <option value="">בחר איזור...</option>
+                                <option value="center">מרכז</option>
+                                <option value="north">צפון</option>
+                                <option value="south">דרום</option>
+                                <option value="jerusalem">ירושלים והסביבה</option>
+                                <option value="national">כל הארץ</option>
+                            </select>
+                        </div>
+               
+                        <button type="submit" class="btn-base btn-gradient btn-lg" style="width: 100%;">
+                            🚀 שגר את הסוכן הדיגיטלי שלי!
+                        </button>
+                    </form>
+                    
+                <div style="text-align: center; margin-top: 24px; padding-top: 24px; border-top: 1px solid #e5e7eb;">
+                    <div style="display: flex; align-items: center; justify-content: center; gap: 16px; font-size: 14px; color: var(--text-secondary);">
+                        <div style="display: flex; align-items: center; gap: 4px;">
+                            <i class="fas fa-check" style="color: var(--success-green);"></i>
+                            ללא התחייבות
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 4px;">
+                            <i class="fas fa-check" style="color: var(--success-green);"></i>
+                            14 יום חינם
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 4px;">
+                            <i class="fas fa-check" style="color: var(--success-green);"></i>
+                            הגדרה תוך 24 שעות
+                        </div>
+                    </div>
+                </div>
+            `;
+            
+            const overlay = createPopup({
+                content: formContent,
+                containerStyle: 'background: white; border-radius: 20px; padding: 40px; max-width: 500px; width: 100%; position: relative; animation: popupSlideIn 0.4s ease-out;',
+                closeButton: true,
+                zIndex: 1003
+            });
+            
+            // Handle form submission
+            document.getElementById('onboardingForm').addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                const successContent = `
+                    <div style="text-align: center;">
+                        <div class="avatar" style="width: 80px; height: 80px; background: linear-gradient(135deg, #10b981, #059669); margin: 0 auto 24px;">
+                            <i class="fas fa-check" style="font-size: 32px; color: white;"></i>
+                        </div>
+                        <h3 style="font-size: 24px; font-weight: 700; color: #0f172a; margin-bottom: 16px;">מושלם! ✈️</h3>
+                        <p style="color: var(--text-secondary); font-size: 16px; margin-bottom: 24px; line-height: 1.6;">הסוכן הדיגיטלי שלך עוזב עכשיו לטיסה!<br>תקבל מייל עם פרטי ההתחברות תוך 5 דקות.</p>
+                        <button onclick="this.parentElement.parentElement.remove()" class="btn-base btn-gradient">
+                            סגור
+                        </button>
+                    </div>
+                `;
+                
+                // Show success message
+                overlay.remove();
+                createPopup({
+                    content: successContent,
+                    containerStyle: 'background: white; border-radius: 20px; padding: 40px; max-width: 400px; animation: popupSlideIn 0.4s ease-out;',
+                    zIndex: 1003
+                });
+                
+                setTimeout(() => {
+                    overlay.remove();
+                }, 5000);
+            });
+        }
+
+        // Auto-playing demo system
+        let demoStarted = false;
+        let demoTimeouts = [];
+        let messengerConversationActive = false;
+        let processedPosts = new Set();
+        
+        function clearDemoTimeouts() {
+            demoTimeouts.forEach(timeout => clearTimeout(timeout));
+            demoTimeouts = [];
+        }
+        
+        function resetDemoState() {
+            demoStarted = false;
+            messengerConversationActive = false;
+            processedPosts.clear();
+            clearDemoTimeouts();
+            
+            // Reset focus system
+            setDemoFocus('neutral');
+            updateProgressStep('analysis');
+            
+            // Remove any existing popups
+            const existingPopups = document.querySelectorAll('[style*="position: fixed"][style*="z-index: 100"]');
+            existingPopups.forEach(el => el.remove());
+        }
+        
+        function startAutoDemo() {
+            if (demoStarted) return;
+            
+            demoStarted = true;
+            const statusElement = document.getElementById('demoStatus');
+            if (!statusElement) return;
+            
+            statusElement.textContent = 'הדגמה בהתחלה...';
+            
+            // Clear any existing timeouts
+            clearDemoTimeouts();
+            
+            // Initialize progress and focus
+            updateProgressStep('analysis');
+            setDemoFocus('right', 'blue');
+            
+            // Start the original demo automatically
+            populateFeed();
+            
+            // Update status for analysis phase
+            demoTimeouts.push(setTimeout(() => {
+                if (statusElement && demoStarted) {
+                    statusElement.textContent = 'סורק פוסטים ומנתח רלוונטיות...';
+                    updateDemoStageText('analysis', 'הסוכן מנתח כל פוסט בזמן אמת ומזהה לקוחות פוטנציאליים על בסיס תחום הפעילות, איזור ורלוונטיות.');
+                }
+            }, 2000));
+            
+            // Reset demo after 60 seconds to allow for full cycle
+            demoTimeouts.push(setTimeout(() => {
+                resetDemoState();
+            }, 60000));
+        }
+        
+        function startResponseGeneration(postIndex) {
+            const statusElement = document.getElementById('demoStatus');
+            if (statusElement) {
+                statusElement.textContent = 'יוצר תגובה מותאמת אישית...';
+            }
+            
+            updateDemoStageText('response', 'הסוכן מנתח את הפוסט ויוצר תגובה מקצועית ורלוונטית שתוביל לשיחה.');
+            
+            // Generate response after 2 seconds
+            setTimeout(() => {
+                autoHandleComment(postIndex);
+            }, 2000);
+        }
+
+        
+        // Intersection Observer for auto-start
+        let demoObserver;
+        
+        function initDemoObserver() {
+            if (demoObserver) return;
+            
+            demoObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting && !demoStarted) {
+                        setTimeout(() => {
+                            if (!demoStarted) {
+                                startAutoDemo();
+                            }
+                        }, 1000);
+                    }
+                });
+            }, { threshold: 0.5 });
+        }
+        
+        function selectPlan(plan) {
+            showOnboardingForm();
+        }
+
+        // Add styles for animations
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes slideIn {
+                from { transform: translateX(-100%); opacity: 0; }
+                to { transform: translateX(0); opacity: 1; }
+            }
+            
+            @keyframes popupSlideIn {
+                from { transform: translateY(30px); opacity: 0; }
+                to { transform: translateY(0); opacity: 1; }
+            }
+            
+            @keyframes bounce {
+                0%, 20%, 53%, 80%, 100% { transform: translateY(0); }
+                40%, 43% { transform: translateY(-8px); }
+                70% { transform: translateY(-4px); }
+                90% { transform: translateY(-2px); }
+            }
+            
+            @keyframes bounceSimple {
+                0%, 100% { transform: translateY(0); }
+                50% { transform: translateY(-4px); }
+            }
+        `;
+        document.head.appendChild(style);
+
+        // Initialize demo on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            const statusElement = document.getElementById('demoStatus');
+            if (statusElement) {
+                statusElement.textContent = 'הדגמה תתחיל כשתגיע לכאן...';
+            }
+            
+            // Initialize and start observing the demo section
+            const demoSection = document.getElementById('demo');
+            if (demoSection) {
+                initDemoObserver();
+                demoObserver.observe(demoSection);
+            }
+            
+            
+            // Add smooth scrolling for navigation links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({ behavior: 'smooth' });
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

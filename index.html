@@ -8,22 +8,17 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         :root {
-            --primary-blue: #1e40af;
-            --primary-blue-hover: #1d4ed8;
-            --secondary-blue: #3b82f6;
+            --primary-blue: #2563eb;
+            --ai-purple: #4c1d95;
             --success-green: #10b981;
-            --text-primary: #1f2937;
-            --text-secondary: #64748b;
-            --text-muted: #94a3b8;
-            --border-light: #e2e8f0;
-            --bg-light: #f8fafc;
-            --primary-gradient: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
-            --shadow-sm: 0 4px 12px rgba(30, 64, 175, 0.3);
-            --shadow-md: 0 8px 24px rgba(30, 64, 175, 0.5);
-            --shadow-lg: 0 20px 40px rgba(0, 0, 0, 0.1);
-            --border-radius: 8px;
-            --border-radius-lg: 12px;
-            --border-radius-xl: 16px;
+            --text-primary: #37352f;
+            --text-secondary: #6b7280;
+            --text-muted: #9ca3af;
+            --border-light: #e5e7eb;
+            --bg-light: #ffffff;
+            --bg-gray: #f9fafb;
+            --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+            --border-radius: 6px;
         }
 
         * {
@@ -31,26 +26,60 @@
             padding: 0;
             box-sizing: border-box;
         }
+
+        /* Utility Classes */
+        .flex-center { display: flex; align-items: center; justify-content: center; }
+        .flex-between { display: flex; align-items: center; justify-content: space-between; }
+        .flex-start { display: flex; align-items: center; }
+        .flex-col { display: flex; flex-direction: column; }
+        
+        .p-4 { padding: 16px; }
+        .p-6 { padding: 24px; }
+        .p-10 { padding: 40px; }
+        .py-4 { padding-top: 16px; padding-bottom: 16px; }
+        .px-6 { padding-left: 24px; padding-right: 24px; }
+        
+        .mb-4 { margin-bottom: 16px; }
+        .mb-6 { margin-bottom: 24px; }
+        .mb-8 { margin-bottom: 32px; }
+        
+        .rounded-full { border-radius: 50%; }
+        .rounded-md { border-radius: 12px; }
+        .rounded-lg { border-radius: var(--border-radius-lg); }
+        
+        .font-semibold { font-weight: 600; }
+        .font-bold { font-weight: 700; }
+        .font-black { font-weight: 800; }
+        
+        .translate-y-1 { transform: translateY(-1px); }
+        .translate-y-2 { transform: translateY(-2px); }
+        .translate-x-0 { transform: translateX(0); }
+        
+        .text-center { text-align: center; }
+        .text-secondary { color: var(--text-secondary); }
+        .text-muted { color: var(--text-muted); }
         
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            line-height: 1.6;
-            color: var(--text-primary);
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+            line-height: 1.5;
+            color: #37352f;
             direction: rtl;
             background: #ffffff;
+            font-weight: 400;
+            min-height: 100vh;
         }
+
         
         .container {
-            max-width: 1400px;
+            max-width: 1200px;
             margin: 0 auto;
             padding: 0 24px;
         }
 
-        /* Professional Header */
+        /* Simple Header */
         .header {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(20px);
-            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+            background: #ffffff;
+            border-bottom: 1px solid #e5e7eb;
             position: fixed;
             top: 0;
             left: 0;
@@ -59,77 +88,297 @@
             padding: 16px 0;
         }
 
+        /* Simple Header Styles */
         .header-content {
             display: flex;
+            align-items: center;
             justify-content: space-between;
-            align-items: center;
+            width: 100%;
         }
 
-        .logo {
+        /* Logo Section */
+        .logo-section {
             display: flex;
             align-items: center;
-            font-size: 28px;
-            font-weight: 800;
-            color: var(--primary-blue);
         }
 
-
-        .nav-links {
+        .logo-text {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            font-size: 24px;
+            font-weight: 700;
+            color: #000000;
             display: flex;
-            gap: 32px;
-            align-items: center;
+            flex-direction: column;
+            line-height: 1;
         }
-
-        .nav-links a {
-            color: #4b5563;
-            text-decoration: none;
+        
+        .logo-text .ai-highlight {
+            color: #4c1d95;
+        }
+        
+        .logo-text .pro-sub {
+            font-size: 12px;
             font-weight: 500;
-            font-size: 16px;
-            transition: color 0.2s;
-            font-family: 'Rajdhani', sans-serif;
+            color: #666666;
+            margin-top: 2px;
             letter-spacing: 0.5px;
         }
 
-        .nav-links a:hover {
+        /* Simple Navigation */
+        .nav-container {
+            position: relative;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            gap: 40px;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 4px;
+        }
+
+        .nav-item {
+            position: relative;
+        }
+
+        .nav-link {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            padding: 8px 12px;
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 14px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            position: relative;
+            white-space: nowrap;
+            background: transparent;
+        }
+
+        .nav-link:hover {
+            color: var(--ai-purple);
+            background: rgba(76, 29, 149, 0.1);
+            transform: translateY(-1px);
+        }
+
+        .nav-link:hover i {
+            color: var(--ai-purple);
+            transform: scale(1.1);
+        }
+
+        .nav-link:hover .nav-indicator {
+            width: 60%;
+        }
+
+        /* CTA Button */
+        .header-cta-section {
+            animation: slideInFromRight 0.8s ease-out 0.4s both;
+        }
+
+        .cta-button {
+            position: relative;
+            background: linear-gradient(135deg, var(--primary-red), var(--secondary-red));
+            border: none;
+            border-radius: var(--border-radius);
+            padding: 16px 28px;
+            color: var(--text-primary);
+            font-weight: 700;
+            font-size: 16px;
+            cursor: pointer;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            box-shadow: 0 4px 15px rgba(255, 49, 49, 0.3);
+        }
+
+        .cta-glow {
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, var(--secondary-red), transparent, var(--primary-red), transparent, var(--secondary-red));
+            border-radius: var(--border-radius);
+            opacity: 0;
+            z-index: -1;
+            animation: rotate 3s linear infinite;
+            transition: opacity 0.3s ease;
+        }
+
+        .cta-button:hover .cta-glow {
+            opacity: 1;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 8px 25px rgba(255, 49, 49, 0.4);
+        }
+
+        .cta-icon {
+            transition: transform 0.3s ease;
+        }
+
+        .cta-button:hover .cta-icon {
+            transform: translateX(-3px);
+        }
+
+        /* Mobile Menu Toggle */
+        .mobile-menu-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 4px;
+            cursor: pointer;
+            padding: 8px;
+        }
+
+        .mobile-menu-toggle span {
+            width: 25px;
+            height: 3px;
+            background: white;
+            border-radius: 2px;
+            transition: all 0.3s ease;
+        }
+
+        .mobile-menu-toggle:hover span {
+            background: var(--secondary-blue);
+            transform: scaleX(1.1);
+        }
+
+        .mobile-menu-toggle:hover span:nth-child(2) {
+            transform: scaleX(0.8);
+        }
+
+        /* Active Navigation States */
+        .nav-item.active .nav-link {
+            background: rgba(37, 99, 235, 0.15);
             color: var(--primary-blue);
+            box-shadow: 0 2px 8px rgba(37, 99, 235, 0.2);
+            font-weight: 600;
+        }
+        
+        .nav-item.active .nav-link i {
+            color: var(--primary-blue);
+        }
+
+        .nav-item.active .nav-indicator {
+            width: 80%;
+            background: var(--primary-blue);
+        }
+
+        /* Scroll Progress Indicator */
+        .scroll-progress {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--primary-blue), var(--secondary-blue));
+            transition: width 0.3s ease;
+            border-radius: 1px;
+            z-index: 3;
+        }
+
+        /* Enhanced Mobile Menu */
+        @media (max-width: 1024px) {
+            .nav-container {
+                display: none;
+            }
+            
+            .mobile-menu-toggle {
+                display: flex;
+            }
+
+            .nav-menu.mobile-active {
+                position: fixed;
+                top: 80px;
+                left: 20px;
+                right: 20px;
+                background: rgba(15, 23, 42, 0.95);
+                backdrop-filter: blur(20px);
+                border-radius: 20px;
+                padding: 20px;
+                flex-direction: column;
+                gap: 12px;
+                box-shadow: 0 12px 32px rgba(0, 0, 0, 0.4);
+                border: 1px solid rgba(255, 255, 255, 0.1);
+                z-index: 1000;
+                animation: mobileMenuSlide 0.3s ease;
+            }
+
+            @keyframes mobileMenuSlide {
+                from {
+                    opacity: 0;
+                    transform: translateY(-10px);
+                }
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+
+            .mobile-active .nav-link {
+                width: 100%;
+                justify-content: center;
+                padding: 16px 20px;
+                margin: 4px 0;
+            }
         }
 
         /* Base Button Styles */
         .btn-base {
             display: inline-block;
-            padding: 12px 24px;
             border-radius: var(--border-radius);
             text-decoration: none;
-            font-weight: 600;
             transition: all 0.3s;
             border: none;
             cursor: pointer;
-            text-align: center;
-            font-family: 'Rajdhani', sans-serif;
-            letter-spacing: 0.5px;
-            text-transform: uppercase;
-            font-size: 14px;
         }
 
         .btn-primary {
-            background: var(--primary-blue);
-            color: white;
+            background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
+            color: var(--text-primary);
+            box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .btn-primary:hover::before {
+            left: 100%;
         }
 
         .btn-primary:hover {
-            background: var(--primary-blue-hover);
-            transform: translateY(-1px);
-            box-shadow: var(--shadow-sm);
+            background: linear-gradient(135deg, var(--secondary-blue), var(--primary-blue));
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(59, 130, 246, 0.4);
         }
 
         .btn-gradient {
-            background: var(--primary-gradient);
-            color: white;
+            background: linear-gradient(135deg, var(--primary-red), var(--secondary-red));
+            color: var(--text-primary);
+            box-shadow: 0 4px 15px rgba(255, 49, 49, 0.3);
         }
-
         .btn-gradient:hover {
-            transform: translateY(-2px);
-            box-shadow: var(--shadow-md);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(255, 49, 49, 0.4);
         }
 
         .btn-lg {
@@ -144,79 +393,79 @@
 
         /* Hero Section - Enterprise Grade */
         .hero {
-            background: linear-gradient(135deg, #0f172a 0%, #1e293b 25%, #334155 75%, #475569 100%);
-            color: white;
-            padding: 140px 0 100px;
+            background: #ffffff;
+            color: var(--text-primary);
+            padding: 120px 0 80px;
             text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: 
-                radial-gradient(circle at 20% 80%, rgba(30, 64, 175, 0.3) 0%, transparent 50%),
-                radial-gradient(circle at 80% 20%, rgba(99, 102, 241, 0.3) 0%, transparent 50%),
-                radial-gradient(circle at 40% 40%, rgba(59, 130, 246, 0.2) 0%, transparent 50%);
         }
 
         .hero-content {
             position: relative;
             z-index: 2;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from { 
+                opacity: 0; 
+                transform: translateY(30px); 
+            }
+            to { 
+                opacity: 1; 
+                transform: translateY(0); 
+            }
         }
 
         .hero-badge {
             display: inline-flex;
             align-items: center;
-            background: rgba(255, 255, 255, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            backdrop-filter: blur(10px);
+            background: var(--bg-gray);
+            border: 1px solid var(--border-light);
             padding: 8px 16px;
-            border-radius: 24px;
+            border-radius: var(--border-radius);
             font-size: 14px;
             font-weight: 500;
-            margin-bottom: 24px;
-            color: #e2e8f0;
-            font-family: 'Rajdhani', sans-serif;
-            letter-spacing: 1px;
-            text-transform: uppercase;
+            margin-bottom: 20px;
+            color: var(--text-secondary);
+        }
+
+        .hero-badge:hover {
+            background: rgba(76, 29, 149, 0.1);
+            border-color: var(--ai-purple);
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        @keyframes pulse {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(96, 165, 250, 0.4); }
+            50% { box-shadow: 0 0 0 10px rgba(96, 165, 250, 0); }
         }
 
         .hero-badge i {
             margin-left: 8px;
-            color: var(--success-green);
+            color: var(--ai-purple);
         }
 
         .hero h1 {
-            font-size: 56px;
+            font-size: clamp(36px, 6vw, 56px);
             font-weight: 700;
             margin-bottom: 24px;
-            line-height: 1.1;
-            background: linear-gradient(135deg, #ffffff 0%, #e2e8f0 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            font-family: 'Orbitron', 'Rajdhani', sans-serif;
-            letter-spacing: 1px;
+            line-height: 1.2;
+            color: var(--text-primary);
         }
 
         .hero .subtitle {
-            font-size: 20px;
+            font-size: 22px;
             margin-bottom: 32px;
             opacity: 0.9;
             font-weight: 400;
             max-width: 600px;
             margin-left: auto;
             margin-right: auto;
-            color: #cbd5e1;
-            font-family: 'Rajdhani', sans-serif;
-            letter-spacing: 0.5px;
-            line-height: 1.5;
+            color: var(--text-secondary);
         }
 
         .hero-cta-group {
@@ -228,12 +477,12 @@
         }
 
         .cta-primary {
-            box-shadow: rgba(30, 64, 175, 0.4) 0 4px 12px;
+            box-shadow: 0 4px 15px rgba(255, 49, 49, 0.3);
         }
 
         .cta-secondary {
             background: rgba(255, 255, 255, 0.1);
-            color: white;
+            color: var(--text-primary);
             padding: 16px 32px;
             font-size: 16px;
             font-weight: 600;
@@ -249,72 +498,8 @@
             transform: translateY(-1px);
         }
 
-        .hero-metrics {
-            display: flex;
-            justify-content: center;
-            gap: 48px;
-            margin-top: 48px;
-            flex-wrap: wrap;
-        }
 
-        .metric-item {
-            text-align: center;
-        }
-
-        .metric-number {
-            font-size: 32px;
-            font-weight: 800;
-            color: var(--success-green);
-            margin-bottom: 4px;
-        }
-
-        .metric-label {
-            font-size: 14px;
-            color: var(--text-muted);
-            font-weight: 500;
-        }
-
-        /* Trust Indicators */
-        .trust-section {
-            background: var(--bg-light);
-            padding: 48px 0;
-            border-bottom: 1px solid var(--border-light);
-        }
-
-        .trust-content {
-            text-align: center;
-        }
-
-        .trust-label {
-            font-size: 14px;
-            color: var(--text-secondary);
-            font-weight: 500;
-            margin-bottom: 24px;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        .trust-logos {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 48px;
-            flex-wrap: wrap;
-            opacity: 0.6;
-        }
-
-        .trust-logo {
-            font-size: 24px;
-            font-weight: 700;
-            color: var(--text-secondary);
-        }
-
-        /* Features Section - Enterprise */
-        .features {
-            padding: 120px 0;
-            background: white;
-        }
-
+        /* Shared Section Styles */
         .section-header {
             text-align: center;
             max-width: 800px;
@@ -323,116 +508,76 @@
 
         .section-badge {
             display: inline-block;
-            background: #eff6ff;
-            color: var(--primary-blue);
-            padding: 8px 16px;
-            border-radius: var(--border-radius-xl);
+            background: rgba(76, 29, 149, 0.1);
+            color: var(--ai-purple);
+            padding: 6px 12px;
+            border-radius: var(--border-radius);
             font-size: 12px;
-            font-weight: 600;
-            margin-bottom: 16px;
-            font-family: 'Rajdhani', sans-serif;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            border: 1px solid rgba(59, 130, 246, 0.2);
+            font-weight: 500;
+            border: 1px solid rgba(76, 29, 149, 0.2);
         }
 
         .section-title {
-            font-size: 48px;
+            font-size: clamp(28px, 4vw, 40px);
+            color: var(--text-primary);
+            line-height: 1.3;
             font-weight: 700;
-            margin-bottom: 24px;
-            color: #0f172a;
-            line-height: 1.2;
-            font-family: 'Orbitron', 'Rajdhani', sans-serif;
-            letter-spacing: 0.5px;
+            margin: 12px 0 16px 0;
         }
 
         .section-subtitle {
-            font-size: 20px;
-            color: var(--text-secondary);
-            font-weight: 400;
-            line-height: 1.6;
-            font-family: 'Rajdhani', sans-serif;
-            letter-spacing: 0.3px;
-        }
-
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
-            gap: 32px;
-        }
-
-        .feature-card {
-            background: white;
-            padding: 40px;
-            border-radius: var(--border-radius-xl);
-            border: 1px solid var(--border-light);
-            transition: all 0.3s;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .feature-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: var(--primary-gradient);
-            transform: scaleX(0);
-            transition: transform 0.3s;
-        }
-
-        .feature-card:hover::before {
-            transform: scaleX(1);
-        }
-
-        .feature-card:hover {
-            transform: translateY(-4px);
-            box-shadow: var(--shadow-lg);
-            border-color: #cbd5e1;
-        }
-
-        .feature-icon {
-            width: 64px;
-            height: 64px;
-            background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
-            border-radius: var(--border-radius-xl);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 24px;
-        }
-
-        .feature-icon i {
-            font-size: 28px;
-            color: var(--primary-blue);
-        }
-
-        .feature-title {
-            font-size: 20px;
-            font-weight: 700;
-            margin-bottom: 12px;
-            color: #0f172a;
-        }
-
-        .feature-description {
             font-size: 16px;
             color: var(--text-secondary);
-            line-height: 1.6;
+            font-weight: 400;
+            line-height: 1.5;
+            max-width: 600px;
+            margin: 0 auto 48px auto;
         }
+
+        @keyframes slideInFromLeft {
+            from { opacity: 0; transform: translateX(-30px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        @keyframes slideInFromRight {
+            from { opacity: 0; transform: translateX(30px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        /* Trust Indicators */
+
 
         /* Demo Section */
         .demo {
-            background: var(--bg-light);
-            padding: 120px 0;
+            background: var(--bg-gray);
+            padding: 80px 0;
+        }
+
+        .demo .container {
+            position: relative;
+            z-index: 2;
+            padding: 0 clamp(16px, 2vw, 20px);
+            max-width: 1200px;
+        }
+
+        .demo .section-header h2 {
+            color: var(--text-primary);
+        }
+
+        .demo .section-header p {
+            color: var(--text-secondary);
         }
 
         .demo-container {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 80px;
-            align-items: center;
+            gap: clamp(10px, 1.8vw, 25px);
+            justify-content: center;
+            align-items: flex-start;
+            margin: 0 auto;
+            max-width: min(99vw, 1800px);
+            padding: 0;
+            width: 100%;
         }
 
         .demo-content h2 {
@@ -443,64 +588,45 @@
             line-height: 1.3;
         }
 
-        .demo-content p {
-            font-size: 18px;
+        .demo-content {
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            overflow: hidden;
+            padding: 0;
+        }
+
+        .demo-content p, .status-indicator p {
+            font-size: clamp(12px, 2.5vw, 16px);
             color: var(--text-secondary);
-            margin-bottom: 32px;
-            line-height: 1.6;
+            margin-bottom: clamp(8px, 2vw, 16px);
+            line-height: 1.4;
+            flex-shrink: 1;
         }
 
         .demo-features {
             list-style: none;
-            margin-bottom: 32px;
+            margin-bottom: 0;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-evenly;
         }
 
         .demo-features li {
             display: flex;
             align-items: center;
-            margin-bottom: 16px;
-            font-size: 16px;
-            color: #374151;
-        }
-
-        .demo-features i {
-            color: var(--success-green);
-            margin-left: 12px;
-            font-weight: 600;
-        }
-
-        .demo-content h2 {
-            font-size: 40px;
-            font-weight: 800;
-            margin-bottom: 24px;
-            color: #0f172a;
+            margin-bottom: clamp(4px, 1vw, 8px);
+            font-size: clamp(11px, 2.2vw, 14px);
+            color: var(--text-primary);
             line-height: 1.3;
         }
 
-        .demo-content p {
-            font-size: 18px;
-            color: var(--text-secondary);
-            margin-bottom: 32px;
-            line-height: 1.6;
-        }
-
-        .demo-features {
-            list-style: none;
-            margin-bottom: 32px;
-        }
-
-        .demo-features li {
-            display: flex;
-            align-items: center;
-            margin-bottom: 16px;
-            font-size: 16px;
-            color: #374151;
-        }
-
         .demo-features i {
-            color: var(--success-green);
-            margin-left: 12px;
+            color: var(--ai-purple);
+            margin-left: clamp(6px, 1.5vw, 12px);
             font-weight: 600;
+            flex-shrink: 0;
         }
 
         /* Feature list animations */
@@ -584,9 +710,12 @@
         .demo-video {
             background: white;
             border-radius: 20px;
-            padding: 24px;
+            padding: clamp(8px, 1.5vw, 12px);
             box-shadow: var(--shadow-lg);
             border: 1px solid var(--border-light);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
         }
 
         .demo-status {
@@ -720,28 +849,65 @@
         /* Social Feed Demo */
         .social-feed-demo {
             background: #f0f2f5;
-            border-radius: 12px;
-            height: 500px;
+            border-radius: clamp(6px, 1.5vw, 12px);
+            width: 100%;
+            height: 100%;
             overflow-y: auto;
-            padding: 16px;
+            overflow-x: hidden;
+            padding: clamp(6px, 1.2vw, 10px);
             position: relative;
             scroll-behavior: smooth;
+            box-sizing: border-box;
+            touch-action: pan-y;
+            -webkit-overflow-scrolling: touch;
+            margin: 0;
+            flex: 1;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
         }
 
         .facebook-post {
-            background: white;
-            border-radius: var(--border-radius-lg);
-            padding: 16px;
-            margin-bottom: 16px;
-            border: 1px solid var(--border-light);
-            transition: all 0.3s;
-            margin-right: 8px;
+            background: white !important;
+            border-radius: 8px;
+            padding: 0;
+            margin: 0 0 clamp(12px, 2.5vw, 16px) 0;
+            border: none;
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1), 0 1px 3px 1px rgba(0, 0, 0, 0.07);
+            transition: all 0.3s ease;
+            position: relative;
+            width: 100%;
+            box-sizing: border-box;
+            overflow: visible;
+        }
+        
+        .facebook-post.post-highlighted {
+            border: 2px solid #1e40af !important;
+            box-shadow: 0 0 20px rgba(30, 64, 175, 0.3) !important;
+            transform: none !important;
+            transition: all 0.3s ease !important;
+            margin: 0 0 clamp(12px, 2.5vw, 16px) 0 !important;
+        }
+        
+        .facebook-post.post-analyzing {
+            position: relative;
+        }
+        
+        .facebook-post.post-has-banner {
+            position: relative;
+        }
+
+        .facebook-post:hover {
+            background: white !important;
+            border-color: #dddfe2;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
         }
 
         .post-header {
             display: flex;
-            align-items: center;
-            margin-bottom: 12px;
+            align-items: flex-start;
+            padding: clamp(12px, 2.5vw, 16px) clamp(16px, 3vw, 20px) clamp(8px, 1.5vw, 12px) clamp(16px, 3vw, 20px);
+            width: 100%;
+            gap: clamp(8px, 1.5vw, 12px);
+            box-sizing: border-box;
         }
 
         /* Avatar Component */
@@ -750,21 +916,28 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            color: white;
+            color: var(--text-primary);
             font-weight: 600;
             background: var(--primary-gradient);
         }
 
         .avatar-sm {
-            width: 32px;
-            height: 32px;
-            font-size: 12px;
+            width: clamp(32px, 7vw, 40px);
+            height: clamp(32px, 7vw, 40px);
+            font-size: clamp(11px, 2.2vw, 14px);
+            background: linear-gradient(135deg, #42a5f5, #1e88e5);
+            color: white;
+            font-weight: 600;
+            border: 2px solid #ffffff;
+            box-shadow: 0 0 0 1px #000000, 0 2px 8px rgba(0, 0, 0, 0.15);
         }
 
         .avatar-md {
             width: 40px;
             height: 40px;
             font-size: 14px;
+            border: 2px solid #ffffff;
+            box-shadow: 0 0 0 1px #000000, 0 2px 8px rgba(0, 0, 0, 0.15);
         }
 
         .avatar-lg {
@@ -774,56 +947,230 @@
         }
 
         .post-avatar {
-            margin-left: 12px;
+            margin-left: 0;
+            flex-shrink: 0;
         }
 
+        .post-info {
+            flex: 1;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: clamp(1px, 0.3vw, 2px);
+            padding-top: clamp(1px, 0.3vw, 2px);
+        }
+        
         .post-info h3 {
-            font-size: 14px;
+            font-size: clamp(13px, 2.8vw, 15px);
             font-weight: 600;
-            color: #1f2937;
-            margin-bottom: 2px;
+            color: #1c1e21;
+            margin: 0;
+            line-height: 1.3;
+            cursor: pointer;
+        }
+        
+        .post-info h3:hover {
+            text-decoration: underline;
+        }
+        
+        .post-options {
+            position: absolute;
+            top: clamp(12px, 2.5vw, 16px);
+            left: clamp(12px, 2.5vw, 16px);
+            width: clamp(24px, 5vw, 32px);
+            height: clamp(24px, 5vw, 32px);
+            border-radius: 50%;
+            background: transparent;
+            border: none;
+            color: #65676b;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: clamp(16px, 3.5vw, 20px);
+            transition: background 0.2s ease;
+        }
+        
+        .post-options:hover {
+            background: #f2f3f4;
         }
 
         .post-info span {
-            font-size: 12px;
-            color: #6b7280;
+            font-size: clamp(11px, 2.2vw, 13px);
+            color: #65676b;
+            line-height: 1.3;
+            cursor: pointer;
+        }
+        
+        .post-info span:hover {
+            text-decoration: underline;
         }
 
         .post-content {
-            font-size: 14px;
-            color: #374151;
-            line-height: 1.5;
-            margin-bottom: 12px;
+            font-size: clamp(14px, 3vw, 16px);
+            color: #1c1e21;
+            line-height: 1.33;
+            padding: 0 clamp(16px, 3vw, 20px) clamp(8px, 1.5vw, 12px) clamp(16px, 3vw, 20px);
+            width: 100%;
+            word-wrap: break-word;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            box-sizing: border-box;
         }
 
         .post-actions {
-            display: flex;
-            gap: 24px;
-            padding-top: 12px;
-            border-top: 1px solid #f3f4f6;
+            display: flex !important;
+            border-top: 1px solid #dadde1 !important;
+            padding: clamp(6px, 1.2vw, 8px) clamp(16px, 3vw, 20px) !important;
+            margin: 0 !important;
+            justify-content: space-between !important;
+            gap: clamp(4px, 0.8vw, 8px) !important;
+            flex-wrap: nowrap !important;
+            width: 100% !important;
+            box-sizing: border-box !important;
         }
 
         .post-action {
-            display: flex;
-            align-items: center;
-            color: #6b7280;
-            font-size: 13px;
-            font-weight: 500;
-            cursor: pointer;
-            transition: color 0.2s;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            color: #65676b !important;
+            font-size: clamp(11px, 2.2vw, 13px) !important;
+            font-weight: 600 !important;
+            cursor: pointer !important;
+            transition: all 0.2s ease !important;
+            padding: clamp(4px, 0.8vw, 6px) clamp(6px, 1.2vw, 10px) !important;
+            border-radius: 6px !important;
+            background: transparent !important;
+            border: none !important;
+            flex: 1 !important;
+            gap: clamp(3px, 0.6vw, 5px) !important;
+            max-width: 100% !important;
+            overflow: hidden !important;
         }
 
         .post-action:hover {
-            color: var(--primary-blue);
+            background: #f2f3f4;
+            color: #1c1e21;
+        }
+        
+        .post-action.like-action:hover {
+            color: #1877f2;
+        }
+        
+        .post-action.comment-action:hover {
+            color: #65676b;
+        }
+        
+        .post-action.share-action:hover {
+            color: #65676b;
         }
 
         .post-action i {
-            margin-left: 6px;
+            margin-left: 0;
+            font-size: clamp(12px, 2.5vw, 14px);
+            flex-shrink: 0;
+        }
+        
+        /* Ensure post-actions styling is preserved even with comments */
+        .facebook-post .post-actions {
+            display: flex !important;
+            border-top: 1px solid #dadde1 !important;
+            padding: clamp(6px, 1.2vw, 8px) clamp(16px, 3vw, 20px) !important;
+            margin: 0 !important;
+            justify-content: space-between !important;
+            gap: clamp(4px, 0.8vw, 8px) !important;
+            flex-wrap: nowrap !important;
+            width: 100% !important;
+            box-sizing: border-box !important;
+        }
+        
+        /* Ensure post-action buttons maintain proper sizing with comments */
+        .facebook-post .post-action {
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            color: #65676b !important;
+            font-size: clamp(11px, 2.2vw, 13px) !important;
+            font-weight: 600 !important;
+            cursor: pointer !important;
+            transition: all 0.2s ease !important;
+            padding: clamp(4px, 0.8vw, 6px) clamp(6px, 1.2vw, 10px) !important;
+            border-radius: 6px !important;
+            background: transparent !important;
+            border: none !important;
+            flex: 1 !important;
+            gap: clamp(3px, 0.6vw, 5px) !important;
+            max-width: 100% !important;
+            overflow: hidden !important;
+            white-space: nowrap !important;
+            text-overflow: ellipsis !important;
+        }
+        
+        /* Facebook-style post reactions */
+        .post-reactions {
+            display: flex;
+            align-items: center;
+            padding: clamp(8px, 1.5vw, 12px) clamp(16px, 3vw, 20px) 0;
+            gap: clamp(4px, 0.8vw, 6px);
+            font-size: clamp(11px, 2.2vw, 13px);
+            color: #65676b;
+        }
+        
+        .reaction-count {
+            cursor: pointer;
+        }
+        
+        .reaction-count:hover {
+            text-decoration: underline;
+        }
+        
+        .reaction-icons {
+            display: flex;
+            gap: -2px;
+        }
+        
+        .reaction-icon {
+            width: clamp(16px, 3.5vw, 18px);
+            height: clamp(16px, 3.5vw, 18px);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: clamp(10px, 2vw, 12px);
+            margin-right: -2px;
+            border: 1px solid white;
+        }
+        
+        .reaction-like {
+            background: #1877f2;
+            color: white;
+        }
+        
+        .reaction-love {
+            background: #e41e3f;
+            color: white;
+        }
+        
+        .reaction-wow {
+            background: #f7b928;
+            color: white;
+        }
+        
+        /* Ensure comment bubbles are always Facebook gray */
+        .comment-bubble,
+        .comment-bubble * {
+            background: #f0f2f5 !important;
+        }
+        
+        .comment-bubble .typing-indicator,
+        .comment-bubble .typing-indicator * {
+            background: transparent !important;
         }
 
         .hot-post {
-            border: 2px solid #ef4444 !important;
-            animation: pulse 2s infinite;
+            border: 2px solid #10b981 !important;
+            background: white !important;
+            box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3) !important;
             position: relative;
         }
 
@@ -832,7 +1179,7 @@
             top: -8px;
             right: -8px;
             background: #ef4444;
-            color: white;
+            color: var(--text-primary);
             width: 24px;
             height: 24px;
             border-radius: 50%;
@@ -851,8 +1198,27 @@
 
         /* Testimonials */
         .testimonials {
-            padding: 120px 0;
-            background: white;
+            padding: 80px 0;
+            background: var(--bg-gray);
+        }
+
+        .testimonials .container {
+            position: relative;
+            z-index: 2;
+        }
+
+        .testimonials .section-header h2 {
+            color: var(--text-primary);
+        }
+
+        .testimonials .section-header p {
+            color: var(--text-secondary);
+        }
+
+        .testimonials .section-badge {
+            background: rgba(59, 130, 246, 0.15);
+            color: var(--secondary-blue);
+            border: 1px solid rgba(59, 130, 246, 0.2);
         }
 
         .testimonials-grid {
@@ -863,29 +1229,23 @@
         }
 
         .testimonial-card {
-            background: white;
-            padding: 32px;
-            border-radius: var(--border-radius-xl);
+            background: var(--bg-light);
+            padding: 24px;
+            border-radius: var(--border-radius);
             border: 1px solid var(--border-light);
-            position: relative;
+            transition: box-shadow 0.2s ease;
+            box-shadow: var(--shadow-sm);
         }
 
-        .testimonial-card::before {
-            content: '"';
-            position: absolute;
-            top: -10px;
-            right: 24px;
-            font-size: 60px;
-            color: var(--primary-blue);
-            font-weight: 700;
-            opacity: 0.3;
+        .testimonial-card:hover {
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
         }
 
         .testimonial-text {
             font-size: 16px;
-            color: #374151;
+            color: var(--text-primary);
             line-height: 1.6;
-            margin-bottom: 24px;
+            margin-bottom: 20px;
         }
 
         .testimonial-author {
@@ -899,14 +1259,14 @@
 
         .author-info h4 {
             font-size: 16px;
+            color: var(--text-primary);
             font-weight: 600;
-            color: #1f2937;
             margin-bottom: 2px;
         }
 
         .author-info span {
             font-size: 14px;
-            color: #6b7280;
+            color: #94a3b8;
         }
 
         .stars {
@@ -917,10 +1277,16 @@
 
         /* Pricing */
         .pricing {
-            background: #0f172a;
-            color: white;
-            padding: 120px 0;
+            background: var(--bg-light);
+            color: var(--text-primary);
+            padding: 80px 0;
             text-align: center;
+        }
+
+
+        .pricing .container {
+            position: relative;
+            z-index: 2;
         }
 
         .pricing-header {
@@ -929,15 +1295,13 @@
 
         .pricing-header h2 {
             font-size: 48px;
-            font-weight: 700;
+            font-weight: 800;
             margin-bottom: 24px;
-            font-family: 'Orbitron', 'Rajdhani', sans-serif;
-            letter-spacing: 0.5px;
         }
 
         .pricing-header p {
             font-size: 20px;
-            color: #cbd5e1;
+            color: var(--text-secondary);
             max-width: 600px;
             margin: 0 auto;
         }
@@ -951,13 +1315,12 @@
         }
 
         .pricing-card {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 20px;
-            padding: 40px;
-            position: relative;
-            backdrop-filter: blur(10px);
-            transition: all 0.3s;
+            background: var(--bg-light);
+            border: 1px solid var(--border-light);
+            border-radius: var(--border-radius);
+            padding: 32px;
+            box-shadow: var(--shadow-sm);
+            transition: box-shadow 0.2s ease;
         }
 
         .pricing-card.featured {
@@ -972,7 +1335,7 @@
             left: 50%;
             transform: translateX(50%);
             background: var(--secondary-blue);
-            color: white;
+            color: var(--text-primary);
             padding: 6px 16px;
             border-radius: var(--border-radius-xl);
             font-size: 12px;
@@ -988,18 +1351,13 @@
             font-size: 24px;
             font-weight: 700;
             margin-bottom: 8px;
-            font-family: 'Rajdhani', sans-serif;
-            letter-spacing: 0.5px;
-            text-transform: uppercase;
         }
 
         .pricing-price {
             font-size: 48px;
-            font-weight: 700;
+            font-weight: 900;
             margin-bottom: 8px;
             color: var(--secondary-blue);
-            font-family: 'Orbitron', 'Rajdhani', sans-serif;
-            letter-spacing: 1px;
         }
 
         .pricing-period {
@@ -1018,13 +1376,10 @@
             align-items: center;
             margin-bottom: 12px;
             font-size: 15px;
-            font-family: 'Rajdhani', sans-serif;
-            font-weight: 500;
-            letter-spacing: 0.3px;
         }
 
         .pricing-features i {
-            color: var(--success-green);
+            color: var(--ai-purple);
             margin-left: 12px;
             width: 16px;
         }
@@ -1040,111 +1395,355 @@
             transform: translateY(-2px);
         }
 
-        /* Footer */
-        .footer {
-            background: #0f172a;
-            color: white;
-            padding: 80px 0 40px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        /* Comparison Table - Clean Build */
+        .comparison-section {
+            padding: 80px 0;
+            background: var(--bg-gray);
         }
 
-        .footer-content {
+        .comparison-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 70% 30%, rgba(59, 130, 246, 0.08) 0%, transparent 50%);
+            pointer-events: none;
+        }
+        
+        .comparison-section .container {
+            position: relative;
+            z-index: 2;
+        }
+
+        .comparison-table {
+            margin: 60px auto;
+            max-width: 1200px;
             display: grid;
-            grid-template-columns: 2fr 1fr 1fr 1fr;
-            gap: 48px;
-            margin-bottom: 48px;
+            grid-template-columns: 1.5fr 1fr 1fr 1fr;
+            gap: 20px;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            border-radius: var(--border-radius-xl);
+            padding: 30px;
+        }
+        
+        .comparison-column {
+            background: rgba(255, 255, 255, 0.05);
+            border: 2px solid rgba(255, 255, 255, 0.15);
+            border-radius: var(--border-radius);
+            padding: 0;
+            backdrop-filter: blur(10px);
+        }
+        
+        .comparison-column.featured {
+            box-shadow: 0 4px 15px rgba(255, 49, 49, 0.3);
+            border: 1px solid rgba(255, 49, 49, 0.2);
+            animation: featuredGlow 3s ease-in-out infinite;
+        }
+        
+        @keyframes featuredGlow {
+            0%, 100% { 
+                box-shadow: 0 4px 15px rgba(255, 49, 49, 0.3);
+                transform: translateY(0);
+            }
+            50% { 
+                box-shadow: 0 8px 25px rgba(255, 49, 49, 0.5);
+                transform: translateY(-2px);
+            }
         }
 
-        .footer-brand h3 {
-            font-size: 28px;
-            font-weight: 800;
-            margin-bottom: 16px;
-            color: var(--secondary-blue);
-        }
-
-        .footer-brand p {
-            color: var(--text-muted);
-            line-height: 1.6;
-            margin-bottom: 24px;
-        }
-
-        .footer-social {
+        
+        .comparison-header-cell {
+            padding: 20px 16px;
+            text-align: center;
             display: flex;
-            gap: 16px;
+            align-items: center;
+            justify-content: center;
+            min-height: 60px;
+            font-weight: 700;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        
+        .comparison-cell {
+            padding: 16px 12px;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 15px;
+            min-height: 50px;
+        }
+        
+        .comparison-cell:first-child {
+            font-weight: 600;
+        }
+        
+        .comparison-cell.featured {
+            font-weight: 600;
+        }
+        
+        
+        .comparison-cell.positive {
+            font-weight: 600;
+        }
+        
+        .price-cell.expensive {
+            font-weight: 700;
+        }
+        
+        .price-cell.affordable {
+            font-weight: 700;
         }
 
-        .footer-social a {
-            width: 40px;
-            height: 40px;
-            background: rgba(255, 255, 255, 0.1);
+        /* Contact Form Section */
+        .contact-section {
+            padding: 80px 0;
+            background: var(--bg-light);
+            color: var(--text-primary);
+        }
+
+        .contact-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 20% 80%, rgba(59, 130, 246, 0.06) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .contact-section .container {
+            position: relative;
+            z-index: 2;
+        }
+
+        .contact-container {
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: center;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        .contact-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: white;
-            text-decoration: none;
-            transition: all 0.3s;
+            margin: 0 auto 24px;
+            font-size: 32px;
+            animation: pulse 2s ease-in-out infinite, float 3s ease-in-out infinite;
+            box-shadow: 0 8px 25px rgba(59, 130, 246, 0.4);
         }
 
-        .footer-social a:hover {
-            background: var(--secondary-blue);
-            transform: translateY(-2px);
+        .contact-form {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: var(--border-radius-xl);
+            backdrop-filter: blur(15px);
+            padding: 40px;
+            margin-top: 40px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3), 0 0 40px rgba(96, 165, 250, 0.1);
+            animation: slideInFromBottom 0.8s ease-out 0.3s both;
         }
 
-        .footer-section h4 {
-            font-size: 16px;
+        @keyframes slideInFromBottom {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .form-group {
+            margin-bottom: 24px;
+            text-align: right;
+        }
+
+        .form-label {
+            display: block;
             font-weight: 600;
-            margin-bottom: 16px;
+            color: var(--text-primary);
+            margin-bottom: 8px;
+            font-size: 16px;
+            animation: slideInFromRight 0.6s ease-out;
         }
 
-        .footer-section ul {
-            list-style: none;
+        .form-input {
+            width: 100%;
+            padding: 16px;
+            border: 2px solid var(--border-light);
+            border-radius: var(--border-radius);
+            font-size: 16px;
+            transition: all 0.3s ease;
+            box-sizing: border-box;
+            background: var(--bg-light);
+            color: var(--text-primary);
         }
 
-        .footer-section li {
-            margin-bottom: 12px;
-        }
-
-        .footer-section a {
+        .form-input::placeholder {
             color: var(--text-muted);
-            text-decoration: none;
-            transition: color 0.3s;
         }
 
-        .footer-section a:hover {
-            color: white;
+        .form-input:focus {
+            outline: none;
+            border-color: var(--ai-purple);
+            box-shadow: 0 0 0 3px rgba(76, 29, 149, 0.2);
+            background: rgba(255, 255, 255, 0.15);
+            transform: scale(1.02);
         }
 
-        .footer-bottom {
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            padding-top: 32px;
-            text-align: center;
+        .form-benefits {
+            display: flex;
+            justify-content: center;
+            gap: 32px;
+            margin-top: 24px;
+            flex-wrap: wrap;
+        }
+
+        .form-benefit {
+            display: flex;
+            align-items: center;
+            gap: 8px;
             color: var(--text-secondary);
+            font-size: 14px;
         }
 
-        /* Responsive Design */
+        .form-benefit i {
+            color: var(--success-green);
+        }
+
+        /* Tablet and medium screens */
+        @media (max-width: 1200px) and (min-width: 769px) {
+            .demo-container {
+                grid-template-columns: 1fr 1fr;
+                gap: clamp(20px, 3vw, 40px);
+                max-width: 95vw;
+            }
+
+            #demoLeftSide, #demoRightSide {
+                width: 100%;
+                min-width: 0;
+                height: clamp(400px, 50vh, 500px);
+                max-height: none;
+            }
+
+            #demoRightSide {
+                padding: clamp(16px, 2vw, 24px);
+                gap: 12px;
+            }
+        }
+
+        /* Mobile and small tablet design */
         @media (max-width: 768px) {
             .hero h1 {
-                font-size: 36px;
+                font-size: clamp(28px, 6vw, 36px);
             }
             
             .hero-cta-group {
                 flex-direction: column;
                 align-items: center;
+                gap: 16px;
             }
             
             .demo-container {
                 grid-template-columns: 1fr;
-                gap: 48px;
+                gap: clamp(24px, 6vw, 48px);
+                justify-content: center;
+                padding: 0 clamp(12px, 4vw, 20px);
+            }
+
+            #demoLeftSide, #demoRightSide {
+                width: 100%;
+                min-width: 0;
+                max-width: none;
+                height: clamp(350px, 60vh, 450px);
+                max-height: none;
+                margin: 0;
+            }
+
+            #demoRightSide {
+                padding: clamp(12px, 4vw, 20px);
+                gap: clamp(8px, 2vw, 12px);
+            }
+
+            .social-feed-demo {
+                height: 100%;
+                padding: clamp(8px, 3vw, 16px);
+                border-radius: clamp(6px, 2vw, 12px);
             }
             
-            .footer-content {
-                grid-template-columns: 1fr;
-                gap: 32px;
+            .facebook-post {
+                font-size: clamp(12px, 3.5vw, 14px) !important;
+                padding: clamp(12px, 3vw, 16px) !important;
+                margin-bottom: clamp(8px, 2vw, 12px) !important;
+            }
+            
+            .post-header {
+                flex-wrap: wrap;
+                gap: clamp(4px, 1vw, 8px);
+            }
+            
+            .post-actions,
+            .facebook-post .post-actions {
+                display: flex !important;
+                border-top: 1px solid #dadde1 !important;
+                padding: clamp(6px, 1.2vw, 8px) clamp(16px, 3vw, 20px) !important;
+                margin: 0 !important;
+                justify-content: space-between !important;
+                gap: clamp(4px, 0.8vw, 8px) !important;
+                flex-wrap: nowrap !important;
+                width: 100% !important;
+                box-sizing: border-box !important;
+            }
+            
+            .post-action,
+            .facebook-post .post-action {
+                display: flex !important;
+                align-items: center !important;
+                justify-content: center !important;
+                color: #65676b !important;
+                font-size: clamp(11px, 2.2vw, 13px) !important;
+                font-weight: 600 !important;
+                cursor: pointer !important;
+                transition: all 0.2s ease !important;
+                padding: clamp(4px, 0.8vw, 6px) clamp(6px, 1.2vw, 10px) !important;
+                border-radius: 6px !important;
+                background: transparent !important;
+                border: none !important;
+                flex: 1 !important;
+                gap: clamp(3px, 0.6vw, 5px) !important;
+                max-width: 100% !important;
+                overflow: hidden !important;
+                white-space: nowrap !important;
+                text-overflow: ellipsis !important;
             }
             
             .section-title {
-                font-size: 32px;
+                font-size: clamp(24px, 5vw, 32px);
+            }
+            
+            .demo-progress {
+                flex-wrap: wrap;
+                gap: clamp(8px, 2vw, 12px);
+                justify-content: center;
+                padding: clamp(8px, 2vw, 12px) clamp(8px, 2vw, 16px);
+                overflow-x: auto;
+                -webkit-overflow-scrolling: touch;
+            }
+            
+            .progress-step {
+                min-width: clamp(60px, 15vw, 90px);
+                flex: none;
+                font-size: 14px;
+                padding: clamp(4px, 1vw, 6px) clamp(6px, 1.5vw, 8px);
+                white-space: nowrap;
+            }
+            
+            .progress-arrow {
+                display: none;
             }
         }
 
@@ -1191,58 +1790,64 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin: 0 auto 40px auto;
-            padding: 14px 30px;
-            background: rgba(255, 255, 255, 0.95);
-            border-radius: 10px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-            max-width: 720px;
+            margin: 0 auto 24px auto;
+            padding: 8px 16px;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+            max-width: 580px;
         }
 
         .progress-step {
             display: flex;
-            flex-direction: column;
+            flex-direction: row;
             align-items: center;
-            gap: 3px;
-            padding: 10px 16px;
-            border-radius: 8px;
-            font-size: 11px;
+            gap: 8px;
+            padding: clamp(4px, 1vw, 6px) clamp(6px, 1.5vw, 8px);
+            border-radius: clamp(4px, 1vw, 8px);
+            font-size: 14px;
             font-weight: 500;
-            color: #6b7280;
+            color: #94a3b8;
             transition: all 0.3s ease;
+            background: rgba(255, 255, 255, 0.02);
             position: relative;
             text-align: center;
-            min-width: 95px;
+            min-width: clamp(55px, 10vw, 85px);
             flex: 1;
+            white-space: nowrap;
         }
 
         .progress-step span:first-child {
-            font-size: 15px;
+            font-size: 12px;
             line-height: 1;
             margin-bottom: 1px;
         }
 
         .progress-step.active {
-            background: linear-gradient(135deg, #1e40af, #3b82f6);
-            color: white;
+            background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
+            color: var(--text-primary);
             animation: progressPulse 2s infinite;
+            box-shadow: 0 4px 20px rgba(59, 130, 246, 0.3);
         }
 
         .progress-step.completed {
-            color: #059669;
-            background: rgba(16, 185, 129, 0.1);
+            color: #10b981;
+            background: rgba(16, 185, 129, 0.15);
+            border: 1px solid rgba(16, 185, 129, 0.2);
         }
 
         .progress-arrow {
-            color: #cbd5e1;
-            margin: 0 10px;
+            color: #64748b;
+            margin: 0 12px;
             transition: color 0.3s ease;
-            font-size: 13px;
+            font-size: 14px;
             font-weight: bold;
         }
 
         .progress-step.active + .progress-arrow {
-            color: #1e40af;
+            color: var(--secondary-blue);
         }
 
         @keyframes progressPulse {
@@ -1256,43 +1861,74 @@
             position: relative;
         }
         
-        /* Make right side match left side height with proper spacing */
+        /* Make right side fully responsive */
         #demoRightSide {
-            min-height: 500px;
-            height: 500px;
-            border: 2px solid transparent;
-            padding: 24px;
+            width: 100%;
+            min-width: 0;
+            height: clamp(500px, 55vh, 600px);
+            min-height: clamp(450px, 50vh, 500px);
+            max-height: none;
+            border: 1px solid var(--border-light);
+            background: var(--bg-light);
+            border-radius: clamp(8px, 1.5vw, 12px);
+            padding: clamp(16px, 3vw, 24px);
             display: flex;
             flex-direction: column;
-            justify-content: space-between;
-            box-sizing: content-box;
+            justify-content: flex-start;
+            gap: clamp(12px, 2vw, 20px);
+            box-sizing: border-box;
+            overflow-y: auto;
+            box-shadow: var(--shadow-sm);
         }
         
+        #demoLeftSide {
+            width: 100%;
+            min-width: 0;
+            height: clamp(500px, 55vh, 600px);
+            min-height: clamp(450px, 50vh, 500px);
+            max-height: none;
+            border: 1px solid var(--border-light);
+            background: var(--bg-light);
+            border-radius: clamp(8px, 1.5vw, 12px);
+            padding: clamp(16px, 3vw, 24px);
+            display: flex;
+            flex-direction: column;
+            box-sizing: border-box;
+            overflow: hidden;
+            position: relative;
+        }
+
+        #demoLeftSide.focused {
+            border-color: var(--primary-blue);
+            background: var(--bg-gray);
+            box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.2), var(--shadow-sm);
+        }
+
         #demoRightSide.focused {
-            border-color: rgba(30, 64, 175, 0.4);
-            background: rgba(30, 64, 175, 0.02);
-            box-shadow: 0 0 0 2px rgba(30, 64, 175, 0.1);
+            border-color: var(--primary-blue);
+            background: var(--bg-gray);
+            box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.2), var(--shadow-sm);
         }
 
         .demo-side.focused {
             filter: brightness(1.05);
-            box-shadow: 0 0 0 2px rgba(30, 64, 175, 0.3);
+            box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.4);
         }
 
         .demo-side.dimmed {
-            opacity: 0.7;
-            filter: brightness(0.95);
+            opacity: 0.6;
+            filter: brightness(0.8);
         }
 
         @keyframes sidePulse {
-            0% { box-shadow: 0 0 0 0 rgba(30, 64, 175, 0.4); }
-            70% { box-shadow: 0 0 0 8px rgba(30, 64, 175, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(30, 64, 175, 0); }
+            0% { box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.6); }
+            70% { box-shadow: 0 0 0 12px rgba(59, 130, 246, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(59, 130, 246, 0); }
         }
 
         @keyframes postPulse {
-            0% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.4); }
-            70% { box-shadow: 0 0 0 8px rgba(16, 185, 129, 0); }
+            0% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.6); }
+            70% { box-shadow: 0 0 0 10px rgba(16, 185, 129, 0); }
             100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
         }
 
@@ -1306,38 +1942,139 @@
 
         /* Custom Scrollbar */
         .social-feed-demo::-webkit-scrollbar {
-            width: 6px;
+            width: 8px;
         }
 
         .social-feed-demo::-webkit-scrollbar-track {
-            background: #f1f5f9;
-            border-radius: 3px;
+            background: #f0f2f5;
+            border-radius: 4px;
         }
 
         .social-feed-demo::-webkit-scrollbar-thumb {
-            background: #cbd5e1;
-            border-radius: 3px;
+            background: #bcc0c4;
+            border-radius: 4px;
         }
 
         .social-feed-demo::-webkit-scrollbar-thumb:hover {
-            background: #94a3b8;
+            background: #8a8d91;
+        }
+
+        /* Ensure proper visibility and layering */
+        .demo-container {
+            position: relative;
+            z-index: 2;
+        }
+
+        .demo-side {
+            position: relative;
+            z-index: 3;
+        }
+
+        .social-feed-demo {
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Fix any potential display issues */
+        .facebook-post {
+            position: relative;
+            display: block;
+            width: 100%;
+            box-sizing: border-box;
+            background: white !important;
+        }
+
+        .facebook-post * {
+            box-sizing: border-box;
+        }
+
+        /* Ensure all post variations maintain white background */
+        .facebook-post.hot-post,
+        .facebook-post.pulse-green,
+        .facebook-post:hover,
+        .facebook-post:focus,
+        .facebook-post:active {
+            background: white !important;
+        }
+
+        /* Right container element constraints */
+        #demoRightSide > * {
+            flex-shrink: 0;
+        }
+
+        #demoRightSide .demo-features {
+            margin-bottom: 0;
+            overflow: visible;
+            flex: 1;
+        }
+
+        #demoRightSide p {
+            margin-bottom: 16px;
+            overflow-wrap: break-word;
+        }
+
+        /* Status indicator fixed sizing */
+        #demoRightSide .status-indicator {
+            flex-shrink: 0;
         }
     </style>
 </head>
 <body>
-    <!-- Header -->
+    
+    <!-- Innovative Header -->
     <header class="header">
         <div class="container">
             <div class="header-content">
-                <nav class="nav-links">
-                    <a href="#features">תכונות</a>
-                    <a href="#demo">הדגמה</a>
-                    <a href="#testimonials">המלצות</a>
-                    <a href="#pricing">מחירים</a>
-                    <button class="btn-base btn-primary header-cta" onclick="startDemo()">התחל ניסיון חינם</button>
+                <!-- Logo Section -->
+                <div class="logo-section">
+                    <div class="logo-text">
+                        <span>Collabo <span class="ai-highlight">AI</span></span>
+                        <span class="pro-sub">Pro</span>
+                    </div>
+                </div>
+
+                <!-- Advanced Navigation -->
+                <nav class="nav-container">
+                    <div class="nav-background"></div>
+                    <div class="scroll-progress"></div>
+                    <ul class="nav-menu">
+                        <li class="nav-item">
+                            <a href="#demo" class="nav-link">
+                                <i class="fas fa-play-circle"></i>
+                                <span>הדגמה חיה</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#pricing" class="nav-link">
+                                <i class="fas fa-credit-card"></i>
+                                <span>מחירים</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#contact" class="nav-link">
+                                <i class="fas fa-envelope"></i>
+                                <span>צור קשר</span>
+                            </a>
+                        </li>
+                    </ul>
                 </nav>
-                <div class="logo">
-                    <span class="dot-matrix">Collabo AI Pro</span>
+
+                <!-- CTA Section -->
+                <div class="header-cta-section">
+                    <button class="cta-button" onclick="startDemo()">
+                        <span class="cta-text">התחל ניסיון חינם</span>
+                        <div class="cta-icon">
+                            <i class="fas fa-arrow-left"></i>
+                        </div>
+                        <div class="cta-glow"></div>
+                    </button>
+                </div>
+
+                <!-- Mobile Menu Toggle -->
+                <div class="mobile-menu-toggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
                 </div>
             </div>
         </div>
@@ -1351,32 +2088,14 @@
                     <i class="fas fa-bolt"></i>
                     טכנולוגיה מתקדמת של בינה מלאכותית
                 </div>
-                <h1 class="dot-matrix">הסוכן הדיגיטלי המתקדם<br>לעסקים מהשורה הראשונה</h1>
+                <h1>Collabo AI Pro<br>הסוכן הדיגיטלי המתקדם לעסקים</h1>
                 <p class="subtitle">פלטפורמת AI חדשנית שמזהה, מנתחת ומגיבה ללידים ברשתות חברתיות בזמן אמת. הפתרון המקצועי לעסקים שרוצים להישאר מקוונים 24/7</p>
                 
                 <div class="hero-cta-group">
-                    <button class="btn-base btn-gradient btn-lg cta-primary" onclick="startDemo()">התחל ניסיון חינם למשך 14 יום</button>
-                    <a href="#demo" class="btn-base btn-lg cta-secondary">צפה בהדגמה</a>
+                    <button class="btn-base px-6 py-4 font-semibold text-center btn-gradient btn-lg cta-primary" onclick="startDemo()">התחל ניסיון חינם למשך 14 יום</button>
+                    <a href="#demo" class="btn-base px-6 py-4 font-semibold text-center btn-lg cta-secondary">צפה בהדגמה</a>
                 </div>
                 
-                <div class="hero-metrics">
-                    <div class="metric-item">
-                        <div class="metric-number">2,847+</div>
-                        <div class="metric-label">עסקים פעילים</div>
-                    </div>
-                    <div class="metric-item">
-                        <div class="metric-number">147K+</div>
-                        <div class="metric-label">לידים שנוצרו החודש</div>
-                    </div>
-                    <div class="metric-item">
-                        <div class="metric-number">94%</div>
-                        <div class="metric-label">שיעור שביעות רצון</div>
-                    </div>
-                    <div class="metric-item">
-                        <div class="metric-number">₪12.4M</div>
-                        <div class="metric-label">הכנסות לעסקים</div>
-                    </div>
-                </div>
             </div>
         </div>
     </section>
@@ -1385,56 +2104,89 @@
     <section class="demo" id="demo">
         <div class="container">
             <div class="section-header">
-                <h2 class="digital-text" data-text="הדגמה חיה - צפה בסוכן הדיגיטלי בפעולה">הדגמה חיה - צפה בסוכן הדיגיטלי בפעולה</h2>
+                <h2>הדגמה חיה - צפה בסוכן הדיגיטלי בפעולה</h2>
                 <p>ראה איך הסוכן שלנו מזהה לקוחות פוטנציאליים ומגיב אליהם בזמן אמת</p>
             </div>
 
             <!-- Progress Breadcrumb -->
             <div class="demo-progress" id="demoProgress">
                 <div class="progress-step active" id="step-analysis">
-                    <span>🔍</span>
                     <span>ניתוח פוסטים</span>
+                    <span>🔍</span>
                 </div>
                 <div class="progress-arrow">→</div>
                 <div class="progress-step" id="step-response">
-                    <span>📝</span>
                     <span>יצירת תגובה</span>
+                    <span>📝</span>
                 </div>
                 <div class="progress-arrow">→</div>
                 <div class="progress-step" id="step-messenger">
-                    <span>💬</span>
                     <span>מעבר למסנג'ר</span>
+                    <span>💬</span>
                 </div>
                 <div class="progress-arrow">→</div>
                 <div class="progress-step" id="step-complete">
-                    <span>🎯</span>
                     <span>סיום</span>
+                    <span>🎯</span>
                 </div>
             </div>
 
             <div class="demo-container">
                 <div class="demo-content demo-side" id="demoRightSide">
-                    <div class="section-badge">הדגמה חיה</div>
-                    <h3>ראה את הסוכן הדיגיטלי בפעולה</h3>
-                    <p>הסוכן סורק מיליוני פוסטים בפייסבוק, מזהה לקוחות פוטנציאליים ומגיב אליהם בתוך דקות. כל זה אוטומטית, בלי התערבות שלך.</p>
+                    <div class="status-indicator font-semibold mb-4" style="display: flex; flex-direction: column; gap: 8px; padding: 16px 20px; border-radius: 8px; border: 1px solid var(--success-green); font-size: clamp(13px, 2.8vw, 16px); background: transparent; flex-shrink: 0;">
+                        <div style="display: flex; align-items: center; gap: 8px;">
+                            <span style="font-weight: 600; color: var(--success-green);">Live</span>
+                            <span id="demoStatus" style="color: var(--text-primary);">הדגמה תתחיל בקרוב...</span>
+                        </div>
+                        <p style="margin: 0; font-size: clamp(12px, 2.5vw, 16px); color: var(--text-secondary);">הסוכן סורק מיליוני פוסטים בפייסבוק, מזהה לקוחות פוטנציאליים ומגיב אליהם בתוך דקות. כל זה אוטומטית, בלי התערבות שלך.</p>
+                    </div>
                     
-                    <ul class="demo-features">
-                        <li><i class="fas fa-check"></i> זיהוי אוטומטי של לקוחות פוטנציאליים</li>
-                        <li><i class="fas fa-check"></i> יצירת תגובות מותאמות אישית</li>
-                        <li><i class="fas fa-check"></i> מעבר חלק לשיחה פרטית ב-Messenger</li>
-                        <li><i class="fas fa-check"></i> מעקב וניתוח מתקדמים</li>
-                    </ul>
-                    
-                    <div class="demo-status" style="margin-top: auto;">
-                        <div class="status-indicator" style="background: rgba(16, 185, 129, 0.05); padding: 12px 16px; border-radius: 8px; border: 1px solid rgba(16, 185, 129, 0.2);">
-                            <div class="pulse-dot"></div>
-                            <span id="demoStatus">הדגמה תתחיל בקרוב...</span>
+                    <div class="demo-features" style="display: none;">
+                        <!-- Dynamic features list will be populated here -->
+                    </div>
+                    <div style="background: var(--bg-gray); border-radius: 6px; padding: clamp(10px, 2.5vw, 16px); margin-bottom: clamp(6px, 1.5vw, 10px); border: 2px solid var(--ai-purple); flex-shrink: 0;">
+                        <h4 style="margin: 0 0 clamp(6px, 1.5vw, 8px) 0; color: var(--text-primary); font-size: clamp(12px, 2.8vw, 16px); font-weight: 600;">פרופיל הלקוח המטרה</h4>
+                        <div style="display: grid; gap: clamp(4px, 1vw, 6px);">
+                            <div style="display: flex; align-items: center; gap: 8px;">
+                                <span style="color: var(--primary-blue); font-weight: 600; min-width: 40px; font-size: clamp(11px, 2.3vw, 14px);">שם:</span>
+                                <span style="color: var(--text-primary); font-weight: 500; font-size: clamp(11px, 2.3vw, 14px);">יוסי שיפוצים</span>
+                            </div>
+                            <div style="display: flex; align-items: center; gap: 8px;">
+                                <span style="color: var(--primary-blue); font-weight: 600; min-width: 40px; font-size: clamp(11px, 2.3vw, 14px);">תחום:</span>
+                                <span style="color: var(--text-secondary); font-size: clamp(11px, 2.3vw, 14px);">שיפוצים ובנייה</span>
+                            </div>
+                            <div style="display: flex; align-items: center; gap: 8px;">
+                                <span style="color: var(--primary-blue); font-weight: 600; min-width: 40px; font-size: clamp(11px, 2.3vw, 14px);">אזור:</span>
+                                <span style="color: var(--text-secondary); font-size: clamp(11px, 2.3vw, 14px);">מרכז הארץ</span>
+                            </div>
                         </div>
                     </div>
+                    
+                    
                 </div>
                 
                 <div class="demo-video demo-side" id="demoLeftSide">
-                    <div class="social-feed-demo" id="socialFeed">
+                    <!-- Facebook Header - Refined -->
+                    <div class="facebook-header" style="
+                        background: #4267B2;
+                        color: white;
+                        padding: 10px 16px;
+                        border-radius: clamp(6px, 1.5vw, 12px) clamp(6px, 1.5vw, 12px) 0 0;
+                        margin-bottom: 0;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        font-size: 15px;
+                        font-weight: 600;
+                        box-shadow: none;
+                        border-bottom: 1px solid rgba(255,255,255,0.2);
+                    ">
+                        <div style="display: flex; align-items: center; gap: 8px;">
+                            <i class="fab fa-facebook-f" style="font-size: 16px;"></i>
+                            <span>Facebook</span>
+                        </div>
+                    </div>
+                    <div class="social-feed-demo" id="socialFeed" style="border-radius: 0 0 clamp(6px, 1.5vw, 12px) clamp(6px, 1.5vw, 12px);">
                         <!-- Demo posts will be populated here -->
                     </div>
                 </div>
@@ -1443,89 +2195,15 @@
     </section>
 
     <!-- Trust Indicators -->
-    <section class="trust-section">
-        <div class="container">
-            <div class="trust-content">
-                <div class="trust-label">בטוח על ידי עסקים מובילים</div>
-                <div class="trust-logos">
-                    <div class="trust-logo">Microsoft</div>
-                    <div class="trust-logo">Salesforce</div>
-                    <div class="trust-logo">HubSpot</div>
-                    <div class="trust-logo">AWS</div>
-                    <div class="trust-logo">Google Cloud</div>
-                </div>
-            </div>
-        </div>
-    </section>
 
-    <!-- Features Section -->
-    <section class="features" id="features">
-        <div class="container">
-            <div class="section-header">
-                <div class="section-badge">יכולות מתקדמות</div>
-                <h2 class="section-title">פלטפורמת AI מלאה לניהול לידים</h2>
-                <p class="section-subtitle">טכנולוגיות מתקדמות של בינה מלאכותית ולמידת מכונה המספקות תוצאות מדויקות ורלוונטיות לעסק שלך</p>
-            </div>
-            
-            <div class="features-grid">
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-brain"></i>
-                    </div>
-                    <h3 class="feature-title">בינה מלאכותית מתקדמת</h3>
-                    <p class="feature-description">אלגוריתמי NLP מתקדמים המבינים הקשר, רגש וכוונה בכל פוסט. הסוכן מזהה הזדמנויות עסקיות בדיוק של 96%.</p>
-                </div>
-                
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-clock"></i>
-                    </div>
-                    <h3 class="feature-title">מעקב בזמן אמת 24/7</h3>
-                    <p class="feature-description">מערכת ניטור רציפה הסורקת מיליוני פוסטים בפייסבוק, אינסטגרם ולינקדאין. זיהוי הזדמנויות תוך פחות מ-90 שניות מהפרסום.</p>
-                </div>
-                
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-rocket"></i>
-                    </div>
-                    <h3 class="feature-title">תגובות מותאמות אישית</h3>
-                    <p class="feature-description">יצירת ריד מותאמים אישית לכל לקוח פוטנציאלי. הסוכן מנתח את הפרופיל, ההיסטוריה והעדפות ויוצר תגובה רלוונטית.</p>
-                </div>
-                
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-chart-line"></i>
-                    </div>
-                    <h3 class="feature-title">ניתוחים ודוחות מתקדמים</h3>
-                    <p class="feature-description">לוח בקרה מפורט עם מדדי ביצוע, טרנדים, תחזיות והמלצות. נתונים מקצועיים להחלטות עסקיות חכמות.</p>
-                </div>
-                
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-shield-alt"></i>
-                    </div>
-                    <h3 class="feature-title">אבטחת מידע ברמה ארגונית</h3>
-                    <p class="feature-description">הצפנת 256-bit, תקני SOC 2 Type II, GDPR compliant. נתוני הלקוחות שלך מוגנים בטכנולוגיות אבטחה מתקדמות.</p>
-                </div>
-                
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-cogs"></i>
-                    </div>
-                    <h3 class="feature-title">אינטגרציה עם CRM</h3>
-                    <p class="feature-description">חיבור ישיר ל-Salesforce, HubSpot, Microsoft Dynamics ועוד. העברת לידים אוטומטית למערכות הניהול הקיימות שלך.</p>
-                </div>
-            </div>
-        </div>
-    </section>
 
 
     <!-- Testimonials -->
     <section class="testimonials" id="testimonials">
         <div class="container">
             <div class="section-header">
-                <div class="section-badge">המלצות לקוחות</div>
-                <h2 class="section-title">מה אומרים הלקוחות שלנו</h2>
+                <div class="section-badge font-semibold mb-4">המלצות לקוחות</div>
+                <h2 class="section-title font-black mb-6">מה אומרים הלקוחות שלנו</h2>
                 <p class="section-subtitle">אלפי עסקים כבר השתכנעו בכוח של הסוכן הדיגיטלי. ראה איך הם הגדילו את המכירות והחסכו זמן יקר</p>
             </div>
             
@@ -1592,13 +2270,13 @@
     <section class="pricing" id="pricing">
         <div class="container">
             <div class="pricing-header">
-                <h2 class="digital-text" data-text="תוכנית הסוכן הדיגיטלי המתקדם">תוכנית הסוכן הדיגיטלי המתקדם</h2>
+                <h2>תוכנית Collabo AI Pro</h2>
                 <p>פתרון מקצועי ומשתלם לעסקים שרוצים לגדול עם ליווי אישי מלא</p>
             </div>
             
             <div class="pricing-cards" style="max-width: 500px;">
                 <div class="pricing-card featured">
-                    <h3 class="pricing-plan">הסוכן הדיגיטלי</h3>
+                    <h3 class="pricing-plan">Collabo AI Pro</h3>
                     <div class="pricing-price">₪250</div>
                     <div class="pricing-period">לחודש + מע"מ</div>
                     <ul class="pricing-features">
@@ -1615,75 +2293,377 @@
                         <li><i class="fas fa-check"></i> 7 ימים ניסיון חינם ללא התחייבות</li>
                         <li><i class="fas fa-check"></i> אפשרות ביטול בכל עת</li>
                     </ul>
-                    <button class="btn-base btn-primary btn-lg pricing-cta" onclick="selectPlan('digital-agent')">התחל ניסיון חינם עכשיו</button>
+                    <button class="btn-base px-6 py-4 font-semibold text-center btn-primary btn-lg pricing-cta" onclick="selectPlan('digital-agent')">התחל ניסיון חינם עכשיו</button>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="footer">
+    <!-- Comparison Table Section -->
+    <section class="comparison-section" id="comparison">
         <div class="container">
-            <div class="footer-content">
-                <div class="footer-brand">
-                    <h3>LeadBot Pro</h3>
-                    <p>הפלטפורמה המתקדמת לניהול לידים אוטומטי. טכנולוגיית AI מתקדמת לעסקים מהשורה הראשונה.</p>
-                    <div class="footer-social">
-                        <a href="#"><i class="fab fa-linkedin"></i></a>
-                        <a href="#"><i class="fab fa-facebook"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                    </div>
-                </div>
-                
-                <div class="footer-section">
-                    <h4>המוצר</h4>
-                    <ul>
-                        <li><a href="#features">תכונות</a></li>
-                        <li><a href="#demo">הדגמה</a></li>
-                        <li><a href="#pricing">מחירים</a></li>
-                        <li><a href="#">אינטגרציות</a></li>
-                        <li><a href="#">API</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-section">
-                    <h4>החברה</h4>
-                    <ul>
-                        <li><a href="#">אודות</a></li>
-                        <li><a href="#">הבלוג</a></li>
-                        <li><a href="#">קריירה</a></li>
-                        <li><a href="#">עדכונים</a></li>
-                        <li><a href="#">צור קשר</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-section">
-                    <h4>תמיכה</h4>
-                    <ul>
-                        <li><a href="#">מרכז עזרה</a></li>
-                        <li><a href="#">תיעוד טכני</a></li>
-                        <li><a href="#">קהילה</a></li>
-                        <li><a href="#">סטטוס המערכת</a></li>
-                        <li><a href="#">צור קשר</a></li>
-                    </ul>
-                </div>
+            <div class="section-header">
+                <div class="section-badge font-semibold mb-4">Competitor Comparison</div>
+                <h2 class="section-title font-black mb-6">איך למצוא לקוחות? 3 אפשרויות</h2>
+                <p class="section-subtitle">השוואה ברורה בין דרכי השגת לקוחות - איך כל שיטה עובדת ומה היא עולה</p>
             </div>
             
-            <div class="footer-bottom">
-                <p>&copy; 2024 LeadBot Pro. כל הזכויות שמורות. | <a href="#">תנאי שימוש</a> | <a href="#">מדיניות פרטיות</a></p>
+            <div class="comparison-table">
+                <!-- Column 1: Criteria -->
+                <div class="comparison-column">
+                    <div class="comparison-header-cell">קריטריון</div>
+                    <div class="comparison-cell">עלות חודשית</div>
+                    <div class="comparison-cell">כמות לקוחות חדשים</div>
+                    <div class="comparison-cell">מהירות תגובה ללקוח</div>
+                    <div class="comparison-cell">רמת אוטומציה</div>
+                    <div class="comparison-cell">שעות פעילות</div>
+                    <div class="comparison-cell">מעקב ובקרה</div>
+                    <div class="comparison-cell">קלות שימוש</div>
+                    <div class="comparison-cell">התחייבות חוזית</div>
+                </div>
+                
+                <!-- Column 2: Advertising Companies -->
+                <div class="comparison-column">
+                    <div class="comparison-header-cell">חברות פרסום</div>
+                    <div class="comparison-cell price-cell expensive">₪5,000-15,000</div>
+                    <div class="comparison-cell">תלוי בתקציב</div>
+                    <div class="comparison-cell">שעות או ימים</div>
+                    <div class="comparison-cell">פרסום בלבד</div>
+                    <div class="comparison-cell">מוגבל לשעות עבודה</div>
+                    <div class="comparison-cell">דוחות מוגבלים</div>
+                    <div class="comparison-cell">מורכב ודורש הכשרה</div>
+                    <div class="comparison-cell">12-24 חודשים</div>
+                </div>
+                
+                <!-- Column 3: Collabo AI Pro (Featured with Red Glow) -->
+                <div class="comparison-column featured">
+                    <div class="comparison-header-cell featured">Collabo AI Pro</div>
+                    <div class="comparison-cell featured price-cell affordable">₪250</div>
+                    <div class="comparison-cell featured positive">10-20 לידים יומיים</div>
+                    <div class="comparison-cell featured positive">תוך 2 דקות</div>
+                    <div class="comparison-cell featured positive">אוטומציה מלאה</div>
+                    <div class="comparison-cell featured positive">פעילות רציפה 24/7</div>
+                    <div class="comparison-cell featured positive">רואה בזמן אמת</div>
+                    <div class="comparison-cell featured positive">פשוט ואינטואיטיבי</div>
+                    <div class="comparison-cell featured positive">ללא התחייבות</div>
+                </div>
+                
+                <!-- Column 4: Lead Generation -->
+                <div class="comparison-column">
+                    <div class="comparison-header-cell">השגת לידים</div>
+                    <div class="comparison-cell">₪2,000-8,000</div>
+                    <div class="comparison-cell">5-10 לידים בשבוע</div>
+                    <div class="comparison-cell">תוך שעות</div>
+                    <div class="comparison-cell">עבודה ידנית</div>
+                    <div class="comparison-cell">מוגבל לזמן פנוי</div>
+                    <div class="comparison-cell">מעקב ידני</div>
+                    <div class="comparison-cell">דורש למידה</div>
+                    <div class="comparison-cell">תשלום חד פעמי</div>
+                </div>
             </div>
         </div>
-    </footer>
+    </section>
+
+    <!-- Contact Form Section -->
+    <section class="contact-section" id="contact">
+        <div class="container">
+            <div class="contact-container">
+                <div class="contact-icon">
+                    <i class="fas fa-rocket"></i>
+                </div>
+                <h2 class="font-black mb-4" style="font-size: 48px;">מוכן להטיס את העסק שלך?</h2>
+                <p style="font-size: 20px; margin-bottom: 0; opacity: 0.95;">השאר פרטים ונחזור אליך תוך 24 שעות עם הצעה מותאמת אישית</p>
+                
+                <form class="contact-form" id="contactForm">
+                    <div class="form-group">
+                        <label class="form-label" for="fullName">שם מלא</label>
+                        <input type="text" id="fullName" name="fullName" class="form-input" placeholder="הכנס את שמך המלא" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label" for="phone">מספר טלפון</label>
+                        <input type="tel" id="phone" name="phone" class="form-input" placeholder="הכנס מספר טלפון" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label" for="businessType">איזה תחום עסקי?</label>
+                        <select id="businessType" name="businessType" class="form-input" required>
+                            <option value="">בחר תחום...</option>
+                            <option value="design">עיצוב פנים</option>
+                            <option value="construction">שיפוצים ובנייה</option>
+                            <option value="automotive">מוסכים ואוטו</option>
+                            <option value="legal">משרדי עורכי דין</option>
+                            <option value="medical">שירותי רפואה</option>
+                            <option value="consulting">ייעוץ עסקי</option>
+                            <option value="other">אחר</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label" for="location">איזור פעילות עיקרי?</label>
+                        <select id="location" name="location" class="form-input" required>
+                            <option value="">בחר איזור...</option>
+                            <option value="center">מרכז</option>
+                            <option value="north">צפון</option>
+                            <option value="south">דרום</option>
+                            <option value="jerusalem">ירושלים והסביבה</option>
+                            <option value="national">כל הארץ</option>
+                        </select>
+                    </div>
+                    
+                    <button type="submit" class="btn-base px-6 py-4 font-semibold text-center btn-gradient btn-lg" style="width: 100%; font-size: 18px;">
+                        🚀 שלח פרטים וקבל הצעה מותאמת
+                    </button>
+                </form>
+                
+                <div class="form-benefits">
+                    <div class="form-benefit">
+                        <i class="fas fa-check"></i>
+                        ללא התחייבות
+                    </div>
+                    <div class="form-benefit">
+                        <i class="fas fa-check"></i>
+                        14 יום ניסיון חינם
+                    </div>
+                    <div class="form-benefit">
+                        <i class="fas fa-check"></i>
+                        הגדרה תוך 24 שעות
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
 
     <script>
+        // Enhanced Animated Stars Background
+        function createStars() {
+            const starsContainer = document.getElementById('stars');
+            if (!starsContainer) {
+                console.log('Stars container not found, skipping star creation');
+                return;
+            }
+            const numberOfStars = 150; // Increased number of stars
+            
+            // Create regular twinkling and drifting stars
+            for (let i = 0; i < numberOfStars; i++) {
+                const star = document.createElement('div');
+                star.className = 'star';
+                
+                // Random size classes with weighted distribution
+                const starTypes = ['small', 'small', 'small', 'medium', 'medium', 'large'];
+                const randomType = starTypes[Math.floor(Math.random() * starTypes.length)];
+                star.classList.add(randomType);
+                
+                // Random position
+                star.style.left = Math.random() * 100 + '%';
+                star.style.top = Math.random() * 100 + '%';
+                
+                // Random animation delay
+                star.style.animationDelay = Math.random() * 5 + 's';
+                
+                starsContainer.appendChild(star);
+            }
+            
+            // Create floating stars (rise from bottom)
+            function createFloatingStars() {
+                for (let i = 0; i < 8; i++) {
+                    setTimeout(() => {
+                        const floatingStar = document.createElement('div');
+                        floatingStar.className = 'star floating';
+                        
+                        // Random horizontal position
+                        floatingStar.style.left = Math.random() * 100 + '%';
+                        floatingStar.style.top = '100vh';
+                        
+                        starsContainer.appendChild(floatingStar);
+                        
+                        // Remove after animation
+                        setTimeout(() => {
+                            if (floatingStar.parentNode) {
+                                floatingStar.parentNode.removeChild(floatingStar);
+                            }
+                        }, 15000);
+                    }, i * 2000); // Stagger creation
+                }
+                
+                // Schedule next batch
+                setTimeout(createFloatingStars, 20000);
+            }
+            
+            // Create orbiting stars
+            function createOrbitingStars() {
+                for (let i = 0; i < 5; i++) {
+                    const orbitingStar = document.createElement('div');
+                    orbitingStar.className = 'star orbiting';
+                    
+                    // Random center position
+                    orbitingStar.style.left = Math.random() * 80 + 10 + '%';
+                    orbitingStar.style.top = Math.random() * 80 + 10 + '%';
+                    
+                    // Random animation delay
+                    orbitingStar.style.animationDelay = Math.random() * 10 + 's';
+                    
+                    starsContainer.appendChild(orbitingStar);
+                }
+            }
+            
+            // Create shooting stars
+            function createShootingStar() {
+                const shootingStar = document.createElement('div');
+                shootingStar.className = 'star shooting';
+                
+                // Random starting position (from different sides)
+                const side = Math.random();
+                if (side < 0.5) {
+                    // From left
+                    shootingStar.style.left = '-100px';
+                    shootingStar.style.top = Math.random() * 70 + '%';
+                } else {
+                    // From top-left corner
+                    shootingStar.style.left = Math.random() * 30 + '%';
+                    shootingStar.style.top = '-100px';
+                }
+                
+                starsContainer.appendChild(shootingStar);
+                
+                // Remove after animation
+                setTimeout(() => {
+                    if (shootingStar.parentNode) {
+                        shootingStar.parentNode.removeChild(shootingStar);
+                    }
+                }, 4000);
+            }
+            
+            // Create shooting star every 3-6 seconds (more frequent)
+            function scheduleShootingStar() {
+                const delay = Math.random() * 3000 + 3000; // 3-6 seconds
+                setTimeout(() => {
+                    createShootingStar();
+                    scheduleShootingStar();
+                }, delay);
+            }
+            
+            // Create central "reaching for the stars" animation
+            function createReachingStarAnimation() {
+                const centralStar = document.createElement('div');
+                centralStar.className = 'star central-reaching';
+                
+                // Position in center-bottom area
+                centralStar.style.left = '50%';
+                centralStar.style.top = '85%';
+                centralStar.style.transform = 'translateX(-50%)';
+                
+                starsContainer.appendChild(centralStar);
+                
+                // Create trail of smaller stars that follow
+                for (let i = 1; i <= 5; i++) {
+                    setTimeout(() => {
+                        const trailStar = document.createElement('div');
+                        trailStar.className = 'star trail-star';
+                        trailStar.style.left = '50%';
+                        trailStar.style.top = '85%';
+                        trailStar.style.transform = 'translateX(-50%)';
+                        trailStar.style.animationDelay = (i * 0.2) + 's';
+                        
+                        starsContainer.appendChild(trailStar);
+                        
+                        // Remove trail star after animation
+                        setTimeout(() => {
+                            if (trailStar.parentNode) {
+                                trailStar.parentNode.removeChild(trailStar);
+                            }
+                        }, 8000);
+                    }, i * 300);
+                }
+                
+                // Remove central star after animation
+                setTimeout(() => {
+                    if (centralStar.parentNode) {
+                        centralStar.parentNode.removeChild(centralStar);
+                    }
+                }, 8000);
+            }
+            
+            // Schedule central animation every 15 seconds
+            function scheduleCentralAnimation() {
+                setTimeout(() => {
+                    createReachingStarAnimation();
+                    scheduleCentralAnimation();
+                }, 15000);
+            }
+            
+            // Create constellation animation
+            function createConstellation() {
+                const constellationStars = [];
+                const positions = [
+                    { x: 20, y: 30 }, { x: 25, y: 25 }, { x: 30, y: 32 },
+                    { x: 80, y: 40 }, { x: 85, y: 35 }, { x: 75, y: 45 }
+                ];
+                
+                positions.forEach((pos, index) => {
+                    setTimeout(() => {
+                        const conStar = document.createElement('div');
+                        conStar.className = 'star constellation';
+                        conStar.style.left = pos.x + '%';
+                        conStar.style.top = pos.y + '%';
+                        conStar.style.animationDelay = (index * 0.5) + 's';
+                        
+                        starsContainer.appendChild(conStar);
+                        constellationStars.push(conStar);
+                    }, index * 500);
+                });
+                
+                // Remove constellation after animation
+                setTimeout(() => {
+                    constellationStars.forEach(star => {
+                        if (star.parentNode) {
+                            star.parentNode.removeChild(star);
+                        }
+                    });
+                }, 10000);
+            }
+            
+            // Initialize all star types with enhanced timing
+            createOrbitingStars();
+            setTimeout(createFloatingStars, 2000);
+            setTimeout(scheduleShootingStar, 1000);
+            setTimeout(scheduleCentralAnimation, 5000);
+            setTimeout(createConstellation, 8000);
+            
+            // Create constellation every 20 seconds
+            setInterval(createConstellation, 20000);
+        }
+        
+        // Constants
+        const DELAYS = {
+            SHORT: 800,
+            MEDIUM: 1200,
+            LONG: 1500,
+            TYPING: 25,
+            TYPING_SLOW: 40
+        };
+
+        // Utility Functions
+        const $ = (selector) => document.querySelector(selector);
+        const $$ = (selector) => document.querySelectorAll(selector);
+        const $id = (id) => document.getElementById(id);
+
+        function delayedExecute(fn, delay = DELAYS.MEDIUM) {
+            return setTimeout(fn, delay);
+        }
+
+        function setStyles(element, styles) {
+            element.style.cssText = styles;
+        }
+
         // Demo Examples
         const demoExamples = [
             {
                 name: "שרה לוי",
                 avatar: "ש.ל",
                 time: "2 דקות",
-                content: "חיפש המון אבל לא מוצאת מישהו טוב לעיצוב המטבח שלי... כל המעצבים שפגשתי עד עכשיו לא הבינו מה אני רוצה 😕",
+                content: "חיפשתי המון אבל לא מוצאת מישהו טוב לשיפוץ המטבח שלי... כל קבלני השיפוצים שפגשתי עד עכשיו לא הבינו מה אני רוצה ואיך לתכנן את המטבח 😕",
                 isLead: true,
                 category: "relevant"
             },
@@ -1699,7 +2679,7 @@
                 name: "רונית גולן",
                 avatar: "ר.ג",
                 time: "8 דקות",
-                content: "המכונית שלי שוב התקלקלה... פעם שלישית החודש! אני חייבת מוסך אמין באזור המרכז 🚗💸",
+                content: "האמבטיה שלי שוב נוזלת... פעם שלישית החודש! אני חייבת קבלן איטום אמין באזור המרכז שיפתור את הבעיה סופית 🚿💸",
                 isLead: true,
                 category: "relevant"
             },
@@ -1731,7 +2711,7 @@
                 name: "יוסי מלכא",
                 avatar: "י.מ",
                 time: "22 דקות",
-                content: "נמאס לי מהבוס שלי! חושב על לפתוח עסק בתחום הקייטרינג, אבל לא יודע איך מתחילים...",
+                content: "נמאס לי מהבוס שלי! חושב על לפתוח חברת שיפוצים משלי, אבל לא יודע איך מתחילים עם לקוחות ורישיונות...",
                 isLead: true,
                 category: "relevant"
             },
@@ -1747,7 +2727,7 @@
                 name: "איתן לבי",
                 avatar: "א.ל",
                 time: "3 ימים",
-                content: "מחפש מוסך טוב ברמת גן לתיקון הרכב. מישהו מכיר מקום אמין?",
+                content: "מחפש קבלן טוב ברמת גן לתיקון גג רעפים. מישהו מכיר מקום אמין?",
                 isLead: false,
                 category: "old_post"
             },
@@ -1756,7 +2736,7 @@
                 name: "רונית פרץ",
                 avatar: "ר.פ",
                 time: "28 דקות",
-                content: "האוטו של הבעל התקלקל השבוע, נזקקת למוסך אמין במרכז שיטפל בזה ב-משי ובמחיר הוגן. עדיפות לגם יותר מקצועיים!",
+                content: "הבית של הבעל צריך שיפוץ השבוע, נזקקת לקבלן אמין במרכז שיטפל בזה במהירות ובמחיר הוגן. עדיפות לקבלנים מקצועיים!",
                 isLead: true,
                 category: "relevant"
             },
@@ -1828,8 +2808,13 @@
         }
 
         function populateFeed() {
+            console.log('populateFeed called');
             const feed = document.getElementById('socialFeed');
-            if (!feed) return;
+            if (!feed) {
+                console.error('socialFeed element not found!');
+                return;
+            }
+            console.log('socialFeed element found');
             
             feedPosts = [];
             
@@ -1859,109 +2844,201 @@
             });
             
             feed.innerHTML = feedPosts.map((post, index) => createPost(post, index)).join('');
+            console.log('Feed populated with', feedPosts.length, 'posts');
             
             // Add hover effects for additional posts (indices 5-9)
             setTimeout(() => {
                 addHoverAnalysisToAdditionalPosts();
             }, 500);
-            
-            // Start detection demo with safety check
-            setTimeout(() => {
-                if (demoStarted) {
-                    detectAndMarkPosts();
-                }
-            }, 2000);
         }
 
         function detectAndMarkPosts() {
-            const allPosts = document.querySelectorAll('.facebook-post');
-            let processedCount = 0;
-            let relevantPostIndex = null;
+            console.log('detectAndMarkPosts called, starting from index:', currentPostIndex);
+            const allPosts = getAllPosts();
+            console.log('Found', allPosts.length, 'posts');
+            totalPosts = allPosts.length;
             
-            // Only process the first 5 posts (demo posts), leave the rest for manual scrolling
-            const demoPosts = Array.from(allPosts).slice(0, 5);
-            
-            demoPosts.forEach((post, index) => {
-                setTimeout(() => {
-                    if (!post || post.querySelector('.analysis-icon')) return;
-                    
-                    const postIndex = parseInt(post.dataset.index);
-                    const postData = feedPosts[postIndex];
-                    if (!postData) return;
-                    
-                    const { icon, reason, isRelevant, highlightField } = getPostAnalysis(postData);
-                    
-                    // First, highlight the current post being analyzed
-                    highlightCurrentPost(post, true);
-                    
-                    // Show explanation banner on the post after a brief moment
+            function processPost(index) {
+                if (index >= totalPosts) {
+                    // All posts processed, restart the demo
+                    console.log('All posts completed - restarting demo cycle');
                     setTimeout(() => {
-                        showPostExplanationBanner(post, reason, isRelevant, postData.name, icon, highlightField);
+                        console.log('🔄 Restarting demo from beginning');
+                        currentPostIndex = 0;
+                        totalPosts = 0;
+                        processedPosts.clear();
+                        messengerConversationActive = false;
                         
-                        // Add analysis icon after showing the explanation
+                        // Clear and repopulate feed
+                        populateFeed();
+                        
+                        // Start detection from beginning
                         setTimeout(() => {
-                            const analysisIcon = document.createElement('div');
-                            analysisIcon.className = 'analysis-icon';
-                            analysisIcon.innerHTML = icon;
-                            analysisIcon.style.cssText = `
+                            detectAndMarkPosts();
+                        }, 1000);
+                    }, 3000);
+                    return;
+                }
+                
+                const post = allPosts[index];
+                if (!post || post.classList.contains('post-analyzed')) {
+                    // Skip to next post
+                    currentPostIndex = index + 1;
+                    setTimeout(() => processPost(index + 1), 1000);
+                    return;
+                }
+                
+                const postIndex = parseInt(post.dataset.index);
+                const postData = feedPosts[postIndex];
+                if (!postData) {
+                    // Skip to next post
+                    currentPostIndex = index + 1;
+                    setTimeout(() => processPost(index + 1), 1000);
+                    return;
+                }
+                
+                const { icon, reason, isRelevant, highlightField } = getPostAnalysis(postData);
+                
+                // First, highlight the current post being analyzed
+                highlightCurrentPost(post, true);
+                
+                // Show explanation banner on the post after a brief moment
+                setTimeout(() => {
+                    showPostExplanationBanner(post, reason, isRelevant, postData.name, icon, highlightField);
+                    
+                    // Mark post as analyzed and handle post logic directly
+                    setTimeout(() => {
+                        post.classList.add('post-analyzed');
+                        
+                        if (isRelevant) {
+                            post.classList.add('hot-post');
+                            
+                            // Add fire icon for relevant posts only
+                            const fireIcon = document.createElement('div');
+                            fireIcon.className = 'fire-icon';
+                            fireIcon.innerHTML = '🔥';
+                            fireIcon.style.cssText = `
                                 position: absolute;
-                                top: -8px;
-                                right: -8px;
-                                width: 24px;
-                                height: 24px;
+                                top: -15px;
+                                right: -15px;
+                                width: 32px;
+                                height: 32px;
                                 border-radius: 50%;
+                                background: #fff;
                                 display: flex;
                                 align-items: center;
                                 justify-content: center;
-                                font-size: 12px;
-                                z-index: 10;
+                                font-size: 18px;
+                                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+                                z-index: 1500;
+                                animation: bounce 1s infinite;
+                                border: 2px solid #f3f4f6;
                             `;
-                            
-                            if (isRelevant) {
-                                post.classList.add('hot-post');
-                                analysisIcon.style.background = '#ef4444';
-                                analysisIcon.style.animation = 'bounce 1s infinite';
-                                relevantPostIndex = postIndex;
-                            } else {
-                                analysisIcon.style.background = '#6b7280';
-                            }
-                            
                             post.style.position = 'relative';
-                            post.appendChild(analysisIcon);
+                            post.appendChild(fireIcon);
                             
-                            // Only remove highlight after analysis is complete, keep banner
+                            // Run full demo sequence for relevant post
+                            setTimeout(() => {
+                                console.log('Starting autoHandleComment for post:', postIndex, 'current index will be:', index + 1);
+                                autoHandleComment(postIndex, () => {
+                                    console.log('autoHandleComment completed, setting currentPostIndex to:', index + 1);
+                                    // DO NOT reset messenger state here - it's already handled in finishMessengerConversation
+                                    console.log('🔄 NOT resetting messengerConversationActive - already handled');
+                                    // Set next post index AFTER demo completes
+                                    currentPostIndex = index + 1;
+                                    // After demo completes, continue with next post
+                                    setTimeout(() => {
+                                        continueToNextPost();
+                                    }, 2000);
+                                });
+                            }, 1000);
+                        } else {
+                            // Add sad emoji for irrelevant posts
+                            const sadIcon = document.createElement('div');
+                            sadIcon.className = 'sad-icon';
+                            sadIcon.innerHTML = '😞';
+                            sadIcon.style.cssText = `
+                                position: absolute;
+                                top: -15px;
+                                right: -15px;
+                                width: 32px;
+                                height: 32px;
+                                border-radius: 50%;
+                                background: #fff;
+                                display: flex;
+                                align-items: center;
+                                justify-content: center;
+                                font-size: 18px;
+                                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+                                z-index: 1500;
+                                animation: bounce 1s infinite;
+                                border: 2px solid #f3f4f6;
+                            `;
+                            post.style.position = 'relative';
+                            post.appendChild(sadIcon);
+                            
+                            // For irrelevant posts, just continue to next
+                            currentPostIndex = index + 1;
+                            setTimeout(() => processPost(index + 1), 1500);
+                        }
+                        
+                        // Remove highlight after analysis is complete (only for irrelevant posts)
+                        if (!isRelevant) {
                             setTimeout(() => {
                                 highlightCurrentPost(post, false);
-                            }, 2000);
-                            
-                        }, 2000);
+                            }, DELAYS.SHORT);
+                        }
                         
-                    }, 1000); // Show post first, then explanation
+                    }, DELAYS.SHORT);
                     
-                    // Track relevant posts
-                    if (isRelevant && processedCount === 0) {
-                        processedCount++;
-                    }
-                    
-                    // If this is the last demo post (index 4), start response generation for the relevant one
-                    if (index === demoPosts.length - 1) {
-                        setTimeout(() => {
-                            if (relevantPostIndex !== null) {
-                                startResponseGeneration(relevantPostIndex);
-                            }
-                        }, 4000);
-                    }
-                    
-                }, (index + 1) * 3000); // Longer delay to show each analysis clearly
-            });
+                }, 600); // Show post first, then explanation
+            }
+            
+            // Start processing from the current post index
+            processPost(currentPostIndex);
         }
+        
+        function continueToNextPost() {
+            console.log('Continuing to next post, index:', currentPostIndex);
+            if (currentPostIndex < totalPosts) {
+                // Update status to show continuing analysis
+                const statusElement = document.getElementById('demoStatus');
+                if (statusElement) {
+                    statusElement.textContent = 'ממשיך לנתח פוסטים נוספים...';
+                }
+                updateDemoStageText('analysis', 'הסוכן ממשיך לסרוק ולנתח פוסטים נוספים בחיפוש אחר לקוחות פוטנציאליים.');
+                
+                // Continue with detection of remaining posts
+                setTimeout(() => {
+                    detectAndMarkPosts();
+                }, 1000);
+            } else {
+                // All posts done, restart the demo
+                console.log('No more posts to process - restarting demo cycle');
+                setTimeout(() => {
+                    console.log('🔄 Restarting demo from beginning (path 2)');
+                    currentPostIndex = 0;
+                    totalPosts = 0;
+                    processedPosts.clear();
+                    messengerConversationActive = false;
+                    
+                    // Clear and repopulate feed
+                    populateFeed();
+                    
+                    // Start detection from beginning
+                    setTimeout(() => {
+                        detectAndMarkPosts();
+                    }, 1000);
+                }, 3000);
+            }
+        }
+        
+        // DELETED: restartEntireDemo() function was causing Messenger conflicts
+        // The demo now finishes naturally without forced restarts
         
         function highlightCurrentPost(post, highlight) {
             if (highlight) {
-                post.style.border = '2px solid #1e40af';
-                post.style.boxShadow = '0 0 20px rgba(30, 64, 175, 0.3)';
-                post.style.transform = 'scale(1.02)';
-                post.style.transition = 'all 0.3s ease';
+                post.classList.add('post-highlighted');
                 
                 // Scroll within the feed container only, not the main page
                 const feedContainer = document.getElementById('socialFeed');
@@ -1977,9 +3054,7 @@
                     });
                 }
             } else {
-                post.style.border = '1px solid var(--border-light)';
-                post.style.boxShadow = '';
-                post.style.transform = 'scale(1)';
+                post.classList.remove('post-highlighted');
             }
         }
 
@@ -1989,72 +3064,68 @@
             
             const banner = document.createElement('div');
             banner.className = 'post-explanation-banner';
+            
+            // Calculate post dimensions to ensure banner fits within
+            const postRect = post.getBoundingClientRect();
+            const maxWidth = Math.min(320, postRect.width - 40); // 20px margin on each side
+            
             banner.style.cssText = `
                 position: absolute;
                 top: 50%;
                 left: 50%;
                 transform: translate(-50%, -50%);
-                background: ${isRelevant ? 
-                    'linear-gradient(135deg, #f0fdf4, #dcfce7)' : 
-                    'linear-gradient(135deg, #f1f5f9, #e2e8f0)'};
-                border: 1px solid ${isRelevant ? '#d1fae5' : '#cbd5e1'};
+                background: linear-gradient(135deg, #f8fafc, #f1f5f9);
+                border: 2px solid #9ca3af;
                 border-radius: 12px;
-                padding: 16px 20px;
-                max-width: 280px;
-                width: 90%;
+                padding: 18px 22px;
+                max-width: ${Math.min(340, postRect.width - 30)}px;
+                width: calc(100% - 30px);
                 z-index: 20;
-                box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+                box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12), 0 8px 16px rgba(0, 0, 0, 0.08), 0 2px 4px rgba(0, 0, 0, 0.06);
                 animation: bannerSlideIn 0.4s ease-out;
                 direction: rtl;
-                text-align: right;
+                text-align: center;
+                font-family: inherit;
+                backdrop-filter: blur(2px);
             `;
             
-            // Get structured classification
-            const classification = getPostClassification(post.dataset.index);
-            
+            // Modern, pleasant content design
             banner.innerHTML = `
                 <button onclick="this.parentElement.remove()" style="
                     position: absolute;
-                    top: 8px;
-                    left: 8px;
-                    background: rgba(0, 0, 0, 0.1);
+                    top: 10px;
+                    left: 10px;
+                    background: rgba(148, 163, 184, 0.2);
                     border: none;
                     border-radius: 50%;
-                    width: 24px;
-                    height: 24px;
+                    width: 22px;
+                    height: 22px;
                     cursor: pointer;
-                    font-size: 14px;
-                    color: #6b7280;
+                    font-size: 13px;
+                    color: #64748b;
                     display: flex;
                     align-items: center;
                     justify-content: center;
                     transition: all 0.2s ease;
-                " onmouseover="this.style.background='rgba(0, 0, 0, 0.2)'" onmouseout="this.style.background='rgba(0, 0, 0, 0.1)'">×</button>
-                <div style="display: flex; align-items: center; justify-content: center; gap: 8px; margin-bottom: 12px;">
-                    <span style="font-size: 18px;">${icon}</span>
-                    <span style="font-weight: 700; color: ${isRelevant ? '#059669' : '#dc2626'}; font-size: 15px;">
-                        ${isRelevant ? 'פוסט רלוונטי' : 'פוסט לא רלוונטי'}
-                    </span>
+                " onmouseover="this.style.background='rgba(148, 163, 184, 0.4)'" onmouseout="this.style.background='rgba(148, 163, 184, 0.2)'">×</button>
+                
+                <div style="
+                    font-size: 15px;
+                    font-weight: 600;
+                    color: ${isRelevant ? '#10b981' : '#dc2626'};
+                    margin-bottom: 8px;
+                    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+                ">
+                    ${isRelevant ? 'לקוח פוטנציאלי זוהה' : 'לא רלוונטי לעסק'}
                 </div>
-                <div style="font-size: 13px; line-height: 1.6; color: #374151;">
-                    ${classification.map(item => {
-                        const shouldHighlight = highlightField && (
-                            (highlightField === 'field' && item.label.includes('תחום')) ||
-                            (highlightField === 'location' && item.label.includes('איזור')) ||
-                            (highlightField === 'timing' && item.label.includes('זמן')) ||
-                            (highlightField === 'intent' && item.label.includes('כוונת')) ||
-                            (highlightField === 'authenticity' && item.label.includes('אמיתות'))
-                        );
-                        
-                        return `
-                        <div style="display: flex; justify-content: space-between; margin-bottom: 4px; ${shouldHighlight ? 'border-radius: 4px; padding: 2px;' : ''}" ${shouldHighlight ? 'class="analysis-highlight"' : ''}>
-                            <span style="color: #6b7280;">${item.label}:</span>
-                            <span style="font-weight: 500; color: ${item.match ? '#059669' : '#dc2626'};">
-                                ${item.match ? '✓' : '✗'} ${item.value}
-                            </span>
-                        </div>
-                        `;
-                    }).join('')}
+                <div style="
+                    font-size: ${isRelevant ? '13px' : '14px'};
+                    line-height: 1.4;
+                    color: #475569;
+                    font-weight: ${isRelevant ? '400' : '500'};
+                    opacity: 0.9;
+                ">
+                    ${reason}
                 </div>
             `;
             
@@ -2075,7 +3146,7 @@
         }
 
         function addHoverAnalysisToAdditionalPosts() {
-            const allPosts = document.querySelectorAll('.facebook-post');
+            const allPosts = getAllPosts();
             
             // Add hover effects to additional posts (indices 5-9)
             for (let i = 5; i < allPosts.length && i < 10; i++) {
@@ -2098,29 +3169,6 @@
                             const { icon, reason, isRelevant, highlightField } = getPostAnalysis(postData);
                             showPostExplanationBanner(post, reason, isRelevant, postData.name, icon, highlightField);
                             
-                            // Add analysis icon if not already present
-                            if (!post.querySelector('.analysis-icon')) {
-                                const analysisIcon = document.createElement('div');
-                                analysisIcon.className = 'analysis-icon';
-                                analysisIcon.innerHTML = icon;
-                                analysisIcon.style.cssText = `
-                                    position: absolute;
-                                    top: -8px;
-                                    right: -8px;
-                                    width: 24px;
-                                    height: 24px;
-                                    background: white;
-                                    border-radius: 50%;
-                                    display: flex;
-                                    align-items: center;
-                                    justify-content: center;
-                                    font-size: 14px;
-                                    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-                                    z-index: 10;
-                                `;
-                                post.style.position = 'relative';
-                                post.appendChild(analysisIcon);
-                            }
                         }
                     }, 800);
                 });
@@ -2132,7 +3180,7 @@
                     // Remove banner after short delay
                     setTimeout(() => {
                         removePostExplanationBanner(post);
-                    }, 1500);
+                    }, DELAYS.SHORT);
                 });
             }
         }
@@ -2237,42 +3285,108 @@
                 case 'relevant':
                     return {
                         icon: '🔥',
-                        reason: 'פוסט רלוונטי - לקוח פוטנציאלי בתחום הפעילות ובאיזור המתאים',
+                        reason: `
+                            <div style="display: flex; flex-direction: column; gap: 4px; font-size: 13px;">
+                                <div style="display: flex; align-items: center; gap: 6px;">
+                                    <span style="color: #10b981;">✓</span>
+                                    <span>תחום רלוונטי: שיפוצים ובנייה</span>
+                                </div>
+                                <div style="display: flex; align-items: center; gap: 6px;">
+                                    <span style="color: #10b981;">✓</span>
+                                    <span>איזור מטרה: מרכז הארץ</span>
+                                </div>
+                            </div>
+                        `,
                         isRelevant: true,
                         highlightField: null
                     };
                 case 'bot_post':
                     return {
                         icon: '🚫',
-                        reason: 'פוסט לא אמיתי - נוצר על ידי בוט',
+                        reason: `
+                            <div style="display: flex; flex-direction: column; gap: 4px; font-size: 13px;">
+                                <div style="display: flex; align-items: center; gap: 6px;">
+                                    <span style="color: #dc2626;">✗</span>
+                                    <span>פוסט בוט/פרסומי</span>
+                                </div>
+                                <div style="display: flex; align-items: center; gap: 6px;">
+                                    <span style="color: #dc2626;">✗</span>
+                                    <span>לא אמיתי ולא אותנטי</span>
+                                </div>
+                            </div>
+                        `,
                         isRelevant: false,
                         highlightField: 'authenticity'
                     };
                 case 'field_irrelevant':
                     return {
                         icon: '🚫',
-                        reason: 'פוסט לא רלוונטי - לא מתאים לתחום הפעילות',
+                        reason: `
+                            <div style="display: flex; flex-direction: column; gap: 4px; font-size: 13px;">
+                                <div style="display: flex; align-items: center; gap: 6px;">
+                                    <span style="color: #dc2626;">✗</span>
+                                    <span>תחום לא מתאים</span>
+                                </div>
+                                <div style="display: flex; align-items: center; gap: 6px;">
+                                    <span style="color: #dc2626;">✗</span>
+                                    <span>לא קשור לשיפוצים</span>
+                                </div>
+                            </div>
+                        `,
                         isRelevant: false,
                         highlightField: 'field'
                     };
                 case 'area_irrelevant':
                     return {
                         icon: '🚫',
-                        reason: 'פוסט לא רלוונטי - מחוץ לאיזור הפעילות',
+                        reason: `
+                            <div style="font-weight: 600; color: #dc2626; margin-bottom: 8px; display: flex; align-items: center; gap: 6px;">
+                                <span>✗</span> פוסט לא רלוונטי
+                            </div>
+                            <div style="display: flex; flex-direction: column; gap: 4px; font-size: 13px;">
+                                <div style="display: flex; align-items: center; gap: 6px;">
+                                    <span style="color: #dc2626;">✗</span>
+                                    <span>איזור לא מתאים</span>
+                                </div>
+                                <div style="display: flex; align-items: center; gap: 6px;">
+                                    <span style="color: #dc2626;">✗</span>
+                                    <span>מחוץ לאזור הפעילות</span>
+                                </div>
+                            </div>
+                        `,
                         isRelevant: false,
                         highlightField: 'location'
                     };
                 case 'old_post':
                     return {
                         icon: '🚫',
-                        reason: 'פוסט ישן - נוצר לפני יותר מ-24 שעות',
+                        reason: `
+                            <div style="font-weight: 600; color: #dc2626; margin-bottom: 8px; display: flex; align-items: center; gap: 6px;">
+                                <span>✗</span> פוסט לא רלוונטי
+                            </div>
+                            <div style="display: flex; flex-direction: column; gap: 4px; font-size: 13px;">
+                                <div style="display: flex; align-items: center; gap: 6px;">
+                                    <span style="color: #dc2626;">✗</span>
+                                    <span>פוסט ישן מדי</span>
+                                </div>
+                                <div style="display: flex; align-items: center; gap: 6px;">
+                                    <span style="color: #dc2626;">✗</span>
+                                    <span>לא עדכני לתגובה</span>
+                                </div>
+                            </div>
+                        `,
                         isRelevant: false,
                         highlightField: 'timing'
                     };
                 case 'free_help':
                     return {
                         icon: '🚫',
-                        reason: 'פוסט לא רלוונטי - מחפש עזרה חינם',
+                        reason: `
+                            <div style="font-weight: 600; color: #ff4444; font-size: 14px; display: flex; align-items: center; gap: 6px;">
+                                <span>✗</span>
+                                <span>מחפש עזרה חינם</span>
+                            </div>
+                        `,
                         isRelevant: false,
                         highlightField: 'intent'
                     };
@@ -2316,6 +3430,7 @@
         
         function updateProgressStep(currentStep) {
             const steps = ['analysis', 'response', 'messenger', 'complete'];
+            const currentIndex = steps.indexOf(currentStep);
             
             steps.forEach((step, index) => {
                 const stepElement = document.getElementById(`step-${step}`);
@@ -2325,14 +3440,17 @@
                 
                 if (step === currentStep) {
                     stepElement.classList.add('active');
-                } else if (steps.indexOf(step) < steps.indexOf(currentStep)) {
-                    stepElement.classList.add('completed');
+                } else if (index < currentIndex) {
+                    // Add completed class with sequential delay (500ms between each)
+                    setTimeout(() => {
+                        stepElement.classList.add('completed');
+                    }, index * 500);
                 }
             });
         }
         
         function pulseSpecificPost(postIndex) {
-            const post = document.querySelector(`[data-index="${postIndex}"]`);
+            const post = getPostByIndex(postIndex);
             if (post) {
                 post.classList.remove('pulse-green');
                 // Force reflow to restart animation
@@ -2343,7 +3461,7 @@
 
         
         function updateDemoStageText(stage, text) {
-            const explanationElement = document.querySelector('.demo-content p');
+            const explanationElement = document.querySelector('.status-indicator p');
             const featuresElement = document.querySelector('.demo-features');
             
             if (!explanationElement) return;
@@ -2380,7 +3498,7 @@
                     } else if (stage === 'response' || stage === 'messenger') {
                         setDemoFocus('left', 'green');
                     }
-                }, 2000);
+                }, DELAYS.MEDIUM);
             }, 300);
         }
         
@@ -2458,115 +3576,89 @@
             }, 600);
         }
 
-        function autoHandleComment(postIndex) {
-            const post = document.querySelector(`[data-index="${postIndex}"]`);
-            if (!post || !post.classList.contains('hot-post')) return;
+        function autoHandleComment(postIndex, onComplete = null) {
+            const post = getPostByIndex(postIndex);
+            if (!post || !post.classList.contains('hot-post')) {
+                if (onComplete) onComplete();
+                return;
+            }
             
-            // Prevent duplicate comment boxes and processing same post multiple times
-            if (post.querySelector('.typing-indicator') || processedPosts.has(postIndex)) return;
+            // Store the callback - it will be called by finishMessengerConversation
+            demoCompleteCallback = onComplete;
             
-            processedPosts.add(postIndex);
-            
-            // Remove analysis banner automatically when agent starts responding
+            // Remove analysis banner when agent starts responding
             removePostExplanationBanner(post);
             
-            // Focus on the specific post with green pulse
-            pulseSpecificPost(postIndex);
-            setDemoFocus('left', 'green');
+            // Update progress to response stage
+            updateDemoStageText('response', 'הסוכן יוצר תגובה מותאמת אישית ומזמין את הלקוח לשיחה פרטית.');
             
-            // Create comment box
+            // Create comment box PROPERLY without breaking post-actions layout
             const commentBox = document.createElement('div');
             commentBox.style.cssText = `
-                margin-top: 12px;
-                padding-top: 12px;
+                margin-top: 2px;
+                padding: 6px 16px 12px 16px;
                 border-top: 1px solid #e2e8f0;
+                box-sizing: border-box;
+                width: 100%;
             `;
             
+            const customerName = feedPosts[postIndex].name;
+            let response = `שלום ${customerName}! אשמח לעזור לך עם הפרויקט שלך. בואו נעבור לשיחה פרטית לפרטים.`;
+            
             commentBox.innerHTML = `
-                <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 8px;">
-                    <div class="avatar avatar-sm">
+                <div style="display: flex; align-items: flex-start; gap: 8px; margin-bottom: 8px;">
+                    <div class="avatar avatar-sm" style="background: #1877f2; color: white; display: flex; align-items: center; justify-content: center; width: 32px; height: 32px; border-radius: 50%; font-size: 12px; font-weight: bold; flex-shrink: 0;">
                         AI
                     </div>
-                    <div style="flex: 1; background: #f3f4f6; border-radius: 16px; padding: 8px 12px; position: relative;">
-                        <div id="aiResponse${postIndex}" style="font-size: 14px; color: #374151;"></div>
-                        <div class="typing-indicator" style="display: flex; align-items: center; gap: 4px;">
-                            <span style="color: #6b7280; font-size: 12px;">הסוכן כותב</span>
-                            <div style="display: flex; gap: 2px;">
-                                <div style="width: 4px; height: 4px; background: #6b7280; border-radius: 50%; animation: bounce 1.4s infinite;"></div>
-                                <div style="width: 4px; height: 4px; background: #6b7280; border-radius: 50%; animation: bounce 1.4s infinite 0.2s;"></div>
-                                <div style="width: 4px; height: 4px; background: #6b7280; border-radius: 50%; animation: bounce 1.4s infinite 0.4s;"></div>
+                    <div class="comment-bubble" style="flex: 1; background: #f0f2f5 !important; border-radius: 16px; padding: 12px 16px; position: relative; border: 1px solid #e4e6ea !important; min-height: 44px; box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04) !important; box-sizing: border-box !important; max-width: 100%; overflow-wrap: break-word;">
+                        <div id="aiResponse${postIndex}" style="font-size: 14px; color: #1c1e21; line-height: 1.33; word-wrap: break-word; font-family: inherit; background: transparent !important;"></div>
+                        <div class="typing-indicator" style="display: flex; align-items: center; gap: 8px; padding: 6px 0; margin-top: 4px;">
+                            <span style="color: #65676b; font-size: 13px; font-weight: 500;">הסוכן כותב תגובה...</span>
+                            <div style="display: flex; gap: 3px; align-items: center;">
+                                <div style="width: 6px; height: 6px; background: #65676b; border-radius: 50%; animation: bounce 1.4s infinite;"></div>
+                                <div style="width: 6px; height: 6px; background: #65676b; border-radius: 50%; animation: bounce 1.4s infinite 0.2s;"></div>
+                                <div style="width: 6px; height: 6px; background: #65676b; border-radius: 50%; animation: bounce 1.4s infinite 0.4s;"></div>
                             </div>
                         </div>
                     </div>
                 </div>
             `;
             
-            post.appendChild(commentBox);
-            
-            // Scroll to show the entire post + comment area properly
-            setTimeout(() => {
-                const feedContainer = document.getElementById('socialFeed');
-                if (feedContainer && post) {
-                    // Calculate the space needed for post + comment
-                    const postRect = post.getBoundingClientRect();
-                    const containerRect = feedContainer.getBoundingClientRect();
-                    
-                    // Account for comment box height (approximately 80px)
-                    const commentHeight = 80;
-                    const totalHeight = postRect.height + commentHeight;
-                    
-                    // Calculate scroll position to center the entire post+comment area
-                    const scrollOffset = postRect.top - containerRect.top - (containerRect.height / 2) + (totalHeight / 2);
-                    
-                    feedContainer.scrollTo({
-                        top: feedContainer.scrollTop + scrollOffset,
-                        behavior: 'smooth'
-                    });
-                }
-            }, 100);
-            
-            // Generate AI response based on post content
-            const postContent = feedPosts[postIndex].content;
-            let response = "";
-            
-            if (postContent.includes("עיצוב המטבח")) {
-                response = "שלום שרה! אני מבין שאת מחפשת מעצב מטבח מקצועי. יש לי המלצה מעולה על צוות עיצוב שמתמחה בדיוק במטבחים מודרניים ופונקציונליים. הם עובדים איתך צעד אחר צעד עד שאת מרוצה 100%. רוצה שאשלח לך פרטים?";
-            } else if (postContent.includes("מוסך אמין")) {
-                response = "היי רונית! מבין שאת צריכה מוסך מהימן באזור המרכז. יש לי בדיוק את מה שאת מחפשת - מוסך עם מומחים שיודעים לטפל בכל סוג של תקלה, עם אחריות מלאה ומחירים הוגנים. בואי נקבע פגישה מהירה כדי שתכירי אותם?";
-            } else if (postContent.includes("שיפוצים מהימנה") || postContent.includes("חברת שיפוצים")) {
-                response = "שלום אבי! רואה שאתה מחפש חברת שיפוצים איכותית לרצפות. יש לי המלצה מעולה על צוות מקצועי שמתמחה בדיוק בשיפוץ רצפות - הם עובדים עם חומרים מהמעלה הראשונה ונותנים אחריות מלאה על העבודה. מעוניין לשמוע פרטים נוספים?";
+            // Insert AFTER post-actions properly and ensure post-actions stay slim
+            const postActions = post.querySelector('.post-actions');
+            if (postActions) {
+                // Force the post-actions to maintain slim styling
+                postActions.style.cssText += `
+                    padding: clamp(4px, 1vw, 6px) clamp(16px, 3vw, 20px) !important;
+                    margin: 0 !important;
+                    flex-wrap: nowrap !important;
+                `;
+                postActions.insertAdjacentElement('afterend', commentBox);
+            } else {
+                post.appendChild(commentBox);
             }
             
-            // Type the response automatically
+            // Show typing indicator for 2 seconds, then type response
             setTimeout(() => {
-                if (document.getElementById(`aiResponse${postIndex}`)) {
-                    typeResponse(`aiResponse${postIndex}`, response, () => {
-                        // Hide typing indicator safely
-                        const typingIndicator = commentBox.querySelector('.typing-indicator');
-                        if (typingIndicator) {
-                            typingIndicator.style.display = 'none';
-                        }
-                        
-                        // Show messenger transition after 2 seconds automatically (only if no conversation is active)
-                        setTimeout(() => {
-                            if (feedPosts[postIndex] && feedPosts[postIndex].name && !messengerConversationActive) {
-                                // Update to messenger stage
-                                const statusElement = document.getElementById('demoStatus');
-                                if (statusElement) {
-                                    statusElement.textContent = 'מעביר לשיחה פרטית...';
-                                }
-                                updateDemoStageText('messenger', 'הסוכן מעביר את השיחה ל-Messenger לייעוץ אישי ואיסוף פרטים.');
-                                
-                                messengerConversationActive = true;
-                                showMessengerTransition(feedPosts[postIndex].name);
-                            }
-                        }, 2000);
-                    });
+                const typingIndicator = commentBox.querySelector('.typing-indicator');
+                if (typingIndicator) {
+                    typingIndicator.style.display = 'none';
                 }
-            }, 1500);
+                
+                // Type the response
+                typeResponse(`aiResponse${postIndex}`, response, () => {
+                    // After typing completes, start messenger
+                    setTimeout(() => {
+                        if (feedPosts[postIndex] && feedPosts[postIndex].name && !messengerConversationActive) {
+                            messengerConversationActive = true;
+                            showMessengerTransition(feedPosts[postIndex].name);
+                        }
+                    }, 1000);
+                });
+            }, 2000);
         }
 
-        function typeResponse(elementId, text, callback) {
+        function typeText(elementId, text, callback, speed = 30) {
             const element = document.getElementById(elementId);
             if (!element || !text) {
                 callback && callback();
@@ -2580,13 +3672,109 @@
                 if (i < text.length && element) {
                     element.textContent += text.charAt(i);
                     i++;
-                    setTimeout(typeChar, 30);
+                    setTimeout(typeChar, speed);
                 } else {
                     callback && callback();
                 }
             }
             
-            typeChar();
+            // Start typing after a brief delay to show typing indicator first
+            setTimeout(typeChar, 800);
+        }
+
+        // Legacy function for backward compatibility
+        function typeResponse(elementId, text, callback) {
+            typeText(elementId, text, callback, DELAYS.TYPING);
+        }
+
+        // Utility functions for common DOM operations
+        function getPostByIndex(postIndex) {
+            return document.querySelector(`[data-index="${postIndex}"]`);
+        }
+
+        function getAllPosts() {
+            return document.querySelectorAll('.facebook-post');
+        }
+
+        function removeFixedElements(selector) {
+            const elements = document.querySelectorAll(selector);
+            elements.forEach(el => el.remove());
+        }
+
+        function createTypingIndicator(senderText = 'הסוכן כותב') {
+            return `
+                <div class="typing-indicator" style="
+                    display: flex;
+                    align-items: center;
+                    gap: 8px;
+                    padding: 12px 16px;
+                    background: rgba(0, 0, 0, 0.05);
+                    border-radius: 12px;
+                    margin: 8px 0;
+                    font-size: 14px;
+                    color: #6b7280;
+                ">
+                    <span>${senderText}</span>
+                    <div style="display: flex; gap: 2px;">
+                        <div style="width: 4px; height: 4px; background: #6b7280; border-radius: 50%; animation: bounce 1.4s infinite;"></div>
+                        <div style="width: 4px; height: 4px; background: #6b7280; border-radius: 50%; animation: bounce 1.4s infinite 0.2s;"></div>
+                        <div style="width: 4px; height: 4px; background: #6b7280; border-radius: 50%; animation: bounce 1.4s infinite 0.4s;"></div>
+                    </div>
+                </div>
+            `;
+        }
+
+        function createMessengerTypingIndicator(isAgent = true, customerName = '') {
+            const senderName = isAgent ? 'הסוכן' : customerName.split(' ')[0];
+            const bgColor = isAgent ? '#0084ff' : '#e4e6ea';
+            const textColor = isAgent ? 'white' : '#050505';
+            const avatarBg = isAgent ? '#0084ff' : '#e4e6ea';
+            const avatarColor = isAgent ? 'white' : '#65676b';
+            const avatarText = isAgent ? 'יוסי' : customerName.split(' ').map(n => n[0]).join('');
+            
+            return `
+                <div class="messenger-typing-indicator" style="
+                    display: flex;
+                    gap: 8px;
+                    margin-bottom: 16px;
+                    ${isAgent ? 'flex-direction: row-reverse;' : ''}
+                ">
+                    <div class="avatar avatar-sm" style="width: 28px; height: 28px; background: ${avatarBg}; color: ${avatarColor}; font-size: 12px; font-weight: 600;">
+                        ${avatarText}
+                    </div>
+                    <div style="background: ${bgColor}; color: ${textColor}; border-radius: 18px; padding: 8px 12px; max-width: 240px; font-size: 14px; line-height: 1.3; display: flex; align-items: center; gap: 8px;">
+                        <div style="display: flex; gap: 3px;">
+                            <div style="width: 6px; height: 6px; background: ${textColor}; border-radius: 50%; animation: bounce 1.4s infinite; opacity: 0.6;"></div>
+                            <div style="width: 6px; height: 6px; background: ${textColor}; border-radius: 50%; animation: bounce 1.4s infinite 0.2s; opacity: 0.6;"></div>
+                            <div style="width: 6px; height: 6px; background: ${textColor}; border-radius: 50%; animation: bounce 1.4s infinite 0.4s; opacity: 0.6;"></div>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+        
+        function showMessengerTyping(customerName, isAgent = true, duration = 2000) {
+            const chat = document.getElementById('messengerChat');
+            if (!chat) return Promise.resolve();
+            
+            const typingId = 'typing-' + Date.now();
+            const typingHTML = createMessengerTypingIndicator(isAgent, customerName);
+            const tempDiv = document.createElement('div');
+            tempDiv.innerHTML = typingHTML;
+            tempDiv.firstElementChild.id = typingId;
+            
+            chat.appendChild(tempDiv.firstElementChild);
+            chat.scrollTop = chat.scrollHeight;
+            
+            return new Promise(resolve => {
+                setTimeout(() => {
+                    const typingElement = document.getElementById(typingId);
+                    if (typingElement) {
+                        typingElement.remove();
+                    }
+                    resolve();
+                }, duration);
+            });
         }
 
         // Reusable popup creation function
@@ -2619,55 +3807,38 @@
         }
 
         function showMessengerTransition(customerName) {
+            console.log('🎆 showMessengerTransition started for:', customerName);
+            
+            // Update progress to messenger stage
+            updateDemoStageText('messenger', 'הלקוח עבר למסנג\'ר - הסוכן מתחיל שיחה אישית לסגירת העסקה.');
+            
             // Remove any existing notifications and popups first
-            const existingNotifications = document.querySelectorAll('[style*="position: fixed"][style*="top: 80px"]');
-            const existingPopups = document.querySelectorAll('[style*="position: fixed"][style*="bottom: 20px"]');
+            console.log('🧹 Removing existing fixed elements');
+            removeFixedElements('[style*="position: fixed"][style*="top: 80px"]');
+            removeFixedElements('[style*="position: fixed"][style*="bottom: 20px"]');
+            removeFixedElements('[style*="position: absolute"][style*="bottom: 20px"]'); // Also remove absolute positioned popups
+            removeFixedElements('[style*="position: absolute"][style*="left: 20px"]'); // Remove left-positioned elements
+            console.log('✅ Fixed elements removed');
             
-            existingNotifications.forEach(el => el.remove());
-            existingPopups.forEach(el => el.remove());
-            
-            // Create messenger notification
-            const notification = document.createElement('div');
-            notification.style.cssText = `
-                position: fixed;
-                top: 80px;
-                left: 20px;
-                background: var(--primary-blue);
-                color: white;
-                padding: 16px 20px;
-                border-radius: var(--border-radius-lg);
-                box-shadow: var(--shadow-md);
-                z-index: 1001;
-                font-weight: 500;
-                animation: slideIn 0.3s ease-out;
-            `;
-            
-            notification.innerHTML = `
-                <div style="display: flex; align-items: center; gap: 8px;">
-                    <i class="fab fa-facebook-messenger" style="font-size: 20px;"></i>
-                    <span>${customerName} התחיל/ה שיחה חדשה</span>
-                </div>
-            `;
-            
-            document.body.appendChild(notification);
-            
-            // Show messenger popup after notification
-            setTimeout(() => {
-                if (messengerConversationActive) {
-                    showMessengerPopup(customerName);
-                    notification.remove();
-                }
-            }, 3000);
+            // Skip notification and go directly to messenger popup
+            console.log('📱 Opening Messenger popup directly');
+            showMessengerPopup(customerName, 0);
+            console.log('✅ showMessengerTransition completed - opened Messenger directly');
         }
 
-        function showMessengerPopup(customerName) {
+        function showMessengerPopup(customerName, resumeFromStep = 0) {
             const popup = document.createElement('div');
+            
+            // Position relative to demo section instead of viewport
+            const demoSection = document.getElementById('demo');
+            const demoContainer = demoSection ? demoSection.querySelector('.demo-container') : null;
+            
             popup.style.cssText = `
-                position: fixed;
+                position: absolute;
                 bottom: 20px;
                 left: 20px;
-                width: 360px;
-                height: 540px;
+                width: min(360px, 90vw);
+                height: min(540px, 70vh);
                 background: white;
                 border-radius: 12px;
                 box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15), 0 0 0 1px rgba(0, 0, 0, 0.05);
@@ -2690,274 +3861,329 @@
                     </div>
                     <button onclick="this.parentElement.parentElement.remove()" style="background: rgba(255,255,255,0.2); border: none; color: white; font-size: 16px; cursor: pointer; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center;">×</button>
                 </div>
-                <div style="padding: 12px 16px; height: 420px; overflow-y: auto; background: #f8f9fa;" id="messengerChat">
+                <div style="padding: 12px 16px; height: 520px; overflow-y: auto; background: #f8f9fa;" id="messengerChat">
                     <!-- Messages will be added here -->
                 </div>
-                <div style="padding: 12px 16px; border-top: 1px solid #e4e6ea; min-height: 64px; display: flex; align-items: center; background: white;" id="typingArea">
-                    <!-- Typing indicators will be shown here -->
-                </div>
             `;
             
-            document.body.appendChild(popup);
+            // Append to demo container instead of body
+            if (demoContainer) {
+                demoContainer.style.position = 'relative'; // Ensure container is positioned
+                demoContainer.appendChild(popup);
+            } else {
+                // Fallback to body if demo container not found
+                document.body.appendChild(popup);
+            }
             
-            // Start the conversation sequence
-            startMessengerConversation(customerName);
+            // Store popup reference for closing when user scrolls away
+            messengerPopup = popup;
+            
+            // Wait for DOM to be fully updated before starting conversation
+            setTimeout(() => {
+                startMessengerConversation(customerName);
+            }, 10);
         }
+        
+
+        function closeMessengerPopup() {
+            console.log('🚨 closeMessengerPopup() called - WHO CALLED THIS?');
+            console.trace();
+            
+            if (messengerPopup) {
+                messengerPopup.remove();
+                messengerPopup = null;
+                messengerConversationActive = false;
+            }
+            
+            // Also remove any notifications
+            removeFixedElements('[style*="position: fixed"][style*="top: 80px"]');
+        }
+
+        // Debug function to check demo state (for testing)
+        function debugDemoState() {
+            console.log('=== DEMO STATE DEBUG ===');
+            console.log('demoStarted:', demoStarted);
+            console.log('messengerConversationActive:', messengerConversationActive);
+            console.log('feedPosts length:', feedPosts.length);
+            console.log('processedPosts:', processedPosts);
+            console.log('========================');
+        }
+        
+        // Make it globally available for testing
+        window.debugDemoState = debugDemoState;
+
+
+        
+        
+        
+        function removeFixedElements(selector) {
+            const elements = document.querySelectorAll(selector);
+            if (elements.length > 0) {
+                console.log('🗑️ removeFixedElements() removing', elements.length, 'elements with selector:', selector);
+            }
+            elements.forEach(el => el.remove());
+        }
+        
         
         function startMessengerConversation(customerName) {
+            startMessengerConversationFromStep(customerName, 0);
+        }
+        
+        function startMessengerConversationFromStep(customerName, fromStep = 0) {
             const chat = document.getElementById('messengerChat');
-            const typingArea = document.getElementById('typingArea');
-            if (!chat || !typingArea) return;
-            
-            // Step 1: Show agent typing first
-            showTypingIndicator(typingArea, 'agent');
-            
-            // Step 2: Agent sends first message after 2 seconds
-            setTimeout(async () => {
-                hideTypingIndicator(typingArea);
-                
-                // Wait for agent to finish typing before customer starts
-                await addAgentMessage(chat, `שלום אבי! ראיתי שחיפשת לחדש את הרצפות בביתך, והייתי שמח לתת לך הצעת מחיר ללא התחייבות. מאמין שנצליח להגיע לעמק השווה בנינו.\nמחכה לעדכון.\nיוסי שיפוצים :)`);
-                
-                // Step 3: Now that agent finished typing, wait 2 seconds then show customer typing
-                setTimeout(() => {
-                    showTypingIndicator(typingArea, 'customer', customerName);
-                    
-                    // Step 4: Customer responds after 2 seconds
-                    setTimeout(() => {
-                        hideTypingIndicator(typingArea);
-                        addCustomerMessage(chat, customerName, 'שלום! כן, אשמח לשמוע עוד פרטים. איך אפשר להתחיל?');
-                        
-                        // Step 5: Close messenger and show final stage (3 seconds)
-                        setTimeout(() => {
-                            document.querySelector('[style*="position: fixed"][style*="bottom: 20px"]')?.remove();
-                            messengerConversationActive = false;
-                            
-                            // Update to completion stage
-                            const statusElement = document.getElementById('demoStatus');
-                            if (statusElement) {
-                                statusElement.textContent = 'הסוכן פועל 24/7 ללא הפסקה!';
-                            }
-                            updateDemoStageText('complete', 'הסוכן ממשיך לעבוד בספר רשתות חברתיות, מזהה לידים חדשים ומעביר אותם למערכת CRM שלך.');
-                            
-                            // Show onboarding form after demo completion explanation + 3 seconds
-                            setTimeout(() => {
-                                showOnboardingForm();
-                            }, 7000);
-                        }, 3000);
-                    }, 2000);
-                }, 2000);
-            }, 2000);
-        }
-        
-        function showTypingIndicator(typingArea, sender, customerName = '') {
-            const isAgent = sender === 'agent';
-            const senderName = isAgent ? 'הסוכן' : customerName.split(' ')[0];
-            
-            typingArea.innerHTML = `
-                <div style="display: flex; gap: 8px; align-items: center;">
-                    <div style="background: #e4e6ea; border-radius: 18px; padding: 8px 12px; font-size: 13px; color: #65676b; display: flex; align-items: center; gap: 6px;">
-                        <span>${senderName} מקליד</span>
-                        <div class="typing-dots" style="display: flex; gap: 2px;">
-                            <div style="width: 3px; height: 3px; background: #65676b; border-radius: 50%; animation: bounce 1.4s infinite;"></div>
-                            <div style="width: 3px; height: 3px; background: #65676b; border-radius: 50%; animation: bounce 1.4s infinite 0.2s;"></div>
-                            <div style="width: 3px; height: 3px; background: #65676b; border-radius: 50%; animation: bounce 1.4s infinite 0.4s;"></div>
-                        </div>
-                    </div>
-                </div>
-            `;
-        }
-        
-        function hideTypingIndicator(typingArea) {
-            typingArea.innerHTML = '';
-        }
-        
-        function addAgentMessage(chat, message) {
-            const uniqueId = `agentTyping${Date.now()}`;
-            const messageDiv = document.createElement('div');
-            messageDiv.style.cssText = `
-                display: flex;
-                gap: 8px;
-                margin-bottom: 16px;
-                flex-direction: row-reverse;
-            `;
-            
-            messageDiv.innerHTML = `
-                <div class="avatar avatar-sm" style="width: 28px; height: 28px; background: #0084ff; color: white; font-size: 12px; font-weight: 600;">
-                    יוסי
-                </div>
-                <div style="background: #0084ff; color: white; border-radius: 18px; padding: 8px 12px; max-width: 240px; font-size: 14px; line-height: 1.3;">
-                    <div id="${uniqueId}"></div>
-                </div>
-            `;
-            
-            chat.appendChild(messageDiv);
-            chat.scrollTop = chat.scrollHeight;
-            
-            // Type the message with animation and return when done
-            return new Promise((resolve) => {
-                typeMessageWithAnimation(uniqueId, message, resolve);
-            });
-        }
-        
-        function addCustomerMessage(chat, customerName, message) {
-            const uniqueId = `customerTyping${Date.now()}`;
-            const messageDiv = document.createElement('div');
-            messageDiv.style.cssText = `
-                display: flex;
-                gap: 8px;
-                margin-bottom: 16px;
-            `;
-            
-            messageDiv.innerHTML = `
-                <div class="avatar avatar-sm" style="width: 28px; height: 28px; background: #e4e6ea; color: #65676b; font-size: 12px; font-weight: 600;">
-                    ${customerName.split(' ').map(n => n[0]).join('')}
-                </div>
-                <div style="background: #e4e6ea; color: #050505; border-radius: 18px; padding: 8px 12px; max-width: 240px; font-size: 14px; line-height: 1.3;">
-                    <div id="${uniqueId}"></div>
-                </div>
-            `;
-            
-            chat.appendChild(messageDiv);
-            chat.scrollTop = chat.scrollHeight;
-            
-            // Type the message with animation using the unique ID
-            typeMessageWithAnimation(uniqueId, message);
-        }
-        
-        function typeMessageWithAnimation(elementId, text, callback) {
-            const element = document.getElementById(elementId);
-            if (!element || !text) {
-                callback && callback();
+            if (!chat) {
+                console.error('CRITICAL: Messenger DOM elements not found!', {
+                    chat: !!chat,
+                    messengerPopup: !!messengerPopup
+                });
                 return;
             }
             
-            let i = 0;
-            element.textContent = '';
+            console.log('Starting messenger conversation from step:', fromStep);
             
-            function typeChar() {
-                if (i < text.length && element) {
-                    element.textContent += text.charAt(i);
-                    i++;
-                    setTimeout(typeChar, 50);
-                } else {
-                    callback && callback();
+            // Step 1: Agent message with built-in typing animation
+            const step1Delay = fromStep === 0 ? 1000 : 0;
+            demoTimeouts.push(setTimeout(async () => {
+                if (fromStep <= 0) {
+                    // Add agent message (has built-in typing animation)
+                    await addAgentMessage(chat, `שלום ${customerName}! ראיתי את הפוסט שלך וחשבתי שאולי אוכל לעזור. אנחנו חברת שיפוצים מקצועית עם ותק של 15 שנה בתחום. נשמח לתת לך הצעת מחיר ללא התחייבות ולהראות לך עבודות שעשינו.\nמה דעתך שנתחיل בשיחה קצרה?`);
                 }
+                
+                // Step 2: Customer response with built-in typing animation
+                const step2Delay = 2000;
+                demoTimeouts.push(setTimeout(async () => {
+                    if (fromStep <= 1) {
+                        // Add customer message (has built-in typing animation)
+                        await addCustomerMessage(chat, customerName, 'שלום! נשמע מעניין. אשמח לשמוע עוד פרטים על העבודה והמחירים. איך אפשר להתחיל?');
+                    }
+                    
+                    // Step 3: Close messenger and complete (2 seconds)
+                    demoTimeouts.push(setTimeout(() => {
+                        finishMessengerConversation();
+                    }, 2000));
+                }, step2Delay));
+            }, step1Delay));
+        }
+        
+        function finishMessengerConversation() {
+            console.log('🏁 finishMessengerConversation() called - NORMAL COMPLETION');
+            
+            // Clear any remaining Messenger timeouts to prevent accumulation
+            console.log('🧹 Clearing accumulated timeouts before finishing conversation');
+            console.log('🧹 Had', demoTimeouts.length, 'timeouts before cleanup');
+            
+            // Call the completion callback FIRST
+            if (demoCompleteCallback) {
+                console.log('Demo sequence completed, calling callback');
+                const callback = demoCompleteCallback;
+                demoCompleteCallback = null; // Clear the callback
+                callback();
             }
             
-            typeChar();
+            // Then cleanup
+            demoTimeouts.forEach(timeout => clearTimeout(timeout));
+            demoTimeouts = [];
+            
+            // Remove both fixed and absolute positioned messenger popups
+            document.querySelector('[style*="position: fixed"][style*="bottom: 20px"]')?.remove();
+            document.querySelector('[style*="position: absolute"][style*="bottom: 20px"]')?.remove();
+            document.querySelector('[style*="position: absolute"][style*="left: 20px"]')?.remove();
+            messengerConversationActive = false;
+            messengerPopup = null;
+            
+            const statusElement = document.getElementById('demoStatus');
+            if (statusElement) {
+                statusElement.textContent = 'מושלם! מעביר את הליד למערכת CRM';
+            }
+            updateDemoStageText('complete', 'הליד נרשם במערכת! הסוכן ממשיך לחפש לקוחות שזוקקים לשירותי שiפוצים ובנייה.');
+            updateProgressStep('complete');
+        }
+        
+        function restartDemo() {
+            console.log('🚫 restartDemo() DISABLED - NOT RESTARTING!');
+            console.trace();
+            // DISABLED: resetDemoState();
+            // DISABLED: setTimeout(() => { startAutoDemo(); }, 1000);
+            return; // Do nothing
+        }
+        
+        
+        function addAgentMessage(chat, message, animate = true) {
+            const uniqueId = `agentTyping${Date.now()}`;
+            
+            return new Promise((resolve) => {
+                if (animate) {
+                    // First show typing indicator
+                    const typingIndicator = createMessengerTypingIndicator(true, 'Agent');
+                    const tempDiv = document.createElement('div');
+                    tempDiv.innerHTML = typingIndicator;
+                    const typingElement = tempDiv.firstElementChild;
+                    const typingId = 'typing-' + Date.now();
+                    typingElement.id = typingId;
+                    
+                    chat.appendChild(typingElement);
+                    chat.scrollTop = chat.scrollHeight;
+                    
+                    // After 2 seconds, remove typing indicator and add actual message
+                    setTimeout(() => {
+                        // Remove typing indicator
+                        document.getElementById(typingId)?.remove();
+                        
+                        // Add the actual message
+                        const messageDiv = document.createElement('div');
+                        messageDiv.style.cssText = `
+                            display: flex;
+                            gap: 8px;
+                            margin-bottom: 16px;
+                            flex-direction: row-reverse;
+                        `;
+                        
+                        messageDiv.innerHTML = `
+                            <div class="avatar avatar-sm" style="width: 28px; height: 28px; background: #0084ff; color: white; font-size: 12px; font-weight: 600;">
+                                יוסי
+                            </div>
+                            <div style="background: #0084ff; color: white; border-radius: 18px; padding: 8px 12px; max-width: 240px; font-size: 14px; line-height: 1.3;">
+                                <div id="${uniqueId}"></div>
+                            </div>
+                        `;
+                        
+                        chat.appendChild(messageDiv);
+                        chat.scrollTop = chat.scrollHeight;
+                        
+                        // Start typing the message
+                        typeMessageWithAnimation(uniqueId, message, resolve);
+                    }, 2000);
+                } else {
+                    // No animation, just add message directly
+                    const messageDiv = document.createElement('div');
+                    messageDiv.style.cssText = `
+                        display: flex;
+                        gap: 8px;
+                        margin-bottom: 16px;
+                        flex-direction: row-reverse;
+                    `;
+                    
+                    messageDiv.innerHTML = `
+                        <div class="avatar avatar-sm" style="width: 28px; height: 28px; background: #0084ff; color: white; font-size: 12px; font-weight: 600;">
+                            יוסי
+                        </div>
+                        <div style="background: #0084ff; color: white; border-radius: 18px; padding: 8px 12px; max-width: 240px; font-size: 14px; line-height: 1.3;">
+                            <div id="${uniqueId}"></div>
+                        </div>
+                    `;
+                    
+                    chat.appendChild(messageDiv);
+                    document.getElementById(uniqueId).textContent = message;
+                    resolve();
+                }
+            });
+        }
+        
+        function addCustomerMessage(chat, customerName, message, animate = true) {
+            const uniqueId = `customerTyping${Date.now()}`;
+            
+            return new Promise((resolve) => {
+                if (animate) {
+                    // First show typing indicator
+                    const typingIndicator = createMessengerTypingIndicator(false, customerName);
+                    const tempDiv = document.createElement('div');
+                    tempDiv.innerHTML = typingIndicator;
+                    const typingElement = tempDiv.firstElementChild;
+                    const typingId = 'typing-' + Date.now();
+                    typingElement.id = typingId;
+                    
+                    chat.appendChild(typingElement);
+                    chat.scrollTop = chat.scrollHeight;
+                    
+                    // After 2 seconds, remove typing indicator and add actual message
+                    setTimeout(() => {
+                        // Remove typing indicator
+                        document.getElementById(typingId)?.remove();
+                        
+                        // Add the actual message
+                        const messageDiv = document.createElement('div');
+                        messageDiv.style.cssText = `
+                            display: flex;
+                            gap: 8px;
+                            margin-bottom: 16px;
+                        `;
+                        
+                        messageDiv.innerHTML = `
+                            <div class="avatar avatar-sm" style="width: 28px; height: 28px; background: #e4e6ea; color: #65676b; font-size: 12px; font-weight: 600;">
+                                ${customerName.split(' ').map(n => n[0]).join('')}
+                            </div>
+                            <div style="background: #e4e6ea; color: #050505; border-radius: 18px; padding: 8px 12px; max-width: 240px; font-size: 14px; line-height: 1.3;">
+                                <div id="${uniqueId}"></div>
+                            </div>
+                        `;
+                        
+                        chat.appendChild(messageDiv);
+                        chat.scrollTop = chat.scrollHeight;
+                        
+                        // Start typing the message
+                        typeMessageWithAnimation(uniqueId, message, resolve);
+                    }, 2000);
+                } else {
+                    // No animation, just add message directly
+                    const messageDiv = document.createElement('div');
+                    messageDiv.style.cssText = `
+                        display: flex;
+                        gap: 8px;
+                        margin-bottom: 16px;
+                    `;
+                    
+                    messageDiv.innerHTML = `
+                        <div class="avatar avatar-sm" style="width: 28px; height: 28px; background: #e4e6ea; color: #65676b; font-size: 12px; font-weight: 600;">
+                            ${customerName.split(' ').map(n => n[0]).join('')}
+                        </div>
+                        <div style="background: #e4e6ea; color: #050505; border-radius: 18px; padding: 8px 12px; max-width: 240px; font-size: 14px; line-height: 1.3;">
+                            <div id="${uniqueId}"></div>
+                        </div>
+                    `;
+                    
+                    chat.appendChild(messageDiv);
+                    document.getElementById(uniqueId).textContent = message;
+                    resolve();
+                }
+            });
+        }
+        
+        // Legacy function for backward compatibility
+        function typeMessageWithAnimation(elementId, text, callback) {
+            typeText(elementId, text, callback, DELAYS.TYPING_SLOW);
         }
 
-        function showOnboardingForm() {
-            const formContent = `
-                <div style="text-align: center; margin-bottom: 32px;">
-                    <div class="avatar" style="width: 80px; height: 80px; margin: 0 auto 16px;">
-                        <i class="fas fa-rocket" style="font-size: 32px; color: white;"></i>
-                    </div>
-                    <h3 style="font-size: 24px; font-weight: 700; color: #0f172a; margin-bottom: 8px;">מוכן להטיס את העסק שלך?</h3>
-                    <p style="color: var(--text-secondary); font-size: 16px;">רק צריך כמה פרטים קטנים כדי להתאים את הסוכן הדיגיטלי בדיוק לעסק שלך</p>
-                </div>
-                    
-                    <form id="onboardingForm" style="display: flex; flex-direction: column; gap: 20px;">
-                        <div>
-                            <label style="display: block; font-weight: 600; color: #374151; margin-bottom: 8px;">איזה תחום עסקי?</label>
-                            <select style="width: 100%; padding: 12px 16px; border: 2px solid #e5e7eb; border-radius: 8px; font-size: 14px; background: white;" required>
-                                <option value="">בחר תחום...</option>
-                                <option value="design">עיצוב פנים</option>
-                                <option value="construction">שיפוצים ובנייה</option>
-                                <option value="automotive">מוסכים ואוטו</option>
-                                <option value="legal">משרדי עורכי דין</option>
-                                <option value="medical">שירותי רפואה</option>
-                                <option value="consulting">ייעוץ עסקי</option>
-                                <option value="other">אחר</option>
-                            </select>
-                        </div>
-                        
-                        <div>
-                            <label style="display: block; font-weight: 600; color: #374151; margin-bottom: 8px;">איזור פעילות עיקרי?</label>
-                            <select style="width: 100%; padding: 12px 16px; border: 2px solid #e5e7eb; border-radius: 8px; font-size: 14px; background: white;" required>
-                                <option value="">בחר איזור...</option>
-                                <option value="center">מרכז</option>
-                                <option value="north">צפון</option>
-                                <option value="south">דרום</option>
-                                <option value="jerusalem">ירושלים והסביבה</option>
-                                <option value="national">כל הארץ</option>
-                            </select>
-                        </div>
-               
-                        <button type="submit" class="btn-base btn-gradient btn-lg" style="width: 100%;">
-                            🚀 שגר את הסוכן הדיגיטלי שלי!
-                        </button>
-                    </form>
-                    
-                <div style="text-align: center; margin-top: 24px; padding-top: 24px; border-top: 1px solid #e5e7eb;">
-                    <div style="display: flex; align-items: center; justify-content: center; gap: 16px; font-size: 14px; color: var(--text-secondary);">
-                        <div style="display: flex; align-items: center; gap: 4px;">
-                            <i class="fas fa-check" style="color: var(--success-green);"></i>
-                            ללא התחייבות
-                        </div>
-                        <div style="display: flex; align-items: center; gap: 4px;">
-                            <i class="fas fa-check" style="color: var(--success-green);"></i>
-                            14 יום חינם
-                        </div>
-                        <div style="display: flex; align-items: center; gap: 4px;">
-                            <i class="fas fa-check" style="color: var(--success-green);"></i>
-                            הגדרה תוך 24 שעות
-                        </div>
-                    </div>
-                </div>
-            `;
-            
-            const overlay = createPopup({
-                content: formContent,
-                containerStyle: 'background: white; border-radius: 20px; padding: 40px; max-width: 500px; width: 100%; position: relative; animation: popupSlideIn 0.4s ease-out;',
-                closeButton: true,
-                zIndex: 1003
-            });
-            
-            // Handle form submission
-            document.getElementById('onboardingForm').addEventListener('submit', function(e) {
-                e.preventDefault();
-                
-                const successContent = `
-                    <div style="text-align: center;">
-                        <div class="avatar" style="width: 80px; height: 80px; background: linear-gradient(135deg, #10b981, #059669); margin: 0 auto 24px;">
-                            <i class="fas fa-check" style="font-size: 32px; color: white;"></i>
-                        </div>
-                        <h3 style="font-size: 24px; font-weight: 700; color: #0f172a; margin-bottom: 16px;">מושלם! ✈️</h3>
-                        <p style="color: var(--text-secondary); font-size: 16px; margin-bottom: 24px; line-height: 1.6;">הסוכן הדיגיטלי שלך עוזב עכשיו לטיסה!<br>תקבל מייל עם פרטי ההתחברות תוך 5 דקות.</p>
-                        <button onclick="this.parentElement.parentElement.remove()" class="btn-base btn-gradient">
-                            סגור
-                        </button>
-                    </div>
-                `;
-                
-                // Show success message
-                overlay.remove();
-                createPopup({
-                    content: successContent,
-                    containerStyle: 'background: white; border-radius: 20px; padding: 40px; max-width: 400px; animation: popupSlideIn 0.4s ease-out;',
-                    zIndex: 1003
-                });
-                
-                setTimeout(() => {
-                    overlay.remove();
-                }, 5000);
-            });
-        }
 
         // Auto-playing demo system
         let demoStarted = false;
         let demoTimeouts = [];
+        
+        // Wrap the push method to log every timeout creation
+        const originalPush = demoTimeouts.push;
+        demoTimeouts.push = function(timeoutId) {
+            console.log('⏰ TIMEOUT #' + (this.length + 1) + ' ADDED - Total timeouts:', this.length + 1);
+            console.trace();
+            return originalPush.call(this, timeoutId);
+        };
         let messengerConversationActive = false;
+        let messengerPopup = null;
         let processedPosts = new Set();
+        let currentPostIndex = 0; // Track which post we're currently analyzing
+        let totalPosts = 0; // Total number of posts in the feed
+        let demoCompleteCallback = null; // Callback to run when demo sequence completes
         
         function clearDemoTimeouts() {
+            console.log('🚨 CLEARING', demoTimeouts.length, 'demo timeouts');
+            console.log('🚨 STACK TRACE:');
+            const stack = new Error().stack;
+            console.log(stack);
             demoTimeouts.forEach(timeout => clearTimeout(timeout));
             demoTimeouts = [];
         }
         
         function resetDemoState() {
+            console.log('🔄 resetDemoState() called - FORCE RESET');
+            console.trace();
             demoStarted = false;
             messengerConversationActive = false;
             processedPosts.clear();
@@ -2968,18 +4194,26 @@
             updateProgressStep('analysis');
             
             // Remove any existing popups
-            const existingPopups = document.querySelectorAll('[style*="position: fixed"][style*="z-index: 100"]');
-            existingPopups.forEach(el => el.remove());
+            removeFixedElements('[style*="position: fixed"][style*="z-index: 100"]');
         }
         
         function startAutoDemo() {
-            if (demoStarted) return;
+            console.log('🚀 startAutoDemo() called - WHO CALLED THIS?');
+            console.trace();
+            if (demoStarted) {
+                console.log('Demo already started, skipping');
+                return;
+            }
             
+            console.log('Starting auto demo...');
             demoStarted = true;
             const statusElement = document.getElementById('demoStatus');
-            if (!statusElement) return;
+            if (!statusElement) {
+                console.error('Status element not found!');
+                return;
+            }
             
-            statusElement.textContent = 'הדגמה בהתחלה...';
+            statusElement.textContent = 'הדגמה מתחילה...';
             
             // Clear any existing timeouts
             clearDemoTimeouts();
@@ -2989,58 +4223,88 @@
             setDemoFocus('right', 'blue');
             
             // Start the original demo automatically
+            console.log('Populating feed...');
             populateFeed();
             
-            // Update status for analysis phase
+            // Save initial progress
+            
+            // Update status for analysis phase and move to detection
             demoTimeouts.push(setTimeout(() => {
+                console.log('Analysis phase timeout triggered');
                 if (statusElement && demoStarted) {
                     statusElement.textContent = 'סורק פוסטים ומנתח רלוונטיות...';
                     updateDemoStageText('analysis', 'הסוכן מנתח כל פוסט בזמן אמת ומזהה לקוחות פוטנציאליים על בסיס תחום הפעילות, איזור ורלוונטיות.');
+                    console.log('Status updated for analysis phase');
                 }
+                
+                // Start detection after analysis phase
+                demoTimeouts.push(setTimeout(() => {
+                    console.log('About to call detectAndMarkPosts from startAutoDemo');
+                    detectAndMarkPosts();
+                }, DELAYS.LONG));
             }, 2000));
             
-            // Reset demo after 60 seconds to allow for full cycle
-            demoTimeouts.push(setTimeout(() => {
-                resetDemoState();
-            }, 60000));
+            // Only reset demo after completion, not on timer
+            // Removed automatic 60-second reset to prevent scroll conflicts
         }
         
-        function startResponseGeneration(postIndex) {
-            const statusElement = document.getElementById('demoStatus');
-            if (statusElement) {
-                statusElement.textContent = 'יוצר תגובה מותאמת אישית...';
-            }
-            
-            updateDemoStageText('response', 'הסוכן מנתח את הפוסט ויוצר תגובה מקצועית ורלוונטית שתוביל לשיחה.');
-            
-            // Generate response after 2 seconds
-            setTimeout(() => {
-                autoHandleComment(postIndex);
-            }, 2000);
-        }
 
         
-        // Intersection Observer for auto-start
         let demoObserver;
         
         function initDemoObserver() {
-            if (demoObserver) return;
-            
+            console.log('Initializing demo observer...');
+            // Simple demo start when scrolled into view
             demoObserver = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
+                    console.log('Demo section intersecting:', entry.isIntersecting, 'demoStarted:', demoStarted);
                     if (entry.isIntersecting && !demoStarted) {
+                        console.log('Starting demo in 1 second...');
                         setTimeout(() => {
-                            if (!demoStarted) {
+                            if (!demoStarted && entry.target.getBoundingClientRect().top < window.innerHeight) {
                                 startAutoDemo();
                             }
                         }, 1000);
+                    } else if (!entry.isIntersecting && demoStarted) {
+                        // User scrolled away - be more careful about when to pause
+                        console.log('Demo scrolled out of view - checking demo phase');
+                        
+                        // Never clear timeouts if we're in or approaching messenger phase
+                        if (!messengerConversationActive && totalPosts > 0 && currentPostIndex < 2) {
+                            console.log('Safe to pause - early demo phase, no messenger activity');
+                            clearDemoTimeouts();
+                        } else {
+                            console.log('Not pausing - in advanced demo phase or messenger active');
+                        }
                     }
                 });
-            }, { threshold: 0.5 });
+            }, { threshold: 0.5, rootMargin: '50px' });
         }
         
         function selectPlan(plan) {
-            showOnboardingForm();
+            // Form moved to landing page
+        }
+        
+        function startDemo() {
+            console.log('startDemo button clicked');
+            // Scroll to demo section and start it immediately
+            const demoSection = document.getElementById('demo');
+            if (demoSection) {
+                console.log('Scrolling to demo section');
+                demoSection.scrollIntoView({ behavior: 'smooth' });
+                // Force start the demo immediately
+                setTimeout(() => {
+                    console.log('Force starting demo from button');
+                    // Only reset if demo is not already running properly
+                    if (!demoStarted || totalPosts === 0) {
+                        console.log('🔴 startDemo() button is calling resetDemoState()');
+                        resetDemoState();
+                        startAutoDemo();
+                    }
+                }, 500);
+            } else {
+                console.error('Demo section not found when button clicked');
+            }
         }
 
         // Add styles for animations
@@ -3063,27 +4327,185 @@
                 90% { transform: translateY(-2px); }
             }
             
-            @keyframes bounceSimple {
-                0%, 100% { transform: translateY(0); }
-                50% { transform: translateY(-4px); }
+            @keyframes messengerSlideIn {
+                from { 
+                    transform: scale(0.8) translateY(40px); 
+                    opacity: 0; 
+                }
+                to { 
+                    transform: scale(1) translateY(0); 
+                    opacity: 1; 
+                }
             }
+            
+            @keyframes pulse {
+                0%, 100% { opacity: 1; }
+                50% { opacity: 0.5; }
+            }
+            
+            @keyframes typingBounce {
+                0%, 60%, 100% { transform: translateY(0); }
+                30% { transform: translateY(-4px); }
+            }
+            
         `;
         document.head.appendChild(style);
 
+        // Advanced Navigation Functions
+        function initAdvancedNavigation() {
+            // Scroll progress indicator
+            function updateScrollProgress() {
+                const scrollProgress = document.querySelector('.scroll-progress');
+                if (scrollProgress) {
+                    const scrollTop = window.pageYOffset;
+                    const docHeight = document.body.scrollHeight - window.innerHeight;
+                    const scrollPercent = (scrollTop / docHeight) * 100;
+                    scrollProgress.style.width = scrollPercent + '%';
+                }
+            }
+
+            // Active navigation state management
+            function updateActiveNavState() {
+                const sections = document.querySelectorAll('section[id]');
+                const navLinks = document.querySelectorAll('.nav-link');
+                
+                let current = '';
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    const sectionHeight = section.clientHeight;
+                    if (window.pageYOffset >= sectionTop - 200) {
+                        current = section.getAttribute('id');
+                    }
+                });
+
+                navLinks.forEach(link => {
+                    const navItem = link.parentElement;
+                    navItem.classList.remove('active');
+                    if (link.getAttribute('href') === '#' + current) {
+                        navItem.classList.add('active');
+                    }
+                });
+            }
+
+            // Mobile menu toggle functionality
+            function initMobileMenu() {
+                const mobileToggle = document.querySelector('.mobile-menu-toggle');
+                const navMenu = document.querySelector('.nav-menu');
+                
+                if (mobileToggle && navMenu) {
+                    mobileToggle.addEventListener('click', () => {
+                        navMenu.classList.toggle('mobile-active');
+                        
+                        // Animate hamburger lines
+                        const spans = mobileToggle.querySelectorAll('span');
+                        spans.forEach((span, index) => {
+                            if (navMenu.classList.contains('mobile-active')) {
+                                if (index === 0) span.style.transform = 'rotate(45deg) translate(6px, 6px)';
+                                if (index === 1) span.style.opacity = '0';
+                                if (index === 2) span.style.transform = 'rotate(-45deg) translate(6px, -6px)';
+                            } else {
+                                span.style.transform = '';
+                                span.style.opacity = '';
+                            }
+                        });
+                    });
+
+                    // Close mobile menu when clicking outside
+                    document.addEventListener('click', (e) => {
+                        if (!mobileToggle.contains(e.target) && !navMenu.contains(e.target)) {
+                            navMenu.classList.remove('mobile-active');
+                            const spans = mobileToggle.querySelectorAll('span');
+                            spans.forEach(span => {
+                                span.style.transform = '';
+                                span.style.opacity = '';
+                            });
+                        }
+                    });
+                }
+            }
+
+            // Enhanced smooth scrolling with navigation effects
+            function enhanceSmoothScrolling() {
+                document.querySelectorAll('.nav-link[href^="#"]').forEach(anchor => {
+                    anchor.addEventListener('click', function (e) {
+                        e.preventDefault();
+                        const targetId = this.getAttribute('href').substring(1);
+                        const targetSection = document.getElementById(targetId);
+                        
+                        if (targetSection) {
+                            // Close mobile menu if open
+                            const navMenu = document.querySelector('.nav-menu');
+                            if (navMenu && navMenu.classList.contains('mobile-active')) {
+                                navMenu.classList.remove('mobile-active');
+                            }
+
+                            // Smooth scroll with enhanced easing
+                            targetSection.scrollIntoView({
+                                behavior: 'smooth',
+                                block: 'start'
+                            });
+
+                            // Add temporary glow effect to target section
+                            targetSection.style.boxShadow = '0 0 30px rgba(59, 130, 246, 0.3)';
+                            setTimeout(() => {
+                                targetSection.style.boxShadow = '';
+                            }, 2000);
+                        }
+                    });
+                });
+            }
+
+            // Initialize all navigation features
+            updateScrollProgress();
+            updateActiveNavState();
+            initMobileMenu();
+            enhanceSmoothScrolling();
+
+            // Add scroll event listeners
+            let scrollTimeout;
+            window.addEventListener('scroll', () => {
+                updateScrollProgress();
+                
+                // Throttle active state updates for performance
+                if (scrollTimeout) clearTimeout(scrollTimeout);
+                scrollTimeout = setTimeout(updateActiveNavState, 100);
+            });
+
+            // Add resize listener for responsive behavior
+            window.addEventListener('resize', () => {
+                updateScrollProgress();
+                updateActiveNavState();
+            });
+        }
+
         // Initialize demo on page load
         document.addEventListener('DOMContentLoaded', function() {
+            console.log('DOM Content Loaded');
+            
+            // Initialize animated stars
+            createStars();
+            
+            // Initialize advanced navigation
+            initAdvancedNavigation();
+            
             const statusElement = document.getElementById('demoStatus');
             if (statusElement) {
                 statusElement.textContent = 'הדגמה תתחיל כשתגיע לכאן...';
+                console.log('Status element found and updated');
+            } else {
+                console.error('Status element not found on DOMContentLoaded');
             }
             
             // Initialize and start observing the demo section
             const demoSection = document.getElementById('demo');
             if (demoSection) {
+                console.log('Demo section found, initializing observer');
                 initDemoObserver();
                 demoObserver.observe(demoSection);
+                console.log('Observer attached to demo section');
+            } else {
+                console.error('Demo section not found!');
             }
-            
             
             // Add smooth scrolling for navigation links
             document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -3095,6 +4517,34 @@
                     }
                 });
             });
+        });
+
+        // Contact form handling
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const submitButton = this.querySelector('button[type="submit"]');
+            const originalText = submitButton.innerHTML;
+            
+            // Show loading state
+            submitButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> שולח...';
+            submitButton.disabled = true;
+            
+            // Simulate form submission (replace with actual form handling)
+            setTimeout(() => {
+                submitButton.innerHTML = '<i class="fas fa-check"></i> נשלח בהצלחה!';
+                submitButton.style.background = 'linear-gradient(135deg, #10b981, #059669)';
+                
+                // Reset form
+                this.reset();
+                
+                // Reset button after 3 seconds
+                setTimeout(() => {
+                    submitButton.innerHTML = originalText;
+                    submitButton.disabled = false;
+                    submitButton.style.background = '';
+                }, 3000);
+            }, 1500);
         });
     </script>
 </body>

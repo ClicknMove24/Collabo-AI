@@ -1430,7 +1430,7 @@
         
         .comparison-column {
             background: rgba(255, 255, 255, 0.05);
-            border: 2px solid rgba(255, 255, 255, 0.15);
+            border: 1px solid var(--border-light);
             border-radius: var(--border-radius);
             padding: 0;
             backdrop-filter: blur(10px);
@@ -1788,71 +1788,45 @@
         /* Demo Progress and Focus Styles */
         .demo-progress {
             display: flex;
-            justify-content: space-between;
+            justify-content: center;
             align-items: center;
             margin: 0 auto 24px auto;
-            padding: 8px 16px;
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(15px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 12px;
-            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
-            max-width: 580px;
+            padding: 12px 20px;
+            background: rgba(248, 250, 252, 0.8);
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            max-width: 500px;
         }
 
         .progress-step {
             display: flex;
-            flex-direction: row;
             align-items: center;
-            gap: 8px;
-            padding: clamp(4px, 1vw, 6px) clamp(6px, 1.5vw, 8px);
-            border-radius: clamp(4px, 1vw, 8px);
+            padding: 8px 12px;
+            border-radius: 6px;
             font-size: 14px;
             font-weight: 500;
-            color: #94a3b8;
-            transition: all 0.3s ease;
-            background: rgba(255, 255, 255, 0.02);
-            position: relative;
+            color: #64748b;
+            background: transparent;
             text-align: center;
-            min-width: clamp(55px, 10vw, 85px);
-            flex: 1;
             white-space: nowrap;
         }
 
-        .progress-step span:first-child {
-            font-size: 12px;
-            line-height: 1;
-            margin-bottom: 1px;
-        }
-
         .progress-step.active {
-            background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
-            color: var(--text-primary);
-            animation: progressPulse 2s infinite;
-            box-shadow: 0 4px 20px rgba(59, 130, 246, 0.3);
+            background: #3b82f6;
+            color: white;
+            font-weight: 600;
         }
 
         .progress-step.completed {
             color: #10b981;
-            background: rgba(16, 185, 129, 0.15);
-            border: 1px solid rgba(16, 185, 129, 0.2);
+            background: #f0f9ff;
         }
 
         .progress-arrow {
-            color: #64748b;
-            margin: 0 12px;
-            transition: color 0.3s ease;
-            font-size: 14px;
-            font-weight: bold;
-        }
-
-        .progress-step.active + .progress-arrow {
-            color: var(--secondary-blue);
-        }
-
-        @keyframes progressPulse {
-            0%, 100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(30, 64, 175, 0.4); }
-            50% { transform: scale(1.05); box-shadow: 0 0 0 8px rgba(30, 64, 175, 0); }
+            color: #cbd5e1;
+            margin: 0 8px;
+            font-size: 12px;
+            font-weight: normal;
         }
 
         .demo-side {
@@ -1916,8 +1890,30 @@
         }
 
         .demo-side.dimmed {
-            opacity: 0.6;
-            filter: brightness(0.8);
+            /* Gray overlay removed per user request */
+        }
+
+        /* Container locking states */
+        .demo-container.locked {
+            opacity: 0.3;
+            pointer-events: none;
+            filter: blur(2px);
+            transition: all 0.5s ease;
+        }
+
+        .demo-side.locked {
+            opacity: 0.3;
+            pointer-events: none;
+            filter: blur(2px);
+            transition: all 0.5s ease;
+        }
+
+        .demo-container.unlocked,
+        .demo-side.unlocked {
+            opacity: 1;
+            pointer-events: auto;
+            filter: none;
+            transition: all 0.5s ease;
         }
 
         @keyframes sidePulse {
@@ -2017,6 +2013,24 @@
         #demoRightSide .status-indicator {
             flex-shrink: 0;
         }
+
+        /* Customer Profile Animations */
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(1.1); }
+        }
+
+        @keyframes slideInFromRight {
+            from { 
+                opacity: 0; 
+                transform: translateX(30px); 
+            }
+            to { 
+                opacity: 1; 
+                transform: translateX(0); 
+            }
+        }
+
     </style>
 </head>
 <body>
@@ -2101,71 +2115,85 @@
     </section>
 
     <!-- Demo Section -->
-    <section class="demo" id="demo">
+    <section class="demo" id="demo" style="padding: 80px 0; min-height: 800px;">
         <div class="container">
-            <div class="section-header">
-                <h2>הדגמה חיה - צפה בסוכן הדיגיטלי בפעולה</h2>
-                <p>ראה איך הסוכן שלנו מזהה לקוחות פוטנציאליים ומגיב אליהם בזמן אמת</p>
+            <!-- Section Header with improved spacing -->
+            <div class="section-header" style="text-align: center; margin-bottom: 35px;">
+                <h2 style="margin-bottom: 16px; font-size: clamp(28px, 4vw, 40px); font-weight: 700; color: var(--text-primary);">הדגמה חיה - צפה בסוכן הדיגיטלי בפעולה</h2>
             </div>
 
-            <!-- Progress Breadcrumb -->
-            <div class="demo-progress" id="demoProgress">
-                <div class="progress-step active" id="step-analysis">
-                    <span>ניתוח פוסטים</span>
-                    <span>🔍</span>
+            <!-- Fixed height container for all content above Facebook feed -->
+            <div style="height: 200px; position: relative; margin-bottom: -15px;">
+                
+                <!-- Progress Breadcrumb with clean design -->
+                <div class="demo-progress" id="demoProgress" style="margin-bottom: 35px; display: none;">
+                    <div class="progress-step" id="step-analysis">
+                        <span>ניתוח פוסטים</span>
+                    </div>
+                    <div class="progress-arrow">→</div>
+                    <div class="progress-step" id="step-response">
+                        <span>יצירת תגובה</span>
+                    </div>
+                    <div class="progress-arrow">→</div>
+                    <div class="progress-step" id="step-messenger">
+                        <span>מעבר למסנג'ר</span>
+                    </div>
+                    <div class="progress-arrow">→</div>
+                    <div class="progress-step" id="step-complete">
+                        <span>סיום</span>
+                    </div>
                 </div>
-                <div class="progress-arrow">→</div>
-                <div class="progress-step" id="step-response">
-                    <span>יצירת תגובה</span>
-                    <span>📝</span>
-                </div>
-                <div class="progress-arrow">→</div>
-                <div class="progress-step" id="step-messenger">
-                    <span>מעבר למסנג'ר</span>
-                    <span>💬</span>
-                </div>
-                <div class="progress-arrow">→</div>
-                <div class="progress-step" id="step-complete">
-                    <span>סיום</span>
-                    <span>🎯</span>
-                </div>
-            </div>
 
-            <div class="demo-container">
-                <div class="demo-content demo-side" id="demoRightSide">
-                    <div class="status-indicator font-semibold mb-4" style="display: flex; flex-direction: column; gap: 8px; padding: 16px 20px; border-radius: 8px; border: 1px solid var(--success-green); font-size: clamp(13px, 2.8vw, 16px); background: transparent; flex-shrink: 0;">
-                        <div style="display: flex; align-items: center; gap: 8px;">
-                            <span style="font-weight: 600; color: var(--success-green);">Live</span>
-                            <span id="demoStatus" style="color: var(--text-primary);">הדגמה תתחיל בקרוב...</span>
-                        </div>
-                        <p style="margin: 0; font-size: clamp(12px, 2.5vw, 16px); color: var(--text-secondary);">הסוכן סורק מיליוני פוסטים בפייסבוק, מזהה לקוחות פוטנציאליים ומגיב אליהם בתוך דקות. כל זה אוטומטית, בלי התערבות שלך.</p>
-                    </div>
+                <!-- Simple Status Text - positioned below navigation -->
+                <div id="greenIndicator" style="display: none; margin: 0 auto 30px auto; font-size: clamp(16px, 3vw, 20px); color: #000000; text-align: center; max-width: 800px;">
+                    <div id="demoStatus" style="direction: rtl; unicode-bidi: embed; text-align: right; width: 100%; min-height: 1.2em; color: #000000;">הדגמה תתחיל בקרוב...</div>
+                </div>
+
+                <!-- Customer Profile - enhanced design and spacing -->
+                <!-- Customer Profile Story -->
+                <div id="customerProfileTemp" style="display: block; max-width: 600px; margin: 30px auto; text-align: center;">
+                
+                <!-- Header -->
+                <div id="profileHeader" style="margin-bottom: 24px; opacity: 0;">
+                    <h3 style="margin: 0 0 8px 0; font-size: 24px; font-weight: 600; color: var(--text-primary);">בואו נכיר את יוסי</h3>
+                    <p style="margin: 0; font-size: 16px; color: var(--text-secondary);">הלקוח המטרה שלנו להדגמה</p>
+                </div>
+
+                <!-- Profile Fields -->
+                <div id="profileFields" style="display: grid; gap: 16px; text-align: right;">
                     
-                    <div class="demo-features" style="display: none;">
-                        <!-- Dynamic features list will be populated here -->
+                    <!-- Business Field -->
+                    <div id="businessField" style="opacity: 0; font-size: 18px;">
+                        <span style="color: var(--text-secondary); font-weight: 500;">תחום עסקי: </span>
+                        <span id="businessValue" style="color: var(--text-primary); font-weight: 600;"></span>
                     </div>
-                    <div style="background: var(--bg-gray); border-radius: 6px; padding: clamp(10px, 2.5vw, 16px); margin-bottom: clamp(6px, 1.5vw, 10px); border: 2px solid var(--ai-purple); flex-shrink: 0;">
-                        <h4 style="margin: 0 0 clamp(6px, 1.5vw, 8px) 0; color: var(--text-primary); font-size: clamp(12px, 2.8vw, 16px); font-weight: 600;">פרופיל הלקוח המטרה</h4>
-                        <div style="display: grid; gap: clamp(4px, 1vw, 6px);">
-                            <div style="display: flex; align-items: center; gap: 8px;">
-                                <span style="color: var(--primary-blue); font-weight: 600; min-width: 40px; font-size: clamp(11px, 2.3vw, 14px);">שם:</span>
-                                <span style="color: var(--text-primary); font-weight: 500; font-size: clamp(11px, 2.3vw, 14px);">יוסי שיפוצים</span>
-                            </div>
-                            <div style="display: flex; align-items: center; gap: 8px;">
-                                <span style="color: var(--primary-blue); font-weight: 600; min-width: 40px; font-size: clamp(11px, 2.3vw, 14px);">תחום:</span>
-                                <span style="color: var(--text-secondary); font-size: clamp(11px, 2.3vw, 14px);">שיפוצים ובנייה</span>
-                            </div>
-                            <div style="display: flex; align-items: center; gap: 8px;">
-                                <span style="color: var(--primary-blue); font-weight: 600; min-width: 40px; font-size: clamp(11px, 2.3vw, 14px);">אזור:</span>
-                                <span style="color: var(--text-secondary); font-size: clamp(11px, 2.3vw, 14px);">מרכז הארץ</span>
-                            </div>
-                        </div>
+
+                    <!-- Location Field -->
+                    <div id="locationField" style="opacity: 0; font-size: 18px;">
+                        <span style="color: var(--text-secondary); font-weight: 500;">אזור פעילות: </span>
+                        <span id="locationValue" style="color: var(--text-primary); font-weight: 600;"></span>
                     </div>
-                    
-                    
+
+                    <!-- Target Field -->
+                    <div id="targetField" style="opacity: 0; font-size: 18px;">
+                        <span style="color: var(--text-secondary); font-weight: 500;">מחפש לקוחות: </span>
+                        <span id="targetValue" style="color: var(--text-primary); font-weight: 600;"></span>
+                    </div>
+
                 </div>
                 
-                <div class="demo-video demo-side" id="demoLeftSide">
+            </div>
+            
+            </div> <!-- End fixed height container -->
+
+            <!-- Demo Features - properly positioned -->
+            <div class="demo-features" style="display: none; max-width: 900px; margin: 0 auto 0px auto;">
+                <!-- Dynamic features list will be populated here -->
+            </div>
+
+            <!-- Demo Container - properly centered and spaced -->
+            <div class="demo-container" style="display: none; justify-content: center; margin-top: 0px;" id="demoContainer">
+                <div class="demo-video demo-side" id="demoLeftSide" style="max-width: 800px; width: 100%;">
                     <!-- Facebook Header - Refined -->
                     <div class="facebook-header" style="
                         background: #4267B2;
@@ -2190,13 +2218,46 @@
                         <!-- Demo posts will be populated here -->
                     </div>
                 </div>
+                
             </div>
         </div>
     </section>
 
-    <!-- Trust Indicators -->
+    <!-- Performance Statistics -->
+    <section class="performance-stats" id="performance-stats" style="padding: 80px 0;">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-badge font-semibold mb-4">ביצועים מוכחים</div>
+                <h2 class="section-title font-black mb-6">התוצאות מדברות בעד עצמן</h2>
+                <p class="section-subtitle">נתונים אמיתיים מלקוחותינו ברחבי הארץ</p>
+            </div>
+            
+            <div class="stats-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; margin-top: 40px;">
+                
+                <!-- Response Rate -->
+                <div class="testimonial-card" style="text-align: center;">
+                    <div style="font-size: clamp(48px, 8vw, 64px); font-weight: 800; color: var(--text-primary); line-height: 1; margin-bottom: 16px;">73%</div>
+                    <h3 style="font-size: 20px; font-weight: 600; color: var(--text-primary); margin-bottom: 8px;">שיעור מענה</h3>
+                    <p style="color: var(--text-secondary); font-size: 16px; line-height: 1.5;">מהלקוחות הפוטנציאליים מגיבים להודעות הסוכן</p>
+                </div>
 
+                <!-- Warm Lead Rate -->
+                <div class="testimonial-card" style="text-align: center;">
+                    <div style="font-size: clamp(48px, 8vw, 64px); font-weight: 800; color: var(--text-primary); line-height: 1; margin-bottom: 16px;">65%</div>
+                    <h3 style="font-size: 20px; font-weight: 600; color: var(--text-primary); margin-bottom: 8px;">שיעור לידים חמים</h3>
+                    <p style="color: var(--text-secondary); font-size: 16px; line-height: 1.5;">מהתגובות הופכות ללידים איכותיים המוכנים לקנייה</p>
+                </div>
 
+                <!-- Total Leads Generated -->
+                <div class="testimonial-card" style="text-align: center;">
+                    <div style="font-size: clamp(48px, 8vw, 64px); font-weight: 800; color: var(--text-primary); line-height: 1; margin-bottom: 16px;">250K</div>
+                    <h3 style="font-size: 20px; font-weight: 600; color: var(--text-primary); margin-bottom: 8px;">סך הלידים שנוצרו</h3>
+                    <p style="color: var(--text-secondary); font-size: 16px; line-height: 1.5;">לידים איכותיים נוצרו עד היום על ידי הסוכנים שלנו</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
 
     <!-- Testimonials -->
     <section class="testimonials" id="testimonials">
@@ -2304,8 +2365,8 @@
         <div class="container">
             <div class="section-header">
                 <div class="section-badge font-semibold mb-4">Competitor Comparison</div>
-                <h2 class="section-title font-black mb-6">איך למצוא לקוחות? 3 אפשרויות</h2>
-                <p class="section-subtitle">השוואה ברורה בין דרכי השגת לקוחות - איך כל שיטה עובדת ומה היא עולה</p>
+                <h2 class="section-title font-black mb-6">תבחרו בחכמה</h2>
+                <p class="section-subtitle" style="margin: 0 auto 8px auto !important;">השוואה ברורה בין דרכי השגת לקוחות - איך כל שיטה עובדת ומה היא עולה</p>
             </div>
             
             <div class="comparison-table">
@@ -2938,17 +2999,17 @@
                             post.appendChild(fireIcon);
                             
                             // Run full demo sequence for relevant post
-                            setTimeout(() => {
+                            setTimeout(async () => {
                                 console.log('Starting autoHandleComment for post:', postIndex, 'current index will be:', index + 1);
-                                autoHandleComment(postIndex, () => {
+                                await autoHandleComment(postIndex, async () => {
                                     console.log('autoHandleComment completed, setting currentPostIndex to:', index + 1);
                                     // DO NOT reset messenger state here - it's already handled in finishMessengerConversation
                                     console.log('🔄 NOT resetting messengerConversationActive - already handled');
                                     // Set next post index AFTER demo completes
                                     currentPostIndex = index + 1;
                                     // After demo completes, continue with next post
-                                    setTimeout(() => {
-                                        continueToNextPost();
+                                    setTimeout(async () => {
+                                        await continueToNextPost();
                                     }, 2000);
                                 });
                             }, 1000);
@@ -2998,15 +3059,11 @@
             processPost(currentPostIndex);
         }
         
-        function continueToNextPost() {
+        async function continueToNextPost() {
             console.log('Continuing to next post, index:', currentPostIndex);
             if (currentPostIndex < totalPosts) {
-                // Update status to show continuing analysis
-                const statusElement = document.getElementById('demoStatus');
-                if (statusElement) {
-                    statusElement.textContent = 'ממשיך לנתח פוסטים נוספים...';
-                }
-                updateDemoStageText('analysis', 'הסוכן ממשיך לסרוק ולנתח פוסטים נוספים בחיפוש אחר לקוחות פוטנציאליים.');
+                // Update status to show continuing analysis - handled by updateEnhancedDemoStage
+                await updateEnhancedDemoStage('analysis');
                 
                 // Continue with detection of remaining posts
                 setTimeout(() => {
@@ -3459,6 +3516,115 @@
             }
         }
 
+        // Enhanced stage descriptions for each demo phase
+        const stageDescriptions = {
+            'profile': {
+                title: 'לומד את פרופיל הלקוח - הסוכן מזהה את תחום הפעילות, איזור ועדיפויות של יוסי שיפוצים כדי למצוא לו לקוחות רלוונטיים'
+            },
+            'analysis': {
+                title: 'סורק פוסטים בפייסבוק - הסוכן מנתח מיליוני פוסטים בזמן אמת, מחפש אנשים שצריכים שיפוצים באיזור מרכז והשרון'
+            },
+            'response': {
+                title: 'כותב תגובה מקצועית - הסוכן יוצר תגובה אישית ומותאמת לכל פוסט, מציג את השירותים בצורה טבעית ומזמין לשיחה'
+            },
+            'messenger': {
+                title: 'עובר למסנגִר - הלקוח מתחיל שיחה פרטית והסוכן ממשיך את השיחה בצורה מקצועית, אוסף פרטים ומזז את הליד למערכת'
+            },
+            'complete': {
+                title: 'הליד נשמר במערכת - כל הפרטים נשמרו ב-CRM והסוכן ממשיך לפעול 24/7, מחפש לקוחות נוספים ומנהל שיחות נוספות'
+            }
+        };
+
+
+        // BLOCKING typewriter animation - Hebrew RTL from fixed position
+        function animateText(element, text) {
+            return new Promise((resolve) => {
+                element.textContent = '';
+                let currentChar = 0;
+                
+                // Set fixed width container for consistent positioning
+                element.style.direction = 'rtl';
+                element.style.textAlign = 'right';
+                element.style.unicodeBidi = 'embed';
+                element.style.width = '100%';
+                element.style.minHeight = '1.2em';
+                element.style.position = 'relative';
+                element.style.color = '#000000'; // Ensure black text during animation
+                
+                function typeNextChar() {
+                    if (currentChar < text.length) {
+                        element.textContent += text.charAt(currentChar);
+                        currentChar++;
+                        setTimeout(typeNextChar, 50); // 50ms delay between characters
+                    } else {
+                        // Animation complete - resolve promise
+                        resolve();
+                    }
+                }
+                
+                // Start typing immediately
+                typeNextChar();
+            });
+        }
+
+        function animateTextAppend(element, text) {
+            return new Promise((resolve) => {
+                const existingContent = element.textContent;
+                let currentChar = 0;
+                
+                // Maintain the same styling
+                element.style.direction = 'rtl';
+                element.style.textAlign = 'right';
+                element.style.unicodeBidi = 'embed';
+                element.style.width = '100%';
+                element.style.color = '#000000';
+                
+                function typeNextChar() {
+                    if (currentChar < text.length) {
+                        element.textContent = existingContent + text.substring(0, currentChar + 1);
+                        currentChar++;
+                        setTimeout(typeNextChar, 50); // 50ms delay between characters
+                    } else {
+                        // Animation complete - resolve promise
+                        resolve();
+                    }
+                }
+                
+                // Start typing immediately
+                typeNextChar();
+            });
+        }
+
+        async function updateEnhancedDemoStage(stage) {
+            const statusElement = document.getElementById('demoStatus');
+            
+            if (!statusElement) return;
+            
+            currentDemoStage = stage;
+            
+            // Update progress step in navigation immediately
+            updateProgressStep(stage);
+            
+            // Get stage info - just use the title
+            const stageInfo = stageDescriptions[stage] || { title: 'הסוכן בפעילות...' };
+            
+            // Ensure text is black before fading
+            statusElement.style.color = '#000000';
+            
+            // Quick clear and start typing immediately - no fade transitions
+            statusElement.style.opacity = '1';
+            statusElement.style.transition = 'none';
+            
+            // Start typing animation and WAIT for it to complete
+            await animateText(statusElement, stageInfo.title);
+            
+            // Ensure text remains black after animation
+            statusElement.style.color = '#000000';
+            statusElement.style.opacity = '1';
+            
+            // Demo can only continue AFTER this function completes
+        }
+
         
         function updateDemoStageText(stage, text) {
             const explanationElement = document.querySelector('.status-indicator p');
@@ -3468,8 +3634,8 @@
             
             currentDemoStage = stage;
             
-            // Update progress step
-            updateProgressStep(stage);
+            // Progress step is already updated by updateEnhancedDemoStage - don't duplicate
+            // updateProgressStep(stage);
             
             // Focus on right side when text updates
             setDemoFocus('right', 'blue');
@@ -3576,7 +3742,7 @@
             }, 600);
         }
 
-        function autoHandleComment(postIndex, onComplete = null) {
+        async function autoHandleComment(postIndex, onComplete = null) {
             const post = getPostByIndex(postIndex);
             if (!post || !post.classList.contains('hot-post')) {
                 if (onComplete) onComplete();
@@ -3590,7 +3756,7 @@
             removePostExplanationBanner(post);
             
             // Update progress to response stage
-            updateDemoStageText('response', 'הסוכן יוצר תגובה מותאמת אישית ומזמין את הלקוח לשיחה פרטית.');
+            await updateEnhancedDemoStage('response');
             
             // Create comment box PROPERLY without breaking post-actions layout
             const commentBox = document.createElement('div');
@@ -3648,10 +3814,10 @@
                 // Type the response
                 typeResponse(`aiResponse${postIndex}`, response, () => {
                     // After typing completes, start messenger
-                    setTimeout(() => {
+                    setTimeout(async () => {
                         if (feedPosts[postIndex] && feedPosts[postIndex].name && !messengerConversationActive) {
                             messengerConversationActive = true;
-                            showMessengerTransition(feedPosts[postIndex].name);
+                            await showMessengerTransition(feedPosts[postIndex].name);
                         }
                     }, 1000);
                 });
@@ -3806,18 +3972,18 @@
             return overlay;
         }
 
-        function showMessengerTransition(customerName) {
+        async function showMessengerTransition(customerName) {
             console.log('🎆 showMessengerTransition started for:', customerName);
             
             // Update progress to messenger stage
-            updateDemoStageText('messenger', 'הלקוח עבר למסנג\'ר - הסוכן מתחיל שיחה אישית לסגירת העסקה.');
+            await updateEnhancedDemoStage('messenger');
             
             // Remove any existing notifications and popups first
             console.log('🧹 Removing existing fixed elements');
             removeFixedElements('[style*="position: fixed"][style*="top: 80px"]');
             removeFixedElements('[style*="position: fixed"][style*="bottom: 20px"]');
             removeFixedElements('[style*="position: absolute"][style*="bottom: 20px"]'); // Also remove absolute positioned popups
-            removeFixedElements('[style*="position: absolute"][style*="left: 20px"]'); // Remove left-positioned elements
+            removeFixedElements('[style*="position: absolute"][style*="left: -150px"]'); // Remove left-positioned elements
             console.log('✅ Fixed elements removed');
             
             // Skip notification and go directly to messenger popup
@@ -3829,14 +3995,19 @@
         function showMessengerPopup(customerName, resumeFromStep = 0) {
             const popup = document.createElement('div');
             
-            // Position relative to demo section instead of viewport
+            // Position relative to Facebook feed instead of demo container
             const demoSection = document.getElementById('demo');
-            const demoContainer = demoSection ? demoSection.querySelector('.demo-container') : null;
+            const facebookFeed = demoSection ? demoSection.querySelector('#demoLeftSide') : null;
+            
+            console.log('Looking for Facebook feed:', facebookFeed ? 'Found' : 'Not found');
+            if (!facebookFeed) {
+                console.error('demoLeftSide element not found!');
+            }
             
             popup.style.cssText = `
                 position: absolute;
                 bottom: 20px;
-                left: 20px;
+                left: -150px;
                 width: min(360px, 90vw);
                 height: min(540px, 70vh);
                 background: white;
@@ -3846,6 +4017,7 @@
                 z-index: 1002;
                 overflow: hidden;
                 animation: popupSlideIn 0.4s ease-out;
+                display: block;
             `;
             
             popup.innerHTML = `
@@ -3866,20 +4038,28 @@
                 </div>
             `;
             
-            // Append to demo container instead of body
-            if (demoContainer) {
-                demoContainer.style.position = 'relative'; // Ensure container is positioned
+            // Append to demo container but position relative to Facebook feed
+            const demoContainer = demoSection ? demoSection.querySelector('.demo-container') : null;
+            if (demoContainer && facebookFeed) {
+                demoContainer.style.position = 'relative'; // Ensure demo container is positioned
                 demoContainer.appendChild(popup);
+                console.log('✅ Popup appended to demo container');
             } else {
-                // Fallback to body if demo container not found
+                // Fallback to body
                 document.body.appendChild(popup);
+                console.log('⚠️ Fallback: Popup appended to body');
             }
             
             // Store popup reference for closing when user scrolls away
             messengerPopup = popup;
             
+            console.log('✅ Popup created and added to DOM');
+            console.log('Popup element:', popup);
+            console.log('Popup parent:', popup.parentElement);
+            
             // Wait for DOM to be fully updated before starting conversation
             setTimeout(() => {
+                console.log('🚀 Starting messenger conversation');
                 startMessengerConversation(customerName);
             }, 10);
         }
@@ -3958,14 +4138,14 @@
                     }
                     
                     // Step 3: Close messenger and complete (2 seconds)
-                    demoTimeouts.push(setTimeout(() => {
-                        finishMessengerConversation();
+                    demoTimeouts.push(setTimeout(async () => {
+                        await finishMessengerConversation();
                     }, 2000));
                 }, step2Delay));
             }, step1Delay));
         }
         
-        function finishMessengerConversation() {
+        async function finishMessengerConversation() {
             console.log('🏁 finishMessengerConversation() called - NORMAL COMPLETION');
             
             // Clear any remaining Messenger timeouts to prevent accumulation
@@ -3987,15 +4167,12 @@
             // Remove both fixed and absolute positioned messenger popups
             document.querySelector('[style*="position: fixed"][style*="bottom: 20px"]')?.remove();
             document.querySelector('[style*="position: absolute"][style*="bottom: 20px"]')?.remove();
-            document.querySelector('[style*="position: absolute"][style*="left: 20px"]')?.remove();
+            document.querySelector('[style*="position: absolute"][style*="left: -150px"]')?.remove();
             messengerConversationActive = false;
             messengerPopup = null;
             
-            const statusElement = document.getElementById('demoStatus');
-            if (statusElement) {
-                statusElement.textContent = 'מושלם! מעביר את הליד למערכת CRM';
-            }
-            updateDemoStageText('complete', 'הליד נרשם במערכת! הסוכן ממשיך לחפש לקוחות שזוקקים לשירותי שiפוצים ובנייה.');
+            // Status text handled by updateEnhancedDemoStage
+            await updateEnhancedDemoStage('complete');
             updateProgressStep('complete');
         }
         
@@ -4191,13 +4368,31 @@
             
             // Reset focus system
             setDemoFocus('neutral');
-            updateProgressStep('analysis');
+            // Don't activate navigation during reset - wait for main demo to start
+            // updateProgressStep('analysis'); 
+            
+            // Reset customer profile visibility for new demo
+            const customerProfile = document.getElementById('customerProfileTemp');
+            const profileHeader = document.getElementById('profileHeader');
+            const businessField = document.getElementById('businessField');
+            const locationField = document.getElementById('locationField');
+            const targetField = document.getElementById('targetField');
+            const demoContainer = document.getElementById('demoContainer');
+            const greenIndicator = document.getElementById('greenIndicator');
+            
+            if (customerProfile) customerProfile.style.display = 'block';
+            if (profileHeader) profileHeader.style.opacity = '0';
+            if (businessField) businessField.style.opacity = '0';
+            if (locationField) locationField.style.opacity = '0';
+            if (targetField) targetField.style.opacity = '0';
+            if (demoContainer) demoContainer.style.display = 'none';
+            if (greenIndicator) greenIndicator.style.display = 'none';
             
             // Remove any existing popups
             removeFixedElements('[style*="position: fixed"][style*="z-index: 100"]');
         }
         
-        function startAutoDemo() {
+        async function startAutoDemo() {
             console.log('🚀 startAutoDemo() called - WHO CALLED THIS?');
             console.trace();
             if (demoStarted) {
@@ -4207,13 +4402,148 @@
             
             console.log('Starting auto demo...');
             demoStarted = true;
+            
+            // Stage 1: Show customer profile only - wait for ceremony to complete
+            await showCustomerProfileOnly();
+            
+            // Stage 2: Immediately after ceremony completes, unlock full containers and start main demo
+            unlockFullContainers();
+            startMainDemo();
+        }
+
+        async function showCustomerProfileOnly() {
+            console.log('Stage 1: Showing customer profile only');
             const statusElement = document.getElementById('demoStatus');
+            const customerProfile = document.getElementById('customerProfileTemp');
+            const container = document.getElementById('demoContainer');
+            const greenIndicator = document.getElementById('greenIndicator');
+            
+            // Update status for profile preparation (don't activate navigation yet)
+            if (statusElement) {
+                await animateText(statusElement, 'מכינים את פרופיל הלקוח...');
+            }
+            
+            // Show green indicator
+            if (greenIndicator) {
+                greenIndicator.style.display = 'block';
+            }
+            
+            // Hide customer profile - we're doing everything in status text
+            if (customerProfile) {
+                customerProfile.style.display = 'none';
+            }
+            
+            // Keep demo container hidden
+            if (container) {
+                container.style.display = 'none';
+            }
+
+            // Start the 10-second progressive animation sequence
+            await startProgressiveProfileAnimation();
+        }
+
+        async function startProgressiveProfileAnimation() {
+            console.log('Starting sequential writing ceremony');
+            
+            const statusElement = document.getElementById('demoStatus');
+            if (!statusElement) return;
+
+            // Profile data
+            const profileData = {
+                clientName: "יוסי שיפוצים",
+                fieldOfActivity: "שיפוצים ובנייה",
+                areasOfActivity: "תל אביב והשרון", 
+                desiredProfile: "בעלי בתים פרטיים"
+            };
+
+            // Phase 1: "שלום!" 
+            await animateText(statusElement, 'שלום!');
+            await new Promise(resolve => setTimeout(resolve, 1500));
+
+            // Phase 2: Clear and show preparation text
+            statusElement.textContent = '';
+            await animateText(statusElement, 'מכינים את פרופיל הלקוח...');
+            await new Promise(resolve => setTimeout(resolve, 2000));
+
+            // Phase 3: Clear and start writing Yossi details line by line
+            statusElement.textContent = '';
+            statusElement.style.whiteSpace = 'pre-line'; // Allow line breaks
+            
+            // Build the complete profile text line by line
+            let profileText = '';
+            
+            // Line 1: Client Name
+            await animateText(statusElement, `שם הלקוח: ${profileData.clientName}`);
+            await new Promise(resolve => setTimeout(resolve, 800));
+            
+            // Line 2: Field of Activity with typewriter animation
+            const currentContent1 = statusElement.textContent;
+            statusElement.textContent = currentContent1 + '\n\n';
+            await animateTextAppend(statusElement, `תחום פעילות: ${profileData.fieldOfActivity}`);
+            await new Promise(resolve => setTimeout(resolve, 800));
+            
+            // Line 3: Areas of Activity with typewriter animation
+            const currentContent2 = statusElement.textContent;
+            statusElement.textContent = currentContent2 + '\n\n';
+            await animateTextAppend(statusElement, `אזורי פעילות: ${profileData.areasOfActivity}`);
+            await new Promise(resolve => setTimeout(resolve, 800));
+            
+            // Line 4: Desired Client Profile with typewriter animation
+            const currentContent3 = statusElement.textContent;
+            statusElement.textContent = currentContent3 + '\n\n';
+            await animateTextAppend(statusElement, `פרופיל לקוח רצוי: ${profileData.desiredProfile}`);
+            await new Promise(resolve => setTimeout(resolve, 800));
+            
+            // Keep the details visible for presentation - wait 2 seconds before clearing
+            await new Promise(resolve => setTimeout(resolve, 2000));
+
+            // Phase 4: Clear everything and start main demo
+            statusElement.textContent = '';
+            statusElement.style.whiteSpace = 'normal'; // Reset white space
+            
+            console.log('Sequential writing ceremony completed');
+        }
+
+        function unlockFullContainers() {
+            console.log('Stage 2: Hiding customer profile and showing demo container');
+            const customerProfile = document.getElementById('customerProfileTemp');
+            const container = document.getElementById('demoContainer');
+            const greenIndicator = document.getElementById('greenIndicator');
+            
+            // Hide customer profile
+            if (customerProfile) {
+                customerProfile.style.display = 'none';
+            }
+            
+            // Show green indicator
+            if (greenIndicator) {
+                greenIndicator.style.display = 'block';
+            }
+            
+            // Show centered demo container
+            if (container) {
+                container.style.display = 'flex';
+            }
+        }
+
+        function startMainDemo() {
+            console.log('Starting main demo sequence...');
+            const statusElement = document.getElementById('demoStatus');
+            const demoProgress = document.getElementById('demoProgress');
+            
             if (!statusElement) {
                 console.error('Status element not found!');
                 return;
             }
             
-            statusElement.textContent = 'הדגמה מתחילה...';
+            // Show the demo navigation now that main demo is starting
+            if (demoProgress) {
+                demoProgress.style.display = 'flex';
+            }
+            
+            // Set initial status while demo initializes
+            statusElement.textContent = 'מתחיל הדגמה...';
+            statusElement.style.color = '#000000';
             
             // Clear any existing timeouts
             clearDemoTimeouts();
@@ -4229,11 +4559,10 @@
             // Save initial progress
             
             // Update status for analysis phase and move to detection
-            demoTimeouts.push(setTimeout(() => {
+            demoTimeouts.push(setTimeout(async () => {
                 console.log('Analysis phase timeout triggered');
                 if (statusElement && demoStarted) {
-                    statusElement.textContent = 'סורק פוסטים ומנתח רלוונטיות...';
-                    updateDemoStageText('analysis', 'הסוכן מנתח כל פוסט בזמן אמת ומזהה לקוחות פוטנציאליים על בסיס תחום הפעילות, איזור ורלוונטיות.');
+                    await updateEnhancedDemoStage('analysis');
                     console.log('Status updated for analysis phase');
                 }
                 
@@ -4260,9 +4589,9 @@
                     console.log('Demo section intersecting:', entry.isIntersecting, 'demoStarted:', demoStarted);
                     if (entry.isIntersecting && !demoStarted) {
                         console.log('Starting demo in 1 second...');
-                        setTimeout(() => {
+                        setTimeout(async () => {
                             if (!demoStarted && entry.target.getBoundingClientRect().top < window.innerHeight) {
-                                startAutoDemo();
+                                await startAutoDemo();
                             }
                         }, 1000);
                     } else if (!entry.isIntersecting && demoStarted) {
@@ -4292,14 +4621,17 @@
             if (demoSection) {
                 console.log('Scrolling to demo section');
                 demoSection.scrollIntoView({ behavior: 'smooth' });
-                // Force start the demo immediately
-                setTimeout(() => {
-                    console.log('Force starting demo from button');
-                    // Only reset if demo is not already running properly
-                    if (!demoStarted || totalPosts === 0) {
-                        console.log('🔴 startDemo() button is calling resetDemoState()');
-                        resetDemoState();
-                        startAutoDemo();
+                // Don't reset if demo is already started - just scroll to it
+                if (demoStarted) {
+                    console.log('Demo already running, just scrolling to view');
+                    return;
+                }
+                // Force start the demo immediately if not started
+                setTimeout(async () => {
+                    console.log('Starting demo from button (demo not yet started)');
+                    // Only start if still not started (prevent race conditions)
+                    if (!demoStarted) {
+                        await startAutoDemo();
                     }
                 }, 500);
             } else {
@@ -4346,6 +4678,69 @@
             @keyframes typingBounce {
                 0%, 60%, 100% { transform: translateY(0); }
                 30% { transform: translateY(-4px); }
+            }
+            
+            /* BOMBASTIC STATS ANIMATIONS */
+            @keyframes backgroundPulse {
+                0%, 100% { opacity: 0.3; transform: scale(1); }
+                50% { opacity: 0.8; transform: scale(1.1); }
+            }
+            
+            @keyframes gradientShift {
+                0%, 100% { background-position: 0% 50%; }
+                50% { background-position: 100% 50%; }
+            }
+            
+            @keyframes textGlow {
+                0%, 100% { 
+                    text-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+                    transform: scale(1);
+                }
+                50% { 
+                    text-shadow: 0 4px 30px rgba(255, 255, 255, 0.3), 0 0 40px rgba(59, 130, 246, 0.4);
+                    transform: scale(1.02);
+                }
+            }
+            
+            @keyframes floatUp {
+                0%, 100% { transform: translateY(0px) scale(1); }
+                33% { transform: translateY(-8px) scale(1.02); }
+                66% { transform: translateY(-4px) scale(1.01); }
+            }
+            
+            @keyframes borderGlow {
+                0%, 100% { opacity: 0.5; transform: rotate(0deg); }
+                50% { opacity: 1; transform: rotate(180deg); }
+            }
+            
+            @keyframes numberPulse {
+                0%, 100% { 
+                    transform: scale(1);
+                    filter: brightness(1);
+                }
+                50% { 
+                    transform: scale(1.1);
+                    filter: brightness(1.3) saturate(1.2);
+                }
+            }
+            
+            @keyframes sparkle {
+                0%, 100% { 
+                    transform: scale(1) rotate(0deg);
+                    opacity: 0.8;
+                }
+                25% { 
+                    transform: scale(1.2) rotate(90deg);
+                    opacity: 1;
+                }
+                50% { 
+                    transform: scale(1.4) rotate(180deg);
+                    opacity: 0.9;
+                }
+                75% { 
+                    transform: scale(1.2) rotate(270deg);
+                    opacity: 1;
+                }
             }
             
         `;
@@ -4488,13 +4883,7 @@
             // Initialize advanced navigation
             initAdvancedNavigation();
             
-            const statusElement = document.getElementById('demoStatus');
-            if (statusElement) {
-                statusElement.textContent = 'הדגמה תתחיל כשתגיע לכאן...';
-                console.log('Status element found and updated');
-            } else {
-                console.error('Status element not found on DOMContentLoaded');
-            }
+            // Status text will be initialized by demo when it starts
             
             // Initialize and start observing the demo section
             const demoSection = document.getElementById('demo');

@@ -2,7 +2,10 @@
 <html lang="he" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
     <title>Collabo AI Pro - הסוכן הדיגיטלי המתקדם לעסקים</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
@@ -67,6 +70,10 @@
             background: #ffffff;
             font-weight: 400;
             min-height: 100vh;
+            -webkit-text-size-adjust: 100%;
+            -ms-text-size-adjust: 100%;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
         }
 
         
@@ -1913,6 +1920,13 @@
             }
         }
 
+        /* Hide mobile comparison cards on desktop */
+        @media (min-width: 769px) {
+            .comparison-mobile-cards {
+                display: none;
+            }
+        }
+        
         /* Mobile and small tablet design */
         @media (max-width: 768px) {
             /* Header mobile improvements */
@@ -1922,6 +1936,7 @@
             
             .header-content {
                 padding: 0 16px;
+                position: relative;
             }
             
             .logo-section h1 {
@@ -1932,53 +1947,112 @@
                 font-size: 18px;
             }
             
+            /* Hide navigation on mobile to make room for CTA */
+            .nav-container {
+                display: none;
+            }
+            
+            /* Improved mobile CTA button */
+            .header-cta-section {
+                flex-shrink: 0;
+            }
+            
             .header-cta-section .cta-button {
-                padding: 8px 16px;
-                font-size: 14px;
+                padding: 10px 18px;
+                font-size: 13px;
+                border-radius: 8px;
+                min-width: 120px;
+                text-align: center;
             }
             
             .cta-text {
                 font-size: 13px;
+                white-space: nowrap;
+            }
+            
+            .cta-icon {
+                font-size: 12px;
+            }
+            
+            /* Mobile menu toggle - show when needed */
+            .mobile-menu-toggle {
+                display: flex;
+                margin-left: 12px;
+            }
+            
+            .mobile-menu-toggle span {
+                background: var(--text-primary);
             }
             
             /* Hero responsive */
             .hero {
-                padding: 60px 0 40px;
+                padding: 70px 0 50px;
+                margin-top: 60px; /* Account for fixed header */
             }
             
             .hero-content {
                 padding: 0 16px;
+                text-align: center;
             }
             
             .hero h1 {
                 font-size: clamp(28px, 6vw, 36px);
                 line-height: 1.2;
-                margin-bottom: 16px;
+                margin-bottom: 20px;
+                text-align: center;
             }
             
             .hero .subtitle {
-                font-size: 18px;
-                line-height: 1.4;
+                font-size: 17px;
+                line-height: 1.5;
                 margin-bottom: 32px;
+                color: var(--text-secondary);
+                max-width: 100%;
+                text-align: center;
             }
             
             .hero-badge {
                 font-size: 12px;
-                padding: 6px 12px;
-                margin-bottom: 16px;
+                padding: 8px 14px;
+                margin-bottom: 20px;
+                margin-left: auto;
+                margin-right: auto;
+                display: inline-flex;
+                justify-content: center;
+                border-radius: 20px;
+                background: rgba(76, 29, 149, 0.1);
+                border: 1px solid rgba(76, 29, 149, 0.2);
+                color: var(--ai-purple);
+                font-weight: 600;
             }
             
             .hero-cta-group {
                 flex-direction: column;
                 align-items: center;
                 gap: 16px;
+                padding: 0 8px;
             }
             
             .hero-cta-group .btn-base {
                 width: 100%;
-                max-width: 300px;
+                max-width: 320px;
                 font-size: 16px;
-                padding: 16px 24px;
+                padding: 18px 24px;
+                border-radius: 12px;
+                text-align: center;
+                font-weight: 600;
+            }
+            
+            .hero-cta-group .cta-primary {
+                order: 1;
+            }
+            
+            .hero-cta-group .cta-secondary {
+                order: 2;
+                background: transparent;
+                border: 2px solid var(--border-light);
+                color: var(--text-primary);
+                font-weight: 600;
             }
             
             .demo-container {
@@ -2014,7 +2088,7 @@
             
             /* Demo section mobile - preserve logic while improving responsiveness */
             .demo {
-                padding: 60px 0 !important;
+                padding: 50px 0 !important;
                 min-height: auto !important;
             }
             
@@ -2023,12 +2097,23 @@
             }
             
             .demo .section-header {
-                margin-bottom: 24px !important;
+                margin-bottom: 30px !important;
+                text-align: center;
             }
             
             .demo .section-header h2 {
                 font-size: clamp(24px, 5vw, 32px) !important;
                 line-height: 1.2;
+                margin-bottom: 12px;
+                color: var(--text-primary);
+            }
+            
+            .demo .section-header p {
+                font-size: 16px;
+                line-height: 1.5;
+                color: var(--text-secondary);
+                max-width: 90%;
+                margin: 0 auto;
             }
             
             /* Fixed height container mobile optimization */
@@ -2039,8 +2124,20 @@
 
             .social-feed-demo {
                 height: 100%;
-                padding: clamp(8px, 3vw, 16px);
-                border-radius: clamp(6px, 2vw, 12px);
+                padding: clamp(12px, 3vw, 16px);
+                border-radius: clamp(8px, 2vw, 12px);
+                background: #f8f9fa;
+                border: 1px solid #e9ecef;
+                box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            }
+            
+            .facebook-header {
+                border-radius: 8px 8px 0 0 !important;
+                margin-bottom: 0 !important;
+            }
+            
+            .demo-container {
+                margin-top: 20px !important;
             }
             
             .facebook-post {
@@ -2116,7 +2213,8 @@
             
             /* Stats section responsive */
             .stats {
-                padding: 40px 0;
+                padding: 50px 0;
+                background: var(--bg-gray);
             }
             
             .stats .container {
@@ -2125,20 +2223,40 @@
             
             .stats-grid {
                 grid-template-columns: 1fr;
-                gap: 24px;
+                gap: 28px;
+                margin-top: 36px;
             }
             
             .stats .section-header {
-                margin-bottom: 32px;
+                margin-bottom: 36px;
+                text-align: center;
             }
             
             .stats .section-header h2 {
-                font-size: clamp(28px, 6vw, 36px);
+                font-size: clamp(26px, 6vw, 34px);
+                margin-bottom: 12px;
+                color: var(--text-primary);
+                font-weight: 800;
+            }
+            
+            .stats .section-subtitle {
+                font-size: 16px;
+                color: var(--text-secondary);
+                line-height: 1.5;
+            }
+            
+            .stats .testimonial-card {
+                padding: 24px;
+                border-radius: 16px;
+                background: white;
+                box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+                border: 1px solid var(--border-light);
+                text-align: center;
             }
             
             /* Testimonials responsive */
             .testimonials {
-                padding: 60px 0;
+                padding: 50px 0;
             }
             
             .testimonials .container {
@@ -2148,24 +2266,48 @@
             .testimonials-grid {
                 grid-template-columns: 1fr;
                 gap: 24px;
+                margin-top: 36px;
             }
             
             .testimonial-card {
-                padding: 20px;
+                padding: 24px;
+                border-radius: 16px;
+                background: white;
+                box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+                border: 1px solid var(--border-light);
             }
             
             .testimonial-text {
-                font-size: 15px;
-                line-height: 1.5;
+                font-size: 16px;
+                line-height: 1.6;
+                margin-bottom: 20px;
+                color: var(--text-primary);
+            }
+            
+            .testimonials .section-header {
+                text-align: center;
+                margin-bottom: 36px;
             }
             
             .testimonials .section-header h2 {
-                font-size: clamp(28px, 6vw, 36px);
+                font-size: clamp(26px, 6vw, 34px);
+                margin-bottom: 12px;
+                color: var(--text-primary);
+                font-weight: 800;
+            }
+            
+            .testimonials .section-subtitle {
+                font-size: 16px;
+                color: var(--text-secondary);
+                line-height: 1.5;
+                max-width: 90%;
+                margin: 0 auto;
             }
             
             /* Pricing responsive */
             .pricing {
-                padding: 60px 0;
+                padding: 50px 0;
+                background: var(--bg-light);
             }
             
             .pricing .container {
@@ -2174,27 +2316,249 @@
             
             .pricing-cards {
                 grid-template-columns: 1fr;
-                gap: 24px;
+                gap: 28px;
+                margin-top: 36px;
+            }
+            
+            .pricing .section-header {
+                text-align: center;
+                margin-bottom: 36px;
             }
             
             .pricing .section-header h2 {
-                font-size: clamp(28px, 6vw, 36px);
+                font-size: clamp(26px, 6vw, 34px);
+                margin-bottom: 12px;
+                color: var(--text-primary);
+                font-weight: 800;
             }
             
-            /* Comparison table responsive */
-            .comparison-table {
-                overflow-x: auto;
-                margin: 40px auto;
+            .pricing .section-subtitle {
+                font-size: 16px;
+                color: var(--text-secondary);
+                line-height: 1.5;
+                max-width: 90%;
+                margin: 0 auto;
+            }
+            
+            .pricing-card {
+                padding: 28px 24px;
+                border-radius: 16px;
+                background: white;
+                box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+                border: 2px solid var(--border-light);
+                text-align: center;
+            }
+            
+            .pricing-card.featured {
+                border-color: var(--ai-purple);
+                box-shadow: 0 8px 24px rgba(76, 29, 149, 0.2);
+            }
+            
+            /* Comparison table responsive - Convert to cards */
+            .comparison-section {
+                padding: 50px 0;
+                background: var(--bg-gray);
+            }
+            
+            .comparison-section .container {
                 padding: 0 16px;
             }
             
-            .comparison-grid {
-                min-width: 800px;
+            .comparison-section .section-header {
+                text-align: center;
+                margin-bottom: 36px;
+            }
+            
+            .comparison-section .section-header h2 {
+                font-size: clamp(26px, 6vw, 34px);
+                margin-bottom: 12px;
+                color: var(--text-primary);
+                font-weight: 800;
+            }
+            
+            .comparison-table {
+                display: none; /* Hide original table on mobile */
+            }
+            
+            /* Mobile comparison cards */
+            .comparison-mobile-cards {
+                display: flex;
+                flex-direction: column;
+                gap: 20px;
+                margin-top: 36px;
+            }
+            
+            .comparison-card {
+                background: white;
+                border-radius: 16px;
+                padding: 24px;
+                box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+                border: 2px solid var(--border-light);
+            }
+            
+            .comparison-card.featured {
+                border-color: var(--ai-purple);
+                box-shadow: 0 8px 24px rgba(76, 29, 149, 0.2);
+                position: relative;
+            }
+            
+            .comparison-card.featured::before {
+                content: "מומלץ";
+                position: absolute;
+                top: -10px;
+                right: 20px;
+                background: var(--ai-purple);
+                color: white;
+                padding: 4px 12px;
+                border-radius: 20px;
+                font-size: 12px;
+                font-weight: 600;
+            }
+            
+            .comparison-card h3 {
+                font-size: 20px;
+                font-weight: 700;
+                margin-bottom: 16px;
+                color: var(--text-primary);
+                text-align: center;
+            }
+            
+            .comparison-feature {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding: 12px 0;
+                border-bottom: 1px solid var(--border-light);
+            }
+            
+            .comparison-feature:last-child {
+                border-bottom: none;
+            }
+            
+            .comparison-feature-name {
+                font-size: 14px;
+                color: var(--text-secondary);
+                font-weight: 500;
+            }
+            
+            .comparison-feature-value {
+                font-size: 14px;
+                color: var(--text-primary);
+                font-weight: 600;
+            }
+            
+            .comparison-feature-value.check {
+                color: var(--success-green);
+            }
+            
+            .comparison-feature-value.cross {
+                color: #dc2626;
             }
             
             /* Contact section responsive */
             .contact {
-                padding: 60px 0;
+                padding: 50px 0;
+                background: var(--bg-light);
+            }
+            
+            .contact .container {
+                padding: 0 16px;
+            }
+            
+            .contact-container {
+                max-width: 100%;
+                margin: 0 auto;
+                text-align: center;
+            }
+            
+            .contact .section-header {
+                margin-bottom: 36px;
+                text-align: center;
+            }
+            
+            .contact .section-header h2 {
+                font-size: clamp(26px, 6vw, 34px);
+                margin-bottom: 12px;
+                color: var(--text-primary);
+                font-weight: 800;
+            }
+            
+            .contact .section-subtitle {
+                font-size: 16px;
+                color: var(--text-secondary);
+                line-height: 1.5;
+                max-width: 90%;
+                margin: 0 auto;
+            }
+            
+            .contact-form {
+                background: white;
+                padding: 32px 24px;
+                border-radius: 16px;
+                box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+                border: 1px solid var(--border-light);
+                max-width: 100%;
+                margin: 0 auto;
+            }
+            
+            .form-group {
+                margin-bottom: 20px;
+                text-align: right;
+            }
+            
+            .form-group label {
+                display: block;
+                font-size: 14px;
+                font-weight: 600;
+                color: var(--text-primary);
+                margin-bottom: 6px;
+            }
+            
+            .form-group input,
+            .form-group select,
+            .form-group textarea {
+                width: 100%;
+                padding: 14px 16px;
+                border: 2px solid var(--border-light);
+                border-radius: 8px;
+                font-size: 16px;
+                font-family: inherit;
+                background: white;
+                transition: border-color 0.3s ease;
+            }
+            
+            .form-group input:focus,
+            .form-group select:focus,
+            .form-group textarea:focus {
+                outline: none;
+                border-color: var(--ai-purple);
+                box-shadow: 0 0 0 3px rgba(76, 29, 149, 0.1);
+            }
+            
+            .form-row {
+                display: grid;
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .contact-form button {
+                width: 100%;
+                padding: 18px 24px;
+                background: var(--ai-purple);
+                color: white;
+                border: none;
+                border-radius: 12px;
+                font-size: 16px;
+                font-weight: 600;
+                cursor: pointer;
+                transition: all 0.3s ease;
+                margin-top: 12px;
+            }
+            
+            .contact-form button:hover {
+                background: #3730a3;
+                transform: translateY(-2px);
+                box-shadow: 0 8px 24px rgba(76, 29, 149, 0.3);
             }
             
             .contact .container {
@@ -2239,6 +2603,26 @@
         
         /* Very small screens (iPhone SE, etc.) */
         @media (max-width: 480px) {
+            /* Header adjustments for very small screens */
+            .header-content {
+                padding: 0 12px;
+            }
+            
+            .logo-text {
+                font-size: 16px;
+            }
+            
+            .header-cta-section .cta-button {
+                padding: 8px 14px;
+                font-size: 12px;
+                min-width: 100px;
+            }
+            
+            .mobile-menu-toggle {
+                margin-left: 8px;
+            }
+            
+            /* Hero section for very small screens */
             .hero h1 {
                 font-size: clamp(24px, 5vw, 32px);
                 line-height: 1.1;
@@ -2253,11 +2637,96 @@
                 padding: 0 12px;
             }
             
+            .hero-cta-group .btn-base {
+                max-width: 280px;
+                font-size: 14px;
+                padding: 14px 20px;
+            }
+            
             .section-header h2 {
                 font-size: clamp(24px, 5vw, 32px);
             }
             
             .section-header p {
+                font-size: 14px;
+            }
+            
+            /* Contact section for very small screens */
+            .contact .container {
+                padding: 0 12px;
+            }
+            
+            .contact-form {
+                padding: 24px 20px;
+                border-radius: 12px;
+            }
+            
+            .form-group input,
+            .form-group select,
+            .form-group textarea {
+                padding: 12px 14px;
+                font-size: 16px; /* Keep 16px to prevent zoom on iOS */
+            }
+            
+            .contact-form button {
+                padding: 16px 20px;
+                font-size: 16px;
+            }
+            
+            /* Additional mobile optimizations */
+            .stats .testimonial-card {
+                padding: 20px;
+            }
+            
+            .testimonial-card {
+                padding: 20px;
+            }
+            
+            .pricing-card {
+                padding: 24px 20px;
+            }
+            
+            .comparison-card {
+                padding: 20px;
+            }
+            
+            .hero-badge {
+                padding: 6px 12px;
+                font-size: 11px;
+            }
+            
+            /* General mobile improvements */
+            .container {
+                padding: 0 12px;
+            }
+            
+            .btn-base {
+                font-size: 14px;
+                padding: 14px 20px;
+            }
+            
+            /* Ensure proper spacing on all sections */
+            section {
+                padding: 40px 0;
+            }
+            
+            /* Typography improvements for very small screens */
+            .section-badge {
+                font-size: 11px;
+                padding: 3px 8px;
+            }
+            
+            .testimonial-author h4 {
+                font-size: 14px;
+            }
+            
+            .testimonial-author span {
+                font-size: 12px;
+            }
+            
+            .avatar {
+                width: 40px;
+                height: 40px;
                 font-size: 14px;
             }
             
@@ -3021,6 +3490,121 @@
                     <div class="comparison-cell">תשלום חד פעמי</div>
                 </div>
             </div>
+            
+            <!-- Mobile Comparison Cards - Only visible on mobile -->
+            <div class="comparison-mobile-cards">
+                <!-- Advertising Companies Card -->
+                <div class="comparison-card">
+                    <h3>חברות פרסום</h3>
+                    <div class="comparison-feature">
+                        <span class="comparison-feature-name">עלות חודשית</span>
+                        <span class="comparison-feature-value">₪5,000-15,000</span>
+                    </div>
+                    <div class="comparison-feature">
+                        <span class="comparison-feature-name">כמות לקוחות חדשים</span>
+                        <span class="comparison-feature-value">תלוי בתקציב</span>
+                    </div>
+                    <div class="comparison-feature">
+                        <span class="comparison-feature-name">מהירות תגובה ללקוח</span>
+                        <span class="comparison-feature-value">שעות או ימים</span>
+                    </div>
+                    <div class="comparison-feature">
+                        <span class="comparison-feature-name">רמת אוטומציה</span>
+                        <span class="comparison-feature-value">פרסום בלבד</span>
+                    </div>
+                    <div class="comparison-feature">
+                        <span class="comparison-feature-name">שעות פעילות</span>
+                        <span class="comparison-feature-value">מוגבל לשעות עבודה</span>
+                    </div>
+                    <div class="comparison-feature">
+                        <span class="comparison-feature-name">מעקב ובקרה</span>
+                        <span class="comparison-feature-value">דוחות מוגבלים</span>
+                    </div>
+                    <div class="comparison-feature">
+                        <span class="comparison-feature-name">קלות שימוש</span>
+                        <span class="comparison-feature-value">מורכב ודורש הכשרה</span>
+                    </div>
+                    <div class="comparison-feature">
+                        <span class="comparison-feature-name">התחייבות חוזית</span>
+                        <span class="comparison-feature-value">12-24 חודשים</span>
+                    </div>
+                </div>
+                
+                <!-- Collabo AI Pro Card - Featured -->
+                <div class="comparison-card featured">
+                    <h3>Collabo AI Pro</h3>
+                    <div class="comparison-feature">
+                        <span class="comparison-feature-name">עלות חודשית</span>
+                        <span class="comparison-feature-value check">₪250</span>
+                    </div>
+                    <div class="comparison-feature">
+                        <span class="comparison-feature-name">כמות לקוחות חדשים</span>
+                        <span class="comparison-feature-value check">10-20 לידים יומיים</span>
+                    </div>
+                    <div class="comparison-feature">
+                        <span class="comparison-feature-name">מהירות תגובה ללקוח</span>
+                        <span class="comparison-feature-value check">תוך 2 דקות</span>
+                    </div>
+                    <div class="comparison-feature">
+                        <span class="comparison-feature-name">רמת אוטומציה</span>
+                        <span class="comparison-feature-value check">אוטומציה מלאה</span>
+                    </div>
+                    <div class="comparison-feature">
+                        <span class="comparison-feature-name">שעות פעילות</span>
+                        <span class="comparison-feature-value check">פעילות רציפה 24/7</span>
+                    </div>
+                    <div class="comparison-feature">
+                        <span class="comparison-feature-name">מעקב ובקרה</span>
+                        <span class="comparison-feature-value check">רואה בזמן אמת</span>
+                    </div>
+                    <div class="comparison-feature">
+                        <span class="comparison-feature-name">קלות שימוש</span>
+                        <span class="comparison-feature-value check">פשוט ואינטואיטיבי</span>
+                    </div>
+                    <div class="comparison-feature">
+                        <span class="comparison-feature-name">התחייבות חוזית</span>
+                        <span class="comparison-feature-value check">ללא התחייבות</span>
+                    </div>
+                </div>
+                
+                <!-- Lead Generation Card -->
+                <div class="comparison-card">
+                    <h3>השגת לידים</h3>
+                    <div class="comparison-feature">
+                        <span class="comparison-feature-name">עלות חודשית</span>
+                        <span class="comparison-feature-value">₪2,000-8,000</span>
+                    </div>
+                    <div class="comparison-feature">
+                        <span class="comparison-feature-name">כמות לקוחות חדשים</span>
+                        <span class="comparison-feature-value">5-10 לידים בשבוע</span>
+                    </div>
+                    <div class="comparison-feature">
+                        <span class="comparison-feature-name">מהירות תגובה ללקוח</span>
+                        <span class="comparison-feature-value">תוך שעות</span>
+                    </div>
+                    <div class="comparison-feature">
+                        <span class="comparison-feature-name">רמת אוטומציה</span>
+                        <span class="comparison-feature-value">עבודה ידנית</span>
+                    </div>
+                    <div class="comparison-feature">
+                        <span class="comparison-feature-name">שעות פעילות</span>
+                        <span class="comparison-feature-value">מוגבל לזמן פנוי</span>
+                    </div>
+                    <div class="comparison-feature">
+                        <span class="comparison-feature-name">מעקב ובקרה</span>
+                        <span class="comparison-feature-value">מעקב ידני</span>
+                    </div>
+                    <div class="comparison-feature">
+                        <span class="comparison-feature-name">קלות שימוש</span>
+                        <span class="comparison-feature-value">דורש ניסיון</span>
+                    </div>
+                    <div class="comparison-feature">
+                        <span class="comparison-feature-name">התחייבות חוזית</span>
+                        <span class="comparison-feature-value">גמיש</span>
+                    </div>
+                </div>
+            </div>
+            
         </div>
     </section>
 

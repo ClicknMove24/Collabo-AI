@@ -579,6 +579,40 @@
             color: var(--ai-purple);
         }
 
+        /* Global heading consistency for desktop */
+        h1 {
+            font-size: clamp(36px, 6vw, 56px);
+            font-weight: 700;
+            line-height: 1.2;
+            color: var(--text-primary);
+            font-family: inherit;
+        }
+        
+        h2 {
+            font-size: clamp(28px, 4vw, 40px);
+            font-weight: 700;
+            line-height: 1.3;
+            color: var(--text-primary);
+            font-family: inherit;
+        }
+        
+        h3 {
+            font-size: 24px;
+            font-weight: 700;
+            line-height: 1.4;
+            color: var(--text-primary);
+            font-family: inherit;
+        }
+        
+        .section-subtitle,
+        .hero .subtitle,
+        .section-header p {
+            font-size: 18px;
+            line-height: 1.6;
+            color: var(--text-secondary);
+            font-family: inherit;
+        }
+
         .hero h1 {
             font-size: clamp(36px, 6vw, 56px);
             font-weight: 700;
@@ -588,14 +622,12 @@
         }
 
         .hero .subtitle {
-            font-size: 22px;
             margin-bottom: 32px;
             opacity: 0.9;
             font-weight: 400;
             max-width: 600px;
             margin-left: auto;
             margin-right: auto;
-            color: var(--text-secondary);
         }
 
         .hero-cta-group {
@@ -803,10 +835,7 @@
         }
 
         .demo-content h2 {
-            font-size: 40px;
-            font-weight: 800;
             margin-bottom: 24px;
-            color: #0f172a;
             line-height: 1.3;
         }
 
@@ -1929,6 +1958,39 @@
         
         /* Mobile and small tablet design */
         @media (max-width: 768px) {
+            /* Global heading consistency for mobile */
+            h1 {
+                font-size: clamp(28px, 6vw, 36px) !important;
+                line-height: 1.2 !important;
+                font-family: inherit !important;
+                color: var(--text-primary) !important;
+                font-weight: 700 !important;
+            }
+            
+            h2 {
+                font-size: clamp(28px, 6vw, 36px) !important;
+                line-height: 1.2 !important;
+                font-family: inherit !important;
+                color: var(--text-primary) !important;
+                font-weight: 700 !important;
+            }
+            
+            .section-subtitle,
+            .hero .subtitle,
+            .section-header p {
+                font-size: 16px !important;
+                line-height: 1.5 !important;
+                font-family: inherit !important;
+                color: var(--text-secondary) !important;
+            }
+            
+            h3 {
+                font-size: 20px !important;
+                font-weight: 700 !important;
+                line-height: 1.3 !important;
+                font-family: inherit !important;
+                color: var(--text-primary) !important;
+            }
             /* Header mobile improvements */
             .header {
                 padding: 12px 0;
@@ -2102,7 +2164,7 @@
             }
             
             .demo .section-header h2 {
-                font-size: clamp(24px, 5vw, 32px) !important;
+                font-size: clamp(28px, 6vw, 36px) !important;
                 line-height: 1.2;
                 margin-bottom: 12px;
                 color: var(--text-primary);
@@ -2233,7 +2295,7 @@
             }
             
             .stats .section-header h2 {
-                font-size: clamp(26px, 6vw, 34px);
+                font-size: clamp(28px, 6vw, 36px);
                 margin-bottom: 12px;
                 color: var(--text-primary);
                 font-weight: 800;
@@ -2290,7 +2352,7 @@
             }
             
             .testimonials .section-header h2 {
-                font-size: clamp(26px, 6vw, 34px);
+                font-size: clamp(28px, 6vw, 36px);
                 margin-bottom: 12px;
                 color: var(--text-primary);
                 font-weight: 800;
@@ -2326,7 +2388,7 @@
             }
             
             .pricing .section-header h2 {
-                font-size: clamp(26px, 6vw, 34px);
+                font-size: clamp(28px, 6vw, 36px);
                 margin-bottom: 12px;
                 color: var(--text-primary);
                 font-weight: 800;
@@ -2370,7 +2432,7 @@
             }
             
             .comparison-section .section-header h2 {
-                font-size: clamp(26px, 6vw, 34px);
+                font-size: clamp(28px, 6vw, 36px);
                 margin-bottom: 12px;
                 color: var(--text-primary);
                 font-weight: 800;
@@ -2477,7 +2539,7 @@
             }
             
             .contact .section-header h2 {
-                font-size: clamp(26px, 6vw, 34px);
+                font-size: clamp(28px, 6vw, 36px);
                 margin-bottom: 12px;
                 color: var(--text-primary);
                 font-weight: 800;
@@ -2603,6 +2665,39 @@
         
         /* Very small screens (iPhone SE, etc.) */
         @media (max-width: 480px) {
+            /* Global heading consistency for very small screens */
+            h1 {
+                font-size: clamp(24px, 6vw, 32px) !important;
+                line-height: 1.2 !important;
+                font-family: inherit !important;
+                color: var(--text-primary) !important;
+                font-weight: 700 !important;
+            }
+            
+            h2 {
+                font-size: clamp(24px, 6vw, 32px) !important;
+                line-height: 1.2 !important;
+                font-family: inherit !important;
+                color: var(--text-primary) !important;
+                font-weight: 700 !important;
+            }
+            
+            .section-subtitle,
+            .hero .subtitle,
+            .section-header p {
+                font-size: 15px !important;
+                line-height: 1.5 !important;
+                font-family: inherit !important;
+                color: var(--text-secondary) !important;
+            }
+            
+            h3 {
+                font-size: 18px !important;
+                font-weight: 700 !important;
+                line-height: 1.3 !important;
+                font-family: inherit !important;
+                color: var(--text-primary) !important;
+            }
             /* Header adjustments for very small screens */
             .header-content {
                 padding: 0 12px;
@@ -2644,11 +2739,11 @@
             }
             
             .section-header h2 {
-                font-size: clamp(24px, 5vw, 32px);
+                font-size: clamp(28px, 6vw, 36px);
             }
             
             .section-header p {
-                font-size: 14px;
+                font-size: 16px;
             }
             
             /* Contact section for very small screens */
@@ -3154,7 +3249,7 @@
         <div class="container">
             <!-- Section Header with improved spacing -->
             <div class="section-header" style="text-align: center; margin-bottom: 35px;">
-                <h2 style="margin-bottom: 16px; font-size: clamp(28px, 4vw, 40px); font-weight: 700; color: var(--text-primary);">הדגמה חיה - צפה בסוכן הדיגיטלי בפעולה</h2>
+                <h2 style="margin-bottom: 16px;">הדגמה חיה - צפה בסוכן הדיגיטלי בפעולה</h2>
             </div>
 
             <!-- Fixed height container for all content above Facebook feed -->
@@ -3615,8 +3710,8 @@
                 <div class="contact-icon">
                     <i class="fas fa-rocket"></i>
                 </div>
-                <h2 class="font-black mb-4" style="font-size: 48px;">מוכן להטיס את העסק שלך?</h2>
-                <p style="font-size: 20px; margin-bottom: 0; opacity: 0.95;">השאר פרטים ונחזור אליך תוך 24 שעות עם הצעה מותאמת אישית</p>
+                <h2 class="font-black mb-4">מוכן להטיס את העסק שלך?</h2>
+                <p class="section-subtitle" style="margin-bottom: 0; opacity: 0.95;">השאר פרטים ונחזור אליך תוך 24 שעות עם הצעה מותאמת אישית</p>
                 
                 <form class="contact-form" id="contactForm">
                     <!-- Row with Name and Phone side by side -->

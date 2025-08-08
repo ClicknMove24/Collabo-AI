@@ -2119,18 +2119,27 @@
             
             .demo-container {
                 grid-template-columns: 1fr;
-                gap: clamp(24px, 6vw, 48px);
+                gap: 16px;
                 justify-content: center;
-                padding: 0 clamp(12px, 4vw, 20px);
+                padding: 0; /* הסרת padding כדי לאפשר הרחבה מלאה */
+                width: 100vw;
+                max-width: none;
+                margin: 0 -16px; /* יוצא מעבר לpadding של הcontainer */
+                overflow-x: hidden;
             }
 
             #demoLeftSide, #demoRightSide {
-                width: 100%;
-                min-width: 0;
-                max-width: none;
-                height: clamp(350px, 60vh, 450px);
+                width: 100vw;
+                min-width: 100vw;
+                max-width: 100vw;
+                height: clamp(400px, 70vh, 500px);
                 max-height: none;
                 margin: 0;
+                padding: 0;
+                border-radius: 0;
+                border-left: none;
+                border-right: none;
+                box-sizing: border-box;
             }
 
             #demoRightSide {
@@ -2151,16 +2160,18 @@
             /* Demo section mobile - preserve logic while improving responsiveness */
             .demo {
                 padding: 50px 0 !important;
-                min-height: auto !important;
+                height: 900px !important;
+                overflow: visible !important;
             }
             
             .demo .container {
-                padding: 0 16px;
+                padding: 0; /* הסרת padding כדי שהפיד פייסבוק יתפרס למלוא הרוחב */
             }
             
             .demo .section-header {
                 margin-bottom: 30px !important;
                 text-align: center;
+                padding: 0 16px; /* שמירת padding רק לכותרת הסקציה */
             }
             
             .demo .section-header h2 {
@@ -2184,46 +2195,121 @@
                 margin-bottom: 0 !important;
             }
 
+            /* Facebook Mobile Feed Container */
             .social-feed-demo {
-                height: 100%;
-                padding: clamp(12px, 3vw, 16px);
-                border-radius: clamp(8px, 2vw, 12px);
-                background: #f8f9fa;
-                border: 1px solid #e9ecef;
-                box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+                background: #f0f2f5 !important;
+                border-radius: 0 !important;
+                padding: 0 !important;
+                border: none !important;
+                box-shadow: none !important;
+                height: 100% !important;
+                overflow-y: auto !important;
+                -webkit-overflow-scrolling: touch !important;
             }
             
             .facebook-header {
-                border-radius: 8px 8px 0 0 !important;
+                background: #4267B2 !important;
+                color: white !important;
+                padding: 12px 16px !important;
+                border-radius: 0 !important;
                 margin-bottom: 0 !important;
+                display: flex !important;
+                align-items: center !important;
+                justify-content: center !important;
+                font-size: 16px !important;
+                font-weight: 600 !important;
+                border-bottom: 1px solid rgba(255,255,255,0.2) !important;
             }
             
             .demo-container {
-                margin-top: 20px !important;
+                margin-top: 0px !important;
             }
             
             .facebook-post {
-                font-size: clamp(12px, 3.5vw, 14px) !important;
-                padding: clamp(12px, 3vw, 16px) !important;
-                margin-bottom: clamp(8px, 2vw, 12px) !important;
+                background: white !important;
+                border-radius: 0 !important;
+                padding: 0 !important;
+                margin: 0 0 8px 0 !important;
+                border: none !important;
+                box-shadow: none !important;
+                border-bottom: 1px solid #e4e6ea !important;
+                width: 100% !important;
+                min-width: 0 !important;
+                max-width: 100% !important;
             }
             
             .post-header {
-                flex-wrap: wrap;
-                gap: clamp(4px, 1vw, 8px);
+                padding: 16px 16px 0 16px !important;
+                display: flex !important;
+                align-items: center !important;
+                gap: 12px !important;
+                flex-wrap: nowrap !important;
+                width: 100% !important;
+                box-sizing: border-box !important;
             }
             
+            /* Facebook Mobile Avatar */
+            .post-header .avatar-sm {
+                width: 40px !important;
+                height: 40px !important;
+                border-radius: 50% !important;
+                background: #1877f2 !important;
+                display: flex !important;
+                align-items: center !important;
+                justify-content: center !important;
+                color: white !important;
+                font-size: 16px !important;
+                font-weight: 600 !important;
+                flex-shrink: 0 !important;
+            }
+            
+            /* Facebook Mobile User Info */
+            .user-info {
+                flex: 1 !important;
+                min-width: 0 !important;
+            }
+            
+            .user-info h4 {
+                font-size: 15px !important;
+                font-weight: 600 !important;
+                color: #1c1e21 !important;
+                margin: 0 0 2px 0 !important;
+                line-height: 1.2 !important;
+            }
+            
+            .user-info .post-time {
+                font-size: 13px !important;
+                color: #65676b !important;
+                font-weight: 400 !important;
+                line-height: 1 !important;
+            }
+            
+            /* Facebook Mobile Post Content */
+            .post-content {
+                padding: 16px 16px 16px 16px !important;
+                font-size: 15px !important;
+                line-height: 1.4 !important;
+                color: #1c1e21 !important;
+                font-weight: 400 !important;
+                margin: 0 !important;
+                width: 100% !important;
+                box-sizing: border-box !important;
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif !important;
+            }
+            
+            /* Facebook Mobile Action Buttons */
             .post-actions,
             .facebook-post .post-actions {
                 display: flex !important;
                 border-top: 1px solid #dadde1 !important;
-                padding: clamp(6px, 1.2vw, 8px) clamp(16px, 3vw, 20px) !important;
+                padding: 0 8px !important;
                 margin: 0 !important;
-                justify-content: space-between !important;
-                gap: clamp(4px, 0.8vw, 8px) !important;
-                flex-wrap: nowrap !important;
+                justify-content: space-around !important;
+                align-items: center !important;
                 width: 100% !important;
                 box-sizing: border-box !important;
+                height: 48px !important;
+                min-height: 48px !important;
             }
             
             .post-action,
@@ -2232,20 +2318,78 @@
                 align-items: center !important;
                 justify-content: center !important;
                 color: #65676b !important;
-                font-size: clamp(11px, 2.2vw, 13px) !important;
+                font-size: 15px !important;
                 font-weight: 600 !important;
                 cursor: pointer !important;
-                transition: all 0.2s ease !important;
-                padding: clamp(4px, 0.8vw, 6px) clamp(6px, 1.2vw, 10px) !important;
+                transition: background-color 0.1s ease !important;
+                padding: 0 8px !important;
                 border-radius: 6px !important;
                 background: transparent !important;
                 border: none !important;
                 flex: 1 !important;
-                gap: clamp(3px, 0.6vw, 5px) !important;
-                max-width: 100% !important;
-                overflow: hidden !important;
-                white-space: nowrap !important;
-                text-overflow: ellipsis !important;
+                height: 40px !important;
+                min-height: 40px !important;
+                gap: 8px !important;
+                margin: 0 4px !important;
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif !important;
+            }
+            
+            .post-action:hover {
+                background-color: #f2f3f4 !important;
+            }
+            
+            .post-action i {
+                font-size: 16px !important;
+                margin-right: 6px !important;
+            }
+            
+            /* Remove rounded corners from demo container on mobile */
+            .demo-video.demo-side {
+                border-radius: 0 !important;
+            }
+            
+            /* Ensure proper mobile spacing */
+            .demo .container > div[style*="height: 200px"] {
+                height: auto !important;
+            }
+            
+            /* Very small screens adjustments for Facebook feed */
+            @media (max-width: 380px) {
+                .post-header .avatar-sm {
+                    width: 36px !important;
+                    height: 36px !important;
+                    font-size: 14px !important;
+                }
+                
+                .user-info h4 {
+                    font-size: 14px !important;
+                }
+                
+                .user-info .post-time {
+                    font-size: 12px !important;
+                }
+                
+                .post-content {
+                    font-size: 13px !important;
+                }
+                
+                .post-action {
+                    font-size: 14px !important;
+                }
+                
+                .post-action i {
+                    font-size: 14px !important;
+                }
+            }
+            
+            /* Messenger popup mobile adjustments */
+            @media (max-width: 768px) {
+                .demo-container [style*="position: relative"][style*="margin: 20px auto"] {
+                    width: 95vw !important;
+                    height: 60vh !important;
+                    margin: 10px auto 0 auto !important;
+                    max-width: none !important;
+                }
             }
             
             .section-title {
@@ -2253,24 +2397,74 @@
             }
             
             .demo-progress {
-                flex-wrap: wrap;
-                gap: clamp(8px, 2vw, 12px);
-                justify-content: center;
-                padding: clamp(8px, 2vw, 12px) clamp(8px, 2vw, 16px);
+                flex-wrap: nowrap;
+                gap: 4px;
+                justify-content: space-between;
+                padding: 8px 12px;
                 overflow-x: auto;
                 -webkit-overflow-scrolling: touch;
+                scroll-behavior: smooth;
             }
             
             .progress-step {
-                min-width: clamp(60px, 15vw, 90px);
-                flex: none;
-                font-size: 14px;
-                padding: clamp(4px, 1vw, 6px) clamp(6px, 1.5vw, 8px);
+                flex: 1;
+                min-width: 0;
+                font-size: 11px;
+                padding: 6px 4px;
                 white-space: nowrap;
+                text-align: center;
+                border-radius: 4px;
+            }
+            
+            .progress-step span {
+                display: block;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+                max-width: 100%;
             }
             
             .progress-arrow {
+                font-size: 10px;
+                margin: 0 2px;
+                flex-shrink: 0;
                 display: none;
+            }
+            
+            /* Shorten text for mobile using pseudo-elements */
+            #step-analysis span::after { content: "ניתוח"; }
+            #step-response span::after { content: "תגובה"; } 
+            #step-messenger span::after { content: "מסנגר"; }
+            #step-complete span::after { content: "סיום"; }
+            
+            #step-analysis span,
+            #step-response span,
+            #step-messenger span,
+            #step-complete span {
+                font-size: 0; /* Hide original text */
+            }
+            
+            #step-analysis span::after,
+            #step-response span::after,
+            #step-messenger span::after,
+            #step-complete span::after {
+                font-size: 11px; /* Show shortened text */
+            }
+            
+            /* Stabilize status text on mobile */
+            #demoStatus {
+                height: 35px !important;
+                font-size: 14px !important;
+                line-height: 1.3 !important;
+            }
+            
+            /* Reduce spacing on mobile */
+            #greenIndicator {
+                margin: 0 auto 5px auto !important;
+            }
+            
+            .demo-progress {
+                margin-bottom: 15px !important;
             }
             
             /* Stats section responsive */
@@ -2665,6 +2859,19 @@
         
         /* Very small screens (iPhone SE, etc.) */
         @media (max-width: 480px) {
+            /* Additional Facebook Mobile improvements for small screens */
+            .facebook-post {
+                margin-bottom: 6px !important;
+            }
+            
+            .post-header {
+                padding: 10px 12px 0 12px !important;
+                gap: 10px !important;
+            }
+            
+            .post-content {
+                padding: 10px 12px 12px 12px !important;
+            }
             /* Global heading consistency for very small screens */
             h1 {
                 font-size: clamp(24px, 6vw, 32px) !important;
@@ -2868,6 +3075,15 @@
             to {
                 opacity: 1;
                 transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
             }
         }
 
@@ -3245,7 +3461,7 @@
     </section>
 
     <!-- Demo Section -->
-    <section class="demo" id="demo" style="padding: 80px 0; min-height: 800px;">
+    <section class="demo" id="demo" style="padding: 80px 0; height: 1000px; overflow: visible;">
         <div class="container">
             <!-- Section Header with improved spacing -->
             <div class="section-header" style="text-align: center; margin-bottom: 35px;">
@@ -3256,7 +3472,7 @@
             <div style="height: 200px; position: relative; margin-bottom: -15px;">
                 
                 <!-- Progress Breadcrumb with clean design -->
-                <div class="demo-progress" id="demoProgress" style="margin-bottom: 35px; display: none;">
+                <div class="demo-progress" id="demoProgress" style="margin-bottom: 20px; display: none;">
                     <div class="progress-step" id="step-analysis">
                         <span>ניתוח פוסטים</span>
                     </div>
@@ -3275,15 +3491,15 @@
                 </div>
 
                 <!-- Simple Status Text - positioned below navigation -->
-                <div id="greenIndicator" style="display: none; margin: 0 auto 30px auto; font-size: clamp(16px, 3vw, 20px); color: #000000; text-align: center; max-width: 800px;">
-                    <div id="demoStatus" style="direction: rtl; unicode-bidi: isolate; text-align: right; width: 100%; min-height: 1.2em; color: #000000; font-family: inherit; white-space: normal;"></div>
+                <div id="greenIndicator" style="display: none; margin: 0 auto 5px auto; font-size: clamp(16px, 3vw, 20px); color: #000000; text-align: center; max-width: 800px;">
+                    <div id="demoStatus" style="direction: rtl; unicode-bidi: isolate; text-align: right; width: 100%; height: 40px; color: #000000; font-family: inherit; white-space: normal; overflow: hidden; display: flex; align-items: flex-start; font-size: 16px; line-height: 1.4;"></div>
                 </div>
 
                 <!-- Enhanced Customer Profile with Professional Design -->
-                <div id="customerProfileTemp" style="display: block; max-width: 400px; margin: -50px auto 10px auto;">
+                <div id="customerProfileTemp" style="display: block; max-width: 400px; margin: -50px auto 0px auto;">
                 
                 <!-- Introduction Banner -->
-                <div id="demoIntro" style="opacity: 0; text-align: center; margin-bottom: 16px;">
+                <div id="demoIntro" style="opacity: 0; text-align: center; margin-bottom: 5px;">
                     <div style="background: linear-gradient(135deg, #f8fafc, #f1f5f9); border: 1px solid var(--border-light); border-radius: 12px; padding: 14px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);">
                         <div style="font-size: 18px; font-weight: 600; color: var(--text-primary);">
                             🎯 הכירו את הלקוח שלנו להדגמה
@@ -4347,6 +4563,13 @@
         
         async function continueToNextPost() {
             console.log('Continuing to next post, index:', currentPostIndex);
+            
+            // Don't continue if we're in the complete stage
+            if (currentDemoStage === 'complete') {
+                console.log('⚠️ Skipping continueToNextPost because demo is in complete stage');
+                return;
+            }
+            
             if (currentPostIndex < totalPosts) {
                 // Update status to show continuing analysis - handled by updateEnhancedDemoStage
                 await updateEnhancedDemoStage('analysis');
@@ -4750,19 +4973,19 @@
         // Enhanced stage descriptions for each demo phase
         const stageDescriptions = {
             'profile': {
-                title: 'לומד את פרופיל הלקוח - הסוכן מזהה את תחום הפעילות, איזור ועדיפויות של יוסי שיפוצים כדי למצוא לו לקוחות רלוונטיים'
+                title: 'לומד את פרופיל הלקוח - מזהה תחום פעילות, איזור ועדיפויות למציאת לקוחות רלוונטיים'
             },
             'analysis': {
-                title: 'סורק פוסטים בפייסבוק - הסוכן מנתח מאות אלפי פוסטים בזמן אמת, מחפש רק אנשים שצריכים שיפוצים באיזור מרכז והשרון'
+                title: 'סורק פוסטים בפייסבוק - מנתח פוסטים בזמן אמת ומחפש אנשים שצריכים שיפוצים באזור'
             },
             'response': {
-                title: 'כותב תגובה מקצועית - הסוכן יוצר תגובה אישית ומותאמת לכל פוסט, מציג את השירותים בצורה טבעית ומניע לשיחה במסנגר'
+                title: 'כותב תגובה מקצועית - יוצר תגובה אישית ומותאמת שמציגה שירותים ומניעה לשיחה'
             },
             'messenger': {
-                title: 'עובר למסנגִר - הסוכן כותב הודעת המשך במסנגר במטרה לטרגט את הלקוח למעבר לשיחה טלפונית'
+                title: 'עובר למסנגר - שולח הודעת המשך במטרה לקבוע שיחה טלפונית עם הלקוח'
             },
             'complete': {
-                title: 'הליד נשמר במערכת - הסוכן ממשיך לפעול 24/7, מחפש לקוחות נוספים ומנהל שיחות נוספות'
+                title: 'הליד נשמר במערכת - הסוכן ממשיך לפעול 24/7 ומחפש לקוחות נוספים'
             }
         };
 
@@ -4835,6 +5058,13 @@
             
             if (!statusElement) return;
             
+            // Prevent multiple calls to same stage
+            if (currentDemoStage === stage) {
+                console.log('⚠️ Ignoring duplicate call to updateEnhancedDemoStage for stage:', stage);
+                return;
+            }
+            
+            console.log('🎯 updateEnhancedDemoStage called for stage:', stage, 'previous stage:', currentDemoStage);
             currentDemoStage = stage;
             
             // Update progress step in navigation immediately
@@ -4851,7 +5081,9 @@
             statusElement.style.transition = 'none';
             
             // Start typing animation and WAIT for it to complete
+            console.log('🔤 Starting text animation for:', stageInfo.title.substring(0, 30) + '...');
             await animateText(statusElement, stageInfo.title);
+            console.log('✅ Text animation completed for stage:', stage);
             
             // Ensure text remains black after animation
             statusElement.style.color = '#000000';
@@ -5260,15 +5492,18 @@
         async function showMessengerTransition(customerName) {
             console.log('🎆 showMessengerTransition started for:', customerName);
             
-            // Update progress to messenger stage
+            // Update progress to messenger stage and wait for typing to complete
             await updateEnhancedDemoStage('messenger');
+            
+            // Wait for users to read the completed text
+            await new Promise(resolve => setTimeout(resolve, 1000));
             
             // Remove any existing notifications and popups first
             console.log('🧹 Removing existing fixed elements');
             removeFixedElements('[style*="position: fixed"][style*="top: 80px"]');
             removeFixedElements('[style*="position: fixed"][style*="bottom: 20px"]');
             removeFixedElements('[style*="position: absolute"][style*="bottom: 20px"]'); // Also remove absolute positioned popups
-            removeFixedElements('[style*="position: absolute"][style*="left: -150px"]'); // Remove left-positioned elements
+            removeFixedElements('[style*="position: relative"][style*="margin: 20px auto"]'); // Remove centered positioned elements
             console.log('✅ Fixed elements removed');
             
             // Skip notification and go directly to messenger popup
@@ -5278,35 +5513,96 @@
         }
 
         function showMessengerPopup(customerName, resumeFromStep = 0) {
-            const popup = document.createElement('div');
-            
-            // Position relative to Facebook feed instead of demo container
             const demoSection = document.getElementById('demo');
             const facebookFeed = demoSection ? demoSection.querySelector('#demoLeftSide') : null;
+            const isMobile = window.innerWidth <= 768;
             
             console.log('Looking for Facebook feed:', facebookFeed ? 'Found' : 'Not found');
+            console.log('Is mobile:', isMobile);
+            
             if (!facebookFeed) {
                 console.error('demoLeftSide element not found!');
             }
             
-            popup.style.cssText = `
-                position: absolute;
-                bottom: 20px;
-                left: -150px;
-                width: min(360px, 90vw);
-                height: min(540px, 70vh);
-                background: white;
-                border-radius: 12px;
-                box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15), 0 0 0 1px rgba(0, 0, 0, 0.05);
-                font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-                z-index: 1002;
-                overflow: hidden;
-                animation: popupSlideIn 0.4s ease-out;
-                display: block;
-            `;
+            let popup, overlay;
+            
+            if (isMobile) {
+                // Create overlay for mobile
+                overlay = document.createElement('div');
+                overlay.style.cssText = `
+                    position: fixed;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    background: rgba(0, 0, 0, 0.6);
+                    z-index: 1001;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    animation: fadeIn 0.3s ease-out;
+                `;
+                
+                // Create popup for mobile
+                popup = document.createElement('div');
+                popup.style.cssText = `
+                    width: 80vw;
+                    max-width: 320px;
+                    height: 70vh;
+                    max-height: 600px;
+                    background: white;
+                    border-radius: 12px;
+                    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+                    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+                    overflow: hidden;
+                    animation: popupSlideIn 0.4s ease-out;
+                    display: flex;
+                    flex-direction: column;
+                `;
+                
+                // Close overlay when clicking outside popup
+                overlay.onclick = (e) => {
+                    if (e.target === overlay) {
+                        overlay.remove();
+                        messengerPopup = null;
+                        messengerConversationActive = false;
+                    }
+                };
+                
+                overlay.appendChild(popup);
+                document.body.appendChild(overlay);
+                
+            } else {
+                // Desktop version - position relative to demo container
+                popup = document.createElement('div');
+                popup.style.cssText = `
+                    position: relative;
+                    margin: 20px auto 0 auto;
+                    width: min(360px, 90vw);
+                    height: min(540px, 70vh);
+                    background: white;
+                    border-radius: 12px;
+                    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15), 0 0 0 1px rgba(0, 0, 0, 0.05);
+                    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+                    z-index: 1002;
+                    overflow: hidden;
+                    animation: popupSlideIn 0.4s ease-out;
+                    display: block;
+                `;
+                
+                const demoContainer = demoSection ? demoSection.querySelector('.demo-container') : null;
+                if (demoContainer && facebookFeed) {
+                    demoContainer.style.position = 'relative';
+                    demoContainer.appendChild(popup);
+                    console.log('✅ Desktop popup appended to demo container');
+                } else {
+                    document.body.appendChild(popup);
+                    console.log('⚠️ Fallback: Desktop popup appended to body');
+                }
+            }
             
             popup.innerHTML = `
-                <div style="background: linear-gradient(135deg, #0084ff, #0066cc); color: white; padding: 12px 16px; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid rgba(255,255,255,0.1);">
+                <div style="background: linear-gradient(135deg, #0084ff, #0066cc); color: white; padding: 12px 16px; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid rgba(255,255,255,0.1); flex-shrink: 0;">
                     <div style="display: flex; align-items: center; gap: 10px;">
                         <div style="width: 32px; height: 32px; background: rgba(255,255,255,0.2); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
                             <i class="fab fa-facebook-messenger" style="font-size: 16px;"></i>
@@ -5316,31 +5612,19 @@
                             <div style="font-size: 12px; opacity: 0.8;">פעיל עכשיו</div>
                         </div>
                     </div>
-                    <button onclick="this.parentElement.parentElement.remove()" style="background: rgba(255,255,255,0.2); border: none; color: white; font-size: 16px; cursor: pointer; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center;">×</button>
+                    <button onclick="closeMessengerPopup()" style="background: rgba(255,255,255,0.2); border: none; color: white; font-size: 16px; cursor: pointer; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center;">×</button>
                 </div>
-                <div style="padding: 12px 16px; height: 520px; overflow-y: auto; background: #f8f9fa;" id="messengerChat">
+                <div style="padding: 12px 16px; flex: 1; overflow-y: auto; background: #f8f9fa;" id="messengerChat">
                     <!-- Messages will be added here -->
                 </div>
             `;
             
-            // Append to demo container but position relative to Facebook feed
-            const demoContainer = demoSection ? demoSection.querySelector('.demo-container') : null;
-            if (demoContainer && facebookFeed) {
-                demoContainer.style.position = 'relative'; // Ensure demo container is positioned
-                demoContainer.appendChild(popup);
-                console.log('✅ Popup appended to demo container');
-            } else {
-                // Fallback to body
-                document.body.appendChild(popup);
-                console.log('⚠️ Fallback: Popup appended to body');
-            }
-            
             // Store popup reference for closing when user scrolls away
-            messengerPopup = popup;
+            messengerPopup = isMobile ? overlay : popup;
             
             console.log('✅ Popup created and added to DOM');
             console.log('Popup element:', popup);
-            console.log('Popup parent:', popup.parentElement);
+            console.log('Is mobile overlay:', isMobile);
             
             // Wait for DOM to be fully updated before starting conversation
             setTimeout(() => {
@@ -5351,8 +5635,7 @@
         
 
         function closeMessengerPopup() {
-            console.log('🚨 closeMessengerPopup() called - WHO CALLED THIS?');
-            console.trace();
+            console.log('🚨 closeMessengerPopup() called');
             
             if (messengerPopup) {
                 messengerPopup.remove();
@@ -5360,7 +5643,8 @@
                 messengerConversationActive = false;
             }
             
-            // Also remove any notifications
+            // Also remove any mobile overlays and notifications
+            document.querySelectorAll('[style*="position: fixed"][style*="rgba(0, 0, 0, 0.6)"]').forEach(el => el.remove());
             removeFixedElements('[style*="position: fixed"][style*="top: 80px"]');
         }
 
@@ -5411,7 +5695,7 @@
             demoTimeouts.push(setTimeout(async () => {
                 if (fromStep <= 0) {
                     // Add agent message (has built-in typing animation)
-                    await addAgentMessage(chat, `שלום ${customerName}! ראיתי את הפוסט שלך וחשבתי שאולי אוכל לעזור. אנחנו חברת שיפוצים מקצועית עם ותק של 15 שנה בתחום. נשמח לתת לך הצעת מחיר ללא התחייבות ולהראות לך עבודות שעשינו.\nמה דעתך שנתחיל בשיחה קצרה?`);
+                    await addAgentMessage(chat, `שלום ${customerName}! ראיתי את הפוסט שלך על השיפוץ. אנחנו מתמחים בדיוק בפרויקטים כאלה ויש לנו עבודות דומות באזור שלך.\nמה דעתך שנקבע שיחה קצרה כדי שתראי את העבודות שלנו?`);
                 }
                 
                 // Step 2: Customer response with built-in typing animation
@@ -5419,7 +5703,7 @@
                 demoTimeouts.push(setTimeout(async () => {
                     if (fromStep <= 1) {
                         // Add customer message (has built-in typing animation)
-                        await addCustomerMessage(chat, customerName, 'שלום! נשמע מעניין. אשמח לשמוע עוד פרטים על העבודה והמחירים. איך אפשר להתחיל?');
+                        await addCustomerMessage(chat, customerName, 'שלום! נשמע מעניין. אשמח לראות עבודות ולשמוע על מחירים. מתי נוכל לדבר?');
                     }
                     
                     // Step 3: Close messenger and complete (2 seconds)
@@ -5445,19 +5729,19 @@
                 callback();
             }
             
-            // Then cleanup
-            demoTimeouts.forEach(timeout => clearTimeout(timeout));
-            demoTimeouts = [];
-            
-            // Remove both fixed and absolute positioned messenger popups
-            document.querySelector('[style*="position: fixed"][style*="bottom: 20px"]')?.remove();
-            document.querySelector('[style*="position: absolute"][style*="bottom: 20px"]')?.remove();
-            document.querySelector('[style*="position: absolute"][style*="left: -150px"]')?.remove();
-            messengerConversationActive = false;
-            messengerPopup = null;
+            // Close messenger popup using the proper function
+            closeMessengerPopup();
             
             // Status text handled by updateEnhancedDemoStage
             await updateEnhancedDemoStage('complete');
+            
+            // Wait for users to read the completion message
+            await new Promise(resolve => setTimeout(resolve, 2000));
+            
+            // Clear timeouts AFTER completing the status text to prevent interruptions
+            demoTimeouts.forEach(timeout => clearTimeout(timeout));
+            demoTimeouts = [];
+            
             updateProgressStep('complete');
         }
         

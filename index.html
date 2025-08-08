@@ -489,34 +489,53 @@
             padding: 120px 0 80px;
             text-align: center;
         }
+        
+        .hero .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
 
         /* Mobile Hero Responsive */
         @media screen and (max-width: 768px) {
             .hero {
-                padding: 80px 0 50px;
+                padding: 100px 0 60px;
+            }
+            
+            .hero .container {
+                max-width: 100%;
+                padding: 0 20px;
+            }
+            
+            .hero-content {
+                padding: 0;
+                max-width: 100%;
             }
             
             .hero-badge {
-                font-size: 12px;
-                padding: 6px 12px;
-                margin-bottom: 16px;
+                font-size: 13px;
+                padding: 8px 16px;
+                margin-bottom: 20px;
+                border-radius: 20px;
             }
             
             .hero h1 {
-                font-size: clamp(24px, 7vw, 36px);
-                margin-bottom: 16px;
+                font-size: clamp(28px, 7vw, 40px);
+                margin-bottom: 20px;
+                line-height: 1.1;
             }
             
             .hero .subtitle {
-                font-size: 16px;
-                margin-bottom: 24px;
-                padding: 0 16px;
+                font-size: 18px;
+                margin-bottom: 28px;
+                line-height: 1.5;
+                max-width: 100%;
             }
             
             .hero-cta-group {
                 flex-direction: column;
-                gap: 12px;
-                padding: 0 16px;
+                gap: 16px;
+                margin: 32px 0 40px 0;
+                align-items: stretch;
             }
             
             .btn-primary,
@@ -533,6 +552,23 @@
             position: relative;
             z-index: 2;
             animation: fadeInUp 1s ease-out;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+        
+        .hero-content h1 {
+            margin-bottom: 24px;
+        }
+        
+        .hero-content .subtitle {
+            margin-bottom: 32px;
+            font-size: 20px;
+            line-height: 1.6;
+            color: var(--text-secondary);
+            max-width: 680px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         @keyframes fadeInUp {
@@ -551,12 +587,13 @@
             align-items: center;
             background: var(--bg-gray);
             border: 1px solid var(--border-light);
-            padding: 8px 16px;
-            border-radius: var(--border-radius);
+            padding: 10px 20px;
+            border-radius: 24px;
             font-size: 14px;
             font-weight: 500;
-            margin-bottom: 20px;
+            margin-bottom: 28px;
             color: var(--text-secondary);
+            transition: all 0.3s ease;
         }
 
         .hero-badge:hover {
@@ -632,14 +669,29 @@
 
         .hero-cta-group {
             display: flex;
-            gap: 16px;
+            gap: 20px;
             justify-content: center;
-            margin-bottom: 48px;
+            margin: 40px 0 60px 0;
             flex-wrap: wrap;
+            align-items: center;
         }
 
         .cta-primary {
-            box-shadow: 0 4px 15px rgba(255, 49, 49, 0.3);
+            box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3);
+            min-width: 280px;
+            padding: 16px 32px;
+        }
+        
+        .cta-secondary {
+            min-width: 200px;
+            padding: 16px 32px;
+            border: 2px solid var(--border-light);
+            transition: all 0.3s ease;
+        }
+        
+        .cta-secondary:hover {
+            border-color: var(--primary-blue);
+            background: rgba(37, 99, 235, 0.05);
         }
 
         .cta-secondary {
@@ -2124,7 +2176,7 @@
                 padding: 0; /* הסרת padding כדי לאפשר הרחבה מלאה */
                 width: 100vw;
                 max-width: none;
-                margin: 0 -16px; /* יוצא מעבר לpadding של הcontainer */
+                margin: 0 calc(-1 * (100vw - 100%) / 2); /* מרכז הקונטיינר ביחס לאתר */
                 overflow-x: hidden;
             }
 
@@ -4564,10 +4616,10 @@
         async function continueToNextPost() {
             console.log('Continuing to next post, index:', currentPostIndex);
             
-            // Don't continue if we're in the complete stage
+            // Allow continuation from complete stage - it means we're moving to next post
             if (currentDemoStage === 'complete') {
-                console.log('⚠️ Skipping continueToNextPost because demo is in complete stage');
-                return;
+                console.log('✅ Continuing from complete stage to next post');
+                currentDemoStage = 'profile'; // Reset for next post
             }
             
             if (currentPostIndex < totalPosts) {
@@ -5721,18 +5773,10 @@
             console.log('🧹 Clearing accumulated timeouts before finishing conversation');
             console.log('🧹 Had', demoTimeouts.length, 'timeouts before cleanup');
             
-            // Call the completion callback FIRST
-            if (demoCompleteCallback) {
-                console.log('Demo sequence completed, calling callback');
-                const callback = demoCompleteCallback;
-                demoCompleteCallback = null; // Clear the callback
-                callback();
-            }
-            
             // Close messenger popup using the proper function
             closeMessengerPopup();
             
-            // Status text handled by updateEnhancedDemoStage
+            // Status text handled by updateEnhancedDemoStage - COMPLETE THIS FIRST
             await updateEnhancedDemoStage('complete');
             
             // Wait for users to read the completion message
@@ -5743,6 +5787,14 @@
             demoTimeouts = [];
             
             updateProgressStep('complete');
+            
+            // Call the completion callback LAST - after all animations complete
+            if (demoCompleteCallback) {
+                console.log('Demo sequence completed, calling callback');
+                const callback = demoCompleteCallback;
+                demoCompleteCallback = null; // Clear the callback
+                callback();
+            }
         }
         
         function restartDemo() {

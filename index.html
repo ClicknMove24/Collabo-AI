@@ -5296,9 +5296,9 @@
             // Add unique identifier to prevent duplicate creation
             commentBox.setAttribute('data-comment-box', postIndex);
             commentBox.style.cssText = `
-                margin-top: 2px;
+                margin-top: 0;
                 padding: 6px 16px 12px 16px;
-                border-top: 1px solid #e2e8f0;
+                border-top: none;
                 box-sizing: border-box;
                 width: 100%;
             `;
@@ -5350,15 +5350,9 @@
                 </div>
             `;
             
-            // Insert AFTER post-actions properly and ensure post-actions stay slim
+            // Insert AFTER post-actions properly without changing existing styling
             const postActions = post.querySelector('.post-actions');
             if (postActions) {
-                // Force the post-actions to maintain slim styling
-                postActions.style.cssText += `
-                    padding: clamp(4px, 1vw, 6px) clamp(16px, 3vw, 20px) !important;
-                    margin: 0 !important;
-                    flex-wrap: nowrap !important;
-                `;
                 postActions.insertAdjacentElement('afterend', commentBox);
             } else {
                 post.appendChild(commentBox);
@@ -5622,7 +5616,19 @@
                 };
                 
                 overlay.appendChild(popup);
-                document.body.appendChild(overlay);
+                // Add overlay to demo section instead of body to constrain it to demo area
+                const demoSection = document.getElementById('demo');
+                if (demoSection) {
+                    // Make demo section relative positioned to contain the fixed overlay properly
+                    demoSection.style.position = 'relative';
+                    demoSection.style.overflow = 'hidden';
+                    // Change overlay position to absolute instead of fixed
+                    overlay.style.position = 'absolute';
+                    demoSection.appendChild(overlay);
+                } else {
+                    // Fallback to body if demo section not found
+                    document.body.appendChild(overlay);
+                }
                 
             } else {
                 // Desktop version - position relative to demo container

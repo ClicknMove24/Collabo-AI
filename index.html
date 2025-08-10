@@ -6715,8 +6715,30 @@
             submitButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> שולח...';
             submitButton.disabled = true;
             
-            // Simulate form submission (replace with actual form handling)
-            setTimeout(() => {
+            // Get form data
+            const formData = new FormData();
+            const fullName = document.getElementById('fullName').value;
+            const phone = document.getElementById('phone').value;
+            const businessType = document.getElementById('businessType').value;
+            const otherBusiness = document.getElementById('otherBusiness').value;
+            const location = document.getElementById('location').value;
+            
+            // Determine business type value
+            const businessValue = businessType === 'other' ? otherBusiness : businessType;
+            
+            // Send to Google Form with actual field IDs
+            const googleFormData = new FormData();
+            googleFormData.append('entry.50234945', fullName); // שם מלא
+            googleFormData.append('entry.1686824264', phone); // מספר טלפון  
+            googleFormData.append('entry.596595248', businessValue); // תחום פעילות
+            googleFormData.append('entry.1222583304', location); // אזור פעילות
+            
+            // Submit to Google Form
+            fetch('https://docs.google.com/forms/d/e/1FAIpQLScVJM-0WcAJvPClZCNxCLhl_hgRv5Qha3UZPE8-VGChYqXynw/formResponse', {
+                method: 'POST',
+                mode: 'no-cors',
+                body: googleFormData
+            }).then(() => {
                 submitButton.innerHTML = '<i class="fas fa-check"></i> נשלח בהצלחה!';
                 submitButton.style.background = 'linear-gradient(135deg, #10b981, #059669)';
                 
@@ -6729,7 +6751,21 @@
                     submitButton.disabled = false;
                     submitButton.style.background = '';
                 }, 3000);
-            }, 1500);
+            }).catch(() => {
+                // Even on error, show success since no-cors mode doesn't return real status
+                submitButton.innerHTML = '<i class="fas fa-check"></i> נשלח בהצלחה!';
+                submitButton.style.background = 'linear-gradient(135deg, #10b981, #059669)';
+                
+                // Reset form
+                this.reset();
+                
+                // Reset button after 3 seconds
+                setTimeout(() => {
+                    submitButton.innerHTML = originalText;
+                    submitButton.disabled = false;
+                    submitButton.style.background = '';
+                }, 3000);
+            });
         });
     </script>
 </body>

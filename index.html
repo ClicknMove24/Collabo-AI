@@ -2106,6 +2106,7 @@
             .form-row-responsive {
                 grid-template-columns: 1fr 1fr;
                 gap: 16px;
+                margin-bottom: 16px !important;
             }
         }
 
@@ -2311,7 +2312,7 @@
             }
             
             .form-row-responsive .form-group {
-                margin-bottom: 24px !important;
+                margin-bottom: 16px !important;
             }
             
             /* Demo section mobile - preserve logic while improving responsiveness */
@@ -2922,8 +2923,8 @@
             
             .contact-form {
                 background: white;
-                padding: 32px 24px;
-                border-radius: 16px;
+                padding: 24px 20px;
+                border-radius: 12px;
                 box-shadow: 0 4px 12px rgba(0,0,0,0.08);
                 border: 1px solid var(--border-light);
                 max-width: 100%;
@@ -2931,7 +2932,7 @@
             }
             
             .form-group {
-                margin-bottom: 20px;
+                margin-bottom: 16px;
                 text-align: right;
             }
             
@@ -2947,7 +2948,7 @@
             .form-group select,
             .form-group textarea {
                 width: 100%;
-                padding: 14px 16px;
+                padding: 12px 14px;
                 border: 2px solid var(--border-light);
                 border-radius: 8px;
                 font-size: 16px;
@@ -2972,16 +2973,16 @@
             
             .contact-form button {
                 width: 100%;
-                padding: 18px 24px;
+                padding: 14px 20px;
                 background: var(--ai-purple);
                 color: white;
                 border: none;
-                border-radius: 12px;
+                border-radius: 10px;
                 font-size: 16px;
                 font-weight: 600;
                 cursor: pointer;
                 transition: all 0.3s ease;
-                margin-top: 12px;
+                margin-top: 8px;
             }
             
             .contact-form button:hover {
@@ -3143,19 +3144,19 @@
             }
             
             .contact-form {
-                padding: 24px 16px;
-                border-radius: 12px;
+                padding: 20px 16px;
+                border-radius: 10px;
             }
             
             .form-group input,
             .form-group select,
             .form-group textarea {
-                padding: 12px 14px;
+                padding: 10px 12px;
                 font-size: 16px; /* Keep 16px to prevent zoom on iOS */
             }
             
             .contact-form button {
-                padding: 16px 16px;
+                padding: 12px 16px;
                 font-size: 16px;
             }
             
@@ -4366,7 +4367,7 @@
                 
                 <form class="contact-form" id="contactForm">
                     <!-- Row with Name and Phone side by side -->
-                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 24px;" class="form-row-responsive">
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px;" class="form-row-responsive">
                         <div class="form-group" style="margin-bottom: 0;">
                             <label class="form-label" for="phone">מספר טלפון</label>
                             <input type="tel" id="phone" name="phone" class="form-input" placeholder="הכנס מספר טלפון" required>
@@ -7710,11 +7711,11 @@
         
         // NEW: Function to scroll to demo and start it
         function scrollToDemoAndStart() {
-            const demoSection = document.getElementById('demo');
-            if (demoSection) {
-                demoSection.scrollIntoView({ 
+            const demoContainer = document.getElementById('demoContainer');
+            if (demoContainer) {
+                demoContainer.scrollIntoView({ 
                     behavior: 'smooth',
-                    block: 'start'
+                    block: 'center'
                 });
                 
                 // Start demo after scroll animation completes
@@ -7735,14 +7736,25 @@
                 // First time starting demo
                 console.log('🚀 Starting demo from manual button click');
                 
+                // Focus on demo container
+                const demoContainer = document.getElementById('demoContainer');
+                if (demoContainer) {
+                    demoContainer.scrollIntoView({ 
+                        behavior: 'smooth',
+                        block: 'center'
+                    });
+                }
+                
                 // Change button to pause state
                 if (startBtn) {
                     startBtn.innerHTML = '<i class="fas fa-pause" style="margin-left: 8px;"></i>השהה דמו';
                     console.log('✅ Start button changed to pause');
                 }
                 
-                // Start the demo
-                startAutoDemo();
+                // Start the demo after a short delay for scroll
+                setTimeout(() => {
+                    startAutoDemo();
+                }, 500);
             } else if (demoPaused) {
                 // Resume demo
                 console.log('▶️ Resuming demo');

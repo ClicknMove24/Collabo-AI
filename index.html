@@ -2,17 +2,23 @@
 <html lang="he" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0, user-scalable=yes, viewport-fit=cover">
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="theme-color" content="#ffffff">
+    <!-- Enhanced mobile performance -->
+    <meta name="apple-touch-fullscreen" content="yes">
+    <meta name="HandheldFriendly" content="true">
     <title>Collabo AI Pro - הסוכן הדיגיטלי המתקדם לעסקים</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         :root {
             --primary-blue: #2563eb;
-            --ai-purple: #4c1d95;
+            --primary-gradient: linear-gradient(135deg, rgba(37, 99, 235, 0.5), rgba(59, 130, 246, 0.5));
+            --ai-purple: rgba(76, 29, 149, 0.5);
             --advice-purple: #8b5cf6;
             --success-green: #10b981;
             --text-primary: #37352f;
@@ -64,7 +70,7 @@
         .text-muted { color: var(--text-muted); }
         
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
             line-height: 1.5;
             color: #37352f;
             direction: rtl;
@@ -102,16 +108,25 @@
             align-items: center;
             justify-content: space-between;
             width: 100%;
+            position: relative;
         }
 
-        /* Logo Section */
+        /* Logo Section - Right aligned */
         .logo-section {
             display: flex;
             align-items: center;
+            flex: 0 0 auto;
+        }
+        
+        /* Navigation container - center */
+        .nav-container {
+            flex: 1;
+            display: flex;
+            justify-content: center;
         }
 
         .logo-text {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
             font-size: 24px;
             font-weight: 700;
             color: #000000;
@@ -192,7 +207,7 @@
 
         .cta-button {
             position: relative;
-            background: linear-gradient(135deg, var(--primary-red), var(--secondary-red));
+            background: white;
             border: none;
             border-radius: var(--border-radius);
             padding: 16px 28px;
@@ -214,7 +229,7 @@
             left: -2px;
             right: -2px;
             bottom: -2px;
-            background: linear-gradient(45deg, var(--secondary-red), transparent, var(--primary-red), transparent, var(--secondary-red));
+            background: linear-gradient(45deg, #ff6b6b, transparent, #ff3131, transparent, #ff6b6b);
             border-radius: var(--border-radius);
             opacity: 0;
             z-index: -1;
@@ -223,7 +238,7 @@
         }
 
         .cta-button:hover .cta-glow {
-            opacity: 1;
+            opacity: 0;
         }
 
         .cta-button:hover {
@@ -346,7 +361,7 @@
                 background: rgba(15, 23, 42, 0.95);
                 backdrop-filter: blur(20px);
                 border-radius: 20px;
-                padding: 20px;
+                padding: 16px;
                 flex-direction: column;
                 gap: 12px;
                 box-shadow: 0 12px 32px rgba(0, 0, 0, 0.4);
@@ -369,7 +384,7 @@
             .mobile-active .nav-link {
                 width: 100%;
                 justify-content: center;
-                padding: 16px 20px;
+                padding: 16px 16px;
                 margin: 4px 0;
             }
         }
@@ -382,7 +397,7 @@
             
             .container {
                 max-width: 100%;
-                padding: 0 20px;
+                padding: 0 16px;
             }
             
             .hero {
@@ -390,7 +405,17 @@
             }
             
             .hero h1 {
-                font-size: clamp(32px, 5vw, 48px);
+                font-size: clamp(28px, 4vw, 42px);
+                line-height: 1.4;
+                max-width: 100%;
+            }
+            
+            .hero h1 .highlight {
+                color: #4c1d95;
+                font-weight: 700;
+                font-size: 1.05em;
+                text-shadow: 0 0 1px rgba(76, 29, 149, 0.3);
+                font-style: italic;
             }
             
             .hero .subtitle {
@@ -435,7 +460,7 @@
         }
 
         .btn-primary {
-            background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
+            background: white;
             color: var(--text-primary);
             box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
             position: relative;
@@ -458,13 +483,13 @@
         }
 
         .btn-primary:hover {
-            background: linear-gradient(135deg, var(--secondary-blue), var(--primary-blue));
+            background: white;
             transform: translateY(-3px);
             box-shadow: 0 8px 25px rgba(59, 130, 246, 0.4);
         }
 
         .btn-gradient {
-            background: linear-gradient(135deg, var(--primary-red), var(--secondary-red));
+            background: transparent;
             color: var(--text-primary);
             box-shadow: 0 4px 15px rgba(255, 49, 49, 0.3);
         }
@@ -485,16 +510,100 @@
 
         /* Hero Section - Enterprise Grade */
         .hero {
-            background: #ffffff;
+            background: radial-gradient(circle at 30% 40%, rgba(37, 99, 235, 0.12) 0%, rgba(139, 92, 246, 0.06) 30%, transparent 50%);
             color: var(--text-primary);
-            padding: 120px 0 80px;
+            padding: 80px 0 0;
+            margin-top: 60px;
             text-align: center;
+            position: relative;
+            overflow: hidden;
         }
         
         .hero .container {
-            max-width: 900px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 40px;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .hero-content {
+            max-width: 800px;
             margin: 0 auto;
         }
+        
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(37, 99, 235, 0.1);
+            color: #2563eb;
+            padding: 12px 20px;
+            border-radius: 50px;
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 32px;
+            border: 1px solid rgba(37, 99, 235, 0.2);
+            box-shadow: 0 2px 8px rgba(37, 99, 235, 0.1);
+        }
+        
+        .hero h1 {
+            font-size: clamp(36px, 6vw, 56px);
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 24px;
+            color: var(--text-primary);
+            letter-spacing: -0.02em;
+        }
+        
+        .hero h1 .highlight {
+            color: #4c1d95;
+            font-weight: 700;
+            font-size: 1.05em;
+            text-shadow: 0 0 1px rgba(76, 29, 149, 0.3);
+        }
+        
+        .hero .subtitle {
+            font-size: 20px;
+            line-height: 1.6;
+            color: var(--text-secondary);
+            margin-bottom: 40px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes glow {
+            0% { box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1); }
+            100% { box-shadow: 0 8px 32px rgba(255, 255, 255, 0.2); }
+        }
+        
+        @keyframes shimmer {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            33% { transform: translateY(-10px) rotate(1deg); }
+            66% { transform: translateY(5px) rotate(-1deg); }
+        }
+
+        .demo {
+            background: #f8fafc;
+        }
+        
 
         /* Mobile Hero Responsive */
         @media screen and (max-width: 768px) {
@@ -504,7 +613,7 @@
             
             .hero .container {
                 max-width: 100%;
-                padding: 0 20px;
+                padding: 0 16px;
             }
             
             .hero-content {
@@ -513,10 +622,7 @@
             }
             
             .hero-badge {
-                font-size: 13px;
-                padding: 8px 16px;
-                margin-bottom: 20px;
-                border-radius: 20px;
+                display: none !important;
             }
             
             .hero h1 {
@@ -553,7 +659,7 @@
             position: relative;
             z-index: 2;
             animation: fadeInUp 1s ease-out;
-            max-width: 800px;
+            max-width: 1200px;
             margin: 0 auto;
             padding: 0 24px;
         }
@@ -679,8 +785,16 @@
 
         .cta-primary {
             box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3);
-            min-width: 280px;
             padding: 16px 32px;
+        }
+
+        .watch-demo-btn {
+            box-shadow: 0 4px 15px rgba(255, 49, 49, 0.3);
+            padding: 16px 32px;
+        }
+
+        .watch-demo-btn:hover {
+            box-shadow: 0 8px 25px rgba(37, 99, 235, 0.4);
         }
         
         .cta-secondary {
@@ -765,13 +879,13 @@
         /* Demo Section */
         .demo {
             background: var(--bg-gray);
-            padding: 80px 0;
+            padding: 0 0 80px 0;
         }
 
         .demo .container {
             position: relative;
             z-index: 2;
-            padding: 0 clamp(16px, 2vw, 20px);
+            padding: 0 16px;
             max-width: 1200px;
         }
 
@@ -782,7 +896,7 @@
             }
             
             .demo .container {
-                padding: 0 16px;
+                padding: 0 4px;
             }
             
             .demo-container {
@@ -811,12 +925,12 @@
             }
             
             .demo-video {
-                padding: 8px;
+                padding: 0;
                 border-radius: 16px;
             }
             
             .social-feed-demo {
-                padding: 8px;
+                padding: 0;
                 border-radius: 12px;
             }
             
@@ -844,26 +958,24 @@
                 font-size: 11px;
             }
             
-            /* Customer Profile Mobile */
-            #customerProfileTemp {
-                max-width: 100%;
-                margin: -30px auto 8px auto;
-                padding: 0 16px;
+            
+            #keyPoints {
+                padding: 16px !important;
+                margin-top: 20px !important;
             }
             
-            #demoIntro div {
-                padding: 12px;
-                font-size: 14px;
+            #keyPoints > div:first-child {
+                font-size: 14px !important;
+                margin-bottom: 10px !important;
             }
             
-            .customer-details {
-                padding: 16px;
-                margin-bottom: 12px;
+            .highlight-point {
+                font-size: 14px !important;
+                gap: 8px !important;
             }
             
-            .detail-item {
-                padding: 8px 12px;
-                font-size: 12px;
+            .highlight-point span {
+                font-size: 14px !important;
             }
         }
 
@@ -993,28 +1105,11 @@
             }
         }
 
-        /* Highlight animation for analysis reasons */
-        .analysis-highlight {
-            animation: reasonHighlight 1s ease-in-out;
-        }
-
-        @keyframes reasonHighlight {
-            0% { 
-                background: transparent; 
-            }
-            50% { 
-                background: rgba(239, 68, 68, 0.15);
-                box-shadow: 0 0 8px rgba(239, 68, 68, 0.3);
-            }
-            100% { 
-                background: transparent; 
-            }
-        }
 
         .demo-video {
             background: white;
             border-radius: 20px;
-            padding: clamp(8px, 1.5vw, 12px);
+            padding: 0;
             box-shadow: var(--shadow-lg);
             border: 1px solid var(--border-light);
             display: flex;
@@ -1158,7 +1253,7 @@
             height: 100%;
             overflow-y: auto;
             overflow-x: hidden;
-            padding: clamp(6px, 1.2vw, 10px);
+            padding: 16px;
             position: relative;
             scroll-behavior: smooth;
             box-sizing: border-box;
@@ -1166,7 +1261,7 @@
             -webkit-overflow-scrolling: touch;
             margin: 0;
             flex: 1;
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
         }
 
         .facebook-post {
@@ -1208,7 +1303,7 @@
         .post-header {
             display: flex;
             align-items: flex-start;
-            padding: clamp(12px, 2.5vw, 16px) clamp(16px, 3vw, 20px) clamp(8px, 1.5vw, 12px) clamp(16px, 3vw, 20px);
+            padding: clamp(12px, 2.5vw, 16px) 16px clamp(8px, 1.5vw, 12px) 16px;
             width: 100%;
             gap: clamp(8px, 1.5vw, 12px);
             box-sizing: border-box;
@@ -1229,11 +1324,11 @@
             width: clamp(32px, 7vw, 40px);
             height: clamp(32px, 7vw, 40px);
             font-size: clamp(11px, 2.2vw, 14px);
-            background: linear-gradient(135deg, #42a5f5, #1e88e5);
+            background: linear-gradient(135deg, #9ca3af, #6b7280);
             color: white;
             font-weight: 600;
             border: 2px solid #ffffff;
-            box-shadow: 0 0 0 1px #000000, 0 2px 8px rgba(0, 0, 0, 0.15);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
         }
 
         .avatar-md {
@@ -1241,7 +1336,7 @@
             height: 40px;
             font-size: 14px;
             border: 2px solid #ffffff;
-            box-shadow: 0 0 0 1px #000000, 0 2px 8px rgba(0, 0, 0, 0.15);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
         }
 
         .avatar-lg {
@@ -1253,6 +1348,18 @@
         .post-avatar {
             margin-left: 0;
             flex-shrink: 0;
+        }
+        
+        /* Comment avatar - fixed size to prevent oval shape */
+        .comment-bubble + *, .avatar.comment-avatar {
+            width: 32px !important;
+            height: 32px !important;
+            min-width: 32px !important;
+            min-height: 32px !important;
+            max-width: 32px !important;
+            max-height: 32px !important;
+            flex-shrink: 0 !important;
+            flex-grow: 0 !important;
         }
 
         .post-info {
@@ -1314,17 +1421,17 @@
             font-size: clamp(14px, 3vw, 16px);
             color: #1c1e21;
             line-height: 1.33;
-            padding: 0 clamp(16px, 3vw, 20px) clamp(8px, 1.5vw, 12px) clamp(16px, 3vw, 20px);
+            padding: 0 16px clamp(8px, 1.5vw, 12px) 16px;
             width: 100%;
             word-wrap: break-word;
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
             box-sizing: border-box;
         }
 
         .post-actions {
             display: flex !important;
             border-top: 1px solid #dadde1 !important;
-            padding: clamp(6px, 1.2vw, 8px) clamp(16px, 3vw, 20px) !important;
+            padding: clamp(6px, 1.2vw, 8px) 16px !important;
             margin: 0 !important;
             justify-content: space-between !important;
             gap: clamp(4px, 0.8vw, 8px) !important;
@@ -1379,7 +1486,7 @@
         .facebook-post .post-actions {
             display: flex !important;
             border-top: 1px solid #dadde1 !important;
-            padding: clamp(6px, 1.2vw, 8px) clamp(16px, 3vw, 20px) !important;
+            padding: clamp(6px, 1.2vw, 8px) 16px !important;
             margin: 0 !important;
             justify-content: space-between !important;
             gap: clamp(4px, 0.8vw, 8px) !important;
@@ -1414,7 +1521,7 @@
         .post-reactions {
             display: flex;
             align-items: center;
-            padding: clamp(8px, 1.5vw, 12px) clamp(16px, 3vw, 20px) 0;
+            padding: clamp(8px, 1.5vw, 12px) 16px 0;
             gap: clamp(4px, 0.8vw, 6px);
             font-size: clamp(11px, 2.2vw, 13px);
             color: #65676b;
@@ -1689,13 +1796,13 @@
         }
 
         .pricing-cta {
-            background: var(--secondary-blue);
+            background: white;
             width: 100%;
             display: block;
         }
 
         .pricing-cta:hover {
-            background: #2563eb;
+            background: white;
             transform: translateY(-2px);
         }
 
@@ -2009,6 +2116,8 @@
             }
         }
         
+
+
         /* Mobile and small tablet design */
         @media (max-width: 768px) {
             /* Global heading consistency for mobile */
@@ -2067,9 +2176,9 @@
                 display: none;
             }
             
-            /* Improved mobile CTA button */
+            /* Hide CTA button on mobile */
             .header-cta-section {
-                flex-shrink: 0;
+                display: none !important;
             }
             
             .header-cta-section .cta-button {
@@ -2101,8 +2210,8 @@
             
             /* Hero responsive */
             .hero {
-                padding: 70px 0 50px;
-                margin-top: 60px; /* Account for fixed header */
+                padding: 50px 0 0;
+                margin-top: 40px; /* Account for fixed header */
             }
             
             .hero-content {
@@ -2144,7 +2253,7 @@
             .hero-cta-group {
                 flex-direction: column;
                 align-items: center;
-                gap: 16px;
+                gap: 24px;
                 padding: 0 8px;
             }
             
@@ -2174,31 +2283,26 @@
                 grid-template-columns: 1fr;
                 gap: 16px;
                 justify-content: center;
-                padding: 0; /* הסרת padding כדי לאפשר הרחבה מלאה */
-                width: 100vw;
-                max-width: none;
-                margin: 0 calc(-1 * (100vw - 100%) / 2); /* מרכז הקונטיינר ביחס לאתר */
+                padding: 0;
+                width: 100%;
+                max-width: 100%;
+                margin: 0 auto;
                 overflow-x: hidden;
             }
 
-            #demoLeftSide, #demoRightSide {
-                width: 100vw;
-                min-width: 100vw;
-                max-width: 100vw;
+            #demoLeftSide {
+                width: 100%;
+                min-width: 0;
+                max-width: 100%;
                 height: clamp(400px, 70vh, 500px);
                 max-height: none;
-                margin: 0;
+                margin: 0 auto;
                 padding: 0;
-                border-radius: 0;
-                border-left: none;
-                border-right: none;
+                border-radius: clamp(8px, 2vw, 12px);
+                border: 1px solid var(--border-light);
                 box-sizing: border-box;
             }
 
-            #demoRightSide {
-                padding: clamp(12px, 4vw, 20px);
-                gap: clamp(8px, 2vw, 12px);
-            }
             
             /* Form responsive design */
             .form-row-responsive {
@@ -2213,7 +2317,6 @@
             /* Demo section mobile - preserve logic while improving responsiveness */
             .demo {
                 padding: 50px 0 !important;
-                height: 900px !important;
                 overflow: visible !important;
             }
             
@@ -2251,8 +2354,8 @@
             /* Facebook Mobile Feed Container */
             .social-feed-demo {
                 background: #f0f2f5 !important;
-                border-radius: 0 !important;
-                padding: 0 !important;
+                border-radius: 0 0 clamp(8px, 2vw, 12px) clamp(8px, 2vw, 12px) !important;
+                padding: 16px 4px 16px 4px !important;
                 border: none !important;
                 box-shadow: none !important;
                 height: 100% !important;
@@ -2371,20 +2474,23 @@
                 align-items: center !important;
                 justify-content: center !important;
                 color: #65676b !important;
-                font-size: 15px !important;
+                font-size: clamp(12px, 3.5vw, 15px) !important;
                 font-weight: 600 !important;
                 cursor: pointer !important;
                 transition: background-color 0.1s ease !important;
-                padding: 0 8px !important;
+                padding: 0 clamp(4px, 2vw, 8px) !important;
                 border-radius: 6px !important;
                 background: transparent !important;
                 border: none !important;
                 flex: 1 !important;
                 height: 40px !important;
                 min-height: 40px !important;
-                gap: 8px !important;
-                margin: 0 4px !important;
+                gap: clamp(4px, 1.5vw, 8px) !important;
+                margin: 0 2px !important;
                 font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif !important;
+                white-space: nowrap !important;
+                overflow: hidden !important;
+                text-overflow: ellipsis !important;
             }
             
             .post-action:hover {
@@ -2392,8 +2498,9 @@
             }
             
             .post-action i {
-                font-size: 16px !important;
-                margin-right: 6px !important;
+                font-size: clamp(13px, 3vw, 16px) !important;
+                margin-right: clamp(3px, 1.5vw, 6px) !important;
+                flex-shrink: 0 !important;
             }
             
             /* Remove rounded corners from demo container on mobile */
@@ -2508,7 +2615,7 @@
             }
             
             /* Stabilize status text on mobile */
-            #demoStatus {
+            #statusIndicatorText {
                 min-height: 45px !important;
                 height: auto !important;
                 overflow: visible !important;
@@ -2516,13 +2623,21 @@
                 line-height: 1.3 !important;
             }
             
-            /* Reduce spacing on mobile */
-            #greenIndicator {
-                margin: 0 auto 5px auto !important;
+            /* Consistent spacing on mobile - same as desktop */
+            #statusIndicatorContainer {
+                margin: 0 auto 15px auto !important;
             }
             
             .demo-progress {
                 margin-bottom: 15px !important;
+            }
+            
+            .demo-progress {
+                margin-bottom: 15px !important;
+            }
+            
+            .demo-container {
+                margin-top: 15px !important;
             }
             
             /* Stats section responsive */
@@ -2881,7 +2996,7 @@
             
             .contact-content {
                 max-width: 100%;
-                padding: 32px 20px;
+                padding: 32px 16px;
             }
             
             .contact h2 {
@@ -2929,6 +3044,12 @@
             
             .post-content {
                 padding: 10px 12px 12px 12px !important;
+            }
+            
+            /* Reduce Facebook header on mobile */
+            .facebook-header {
+                padding: 8px 12px !important;
+                font-size: 14px !important;
             }
             /* Global heading consistency for very small screens */
             h1 {
@@ -2984,8 +3105,13 @@
             
             /* Hero section for very small screens */
             .hero h1 {
-                font-size: clamp(24px, 5vw, 32px);
-                line-height: 1.1;
+                font-size: clamp(32px, 5vw, 48px) !important;
+                line-height: 1.3 !important;
+                font-weight: 700 !important;
+                margin-bottom: 24px !important;
+                max-width: 900px !important;
+                margin-left: auto !important;
+                margin-right: auto !important;
             }
             
             .hero .subtitle {
@@ -3000,7 +3126,7 @@
             .hero-cta-group .btn-base {
                 max-width: 280px;
                 font-size: 14px;
-                padding: 14px 20px;
+                padding: 14px 16px;
             }
             
             .section-header h2 {
@@ -3017,7 +3143,7 @@
             }
             
             .contact-form {
-                padding: 24px 20px;
+                padding: 24px 16px;
                 border-radius: 12px;
             }
             
@@ -3029,25 +3155,25 @@
             }
             
             .contact-form button {
-                padding: 16px 20px;
+                padding: 16px 16px;
                 font-size: 16px;
             }
             
             /* Additional mobile optimizations */
             .stats .testimonial-card {
-                padding: 20px;
+                padding: 16px;
             }
             
             .testimonial-card {
-                padding: 20px;
+                padding: 16px;
             }
             
             .pricing-card {
-                padding: 24px 20px;
+                padding: 24px 16px;
             }
             
             .comparison-card {
-                padding: 20px;
+                padding: 16px;
             }
             
             .hero-badge {
@@ -3062,12 +3188,12 @@
             
             .btn-base {
                 font-size: 14px;
-                padding: 14px 20px;
+                padding: 14px 16px;
             }
             
             /* Ensure proper spacing on all sections */
             section {
-                padding: 40px 0;
+                padding: 50px 0;
             }
             
             /* Typography improvements for very small screens */
@@ -3111,7 +3237,7 @@
             }
             
             .pricing-card {
-                padding: 20px;
+                padding: 16px;
             }
             
             .form-input, .form-label {
@@ -3120,7 +3246,7 @@
             
             .btn-base {
                 font-size: 14px;
-                padding: 12px 20px;
+                padding: 12px 16px;
             }
         }
 
@@ -3195,7 +3321,7 @@
             justify-content: center;
             align-items: center;
             margin: 0 auto 24px auto;
-            padding: 12px 20px;
+            padding: 8px 16px;
             background: rgba(248, 250, 252, 0.8);
             border: 1px solid #e2e8f0;
             border-radius: 8px;
@@ -3294,7 +3420,6 @@
         }
 
         .demo-side.dimmed {
-            /* Gray overlay removed per user request */
         }
 
         /* Container locking states */
@@ -3418,7 +3543,6 @@
             flex-shrink: 0;
         }
 
-        /* Customer Profile Animations */
         @keyframes pulse {
             0%, 100% { opacity: 1; transform: scale(1); }
             50% { opacity: 0.5; transform: scale(1.1); }
@@ -3435,15 +3559,220 @@
             }
         }
 
+        /* Minimalist Process Roadmap Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes progressFlow {
+            0% {
+                height: 0%;
+            }
+            100% {
+                height: 100%;
+            }
+        }
+
+        @keyframes gentleFloat {
+            0%, 100% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-3px);
+            }
+        }
+
+        /* Smart hover states for process steps */
+        .process-step {
+            will-change: transform, box-shadow;
+            /* Mobile optimization */
+            -webkit-transform: translateZ(0);
+            transform: translateZ(0);
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+        }
+
+        .process-step:hover .step-number {
+            animation: gentleFloat 2s ease-in-out infinite;
+        }
+
+        /* Smooth progress line animation */
+        .progress-fill {
+            transition: height 2.5s cubic-bezier(0.4, 0, 0.2, 1);
+            will-change: height;
+            -webkit-transform: translateZ(0);
+            transform: translateZ(0);
+        }
+
+        /* Mobile performance optimizations */
+        @media (max-width: 768px) {
+            .process-step {
+                will-change: opacity;
+                -webkit-transform: translate3d(0,0,0);
+                transform: translate3d(0,0,0);
+            }
+            
+            .step-number {
+                -webkit-transform: translateZ(0);
+                transform: translateZ(0);
+            }
+        }
+
+        /* Enhanced Mobile Responsive Design */
+        @media (max-width: 768px) {
+            /* Section adjustments */
+            #process {
+                padding: 60px 0 !important;
+            }
+            
+            .container {
+                padding: 0 16px !important;
+            }
+            
+            /* Header optimizations */
+            .section-header {
+                margin-bottom: 40px !important;
+            }
+            
+            .section-title {
+                font-size: 28px !important;
+                line-height: 1.3 !important;
+                margin-bottom: 12px !important;
+            }
+            
+            .section-subtitle {
+                font-size: 16px !important;
+                line-height: 1.5 !important;
+            }
+            
+            /* Timeline container */
+            .process-timeline {
+                max-width: 100% !important;
+                padding: 0 !important;
+            }
+            
+            /* Progress line - centered for mobile */
+            .progress-line {
+                right: 50% !important;
+                transform: translateX(50%) !important;
+                top: 80px !important;
+                bottom: 80px !important;
+                width: 2px !important;
+            }
+            
+            /* Process steps - mobile optimized */
+            .process-step {
+                flex-direction: column !important;
+                text-align: center !important;
+                margin-bottom: 40px !important;
+                padding: 24px 16px !important;
+                transform: none !important; /* Override desktop transforms */
+            }
+            
+            .process-step[style*="row-reverse"] {
+                flex-direction: column !important;
+            }
+            
+            .process-step .step-number {
+                margin: 0 auto 16px auto !important;
+                width: 50px !important;
+                height: 50px !important;
+                font-size: 20px !important;
+                z-index: 10 !important;
+                position: relative !important;
+            }
+            
+            .process-step .step-content {
+                text-align: center !important;
+                margin: 0 !important;
+            }
+            
+            .process-step h3 {
+                font-size: 20px !important;
+                line-height: 1.3 !important;
+                margin-bottom: 10px !important;
+            }
+            
+            .process-step p {
+                font-size: 15px !important;
+                line-height: 1.5 !important;
+                margin-bottom: 12px !important;
+            }
+            
+            .process-step .step-features {
+                justify-content: center !important;
+                gap: 6px !important;
+            }
+            
+            .process-step .step-features span {
+                font-size: 12px !important;
+                padding: 4px 8px !important;
+            }
+            
+            .process-step:hover {
+                transform: none !important;
+                box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08) !important;
+            }
+            
+        }
+        
+        /* Extra small devices (phones in portrait) */
+        @media (max-width: 480px) {
+            #process {
+                padding: 40px 0 !important;
+            }
+            
+            .container {
+                padding: 0 12px !important;
+            }
+            
+            .section-title {
+                font-size: 24px !important;
+            }
+            
+            .section-subtitle {
+                font-size: 15px !important;
+            }
+            
+            .process-step {
+                padding: 20px 12px !important;
+                margin-bottom: 30px !important;
+            }
+            
+            .process-step h3 {
+                font-size: 18px !important;
+            }
+            
+            .process-step p {
+                font-size: 14px !important;
+            }
+            
+        }
+
     </style>
 </head>
 <body>
+    
     
     <!-- Innovative Header -->
     <header class="header">
         <div class="container">
             <div class="header-content">
-                <!-- Logo Section -->
+                <!-- Mobile Menu Toggle - Left -->
+                <div class="mobile-menu-toggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+
+                <!-- Logo Section - Right -->
                 <div class="logo-section">
                     <div class="logo-text">
                         <span>Collabo <span class="ai-highlight">AI</span></span>
@@ -3451,7 +3780,7 @@
                     </div>
                 </div>
 
-                <!-- Advanced Navigation -->
+                <!-- Navigation - Center -->
                 <nav class="nav-container">
                     <div class="nav-background"></div>
                     <div class="scroll-progress"></div>
@@ -3487,13 +3816,6 @@
                         <div class="cta-glow"></div>
                     </button>
                 </div>
-
-                <!-- Mobile Menu Toggle -->
-                <div class="mobile-menu-toggle">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </div>
             </div>
         </div>
     </header>
@@ -3504,14 +3826,18 @@
             <div class="hero-content fade-in-up">
                 <div class="hero-badge">
                     <i class="fas fa-bolt"></i>
-                    טכנולוגיה מתקדמת של בינה מלאכותית
+                    סוכן דיגיטלי מתקדם למדיה חברתית
                 </div>
-                <h1>Collabo AI Pro<br>הסוכן הדיגיטלי המתקדם לעסקים</h1>
-                <p class="subtitle">פלטפורמת AI חדשנית שמזהה, מנתחת ומגיבה ללידים ברשתות חברתיות בזמן אמת. הפתרון המקצועי לעסקים שרוצים להישאר מקוונים 24/7</p>
+                <h1>תארו לעצמכם מציאות שבה אתם <span class="highlight">לא רודפים יותר</span> אחרי לקוחות<br>
+                אלא <span class="highlight">הם מגיעים אליכם</span> - <span class="highlight">מעוניינים ומוכנים</span></h1>
+                <p class="subtitle">מהפכה טכנולוגית שמזהה ומושכת לקוחות פוטנציאליים ברשתות החברתיות 24/7! הכלי החדשני שיהפוך כל פוסט לקו מכירות רווחי ללא מאמץ או טרחה</p>
                 
                 <div class="hero-cta-group">
-                    <button class="btn-base px-6 py-4 font-semibold text-center btn-gradient btn-lg cta-primary" onclick="startDemo()">התחל ניסיון חינם למשך 3 ימים</button>
-                    <a href="#demo" class="btn-base px-6 py-4 font-semibold text-center btn-lg cta-secondary">צפה בהדגמה</a>
+                    <button class="btn-base px-6 py-4 font-semibold text-center btn-gradient btn-lg cta-primary" onclick="scrollToContactForm()">התחל ניסיון בחינם</button>
+                    <button class="btn-base px-6 py-4 font-semibold text-center btn-gradient btn-lg watch-demo-btn" onclick="scrollToDemoAndStart()">
+                        <i class="fas fa-play" style="margin-left: 8px;"></i>
+                        צפה בהדגמה
+                    </button>
                 </div>
                 
             </div>
@@ -3519,105 +3845,39 @@
     </section>
 
     <!-- Demo Section -->
-    <section class="demo" id="demo" style="padding: 80px 0; height: 1000px; overflow: visible;">
+    <section class="demo" id="demo" style="padding: 80px 0; overflow: hidden; position: relative;">
         <div class="container">
             <!-- Section Header with improved spacing -->
             <div class="section-header" style="text-align: center; margin-bottom: 35px;">
-                <h2 style="margin-bottom: 16px; font-size: clamp(28px, 4vw, 40px);">הדגמה חיה - צפה בסוכן הדיגיטלי בפעולה</h2>
+                <button id="startDemoBtn" class="btn-base px-6 py-3 font-semibold text-center btn-gradient btn-lg" onclick="startDemo()">
+                    <i class="fas fa-play" style="margin-left: 8px;"></i>
+                    התחל דמו
+                </button>
             </div>
 
-            <!-- Fixed height container for all content above Facebook feed -->
-            <div style="height: 200px; position: relative; margin-bottom: -15px;">
-                
-                <!-- Progress Breadcrumb with clean design -->
-                <div class="demo-progress" id="demoProgress" style="margin-bottom: 20px; display: none;">
-                    <div class="progress-step" id="step-analysis">
-                        <span>ניתוח פוסטים</span>
-                    </div>
-                    <div class="progress-arrow">→</div>
-                    <div class="progress-step" id="step-response">
-                        <span>יצירת תגובה</span>
-                    </div>
-                    <div class="progress-arrow">→</div>
-                    <div class="progress-step" id="step-messenger">
-                        <span>מעבר למסנג'ר</span>
-                    </div>
-                    <div class="progress-arrow">→</div>
-                    <div class="progress-step" id="step-complete">
-                        <span>סיום</span>
-                    </div>
+            <!-- Progress Breadcrumb with clean design -->
+            <div class="demo-progress" id="demoProgress" style="margin-bottom: 15px; display: none; justify-content: center;">
+                <div class="progress-step" id="step-analysis">
+                    <span>ניתוח פוסטים</span>
                 </div>
-
-                <!-- Simple Status Text - positioned below navigation -->
-                <div id="greenIndicator" style="display: none; margin: 0 auto 15px auto; font-size: clamp(16px, 3vw, 20px); color: #000000; text-align: center; max-width: 800px;">
-                    <div id="demoStatus" style="direction: rtl; unicode-bidi: isolate; text-align: right; width: 100%; height: auto; min-height: 50px; color: #000000; font-family: inherit; white-space: normal; overflow: visible; display: flex; align-items: flex-start; font-size: 16px; line-height: 1.4; background: #fff3cd; padding: 12px 12px; border-radius: 6px; box-sizing: border-box;"></div>
+                <div class="progress-arrow">→</div>
+                <div class="progress-step" id="step-response">
+                    <span>יצירת תגובה</span>
                 </div>
-
-                <!-- Enhanced Customer Profile with Professional Design -->
-                <div id="customerProfileTemp" style="display: block; max-width: 400px; margin: -50px auto 0px auto;">
-                
-                <!-- Introduction Banner -->
-                <div id="demoIntro" style="opacity: 0; text-align: center; margin-bottom: 5px;">
-                    <div style="background: linear-gradient(135deg, #f8fafc, #f1f5f9); border: 1px solid var(--border-light); border-radius: 12px; padding: 14px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);">
-                        <div style="font-size: 18px; font-weight: 600; color: var(--text-primary);">
-                            🎯 הכירו את הלקוח שלנו להדגמה
-                        </div>
-                    </div>
+                <div class="progress-arrow">→</div>
+                <div class="progress-step" id="step-messenger">
+                    <span>מעבר למסנג'ר</span>
                 </div>
-
-                <!-- Professional Client Card -->
-                <div id="clientCard" style="opacity: 0; text-align: center; margin-bottom: 5px;">
-                    <div class="testimonial-card" style="text-align: right; position: relative; background: white; padding: 20px; max-width: 100%;">
-                        
-                        <!-- Client Avatar & Header -->
-                        <div style="display: flex; align-items: center; gap: 16px; margin-bottom: 16px; direction: rtl;">
-                            <div class="avatar avatar-lg" style="background: var(--ai-purple); color: white; font-weight: 700; font-size: 24px;">
-                                י.ש
-                            </div>
-                            <div style="flex: 1;">
-                                <h3 style="margin: 0 0 4px 0; font-size: 24px; font-weight: 700; color: var(--text-primary);">יוסי שיפוצים</h3>
-                                <div style="font-size: 16px; color: var(--text-secondary); font-weight: 500;">הלקוח המטרה להדגמה</div>
-                            </div>
-                        </div>
-
-                        <!-- Profile Details Grid -->
-                        <div style="display: grid; gap: 8px;">
-                            
-                            <!-- Business Field -->
-                            <div id="businessField" style="opacity: 0;">
-                                <div style="padding: 12px; background: var(--bg-gray); border-radius: 6px;">
-                                    <div style="font-size: 14px; color: var(--text-secondary); font-weight: 500; margin-bottom: 1px;">תחום עסקי</div>
-                                    <div id="businessValue" style="font-size: 16px; color: var(--text-primary); font-weight: 600;">שיפוצים ובנייה</div>
-                                </div>
-                            </div>
-
-                            <!-- Location Field -->
-                            <div id="locationField" style="opacity: 0;">
-                                <div style="padding: 12px; background: var(--bg-gray); border-radius: 6px;">
-                                    <div style="font-size: 14px; color: var(--text-secondary); font-weight: 500; margin-bottom: 1px;">אזור פעילות</div>
-                                    <div id="locationValue" style="font-size: 16px; color: var(--text-primary); font-weight: 600;">תל אביב והשרון</div>
-                                </div>
-                            </div>
-
-                            <!-- Target Field -->
-                            <div id="targetField" style="opacity: 0;">
-                                <div style="padding: 12px; background: var(--bg-gray); border-radius: 6px;">
-                                    <div style="font-size: 14px; color: var(--text-secondary); font-weight: 500; margin-bottom: 8px;">תוכניות Collabo Pro</div>
-                                    <div id="targetValue" style="font-size: 14px; color: var(--text-primary); font-weight: 600; line-height: 1.4;">
-                                        ✅ <span style="color: #10b981;">Collabo לידים חמים</span> - אנשים שמחפשים קבלני שיפוצים<br>
-                                        💜 <span style="color: #8b5cf6;">Collabo בניית מוניטין</span> - אנשים שמבקשים עצות בתחום
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
-                        
-                    </div>
+                <div class="progress-arrow">→</div>
+                <div class="progress-step" id="step-complete">
+                    <span>סיום</span>
                 </div>
-                
             </div>
-            
-            </div> <!-- End fixed height container -->
+
+            <!-- Status Indicator -->
+            <div id="statusIndicatorContainer" style="display: none; margin: 0 auto 15px auto; font-size: 18px; color: #000000; text-align: center; max-width: 800px;">
+                <div id="statusIndicatorText" style="direction: rtl; unicode-bidi: isolate; text-align: right; width: 100%; height: auto; min-height: 50px; color: #000000; font-family: inherit; white-space: normal; overflow: visible; display: flex; align-items: flex-start; font-size: 16px; line-height: 1.4; background: #fff3cd; padding: 12px 12px; border-radius: 6px; box-sizing: border-box;">מתחיל הדגמה...</div>
+            </div>
 
             <!-- Demo Features - properly positioned -->
             <div class="demo-features" style="display: none; max-width: 900px; margin: 0 auto 0px auto;">
@@ -3625,7 +3885,7 @@
             </div>
 
             <!-- Demo Container - properly centered and spaced -->
-            <div class="demo-container" style="display: none; justify-content: center; margin-top: 0px;" id="demoContainer">
+            <div class="demo-container" style="display: flex; justify-content: center; margin-top: 15px;" id="demoContainer">
                 <div class="demo-video demo-side" id="demoLeftSide" style="max-width: 800px; width: 100%;">
                     <!-- Facebook Header - Refined -->
                     <div class="facebook-header" style="
@@ -3642,16 +3902,137 @@
                         box-shadow: none;
                         border-bottom: 1px solid rgba(255,255,255,0.2);
                     ">
-                        <div style="display: flex; align-items: center; gap: 8px;">
-                            <i class="fab fa-facebook-f" style="font-size: 16px;"></i>
-                            <span>Facebook</span>
+                        <div style="display: flex; align-items: center; gap: 8px; min-height: 24px;">
+                            <i class="fas fa-user-tie" style="font-size: 16px; display: none;"></i>
+                            <span id="headerTitle">&nbsp;</span>
                         </div>
                     </div>
                     <div class="social-feed-demo" id="socialFeed" style="border-radius: 0 0 clamp(6px, 1.5vw, 12px) clamp(6px, 1.5vw, 12px);">
-                        <!-- Demo posts will be populated here -->
+                        <!-- Customer card content - populated when demo starts -->
+                        <div id="customerCardContent" style="padding: 0px 6px; text-align: center; direction: rtl; display: none; box-sizing: border-box;">
+                            <!-- Dynamic content will be inserted here for each phase -->
+                        </div>
+                        
+                        <!-- Facebook posts content - shown after customer card phases -->
+                        <div id="facebookContent" style="display: none;">
+                            <!-- Demo posts will be populated here -->
+                        </div>
                     </div>
                 </div>
                 
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Roadmap Section -->
+    <section class="process-roadmap" id="process" style="padding: 80px 0; background: #ffffff;">
+        <div class="container">
+            <!-- Section Header -->
+            <div class="section-header" style="text-align: center; margin-bottom: 60px; opacity: 0; transform: translateY(30px); transition: opacity 0.8s ease-out, transform 0.8s ease-out;" data-animate="header">
+                <div class="section-badge" style="display: inline-block; background: rgba(0, 0, 0, 0.06); color: var(--text-primary); padding: 8px 20px; border-radius: 20px; font-size: 14px; font-weight: 600; margin-bottom: 16px;">הטכנולוגיה שלנו</div>
+                <h2 class="section-title" style="font-size: 42px; font-weight: 800; color: var(--text-primary); margin-bottom: 16px; line-height: 1.2;">מה קורה מאחורי הקלעים?</h2>
+                <p class="section-subtitle" style="color: var(--text-secondary); font-size: 18px; line-height: 1.6; max-width: 800px; margin: 0 auto;">6 שלבים אוטומטיים: מאפיון לקוח אישי ועד לידים מוכנים למכירה - הכל ברמת דיוק של 96%</p>
+            </div>
+
+            <!-- Interactive Process Timeline -->
+            <div class="process-timeline" style="position: relative; max-width: 900px; margin: 0 auto;">
+                
+                <!-- Progress Line -->
+                <div class="progress-line" style="position: absolute; right: 40px; top: 60px; bottom: 60px; width: 2px; background: rgba(0, 0, 0, 0.1); border-radius: 1px;">
+                    <div class="progress-fill" style="width: 100%; height: 0%; background: linear-gradient(180deg, var(--text-primary) 0%, var(--text-secondary) 100%); border-radius: 1px; transition: height 2s ease-out;"></div>
+                </div>
+                
+                
+                <!-- Step 0: Customer Profiling -->
+                <div class="process-step" data-step="0" style="display: flex; align-items: flex-start; margin-bottom: 60px; opacity: 0; transform: translateX(30px); transition: all 0.6s ease-out; padding: 30px; border-radius: 16px; background: #ffffff; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08); border: 1px solid rgba(0, 0, 0, 0.05); position: relative; cursor: pointer; flex-direction: row-reverse;" onmouseover="this.style.transform='translateX(30px) translateY(-8px)'; this.style.boxShadow='0 12px 40px rgba(0, 0, 0, 0.15)'" onmouseout="this.style.transform='translateX(30px) translateY(0)'; this.style.boxShadow='0 4px 20px rgba(0, 0, 0, 0.08)'">
+                    <div class="step-number" style="width: 60px; height: 60px; background: linear-gradient(135deg, #6366f1, #4338ca); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 24px; font-weight: 700; flex-shrink: 0; margin-right: 30px; position: relative; z-index: 2;">0</div>
+                    <div class="step-content" style="flex: 1; text-align: left;">
+                        <div class="step-badge" style="display: inline-block; background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(67, 56, 202, 0.1)); color: #4338ca; padding: 4px 12px; border-radius: 20px; font-size: 12px; font-weight: 600; margin-bottom: 12px; border: 1px solid rgba(99, 102, 241, 0.2);">שלב התחלתי</div>
+                        <h3 style="font-size: 24px; font-weight: 700; color: var(--text-primary); margin-bottom: 12px; line-height: 1.3;">אפיון לקוח חדש - הבנת הצרכים והיעדים</h3>
+                        <p style="color: var(--text-secondary); font-size: 16px; line-height: 1.6; margin-bottom: 16px;">הסוכן מתחיל בלמידה מעמיקה על העסק שלכם: תחום הפעילות, אזור גיאוגרפי, סוג הלקוחות, הטון הרצוי ויעדי השיווק. זה הבסיס לכל הפעילות שלאחר מכן.</p>
+                        <div class="step-features" style="display: flex; flex-wrap: wrap; gap: 8px; justify-content: flex-end;">
+                            <span style="background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(67, 56, 202, 0.1)); color: #4338ca; padding: 6px 12px; border-radius: 20px; font-size: 13px; font-weight: 600; border: 1px solid rgba(99, 102, 241, 0.2);">ניתוח עסקי מעמיק</span>
+                            <span style="background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(67, 56, 202, 0.1)); color: #4338ca; padding: 6px 12px; border-radius: 20px; font-size: 13px; font-weight: 600; border: 1px solid rgba(99, 102, 241, 0.2);">מיפוי קהל יעד</span>
+                            <span style="background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(67, 56, 202, 0.1)); color: #4338ca; padding: 6px 12px; border-radius: 20px; font-size: 13px; font-weight: 600; border: 1px solid rgba(99, 102, 241, 0.2);">הגדרת אסטרטגיה</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 1: Mass Scanning -->
+                <div class="process-step" data-step="1" style="display: flex; align-items: flex-start; margin-bottom: 60px; opacity: 0; transform: translateX(-30px); transition: all 0.6s ease-out; padding: 30px; border-radius: 16px; background: #ffffff; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08); border: 1px solid rgba(0, 0, 0, 0.05); position: relative; cursor: pointer;" onmouseover="this.style.transform='translateX(-30px) translateY(-8px)'; this.style.boxShadow='0 12px 40px rgba(0, 0, 0, 0.15)'" onmouseout="this.style.transform='translateX(-30px) translateY(0)'; this.style.boxShadow='0 4px 20px rgba(0, 0, 0, 0.08)'">
+                    <div class="step-number" style="width: 60px; height: 60px; background: var(--text-primary); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 24px; font-weight: 700; flex-shrink: 0; margin-left: 30px; position: relative; z-index: 2;">1</div>
+                    <div class="step-content" style="flex: 1;">
+                        <div class="step-badge" style="display: inline-block; background: rgba(0, 0, 0, 0.08); color: var(--text-primary); padding: 4px 12px; border-radius: 20px; font-size: 12px; font-weight: 600; margin-bottom: 12px;">שלב ראשון</div>
+                        <h3 style="font-size: 24px; font-weight: 700; color: var(--text-primary); margin-bottom: 12px; line-height: 1.3;">סריקה המונית - מאות אלפי פוסטים יומית</h3>
+                        <p style="color: var(--text-secondary); font-size: 16px; line-height: 1.6; margin-bottom: 16px;">הסוכן סורק במהירות על-אנושית מאות קבוצות פייסבוק, עמודים ופוסטים ברחבי הרשת. מה שייקח לכם חודשים, הוא עושה בדקות.</p>
+                        <div class="step-features" style="display: flex; flex-wrap: wrap; gap: 8px;">
+                            <span style="background: rgba(0, 0, 0, 0.06); color: var(--text-primary); padding: 6px 12px; border-radius: 20px; font-size: 13px; font-weight: 600;">200,000+ פוסטים/יום</span>
+                            <span style="background: rgba(0, 0, 0, 0.06); color: var(--text-primary); padding: 6px 12px; border-radius: 20px; font-size: 13px; font-weight: 600;">מעקב 24/7</span>
+                            <span style="background: rgba(0, 0, 0, 0.06); color: var(--text-primary); padding: 6px 12px; border-radius: 20px; font-size: 13px; font-weight: 600;">כיסוי מלא</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 2: Smart Filtering -->
+                <div class="process-step" data-step="2" style="display: flex; align-items: flex-start; margin-bottom: 60px; opacity: 0; transform: translateX(30px); transition: all 0.6s ease-out; padding: 30px; border-radius: 16px; background: #ffffff; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08); border: 1px solid rgba(0, 0, 0, 0.05); position: relative; cursor: pointer; flex-direction: row-reverse;" onmouseover="this.style.transform='translateX(30px) translateY(-8px)'; this.style.boxShadow='0 12px 40px rgba(0, 0, 0, 0.15)'" onmouseout="this.style.transform='translateX(30px) translateY(0)'; this.style.boxShadow='0 4px 20px rgba(0, 0, 0, 0.08)'">
+                    <div class="step-number" style="width: 60px; height: 60px; background: var(--text-primary); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 24px; font-weight: 700; flex-shrink: 0; margin-right: 30px; position: relative; z-index: 2;">2</div>
+                    <div class="step-content" style="flex: 1; text-align: left;">
+                        <div class="step-badge" style="display: inline-block; background: rgba(0, 0, 0, 0.08); color: var(--text-primary); padding: 4px 12px; border-radius: 20px; font-size: 12px; font-weight: 600; margin-bottom: 12px;">שלב שני</div>
+                        <h3 style="font-size: 24px; font-weight: 700; color: var(--text-primary); margin-bottom: 12px; line-height: 1.3;">סינון חכם - רק התוכן הרלוונטי</h3>
+                        <p style="color: var(--text-secondary); font-size: 16px; line-height: 1.6; margin-bottom: 16px;">הסוכן מסנן אוטומטית פרופילים מזוייפים, פרסומות, פוסטים ישנים ותוכן לא רלוונטי. נשארים רק לקוחות אמיתיים עם צרכים אמיתיים.</p>
+                        <div class="step-features" style="display: flex; flex-wrap: wrap; gap: 8px; justify-content: flex-end;">
+                            <span style="background: rgba(0, 0, 0, 0.06); color: var(--text-primary); padding: 6px 12px; border-radius: 20px; font-size: 13px; font-weight: 600;">זיהוי פרופילים מזוייפים</span>
+                            <span style="background: rgba(0, 0, 0, 0.06); color: var(--text-primary); padding: 6px 12px; border-radius: 20px; font-size: 13px; font-weight: 600;">הסרת פרסומות</span>
+                            <span style="background: rgba(0, 0, 0, 0.06); color: var(--text-primary); padding: 6px 12px; border-radius: 20px; font-size: 13px; font-weight: 600;">פילטור זמני</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 3: Intent Analysis -->
+                <div class="process-step" data-step="3" style="display: flex; align-items: flex-start; margin-bottom: 60px; opacity: 0; transform: translateX(-30px); transition: all 0.6s ease-out; padding: 30px; border-radius: 16px; background: #ffffff; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08); border: 1px solid rgba(0, 0, 0, 0.05); position: relative; cursor: pointer;" onmouseover="this.style.transform='translateX(-30px) translateY(-8px)'; this.style.boxShadow='0 12px 40px rgba(0, 0, 0, 0.15)'" onmouseout="this.style.transform='translateX(-30px) translateY(0)'; this.style.boxShadow='0 4px 20px rgba(0, 0, 0, 0.08)'">
+                    <div class="step-number" style="width: 60px; height: 60px; background: var(--text-primary); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 24px; font-weight: 700; flex-shrink: 0; margin-left: 30px; position: relative; z-index: 2;">3</div>
+                    <div class="step-content" style="flex: 1;">
+                        <div class="step-badge" style="display: inline-block; background: rgba(0, 0, 0, 0.08); color: var(--text-primary); padding: 4px 12px; border-radius: 20px; font-size: 12px; font-weight: 600; margin-bottom: 12px;">שלב שלישי</div>
+                        <h3 style="font-size: 24px; font-weight: 700; color: var(--text-primary); margin-bottom: 12px; line-height: 1.3;">ניתוח כוונות מתקדם - זיהוי צרכים אמיתיים</h3>
+                        <p style="color: var(--text-secondary); font-size: 16px; line-height: 1.6; margin-bottom: 16px;">הסוכן מבין את הקונטקסט האמיתי: האם זה לקוח שמחפש שירות, מתחרה, או סתם סקרן. רק הזדמנויות עסקיות אמיתיות עוברות הלאה.</p>
+                        <div class="step-features" style="display: flex; flex-wrap: wrap; gap: 8px;">
+                            <span style="background: rgba(0, 0, 0, 0.06); color: var(--text-primary); padding: 6px 12px; border-radius: 20px; font-size: 13px; font-weight: 600;">ניתוח רגשי</span>
+                            <span style="background: rgba(0, 0, 0, 0.06); color: var(--text-primary); padding: 6px 12px; border-radius: 20px; font-size: 13px; font-weight: 600;">זיהוי דחיפות</span>
+                            <span style="background: rgba(0, 0, 0, 0.06); color: var(--text-primary); padding: 6px 12px; border-radius: 20px; font-size: 13px; font-weight: 600;">הערכת פוטנציאל</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 4: Smart Response -->
+                <div class="process-step" data-step="4" style="display: flex; align-items: flex-start; margin-bottom: 60px; opacity: 0; transform: translateX(30px); transition: all 0.6s ease-out; padding: 30px; border-radius: 16px; background: #ffffff; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08); border: 1px solid rgba(0, 0, 0, 0.05); position: relative; cursor: pointer; flex-direction: row-reverse;" onmouseover="this.style.transform='translateX(30px) translateY(-8px)'; this.style.boxShadow='0 12px 40px rgba(0, 0, 0, 0.15)'" onmouseout="this.style.transform='translateX(30px) translateY(0)'; this.style.boxShadow='0 4px 20px rgba(0, 0, 0, 0.08)'">
+                    <div class="step-number" style="width: 60px; height: 60px; background: var(--text-primary); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 24px; font-weight: 700; flex-shrink: 0; margin-right: 30px; position: relative; z-index: 2;">4</div>
+                    <div class="step-content" style="flex: 1; text-align: left;">
+                        <div class="step-badge" style="display: inline-block; background: rgba(0, 0, 0, 0.08); color: var(--text-primary); padding: 4px 12px; border-radius: 20px; font-size: 12px; font-weight: 600; margin-bottom: 12px;">שלב רביעי</div>
+                        <h3 style="font-size: 24px; font-weight: 700; color: var(--text-primary); margin-bottom: 12px; line-height: 1.3;">תגובה חכמה ומותאמת - לא ספאם גנרי</h3>
+                        <p style="color: var(--text-secondary); font-size: 16px; line-height: 1.6; margin-bottom: 16px;">הסוכן כותב תגובות ייחודיות שמתייחסות לצורך הספציפי של הלקוח. לא תבניות, לא קופי פייסט - רק תקשורת אמיתית שבונה אמון.</p>
+                        <div class="step-features" style="display: flex; flex-wrap: wrap; gap: 8px; justify-content: flex-end;">
+                            <span style="background: rgba(0, 0, 0, 0.06); color: var(--text-primary); padding: 6px 12px; border-radius: 20px; font-size: 13px; font-weight: 600;">תגובות ייחודיות</span>
+                            <span style="background: rgba(0, 0, 0, 0.06); color: var(--text-primary); padding: 6px 12px; border-radius: 20px; font-size: 13px; font-weight: 600;">הקשר מלא</span>
+                            <span style="background: rgba(0, 0, 0, 0.06); color: var(--text-primary); padding: 6px 12px; border-radius: 20px; font-size: 13px; font-weight: 600;">טון מקצועי</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 5: Value Delivery -->
+                <div class="process-step" data-step="5" style="display: flex; align-items: flex-start; margin-bottom: 60px; opacity: 0; transform: translateX(-30px); transition: all 0.6s ease-out; padding: 30px; border-radius: 16px; background: #ffffff; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08); border: 1px solid rgba(0, 0, 0, 0.05); position: relative; cursor: pointer;" onmouseover="this.style.transform='translateX(-30px) translateY(-8px)'; this.style.boxShadow='0 12px 40px rgba(0, 0, 0, 0.15)'" onmouseout="this.style.transform='translateX(-30px) translateY(0)'; this.style.boxShadow='0 4px 20px rgba(0, 0, 0, 0.08)'">
+                    <div class="step-number" style="width: 60px; height: 60px; background: var(--text-primary); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 24px; font-weight: 700; flex-shrink: 0; margin-left: 30px; position: relative; z-index: 2;">5</div>
+                    <div class="step-content" style="flex: 1;">
+                        <div class="step-badge" style="display: inline-block; background: rgba(0, 0, 0, 0.08); color: var(--text-primary); padding: 4px 12px; border-radius: 20px; font-size: 12px; font-weight: 600; margin-bottom: 12px;">שלב חמישי</div>
+                        <h3 style="font-size: 24px; font-weight: 700; color: var(--text-primary); margin-bottom: 12px; line-height: 1.3;">המרה ללידים איכותיים - התוצאות שלכם</h3>
+                        <p style="color: var(--text-secondary); font-size: 16px; line-height: 1.6; margin-bottom: 16px;">במקום מאות פניות לא רלוונטיות, אתם מקבלים רשימת לקוחות מסוננת שכבר מעוניינים בשירות שלכם. חיסכון של 90% בזמן, עלייה של 300% באיכות הלידים.</p>
+                        <div class="step-features" style="display: flex; flex-wrap: wrap; gap: 8px;">
+                            <span style="background: rgba(0, 0, 0, 0.06); color: var(--text-primary); padding: 6px 12px; border-radius: 20px; font-size: 13px; font-weight: 600;">90% חיסכון בזמן</span>
+                            <span style="background: rgba(0, 0, 0, 0.06); color: var(--text-primary); padding: 6px 12px; border-radius: 20px; font-size: 13px; font-weight: 600;">300% שיפור איכות</span>
+                            <span style="background: rgba(0, 0, 0, 0.06); color: var(--text-primary); padding: 6px 12px; border-radius: 20px; font-size: 13px; font-weight: 600;">לידים מוכנים</span>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </div>
     </section>
@@ -4269,6 +4650,55 @@
         function delayedExecute(fn, delay = DELAYS.MEDIUM) {
             return setTimeout(fn, delay);
         }
+        
+        // Tracked setTimeout wrapper - LEGACY COMPATIBILITY - uses new smart delay system
+        function trackedSetTimeout(fn, delay) {
+            console.log('⚠️ LEGACY: trackedSetTimeout called - converting to smartDelay');
+            
+            // Convert to smartDelay + function execution
+            smartDelay(delay)
+                .then(() => {
+                    if (typeof fn === 'function') {
+                        fn();
+                    }
+                })
+                .catch(error => {
+                    if (error.message !== 'Demo not active' && error.message !== 'Delay cancelled') {
+                        console.error('trackedSetTimeout error:', error);
+                    }
+                });
+            
+            // Return a fake timeout ID for backward compatibility
+            return Date.now() + Math.random();
+        }
+        
+        // Tracked delay function - LEGACY COMPATIBILITY - uses new smart delay system
+        let pausedDelays = new Map(); // Keep for backward compatibility
+        
+        function trackedDelay(delay) {
+            console.log('⚠️ LEGACY: trackedDelay called - forwarding to smartDelay');
+            return smartDelay(delay);
+        }
+        
+        // Resume all paused delays - LEGACY COMPATIBILITY (now handled by DemoStateManager)
+        function resumeDelays() {
+            console.log('⚠️ LEGACY: resumeDelays called - operations now handled by DemoStateManager');
+            // Clear legacy delays map for compatibility
+            pausedDelays.clear();
+        }
+        
+        // Global state for typing functions
+        let activeTypingPromises = new Set();
+        let pausedTypingStates = new Map(); // Store typing states for resume
+        
+        // Resume all paused typing functions - LEGACY COMPATIBILITY (now handled by DemoStateManager)
+        function resumeTyping() {
+            console.log('⚠️ LEGACY: resumeTyping called - operations now handled by DemoStateManager');
+            // Clear legacy typing states for compatibility
+            pausedTypingStates.clear();
+        }
+        
+        // REMOVED: Legacy typing functions - now handled by smartTypeText in DemoStateManager
 
         function setStyles(element, styles) {
             element.style.cssText = styles;
@@ -4444,15 +4874,15 @@
                     <div class="post-actions">
                         <div class="post-action">
                             <i class="far fa-thumbs-up"></i>
-                            Like
+                            לייק
                         </div>
                         <div class="post-action">
                             <i class="far fa-comment"></i>
-                            Comment
+                            תגובה
                         </div>
                         <div class="post-action">
                             <i class="far fa-share"></i>
-                            Share
+                            שתף
                         </div>
                     </div>
                 </div>
@@ -4501,6 +4931,7 @@
             // Add hover effects for additional posts (indices 5-9)
             setTimeout(() => {
                 addHoverAnalysisToAdditionalPosts();
+                addClickAnalysisToAllPosts();
             }, 500);
         }
 
@@ -4514,7 +4945,7 @@
                 if (index >= totalPosts) {
                     // All posts processed, restart the demo
                     console.log('All posts completed - restarting demo cycle');
-                    setTimeout(() => {
+                    trackedSetTimeout(() => {
                         console.log('🔄 Restarting demo from beginning');
                         currentPostIndex = 0;
                         totalPosts = 0;
@@ -4525,7 +4956,7 @@
                         populateFeed();
                         
                         // Start detection from beginning
-                        setTimeout(() => {
+                        trackedSetTimeout(() => {
                             detectAndMarkPosts();
                         }, 1000);
                     }, 3000);
@@ -4536,7 +4967,7 @@
                 if (!post || post.classList.contains('post-analyzed')) {
                     // Skip to next post
                     currentPostIndex = index + 1;
-                    setTimeout(() => processPost(index + 1), 1000);
+                    trackedSetTimeout(() => processPost(index + 1), 1000);
                     return;
                 }
                 
@@ -4545,7 +4976,7 @@
                 if (!postData) {
                     // Skip to next post
                     currentPostIndex = index + 1;
-                    setTimeout(() => processPost(index + 1), 1000);
+                    trackedSetTimeout(() => processPost(index + 1), 1000);
                     return;
                 }
                 
@@ -4555,11 +4986,11 @@
                 highlightCurrentPost(post, true);
                 
                 // Show explanation banner on the post after a brief moment
-                setTimeout(() => {
+                trackedSetTimeout(() => {
                     showPostExplanationBanner(post, reason, isRelevant, postData.name, icon, highlightField);
                     
                     // Mark post as analyzed and handle post logic directly
-                    setTimeout(() => {
+                    trackedSetTimeout(() => {
                         post.classList.add('post-analyzed');
                         
                         if (isRelevant === true || isRelevant === 'advice') {
@@ -4590,7 +5021,7 @@
                             post.appendChild(fireIcon);
                             
                             // Run full demo sequence for relevant post
-                            setTimeout(async () => {
+                            trackedSetTimeout(async () => {
                                 console.log('Starting autoHandleComment for post:', postIndex, 'current index will be:', index + 1);
                                 await autoHandleComment(postIndex, async () => {
                                     console.log('autoHandleComment completed, setting currentPostIndex to:', index + 1);
@@ -4599,7 +5030,7 @@
                                     // Set next post index AFTER demo completes
                                     currentPostIndex = index + 1;
                                     // After demo completes, continue with next post
-                                    setTimeout(async () => {
+                                    trackedSetTimeout(async () => {
                                         await continueToNextPost();
                                     }, 2000);
                                 });
@@ -4631,7 +5062,7 @@
                             
                             // For irrelevant posts, just continue to next
                             currentPostIndex = index + 1;
-                            setTimeout(() => processPost(index + 1), 1500);
+                            trackedSetTimeout(() => processPost(index + 1), 1500);
                         }
                         
                         // Remove highlight after analysis is complete (only for irrelevant posts)
@@ -4661,13 +5092,13 @@
             
             if (currentPostIndex < totalPosts) {
                 // Continue with detection of remaining posts without updating status
-                setTimeout(() => {
+                trackedSetTimeout(() => {
                     detectAndMarkPosts();
                 }, 1000);
             } else {
                 // All posts done, restart the demo
                 console.log('No more posts to process - restarting demo cycle');
-                setTimeout(() => {
+                trackedSetTimeout(() => {
                     console.log('🔄 Restarting demo from beginning (path 2)');
                     currentPostIndex = 0;
                     totalPosts = 0;
@@ -4678,7 +5109,7 @@
                     populateFeed();
                     
                     // Start detection from beginning
-                    setTimeout(() => {
+                    trackedSetTimeout(() => {
                         detectAndMarkPosts();
                     }, 1000);
                 }, 3000);
@@ -4778,7 +5209,7 @@
                             : 'לא מתאים'
                         }</span>
                     </div>
-                    <button onclick="this.parentElement.remove()" style="
+                    <button onclick="event.stopPropagation(); event.preventDefault(); const banner = this.closest('.post-explanation-banner'); if(banner) banner.remove();" style="
                         background: none;
                         border: none;
                         cursor: pointer;
@@ -4810,6 +5241,40 @@
             }
         }
 
+        function addClickAnalysisToAllPosts() {
+            console.log('Adding click events to all posts');
+            const allPosts = getAllPosts();
+            console.log('Found', allPosts.length, 'posts for click events');
+            
+            // Add click events to all posts
+            for (let i = 0; i < allPosts.length; i++) {
+                const post = allPosts[i];
+                if (!post) continue;
+                
+                const postIndex = parseInt(post.dataset.index);
+                const postData = feedPosts[postIndex];
+                if (!postData) continue;
+                
+                console.log('Adding click event to post', postIndex);
+                
+                // Add click event to show analysis banner
+                post.addEventListener('click', (e) => {
+                    console.log('Post clicked:', postIndex, e.target);
+                    
+                    // Prevent triggering on action buttons
+                    if (e.target.closest('.post-action')) {
+                        console.log('Click was on post action, ignoring');
+                        return;
+                    }
+                    
+                    console.log('Showing analysis banner for post', postIndex);
+                    // Show analysis banner on click
+                    const { icon, reason, isRelevant, highlightField } = getPostAnalysis(postData);
+                    showPostExplanationBanner(post, reason, isRelevant, postData.name, icon, highlightField);
+                });
+            }
+        }
+        
         function addHoverAnalysisToAdditionalPosts() {
             const allPosts = getAllPosts();
             
@@ -4846,6 +5311,16 @@
                     setTimeout(() => {
                         removePostExplanationBanner(post);
                     }, DELAYS.SHORT);
+                });
+                
+                // Add click event to show analysis banner
+                post.addEventListener('click', (e) => {
+                    // Prevent triggering on action buttons
+                    if (e.target.closest('.post-action')) return;
+                    
+                    // Show analysis banner on click
+                    const { icon, reason, isRelevant, highlightField } = getPostAnalysis(postData);
+                    showPostExplanationBanner(post, reason, isRelevant, postData.name, icon, highlightField);
                 });
             }
         }
@@ -5125,7 +5600,7 @@
                     if (currentChar < text.length) {
                         element.textContent += text.charAt(currentChar);
                         currentChar++;
-                        setTimeout(typeNextChar, 50); // 50ms delay between characters
+                        trackedSetTimeout(typeNextChar, 50); // 50ms delay between characters
                     } else {
                         // Animation complete - resolve promise
                         resolve();
@@ -5155,7 +5630,7 @@
                     if (currentChar < text.length) {
                         element.textContent = existingContent + text.substring(0, currentChar + 1);
                         currentChar++;
-                        setTimeout(typeNextChar, 50); // 50ms delay between characters
+                        trackedSetTimeout(typeNextChar, 50); // 50ms delay between characters
                     } else {
                         // Animation complete - resolve promise
                         resolve();
@@ -5168,7 +5643,7 @@
         }
 
         async function updateEnhancedDemoStage(stage) {
-            const statusElement = document.getElementById('demoStatus');
+            const statusElement = document.getElementById('statusIndicatorText');
             
             if (!statusElement) return;
             
@@ -5225,7 +5700,7 @@
             explanationElement.style.opacity = '0.5';
             explanationElement.style.transform = 'translateY(-10px)';
             
-            setTimeout(() => {
+            trackedSetTimeout(() => {
                 explanationElement.textContent = text;
                 explanationElement.style.opacity = '1';
                 explanationElement.style.transform = 'translateY(0)';
@@ -5239,7 +5714,7 @@
                 }
                 
                 // After text is updated, shift focus back to left side after a delay
-                setTimeout(() => {
+                trackedSetTimeout(() => {
                     if (stage === 'analysis') {
                         setDemoFocus('left');
                     } else if (stage === 'response' || stage === 'messenger') {
@@ -5295,28 +5770,28 @@
             }
             
             // Update content after fade out animation
-            setTimeout(() => {
+            trackedSetTimeout(() => {
                 featuresElement.innerHTML = featuresHTML;
                 featuresElement.classList.remove('updating');
                 featuresElement.classList.add('updated');
                 
                 // Add highlight animation after content is updated
-                setTimeout(() => {
+                trackedSetTimeout(() => {
                     featuresElement.classList.add('highlight');
                     
                     // Add individual checkmark animations
                     const listItems = featuresElement.querySelectorAll('li');
                     listItems.forEach((item, index) => {
-                        setTimeout(() => {
+                        trackedSetTimeout(() => {
                             item.classList.add('animate-check');
-                            setTimeout(() => {
+                            trackedSetTimeout(() => {
                                 item.classList.remove('animate-check');
                             }, 1000);
                         }, index * 300);
                     });
                     
                     // Remove highlight class after animation
-                    setTimeout(() => {
+                    trackedSetTimeout(() => {
                         featuresElement.classList.remove('highlight');
                     }, 3500);
                 }, 600);
@@ -5333,6 +5808,9 @@
             // Store the callback - it will be called by finishMessengerConversation
             demoCompleteCallback = onComplete;
             
+            // Scroll post into view for better visibility
+            scrollPostToView(postIndex);
+            
             // Remove analysis banner when agent starts responding
             removePostExplanationBanner(post);
             
@@ -5341,7 +5819,7 @@
             if (existingCommentBox) {
                 console.log('Comment box already exists for post', postIndex, '- skipping creation');
                 // Still need to continue with messenger if typing is complete
-                setTimeout(async () => {
+                trackedSetTimeout(async () => {
                     if (feedPosts[postIndex] && feedPosts[postIndex].name && !messengerConversationActive) {
                         messengerConversationActive = true;
                         await showMessengerTransition(feedPosts[postIndex].name, feedPosts[postIndex].category);
@@ -5411,19 +5889,11 @@
             
             commentBox.innerHTML = `
                 <div style="display: flex; align-items: flex-start; gap: 8px; margin-bottom: 8px;">
-                    <div class="avatar avatar-sm" style="background: var(--ai-purple); color: white; display: flex; align-items: center; justify-content: center; width: 32px; height: 32px; border-radius: 50%; font-size: 12px; font-weight: bold; flex-shrink: 0;">
+                    <div class="avatar avatar-sm comment-avatar" style="background: var(--ai-purple); color: white; display: flex; align-items: center; justify-content: center; width: 32px !important; height: 32px !important; min-width: 32px !important; min-height: 32px !important; border-radius: 50%; font-size: 12px; font-weight: bold; flex-shrink: 0;">
                         י.ש
                     </div>
                     <div class="comment-bubble" style="flex: 1; background: #f0f2f5 !important; border-radius: 16px; padding: 12px 16px; position: relative; border: 1px solid #e4e6ea !important; min-height: 44px; box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04) !important; box-sizing: border-box !important; max-width: 100%; overflow-wrap: break-word;">
                         <div id="aiResponse${postIndex}" style="font-size: 14px; color: #1c1e21; line-height: 1.33; word-wrap: break-word; font-family: inherit; background: transparent !important;"></div>
-                        <div class="typing-indicator" style="display: flex; align-items: center; gap: 8px; padding: 6px 0; margin-top: 4px;">
-                            <span style="color: #65676b; font-size: 13px; font-weight: 500;">הסוכן כותב תגובה...</span>
-                            <div style="display: flex; gap: 3px; align-items: center;">
-                                <div style="width: 6px; height: 6px; background: #65676b; border-radius: 50%; animation: bounce 1.4s infinite;"></div>
-                                <div style="width: 6px; height: 6px; background: #65676b; border-radius: 50%; animation: bounce 1.4s infinite 0.2s;"></div>
-                                <div style="width: 6px; height: 6px; background: #65676b; border-radius: 50%; animation: bounce 1.4s infinite 0.4s;"></div>
-                            </div>
-                        </div>
                     </div>
                 </div>
             `;
@@ -5436,33 +5906,16 @@
                 post.appendChild(commentBox);
             }
             
-            // Show typing indicator for optimal duration, then type response
-            setTimeout(() => {
-                const typingIndicator = commentBox.querySelector('.typing-indicator');
-                if (typingIndicator) {
-                    // Smooth fade out of typing indicator
-                    typingIndicator.style.transition = 'opacity 0.3s ease-out';
-                    typingIndicator.style.opacity = '0';
-                    setTimeout(() => {
-                        if (typingIndicator.parentNode) {
-                            typingIndicator.style.display = 'none';
-                        }
-                    }, 300);
-                }
-                
-                // Type the response with slight delay for smooth transition
-                setTimeout(() => {
-                    typeResponse(`aiResponse${postIndex}`, response, () => {
-                        // After typing completes, add small pause before messenger
-                        setTimeout(async () => {
-                            if (feedPosts[postIndex] && feedPosts[postIndex].name && !messengerConversationActive) {
-                                messengerConversationActive = true;
-                                await showMessengerTransition(feedPosts[postIndex].name, feedPosts[postIndex].category);
-                            }
-                        }, 1200); // Slightly longer pause to let user read the response
-                    });
-                }, 400); // Small delay after typing indicator fades
-            }, 1800); // Slightly shorter typing indicator duration
+            // Type the response immediately
+            typeResponse(`aiResponse${postIndex}`, response, () => {
+                // After typing completes, add small pause before messenger
+                trackedSetTimeout(async () => {
+                    if (feedPosts[postIndex] && feedPosts[postIndex].name && !messengerConversationActive) {
+                        messengerConversationActive = true;
+                        await showMessengerTransition(feedPosts[postIndex].name, feedPosts[postIndex].category);
+                    }
+                }, 1200); // Pause to let user read the response
+            });
         }
 
         function typeText(elementId, text, callback, speed = 30) {
@@ -5476,18 +5929,33 @@
             element.textContent = '';
             
             function typeChar() {
+                // If demo is paused, store state and wait for resume instead of calling callback
+                if (demoPaused) {
+                    console.log('⏸️ typeText paused - storing state for resume');
+                    const typingId = `typing_${Date.now()}`;
+                    pausedTypingStates.set(typingId, {
+                        element: element,
+                        text: text,
+                        currentIndex: i,
+                        speed: speed,
+                        callback: callback,
+                        isLegacyType: true
+                    });
+                    return; // Don't call callback yet - wait for resume
+                }
+                
                 if (i < text.length && element) {
                     element.textContent += text.charAt(i);
                     i++;
-                    setTimeout(typeChar, speed);
+                    trackedSetTimeout(typeChar, speed);
                 } else {
                     callback && callback();
                 }
             }
             
-            // Start typing after a brief delay to show typing indicator first
-            setTimeout(typeChar, 800);
+            typeChar();
         }
+        
 
         // Legacy function for backward compatibility
         function typeResponse(elementId, text, callback) {
@@ -5497,6 +5965,26 @@
         // Utility functions for common DOM operations
         function getPostByIndex(postIndex) {
             return document.querySelector(`[data-index="${postIndex}"]`);
+        }
+
+        function scrollPostToView(postIndex) {
+            const post = getPostByIndex(postIndex);
+            const feed = document.getElementById('socialFeed');
+            
+            if (!post || !feed) {
+                console.log('Post or feed not found for scrolling');
+                return;
+            }
+            
+            // Calculate post position relative to the feed container
+            const postOffsetTop = post.offsetTop;
+            
+            // Account for the original feed padding (16px) to maintain the natural spacing
+            const feedPadding = 16;
+            const scrollPosition = Math.max(0, postOffsetTop - feedPadding);
+            
+            // Scroll the feed container to show the post with natural spacing
+            feed.scrollTo({ top: scrollPosition, behavior: 'smooth' });
         }
 
         function getAllPosts() {
@@ -5546,7 +6034,7 @@
                     margin-bottom: 16px;
                     ${isAgent ? 'flex-direction: row-reverse;' : ''}
                 ">
-                    <div class="avatar avatar-sm" style="width: 28px; height: 28px; background: ${avatarBg}; color: ${avatarColor}; font-size: 12px; font-weight: 600;">
+                    <div class="avatar avatar-sm" style="width: 28px; height: 28px; min-width: 28px; min-height: 28px; background: ${avatarBg}; color: ${avatarColor}; font-size: 12px; font-weight: 600; flex-shrink: 0; align-self: flex-start;">
                         ${avatarText}
                     </div>
                     <div style="background: ${bgColor}; color: ${textColor}; border-radius: 18px; padding: 8px 12px; max-width: 240px; font-size: 14px; line-height: 1.3; display: flex; align-items: center; gap: 8px;">
@@ -5599,7 +6087,7 @@
                 display: flex;
                 align-items: center;
                 justify-content: center;
-                padding: 20px;
+                padding: 16px;
             `;
             
             overlay.innerHTML = `
@@ -5620,7 +6108,7 @@
             await updateEnhancedDemoStage('messenger');
             
             // Wait for users to read the completed text
-            await new Promise(resolve => setTimeout(resolve, 1000));
+            await new Promise(resolve => trackedSetTimeout(resolve, 1000));
             
             // Remove any existing notifications and popups first
             console.log('🧹 Removing existing fixed elements');
@@ -5628,7 +6116,6 @@
             removeFixedElements('[style*="position: fixed"][style*="bottom: 20px"]');
             removeFixedElements('[style*="position: absolute"][style*="bottom: 20px"]'); // Also remove absolute positioned popups
             removeFixedElements('[style*="position: relative"][style*="margin: 20px auto"]'); // Remove centered positioned elements
-            console.log('✅ Fixed elements removed');
             
             // Skip notification and go directly to messenger popup
             console.log('📱 Opening Messenger popup directly');
@@ -5677,7 +6164,7 @@
                     background: white;
                     border-radius: 12px;
                     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-                    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+                    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
                     overflow: hidden;
                     animation: popupSlideIn 0.4s ease-out;
                     display: flex;
@@ -5709,31 +6196,60 @@
                 }
                 
             } else {
-                // Desktop version - position relative to demo container
+                // Desktop version - overlay only on demo container
+                overlay = document.createElement('div');
+                overlay.style.cssText = `
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    background: rgba(0, 0, 0, 0.6);
+                    z-index: 9999;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    animation: fadeIn 0.3s ease-out;
+                `;
+                
+                // Create popup for desktop with overlay
                 popup = document.createElement('div');
                 popup.style.cssText = `
-                    position: relative;
-                    margin: 20px auto 0 auto;
                     width: min(360px, 90vw);
                     height: min(540px, 70vh);
                     background: white;
                     border-radius: 12px;
-                    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15), 0 0 0 1px rgba(0, 0, 0, 0.05);
-                    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-                    z-index: 1002;
+                    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+                    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
                     overflow: hidden;
+                    display: flex;
+                    flex-direction: column;
+                    position: relative;
                     animation: popupSlideIn 0.4s ease-out;
-                    display: block;
                 `;
                 
+                // Close overlay when clicking outside popup
+                overlay.onclick = (e) => {
+                    if (e.target === overlay) {
+                        overlay.remove();
+                        messengerPopup = null;
+                        messengerConversationActive = false;
+                    }
+                };
+                
+                popup.onclick = e => e.stopPropagation();
+                
+                overlay.appendChild(popup);
+                
+                // Add overlay to demo container instead of body
                 const demoContainer = demoSection ? demoSection.querySelector('.demo-container') : null;
-                if (demoContainer && facebookFeed) {
+                if (demoContainer) {
                     demoContainer.style.position = 'relative';
-                    demoContainer.appendChild(popup);
-                    console.log('✅ Desktop popup appended to demo container');
+                    demoContainer.appendChild(overlay);
+                    console.log('✅ Desktop overlay popup added to demo container');
                 } else {
-                    document.body.appendChild(popup);
-                    console.log('⚠️ Fallback: Desktop popup appended to body');
+                    document.body.appendChild(overlay);
+                    console.log('⚠️ Fallback: Desktop overlay popup added to body');
                 }
             }
             
@@ -5756,14 +6272,14 @@
             `;
             
             // Store popup reference for closing when user scrolls away
-            messengerPopup = isMobile ? overlay : popup;
+            messengerPopup = overlay;
             
             console.log('✅ Popup created and added to DOM');
             console.log('Popup element:', popup);
             console.log('Is mobile overlay:', isMobile);
             
             // Wait for DOM to be fully updated before starting conversation
-            setTimeout(() => {
+            trackedSetTimeout(() => {
                 console.log('🚀 Starting messenger conversation');
                 startMessengerConversation(customerName, postCategory);
             }, 10);
@@ -5796,6 +6312,118 @@
         
         // Make it globally available for testing
         window.debugDemoState = debugDemoState;
+
+        // Smart Process Roadmap Animations - Mobile Optimized
+        function initProcessRoadmapAnimations() {
+            const isMobile = window.innerWidth <= 768;
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const target = entry.target;
+                        const section = target.closest('#process');
+                        
+                        if (section && !section.classList.contains('animated')) {
+                            section.classList.add('animated');
+                            animateProcessSection(section);
+                        }
+                    }
+                });
+            }, {
+                threshold: isMobile ? 0.1 : 0.3, // Lower threshold for mobile
+                rootMargin: isMobile ? '0px 0px -50px 0px' : '0px 0px -100px 0px'
+            });
+
+            const processSection = document.getElementById('process');
+            if (processSection) {
+                observer.observe(processSection);
+            }
+        }
+
+        async function animateProcessSection(section) {
+            console.log('🎬 Starting process roadmap animations');
+            const isMobile = window.innerWidth <= 768;
+            
+            // 1. Animate header first
+            const header = section.querySelector('[data-animate="header"]');
+            if (header) {
+                await new Promise(resolve => {
+                    setTimeout(() => {
+                        header.style.opacity = '1';
+                        header.style.transform = 'translateY(0)';
+                        resolve();
+                    }, isMobile ? 100 : 200);
+                });
+                await new Promise(resolve => setTimeout(resolve, isMobile ? 300 : 600));
+            }
+
+            // 2. Start progress line animation
+            const progressFill = section.querySelector('.progress-fill');
+            if (progressFill) {
+                progressFill.style.height = '100%';
+            }
+
+            // 3. Animate steps sequentially with smart delays
+            const steps = section.querySelectorAll('[data-step]');
+            const staggerDelay = isMobile ? 250 : 400; // Faster on mobile
+            
+            for (let i = 0; i < steps.length; i++) {
+                const step = steps[i];
+                await new Promise(resolve => {
+                    setTimeout(() => {
+                        step.style.opacity = '1';
+                        // Mobile: reset all transforms to avoid conflicts
+                        if (isMobile) {
+                            step.style.transform = 'none';
+                        } else {
+                            step.style.transform = step.style.transform.replace(/translateX\([^)]*\)/, 'translateX(0)');
+                        }
+                        resolve();
+                    }, i * staggerDelay);
+                });
+            }
+
+            // 4. Animation complete - no CTA to animate
+
+            console.log('✅ Process roadmap animations complete');
+        }
+
+        // Initialize when DOM is ready
+        document.addEventListener('DOMContentLoaded', () => {
+            // Small delay to ensure all elements are rendered
+            setTimeout(initProcessRoadmapAnimations, 100);
+        });
+
+        // Handle orientation changes and resize events
+        let resizeTimeout;
+        window.addEventListener('resize', () => {
+            clearTimeout(resizeTimeout);
+            resizeTimeout = setTimeout(() => {
+                // Re-initialize animations if screen size changes significantly
+                const processSection = document.getElementById('process');
+                if (processSection && processSection.classList.contains('animated')) {
+                    // Reset animation state to allow re-triggering if needed
+                    console.log('🔄 Screen size changed, adjusting mobile layout');
+                }
+            }, 250);
+        });
+
+        // Optimize for mobile performance
+        if ('ontouchstart' in window) {
+            // Mobile device detected - disable some heavy animations
+            document.addEventListener('DOMContentLoaded', () => {
+                const style = document.createElement('style');
+                style.textContent = `
+                    .process-step:hover .step-number {
+                        animation: none !important;
+                    }
+                    .progress-fill {
+                        transition: height 1.5s ease-out !important;
+                    }
+                `;
+                document.head.appendChild(style);
+            });
+        }
 
 
         
@@ -5876,7 +6504,7 @@
             await updateEnhancedDemoStage('complete');
             
             // Wait for users to read the completion message
-            await new Promise(resolve => setTimeout(resolve, 2000));
+            await new Promise(resolve => trackedSetTimeout(resolve, 2000));
             
             // Clear timeouts AFTER completing the status text to prevent interruptions
             demoTimeouts.forEach(timeout => clearTimeout(timeout));
@@ -5933,7 +6561,7 @@
                         `;
                         
                         messageDiv.innerHTML = `
-                            <div class="avatar avatar-sm" style="width: 28px; height: 28px; background: var(--ai-purple); color: white; font-size: 12px; font-weight: 600;">
+                            <div class="avatar avatar-sm" style="width: 28px; height: 28px; min-width: 28px; min-height: 28px; background: var(--ai-purple); color: white; font-size: 12px; font-weight: 600; flex-shrink: 0; align-self: flex-start;">
                                 י.ש
                             </div>
                             <div style="background: #0084ff; color: white; border-radius: 18px; padding: 8px 12px; max-width: 240px; font-size: 14px; line-height: 1.3;">
@@ -5958,7 +6586,7 @@
                     `;
                     
                     messageDiv.innerHTML = `
-                        <div class="avatar avatar-sm" style="width: 28px; height: 28px; background: var(--ai-purple); color: white; font-size: 12px; font-weight: 600;">
+                        <div class="avatar avatar-sm" style="width: 28px; height: 28px; min-width: 28px; min-height: 28px; background: var(--ai-purple); color: white; font-size: 12px; font-weight: 600; flex-shrink: 0; align-self: flex-start;">
                             י.ש
                         </div>
                         <div style="background: #0084ff; color: white; border-radius: 18px; padding: 8px 12px; max-width: 240px; font-size: 14px; line-height: 1.3;">
@@ -6003,7 +6631,7 @@
                         `;
                         
                         messageDiv.innerHTML = `
-                            <div class="avatar avatar-sm" style="width: 28px; height: 28px; background: #e4e6ea; color: #65676b; font-size: 12px; font-weight: 600;">
+                            <div class="avatar avatar-sm" style="width: 28px; height: 28px; min-width: 28px; min-height: 28px; background: #e4e6ea; color: #65676b; font-size: 12px; font-weight: 600; flex-shrink: 0; align-self: flex-start;">
                                 ${customerName.split(' ').map(n => n[0]).join('')}
                             </div>
                             <div style="background: #e4e6ea; color: #050505; border-radius: 18px; padding: 8px 12px; max-width: 240px; font-size: 14px; line-height: 1.3;">
@@ -6027,7 +6655,7 @@
                     `;
                     
                     messageDiv.innerHTML = `
-                        <div class="avatar avatar-sm" style="width: 28px; height: 28px; background: #e4e6ea; color: #65676b; font-size: 12px; font-weight: 600;">
+                        <div class="avatar avatar-sm" style="width: 28px; height: 28px; min-width: 28px; min-height: 28px; background: #e4e6ea; color: #65676b; font-size: 12px; font-weight: 600; flex-shrink: 0; align-self: flex-start;">
                             ${customerName.split(' ').map(n => n[0]).join('')}
                         </div>
                         <div style="background: #e4e6ea; color: #050505; border-radius: 18px; padding: 8px 12px; max-width: 240px; font-size: 14px; line-height: 1.3;">
@@ -6048,9 +6676,306 @@
         }
 
 
-        // Auto-playing demo system
+        /**
+         * מערכת ניהול דמו חדשה ומושלמת - פותרת את כל הבאגים
+         */
+        class DemoStateManager {
+            constructor() {
+                this.state = 'idle'; // 'idle', 'running', 'paused', 'completed'
+                this.operations = new Map(); // כל הפעולות הפעילות
+                this.pausedAt = null;
+                this.totalPauseTime = 0;
+                this.operationCounter = 0;
+                
+                console.log('🎬 DemoStateManager initialized');
+            }
+            
+            // בדיקת מצב הדמו
+            isRunning() { return this.state === 'running'; }
+            isPaused() { return this.state === 'paused'; }
+            isIdle() { return this.state === 'idle'; }
+            
+            // התחלת דמו
+            start() {
+                if (this.state !== 'idle') {
+                    console.warn('⚠️ Demo already active, state:', this.state);
+                    return false;
+                }
+                
+                this.state = 'running';
+                this.totalPauseTime = 0;
+                console.log('▶️ Demo started');
+                return true;
+            }
+            
+            // השהיית דמו
+            pause() {
+                if (this.state !== 'running') {
+                    console.warn('⚠️ Cannot pause demo, current state:', this.state);
+                    return false;
+                }
+                
+                this.state = 'paused';
+                this.pausedAt = Date.now();
+                
+                console.log(`⏸️ Demo paused with ${this.operations.size} active operations`);
+                
+                // הודעה לכל הפעולות שהמצב השתנה
+                this.operations.forEach(operation => {
+                    if (operation.onPause) {
+                        operation.onPause();
+                    }
+                });
+                
+                return true;
+            }
+            
+            // חידוש דמו
+            resume() {
+                if (this.state !== 'paused') {
+                    console.warn('⚠️ Cannot resume demo, current state:', this.state);
+                    return false;
+                }
+                
+                // חישוב זמן פאוזה
+                if (this.pausedAt) {
+                    this.totalPauseTime += Date.now() - this.pausedAt;
+                    this.pausedAt = null;
+                }
+                
+                this.state = 'running';
+                console.log(`▶️ Demo resumed with ${this.operations.size} operations to continue`);
+                
+                // הודעה לכל הפעולות שהמצב השתנה
+                this.operations.forEach(operation => {
+                    if (operation.onResume) {
+                        operation.onResume();
+                    }
+                });
+                
+                return true;
+            }
+            
+            // עצירת דמו
+            stop() {
+                const prevState = this.state;
+                this.state = 'idle';
+                
+                console.log(`🛑 Demo stopped from state: ${prevState}, cleaning ${this.operations.size} operations`);
+                
+                // ביטול כל הפעולות
+                this.operations.forEach(operation => {
+                    if (operation.cancel) {
+                        operation.cancel();
+                    }
+                });
+                
+                this.operations.clear();
+                this.pausedAt = null;
+                this.totalPauseTime = 0;
+                
+                return true;
+            }
+            
+            // רישום פעולה חדשה
+            registerOperation(type, cancelCallback, pauseCallback = null, resumeCallback = null) {
+                const id = ++this.operationCounter;
+                const operation = {
+                    id,
+                    type,
+                    createdAt: Date.now(),
+                    cancel: cancelCallback,
+                    onPause: pauseCallback,
+                    onResume: resumeCallback
+                };
+                
+                this.operations.set(id, operation);
+                console.log(`📝 Registered ${type} operation #${id}, total: ${this.operations.size}`);
+                
+                return id;
+            }
+            
+            // הסרת פעולה
+            unregisterOperation(id) {
+                const operation = this.operations.get(id);
+                if (operation) {
+                    this.operations.delete(id);
+                    console.log(`✅ Unregistered ${operation.type} operation #${id}, remaining: ${this.operations.size}`);
+                    return true;
+                }
+                return false;
+            }
+        }
+
+        // יצירת instance גלובלי
+        const demoManager = new DemoStateManager();
+
+        /**
+         * פונקציית השהיה חדשה ומושלמת
+         * מחליפה את trackedDelay הישנה
+         */
+        function smartDelay(duration) {
+            return new Promise((resolve, reject) => {
+                if (demoManager.isIdle()) {
+                    reject(new Error('Demo not active'));
+                    return;
+                }
+                
+                let timeoutId = null;
+                let startTime = Date.now();
+                let remainingDuration = duration;
+                let cancelled = false;
+                
+                const cleanup = () => {
+                    if (timeoutId) {
+                        clearTimeout(timeoutId);
+                        timeoutId = null;
+                    }
+                    demoManager.unregisterOperation(operationId);
+                };
+                
+                const executeDelay = () => {
+                    if (cancelled) return;
+                    
+                    timeoutId = setTimeout(() => {
+                        if (!cancelled) {
+                            cleanup();
+                            resolve();
+                        }
+                    }, remainingDuration);
+                };
+                
+                const pauseHandler = () => {
+                    if (timeoutId) {
+                        clearTimeout(timeoutId);
+                        timeoutId = null;
+                        
+                        // חישוב זמן שנותר
+                        const elapsed = Date.now() - startTime;
+                        remainingDuration = Math.max(0, remainingDuration - elapsed);
+                        
+                        console.log(`⏸️ Delay paused, ${remainingDuration}ms remaining`);
+                    }
+                };
+                
+                const resumeHandler = () => {
+                    if (!cancelled && demoManager.isRunning()) {
+                        startTime = Date.now();
+                        console.log(`▶️ Delay resumed with ${remainingDuration}ms`);
+                        executeDelay();
+                    }
+                };
+                
+                const cancelHandler = () => {
+                    cancelled = true;
+                    cleanup();
+                    reject(new Error('Delay cancelled'));
+                };
+                
+                // רישום הפעולה
+                const operationId = demoManager.registerOperation(
+                    'delay',
+                    cancelHandler,
+                    pauseHandler,
+                    resumeHandler
+                );
+                
+                // התחלת הביצוע אם הדמו רץ
+                if (demoManager.isRunning()) {
+                    executeDelay();
+                } else if (demoManager.isPaused()) {
+                    console.log('⏸️ Delay created while demo is paused - waiting for resume');
+                }
+            });
+        }
+
+        /**
+         * פונקציית הקלדה חדשה ומושלמת
+         * מחליפה את typeText הישנה
+         */
+        function smartTypeText(element, text, speed = 50) {
+            return new Promise((resolve, reject) => {
+                if (!element || typeof text !== 'string') {
+                    reject(new Error('Invalid element or text'));
+                    return;
+                }
+                
+                if (demoManager.isIdle()) {
+                    reject(new Error('Demo not active'));
+                    return;
+                }
+                
+                let currentIndex = 0;
+                let timeoutId = null;
+                let cancelled = false;
+                
+                const cleanup = () => {
+                    if (timeoutId) {
+                        clearTimeout(timeoutId);
+                        timeoutId = null;
+                    }
+                    demoManager.unregisterOperation(operationId);
+                };
+                
+                const typeNextChar = () => {
+                    if (cancelled || !demoManager.isRunning()) return;
+                    
+                    if (currentIndex < text.length) {
+                        element.textContent = text.substring(0, currentIndex + 1);
+                        currentIndex++;
+                        
+                        timeoutId = setTimeout(typeNextChar, speed);
+                    } else {
+                        // הקלדה הושלמה
+                        cleanup();
+                        resolve();
+                    }
+                };
+                
+                const pauseHandler = () => {
+                    if (timeoutId) {
+                        clearTimeout(timeoutId);
+                        timeoutId = null;
+                    }
+                    console.log(`⏸️ Typing paused at character ${currentIndex}/${text.length}`);
+                };
+                
+                const resumeHandler = () => {
+                    if (!cancelled && currentIndex < text.length && demoManager.isRunning()) {
+                        console.log(`▶️ Typing resumed from character ${currentIndex}/${text.length}`);
+                        timeoutId = setTimeout(typeNextChar, speed);
+                    }
+                };
+                
+                const cancelHandler = () => {
+                    cancelled = true;
+                    cleanup();
+                    reject(new Error('Typing cancelled'));
+                };
+                
+                // רישום הפעולה
+                const operationId = demoManager.registerOperation(
+                    'typing',
+                    cancelHandler,
+                    pauseHandler,
+                    resumeHandler
+                );
+                
+                // התחלת הביצוע אם הדמו רץ
+                if (demoManager.isRunning()) {
+                    timeoutId = setTimeout(typeNextChar, speed);
+                } else if (demoManager.isPaused()) {
+                    console.log('⏸️ Typing created while demo is paused - waiting for resume');
+                }
+            });
+        }
+
+        // Auto-playing demo system - LEGACY COMPATIBILITY LAYER
         let demoStarted = false;
         let demoTimeouts = [];
+        let demoPaused = false;
+        let pausedTimeouts = []; // Store paused timeouts with remaining times
+        let pauseStartTime = null;
         
         // Wrap the push method to log every timeout creation
         const originalPush = demoTimeouts.push;
@@ -6075,219 +7000,583 @@
             demoTimeouts = [];
         }
         
+        function pauseDemo() {
+            // Legacy wrapper - use the new demo manager
+            if (!demoStarted) {
+                console.log('⚠️ Cannot pause demo - not started');
+                return false;
+            }
+            
+            const success = demoManager.pause();
+            if (success) {
+                demoPaused = true;
+                pauseStartTime = Date.now();
+                
+                // Clear legacy timeouts for backward compatibility
+                demoTimeouts.forEach(timeout => clearTimeout(timeout));
+                demoTimeouts = [];
+                
+                // Stop any ongoing animations
+                const allAnimatedElements = document.querySelectorAll('.typing-text, .phase-content');
+                allAnimatedElements.forEach(element => {
+                    element.style.animationPlayState = 'paused';
+                });
+            }
+            
+            return success;
+        }
+        
+        function resumeDemo() {
+            // Legacy wrapper - use the new demo manager
+            if (!demoStarted || !demoPaused) {
+                console.log('⚠️ Cannot resume demo - invalid state');
+                return false;
+            }
+            
+            const success = demoManager.resume();
+            if (success) {
+                demoPaused = false;
+                pauseStartTime = null;
+                
+                // Resume any paused animations
+                const allAnimatedElements = document.querySelectorAll('.typing-text, .phase-content');
+                allAnimatedElements.forEach(element => {
+                    element.style.animationPlayState = 'running';
+                });
+                
+                console.log('✅ Demo resumed using new state manager');
+            }
+            
+            return success;
+        }
+        
         function resetDemoState() {
             console.log('🔄 resetDemoState() called - FORCE RESET');
             console.trace();
+            
+            // Stop the new demo manager
+            demoManager.stop();
+            
             demoStarted = false;
             messengerConversationActive = false;
             processedPosts.clear();
             clearDemoTimeouts();
+            
+            // Clear all paused states for backward compatibility
+            if (typeof pausedTypingStates !== 'undefined') pausedTypingStates.clear();
+            if (typeof pausedDelays !== 'undefined') pausedDelays.clear();
+            demoPaused = false;
             
             // Reset focus system
             setDemoFocus('neutral');
             // Don't activate navigation during reset - wait for main demo to start
             // updateProgressStep('analysis'); 
             
-            // Reset customer profile visibility for new demo
-            const customerProfile = document.getElementById('customerProfileTemp');
-            const profileHeader = document.getElementById('profileHeader');
-            const businessField = document.getElementById('businessField');
-            const locationField = document.getElementById('locationField');
-            const targetField = document.getElementById('targetField');
-            const demoContainer = document.getElementById('demoContainer');
-            const greenIndicator = document.getElementById('greenIndicator');
-            
-            if (customerProfile) customerProfile.style.display = 'block';
-            if (profileHeader) profileHeader.style.opacity = '0';
-            if (businessField) businessField.style.opacity = '0';
-            if (locationField) locationField.style.opacity = '0';
-            if (targetField) targetField.style.opacity = '0';
-            if (demoContainer) demoContainer.style.display = 'none';
-            if (greenIndicator) greenIndicator.style.display = 'none';
+            // Demo containers are already visible by default - no initialization needed
             
             // Remove any existing popups
             removeFixedElements('[style*="position: fixed"][style*="z-index: 100"]');
         }
         
         async function startAutoDemo() {
-            console.log('🚀 startAutoDemo() called - WHO CALLED THIS?');
-            console.trace();
+            console.log('🎯 Starting customer strategy phase...');
             if (demoStarted) {
                 console.log('Demo already started, skipping');
                 return;
             }
             
-            console.log('Starting auto demo...');
+            // Start the new demo manager
+            if (!demoManager.start()) {
+                console.error('❌ Failed to start demo manager');
+                return;
+            }
+            
             demoStarted = true;
             
-            // Stage 1: Show customer profile only - wait for ceremony to complete
-            await showCustomerProfileOnly();
+            // Phase 1: Customer Strategy (20 seconds)
+            console.log('Showing customer strategy for 20 seconds...');
             
-            // Stage 2: Smooth transition to main demo
-            await unlockFullContainers();
-            startMainDemo();
+            // Start showing customer details
+            showCustomerDetails();
+            
+            // Check periodically if customer phases are complete
+            const checkForCompletion = async () => {
+                if (window.customerPhasesComplete) {
+                    console.log('Customer phases completed, transitioning to Facebook demo...');
+                    await transitionToFacebookDemo();
+                } else {
+                    trackedSetTimeout(checkForCompletion, 1000); // Check every second
+                }
+            };
+            
+            // Start checking after a minimum time (2 phases only)
+            trackedSetTimeout(checkForCompletion, 8000); // Start checking after 8 seconds
         }
-
-        async function showCustomerProfileOnly() {
-            console.log('Stage 1: Showing customer profile only');
-            const statusElement = document.getElementById('demoStatus');
-            const customerProfile = document.getElementById('customerProfileTemp');
-            const container = document.getElementById('demoContainer');
-            const greenIndicator = document.getElementById('greenIndicator');
-            
-            // Clear status element for clean start
-            
-            // Keep green indicator in layout but hide content during customer profile phase
-            if (greenIndicator) {
-                greenIndicator.style.display = 'block';
-                greenIndicator.style.visibility = 'hidden'; // Keeps layout space but invisible
+        
+        async function transitionToFacebookDemo() {
+            try {
+                console.log('🔄 Starting transition to Facebook demo...');
+                
+                // Change header back to Facebook
+                const headerTitle = document.getElementById('headerTitle');
+                const headerIcon = headerTitle?.previousElementSibling;
+                if (headerTitle && headerIcon) {
+                    headerIcon.className = 'fab fa-facebook-f';
+                    headerIcon.style.fontSize = '16px';
+                    headerIcon.textContent = ''; // Clear any text content
+                    headerTitle.textContent = 'Facebook';
+                }
+                
+                // Show hidden demo elements
+                const demoProgress = document.getElementById('demoProgress');
+                const statusIndicator = document.getElementById('statusIndicatorContainer');
+                
+                if (demoProgress) {
+                    demoProgress.style.display = 'flex';
+                }
+                if (statusIndicator) {
+                    statusIndicator.style.display = 'block';
+                }
+                
+                // Hide customer card content and show Facebook content
+                const customerCardContainer = document.getElementById('customerCardContent');
+                const facebookContainer = document.getElementById('facebookContent');
+                
+                if (customerCardContainer) {
+                    customerCardContainer.style.display = 'none';
+                }
+                if (facebookContainer) {
+                    facebookContainer.style.display = 'block';
+                }
+                
+                // Start the Facebook feed demo
+                await unlockFullContainers();
+                // Check if this is a transition after pause/resume
+                const isResumingAfterPause = demoPaused === false && demoStarted === true;
+                console.log('🔄 Transition to Facebook - isResumingAfterPause:', isResumingAfterPause);
+                startMainDemo(isResumingAfterPause);
+                
+                console.log('✅ Successfully transitioned to Facebook demo');
+                
+            } catch (error) {
+                console.error('❌ Error during transition:', error);
             }
-            
-            // Show customer profile with enhanced design
-            if (customerProfile) {
-                customerProfile.style.display = 'block';
-            }
-            
-            // Keep demo container hidden
-            if (container) {
-                container.style.display = 'none';
-            }
-
-            // Start the modified progressive animation sequence
-            await startProgressiveProfileAnimation();
         }
-
-        async function startProgressiveProfileAnimation() {
-            console.log('Starting enhanced customer profile presentation');
+        
+        async function showCustomerDetails() {
+            console.log('🎯 Starting 5-phase customer card system...');
             
-            const statusElement = document.getElementById('demoStatus');
-            if (!statusElement) return;
-
-            // Get new elements
-            const demoIntro = document.getElementById('demoIntro');
-            const clientCard = document.getElementById('clientCard');
-            const businessField = document.getElementById('businessField');
-            const locationField = document.getElementById('locationField');
-            const targetField = document.getElementById('targetField');
-            const readyIndicator = document.getElementById('readyIndicator');
-
-            // Debug: Check if elements exist
-            console.log('Elements found:', {
-                demoIntro: !!demoIntro,
-                clientCard: !!clientCard,
-                businessField: !!businessField,
-                locationField: !!locationField,
-                targetField: !!targetField,
-                readyIndicator: !!readyIndicator
+            // Show customer card container
+            const customerCardContainer = document.getElementById('customerCardContent');
+            const facebookContainer = document.getElementById('facebookContent');
+            
+            if (customerCardContainer) {
+                customerCardContainer.style.display = 'block';
+                facebookContainer.style.display = 'none';
+            }
+            
+            // Define the 2 phases (condensed version)
+            const phases = [
+                {
+                    title: 'פרטי לקוח ויעדים',
+                    icon: '📊',
+                    content: {
+                        type: 'mixed',
+                        details: {
+                            'שם לקוח': 'יוסי שיפוצים',
+                            'תחום עסקי': 'שיפוצים ובנייה',
+                            'אזור פעילות': 'תל אביב והשרון',
+                            'ניסיון': '8+ שנים',
+                            'כתובת אתר': 'www.yosisipotzim.co.il'
+                        },
+                        goals: [
+                            'הגדלת מספר הלידים האורגנים',
+                            'בניית מוניטין דיגיטלי חזק',
+                            'הגדלת שיתופי פעולה מקצועיים'
+                        ]
+                    }
+                },
+                {
+                    title: 'אסטרטגיית לקוח',
+                    icon: '🎯',
+                    content: {
+                        type: 'strategy',
+                        actions: [
+                            'איתור פוסטים של אנשים המחפשים שיפוצניק באזור',
+                            'מעקב אחר פוסטים המבקשים עצה מקצועית',
+                            'זיהוי דיונים על פרויקטי בנייה ושיפוצים'
+                        ],
+                        communication: [
+                            'גישה מקצועית עם הדגשת ניסיון וייעוץ',
+                            'שיתוף תמונות "לפני ואחרי"',
+                            'הדגשת הקרבה הגיאוגרפית',
+                            'הזכרת ביטוח ואחריות',
+                            'ייעוץ ראשוני ללא התחייבות'
+                        ]
+                    }
+                }
+            ];
+            
+            // Show each phase sequentially
+            for (let i = 0; i < phases.length; i++) {
+                await showPhase(phases[i], i + 1, phases.length);
+                
+                // Wait between phases (except after the last one)
+                if (i < phases.length - 1) {
+                    await trackedDelay(1500);
+                }
+            }
+            
+            console.log('✅ All customer phases completed, signaling transition...');
+            
+            // Signal that customer phases are done
+            window.customerPhasesComplete = true;
+        }
+        
+        async function showPhase(phase, phaseNum, totalPhases) {
+            console.log(`🎯 Showing phase ${phaseNum}/${totalPhases}: ${phase.title}`);
+            
+            const container = document.getElementById('customerCardContent');
+            if (!container) {
+                console.error('❌ customerCardContent container not found!');
+                return;
+            }
+            
+            // Update header title in the blue banner with typing animation
+            const headerTitle = document.getElementById('headerTitle');
+            const headerIcon = headerTitle?.previousElementSibling;
+            if (headerTitle && headerIcon) {
+                // Hide the icon
+                headerIcon.style.display = 'none';
+                
+                // Make sure header container and title are RTL for Hebrew typing
+                const headerContainer = headerTitle.parentElement;
+                if (headerContainer) {
+                    headerContainer.style.direction = 'rtl';
+                    headerContainer.style.justifyContent = 'center';
+                }
+                
+                headerTitle.style.direction = 'rtl';
+                headerTitle.style.textAlign = 'center';
+                headerTitle.style.display = 'inline-block';
+                headerTitle.style.width = 'auto';
+                
+                // Clear title and type it
+                headerTitle.textContent = '';
+                await typeTextInElement(headerTitle, phase.title, 50);
+            }
+            
+            // Clear previous content
+            container.style.opacity = '0';
+            await trackedDelay(300);
+            
+            // Create phase content HTML (without title since it's now in header)
+            let contentHTML = `
+                <div style="max-width: 500px; margin: 0 auto; text-align: center; padding: 6px; box-sizing: border-box;">
+            `;
+            
+            // Handle different content types - create empty containers first
+            if (typeof phase.content === 'object' && !Array.isArray(phase.content) && phase.content.type === 'mixed') {
+                // Mixed content (details + goals)
+                contentHTML += '<div style="text-align: right; direction: rtl; width: 100%; margin: 0 auto; box-sizing: border-box;">';
+                
+                // Add customer details in white container
+                contentHTML += '<div style="margin-bottom: 25px; padding: 8px 5px; background: #ffffff; border-radius: 6px;">';
+                contentHTML += '<div style="font-weight: 600; color: #37352f; margin-bottom: 8px; font-size: clamp(14px, 3.2vw, 16px);">📊 פרטי הלקוח:</div>';
+                
+                Object.entries(phase.content.details).forEach(([key, value]) => {
+                    contentHTML += `
+                        <div data-field style="display: flex; align-items: flex-start; padding: 6px 5px; border-bottom: 1px solid #e2e8f0; font-size: clamp(13px, 3vw, 15px); gap: 8px; direction: rtl; text-align: right;">
+                            <span style="font-weight: 600; color: #37352f; flex-shrink: 0;">${key}:</span>
+                            <span data-value style="color: #6b7280; font-weight: 500; flex: 1; word-break: break-word;" data-text="${value}"></span>
+                        </div>
+                    `;
+                });
+                contentHTML += '</div>';
+                
+                // Add separator and goals
+                contentHTML += '<div style="margin: 25px 0; padding: 8px 5px; background: #ffffff; border-radius: 6px;">';
+                contentHTML += '<div style="font-weight: 600; color: #37352f; margin-bottom: 8px; font-size: clamp(14px, 3.2vw, 16px);">🎯 יעדי הלקוח:</div>';
+                
+                phase.content.goals.forEach(goal => {
+                    contentHTML += `
+                        <div data-goal style="display: flex; align-items: flex-start; margin-bottom: 8px; line-height: 1.4; font-size: clamp(13px, 3vw, 15px); padding: 0 5px;">
+                            <i class="fas fa-check" style="color: #2563eb; margin-left: 8px; margin-top: 1px; flex-shrink: 0; font-size: clamp(12px, 2.5vw, 14px); opacity: 0;"></i>
+                            <span style="color: #37352f; word-break: break-word;" data-goal-text="${goal}"></span>
+                        </div>
+                    `;
+                });
+                
+                contentHTML += '</div></div>';
+            } else if (typeof phase.content === 'object' && !Array.isArray(phase.content) && phase.content.type === 'strategy') {
+                // Strategy content (actions + communication + approach)
+                contentHTML += '<div style="text-align: right; direction: rtl; width: 100%; margin: 0 auto; box-sizing: border-box;">';
+                
+                // Add strategic actions
+                contentHTML += '<div style="margin-bottom: 25px; padding: 8px 5px; background: #ffffff; border-radius: 6px;">';
+                contentHTML += '<div style="font-weight: 600; color: #37352f; margin-bottom: 8px; font-size: clamp(14px, 3.2vw, 16px);">🚀 פעולות אסטרטגיות:</div>';
+                phase.content.actions.forEach(action => {
+                    contentHTML += `
+                        <div data-action style="display: flex; align-items: flex-start; margin-bottom: 6px; line-height: 1.4; font-size: clamp(13px, 3vw, 15px); padding: 0 5px;">
+                            <i class="fas fa-check" style="color: #2563eb; margin-left: 8px; margin-top: 1px; flex-shrink: 0; font-size: clamp(12px, 2.5vw, 14px); opacity: 0;"></i>
+                            <span style="color: #37352f; word-break: break-word;" data-action-text="${action}"></span>
+                        </div>
+                    `;
+                });
+                contentHTML += '</div>';
+                
+                // Add unified communication style
+                contentHTML += '<div style="margin-bottom: 25px; padding: 8px 5px; background: #ffffff; border-radius: 6px;">';
+                contentHTML += '<div style="font-weight: 600; color: #37352f; margin-bottom: 8px; font-size: clamp(14px, 3.2vw, 16px);">💬 סגנון מענה בפוסטים:</div>';
+                phase.content.communication.forEach(commItem => {
+                    contentHTML += `
+                        <div data-comm style="display: flex; align-items: flex-start; margin-bottom: 6px; line-height: 1.4; font-size: clamp(13px, 3vw, 15px); padding: 0 5px;">
+                            <i class="fas fa-check" style="color: #2563eb; margin-left: 8px; margin-top: 1px; flex-shrink: 0; font-size: clamp(12px, 2.5vw, 14px); opacity: 0;"></i>
+                            <span style="color: #37352f; word-break: break-word;" data-comm-text="${commItem}"></span>
+                        </div>
+                    `;
+                });
+                contentHTML += '</div>';
+                
+                contentHTML += '</div>';
+            } else if (typeof phase.content === 'object' && !Array.isArray(phase.content)) {
+                // Object content (key-value pairs)
+                contentHTML += '<div style="text-align: right; direction: rtl; width: 100%; margin: 0 auto; box-sizing: border-box;">';
+                Object.entries(phase.content).forEach(([key, value]) => {
+                    contentHTML += `
+                        <div data-field style="display: flex; justify-content: space-between; align-items: flex-start; padding: 6px 5px; border-bottom: 1px solid #e2e8f0; font-size: clamp(13px, 3vw, 15px); flex-wrap: wrap; gap: 5px;">
+                            <span style="font-weight: 600; color: #37352f; min-width: 80px; text-align: right;">${key}:</span>
+                            <span data-value style="color: #6b7280; font-weight: 500; text-align: left; flex: 1; word-break: break-word;" data-text="${value}"></span>
+                        </div>
+                    `;
+                });
+                contentHTML += '</div>';
+            } else if (Array.isArray(phase.content)) {
+                // Array content (list items)
+                contentHTML += '<div style="text-align: right; direction: rtl; width: 100%; margin: 0 auto; box-sizing: border-box;">';
+                phase.content.forEach(item => {
+                    contentHTML += `
+                        <div data-item style="display: flex; align-items: flex-start; margin-bottom: 10px; line-height: 1.4; font-size: clamp(13px, 3vw, 15px); padding: 0 5px;">
+                            <i class="fas fa-check" style="color: #2563eb; margin-left: 8px; margin-top: 1px; flex-shrink: 0; font-size: clamp(12px, 2.5vw, 14px);"></i>
+                            <span style="color: #37352f; word-break: break-word;" data-text="${item}"></span>
+                        </div>
+                    `;
+                });
+                contentHTML += '</div>';
+            } else {
+                // String content (paragraph)
+                contentHTML += `
+                    <div data-text style="text-align: right; direction: rtl; line-height: 1.4; font-size: clamp(13px, 3vw, 15px); color: #37352f; width: 100%; margin: 0 auto; padding: 0 5px; word-break: break-word;" data-full-text="${phase.content}">
+                    </div>
+                `;
+            }
+            
+            contentHTML += '</div>';
+            
+            console.log('Setting content HTML:', contentHTML.substring(0, 200) + '...');
+            
+            // Set new content
+            container.innerHTML = contentHTML;
+            
+            // Show container
+            container.style.opacity = '1';
+            container.style.transition = 'opacity 0.5s ease';
+            
+            console.log('✅ Phase content set successfully');
+            
+            // Add typing animation to content elements
+            await trackedDelay(500); // Wait for content to be rendered
+            
+            if (typeof phase.content === 'object' && !Array.isArray(phase.content) && phase.content.type === 'mixed') {
+                // Type mixed content (details + goals)
+                // First type customer details
+                const detailSpans = container.querySelectorAll('[data-field] [data-value]');
+                for (let i = 0; i < detailSpans.length; i++) {
+                    const span = detailSpans[i];
+                    const textToType = span.getAttribute('data-text');
+                    if (textToType) {
+                        await typeTextInElement(span, textToType, 40);
+                        await trackedDelay(200);
+                    }
+                }
+                
+                // Then type goals
+                const goalItems = container.querySelectorAll('[data-goal]');
+                for (let i = 0; i < goalItems.length; i++) {
+                    const goalItem = goalItems[i];
+                    const icon = goalItem.querySelector('i');
+                    const span = goalItem.querySelector('span[data-goal-text]');
+                    
+                    // Show icon first
+                    if (icon) {
+                        icon.style.opacity = '1';
+                        await trackedDelay(100);
+                    }
+                    
+                    // Then type text
+                    if (span) {
+                        const textToType = span.getAttribute('data-goal-text');
+                        if (textToType) {
+                            await typeTextInElement(span, textToType, 40);
+                            await trackedDelay(300);
+                        }
+                    }
+                }
+            } else if (typeof phase.content === 'object' && !Array.isArray(phase.content) && phase.content.type === 'strategy') {
+                // Type strategy content (actions + communication + approach)
+                // First type strategic actions
+                const actionItems = container.querySelectorAll('[data-action]');
+                for (let i = 0; i < actionItems.length; i++) {
+                    const actionItem = actionItems[i];
+                    const icon = actionItem.querySelector('i');
+                    const span = actionItem.querySelector('span[data-action-text]');
+                    
+                    // Show icon first
+                    if (icon) {
+                        icon.style.opacity = '1';
+                        await trackedDelay(100);
+                    }
+                    
+                    // Then type text
+                    if (span) {
+                        const textToType = span.getAttribute('data-action-text');
+                        if (textToType) {
+                            await typeTextInElement(span, textToType, 40);
+                            await trackedDelay(200);
+                        }
+                    }
+                }
+                
+                // Then type unified communication style
+                const commItems = container.querySelectorAll('[data-comm]');
+                for (let i = 0; i < commItems.length; i++) {
+                    const commItem = commItems[i];
+                    const icon = commItem.querySelector('i');
+                    const span = commItem.querySelector('span[data-comm-text]');
+                    
+                    // Show icon first
+                    if (icon) {
+                        icon.style.opacity = '1';
+                        await trackedDelay(100);
+                    }
+                    
+                    // Then type text
+                    if (span) {
+                        const textToType = span.getAttribute('data-comm-text');
+                        if (textToType) {
+                            await typeTextInElement(span, textToType, 40);
+                            await trackedDelay(150);
+                        }
+                    }
+                }
+            } else if (typeof phase.content === 'object' && !Array.isArray(phase.content)) {
+                // Type key-value pairs one by one
+                const valueSpans = container.querySelectorAll('[data-value]');
+                for (let i = 0; i < valueSpans.length; i++) {
+                    const span = valueSpans[i];
+                    const textToType = span.getAttribute('data-text');
+                    if (textToType) {
+                        await typeTextInElement(span, textToType, 40);
+                        await trackedDelay(300);
+                    }
+                }
+            } else if (Array.isArray(phase.content)) {
+                // Type list items one by one
+                const textSpans = container.querySelectorAll('[data-item] span[data-text]');
+                for (let i = 0; i < textSpans.length; i++) {
+                    const span = textSpans[i];
+                    const textToType = span.getAttribute('data-text');
+                    if (textToType) {
+                        await typeTextInElement(span, textToType, 40);
+                        await trackedDelay(400);
+                    }
+                }
+            } else {
+                // Type paragraph text
+                const textDiv = container.querySelector('[data-text]');
+                if (textDiv) {
+                    const textToType = textDiv.getAttribute('data-full-text');
+                    if (textToType) {
+                        await typeTextInElement(textDiv, textToType, 30);
+                    }
+                }
+            }
+            
+            // Wait to show the content
+            await trackedDelay(1500);
+        }
+        
+        function typeTextInElement(element, text, speed = 50, append = false) {
+            return new Promise((resolve) => {
+                if (!element || !text) {
+                    resolve();
+                    return;
+                }
+                
+                let i = 0;
+                const startText = append ? element.textContent : '';
+                if (!append) {
+                    element.textContent = '';
+                }
+                
+                function typeChar() {
+                    // If demo is paused, store state and wait for resume instead of resolving
+                    if (demoPaused) {
+                        console.log('⏸️ Typing paused - storing state for resume');
+                        const typingId = `typing_${Date.now()}`;
+                        pausedTypingStates.set(typingId, {
+                            element: element,
+                            text: text,
+                            currentIndex: i,
+                            speed: speed,
+                            append: append,
+                            startText: startText,
+                            resolve: resolve
+                        });
+                        return; // Don't resolve yet - wait for resume
+                    }
+                    
+                    if (i < text.length && element) {
+                        // Both RTL and LTR: type characters from beginning to end
+                        // The difference is just in text alignment, not typing order
+                        const currentText = text.substring(0, i + 1);
+                        if (append) {
+                            element.textContent = startText + currentText;
+                        } else {
+                            element.textContent = currentText;
+                        }
+                        i++;
+                        trackedSetTimeout(typeChar, speed);
+                    } else {
+                        resolve();
+                    }
+                }
+                
+                typeChar();
             });
-
-            // Phase 1: Start directly with profile presentation
-            await new Promise(resolve => setTimeout(resolve, 500));
-
-            // Phase 2: Show intro banner for 2 seconds
-            if (demoIntro) {
-                demoIntro.style.transition = 'opacity 0.8s ease-out';
-                demoIntro.style.opacity = '1';
-            }
-            await new Promise(resolve => setTimeout(resolve, 2000));
-
-            // Phase 3: Smooth crossfade between intro banner and client card
-            if (demoIntro && clientCard) {
-                // Move client card to exact same position as demoIntro
-                const introStyles = window.getComputedStyle(demoIntro);
-                
-                clientCard.style.position = 'absolute';
-                clientCard.style.top = demoIntro.offsetTop + 'px';
-                clientCard.style.left = demoIntro.offsetLeft + 'px';
-                clientCard.style.width = introStyles.width;
-                clientCard.style.margin = introStyles.margin;
-                clientCard.style.textAlign = introStyles.textAlign;
-                
-                // Start both transitions simultaneously for smooth crossfade
-                demoIntro.style.transition = 'opacity 0.8s ease-out, transform 0.8s ease-out';
-                demoIntro.style.opacity = '0';
-                demoIntro.style.transform = 'translateY(-10px)';
-                
-                clientCard.style.transition = 'opacity 0.8s ease-out, transform 0.8s ease-out';
-                clientCard.style.transform = 'translateY(10px)';
-                clientCard.style.opacity = '0';
-                
-                // Small delay then fade in client card from below
-                setTimeout(() => {
-                    clientCard.style.opacity = '1';
-                    clientCard.style.transform = 'translateY(0)';
-                }, 200);
-            }
-            await new Promise(resolve => setTimeout(resolve, 1000));
-
-            // Phase 4: Reveal business field with smooth animation
-            if (businessField) {
-                businessField.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
-                businessField.style.transform = 'translateY(0)';
-                businessField.style.opacity = '1';
-            }
-            await new Promise(resolve => setTimeout(resolve, 800));
-
-            // Phase 5: Reveal location field
-            if (locationField) {
-                locationField.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
-                locationField.style.transform = 'translateY(0)';
-                locationField.style.opacity = '1';
-            }
-            await new Promise(resolve => setTimeout(resolve, 800));
-
-            // Phase 6: Reveal target field
-            if (targetField) {
-                targetField.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
-                targetField.style.transform = 'translateY(0)';
-                targetField.style.opacity = '1';
-            }
-            await new Promise(resolve => setTimeout(resolve, 1000));
-
-            // Phase 7: Show ready indicator and update status
-            if (readyIndicator) {
-                readyIndicator.style.transition = 'opacity 0.8s ease-out';
-                readyIndicator.style.opacity = '1';
-            }
-            
-            // Wait 4 seconds after customer profile is complete before starting main demo
-            await new Promise(resolve => setTimeout(resolve, 4000));
-            
-            console.log('Enhanced customer profile presentation completed');
         }
+
 
         async function unlockFullContainers() {
-            console.log('Stage 2: Hiding customer profile and showing demo container');
-            const customerProfile = document.getElementById('customerProfileTemp');
+            console.log('Demo containers already visible - no animation needed');
             const container = document.getElementById('demoContainer');
-            const greenIndicator = document.getElementById('greenIndicator');
-            
-            // Smooth fade out of customer profile
-            if (customerProfile) {
-                customerProfile.style.transition = 'opacity 0.8s ease-out, transform 0.8s ease-out';
-                customerProfile.style.opacity = '0';
-                customerProfile.style.transform = 'translateY(-20px)';
-                
-                // Wait for fade out animation
-                await new Promise(resolve => setTimeout(resolve, 800));
-                customerProfile.style.display = 'none';
-            }
+            const statusIndicatorContainer = document.getElementById('statusIndicatorContainer');
             
             // Small pause before showing demo elements
-            await new Promise(resolve => setTimeout(resolve, 300));
+            await trackedDelay(300);
             
             // Show green indicator with smooth fade in
-            if (greenIndicator) {
-                greenIndicator.style.display = 'block';
-                greenIndicator.style.visibility = 'visible'; // Make it visible again
-                greenIndicator.style.opacity = '0';
-                greenIndicator.style.transform = 'translateY(20px)';
-                greenIndicator.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
+            if (statusIndicatorContainer) {
+                statusIndicatorContainer.style.display = 'block';
+                statusIndicatorContainer.style.visibility = 'visible'; // Make it visible again
+                statusIndicatorContainer.style.opacity = '0';
+                statusIndicatorContainer.style.transform = 'translateY(20px)';
+                statusIndicatorContainer.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
                 
                 // Trigger fade in
                 setTimeout(() => {
-                    greenIndicator.style.opacity = '1';
-                    greenIndicator.style.transform = 'translateY(0)';
+                    statusIndicatorContainer.style.opacity = '1';
+                    statusIndicatorContainer.style.transform = 'translateY(0)';
                 }, 50);
             }
             
@@ -6306,9 +7595,9 @@
             }
         }
 
-        function startMainDemo() {
-            console.log('Starting main demo sequence...');
-            const statusElement = document.getElementById('demoStatus');
+        function startMainDemo(isResuming = false) {
+            console.log('Starting main demo sequence... isResuming:', isResuming);
+            const statusElement = document.getElementById('statusIndicatorText');
             const demoProgress = document.getElementById('demoProgress');
             
             if (!statusElement) {
@@ -6325,33 +7614,47 @@
             statusElement.textContent = 'מתחיל הדגמה...';
             statusElement.style.color = '#000000';
             
-            // Clear any existing timeouts
-            clearDemoTimeouts();
+            // Only clear timeouts if not resuming - preserve existing state when resuming
+            if (!isResuming) {
+                console.log('🚫 Clearing timeouts - fresh start');
+                clearDemoTimeouts();
+            } else {
+                console.log('🔄 Keeping timeouts - resuming from previous state');
+            }
             
             // Initialize progress and focus
             updateProgressStep('analysis');
             setDemoFocus('right', 'blue');
             
-            // Start the original demo automatically
-            console.log('Populating feed...');
-            populateFeed();
-            
-            // Save initial progress
-            
-            // Update status for analysis phase and move to detection
-            demoTimeouts.push(setTimeout(async () => {
-                console.log('Analysis phase timeout triggered');
-                if (statusElement && demoStarted) {
-                    await updateEnhancedDemoStage('analysis');
-                    console.log('Status updated for analysis phase - waiting for text completion');
-                    
-                    // Wait for the analysis text to complete writing before starting post detection
-                    demoTimeouts.push(setTimeout(() => {
-                        console.log('About to call detectAndMarkPosts from startAutoDemo');
-                        detectAndMarkPosts();
-                    }, DELAYS.LONG));
-                }
-            }, 2000));
+            if (!isResuming) {
+                // Fresh start - populate feed and start from beginning
+                console.log('🆕 Fresh start - populating feed...');
+                populateFeed();
+                
+                // Update status for analysis phase and move to detection
+                demoTimeouts.push(trackedSetTimeout(async () => {
+                    console.log('Analysis phase timeout triggered');
+                    if (statusElement && demoStarted) {
+                        await updateEnhancedDemoStage('analysis');
+                        console.log('Status updated for analysis phase - waiting for text completion');
+                        
+                        // Wait for the analysis text to complete writing before starting post detection
+                        demoTimeouts.push(trackedSetTimeout(() => {
+                            console.log('About to call detectAndMarkPosts from startAutoDemo');
+                            detectAndMarkPosts();
+                        }, DELAYS.LONG));
+                    }
+                }, 2000));
+            } else {
+                // Resuming - continue from where we left off
+                console.log('🔄 Resuming - continuing from current state. Current post index:', currentPostIndex);
+                
+                // Skip population and start detection immediately 
+                trackedSetTimeout(() => {
+                    console.log('🔄 Resuming post processing from index:', currentPostIndex);
+                    detectAndMarkPosts();
+                }, 1000);
+            }
             
             // Only reset demo after completion, not on timer
             // Removed automatic 60-second reset to prevent scroll conflicts
@@ -6362,32 +7665,8 @@
         let demoObserver;
         
         function initDemoObserver() {
-            console.log('Initializing demo observer...');
-            // Simple demo start when scrolled into view
-            demoObserver = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    console.log('Demo section intersecting:', entry.isIntersecting, 'demoStarted:', demoStarted);
-                    if (entry.isIntersecting && !demoStarted) {
-                        console.log('Starting demo in 1 second...');
-                        setTimeout(async () => {
-                            if (!demoStarted && entry.target.getBoundingClientRect().top < window.innerHeight) {
-                                await startAutoDemo();
-                            }
-                        }, 1000);
-                    } else if (!entry.isIntersecting && demoStarted) {
-                        // User scrolled away - be more careful about when to pause
-                        console.log('Demo scrolled out of view - checking demo phase');
-                        
-                        // Never clear timeouts if we're in or approaching messenger phase
-                        if (!messengerConversationActive && totalPosts > 0 && currentPostIndex < 2) {
-                            console.log('Safe to pause - early demo phase, no messenger activity');
-                            clearDemoTimeouts();
-                        } else {
-                            console.log('Not pausing - in advanced demo phase or messenger active');
-                        }
-                    }
-                });
-            }, { threshold: 0.5, rootMargin: '50px' });
+            console.log('Demo observer disabled - manual start only');
+            // AUTO-START COMPLETELY DISABLED - No automatic demo start
         }
         
         function selectPlan(plan) {
@@ -6410,28 +7689,76 @@
             }
         }
         
-        function startDemo() {
-            console.log('startDemo button clicked');
-            // Scroll to demo section and start it immediately
+        // NEW: Function to scroll to contact form
+        function scrollToContactForm() {
+            const contactSection = document.getElementById('contact');
+            if (contactSection) {
+                contactSection.scrollIntoView({ 
+                    behavior: 'smooth',
+                    block: 'center'
+                });
+                
+                // Focus on first input after scroll
+                setTimeout(() => {
+                    const firstInput = contactSection.querySelector('input');
+                    if (firstInput) {
+                        firstInput.focus();
+                    }
+                }, 800);
+            }
+        }
+        
+        // NEW: Function to scroll to demo and start it
+        function scrollToDemoAndStart() {
             const demoSection = document.getElementById('demo');
             if (demoSection) {
-                console.log('Scrolling to demo section');
-                demoSection.scrollIntoView({ behavior: 'smooth' });
-                // Don't reset if demo is already started - just scroll to it
-                if (demoStarted) {
-                    console.log('Demo already running, just scrolling to view');
-                    return;
-                }
-                // Force start the demo immediately if not started
-                setTimeout(async () => {
-                    console.log('Starting demo from button (demo not yet started)');
-                    // Only start if still not started (prevent race conditions)
+                demoSection.scrollIntoView({ 
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+                
+                // Start demo after scroll animation completes
+                setTimeout(() => {
                     if (!demoStarted) {
-                        await startAutoDemo();
+                        startDemo();
                     }
-                }, 500);
+                }, 1000);
+            }
+        }
+        
+        function startDemo() {
+            console.log('🎯 startDemo button clicked');
+            
+            const startBtn = document.getElementById('startDemoBtn');
+            
+            if (!demoStarted) {
+                // First time starting demo
+                console.log('🚀 Starting demo from manual button click');
+                
+                // Change button to pause state
+                if (startBtn) {
+                    startBtn.innerHTML = '<i class="fas fa-pause" style="margin-left: 8px;"></i>השהה דמו';
+                    console.log('✅ Start button changed to pause');
+                }
+                
+                // Start the demo
+                startAutoDemo();
+            } else if (demoPaused) {
+                // Resume demo
+                console.log('▶️ Resuming demo');
+                resumeDemo();
+                
+                if (startBtn) {
+                    startBtn.innerHTML = '<i class="fas fa-pause" style="margin-left: 8px;"></i>השהה דמו';
+                }
             } else {
-                console.error('Demo section not found when button clicked');
+                // Pause demo
+                console.log('⏸️ Pausing demo');
+                pauseDemo();
+                
+                if (startBtn) {
+                    startBtn.innerHTML = '<i class="fas fa-play" style="margin-left: 8px;"></i>המשך דמו';
+                }
             }
         }
 
@@ -6471,10 +7798,6 @@
                 50% { opacity: 0.5; }
             }
             
-            @keyframes typingBounce {
-                0%, 60%, 100% { transform: translateY(0); }
-                30% { transform: translateY(-4px); }
-            }
             
             /* BOMBASTIC STATS ANIMATIONS */
             @keyframes backgroundPulse {
@@ -6681,13 +8004,11 @@
             
             // Status text will be initialized by demo when it starts
             
-            // Initialize and start observing the demo section
+            // Demo observer disabled - manual start only
             const demoSection = document.getElementById('demo');
             if (demoSection) {
-                console.log('Demo section found, initializing observer');
-                initDemoObserver();
-                demoObserver.observe(demoSection);
-                console.log('Observer attached to demo section');
+                console.log('Demo section found - manual start mode enabled');
+                initDemoObserver(); // Just logs that observer is disabled
             } else {
                 console.error('Demo section not found!');
             }

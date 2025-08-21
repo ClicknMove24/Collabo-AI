@@ -498,6 +498,43 @@
             box-shadow: 0 8px 25px rgba(255, 49, 49, 0.4);
         }
 
+        /* Floating Demo Button - Mobile Only */
+        .floating-demo-btn {
+            position: fixed;
+            left: 20px;
+            top: 120px;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: transparent;
+            border: none;
+            color: var(--text-primary);
+            font-size: 24px;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 1000;
+            box-shadow: 0 4px 15px rgba(255, 49, 49, 0.3);
+            transition: all 0.3s ease;
+            opacity: 0;
+            transform: translateX(-100px);
+        }
+
+        .floating-demo-btn.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .floating-demo-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(255, 49, 49, 0.4);
+        }
+
+        .floating-demo-btn:active {
+            transform: scale(0.95);
+        }
+
         .btn-lg {
             padding: 16px 32px;
             font-size: 16px;
@@ -3216,6 +3253,11 @@
                 height: 40px;
                 font-size: 14px;
             }
+
+            /* Show floating demo button on mobile only when scrolled */
+            .floating-demo-btn {
+                display: flex !important;
+            }
             
             .contact-content {
                 padding: 24px 16px;
@@ -3825,10 +3867,6 @@
     <section class="hero">
         <div class="container">
             <div class="hero-content fade-in-up">
-                <div class="hero-badge">
-                    <i class="fas fa-bolt"></i>
-                    סוכן דיגיטלי מתקדם למדיה חברתית
-                </div>
                 <h1>תארו לעצמכם מציאות שבה אתם <span class="highlight">לא רודפים יותר</span> אחרי לקוחות<br>
                 אלא <span class="highlight">הם מגיעים אליכם</span> - <span class="highlight">מעוניינים ומוכנים</span></h1>
                 <p class="subtitle">מהפכה טכנולוגית שמזהה ומושכת לקוחות פוטנציאליים ברשתות החברתיות 24/7! הכלי החדשני שיהפוך כל פוסט לקו מכירות רווחי ללא מאמץ או טרחה</p>
@@ -3929,7 +3967,7 @@
     <section class="process-roadmap" id="process" style="padding: 80px 0; background: #ffffff;">
         <div class="container">
             <!-- Section Header -->
-            <div class="section-header" style="text-align: center; margin-bottom: 60px; opacity: 0; transform: translateY(30px); transition: opacity 0.8s ease-out, transform 0.8s ease-out;" data-animate="header">
+            <div class="section-header" style="text-align: center; margin-bottom: 60px; opacity: 1; transform: translateY(0); transition: opacity 0.8s ease-out, transform 0.8s ease-out;" data-animate="header">
                 <div class="section-badge" style="display: inline-block; background: rgba(0, 0, 0, 0.06); color: var(--text-primary); padding: 8px 20px; border-radius: 20px; font-size: 14px; font-weight: 600; margin-bottom: 16px;">הטכנולוגיה שלנו</div>
                 <h2 class="section-title" style="font-size: 42px; font-weight: 800; color: var(--text-primary); margin-bottom: 16px; line-height: 1.2;">מה קורה מאחורי הקלעים?</h2>
                 <p class="section-subtitle" style="color: var(--text-secondary); font-size: 18px; line-height: 1.6; max-width: 800px; margin: 0 auto;">6 שלבים אוטומטיים: מאפיון לקוח אישי ועד לידים מוכנים למכירה - הכל ברמת דיוק של 96%</p>
@@ -3945,7 +3983,7 @@
                 
                 
                 <!-- Step 0: Customer Profiling -->
-                <div class="process-step" data-step="0" style="display: flex; align-items: flex-start; margin-bottom: 60px; opacity: 0; transform: translateX(30px); transition: all 0.6s ease-out; padding: 30px; border-radius: 16px; background: #ffffff; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08); border: 1px solid rgba(0, 0, 0, 0.05); position: relative; cursor: pointer; flex-direction: row-reverse;" onmouseover="this.style.transform='translateX(30px) translateY(-8px)'; this.style.boxShadow='0 12px 40px rgba(0, 0, 0, 0.15)'" onmouseout="this.style.transform='translateX(30px) translateY(0)'; this.style.boxShadow='0 4px 20px rgba(0, 0, 0, 0.08)'">
+                <div class="process-step" data-step="0" style="display: flex; align-items: flex-start; margin-bottom: 60px; opacity: 1; transform: translateX(0); transition: all 0.6s ease-out; padding: 30px; border-radius: 16px; background: #ffffff; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08); border: 1px solid rgba(0, 0, 0, 0.05); position: relative; cursor: pointer; flex-direction: row-reverse;" onmouseover="this.style.transform='translateX(30px) translateY(-8px)'; this.style.boxShadow='0 12px 40px rgba(0, 0, 0, 0.15)'" onmouseout="this.style.transform='translateX(30px) translateY(0)'; this.style.boxShadow='0 4px 20px rgba(0, 0, 0, 0.08)'">
                     <div class="step-number" style="width: 60px; height: 60px; background: linear-gradient(135deg, #6366f1, #4338ca); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 24px; font-weight: 700; flex-shrink: 0; margin-right: 30px; position: relative; z-index: 2;">0</div>
                     <div class="step-content" style="flex: 1; text-align: left;">
                         <div class="step-badge" style="display: inline-block; background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(67, 56, 202, 0.1)); color: #4338ca; padding: 4px 12px; border-radius: 20px; font-size: 12px; font-weight: 600; margin-bottom: 12px; border: 1px solid rgba(99, 102, 241, 0.2);">שלב התחלתי</div>
@@ -3960,7 +3998,7 @@
                 </div>
 
                 <!-- Step 1: Mass Scanning -->
-                <div class="process-step" data-step="1" style="display: flex; align-items: flex-start; margin-bottom: 60px; opacity: 0; transform: translateX(-30px); transition: all 0.6s ease-out; padding: 30px; border-radius: 16px; background: #ffffff; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08); border: 1px solid rgba(0, 0, 0, 0.05); position: relative; cursor: pointer;" onmouseover="this.style.transform='translateX(-30px) translateY(-8px)'; this.style.boxShadow='0 12px 40px rgba(0, 0, 0, 0.15)'" onmouseout="this.style.transform='translateX(-30px) translateY(0)'; this.style.boxShadow='0 4px 20px rgba(0, 0, 0, 0.08)'">
+                <div class="process-step" data-step="1" style="display: flex; align-items: flex-start; margin-bottom: 60px; opacity: 1; transform: translateX(0); transition: all 0.6s ease-out; padding: 30px; border-radius: 16px; background: #ffffff; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08); border: 1px solid rgba(0, 0, 0, 0.05); position: relative; cursor: pointer;" onmouseover="this.style.transform='translateX(-30px) translateY(-8px)'; this.style.boxShadow='0 12px 40px rgba(0, 0, 0, 0.15)'" onmouseout="this.style.transform='translateX(-30px) translateY(0)'; this.style.boxShadow='0 4px 20px rgba(0, 0, 0, 0.08)'">
                     <div class="step-number" style="width: 60px; height: 60px; background: var(--text-primary); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 24px; font-weight: 700; flex-shrink: 0; margin-left: 30px; position: relative; z-index: 2;">1</div>
                     <div class="step-content" style="flex: 1;">
                         <div class="step-badge" style="display: inline-block; background: rgba(0, 0, 0, 0.08); color: var(--text-primary); padding: 4px 12px; border-radius: 20px; font-size: 12px; font-weight: 600; margin-bottom: 12px;">שלב ראשון</div>
@@ -3975,7 +4013,7 @@
                 </div>
 
                 <!-- Step 2: Smart Filtering -->
-                <div class="process-step" data-step="2" style="display: flex; align-items: flex-start; margin-bottom: 60px; opacity: 0; transform: translateX(30px); transition: all 0.6s ease-out; padding: 30px; border-radius: 16px; background: #ffffff; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08); border: 1px solid rgba(0, 0, 0, 0.05); position: relative; cursor: pointer; flex-direction: row-reverse;" onmouseover="this.style.transform='translateX(30px) translateY(-8px)'; this.style.boxShadow='0 12px 40px rgba(0, 0, 0, 0.15)'" onmouseout="this.style.transform='translateX(30px) translateY(0)'; this.style.boxShadow='0 4px 20px rgba(0, 0, 0, 0.08)'">
+                <div class="process-step" data-step="2" style="display: flex; align-items: flex-start; margin-bottom: 60px; opacity: 1; transform: translateX(0); transition: all 0.6s ease-out; padding: 30px; border-radius: 16px; background: #ffffff; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08); border: 1px solid rgba(0, 0, 0, 0.05); position: relative; cursor: pointer; flex-direction: row-reverse;" onmouseover="this.style.transform='translateX(30px) translateY(-8px)'; this.style.boxShadow='0 12px 40px rgba(0, 0, 0, 0.15)'" onmouseout="this.style.transform='translateX(30px) translateY(0)'; this.style.boxShadow='0 4px 20px rgba(0, 0, 0, 0.08)'">
                     <div class="step-number" style="width: 60px; height: 60px; background: var(--text-primary); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 24px; font-weight: 700; flex-shrink: 0; margin-right: 30px; position: relative; z-index: 2;">2</div>
                     <div class="step-content" style="flex: 1; text-align: left;">
                         <div class="step-badge" style="display: inline-block; background: rgba(0, 0, 0, 0.08); color: var(--text-primary); padding: 4px 12px; border-radius: 20px; font-size: 12px; font-weight: 600; margin-bottom: 12px;">שלב שני</div>
@@ -3990,7 +4028,7 @@
                 </div>
 
                 <!-- Step 3: Intent Analysis -->
-                <div class="process-step" data-step="3" style="display: flex; align-items: flex-start; margin-bottom: 60px; opacity: 0; transform: translateX(-30px); transition: all 0.6s ease-out; padding: 30px; border-radius: 16px; background: #ffffff; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08); border: 1px solid rgba(0, 0, 0, 0.05); position: relative; cursor: pointer;" onmouseover="this.style.transform='translateX(-30px) translateY(-8px)'; this.style.boxShadow='0 12px 40px rgba(0, 0, 0, 0.15)'" onmouseout="this.style.transform='translateX(-30px) translateY(0)'; this.style.boxShadow='0 4px 20px rgba(0, 0, 0, 0.08)'">
+                <div class="process-step" data-step="3" style="display: flex; align-items: flex-start; margin-bottom: 60px; opacity: 1; transform: translateX(0); transition: all 0.6s ease-out; padding: 30px; border-radius: 16px; background: #ffffff; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08); border: 1px solid rgba(0, 0, 0, 0.05); position: relative; cursor: pointer;" onmouseover="this.style.transform='translateX(-30px) translateY(-8px)'; this.style.boxShadow='0 12px 40px rgba(0, 0, 0, 0.15)'" onmouseout="this.style.transform='translateX(-30px) translateY(0)'; this.style.boxShadow='0 4px 20px rgba(0, 0, 0, 0.08)'">
                     <div class="step-number" style="width: 60px; height: 60px; background: var(--text-primary); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 24px; font-weight: 700; flex-shrink: 0; margin-left: 30px; position: relative; z-index: 2;">3</div>
                     <div class="step-content" style="flex: 1;">
                         <div class="step-badge" style="display: inline-block; background: rgba(0, 0, 0, 0.08); color: var(--text-primary); padding: 4px 12px; border-radius: 20px; font-size: 12px; font-weight: 600; margin-bottom: 12px;">שלב שלישי</div>
@@ -4005,7 +4043,7 @@
                 </div>
 
                 <!-- Step 4: Smart Response -->
-                <div class="process-step" data-step="4" style="display: flex; align-items: flex-start; margin-bottom: 60px; opacity: 0; transform: translateX(30px); transition: all 0.6s ease-out; padding: 30px; border-radius: 16px; background: #ffffff; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08); border: 1px solid rgba(0, 0, 0, 0.05); position: relative; cursor: pointer; flex-direction: row-reverse;" onmouseover="this.style.transform='translateX(30px) translateY(-8px)'; this.style.boxShadow='0 12px 40px rgba(0, 0, 0, 0.15)'" onmouseout="this.style.transform='translateX(30px) translateY(0)'; this.style.boxShadow='0 4px 20px rgba(0, 0, 0, 0.08)'">
+                <div class="process-step" data-step="4" style="display: flex; align-items: flex-start; margin-bottom: 60px; opacity: 1; transform: translateX(0); transition: all 0.6s ease-out; padding: 30px; border-radius: 16px; background: #ffffff; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08); border: 1px solid rgba(0, 0, 0, 0.05); position: relative; cursor: pointer; flex-direction: row-reverse;" onmouseover="this.style.transform='translateX(30px) translateY(-8px)'; this.style.boxShadow='0 12px 40px rgba(0, 0, 0, 0.15)'" onmouseout="this.style.transform='translateX(30px) translateY(0)'; this.style.boxShadow='0 4px 20px rgba(0, 0, 0, 0.08)'">
                     <div class="step-number" style="width: 60px; height: 60px; background: var(--text-primary); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 24px; font-weight: 700; flex-shrink: 0; margin-right: 30px; position: relative; z-index: 2;">4</div>
                     <div class="step-content" style="flex: 1; text-align: left;">
                         <div class="step-badge" style="display: inline-block; background: rgba(0, 0, 0, 0.08); color: var(--text-primary); padding: 4px 12px; border-radius: 20px; font-size: 12px; font-weight: 600; margin-bottom: 12px;">שלב רביעי</div>
@@ -4020,7 +4058,7 @@
                 </div>
 
                 <!-- Step 5: Value Delivery -->
-                <div class="process-step" data-step="5" style="display: flex; align-items: flex-start; margin-bottom: 60px; opacity: 0; transform: translateX(-30px); transition: all 0.6s ease-out; padding: 30px; border-radius: 16px; background: #ffffff; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08); border: 1px solid rgba(0, 0, 0, 0.05); position: relative; cursor: pointer;" onmouseover="this.style.transform='translateX(-30px) translateY(-8px)'; this.style.boxShadow='0 12px 40px rgba(0, 0, 0, 0.15)'" onmouseout="this.style.transform='translateX(-30px) translateY(0)'; this.style.boxShadow='0 4px 20px rgba(0, 0, 0, 0.08)'">
+                <div class="process-step" data-step="5" style="display: flex; align-items: flex-start; margin-bottom: 60px; opacity: 1; transform: translateX(0); transition: all 0.6s ease-out; padding: 30px; border-radius: 16px; background: #ffffff; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08); border: 1px solid rgba(0, 0, 0, 0.05); position: relative; cursor: pointer;" onmouseover="this.style.transform='translateX(-30px) translateY(-8px)'; this.style.boxShadow='0 12px 40px rgba(0, 0, 0, 0.15)'" onmouseout="this.style.transform='translateX(-30px) translateY(0)'; this.style.boxShadow='0 4px 20px rgba(0, 0, 0, 0.08)'">
                     <div class="step-number" style="width: 60px; height: 60px; background: var(--text-primary); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 24px; font-weight: 700; flex-shrink: 0; margin-left: 30px; position: relative; z-index: 2;">5</div>
                     <div class="step-content" style="flex: 1;">
                         <div class="step-badge" style="display: inline-block; background: rgba(0, 0, 0, 0.08); color: var(--text-primary); padding: 4px 12px; border-radius: 20px; font-size: 12px; font-weight: 600; margin-bottom: 12px;">שלב חמישי</div>
@@ -4037,6 +4075,11 @@
             </div>
         </div>
     </section>
+
+    <!-- Floating Demo Button (Mobile Only) -->
+    <button class="floating-demo-btn" id="floatingDemoBtn" onclick="toggleDemo()">
+        <i class="fas fa-play" id="floatingIcon"></i>
+    </button>
 
     <!-- Performance Statistics -->
     <section class="performance-stats" id="performance-stats" style="padding: 80px 0;">
@@ -7731,6 +7774,7 @@
             console.log('🎯 startDemo button clicked');
             
             const startBtn = document.getElementById('startDemoBtn');
+            const floatingIcon = document.getElementById('floatingIcon');
             
             if (!demoStarted) {
                 // First time starting demo
@@ -7751,9 +7795,16 @@
                     console.log('✅ Start button changed to pause');
                 }
                 
+                // Sync floating button icon
+                if (floatingIcon) {
+                    floatingIcon.className = 'fas fa-pause';
+                }
+                
                 // Start the demo after a short delay for scroll
                 setTimeout(() => {
                     startAutoDemo();
+                    // Update floating button visibility
+                    updateFloatingButtonVisibility();
                 }, 500);
             } else if (demoPaused) {
                 // Resume demo
@@ -7763,6 +7814,11 @@
                 if (startBtn) {
                     startBtn.innerHTML = '<i class="fas fa-pause" style="margin-left: 8px;"></i>השהה דמו';
                 }
+                
+                // Sync floating button icon
+                if (floatingIcon) {
+                    floatingIcon.className = 'fas fa-pause';
+                }
             } else {
                 // Pause demo
                 console.log('⏸️ Pausing demo');
@@ -7770,6 +7826,60 @@
                 
                 if (startBtn) {
                     startBtn.innerHTML = '<i class="fas fa-play" style="margin-left: 8px;"></i>המשך דמו';
+                }
+                
+                // Sync floating button icon
+                if (floatingIcon) {
+                    floatingIcon.className = 'fas fa-play';
+                }
+            }
+        }
+
+        function toggleDemo() {
+            console.log('🎯 Floating demo button clicked');
+            
+            const floatingBtn = document.getElementById('floatingDemoBtn');
+            const floatingIcon = document.getElementById('floatingIcon');
+            
+            if (!demoStarted) {
+                // First time starting demo
+                console.log('🚀 Starting demo from floating button');
+                
+                // Focus on demo container
+                const demoContainer = document.getElementById('demoContainer');
+                if (demoContainer) {
+                    demoContainer.scrollIntoView({ 
+                        behavior: 'smooth',
+                        block: 'center'
+                    });
+                }
+                
+                // Change icon to pause
+                if (floatingIcon) {
+                    floatingIcon.className = 'fas fa-pause';
+                }
+                
+                // Start the demo after a short delay for scroll
+                setTimeout(() => {
+                    startAutoDemo();
+                    // Update floating button visibility
+                    updateFloatingButtonVisibility();
+                }, 500);
+            } else if (demoPaused) {
+                // Resume demo
+                console.log('▶️ Resuming demo from floating button');
+                resumeDemo();
+                
+                if (floatingIcon) {
+                    floatingIcon.className = 'fas fa-pause';
+                }
+            } else {
+                // Pause demo
+                console.log('⏸️ Pausing demo from floating button');
+                pauseDemo();
+                
+                if (floatingIcon) {
+                    floatingIcon.className = 'fas fa-play';
                 }
             }
         }
@@ -8004,6 +8114,49 @@
             });
         }
 
+        function updateFloatingButtonVisibility() {
+            const floatingBtn = document.getElementById('floatingDemoBtn');
+            if (!floatingBtn) return;
+            
+            // Check if we're on mobile
+            if (window.innerWidth <= 768) {
+                // Show floating button if demo has started
+                if (demoStarted) {
+                    floatingBtn.classList.add('visible');
+                } else {
+                    floatingBtn.classList.remove('visible');
+                }
+            } else {
+                floatingBtn.classList.remove('visible');
+            }
+        }
+
+        function initFloatingDemoButton() {
+            const floatingBtn = document.getElementById('floatingDemoBtn');
+            const demoSection = document.getElementById('demo');
+            
+            if (!floatingBtn || !demoSection) {
+                return;
+            }
+            
+            // Check if we're on mobile
+            function isMobile() {
+                return window.innerWidth <= 768;
+            }
+            
+            // Show/hide floating button based on demo state
+            function handleScroll() {
+                updateFloatingButtonVisibility();
+            }
+            
+            // Add scroll listener
+            window.addEventListener('scroll', handleScroll);
+            window.addEventListener('resize', handleScroll);
+            
+            // Initial check
+            handleScroll();
+        }
+
         // Initialize demo on page load
         document.addEventListener('DOMContentLoaded', function() {
             console.log('DOM Content Loaded');
@@ -8021,9 +8174,10 @@
             if (demoSection) {
                 console.log('Demo section found - manual start mode enabled');
                 initDemoObserver(); // Just logs that observer is disabled
-            } else {
-                console.error('Demo section not found!');
             }
+            
+            // Initialize floating demo button scroll handler
+            initFloatingDemoButton();
             
             // Add smooth scrolling for navigation links
             document.querySelectorAll('a[href^="#"]').forEach(anchor => {

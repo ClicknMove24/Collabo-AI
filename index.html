@@ -545,43 +545,89 @@
         /* Hero Buttons */
         .hero-buttons {
             display: flex;
-            gap: 16px;
+            gap: 24px;
             margin: 40px 0 60px 0;
             justify-content: center;
             flex-wrap: wrap;
         }
 
         .hero-btn {
-            background: white;
-            border-radius: 6px;
-            padding: 16px 24px;
+            background: transparent;
+            border: none;
+            border-radius: var(--border-radius);
+            padding: 14px 18px;
             font-size: 16px;
             font-weight: 600;
             cursor: pointer;
             transition: all 0.3s ease;
             text-align: center;
             min-width: 220px;
-            color: #374151;
+            color: var(--text-primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
         }
 
         .hero-btn:hover {
-            transform: translateY(-2px);
+            transform: translateY(-3px);
         }
 
         .demo-btn {
-            border: 1px solid #ef4444;
+            box-shadow: 0 4px 15px rgba(255, 49, 49, 0.3);
+            animation: mobileDemoPulse 2.5s infinite;
         }
 
         .demo-btn:hover {
-            border-color: #dc2626;
+            box-shadow: 0 8px 25px rgba(255, 49, 49, 0.4);
+            animation: none;
         }
 
         .cta-btn {
-            border: 1px solid #8b5cf6;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
         }
 
         .cta-btn:hover {
-            border-color: #7c3aed;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        @keyframes mobileDemoPulse {
+            0%, 100% { 
+                transform: scale(1);
+            }
+            50% { 
+                transform: scale(1.05);
+            }
+        }
+
+        /* Highlight text effect - more subtle */
+        .highlight-text {
+            background: linear-gradient(120deg, 
+                transparent 0%, 
+                rgba(255, 255, 0, 0.08) 15%, 
+                rgba(255, 165, 0, 0.05) 35%, 
+                transparent 50%, 
+                rgba(139, 92, 246, 0.05) 70%, 
+                rgba(59, 130, 246, 0.08) 85%, 
+                transparent 100%);
+            background-size: 200% 100%;
+            animation: subtleGlow 12s ease-in-out infinite;
+            border-radius: 4px;
+            padding: 2px 4px;
+            color: #000000 !important;
+            font-style: italic;
+            text-shadow: 0.5px 0.5px 0px rgba(0, 0, 0, 0.1);
+        }
+
+        @keyframes subtleGlow {
+            0%, 100% { 
+                background-position: 0% 50%; 
+                opacity: 0.7;
+            }
+            50% { 
+                background-position: 100% 50%; 
+                opacity: 0.9;
+            }
         }
 
         .revenue-icon {
@@ -723,7 +769,7 @@
         /* Mobile Hero Responsive */
         @media screen and (max-width: 768px) {
             .hero {
-                padding: 100px 0 60px;
+                padding: 40px 0;
             }
             
             .hero .container {
@@ -1007,7 +1053,7 @@
         /* Mobile Responsive Demo Section (768px and below) */
         @media screen and (max-width: 768px) {
             .demo {
-                padding: 60px 0 40px;
+                padding: 40px 0;
             }
             
             .demo .container {
@@ -2326,7 +2372,7 @@
             
             /* Hero responsive */
             .hero {
-                padding: 50px 0 0;
+                padding: 40px 0;
                 margin-top: 40px; /* Account for fixed header */
             }
             
@@ -2432,7 +2478,7 @@
             
             /* Demo section mobile - preserve logic while improving responsiveness */
             .demo {
-                padding: 50px 0 !important;
+                padding: 40px 0 !important;
                 overflow: visible !important;
             }
             
@@ -2711,22 +2757,22 @@
             }
             
             /* Shorten text for mobile using pseudo-elements */
+            #step-detection span::after { content: "איתור"; }
             #step-analysis span::after { content: "ניתוח"; }
             #step-response span::after { content: "תגובה"; } 
             #step-messenger span::after { content: "מסנגר"; }
-            #step-complete span::after { content: "סיום"; }
             
+            #step-detection span,
             #step-analysis span,
             #step-response span,
-            #step-messenger span,
-            #step-complete span {
+            #step-messenger span {
                 font-size: 0; /* Hide original text */
             }
             
+            #step-detection span::after,
             #step-analysis span::after,
             #step-response span::after,
-            #step-messenger span::after,
-            #step-complete span::after {
+            #step-messenger span::after {
                 font-size: 11px; /* Show shortened text */
             }
             
@@ -2768,14 +2814,14 @@
             }
             
             #centeredDemoButton button {
-                font-size: 20px !important;
-                padding: 20px 50px !important;
-                min-width: 220px !important;
+                font-size: 16px !important;
+                padding: 14px 32px !important;
+                min-width: 160px !important;
             }
             
             /* Stats section responsive */
             .stats {
-                padding: 50px 0;
+                padding: 40px 0;
                 background: var(--bg-gray);
             }
             
@@ -2818,7 +2864,7 @@
             
             /* Testimonials responsive */
             .testimonials {
-                padding: 50px 0;
+                padding: 40px 0;
             }
             
             .testimonials .container {
@@ -2868,7 +2914,7 @@
             
             /* Pricing responsive */
             .pricing {
-                padding: 50px 0;
+                padding: 40px 0;
                 background: var(--bg-light);
             }
             
@@ -2918,7 +2964,7 @@
             
             /* Comparison table responsive - Convert to cards */
             .comparison-section {
-                padding: 50px 0;
+                padding: 40px 0;
                 background: var(--bg-gray);
             }
             
@@ -3019,7 +3065,7 @@
             
             /* Contact section responsive */
             .contact {
-                padding: 50px 0;
+                padding: 40px 0;
                 background: var(--bg-light);
             }
             
@@ -3324,9 +3370,9 @@
                 padding: 14px 16px;
             }
             
-            /* Ensure proper spacing on all sections */
+            /* Ensure proper spacing on all sections - 40px only */
             section {
-                padding: 50px 0;
+                padding: 40px 0;
             }
             
             /* Typography improvements for very small screens */
@@ -3349,30 +3395,31 @@
                 font-size: 14px;
             }
 
-            /* Show mobile demo button in header */
-            .mobile-demo-nav {
+            /* Mobile demo nav - only show when demo is active */
+            .mobile-demo-nav.active {
                 display: block !important;
             }
             
             /* Hero buttons mobile responsive */
             .hero-buttons {
                 flex-direction: column;
-                gap: 12px;
+                gap: 16px;
                 margin: 30px 0 40px 0;
                 align-items: center;
             }
             
             .hero-btn {
-                min-width: 100%;
-                max-width: 300px;
-                padding: 14px 20px;
+                min-width: 200px;
+                max-width: 280px;
+                padding: 12px 16px;
                 font-size: 15px;
+                white-space: nowrap;
             }
             
             
             /* Revenue Sources Section Mobile */
             .revenue-sources {
-                padding: 60px 0 !important;
+                padding: 40px 0 !important;
             }
             
             .revenue-sources .section-header {
@@ -3864,9 +3911,13 @@
 
         /* Enhanced Mobile Responsive Design */
         @media (max-width: 768px) {
-            /* Section adjustments */
+            /* Global section spacing - 40px between sections only */
+            section {
+                padding: 40px 0 !important;
+            }
+            
             #process {
-                padding: 60px 0 !important;
+                padding: 40px 0 !important;
             }
             
             .container {
@@ -3962,6 +4013,11 @@
         
         /* Extra small devices (phones in portrait) */
         @media (max-width: 480px) {
+            /* Global section spacing - 40px between sections only */
+            section {
+                padding: 40px 0 !important;
+            }
+            
             #process {
                 padding: 40px 0 !important;
             }
@@ -3993,7 +4049,7 @@
             
             /* Revenue Engines Mobile Responsive */
             .revenue-engines {
-                padding: 60px 0 !important;
+                padding: 40px 0 !important;
             }
             
             .engines-grid {
@@ -4002,91 +4058,7 @@
                 gap: clamp(30px, 8vw, 40px) !important;
             }
             
-            .engine-pyramid {
-                padding: 30px !important;
-            }
             
-            .pyramid-title h3 {
-                font-size: clamp(20px, 5vw, 24px) !important;
-                margin-bottom: clamp(4px, 1vw, 6px) !important;
-            }
-            
-            .pyramid-title p {
-                font-size: clamp(14px, 3.5vw, 16px) !important;
-            }
-            
-            .pyramid-steps {
-                gap: clamp(4px, 1vw, 6px) !important;
-                margin-bottom: clamp(25px, 6vw, 30px) !important;
-                padding: 0 8px !important;
-                overflow-x: visible !important;
-                flex-wrap: nowrap !important;
-                justify-content: center !important;
-            }
-            
-            .step-bubble {
-                min-width: clamp(75px, 18vw, 85px) !important;
-                padding: clamp(6px, 1.5vw, 8px) clamp(8px, 2vw, 10px) !important;
-                flex-shrink: 0 !important;
-            }
-            
-            .step-bubble div:first-child {
-                font-size: clamp(11px, 2.8vw, 13px) !important;
-                margin-bottom: clamp(1px, 0.5vw, 2px) !important;
-            }
-            
-            .step-bubble div:last-child {
-                font-size: clamp(9px, 2.2vw, 11px) !important;
-                line-height: 1.2 !important;
-            }
-            
-            .pyramid-quote {
-                padding: clamp(12px, 3vw, 16px) !important;
-                margin: 0 auto clamp(25px, 6vw, 30px) auto !important;
-                max-width: 100% !important;
-            }
-            
-            .pyramid-quote p {
-                font-size: clamp(14px, 3.5vw, 18px) !important;
-                line-height: 1.4 !important;
-            }
-            
-            .detailed-steps {
-                margin-bottom: clamp(15px, 4vw, 20px) !important;
-            }
-            
-            .step-detail {
-                padding: clamp(16px, 4vw, 20px) !important;
-                margin-bottom: clamp(20px, 5vw, 24px) !important;
-            }
-            
-            .step-detail h4 {
-                font-size: clamp(16px, 4vw, 18px) !important;
-                margin-bottom: clamp(8px, 2vw, 10px) !important;
-                flex-direction: column !important;
-                align-items: flex-start !important;
-                text-align: right !important;
-            }
-            
-            .step-detail h4 span {
-                width: clamp(24px, 6vw, 28px) !important;
-                height: clamp(24px, 6vw, 28px) !important;
-                font-size: clamp(12px, 3vw, 14px) !important;
-                margin-left: 0 !important;
-                margin-bottom: clamp(6px, 1.5vw, 8px) !important;
-                align-self: flex-end !important;
-            }
-            
-            .step-detail p {
-                font-size: clamp(13px, 3.2vw, 15px) !important;
-                line-height: 1.5 !important;
-                margin-bottom: clamp(12px, 3vw, 14px) !important;
-            }
-            
-            .step-detail div[style*="border-right"] p {
-                font-size: clamp(12px, 3vw, 14px) !important;
-                line-height: 1.4 !important;
-            }
             
         }
 
@@ -4106,11 +4078,11 @@
                     <span></span>
                 </div>
 
-                <!-- Mobile Demo Button - Center -->
-                <div class="mobile-demo-nav">
-                    <button class="mobile-demo-button" onclick="scrollToDemoAndStart()">
-                        <span>הפעל דמו</span>
-                        <i class="fas fa-arrow-left"></i>
+                <!-- Demo Control Button - Center (hidden by default) -->
+                <div class="mobile-demo-nav" id="navDemoControl" style="display: none;">
+                    <button class="mobile-demo-button" id="navDemoBtn" onclick="toggleDemoWithScroll()">
+                        <span id="navDemoText">השהה דמו</span>
+                        <i class="fas fa-pause" id="navDemoIcon"></i>
                     </button>
                 </div>
 
@@ -4168,16 +4140,13 @@
             <div class="hero-content fade-in-up">
                 <h1>תארו לעצמכם מציאות שבה אתם <span class="highlight">לא רודפים יותר</span> אחרי לקוחות<br>
                 אלא <span class="highlight">הם מגיעים אליכם</span> - <span class="highlight">מעוניינים ומוכנים</span></h1>
-                <p class="subtitle">טכנולוגיה שמזהה ומושכת לקוחות פוטנציאליים ברשתות החברתיות 24/7! כלי חדשני שמייצר לכם 2 מקורות הכנסה קבועים כל יום!</p>
+                <p class="subtitle highlight-text">מפסיקים לרדוף אחרי לקוחות ברשת! מערכת AI שהופכת את פייסבוק למכונת לידים אוטומטית עבורכם - מזהה, ניגשת ומדבר בקול שלכם! והופכת כל פוסט ברשת למקור הכנסה פוטנציאלי בזמן שאתם מתרכזים באיכות השירות שלכם.</p>
                 
                 <!-- Hero Buttons -->
                 <div class="hero-buttons">
                     <button class="hero-btn demo-btn" onclick="scrollToDemoAndStart()">
-                        רוצה לראות איך זה יעבוד לך?
-                    </button>
-                    
-                    <button class="hero-btn cta-btn" onclick="document.getElementById('contact').scrollIntoView({behavior: 'smooth'})">
-                        כן, אני מעוניין להתחיל עכשיו!
+                        רוצה לראות איך זה עובד?
+                        <i class="fas fa-play" style="transform: scaleX(-1); margin-right: 8px;"></i>
                     </button>
                 </div>
                 
@@ -4189,16 +4158,13 @@
     <!-- Demo Section -->
     <section class="demo" id="demo" style="padding: 80px 0; overflow: hidden; position: relative;">
         <div class="container">
-            <!-- Section Header with improved spacing - button moved to center initially -->
-            <div class="section-header" id="demoHeaderContainer" style="text-align: center; margin-bottom: 60px !important; display: none;">
-                <button id="startDemoBtn" class="btn-base px-6 py-3 font-semibold text-center btn-gradient btn-lg" onclick="startDemo()">
-                    <i class="fas fa-play" style="margin-left: 8px;"></i>
-                    התחל דמו
-                </button>
-            </div>
 
             <!-- Progress Breadcrumb with clean design -->
             <div class="demo-progress" id="demoProgress" style="margin-bottom: 15px; display: none; justify-content: center;">
+                <div class="progress-step" id="step-detection">
+                    <span>איתור פוסטים</span>
+                </div>
+                <div class="progress-arrow">→</div>
                 <div class="progress-step" id="step-analysis">
                     <span>ניתוח פוסטים</span>
                 </div>
@@ -4210,15 +4176,11 @@
                 <div class="progress-step" id="step-messenger">
                     <span>מעבר למסנג'ר</span>
                 </div>
-                <div class="progress-arrow">→</div>
-                <div class="progress-step" id="step-complete">
-                    <span>סיום</span>
-                </div>
             </div>
 
             <!-- Status Indicator -->
             <div id="statusIndicatorContainer" style="display: none; margin: 0 auto 15px auto; font-size: 18px; color: #000000; text-align: center; max-width: 800px;">
-                <div id="statusIndicatorText" style="direction: rtl; unicode-bidi: isolate; text-align: right; width: 100%; height: auto; min-height: 50px; color: #000000; font-family: inherit; white-space: normal; overflow: visible; display: flex; align-items: flex-start; font-size: 16px; line-height: 1.4; background: #fff3cd; padding: 12px 12px; border-radius: 6px; box-sizing: border-box;">מתחיל הדגמה...</div>
+                <div id="statusIndicatorText" style="direction: rtl; unicode-bidi: isolate; text-align: right; width: 100%; height: auto; min-height: 50px; color: #000000; font-family: inherit; white-space: normal; overflow: visible; display: flex; align-items: flex-start; font-size: 16px; line-height: 1.4; background: #fff3cd; padding: 12px 12px; border-radius: 6px; box-sizing: border-box;"></div>
             </div>
 
             <!-- Demo Features - properly positioned -->
@@ -4236,13 +4198,13 @@
                         color: #37352f;
                         border: 2px solid white;
                         border-radius: 8px;
-                        font-size: 24px; 
-                        padding: 24px 60px; 
-                        min-width: 250px; 
+                        font-size: 18px; 
+                        padding: 16px 40px; 
+                        min-width: 180px; 
                         display: flex; 
                         align-items: center; 
                         justify-content: center; 
-                        gap: 12px;
+                        gap: 10px;
                         font-weight: 600;
                         font-family: 'Inter', sans-serif;
                         cursor: pointer;
@@ -4292,179 +4254,6 @@
         </div>
     </section>
 
-    <!-- Revenue Engines Section -->
-    <section class="revenue-engines" id="revenue-engines" style="padding: 80px 0; background: #ffffff;">
-        <div class="container">
-            <!-- Section Header -->
-            <div class="section-header" style="text-align: center; margin-bottom: 60px !important;">
-                <h2 class="section-title" style="font-size: 42px; font-weight: 800; color: var(--text-primary); margin-bottom: 16px; line-height: 1.2;">מנועי הכנסה</h2>
-                <p class="section-subtitle" style="color: var(--text-secondary); font-size: 18px; line-height: 1.6; max-width: 800px; margin: 0 auto;">2 מנגנונים אוטומטיים שמייצרים לקוחות משלמים 24/7</p>
-            </div>
-
-            <!-- Revenue Engines Grid -->
-            <div class="engines-grid" style="display: grid; grid-template-columns: 1fr; gap: 60px; max-width: 900px; margin: 0 auto; padding: 0;">
-                
-                <!-- Engine 1: Direct Revenue - Pyramid Style -->
-                <div class="engine-pyramid" style="text-align: center; padding: 30px 40px 40px 40px; border-radius: 16px; background: #ffffff; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08); border: 2px solid #e5e7eb;">
-                    
-                    <!-- TITLE - Top of Pyramid -->
-                    <div class="pyramid-title" style="margin-bottom: 40px;">
-                        <h3 style="font-size: 32px; font-weight: 800; color: var(--text-primary); margin-bottom: 8px; line-height: 1.2;">הכנסה ישירה</h3>
-                        <p style="font-size: 18px; color: var(--text-secondary); font-weight: 500;">אתם מגיעים ללקוחות</p>
-                    </div>
-
-                    <!-- STEPS - Second Level (Horizontal Flow) -->
-                    <div class="pyramid-steps" style="display: flex; justify-content: center; align-items: center; gap: clamp(8px, 2vw, 20px); margin-bottom: 50px; flex-wrap: nowrap; overflow-x: auto; padding: 0 10px;">
-                        
-                        <div class="step-bubble" style="background: #f9fafb; border: 1px solid rgba(0, 0, 0, 0.15); border-radius: 16px; padding: clamp(12px, 3vw, 16px) clamp(16px, 4vw, 24px); min-width: clamp(120px, 25vw, 140px); flex-shrink: 0;">
-                            <div style="font-weight: 700; color: var(--text-primary); font-size: clamp(14px, 3.5vw, 16px); margin-bottom: 4px;">שלב 1</div>
-                            <div style="font-size: clamp(12px, 3vw, 14px); color: var(--text-secondary); text-align: center;">זיהוי הפניה</div>
-                        </div>
-
-                        <div style="color: var(--text-secondary); font-size: clamp(16px, 4vw, 20px); font-weight: 700; flex-shrink: 0;">←</div>
-
-                        <div class="step-bubble" style="background: #f9fafb; border: 1px solid rgba(0, 0, 0, 0.15); border-radius: 16px; padding: clamp(12px, 3vw, 16px) clamp(16px, 4vw, 24px); min-width: clamp(120px, 25vw, 140px); flex-shrink: 0;">
-                            <div style="font-weight: 700; color: var(--text-primary); font-size: clamp(14px, 3.5vw, 16px); margin-bottom: 4px;">שלב 2</div>
-                            <div style="font-size: clamp(12px, 3vw, 14px); color: var(--text-secondary); text-align: center;">מתן מענה</div>
-                        </div>
-
-                        <div style="color: var(--text-secondary); font-size: clamp(16px, 4vw, 20px); font-weight: 700; flex-shrink: 0;">←</div>
-
-                        <div class="step-bubble" style="background: #f9fafb; border: 1px solid rgba(0, 0, 0, 0.15); border-radius: 16px; padding: clamp(12px, 3vw, 16px) clamp(16px, 4vw, 24px); min-width: clamp(120px, 25vw, 140px); flex-shrink: 0;">
-                            <div style="font-weight: 700; color: var(--text-primary); font-size: clamp(14px, 3.5vw, 16px); margin-bottom: 4px;">שלב 3</div>
-                            <div style="font-size: clamp(12px, 3vw, 14px); color: var(--text-secondary); text-align: center;">סגירת עסקה</div>
-                        </div>
-                    </div>
-
-                    <!-- DETAILED STEPS - Full Content -->
-                    <div class="detailed-steps" style="text-align: right; margin-bottom: 40px; max-width: 800px; margin-left: auto; margin-right: auto;">
-                        
-                        <!-- Step 1 Details -->
-                        <div class="step-detail" style="margin-bottom: 32px; padding: 24px; background: #ffffff; border-radius: 12px; border: 2px solid rgba(0, 0, 0, 0.15);">
-                            <h4 style="font-size: 20px; font-weight: 700; color: var(--text-primary); margin-bottom: 12px; display: flex; align-items: center;">
-                                <span style="width: 32px; height: 32px; background: var(--text-primary); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 16px; font-weight: 700; margin-left: 12px;">1</span>
-                                זיהוי לקוח בזמן אמת
-                            </h4>
-                            <p style="color: var(--text-secondary); font-size: 16px; line-height: 1.6; margin-bottom: 16px;">המערכת מזהה פוסטים עם כוונת רכישה מיידית תוך מספר דקות מרגע שפורסמו!</p>
-                            <div style="background: #ffffff; padding: 16px; border-radius: 12px; border: 1px solid rgba(0, 0, 0, 0.1); border-right: 3px solid var(--text-primary);">
-                                <p style="color: var(--text-primary); font-size: 15px; font-weight: 600; margin: 0; line-height: 1.6;">יותר מ-90% מבעלי המקצוע שהגיבו ראשונים לפוסט זוכים בלקוח!</p>
-                            </div>
-                        </div>
-
-                        <!-- Step 2 Details -->
-                        <div class="step-detail" style="margin-bottom: 32px; padding: 24px; background: #ffffff; border-radius: 12px; border: 2px solid rgba(0, 0, 0, 0.15);">
-                            <h4 style="font-size: 20px; font-weight: 700; color: var(--text-primary); margin-bottom: 12px; display: flex; align-items: center;">
-                                <span style="width: 32px; height: 32px; background: var(--text-primary); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 16px; font-weight: 700; margin-left: 12px;">2</span>
-                                תגובה עם ערך אמיתי
-                            </h4>
-                            <p style="color: var(--text-secondary); font-size: 16px; line-height: 1.6; margin-bottom: 16px;">נתינת ערך ללא תמורה מייצרת "חוב פסיכולוגי" אצל לקוחות.</p>
-                            <div style="background: #ffffff; padding: 16px; border-radius: 12px; border: 1px solid rgba(0, 0, 0, 0.1); border-right: 3px solid var(--text-primary);">
-                                <p style="color: var(--text-primary); font-size: 15px; font-weight: 600; margin: 0; line-height: 1.6;">87% מהלקוחות ירצו להחזיר לכם טובה ויעדיפו לעבוד איתכם!</p>
-                            </div>
-                        </div>
-
-                        <!-- Step 3 Details -->
-                        <div class="step-detail" style="margin-bottom: 0; padding: 24px; background: #ffffff; border-radius: 12px; border: 2px solid rgba(0, 0, 0, 0.15);">
-                            <h4 style="font-size: 20px; font-weight: 700; color: var(--text-primary); margin-bottom: 12px; display: flex; align-items: center;">
-                                <span style="width: 32px; height: 32px; background: var(--text-primary); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 16px; font-weight: 700; margin-left: 12px;">3</span>
-                                וידוא מכירה
-                            </h4>
-                            <p style="color: var(--text-secondary); font-size: 16px; line-height: 1.6; margin-bottom: 16px;">שולחים הודעה נוספת במסנג'ר של הלקוח וממשיכים בתהליך המכירה.</p>
-                            <div style="background: #ffffff; padding: 16px; border-radius: 12px; border: 1px solid rgba(0, 0, 0, 0.1); border-right: 3px solid var(--text-primary);">
-                                <p style="color: var(--text-primary); font-size: 15px; font-weight: 600; margin: 0; line-height: 1.6;">94% מהלקוחות מגיבים רק לבעלי מקצוע ששלחו הודעה נוספת במסנג'ר!</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- QUOTE - Bottom of Engine -->
-                    <div class="pyramid-quote" style="background: rgba(0, 0, 0, 0.04); border: 2px solid rgba(0, 0, 0, 0.15); color: var(--text-primary); padding: 20px; border-radius: 12px; max-width: 600px; margin: 40px auto 0 auto;">
-                        <p style="font-size: 18px; font-weight: 600; margin: 0; font-style: italic; text-align: center;">מי שמגיב נכון ראשון — זוכה ראשון!</p>
-                    </div>
-
-                </div>
-
-                <!-- Engine 2: Indirect Revenue - Pyramid Style -->
-                <div class="engine-pyramid" style="text-align: center; padding: 30px 40px 40px 40px; border-radius: 16px; background: #ffffff; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08); border: 2px solid #e5e7eb;">
-                    
-                    <!-- TITLE - Top of Pyramid -->
-                    <div class="pyramid-title" style="margin-bottom: 40px;">
-                        <h3 style="font-size: 32px; font-weight: 800; color: var(--text-primary); margin-bottom: 8px; line-height: 1.2;">הכנסה עקיפה</h3>
-                        <p style="font-size: 18px; color: var(--text-secondary); font-weight: 500;">לקוחות מגיעים אליכם</p>
-                    </div>
-
-                    <!-- STEPS - Second Level (Horizontal Flow) -->
-                    <div class="pyramid-steps" style="display: flex; justify-content: center; align-items: center; gap: clamp(8px, 2vw, 20px); margin-bottom: 50px; flex-wrap: nowrap; overflow-x: auto; padding: 0 10px;">
-                        
-                        <div class="step-bubble" style="background: #f9fafb; border: 1px solid rgba(0, 0, 0, 0.15); border-radius: 16px; padding: clamp(12px, 3vw, 16px) clamp(16px, 4vw, 24px); min-width: clamp(120px, 25vw, 140px); flex-shrink: 0;">
-                            <div style="font-weight: 700; color: var(--text-primary); font-size: clamp(14px, 3.5vw, 16px); margin-bottom: 4px;">שלב 1</div>
-                            <div style="font-size: clamp(12px, 3vw, 14px); color: var(--text-secondary); text-align: center;">מענה מקצועי</div>
-                        </div>
-
-                        <div style="color: var(--text-secondary); font-size: clamp(16px, 4vw, 20px); font-weight: 700; flex-shrink: 0;">←</div>
-
-                        <div class="step-bubble" style="background: #f9fafb; border: 1px solid rgba(0, 0, 0, 0.15); border-radius: 16px; padding: clamp(12px, 3vw, 16px) clamp(16px, 4vw, 24px); min-width: clamp(120px, 25vw, 140px); flex-shrink: 0;">
-                            <div style="font-weight: 700; color: var(--text-primary); font-size: clamp(14px, 3.5vw, 16px); margin-bottom: 4px;">שלב 2</div>
-                            <div style="font-size: clamp(12px, 3vw, 14px); color: var(--text-secondary); text-align: center;">בניית אמון</div>
-                        </div>
-
-                        <div style="color: var(--text-secondary); font-size: clamp(16px, 4vw, 20px); font-weight: 700; flex-shrink: 0;">←</div>
-
-                        <div class="step-bubble" style="background: #f9fafb; border: 1px solid rgba(0, 0, 0, 0.15); border-radius: 16px; padding: clamp(12px, 3vw, 16px) clamp(16px, 4vw, 24px); min-width: clamp(120px, 25vw, 140px); flex-shrink: 0;">
-                            <div style="font-weight: 700; color: var(--text-primary); font-size: clamp(14px, 3.5vw, 16px); margin-bottom: 4px;">שלב 3</div>
-                            <div style="font-size: clamp(12px, 3vw, 14px); color: var(--text-secondary); text-align: center;">יצירת ליד</div>
-                        </div>
-                    </div>
-
-                    <!-- DETAILED STEPS - Full Content -->
-                    <div class="detailed-steps" style="text-align: right; margin-bottom: 40px; max-width: 800px; margin-left: auto; margin-right: auto;">
-                        
-                        <!-- Step 1 Details -->
-                        <div class="step-detail" style="margin-bottom: 32px; padding: 24px; background: #ffffff; border-radius: 12px; border: 2px solid rgba(0, 0, 0, 0.15);">
-                            <h4 style="font-size: 20px; font-weight: 700; color: var(--text-primary); margin-bottom: 12px; display: flex; align-items: center;">
-                                <span style="width: 32px; height: 32px; background: var(--text-primary); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 16px; font-weight: 700; margin-left: 12px;">1</span>
-                                מענה מקצועי גם לפוסטים המבקשים עצה או עזרה
-                            </h4>
-                            <p style="color: var(--text-secondary); font-size: 16px; line-height: 1.6; margin-bottom: 16px;">מייצרים לקוחות משלמים כל הזמן, כי עבורם הצעת להם עזרה מקצועית ללא תמורה, ולא חיפשת רק "להרוויח" מהם!</p>
-                            <div style="background: #ffffff; padding: 16px; border-radius: 12px; border: 1px solid rgba(0, 0, 0, 0.1); border-right: 3px solid var(--text-primary);">
-                                <p style="color: var(--text-primary); font-size: 15px; font-weight: 600; margin: 0; line-height: 1.6;">60% מאותם פוסטים הופכים ללקוחות משלמים כבר באותו יום</p>
-                            </div>
-                        </div>
-
-                        <!-- Step 2 Details -->
-                        <div class="step-detail" style="margin-bottom: 32px; padding: 24px; background: #ffffff; border-radius: 12px; border: 2px solid rgba(0, 0, 0, 0.15);">
-                            <h4 style="font-size: 20px; font-weight: 700; color: var(--text-primary); margin-bottom: 12px; display: flex; align-items: center;">
-                                <span style="width: 32px; height: 32px; background: var(--text-primary); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 16px; font-weight: 700; margin-left: 12px;">2</span>
-                                פייסבוק עובדת בשבילכם
-                            </h4>
-                            <p style="color: var(--text-secondary); font-size: 16px; line-height: 1.6; margin-bottom: 16px;">50-100 תגובות מקצועיות, והאלגוריתם מייצב אותכם כמומחים בתחום! ומציגה את התגובות שלך בראש של כל פוסט!</p>
-                            <div style="background: #ffffff; padding: 16px; border-radius: 12px; border: 1px solid rgba(0, 0, 0, 0.1); border-right: 3px solid var(--text-primary);">
-                                <p style="color: var(--text-primary); font-size: 15px; font-weight: 600; margin: 0; line-height: 1.6;">אלפי אנשים נוספים רואים אותך כל הזמן, גם כאלו שלא בקבוצה!</p>
-                            </div>
-                        </div>
-
-                        <!-- Step 3 Details -->
-                        <div class="step-detail" style="margin-bottom: 0; padding: 24px; background: #ffffff; border-radius: 12px; border: 2px solid rgba(0, 0, 0, 0.15);">
-                            <h4 style="font-size: 20px; font-weight: 700; color: var(--text-primary); margin-bottom: 12px; display: flex; align-items: center;">
-                                <span style="width: 32px; height: 32px; background: var(--text-primary); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 16px; font-weight: 700; margin-left: 12px;">3</span>
-                                לקוחות שקטים משלמים יותר
-                            </h4>
-                            <p style="color: var(--text-secondary); font-size: 16px; line-height: 1.6; margin-bottom: 16px;">75% מהלקוחות האיכותיים לא כותבים פוסטים בכלל! הם צופים בתגובות של אחרים ופונים רק למי שנראה הכי מקצועי. תגובות מקצועיות הופכות אתכם למומחים בעיני אלפי לקוחות פוטנציאליים שאתם אפילו לא יודעים שהם קיימים!</p>
-                            <div style="background: #ffffff; padding: 16px; border-radius: 12px; border: 1px solid rgba(0, 0, 0, 0.1); border-right: 3px solid var(--text-primary);">
-                                <p style="color: var(--text-primary); font-size: 15px; font-weight: 600; margin: 0; line-height: 1.6;">לקוחות שקטים משלמים 40% יותר ופחות מתמקחים, כי הם כבר משוכנעים שאתם הטובים ביותר!</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- QUOTE - Bottom of Engine -->
-                    <div class="pyramid-quote" style="background: rgba(0, 0, 0, 0.04); border: 2px solid rgba(0, 0, 0, 0.15); color: var(--text-primary); padding: 20px; border-radius: 12px; max-width: 600px; margin: 40px auto 0 auto;">
-                        <p style="font-size: 18px; font-weight: 600; margin: 0; font-style: italic; text-align: center;">כשמישהו רואה אותכם עוזרים לאחרים - הוא כבר יודע שאתם שווים את הכסף!</p>
-                    </div>
-
-                </div>
-
-            </div>
-        </div>
-    </section>
 
     <!-- Process Roadmap Section -->
     <section class="process-roadmap" id="process" style="padding: 80px 0; background: #ffffff;">
@@ -4564,7 +4353,7 @@
                     <div class="step-number" style="width: 60px; height: 60px; background: var(--text-primary); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 24px; font-weight: 700; flex-shrink: 0; margin-left: 30px; position: relative; z-index: 2;">6</div>
                     <div class="step-content" style="flex: 1;">
                         <div class="step-badge" style="display: inline-block; background: rgba(0, 0, 0, 0.08); color: var(--text-primary); padding: 4px 12px; border-radius: 20px; font-size: 12px; font-weight: 600; margin-bottom: 12px;">סוגר עסקות</div>
-                        <h3 style="font-size: 24px; font-weight: 700; color: var(--text-primary); margin-bottom: 12px; line-height: 1.3;">פולואפ במסנג'ר שמגיע ל-Inbox</h3>
+                        <h3 style="font-size: 24px; font-weight: 700; color: var(--text-primary); margin-bottom: 12px; line-height: 1.3;">פולואפ במסנג'ר שמגיע ללקוח</h3>
                         <p style="color: var(--text-secondary); font-size: 16px; line-height: 1.6; margin-bottom: 16px;">לא רק תגובה ציבורית - גם פולואפ אישי במסנג'ר. פרוטוקול מיוחד מוודא שההודעה תגיע ישיר ל-Inbox של הלקוח, לא לספאם. שיעורי פתיחה גבוהים משמעותית.</p>
                         <div class="step-features" style="display: flex; flex-wrap: wrap; gap: 8px;">
                             <span style="background: rgba(0, 0, 0, 0.06); color: var(--text-primary); padding: 6px 12px; border-radius: 20px; font-size: 13px; font-weight: 600;">מוכר מנוסה</span>
@@ -4572,6 +4361,125 @@
                             <span style="background: rgba(0, 0, 0, 0.06); color: var(--text-primary); padding: 6px 12px; border-radius: 20px; font-size: 13px; font-weight: 600;">כסף במזומן</span>
                         </div>
                     </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Revenue Engines Section -->
+    <section class="revenue-engines" id="revenue-engines" style="padding: 80px 0; background: #ffffff;">
+        <div class="container">
+            <!-- Section Header -->
+            <div class="section-header" style="text-align: center; margin-bottom: 60px !important;">
+                <h2 class="section-title" style="font-size: 42px; font-weight: 800; color: var(--text-primary); margin-bottom: 16px; line-height: 1.2;">מנועי הכנסה</h2>
+                <p class="section-subtitle" style="color: var(--text-secondary); font-size: 18px; line-height: 1.6; max-width: 800px; margin: 0 auto;">2 מנגנונים אוטומטיים שמייצרים לקוחות משלמים 24/7</p>
+            </div>
+
+            <div class="engines-grid" style="display: grid; grid-template-columns: 1fr; gap: 60px; max-width: 900px; margin: 0 auto; padding: 0;">
+                
+                <!-- Engine 1: Direct Revenue - Pyramid Style -->
+                <div class="engine-pyramid" style="text-align: center; padding: 30px 20px 40px 20px; border-radius: 16px; background: #ffffff; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08); border: 2px solid #e5e7eb;">
+                    
+                    <!-- TITLE - Top of Pyramid -->
+                    <div class="pyramid-title" style="margin-bottom: 40px;">
+                        <span style="display: inline-block; background: #000000; color: white; padding: 8px 16px; border-radius: 20px; font-size: 18px; font-weight: 700; margin-bottom: 8px;">הכנסה ישירה</span>
+                        <p style="font-size: 18px; color: var(--text-secondary); font-weight: 500;">אתם מגיעים ללקוחות</p>
+                    </div>
+
+                    <!-- DETAILED STEPS - Full Content -->
+                    <div class="detailed-steps" style="text-align: right; margin-bottom: 40px; padding-top: 32px;">
+                        
+                        <!-- Step 1 Details -->
+                        <div style="text-align: center; margin-bottom: 16px;">
+                            <span style="width: 32px; height: 32px; background: var(--text-primary); color: white; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; font-size: 16px; font-weight: 700; min-width: 32px; min-height: 32px; line-height: 1;">1</span>
+                        </div>
+                        <h4 style="font-size: 20px; font-weight: 700; color: var(--text-primary); margin-bottom: 12px; text-align: center;">
+                            זיהוי לקוח בזמן אמת
+                        </h4>
+                        <p style="color: var(--text-secondary); font-size: 16px; line-height: 1.6; margin-bottom: 16px;">המערכת מזהה פוסטים עם כוונת רכישה מיידית תוך מספר דקות מרגע שפורסמו</p>
+                        <p style="color: var(--text-primary); font-size: 15px; font-weight: 600; margin-bottom: 32px; display: flex; align-items: flex-start;"><span style="display: inline-flex; align-items: center; justify-content: center; width: 20px; height: 20px; background: #10b981; color: white; border-radius: 50%; font-size: 12px; margin-left: 8px; flex-shrink: 0;">✓</span>85% מפוסטים מסוג זה הופכים לפגישה כבר באותו יום</p>
+                        <div style="width: 70%; height: 1px; background: #d1d5db; margin: 0 auto 32px auto;"></div>
+
+                        <!-- Step 2 Details -->
+                        <div style="text-align: center; margin-bottom: 16px;">
+                            <span style="width: 32px; height: 32px; background: var(--text-primary); color: white; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; font-size: 16px; font-weight: 700; min-width: 32px; min-height: 32px; line-height: 1;">2</span>
+                        </div>
+                        <h4 style="font-size: 20px; font-weight: 700; color: var(--text-primary); margin-bottom: 12px; text-align: center;">
+                            מענה בקצב האור
+                        </h4>
+                        <p style="color: var(--text-secondary); font-size: 16px; line-height: 1.6; margin-bottom: 16px;">תגובה מיידית ומדויקת בדקות הקריטיות הראשונות, לפני כל המתחרים</p>
+                        <p style="color: var(--text-primary); font-size: 15px; font-weight: 600; margin-bottom: 32px; display: flex; align-items: flex-start;"><span style="display: inline-flex; align-items: center; justify-content: center; width: 20px; height: 20px; background: #10b981; color: white; border-radius: 50%; font-size: 12px; margin-left: 8px; flex-shrink: 0;">✓</span>הלקוח הראשון שמגיב - זה שמקבל את העסקה</p>
+                        <div style="width: 70%; height: 1px; background: #d1d5db; margin: 0 auto 32px auto;"></div>
+
+                        <!-- Step 3 Details -->
+                        <div style="text-align: center; margin-bottom: 16px;">
+                            <span style="width: 32px; height: 32px; background: var(--text-primary); color: white; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; font-size: 16px; font-weight: 700; min-width: 32px; min-height: 32px; line-height: 1;">3</span>
+                        </div>
+                        <h4 style="font-size: 20px; font-weight: 700; color: var(--text-primary); margin-bottom: 12px; text-align: center;">
+                            המרה למחיר מלא
+                        </h4>
+                        <p style="color: var(--text-secondary); font-size: 16px; line-height: 1.6; margin-bottom: 16px;">כאשר לקוח מחפש - מעצם זה שהגעתם ראשונים, אתם זוכים בעמדת מו"מ חזקה</p>
+                        <p style="color: var(--text-primary); font-size: 15px; font-weight: 600; margin-bottom: 32px; display: flex; align-items: flex-start;"><span style="display: inline-flex; align-items: center; justify-content: center; width: 20px; height: 20px; background: #10b981; color: white; border-radius: 50%; font-size: 12px; margin-left: 8px; flex-shrink: 0;">✓</span>בממוצע - 30% יותר ממחיר השוק</p>
+                    </div>
+
+                    <!-- QUOTE - Bottom of Engine -->
+                    <div class="pyramid-quote" style="background: rgba(0, 0, 0, 0.04); border: 2px solid rgba(0, 0, 0, 0.15); color: var(--text-primary); padding: 20px; border-radius: 12px; max-width: 600px; margin: 40px auto 0 auto;">
+                        <p style="font-size: 18px; font-weight: 600; margin: 0; font-style: italic; text-align: center;">מי שמגיע ראשון - מקבל את העסקה!</p>
+                    </div>
+
+                </div>
+
+                <!-- Engine 2: Indirect Revenue - Pyramid Style -->
+                <div class="engine-pyramid" style="text-align: center; padding: 30px 20px 40px 20px; border-radius: 16px; background: #ffffff; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08); border: 2px solid #e5e7eb;">
+                    
+                    <!-- TITLE - Top of Pyramid -->
+                    <div class="pyramid-title" style="margin-bottom: 40px;">
+                        <span style="display: inline-block; background: #000000; color: white; padding: 8px 16px; border-radius: 20px; font-size: 18px; font-weight: 700; margin-bottom: 8px;">הכנסה עקיפה</span>
+                        <p style="font-size: 18px; color: var(--text-secondary); font-weight: 500;">לקוחות מגיעים אליכם</p>
+                    </div>
+
+                    <!-- DETAILED STEPS - Full Content -->
+                    <div class="detailed-steps" style="text-align: right; margin-bottom: 40px; padding-top: 32px;">
+                        
+                        <!-- Step 1 Details -->
+                        <div style="text-align: center; margin-bottom: 16px;">
+                            <span style="width: 32px; height: 32px; background: var(--text-primary); color: white; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; font-size: 16px; font-weight: 700; min-width: 32px; min-height: 32px; line-height: 1;">1</span>
+                        </div>
+                        <h4 style="font-size: 20px; font-weight: 700; color: var(--text-primary); margin-bottom: 12px; text-align: center;">
+                            מענה מקצועי גם לפוסטים המבקשים עצה או עזרה
+                        </h4>
+                        <p style="color: var(--text-secondary); font-size: 16px; line-height: 1.6; margin-bottom: 16px;">מייצרים לקוחות משלמים כל הזמן, כי עבורם הצעת להם עזרה מקצועית ללא תמורה, ולא חיפשת רק "להרוויח" מהם</p>
+                        <p style="color: var(--text-primary); font-size: 15px; font-weight: 600; margin-bottom: 32px; display: flex; align-items: flex-start;"><span style="display: inline-flex; align-items: center; justify-content: center; width: 20px; height: 20px; background: #10b981; color: white; border-radius: 50%; font-size: 12px; margin-left: 8px; flex-shrink: 0;">✓</span>60% מאותם פוסטים הופכים ללקוחות משלמים כבר באותו יום</p>
+                        <div style="width: 70%; height: 1px; background: #d1d5db; margin: 0 auto 32px auto;"></div>
+
+                        <!-- Step 2 Details -->
+                        <div style="text-align: center; margin-bottom: 16px;">
+                            <span style="width: 32px; height: 32px; background: var(--text-primary); color: white; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; font-size: 16px; font-weight: 700; min-width: 32px; min-height: 32px; line-height: 1;">2</span>
+                        </div>
+                        <h4 style="font-size: 20px; font-weight: 700; color: var(--text-primary); margin-bottom: 12px; text-align: center;">
+                            פייסבוק עובדת בשבילכם
+                        </h4>
+                        <p style="color: var(--text-secondary); font-size: 16px; line-height: 1.6; margin-bottom: 16px;">50-100 תגובות מקצועיות, והאלגוריתם מייצב אותכם כמומחים בתחום! ומציגה את התגובות שלך בראש של כל פוסט</p>
+                        <p style="color: var(--text-primary); font-size: 15px; font-weight: 600; margin-bottom: 32px; display: flex; align-items: flex-start;"><span style="display: inline-flex; align-items: center; justify-content: center; width: 20px; height: 20px; background: #10b981; color: white; border-radius: 50%; font-size: 12px; margin-left: 8px; flex-shrink: 0;">✓</span>ככה נוצר ליד ממוצע של 300-500 לידים איכותיים בחודש</p>
+                        <div style="width: 70%; height: 1px; background: #d1d5db; margin: 0 auto 32px auto;"></div>
+
+                        <!-- Step 3 Details -->
+                        <div style="text-align: center; margin-bottom: 16px;">
+                            <span style="width: 32px; height: 32px; background: var(--text-primary); color: white; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; font-size: 16px; font-weight: 700; min-width: 32px; min-height: 32px; line-height: 1;">3</span>
+                        </div>
+                        <h4 style="font-size: 20px; font-weight: 700; color: var(--text-primary); margin-bottom: 12px; text-align: center;">
+                            לקוחות מתקשרים אליכם
+                        </h4>
+                        <p style="color: var(--text-secondary); font-size: 16px; line-height: 1.6; margin-bottom: 16px;">לקוח שקיבל הערכה ועזרה חינם, לא יתפשר על מומחה אחר! נוצר אפקט של סמכות וידע</p>
+                        <p style="color: var(--text-primary); font-size: 15px; font-weight: 600; margin-bottom: 32px; display: flex; align-items: flex-start;"><span style="display: inline-flex; align-items: center; justify-content: center; width: 20px; height: 20px; background: #10b981; color: white; border-radius: 50%; font-size: 12px; margin-left: 8px; flex-shrink: 0;">✓</span>תמיד בתקציב נכון - כי הלקוח כבר "הכיר" אותכם</p>
+                    </div>
+
+                    <!-- QUOTE - Bottom of Engine -->
+                    <div class="pyramid-quote" style="background: rgba(0, 0, 0, 0.04); border: 2px solid rgba(0, 0, 0, 0.15); color: var(--text-primary); padding: 20px; border-radius: 12px; max-width: 600px; margin: 40px auto 0 auto;">
+                        <p style="font-size: 18px; font-weight: 600; margin: 0; font-style: italic; text-align: center;">כשמישהו רואה אותכם עוזרים לאחרים - הוא כבר יודע שאתם שווים את הכסף!</p>
+                    </div>
+
                 </div>
 
             </div>
@@ -5260,9 +5168,10 @@
             
             feedPosts = [];
             
-            // Create exactly 5 posts for demo: 4 irrelevant + 1 relevant (5th post)
+            // Create exactly 6 posts for demo: 5 irrelevant + 1 relevant (6th post)
             const demoPosts = [
                 demoExamples[1], // דוד כהן - field_irrelevant (אתרי אינטרנט)
+                demoExamples[0], // נועה דהן - bot_post (סרט) - NEW IRRELEVANT POST
                 demoExamples[3], // מיכל אברמוב - area_irrelevant (בגדים)
                 demoExamples[5], // נטלי רוזן - free_help (פיאנו)
                 demoExamples[8], // איתן לבי - old_post (מוסך ישן)
@@ -5296,7 +5205,14 @@
         }
 
         function detectAndMarkPosts() {
+            // Prevent multiple detection processes from running simultaneously
+            if (isDetectionRunning) {
+                console.log('⚠️ Detection already running - ignoring duplicate call');
+                return;
+            }
+            
             console.log('detectAndMarkPosts called, starting from index:', currentPostIndex);
+            isDetectionRunning = true;
             const allPosts = getAllPosts();
             console.log('Found', allPosts.length, 'posts');
             totalPosts = allPosts.length;
@@ -5305,6 +5221,7 @@
                 if (index >= totalPosts) {
                     // All posts processed, restart the demo
                     console.log('All posts completed - restarting demo cycle');
+                    isDetectionRunning = false; // Reset flag before restarting
                     trackedSetTimeout(() => {
                         console.log('🔄 Restarting demo from beginning');
                         currentPostIndex = 0;
@@ -5346,7 +5263,9 @@
                 highlightCurrentPost(post, true);
                 
                 // Show explanation banner on the post after a brief moment
-                trackedSetTimeout(() => {
+                trackedSetTimeout(async () => {
+                    // Update to analysis stage when starting to analyze a post
+                    await updateEnhancedDemoStage('analysis');
                     showPostExplanationBanner(post, reason, isRelevant, postData.name, icon, highlightField);
                     
                     // Mark post as analyzed and handle post logic directly
@@ -5380,6 +5299,7 @@
                             post.style.position = 'relative';
                             post.appendChild(fireIcon);
                             
+                            
                             // Run full demo sequence for relevant post
                             trackedSetTimeout(async () => {
                                 console.log('Starting autoHandleComment for post:', postIndex, 'current index will be:', index + 1);
@@ -5391,6 +5311,8 @@
                                     currentPostIndex = index + 1;
                                     // After demo completes, continue with next post
                                     trackedSetTimeout(async () => {
+                                        // Reset detection flag before continuing
+                                        isDetectionRunning = false;
                                         await continueToNextPost();
                                     }, 2000);
                                 });
@@ -5422,7 +5344,11 @@
                             
                             // For irrelevant posts, just continue to next
                             currentPostIndex = index + 1;
-                            trackedSetTimeout(() => processPost(index + 1), 1500);
+                            trackedSetTimeout(() => {
+                                // Reset detection flag before moving to next post
+                                isDetectionRunning = false;
+                                processPost(index + 1);
+                            }, 1500);
                         }
                         
                         // Remove highlight after analysis is complete (only for irrelevant posts)
@@ -5444,10 +5370,10 @@
         async function continueToNextPost() {
             console.log('Continuing to next post, index:', currentPostIndex);
             
-            // Allow continuation from complete stage - it means we're moving to next post
-            if (currentDemoStage === 'complete') {
-                console.log('✅ Continuing from complete stage to next post');
-                currentDemoStage = 'profile'; // Reset for next post
+            // Reset demo stage for next post (messenger stage completed)
+            if (currentDemoStage === 'messenger') {
+                console.log('✅ Continuing from messenger stage to next post');
+                currentDemoStage = 'detection'; // Reset for next post
             }
             
             if (currentPostIndex < totalPosts) {
@@ -5458,6 +5384,7 @@
             } else {
                 // All posts done, restart the demo
                 console.log('No more posts to process - restarting demo cycle');
+                isDetectionRunning = false; // Reset flag before restarting
                 trackedSetTimeout(() => {
                     console.log('🔄 Restarting demo from beginning (path 2)');
                     currentPostIndex = 0;
@@ -5889,7 +5816,7 @@
         }
         
         function updateProgressStep(currentStep) {
-            const steps = ['analysis', 'response', 'messenger', 'complete'];
+            const steps = ['detection', 'analysis', 'response', 'messenger'];
             const currentIndex = steps.indexOf(currentStep);
             
             steps.forEach((step, index) => {
@@ -5924,8 +5851,11 @@
             'profile': {
                 title: 'לומד את פרופיל הלקוח - מזהה תחום פעילות, איזור ועדיפויות למציאת לקוחות רלוונטיים'
             },
+            'detection': {
+                title: 'מאתר ומסנן פוסטים רלוונטיים עבור הלקוח'
+            },
             'analysis': {
-                title: 'סורק פוסטים בפייסבוק - מזהה פוסטי מכירה ישירה (ירוק) ופוסטי בניית מוניטין וייעוץ (סגול)'
+                title: 'מנתח פוסטים...'
             },
             'response': {
                 title: 'כותב תגובה מקצועית - יוצר תגובה אישית ומותאמת שמציגה שירותים ומניעה לשיחה'
@@ -5934,7 +5864,7 @@
                 title: 'עובר למסנגר - שולח הודעת המשך במטרה לקבוע שיחה טלפונית עם הלקוח'
             },
             'complete': {
-                title: 'הליד נשמר במערכת - הסוכן ממשיך לפעול 24/7 ומחפש לקוחות נוספים'
+                title: ''
             }
         };
 
@@ -6560,8 +6490,9 @@
                     background: rgba(0, 0, 0, 0.6);
                     z-index: 9999;
                     display: flex;
-                    align-items: center;
+                    align-items: flex-start;
                     justify-content: center;
+                    padding-top: 60px;
                     animation: fadeIn 0.3s ease-out;
                 `;
                 
@@ -6594,15 +6525,22 @@
                 
                 overlay.appendChild(popup);
                 
-                // Add overlay to demo container instead of body
-                const demoContainer = demoSection ? demoSection.querySelector('.demo-container') : null;
-                if (demoContainer) {
-                    demoContainer.style.position = 'relative';
-                    demoContainer.appendChild(overlay);
-                    console.log('✅ Desktop overlay popup added to demo container');
+                // Add overlay to Facebook feed area for better alignment
+                if (facebookFeed) {
+                    facebookFeed.style.position = 'relative';
+                    facebookFeed.appendChild(overlay);
+                    console.log('✅ Desktop overlay popup added to Facebook feed area');
                 } else {
-                    document.body.appendChild(overlay);
-                    console.log('⚠️ Fallback: Desktop overlay popup added to body');
+                    // Fallback to demo container
+                    const demoContainer = demoSection ? demoSection.querySelector('.demo-container') : null;
+                    if (demoContainer) {
+                        demoContainer.style.position = 'relative';
+                        demoContainer.appendChild(overlay);
+                        console.log('✅ Desktop overlay popup added to demo container (fallback)');
+                    } else {
+                        document.body.appendChild(overlay);
+                        console.log('⚠️ Fallback: Desktop overlay popup added to body');
+                    }
                 }
             }
             
@@ -6646,6 +6584,10 @@
                 messengerPopup.remove();
                 messengerPopup = null;
                 messengerConversationActive = false;
+                
+                // Only call callback if this is a manual close (not from finishMessengerConversation)
+                // We can detect this by checking if we're in the middle of normal flow
+                console.log('🔍 Callback status:', !!demoCompleteCallback);
             }
             
             // Also remove any mobile overlays and notifications
@@ -6853,17 +6795,23 @@
             // Close messenger popup using the proper function
             closeMessengerPopup();
             
-            // Status text handled by updateEnhancedDemoStage - COMPLETE THIS FIRST
-            await updateEnhancedDemoStage('complete');
+            // First update to detection stage, then show the message
+            updateProgressStep('detection');
             
-            // Wait for users to read the completion message
-            await new Promise(resolve => trackedSetTimeout(resolve, 2000));
+            // Show searching for more posts message after stage is updated
+            const statusElement = document.getElementById('statusIndicatorText');
+            if (statusElement) {
+                statusElement.textContent = '';
+                await typeTextInElement(statusElement, 'מאתר פוסטים רלוונטיים נוספים', 30);
+                await trackedDelay(1200); // Wait for typing + small buffer
+            }
+            
+            // Quick transition (no message to read)
+            await new Promise(resolve => trackedSetTimeout(resolve, 500));
             
             // Clear timeouts AFTER completing the status text to prevent interruptions
             demoTimeouts.forEach(timeout => clearTimeout(timeout));
             demoTimeouts = [];
-            
-            updateProgressStep('complete');
             
             // Call the completion callback LAST - after all animations complete
             if (demoCompleteCallback) {
@@ -7343,6 +7291,7 @@
         let currentPostIndex = 0; // Track which post we're currently analyzing
         let totalPosts = 0; // Total number of posts in the feed
         let demoCompleteCallback = null; // Callback to run when demo sequence completes
+        let isDetectionRunning = false; // Flag to prevent multiple detection processes running simultaneously
         
         function clearDemoTimeouts() {
             console.log('🚨 CLEARING', demoTimeouts.length, 'demo timeouts');
@@ -7351,6 +7300,8 @@
             console.log(stack);
             demoTimeouts.forEach(timeout => clearTimeout(timeout));
             demoTimeouts = [];
+            // Reset detection flag when clearing timeouts
+            isDetectionRunning = false;
         }
         
         function pauseDemo() {
@@ -7415,6 +7366,14 @@
             processedPosts.clear();
             clearDemoTimeouts();
             
+            // Hide navigation demo control button
+            const navDemoControl = document.getElementById('navDemoControl');
+            if (navDemoControl) {
+                navDemoControl.classList.remove('active');
+                console.log('✅ Navigation demo control button hidden');
+            }
+            
+            
             // Clear all paused states for backward compatibility
             if (typeof pausedTypingStates !== 'undefined') pausedTypingStates.clear();
             if (typeof pausedDelays !== 'undefined') pausedDelays.clear();
@@ -7437,6 +7396,8 @@
                 console.log('Demo already started, skipping');
                 return;
             }
+            
+            // Facebook feed scanning will start after customer card is done
             
             // Start the new demo manager
             if (!demoManager.start()) {
@@ -7502,8 +7463,22 @@
                     facebookContainer.style.display = 'block';
                 }
                 
+                // Populate the feed first so posts are visible during detection phase
+                populateFeed();
+                
+                // Set status to detection phase and WAIT for typing animation to complete
+                await updateEnhancedDemoStage('detection');
+                console.log('✅ Detection phase typing animation completed');
+                
                 // Start the Facebook feed demo
                 await unlockFullContainers();
+                
+                // Now start detection since typing is finished
+                trackedSetTimeout(() => {
+                    console.log('Starting post detection after typing animation completed');
+                    detectAndMarkPosts();
+                }, 500); // Small buffer after typing completes
+                
                 // Check if this is a transition after pause/resume
                 const isResumingAfterPause = demoPaused === false && demoStarted === true;
                 console.log('🔄 Transition to Facebook - isResumingAfterPause:', isResumingAfterPause);
@@ -7526,6 +7501,12 @@
             if (customerCardContainer) {
                 customerCardContainer.style.display = 'block';
                 facebookContainer.style.display = 'none';
+            }
+            
+            // Show customer card status indicator (no initial message)
+            const statusIndicator = document.getElementById('statusIndicatorContainer');
+            if (statusIndicator) {
+                statusIndicator.style.display = 'block';
             }
             
             // Define the 2 phases (condensed version)
@@ -7576,18 +7557,56 @@
                 
                 // Wait between phases (except after the last one)
                 if (i < phases.length - 1) {
-                    await trackedDelay(1500);
+                    // Calculate delay based on the longest expected text in the next phase
+                    // Average message length ~70 chars * 30ms = ~2100ms + buffer
+                    await trackedDelay(2500);
                 }
             }
             
             console.log('✅ All customer phases completed, signaling transition...');
             
+            // Update status indicator for completion
+            await updateCustomerCardStatus('✅ כרטיס לקוח הושלם! עובר לסריקת פייסבוק...');
+            
+            // Wait for completion message typing (~65 chars * 30ms = ~2000ms) + buffer
+            await trackedDelay(2500);
+            
             // Signal that customer phases are done
             window.customerPhasesComplete = true;
         }
         
+        // Function to update customer card status indicator with typing animation
+        async function updateCustomerCardStatus(message) {
+            const statusElement = document.getElementById('statusIndicatorText');
+            if (statusElement) {
+                // Clear previous content
+                statusElement.textContent = '';
+                
+                // Add typing animation
+                await typeTextInElement(statusElement, message, 30);
+            }
+        }
+        
         async function showPhase(phase, phaseNum, totalPhases) {
             console.log(`🎯 Showing phase ${phaseNum}/${totalPhases}: ${phase.title}`);
+            
+            // Update status indicator for this phase with thinking process
+            if (phaseNum === 1) {
+                // Phase 1: Customer profile building
+                await updateCustomerCardStatus('בונה פרופיל לקוח - אוסף פרטים ויעדים עסקיים');
+                await trackedDelay(2000);
+                
+            } else if (phaseNum === 2) {
+                // Phase 2: Multi-step thinking process with smooth transitions
+                await updateCustomerCardStatus('🧠 מנתח פרטי לקוח...');
+                await trackedDelay(1200); // Shorter delay for smoother transition
+                
+                await updateCustomerCardStatus('🧠 מזהה קהלי יעד רלוונטיים...');
+                await trackedDelay(1400); // Shorter delay for smoother transition
+                
+                await updateCustomerCardStatus('🧠 מאפיין אסטרטגיית שיווק מותאמת אישית...');
+                await trackedDelay(1600); // Shorter delay for final step
+            }
             
             const container = document.getElementById('customerCardContent');
             if (!container) {
@@ -7963,8 +7982,8 @@
                 demoProgress.style.display = 'flex';
             }
             
-            // Set initial status while demo initializes
-            statusElement.textContent = 'מתחיל הדגמה...';
+            // Clear initial status - will be set by first demo stage
+            statusElement.textContent = '';
             statusElement.style.color = '#000000';
             
             // Only clear timeouts if not resuming - preserve existing state when resuming
@@ -7975,29 +7994,16 @@
                 console.log('🔄 Keeping timeouts - resuming from previous state');
             }
             
-            // Initialize progress and focus
-            updateProgressStep('analysis');
+            // Initialize progress and focus - start with detection stage
+            updateProgressStep('detection');
             setDemoFocus('right', 'blue');
             
             if (!isResuming) {
-                // Fresh start - populate feed and start from beginning
-                console.log('🆕 Fresh start - populating feed...');
-                populateFeed();
+                // Fresh start - feed already populated in transition, just start detection
+                console.log('🆕 Fresh start - starting detection...');
                 
-                // Update status for analysis phase and move to detection
-                demoTimeouts.push(trackedSetTimeout(async () => {
-                    console.log('Analysis phase timeout triggered');
-                    if (statusElement && demoStarted) {
-                        await updateEnhancedDemoStage('analysis');
-                        console.log('Status updated for analysis phase - waiting for text completion');
-                        
-                        // Wait for the analysis text to complete writing before starting post detection
-                        demoTimeouts.push(trackedSetTimeout(() => {
-                            console.log('About to call detectAndMarkPosts from startAutoDemo');
-                            detectAndMarkPosts();
-                        }, DELAYS.LONG));
-                    }
-                }, 2000));
+                // Detection will start automatically after the typing animation in transitionToFacebookDemo finishes
+                // No timeout needed here since timing is controlled by the transition function
             } else {
                 // Resuming - continue from where we left off
                 console.log('🔄 Resuming - continuing from current state. Current post index:', currentPostIndex);
@@ -8063,11 +8069,17 @@
         
         // NEW: Function to scroll to demo and start it
         function scrollToDemoAndStart() {
-            const demoContainer = document.getElementById('demoContainer');
-            if (demoContainer) {
-                demoContainer.scrollIntoView({ 
-                    behavior: 'smooth',
-                    block: 'center'
+            const demoSection = document.getElementById('demo');
+            if (demoSection) {
+                const headerHeight = document.querySelector('.header').offsetHeight || 80;
+                // Get demo section's padding-top to offset it
+                const demoStyles = window.getComputedStyle(demoSection);
+                const demoPaddingTop = parseInt(demoStyles.paddingTop) || 0;
+                const targetPosition = demoSection.offsetTop + demoPaddingTop - headerHeight;
+                
+                window.scrollTo({
+                    top: targetPosition,
+                    behavior: 'smooth'
                 });
                 
                 // Start demo after scroll animation completes
@@ -8081,11 +8093,17 @@
 
         function scrollToDemo(type) {
             // Scroll to demo section
-            const demoContainer = document.getElementById('demoContainer');
-            if (demoContainer) {
-                demoContainer.scrollIntoView({ 
-                    behavior: 'smooth',
-                    block: 'center'
+            const demoSection = document.getElementById('demo');
+            if (demoSection) {
+                const headerHeight = document.querySelector('.header').offsetHeight || 80;
+                // Get demo section's padding-top to offset it
+                const demoStyles = window.getComputedStyle(demoSection);
+                const demoPaddingTop = parseInt(demoStyles.paddingTop) || 0;
+                const targetPosition = demoSection.offsetTop + demoPaddingTop - headerHeight;
+                
+                window.scrollTo({
+                    top: targetPosition,
+                    behavior: 'smooth'
                 });
                 
                 // Start demo after scroll animation completes
@@ -8100,61 +8118,58 @@
         function startDemo() {
             console.log('🎯 startDemo button clicked');
             
-            const startBtn = document.getElementById('startDemoBtn');
+            const navDemoControl = document.getElementById('navDemoControl');
+            const navDemoBtn = document.getElementById('navDemoBtn');
+            const navDemoText = document.getElementById('navDemoText');
+            const navDemoIcon = document.getElementById('navDemoIcon');
             const centeredButton = document.getElementById('centeredDemoButton');
-            const headerContainer = document.getElementById('demoHeaderContainer');
             const demoLeftSide = document.getElementById('demoLeftSide');
             
             if (!demoStarted) {
                 // First time starting demo
                 console.log('🚀 Starting demo from manual button click');
                 
-                // Move button from center to header with smooth animation
-                if (centeredButton && headerContainer) {
-                    // Show header container and hide centered button
-                    headerContainer.style.display = 'block';
-                    headerContainer.style.opacity = '0';
-                    headerContainer.style.transform = 'translateY(-20px)';
-                    headerContainer.style.transition = 'all 0.5s ease';
-                    
-                    // Fade out centered button
+                // Hide centered button and show navigation control
+                if (centeredButton) {
                     centeredButton.style.opacity = '0';
                     centeredButton.style.transform = 'scale(0.8)';
                     centeredButton.style.transition = 'all 0.3s ease';
                     
-                    // Remove blur and restore demo container
-                    if (demoLeftSide) {
-                        demoLeftSide.style.opacity = '1';
-                        demoLeftSide.style.filter = 'none';
-                        demoLeftSide.style.transition = 'all 0.5s ease';
-                    }
-                    
                     setTimeout(() => {
-                        // Hide centered button completely
-                        if (centeredButton) {
-                            centeredButton.style.display = 'none';
-                        }
-                        
-                        // Fade in header button
-                        headerContainer.style.opacity = '1';
-                        headerContainer.style.transform = 'translateY(0)';
+                        centeredButton.style.display = 'none';
                     }, 300);
                 }
                 
+                // Remove blur and restore demo container
+                if (demoLeftSide) {
+                    demoLeftSide.style.opacity = '1';
+                    demoLeftSide.style.filter = 'none';
+                    demoLeftSide.style.transition = 'all 0.5s ease';
+                }
+                
+                // Show navigation demo control button
+                if (navDemoControl) {
+                    navDemoControl.classList.add('active');
+                    console.log('✅ Navigation demo control button shown');
+                }
+                
                 // Focus on demo container
-                const demoContainer = document.getElementById('demoContainer');
-                if (demoContainer) {
-                    demoContainer.scrollIntoView({ 
-                        behavior: 'smooth',
-                        block: 'center'
+                const demoSection = document.getElementById('demo');
+                if (demoSection) {
+                    const headerHeight = document.querySelector('.header').offsetHeight || 80;
+                    // Get demo section's padding-top to offset it
+                    const demoStyles = window.getComputedStyle(demoSection);
+                    const demoPaddingTop = parseInt(demoStyles.paddingTop) || 0;
+                    const targetPosition = demoSection.offsetTop + demoPaddingTop - headerHeight;
+                    
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
                     });
                 }
                 
-                // Change button to pause state
-                if (startBtn) {
-                    startBtn.innerHTML = '<i class="fas fa-pause" style="margin-left: 8px;"></i>השהה דמו';
-                    console.log('✅ Start button changed to pause');
-                }
+                // Navigation button is already in pause state by default
+                
                 
                 // Start the demo after a short delay for scroll
                 setTimeout(() => {
@@ -8165,17 +8180,51 @@
                 console.log('▶️ Resuming demo');
                 resumeDemo();
                 
-                if (startBtn) {
-                    startBtn.innerHTML = '<i class="fas fa-pause" style="margin-left: 8px;"></i>השהה דמו';
-                }
+                // Update navigation button to pause state
+                if (navDemoText) navDemoText.textContent = 'השהה דמו';
+                if (navDemoIcon) navDemoIcon.className = 'fas fa-pause';
+                
             } else {
                 // Pause demo
                 console.log('⏸️ Pausing demo');
                 pauseDemo();
                 
-                if (startBtn) {
-                    startBtn.innerHTML = '<i class="fas fa-play" style="margin-left: 8px;"></i>המשך דמו';
+                // Update navigation button to resume state
+                if (navDemoText) navDemoText.textContent = 'המשך דמו';
+                if (navDemoIcon) navDemoIcon.className = 'fas fa-play';
+                
+            }
+        }
+        
+        // Function to toggle demo with scroll to demo section only for resume
+        function toggleDemoWithScroll() {
+            console.log('🎯 toggleDemoWithScroll called from mobile navigation');
+            
+            // Check if demo is currently paused (if so, we need to scroll before resuming)
+            if (demoPaused) {
+                // Demo is paused, scroll to demo section before resuming
+                // Scroll to the actual demo content, not the section with padding
+                const demoSection = document.getElementById('demo');
+                if (demoSection) {
+                    const headerHeight = document.querySelector('.header').offsetHeight || 80;
+                    // Get demo section's padding-top to offset it
+                    const demoStyles = window.getComputedStyle(demoSection);
+                    const demoPaddingTop = parseInt(demoStyles.paddingTop) || 0;
+                    const targetPosition = demoSection.offsetTop + demoPaddingTop - headerHeight;
+                    
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
                 }
+                
+                // Resume demo after scroll animation
+                setTimeout(() => {
+                    startDemo();
+                }, 300);
+            } else {
+                // Demo is running, just pause it without scrolling
+                startDemo();
             }
         }
 

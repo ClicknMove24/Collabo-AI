@@ -1,0 +1,2407 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0, user-scalable=yes, viewport-fit=cover">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="theme-color" content="#ffffff">
+    <meta name="apple-touch-fullscreen" content="yes">
+    <meta name="HandheldFriendly" content="true">
+    <title>טופס איסוף נתונים לבעל מקצוע - Collabo AI Pro</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-blue: #2563eb;
+            --primary-gradient: linear-gradient(135deg, rgba(37, 99, 235, 0.5), rgba(59, 130, 246, 0.5));
+            --ai-purple: rgba(76, 29, 149, 0.5);
+            --advice-purple: #8b5cf6;
+            --success-green: #10b981;
+            --text-primary: #37352f;
+            --text-secondary: #6b7280;
+            --text-muted: #9ca3af;
+            --border-light: #e5e7eb;
+            --bg-light: #ffffff;
+            --bg-gray: #f9fafb;
+            --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+            --border-radius: 6px;
+            --border-radius-xl: 16px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+            line-height: 1.5;
+            color: #37352f;
+            direction: rtl;
+            background: #ffffff;
+            font-weight: 400;
+            min-height: 100vh;
+            -webkit-text-size-adjust: 100%;
+            -ms-text-size-adjust: 100%;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        .main-wrapper {
+            min-height: 100vh;
+            background: var(--bg-gray);
+            padding: 60px 0;
+        }
+
+        .page-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .page-header h1 {
+            font-size: 2.5em;
+            font-weight: 800;
+            color: var(--text-primary);
+            margin-bottom: 16px;
+            letter-spacing: -0.025em;
+        }
+
+        .page-header p {
+            font-size: 1.2em;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .brand-tag {
+            display: inline-block;
+            background: var(--ai-purple);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            font-weight: 600;
+            margin-bottom: 24px;
+            letter-spacing: 0.5px;
+        }
+
+        /* Contact Form Styles - מעתק מדף הנחיתה */
+        .contact-form {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .form-input {
+            width: 100%;
+            height: 48px;
+            padding: 12px 20px;
+            border: 2px solid var(--border-light);
+            border-radius: var(--border-radius);
+            font-size: 16px;
+            font-family: inherit;
+            background: var(--bg-light);
+            color: var(--text-primary);
+            transition: all 0.3s ease;
+            box-sizing: border-box;
+            text-align: right;
+        }
+
+        .form-input::placeholder {
+            color: var(--text-muted);
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: var(--ai-purple);
+            box-shadow: 0 0 0 3px rgba(76, 29, 149, 0.2);
+            background: rgba(255, 255, 255, 0.15);
+            transform: scale(1.02);
+        }
+
+        .form-section {
+            margin-bottom: 60px;
+            padding: 32px;
+            background: white;
+            border-radius: 12px;
+            border: 1px solid #e5e7eb;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+        }
+
+        .form-section h3 {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 24px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            margin-bottom: 28px;
+        }
+
+        .form-group:last-child {
+            margin-bottom: 0;
+        }
+
+        .form-label {
+            display: block;
+            font-size: 1.1em;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 0;
+        }
+
+        .question-number {
+            color: var(--ai-purple);
+            font-weight: 800;
+            margin-left: 8px;
+        }
+
+        .form-textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+
+        /* Radio/Checkbox Groups */
+        .radio-group {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+            margin-top: 0;
+            flex-direction: column;
+        }
+
+        /* Yes/No radio groups - horizontal layout */
+        .radio-group.yes-no {
+            flex-direction: row;
+            justify-content: flex-start;
+        }
+
+        .radio-group.yes-no .radio-item {
+            flex: 0 0 auto;
+            min-width: 80px;
+            max-width: 120px;
+        }
+
+        .radio-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            height: 48px;
+            padding: 12px 20px;
+            background: var(--bg-light);
+            border: 2px solid var(--border-light);
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .radio-item:hover {
+            border-color: var(--ai-purple);
+            background: rgba(76, 29, 149, 0.05);
+        }
+
+        .radio-item input {
+            accent-color: rgba(76, 29, 149, 0.8);
+        }
+
+        .radio-item.selected {
+            border-color: rgba(76, 29, 149, 0.8);
+            background: rgba(76, 29, 149, 0.1);
+            color: rgba(76, 29, 149, 0.8);
+            font-weight: 600;
+        }
+
+        /* Dropdown styling */
+        .dropdown-list {
+            font-size: 14px;
+            max-height: 240px; /* Height for exactly 5 items (48px each) */
+        }
+
+        .dropdown-item {
+            padding: 12px 16px;
+            cursor: pointer;
+            border-bottom: 1px solid #f3f4f6;
+            text-align: right;
+            transition: background-color 0.2s ease;
+            height: 48px;
+            display: flex;
+            align-items: center;
+        }
+
+        .dropdown-item:last-child {
+            border-bottom: none;
+        }
+
+        .dropdown-item:hover {
+            background-color: #f8fafc;
+        }
+
+        .dropdown-item.highlighted {
+            background-color: rgba(76, 29, 149, 0.1);
+            color: rgba(76, 29, 149, 0.8);
+        }
+
+        /* Pricing dropdown styling */
+        .pricing-select:hover {
+            border-color: var(--ai-purple);
+        }
+
+        .pricing-select.active {
+            border-color: var(--ai-purple);
+            box-shadow: 0 0 0 3px rgba(76, 29, 149, 0.2);
+        }
+
+        /* Advantage dropdown styling */
+        .advantage-select:hover {
+            border-color: var(--ai-purple);
+        }
+
+        .advantage-select.active {
+            border-color: var(--ai-purple);
+            box-shadow: 0 0 0 3px rgba(76, 29, 149, 0.2);
+        }
+
+        /* Checkbox styling in dropdown */
+        .advantage-checkbox-item,
+        .restriction-checkbox-item,
+        .work-area-checkbox-item,
+        .insurance-checkbox-item {
+            padding: 12px 16px;
+            border-bottom: 1px solid #f3f4f6;
+            height: 48px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+        }
+
+        .advantage-checkbox-item:hover,
+        .restriction-checkbox-item:hover,
+        .work-area-checkbox-item:hover,
+        .insurance-checkbox-item:hover {
+            background-color: #f8fafc;
+        }
+
+        .advantage-checkbox-item:last-child,
+        .restriction-checkbox-item:last-child,
+        .work-area-checkbox-item:last-child,
+        .insurance-checkbox-item:last-child {
+            border-bottom: none;
+        }
+
+        .advantage-checkbox-item input[type="checkbox"],
+        .restriction-checkbox-item input[type="checkbox"],
+        .work-area-checkbox-item input[type="checkbox"],
+        .insurance-checkbox-item input[type="checkbox"] {
+            accent-color: rgba(76, 29, 149, 0.8);
+        }
+
+        /* Custom advantage input styling */
+        .custom-advantage-container {
+            padding: 16px;
+            border-bottom: 1px solid #e5e7eb;
+            background: #ffffff;
+            border-radius: 0;
+        }
+
+        .custom-advantage-container .input-label {
+            display: block;
+            font-size: 14px;
+            font-weight: 500;
+            color: #374151;
+            margin-bottom: 12px;
+            text-align: right;
+        }
+
+        .custom-advantage-input-group {
+            width: 100%;
+        }
+
+        .custom-advantage-container input,
+        .custom-advantage-input {
+            width: 100%;
+            padding: 10px 12px;
+            border: 1px solid #d1d5db;
+            border-radius: 6px;
+            font-size: 14px;
+            text-align: right;
+            transition: border-color 0.2s ease;
+            background: white;
+            box-sizing: border-box;
+            margin: 0;
+            height: 40px;
+        }
+
+        .custom-advantage-container input:focus,
+        .custom-advantage-input:focus {
+            outline: none;
+            border-color: rgba(76, 29, 149, 0.6);
+            box-shadow: 0 0 0 3px rgba(76, 29, 149, 0.1);
+        }
+
+        /* Restriction dropdown styling - copied from advantage dropdown */
+        .restriction-select-container {
+            position: relative;
+            width: 100%;
+        }
+
+        .restriction-select {
+            width: 100%;
+            height: 48px;
+            padding: 12px 20px;
+            border: 2px solid var(--border-light);
+            border-radius: var(--border-radius);
+            background: white;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            box-sizing: border-box;
+        }
+
+        .restriction-select:hover {
+            border-color: var(--ai-purple);
+        }
+
+        .restriction-select.active {
+            border-color: var(--ai-purple);
+            box-shadow: 0 0 0 3px rgba(76, 29, 149, 0.2);
+        }
+
+        .restriction-placeholder {
+            color: var(--text-muted);
+        }
+
+        .restriction-arrow {
+            transition: transform 0.3s ease;
+            color: var(--text-muted);
+        }
+
+        .restriction-select.active .restriction-arrow {
+            transform: rotate(180deg);
+        }
+
+        .restriction-dropdown {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background: white;
+            border: 1px solid #e5e7eb;
+            border-radius: 6px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            z-index: 1000;
+            display: none;
+            max-height: 300px;
+            overflow-y: auto;
+        }
+
+
+        .restriction-tags,
+        .work-area-tags,
+        .insurance-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 0;
+            min-height: 0;
+        }
+
+        .restriction-tags:not(:empty),
+        .work-area-tags:not(:empty),
+        .insurance-tags:not(:empty) {
+            margin-top: 0;
+        }
+
+        .restriction-tag,
+        .work-area-tag,
+        .insurance-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 6px 12px;
+            background: rgba(76, 29, 149, 0.1);
+            color: rgba(76, 29, 149, 0.8);
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 500;
+            border: 1px solid rgba(76, 29, 149, 0.2);
+        }
+
+        .restriction-tag .remove-tag,
+        .work-area-tag .remove-tag,
+        .insurance-tag .remove-tag {
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 16px;
+            line-height: 1;
+            padding: 2px;
+            border-radius: 50%;
+            width: 18px;
+            height: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(76, 29, 149, 0.2);
+            color: rgba(76, 29, 149, 0.8);
+        }
+
+        .restriction-tag .remove-tag:hover,
+        .work-area-tag .remove-tag:hover,
+        .insurance-tag .remove-tag:hover {
+            background: rgba(76, 29, 149, 0.3);
+        }
+
+        /* Custom restriction input styling */
+        .custom-restriction-container {
+            padding: 16px;
+            border-bottom: 1px solid #e5e7eb;
+            background: #ffffff;
+            border-radius: 0;
+        }
+
+        .custom-restriction-container .input-label {
+            display: block;
+            font-size: 14px;
+            font-weight: 500;
+            color: #374151;
+            margin-bottom: 12px;
+            text-align: right;
+        }
+
+        .custom-restriction-input-group {
+            width: 100%;
+        }
+
+        .custom-restriction-container input,
+        .custom-restriction-input {
+            width: 100%;
+            padding: 10px 12px;
+            border: 1px solid #d1d5db;
+            border-radius: 6px;
+            font-size: 14px;
+            text-align: right;
+            transition: border-color 0.2s ease;
+            background: white;
+            box-sizing: border-box;
+            margin: 0;
+            height: 40px;
+        }
+
+        .custom-restriction-container input:focus,
+        .custom-restriction-input:focus {
+            outline: none;
+            border-color: rgba(76, 29, 149, 0.6);
+            box-shadow: 0 0 0 3px rgba(76, 29, 149, 0.1);
+        }
+
+        /* Work area dropdown styling - copied from restriction dropdown */
+        .work-area-select-container {
+            position: relative;
+            width: 100%;
+        }
+
+        .work-area-select {
+            width: 100%;
+            height: 48px;
+            padding: 12px 20px;
+            border: 2px solid var(--border-light);
+            border-radius: var(--border-radius);
+            background: white;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            box-sizing: border-box;
+        }
+
+        .work-area-select:hover {
+            border-color: var(--ai-purple);
+        }
+
+        .work-area-select.active {
+            border-color: var(--ai-purple);
+            box-shadow: 0 0 0 3px rgba(76, 29, 149, 0.2);
+        }
+
+        .work-area-placeholder {
+            color: var(--text-muted);
+        }
+
+        .work-area-arrow {
+            transition: transform 0.3s ease;
+            color: var(--text-muted);
+        }
+
+        .work-area-select.active .work-area-arrow {
+            transform: rotate(180deg);
+        }
+
+        .work-area-dropdown {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background: white;
+            border: 1px solid #e5e7eb;
+            border-radius: 6px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            z-index: 1000;
+            display: none;
+            max-height: 300px;
+            overflow-y: auto;
+        }
+
+
+
+        /* Insurance dropdown styling - copied from work area dropdown */
+        .insurance-select-container {
+            position: relative;
+            width: 100%;
+        }
+
+        .insurance-select {
+            width: 100%;
+            padding: 12px 20px;
+            border: 2px solid var(--border-light);
+            border-radius: var(--border-radius);
+            background: white;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+
+        .insurance-select:hover {
+            border-color: var(--ai-purple);
+        }
+
+        .insurance-select.active {
+            border-color: var(--ai-purple);
+            box-shadow: 0 0 0 3px rgba(76, 29, 149, 0.2);
+        }
+
+        .insurance-placeholder {
+            color: var(--text-muted);
+        }
+
+        .insurance-arrow {
+            transition: transform 0.3s ease;
+            color: var(--text-muted);
+        }
+
+        .insurance-select.active .insurance-arrow {
+            transform: rotate(180deg);
+        }
+
+        .insurance-dropdown {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background: white;
+            border: 1px solid #e5e7eb;
+            border-radius: 6px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            z-index: 1000;
+            display: none;
+            max-height: 300px;
+            overflow-y: auto;
+        }
+
+
+
+        /* Custom insurance input styling */
+        .custom-insurance-container {
+            padding: 16px;
+            border-bottom: 1px solid #e5e7eb;
+            background: #ffffff;
+            border-radius: 0;
+        }
+
+        .custom-insurance-container .input-label {
+            display: block;
+            font-size: 14px;
+            font-weight: 500;
+            color: #374151;
+            margin-bottom: 12px;
+            text-align: right;
+        }
+
+        .custom-insurance-input-group {
+            width: 100%;
+        }
+
+        .custom-insurance-container input,
+        .custom-insurance-input {
+            width: 100%;
+            padding: 10px 12px;
+            border: 1px solid #d1d5db;
+            border-radius: 6px;
+            font-size: 14px;
+            text-align: right;
+            transition: border-color 0.2s ease;
+            background: white;
+            box-sizing: border-box;
+            margin: 0;
+            height: 40px;
+        }
+
+        .custom-insurance-container input:focus,
+        .custom-insurance-input:focus {
+            outline: none;
+            border-color: rgba(76, 29, 149, 0.6);
+            box-shadow: 0 0 0 3px rgba(76, 29, 149, 0.1);
+        }
+        
+        .dropdown-option:hover {
+            background-color: #f9fafb;
+        }
+        
+        .dropdown-option:last-child {
+            border-bottom: none;
+        }
+
+        /* Submit Button - מעתק מדף הנחיתה */
+        .contact-form button {
+            width: 100%;
+            padding: 16px 20px;
+            background: rgba(76, 29, 149, 0.8);
+            color: white;
+            border: none;
+            border-radius: var(--border-radius);
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 16px;
+        }
+
+        .contact-form button:hover {
+            background: #3730a3;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(76, 29, 149, 0.3);
+        }
+
+        .footer-info {
+            text-align: center;
+            margin-top: 40px;
+            color: var(--text-secondary);
+            font-size: 1.1em;
+        }
+
+        .footer-info .brand {
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-top: 16px;
+        }
+
+        /* Responsive Design */
+        /* Large mobile / Small tablet styles (600px and below) */
+        @media (max-width: 600px) {
+            .container {
+                padding: 0 14px;
+            }
+            
+            #warrantyMainContainer, #insuranceMainContainer {
+                flex-direction: column;
+                gap: 12px;
+            }
+            
+            #warrantyDescriptionContainer, #warrantyTimeContainer,
+            #insuranceDescriptionContainer, #insuranceTimeContainer {
+                flex: 1 !important;
+            }
+        }
+        
+        /* Tablet styles (768px and below) */
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 16px;
+            }
+
+            .main-wrapper {
+                padding: 40px 0;
+            }
+
+            .page-header h1 {
+                font-size: 2em;
+            }
+
+            .page-header p {
+                font-size: 1.1em;
+            }
+
+            .form-section {
+                padding: 24px;
+                margin-bottom: 40px;
+            }
+
+            .form-input, .work-area-select, .restriction-select, .radio-item {
+                height: 44px;
+                padding: 10px 16px;
+                font-size: 16px;
+            }
+
+            .form-label {
+                font-size: 15px;
+                margin-bottom: 0;
+            }
+
+            .question-number {
+                font-size: 18px;
+            }
+
+            .radio-group {
+                flex-direction: column;
+            }
+
+            .radio-item {
+                min-width: 100%;
+            }
+
+            /* Adjust warranty/insurance layout for tablet */
+            #warrantyMainContainer, #insuranceMainContainer {
+                flex-direction: column;
+                gap: 16px;
+            }
+
+            #warrantyDescriptionContainer, #warrantyTimeContainer,
+            #insuranceDescriptionContainer, #insuranceTimeContainer {
+                flex: 1 !important;
+            }
+
+            .contact-form button {
+                padding: 14px 20px;
+                font-size: 16px;
+            }
+        }
+
+        /* Mobile styles (480px and below) */
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 12px;
+            }
+
+            .main-wrapper {
+                padding: 20px 0;
+            }
+
+            .page-header {
+                margin-bottom: 30px;
+            }
+
+            .page-header h1 {
+                font-size: 1.75em;
+                margin-bottom: 12px;
+            }
+
+            .page-header p {
+                font-size: 1em;
+            }
+
+            .brand-tag {
+                font-size: 0.8em;
+                padding: 6px 12px;
+                margin-bottom: 16px;
+            }
+
+            .form-section {
+                padding: 16px;
+                margin-bottom: 24px;
+            }
+
+            .form-section h3 {
+                font-size: 24px;
+                margin-bottom: 24px;
+            }
+
+            .form-group {
+                gap: 14px;
+                margin-bottom: 24px;
+            }
+
+            .form-input, .work-area-select, .restriction-select, .radio-item {
+                height: 44px;
+                padding: 10px 14px;
+                font-size: 14px;
+                border-width: 1px;
+            }
+
+            .form-label {
+                font-size: 16px;
+                margin-bottom: 0;
+            }
+
+            .question-number {
+                font-size: 16px;
+                margin-left: 8px;
+            }
+
+            /* Mobile warranty/insurance layout - stacked vertically */
+            #warrantyMainContainer, #insuranceMainContainer {
+                flex-direction: column;
+                gap: 12px;
+            }
+
+            #warrantyInputContainer, #insuranceInputContainer {
+                flex-direction: column;
+                gap: 8px;
+            }
+
+            #warrantyInputContainer > div, #insuranceInputContainer > div {
+                width: 100% !important;
+            }
+
+            /* Mobile dropdown adjustments */
+            #advantagesDisplay {
+                height: auto;
+                min-height: 44px;
+                padding: 10px 14px;
+            }
+
+            .dropdown-option {
+                padding: 12px 14px;
+                font-size: 14px;
+            }
+
+            /* Mobile radio buttons - yes/no specific */
+            .radio-group.yes-no {
+                flex-direction: row;
+                gap: 8px;
+            }
+
+            .radio-group.yes-no .radio-item {
+                flex: 1;
+                min-width: auto;
+                max-width: none;
+                text-align: center;
+                justify-content: center;
+            }
+            
+            /* Mobile radio buttons - regular groups stay vertical */
+            .radio-group:not(.yes-no) {
+                flex-direction: column;
+                gap: 8px;
+            }
+            
+            .radio-group:not(.yes-no) .radio-item {
+                width: 100%;
+                justify-content: flex-start;
+                text-align: right;
+                padding: 12px 16px;
+                height: 44px;
+                gap: 10px;
+            }
+            
+            .radio-group:not(.yes-no) .radio-item span {
+                line-height: 1.4;
+                word-wrap: break-word;
+            }
+
+            /* Mobile tags */
+            .work-area-tag, .restriction-tag {
+                font-size: 12px;
+                padding: 4px 8px;
+            }
+
+            .contact-form button {
+                padding: 12px 16px;
+                font-size: 14px;
+                height: 48px;
+            }
+
+            /* Fix mobile touch targets */
+            .fas {
+                font-size: 14px;
+            }
+
+            /* Mobile pricing select */
+            #pricingSelect {
+                height: 44px !important;
+                padding: 10px 14px !important;
+                font-size: 14px !important;
+                border-width: 1px !important;
+            }
+            
+            /* Mobile warranty/insurance dropdown options */
+            #warrantyUnitSelect, #insuranceUnitSelect {
+                height: 44px !important;
+                padding: 10px 14px !important;
+                font-size: 14px !important;
+                border-width: 1px !important;
+            }
+            
+            /* Mobile advantages display */
+            #advantagesDisplay {
+                padding: 10px 14px !important;
+                border-width: 1px !important;
+                font-size: 14px !important;
+            }
+            
+            #advantagesDisplay span, #advantagesDisplay .advantage-tag {
+                font-size: 14px !important;
+            }
+            
+            /* Mobile custom inputs */
+            .custom-advantage-input, .custom-restriction-input {
+                font-size: 14px !important;
+                height: 44px !important;
+                padding: 10px 14px !important;
+            }
+            
+            /* Mobile textarea */
+            .form-textarea {
+                font-size: 14px !important;
+                padding: 10px 14px !important;
+            }
+            
+            /* Mobile warranty/insurance number inputs */
+            #warrantyNumber, #insuranceNumber {
+                font-size: 14px !important;
+                height: 44px !important;
+                padding: 10px 14px !important;
+            }
+            
+            /* Mobile dropdown options */
+            .dropdown-option {
+                padding: 12px 14px !important;
+                font-size: 14px !important;
+            }
+            
+            /* Mobile specific spacing fixes */
+            .form-section {
+                margin-bottom: 40px !important;
+            }
+            
+            .form-group {
+                gap: 14px;
+                margin-bottom: 22px !important;
+            }
+            
+            /* Mobile viewport fix */
+            body {
+                -webkit-text-size-adjust: 100%;
+                -webkit-font-smoothing: antialiased;
+            }
+            
+            /* Mobile tag styling */
+            .work-area-tag, .restriction-tag, .advantage-tag {
+                font-size: 12px !important;
+                padding: 4px 8px !important;
+                margin: 2px !important;
+            }
+            
+            /* Mobile form containers responsive */
+            .warranty-tags, .insurance-tags, .work-area-tags, .restriction-tags {
+                margin-top: 0 !important;
+            }
+            
+            /* Mobile button improvements */
+            .contact-form button:hover {
+                transform: none;
+            }
+            
+            /* Better mobile touch targets for dropdowns */
+            .dropdown-option:hover {
+                background-color: #f3f4f6 !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="main-wrapper">
+        <div class="container">
+            <div class="page-header">
+                <div class="brand-tag">Collabo AI Pro</div>
+                <h1>טופס איסוף נתונים לבעל מקצוע</h1>
+                <p>כדי ליצור עבורכם מערכת תגובות מותאמת אישית שתייצג אתכם בצורה הכי טובה ברשתות החברתיות, אנחנו צריכים לאסוף מספר פרטים חשובים.</p>
+            </div>
+
+            <form class="contact-form" id="clientForm">
+                <!-- פרטים בסיסיים -->
+                <div class="form-section">
+                    <h3>פרטים בסיסיים</h3>
+
+                    <div class="form-group">
+                        <label class="form-label">
+                            <span class="question-number">1.</span>
+                            השם שלכם (כפי שתרצו שיופיע בתגובות):
+                        </label>
+                        <input type="text" class="form-input" name="client_name" placeholder="לדוגמה: משה, דני הטכנאי, אליהו" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">
+                            <span class="question-number">2.</span>
+                            תחום פעילות העיקרי שלכם:
+                        </label>
+                        <div class="dropdown-container" style="position: relative;">
+                            <input type="text" class="form-input" id="primaryFieldInput" name="primary_field" placeholder="הקלידו לחיפוש תחום פעילות..." required style="text-align: right;" autocomplete="off">
+                            <div id="dropdownList" class="dropdown-list" style="display: none; position: absolute; top: 100%; left: 0; right: 0; background: white; border: 1px solid #e5e7eb; border-radius: 6px; box-shadow: 0 4px 12px rgba(0,0,0,0.15); z-index: 1000; max-height: 200px; overflow-y: auto;">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">
+                            <span class="question-number">3.</span>
+                            כמה שנות ניסיון יש לכם בתחום?
+                        </label>
+                        <input type="number" class="form-input" name="experience_years" placeholder="לדוגמה: 12" required min="1" max="50">
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">
+                            <span class="question-number">4.</span>
+                            מספר טלפון ליצירת קשר:
+                        </label>
+                        <input type="tel" class="form-input" name="phone_number" placeholder="לדוגמה: 050-1234567" required style="text-align: right;">
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">
+                            <span class="question-number">5.</span>
+                            באילו אזורים אתם עובדים? (ניתן לבחור כמה אפשרויות)
+                        </label>
+                        
+                        <div class="work-area-select-container">
+                            <div class="work-area-select" id="workAreaSelect">
+                                <span class="work-area-placeholder">לחץ לבחירת אזורי עבודה</span>
+                                <i class="fas fa-chevron-down work-area-arrow"></i>
+                            </div>
+                            <div class="work-area-dropdown" id="workAreaDropdown"></div>
+                        </div>
+                        
+                        <div class="work-area-tags" id="workAreaTags"></div>
+                    </div>
+                </div>
+
+                <!-- יתרונות עסקיים -->
+                <div class="form-section">
+                    <h3>יתרונות עסקיים</h3>
+
+                    <div class="form-group">
+                        <label class="form-label">
+                            <span class="question-number">6.</span>
+                            האם אתם נותנים הצעת מחיר ללא התחייבות?
+                        </label>
+                        <div class="radio-group yes-no">
+                            <label class="radio-item">
+                                <input type="radio" name="free_quote" value="yes" required>
+                                <span>כן</span>
+                            </label>
+                            <label class="radio-item">
+                                <input type="radio" name="free_quote" value="no" required>
+                                <span>לא</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">
+                            <span class="question-number">7.</span>
+                            האם יש לכם המלצות מלקוחות קודמים?
+                        </label>
+                        <div class="radio-group yes-no">
+                            <label class="radio-item">
+                                <input type="radio" name="has_recommendations" value="yes" required>
+                                <span>כן</span>
+                            </label>
+                            <label class="radio-item">
+                                <input type="radio" name="has_recommendations" value="no" required>
+                                <span>לא</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">
+                            <span class="question-number">8.</span>
+                            האם אתם מציעים ביקור/בדיקה ראשונית ללא עלות?
+                        </label>
+                        <div class="radio-group yes-no">
+                            <label class="radio-item">
+                                <input type="radio" name="free_visit" value="yes" required>
+                                <span>כן</span>
+                            </label>
+                            <label class="radio-item">
+                                <input type="radio" name="free_visit" value="no" required>
+                                <span>לא</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">
+                            <span class="question-number">9.</span>
+                            איך תתארו את המחירים שלכם?
+                        </label>
+                        <div class="pricing-dropdown-container" style="position: relative;">
+                            <div class="pricing-select" id="pricingSelect" style="padding: 12px 20px; border: 2px solid var(--border-light); border-radius: var(--border-radius); background: var(--bg-light); color: var(--text-primary); cursor: pointer; text-align: right; position: relative; height: 48px; box-sizing: border-box; display: flex; align-items: center;">
+                                <span id="pricingSelected" style="color: var(--text-muted);">בחרו תיאור מחירים</span>
+                                <i class="fas fa-chevron-down" style="position: absolute; left: 16px; top: 50%; transform: translateY(-50%); color: var(--text-muted);"></i>
+                            </div>
+                            <div id="pricingDropdownList" class="dropdown-list" style="display: none; position: absolute; top: 100%; left: 0; right: 0; background: white; border: 1px solid #e5e7eb; border-radius: 6px; box-shadow: 0 4px 12px rgba(0,0,0,0.15); z-index: 1000; max-height: 240px; overflow-y: auto;">
+                            </div>
+                            <input type="hidden" name="pricing_description" id="pricingHidden" required>
+                        </div>
+                    </div>
+
+
+                    <div class="form-group">
+                        <label class="form-label">
+                            <span class="question-number">10.</span>
+                            אחריות - הוסיפו רק במידה ואתם נותנים אחריות על העבודה (ניתן להתעלם אם לא רלוונטי)
+                        </label>
+                        
+                        <div style="display: flex; gap: 12px; align-items: flex-end;" id="warrantyInputContainer">
+                            <div style="flex: 3;" id="warrantyDescriptionContainer">
+                                <label class="form-label" style="margin-bottom: 8px; font-size: 14px;">תיאור האחריות</label>
+                                <input type="text" class="form-input" id="warrantyDescription" placeholder="לדוגמה: אחריות על עבודות ביצוע וחומרים">
+                            </div>
+                            <div style="flex: 2;" id="warrantyTimeContainer">
+                                <label class="form-label" style="margin-bottom: 8px; font-size: 14px;">משך זמן</label>
+                                <div style="display: flex; gap: 8px;">
+                                    <div style="width: 120px; flex-shrink: 0; position: relative;">
+                                        <div class="form-input" id="warrantyUnitSelect" style="cursor: pointer; display: flex; justify-content: space-between; align-items: center;">
+                                            <span id="warrantyUnitText" style="color: var(--text-muted);">יחידה</span>
+                                            <i class="fas fa-chevron-down" style="color: var(--text-muted);"></i>
+                                        </div>
+                                        <div id="warrantyUnitDropdown" style="display: none; position: absolute; top: 100%; left: 0; right: 0; background: white; border: 1px solid #e5e7eb; border-radius: 6px; box-shadow: 0 4px 12px rgba(0,0,0,0.15); z-index: 1000;">
+                                            <div class="dropdown-option" data-value="ימים" style="padding: 10px 16px; cursor: pointer; border-bottom: 1px solid #f3f4f6;">ימים</div>
+                                            <div class="dropdown-option" data-value="חודשים" style="padding: 10px 16px; cursor: pointer; border-bottom: 1px solid #f3f4f6;">חודשים</div>
+                                            <div class="dropdown-option" data-value="שנים" style="padding: 10px 16px; cursor: pointer; border-bottom: 1px solid #f3f4f6;">שנים</div>
+                                            <div class="dropdown-option" data-value="טקסט חופשי" style="padding: 10px 16px; cursor: pointer;">טקסט חופשי</div>
+                                        </div>
+                                    </div>
+                                    <input type="number" class="form-input" id="warrantyNumber" placeholder="מספר" style="flex: 1;" min="1">
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="restriction-tags" id="warrantyTags"></div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">
+                            <span class="question-number">11.</span>
+                            ביטוח - הוסיפו רק במידה ויש לכם ביטוח (ניתן להתעלם אם לא רלוונטי)
+                        </label>
+                        
+                        <div style="display: flex; gap: 12px; align-items: flex-end;" id="insuranceInputContainer">
+                            <div style="flex: 3;" id="insuranceDescriptionContainer">
+                                <label class="form-label" style="margin-bottom: 8px; font-size: 14px;">תיאור הביטוח</label>
+                                <input type="text" class="form-input" id="insuranceDescription" placeholder="לדוגמה: ביטוח אחריות מקצועית וביטוח צד ג'">
+                            </div>
+                            <div style="flex: 2;" id="insuranceTimeContainer">
+                                <label class="form-label" style="margin-bottom: 8px; font-size: 14px;">משך זמן</label>
+                                <div style="display: flex; gap: 8px;">
+                                    <div style="width: 120px; flex-shrink: 0; position: relative;">
+                                        <div class="form-input" id="insuranceUnitSelect" style="cursor: pointer; display: flex; justify-content: space-between; align-items: center;">
+                                            <span id="insuranceUnitText" style="color: var(--text-muted);">יחידה</span>
+                                            <i class="fas fa-chevron-down" style="color: var(--text-muted);"></i>
+                                        </div>
+                                        <div id="insuranceUnitDropdown" style="display: none; position: absolute; top: 100%; left: 0; right: 0; background: white; border: 1px solid #e5e7eb; border-radius: 6px; box-shadow: 0 4px 12px rgba(0,0,0,0.15); z-index: 1000;">
+                                            <div class="dropdown-option" data-value="ימים" style="padding: 10px 16px; cursor: pointer; border-bottom: 1px solid #f3f4f6;">ימים</div>
+                                            <div class="dropdown-option" data-value="חודשים" style="padding: 10px 16px; cursor: pointer; border-bottom: 1px solid #f3f4f6;">חודשים</div>
+                                            <div class="dropdown-option" data-value="שנים" style="padding: 10px 16px; cursor: pointer; border-bottom: 1px solid #f3f4f6;">שנים</div>
+                                            <div class="dropdown-option" data-value="טקסט חופשי" style="padding: 10px 16px; cursor: pointer;">טקסט חופשי</div>
+                                        </div>
+                                    </div>
+                                    <input type="number" class="form-input" id="insuranceNumber" placeholder="מספר" style="flex: 1;" min="1">
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="restriction-tags" id="insuranceTags"></div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">
+                            <span class="question-number">12.</span>
+                            יש לכם יתרונות נוספים שתרצו להדגיש? (עד 5 יתרונות)
+                        </label>
+                        
+                        <div id="advantagesMainContainer" style="position: relative;">
+                            <div id="advantagesDisplay" style="padding: 12px 20px; border: 2px solid var(--border-light); border-radius: var(--border-radius); background: var(--bg-light); cursor: pointer; display: flex; flex-wrap: wrap; gap: 8px; align-items: center; height: 48px; position: relative; box-sizing: border-box;">
+                                <span id="advantagesPlaceholder" style="color: var(--text-muted);">לחצו לבחירת יתרונות</span>
+                                <i class="fas fa-chevron-down" style="position: absolute; left: 16px; top: 50%; transform: translateY(-50%); color: var(--text-muted);"></i>
+                            </div>
+                            <div id="advantagesDropdown" style="display: none; position: absolute; top: 100%; left: 0; right: 0; background: white; border: 1px solid #e5e7eb; border-radius: 6px; box-shadow: 0 4px 12px rgba(0,0,0,0.15); z-index: 1000; max-height: 240px; overflow-y: auto;">
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- שירותי קבלנות -->
+                <div class="form-section">
+                    <h3>פרויקטים משולבים - קבלנות</h3>
+
+                    <div class="form-group">
+                        <label class="form-label">
+                            <span class="question-number">13.</span>
+                            כאשר לקוח מבקש פרויקט בתחום שלכם + תחומים נוספים - מה הגישה שלכם?
+                        </label>
+                        <div class="radio-group">
+                            <label class="radio-item">
+                                <input type="radio" name="contractor_approach" value="full_contractor" required>
+                                <span>מספק שירותי קבלנות מלאים לפרויקטים</span>
+                            </label>
+                            <label class="radio-item">
+                                <input type="radio" name="contractor_approach" value="coordinate" required>
+                                <span>מתמחה בתחום שלי, אבל ישמח לתאם עם בעלי מקצוע נוספים</span>
+                            </label>
+                            <label class="radio-item">
+                                <input type="radio" name="contractor_approach" value="refer_only" required>
+                                <span>עובד רק בתחום שלי, ומפנה ללקוחות בעלי מקצוע נוספים</span>
+                            </label>
+                            <label class="radio-item">
+                                <input type="radio" name="contractor_approach" value="specialist_only" required>
+                                <span>מספק שירות בתחום הפעילות שלי בלבד</span>
+                            </label>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- הגדרות מיוחדות -->
+                <div class="form-section">
+                    <h3>הגדרות מיוחדות</h3>
+
+                    <div class="form-group">
+                        <label class="form-label">
+                            <span class="question-number">14.</span>
+                            יש נושאים שאתם מעדיפים להימנע מהם בתגובות? (עד 5 נושאים)
+                        </label>
+                        
+                        <div class="restriction-select-container">
+                            <div class="restriction-select" id="restrictionSelect">
+                                <span class="restriction-placeholder">לחץ לבחירת נושאים להימנעות</span>
+                                <i class="fas fa-chevron-down restriction-arrow"></i>
+                            </div>
+                            <div class="restriction-dropdown" id="restrictionDropdown"></div>
+                        </div>
+                        
+                        <div class="restriction-tags" id="restrictionTags"></div>
+
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">
+                            <span class="question-number">15.</span>
+                            הערות נוספות או בקשות מיוחדות:
+                        </label>
+                        <textarea class="form-input form-textarea" name="additional_notes" placeholder="כל מידע נוסף שחשוב לכם שנדע..."></textarea>
+                    </div>
+                </div>
+
+                <button type="submit">שלח טופס</button>
+            </form>
+
+            <div class="footer-info">
+                ✅ בסיום המילוי, הטופס יישלח אלינו אוטומטית.<br>
+                ⏰ תהליך הכנת המערכת לוקח 24-48 שעות לאחר קבלת הטופס המלא.
+                <div class="brand">
+                    תודה רבה על הסבלנות! 🙏<br>
+                    צוות Collabo AI
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Primary field dropdown functionality
+            const primaryFieldInput = document.getElementById('primaryFieldInput');
+            const dropdownList = document.getElementById('dropdownList');
+            
+            const professions = [
+                'חשמל',
+                'אינסטלציה',
+                'שיפוצים כלליים',
+                'צבע ועבודות גמר',
+                'ריצוף וחיפוי',
+                'נגרות',
+                'ברזל ואלומיניום',
+                'מיזוג אוויר',
+                'גינון ונוף',
+                'בטון וחזית',
+                'בידוד וייטום',
+                'ניקיון ואחזקה',
+                'הסעות והובלות',
+                'מנעולנות',
+                'שמשות ומרפסות',
+                'פלמבה וביובים',
+                'אנטנות וויזיון',
+                'פיתוח מגרשים',
+                'עבודות גובה',
+                'חיפוי קירות',
+                'חימום ורדיאטורים',
+                'פתיחת קירות',
+                'עבודות פחזון',
+                'איטום גגות',
+                'תקשורת ורשתות',
+                'אבן טבעית',
+                'מטבחים מעוצבים',
+                'חדרי רחצה',
+                'ארונות ואחסון',
+                'דקינג ופרגולות',
+                'מרצפת אבן',
+                'עבודות עפר',
+                'גדרות ושערים',
+                'בניית מחסנים',
+                'עבודות אספלט',
+                'ציפוי גגות',
+                'תאורה חיצונית',
+                'מעליות ונגישות'
+            ];
+
+            let currentFocus = -1;
+
+            primaryFieldInput.addEventListener('input', function() {
+                const value = this.value;
+                if (value.length === 0) {
+                    dropdownList.style.display = 'none';
+                    return;
+                }
+
+                const filtered = professions.filter(profession => 
+                    profession.includes(value)
+                ); // Show all matching results
+
+                if (filtered.length === 0) {
+                    dropdownList.style.display = 'none';
+                    return;
+                }
+
+                dropdownList.innerHTML = '';
+                filtered.forEach((profession, index) => {
+                    const item = document.createElement('div');
+                    item.className = 'dropdown-item';
+                    item.textContent = profession;
+                    item.addEventListener('click', function() {
+                        primaryFieldInput.value = profession;
+                        dropdownList.style.display = 'none';
+                        currentFocus = -1;
+                    });
+                    dropdownList.appendChild(item);
+                });
+
+                dropdownList.style.display = 'block';
+                currentFocus = -1;
+            });
+
+            primaryFieldInput.addEventListener('focus', function() {
+                if (this.value.length === 0) {
+                    // Show all professions when focused with empty input
+                    dropdownList.innerHTML = '';
+                    professions.forEach((profession, index) => {
+                        const item = document.createElement('div');
+                        item.className = 'dropdown-item';
+                        item.textContent = profession;
+                        item.addEventListener('click', function() {
+                            primaryFieldInput.value = profession;
+                            dropdownList.style.display = 'none';
+                            currentFocus = -1;
+                        });
+                        dropdownList.appendChild(item);
+                    });
+                    dropdownList.style.display = 'block';
+                }
+            });
+
+            primaryFieldInput.addEventListener('keydown', function(e) {
+                const items = dropdownList.querySelectorAll('.dropdown-item');
+                if (e.key === 'ArrowDown') {
+                    e.preventDefault();
+                    currentFocus++;
+                    if (currentFocus >= items.length) currentFocus = 0;
+                    setActiveItem(items);
+                } else if (e.key === 'ArrowUp') {
+                    e.preventDefault();
+                    currentFocus--;
+                    if (currentFocus < 0) currentFocus = items.length - 1;
+                    setActiveItem(items);
+                } else if (e.key === 'Enter') {
+                    e.preventDefault();
+                    if (currentFocus > -1 && items[currentFocus]) {
+                        items[currentFocus].click();
+                    }
+                } else if (e.key === 'Escape') {
+                    dropdownList.style.display = 'none';
+                    currentFocus = -1;
+                }
+            });
+
+            function setActiveItem(items) {
+                items.forEach((item, index) => {
+                    if (index === currentFocus) {
+                        item.classList.add('highlighted');
+                    } else {
+                        item.classList.remove('highlighted');
+                    }
+                });
+            }
+
+            // Close dropdown when clicking outside
+            document.addEventListener('click', function(e) {
+                if (!primaryFieldInput.contains(e.target) && !dropdownList.contains(e.target)) {
+                    dropdownList.style.display = 'none';
+                    currentFocus = -1;
+                }
+            });
+
+            // Pricing dropdown functionality
+            const pricingSelect = document.getElementById('pricingSelect');
+            const pricingDropdownList = document.getElementById('pricingDropdownList');
+            const pricingSelected = document.getElementById('pricingSelected');
+            const pricingHidden = document.getElementById('pricingHidden');
+            
+            const pricingOptions = [
+                'מחירים הוגנים ותחרותיים',
+                'מחירים זולים במיוחד',
+                'יחס מעולה בין מחיר לאיכות',
+                'מחירים גבוהים אך איכות מעולה',
+                'מחירים שוות לכל כיס',
+                'מחירים לפי תקציב הלקוח',
+                'מחירים קבועים וברורים מראש',
+                'הצעת מחיר אישית לכל פרויקט'
+            ];
+
+            let pricingCurrentFocus = -1;
+
+            // Add custom option input at the top
+            const customPricingInputContainer = document.createElement('div');
+            customPricingInputContainer.className = 'custom-advantage-container';
+            customPricingInputContainer.innerHTML = `
+                <div class="input-label">✨ תיאור מחירים בשפה חופשית</div>
+                <div class="custom-advantage-input-group">
+                    <input type="text" placeholder="לדוגמה: מחירים גמישים לפי היקף הפרויקט..." class="custom-advantage-input">
+                </div>
+            `;
+            pricingDropdownList.appendChild(customPricingInputContainer);
+            
+            // Add event listeners for custom input
+            const customPricingInput = customPricingInputContainer.querySelector('.custom-advantage-input');
+            
+            function addCustomPricing() {
+                const customValue = customPricingInput.value.trim();
+                if (customValue) {
+                    pricingSelected.textContent = customValue;
+                    pricingSelected.style.color = 'var(--text-primary)';
+                    pricingHidden.value = customValue;
+                    customPricingInput.value = '';
+                    pricingDropdownList.style.display = 'none';
+                    pricingSelect.classList.remove('active');
+                }
+            }
+            
+            customPricingInput.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    e.preventDefault();
+                    addCustomPricing();
+                }
+            });
+
+            // Initialize dropdown with predefined options
+            pricingOptions.forEach((option, index) => {
+                const item = document.createElement('div');
+                item.className = 'dropdown-item';
+                item.textContent = option;
+                item.addEventListener('click', function() {
+                    pricingSelected.textContent = option;
+                    pricingSelected.style.color = 'var(--text-primary)';
+                    pricingHidden.value = option;
+                    pricingDropdownList.style.display = 'none';
+                    pricingSelect.classList.remove('active');
+                    pricingCurrentFocus = -1;
+                });
+                pricingDropdownList.appendChild(item);
+            });
+
+            pricingSelect.addEventListener('click', function(e) {
+                e.preventDefault();
+                if (pricingDropdownList.style.display === 'block') {
+                    pricingDropdownList.style.display = 'none';
+                    pricingSelect.classList.remove('active');
+                } else {
+                    pricingDropdownList.style.display = 'block';
+                    pricingSelect.classList.add('active');
+                    pricingCurrentFocus = -1;
+                }
+            });
+
+            pricingSelect.addEventListener('keydown', function(e) {
+                const items = pricingDropdownList.querySelectorAll('.dropdown-item');
+                if (e.key === 'ArrowDown') {
+                    e.preventDefault();
+                    if (pricingDropdownList.style.display === 'none') {
+                        pricingDropdownList.style.display = 'block';
+                        pricingSelect.classList.add('active');
+                    }
+                    pricingCurrentFocus++;
+                    if (pricingCurrentFocus >= items.length) pricingCurrentFocus = 0;
+                    setPricingActiveItem(items);
+                } else if (e.key === 'ArrowUp') {
+                    e.preventDefault();
+                    if (pricingDropdownList.style.display === 'none') {
+                        pricingDropdownList.style.display = 'block';
+                        pricingSelect.classList.add('active');
+                    }
+                    pricingCurrentFocus--;
+                    if (pricingCurrentFocus < 0) pricingCurrentFocus = items.length - 1;
+                    setPricingActiveItem(items);
+                } else if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    if (pricingCurrentFocus > -1 && items[pricingCurrentFocus]) {
+                        items[pricingCurrentFocus].click();
+                    }
+                } else if (e.key === 'Escape') {
+                    pricingDropdownList.style.display = 'none';
+                    pricingSelect.classList.remove('active');
+                    pricingCurrentFocus = -1;
+                }
+            });
+
+            function setPricingActiveItem(items) {
+                items.forEach((item, index) => {
+                    if (index === pricingCurrentFocus) {
+                        item.classList.add('highlighted');
+                    } else {
+                        item.classList.remove('highlighted');
+                    }
+                });
+            }
+
+            // Close pricing dropdown when clicking outside
+            document.addEventListener('click', function(e) {
+                if (!pricingSelect.contains(e.target) && !pricingDropdownList.contains(e.target)) {
+                    pricingDropdownList.style.display = 'none';
+                    pricingSelect.classList.remove('active');
+                    pricingCurrentFocus = -1;
+                }
+            });
+
+            // Handle radio button and checkbox styling
+            const radioItems = document.querySelectorAll('.radio-item');
+            radioItems.forEach(item => {
+                const input = item.querySelector('input[type="radio"], input[type="checkbox"]');
+                if (input) {
+                    input.addEventListener('change', function() {
+                        if (input.type === 'radio') {
+                            // Remove selected class from all radio buttons with same name
+                            const radioGroup = document.querySelectorAll(`input[name="${input.name}"]`);
+                            radioGroup.forEach(radio => {
+                                radio.closest('.radio-item').classList.remove('selected');
+                            });
+                        }
+                        
+                        if (this.checked) {
+                            item.classList.add('selected');
+                        } else {
+                            item.classList.remove('selected');
+                        }
+
+
+
+                    });
+                }
+            });
+
+            // Advantage dropdown functionality
+            const advantageOptions = [
+                'זמינות 24/7',
+                'שירות מהיר ואמין',
+                'ציוד מקצועי מתקדם',
+                'עבודה נקייה ומסודרת',
+                'התייעצות חינמית',
+                'ניסיון רב בתחום',
+                'מחויבות לשביעות רצון הלקוח',
+                'צוות מקצועי ומנוסה',
+                'זמני תגובה מהירים',
+                'גמישות בלוחות זמנים',
+                'ניקיון החומרים אחרי עבודה',
+                'עבודה עם חומרים איכותיים בלבד',
+                'יכולת עבודה בסוף השבוע',
+                'מתן החזר כספי אם לא מרוצים',
+                'שירות לקוחות מעולה',
+                'יכולת ביצוע דחוף',
+                'עובדים קבועים ואמינים',
+                'פתרונות יצירתיים לבעיות',
+                'זמינות לייעוץ טלפוני',
+                'שקיפות מלאה בתהליך העבודה'
+            ];
+
+            // Advantage tags functionality
+            const maxAdvantages = 5;
+            let selectedAdvantages = [];
+            
+            const advantagesDisplay = document.getElementById('advantagesDisplay');
+            const advantagesDropdown = document.getElementById('advantagesDropdown');
+            const advantagesPlaceholder = document.getElementById('advantagesPlaceholder');
+
+            function initializeAdvantagesDropdown() {
+                advantagesDropdown.innerHTML = '';
+                
+                // Add custom option input at the top
+                const customInputContainer = document.createElement('div');
+                customInputContainer.className = 'custom-advantage-container';
+                customInputContainer.innerHTML = `
+                    <div class="input-label">✨ הוסף יתרון בשפה חופשית</div>
+                    <div class="custom-advantage-input-group">
+                        <input type="text" placeholder="לדוגמה: מחזיר טלפונים תמיד..." class="custom-advantage-input">
+                    </div>
+                `;
+                advantagesDropdown.appendChild(customInputContainer);
+                
+                // Add event listeners for custom input
+                const customInput = customInputContainer.querySelector('.custom-advantage-input');
+                
+                function addCustomAdvantage() {
+                    const customValue = customInput.value.trim();
+                    if (customValue && selectedAdvantages.length < maxAdvantages && !selectedAdvantages.includes(customValue)) {
+                        selectedAdvantages.push(customValue);
+                        updateAdvantagesDisplay();
+                        updateDropdownStates();
+                        customInput.value = '';
+                        advantagesDropdown.style.display = 'none';
+                    }
+                }
+                
+                customInput.addEventListener('keypress', function(e) {
+                    if (e.key === 'Enter') {
+                        e.preventDefault();
+                        addCustomAdvantage();
+                    }
+                });
+                
+                // Add predefined options with checkboxes
+                advantageOptions.forEach((option) => {
+                    const item = document.createElement('div');
+                    item.className = 'advantage-checkbox-item';
+                    item.innerHTML = `
+                        <input type="checkbox" id="adv_${option}" value="${option}" ${selectedAdvantages.includes(option) ? 'checked' : ''}>
+                        <label for="adv_${option}" style="flex: 1; cursor: pointer; text-align: right;">${option}</label>
+                    `;
+                    
+                    const checkbox = item.querySelector('input[type="checkbox"]');
+                    checkbox.addEventListener('change', function() {
+                        if (this.checked) {
+                            if (selectedAdvantages.length < maxAdvantages && !selectedAdvantages.includes(option)) {
+                                selectedAdvantages.push(option);
+                                updateAdvantagesDisplay();
+                                updateDropdownStates();
+                            } else {
+                                this.checked = false;
+                            }
+                        } else {
+                            selectedAdvantages = selectedAdvantages.filter(adv => adv !== option);
+                            updateAdvantagesDisplay();
+                            updateDropdownStates();
+                        }
+                    });
+                    
+                    advantagesDropdown.appendChild(item);
+                });
+            }
+
+            function updateAdvantagesDisplay() {
+                // Clear current display
+                advantagesDisplay.innerHTML = '';
+                
+                if (selectedAdvantages.length === 0) {
+                    advantagesDisplay.appendChild(advantagesPlaceholder);
+                } else {
+                    selectedAdvantages.forEach(advantage => {
+                        const tag = document.createElement('div');
+                        tag.className = 'advantage-tag';
+                        tag.innerHTML = `
+                            <span>${advantage}</span>
+                            <span class="remove-tag">×</span>
+                            <input type="hidden" name="additional_advantages[]" value="${advantage}">
+                        `;
+                        
+                        tag.querySelector('.remove-tag').addEventListener('click', function(e) {
+                            e.stopPropagation();
+                            selectedAdvantages = selectedAdvantages.filter(adv => adv !== advantage);
+                            updateAdvantagesDisplay();
+                            updateDropdownStates();
+                        });
+                        
+                        advantagesDisplay.appendChild(tag);
+                    });
+                }
+            }
+
+            function updateDropdownStates() {
+                const checkboxes = advantagesDropdown.querySelectorAll('input[type="checkbox"]');
+                checkboxes.forEach(checkbox => {
+                    checkbox.checked = selectedAdvantages.includes(checkbox.value);
+                    checkbox.disabled = !checkbox.checked && selectedAdvantages.length >= maxAdvantages;
+                });
+            }
+
+            // Initialize dropdown
+            initializeAdvantagesDropdown();
+
+            // Handle dropdown toggle
+            advantagesDisplay.addEventListener('click', function() {
+                if (advantagesDropdown.style.display === 'block') {
+                    advantagesDropdown.style.display = 'none';
+                } else {
+                    advantagesDropdown.style.display = 'block';
+                    updateDropdownStates();
+                }
+            });
+
+            // Close dropdown when clicking outside
+            document.addEventListener('click', function(e) {
+                const mainContainer = document.getElementById('advantagesMainContainer');
+                if (!mainContainer.contains(e.target)) {
+                    advantagesDropdown.style.display = 'none';
+                }
+            });
+
+            // Restriction dropdown functionality
+            const restrictionOptions = [
+                'מחירים ספציפיים',
+                'פרטים אישיים של לקוחות',
+                'ביקורת על מתחרים',
+                'נושאים פוליטיים',
+                'מידע פיננסי',
+                'עבודות שלא בתחום התמחות',
+                'המלצות על חברות אחרות',
+                'נושאי דת',
+                'תלונות על לקוחות',
+                'סודות מקצועיים'
+            ];
+
+            const restrictionSelect = document.getElementById('restrictionSelect');
+            const restrictionDropdown = document.getElementById('restrictionDropdown');
+            const restrictionTags = document.getElementById('restrictionTags');
+            let selectedRestrictions = [];
+            const maxRestrictions = 5;
+
+            function initializeRestrictionsDropdown() {
+                // Clear dropdown
+                restrictionDropdown.innerHTML = '';
+
+                // Add custom option input at the top
+                const customInputContainer = document.createElement('div');
+                customInputContainer.className = 'custom-restriction-container';
+                customInputContainer.innerHTML = `
+                    <div class="input-label">✨ הוסף נושא בשפה חופשית</div>
+                    <div class="custom-restriction-input-group">
+                        <input type="text" placeholder="לדוגמה: לא לדבר על פרויקטים ישנים..." class="custom-restriction-input">
+                    </div>
+                `;
+                restrictionDropdown.appendChild(customInputContainer);
+                
+                // Add event listeners for custom input
+                const customInput = customInputContainer.querySelector('.custom-restriction-input');
+                
+                function addCustomRestriction() {
+                    const customValue = customInput.value.trim();
+                    if (customValue && selectedRestrictions.length < maxRestrictions && !selectedRestrictions.includes(customValue)) {
+                        selectedRestrictions.push(customValue);
+                        updateRestrictionsDisplay();
+                        updateRestrictionDropdownStates();
+                        customInput.value = '';
+                        restrictionDropdown.style.display = 'none';
+                    }
+                }
+                
+                customInput.addEventListener('keypress', function(e) {
+                    if (e.key === 'Enter') {
+                        e.preventDefault();
+                        addCustomRestriction();
+                    }
+                });
+                
+                // Add predefined options with checkboxes
+                restrictionOptions.forEach((option) => {
+                    const item = document.createElement('div');
+                    item.className = 'restriction-checkbox-item';
+                    item.innerHTML = `
+                        <input type="checkbox" value="${option}" id="restriction_${option.replace(/\s+/g, '_')}">
+                        <label for="restriction_${option.replace(/\s+/g, '_')}">${option}</label>
+                    `;
+                    
+                    const checkbox = item.querySelector('input[type="checkbox"]');
+                    checkbox.addEventListener('change', function() {
+                        if (this.checked && selectedRestrictions.length < maxRestrictions) {
+                            selectedRestrictions.push(option);
+                            updateRestrictionsDisplay();
+                            updateRestrictionDropdownStates();
+                        } else if (!this.checked) {
+                            selectedRestrictions = selectedRestrictions.filter(rest => rest !== option);
+                            updateRestrictionsDisplay();
+                            updateRestrictionDropdownStates();
+                        } else {
+                            this.checked = false;
+                        }
+                    });
+                    
+                    restrictionDropdown.appendChild(item);
+                });
+            }
+
+            function updateRestrictionsDisplay() {
+                // Clear current display
+                restrictionTags.innerHTML = '';
+                
+                if (selectedRestrictions.length > 0) {
+                    selectedRestrictions.forEach(restriction => {
+                        const tag = document.createElement('div');
+                        tag.className = 'restriction-tag';
+                        tag.innerHTML = `
+                            <span>${restriction}</span>
+                            <span class="remove-tag">×</span>
+                        `;
+                        
+                        tag.querySelector('.remove-tag').addEventListener('click', function(e) {
+                            e.stopPropagation();
+                            selectedRestrictions = selectedRestrictions.filter(rest => rest !== restriction);
+                            updateRestrictionsDisplay();
+                            updateRestrictionDropdownStates();
+                        });
+                        
+                        restrictionTags.appendChild(tag);
+                    });
+                }
+            }
+
+            function updateRestrictionDropdownStates() {
+                const checkboxes = restrictionDropdown.querySelectorAll('input[type="checkbox"]');
+                checkboxes.forEach(checkbox => {
+                    checkbox.checked = selectedRestrictions.includes(checkbox.value);
+                    checkbox.disabled = !checkbox.checked && selectedRestrictions.length >= maxRestrictions;
+                });
+            }
+
+            // Initialize restriction dropdown
+            initializeRestrictionsDropdown();
+
+            restrictionSelect.addEventListener('click', function(e) {
+                e.preventDefault();
+                if (restrictionDropdown.style.display === 'block') {
+                    restrictionDropdown.style.display = 'none';
+                } else {
+                    restrictionDropdown.style.display = 'block';
+                    updateRestrictionDropdownStates();
+                }
+            });
+
+            // Close dropdown when clicking outside
+            document.addEventListener('click', function(e) {
+                if (!restrictionSelect.contains(e.target) && !restrictionDropdown.contains(e.target)) {
+                    restrictionDropdown.style.display = 'none';
+                }
+            });
+
+            // Work area dropdown functionality
+            const workAreaOptions = [
+                'צפון',
+                'השרון', 
+                'מרכז',
+                'ירושלים והסביבה',
+                'דרום',
+                'אילת',
+                'כל הארץ'
+            ];
+
+            const workAreaSelect = document.getElementById('workAreaSelect');
+            const workAreaDropdown = document.getElementById('workAreaDropdown');
+            const workAreaTags = document.getElementById('workAreaTags');
+            let selectedWorkAreas = [];
+
+            function initializeWorkAreaDropdown() {
+                // Clear dropdown
+                workAreaDropdown.innerHTML = '';
+                
+                // Add predefined options with checkboxes
+                workAreaOptions.forEach((option) => {
+                    const item = document.createElement('div');
+                    item.className = 'work-area-checkbox-item';
+                    item.innerHTML = `
+                        <input type="checkbox" value="${option}" id="work_area_${option.replace(/\s+/g, '_')}">
+                        <label for="work_area_${option.replace(/\s+/g, '_')}">${option}</label>
+                    `;
+                    
+                    const checkbox = item.querySelector('input[type="checkbox"]');
+                    checkbox.addEventListener('change', function() {
+                        if (this.checked) {
+                            selectedWorkAreas.push(option);
+                            updateWorkAreaDisplay();
+                            updateWorkAreaDropdownStates();
+                        } else {
+                            selectedWorkAreas = selectedWorkAreas.filter(area => area !== option);
+                            updateWorkAreaDisplay();
+                            updateWorkAreaDropdownStates();
+                        }
+                    });
+                    
+                    workAreaDropdown.appendChild(item);
+                });
+            }
+
+            function updateWorkAreaDisplay() {
+                // Clear current display
+                workAreaTags.innerHTML = '';
+                
+                if (selectedWorkAreas.length > 0) {
+                    selectedWorkAreas.forEach(area => {
+                        const tag = document.createElement('div');
+                        tag.className = 'work-area-tag';
+                        tag.innerHTML = `
+                            <span>${area}</span>
+                            <span class="remove-tag">×</span>
+                        `;
+                        
+                        tag.querySelector('.remove-tag').addEventListener('click', function(e) {
+                            e.stopPropagation();
+                            selectedWorkAreas = selectedWorkAreas.filter(wa => wa !== area);
+                            updateWorkAreaDisplay();
+                            updateWorkAreaDropdownStates();
+                        });
+                        
+                        workAreaTags.appendChild(tag);
+                    });
+                }
+            }
+
+            function updateWorkAreaDropdownStates() {
+                const checkboxes = workAreaDropdown.querySelectorAll('input[type="checkbox"]');
+                checkboxes.forEach(checkbox => {
+                    checkbox.checked = selectedWorkAreas.includes(checkbox.value);
+                });
+            }
+
+            // Initialize work area dropdown
+            initializeWorkAreaDropdown();
+
+            workAreaSelect.addEventListener('click', function(e) {
+                e.preventDefault();
+                if (workAreaDropdown.style.display === 'block') {
+                    workAreaDropdown.style.display = 'none';
+                } else {
+                    workAreaDropdown.style.display = 'block';
+                    updateWorkAreaDropdownStates();
+                }
+            });
+
+            // Close dropdown when clicking outside
+            document.addEventListener('click', function(e) {
+                if (!workAreaSelect.contains(e.target) && !workAreaDropdown.contains(e.target)) {
+                    workAreaDropdown.style.display = 'none';
+                }
+            });
+
+            // Global function for removing warranty tags (Question 10)
+            window.removeWarrantyTag = function(warranty) {
+                const index = warranties.indexOf(warranty);
+                if (index > -1) {
+                    warranties.splice(index, 1);
+                    updateWarrantyTags();
+                }
+            };
+
+            // New warranty functionality (Question 10)
+            const warrantyDescription = document.getElementById('warrantyDescription');
+            const warrantyNumber = document.getElementById('warrantyNumber');
+            const warrantyUnitSelect = document.getElementById('warrantyUnitSelect');
+            const warrantyUnitText = document.getElementById('warrantyUnitText');
+            const warrantyUnitDropdown = document.getElementById('warrantyUnitDropdown');
+            const warrantyTags = document.getElementById('warrantyTags');
+            let warranties = [];
+            let selectedWarrantyUnit = '';
+
+            function addWarranty() {
+                const description = warrantyDescription.value.trim();
+                const number = warrantyNumber.value.trim();
+                const unit = selectedWarrantyUnit;
+                
+                if (description && number && unit) {
+                    let warrantyText;
+                    if (unit === 'טקסט חופשי') {
+                        warrantyText = `${description} - ${number}`;
+                    } else {
+                        warrantyText = `${description} - ${number} ${unit}`;
+                    }
+                    
+                    if (!warranties.includes(warrantyText)) {
+                        warranties.push(warrantyText);
+                        updateWarrantyTags();
+                        warrantyDescription.value = '';
+                        warrantyNumber.value = '';
+                        selectedWarrantyUnit = '';
+                        warrantyUnitText.textContent = 'יחידה';
+                        warrantyUnitText.style.color = 'var(--text-muted)';
+                    }
+                }
+            }
+
+            function updateWarrantyTags() {
+                warrantyTags.innerHTML = '';
+                warranties.forEach(warranty => {
+                    const tag = document.createElement('span');
+                    tag.className = 'restriction-tag';
+                    tag.innerHTML = `
+                        ${warranty}
+                        <span class="remove-tag" onclick="removeWarrantyTag('${warranty}')">&times;</span>
+                    `;
+                    warrantyTags.appendChild(tag);
+                });
+            }
+
+            // Auto-add when all fields are filled
+            function checkAndAddWarranty() {
+                const description = warrantyDescription.value.trim();
+                const number = warrantyNumber.value.trim();
+                const unit = selectedWarrantyUnit;
+                
+                if (description && number && unit) {
+                    addWarranty();
+                }
+            }
+            
+            warrantyDescription.addEventListener('blur', checkAndAddWarranty);
+            warrantyNumber.addEventListener('blur', checkAndAddWarranty);
+            
+            // Handle warranty unit dropdown
+            warrantyUnitSelect.addEventListener('click', function() {
+                warrantyUnitDropdown.style.display = warrantyUnitDropdown.style.display === 'block' ? 'none' : 'block';
+            });
+            
+            // Handle dropdown option selection
+            warrantyUnitDropdown.addEventListener('click', function(e) {
+                if (e.target.classList.contains('dropdown-option')) {
+                    const value = e.target.getAttribute('data-value');
+                    selectedWarrantyUnit = value;
+                    warrantyUnitText.textContent = value;
+                    warrantyUnitText.style.color = 'var(--text-primary)';
+                    warrantyUnitDropdown.style.display = 'none';
+                    
+                    // Handle input type change and layout adjustment
+                    const container = document.getElementById('warrantyInputContainer');
+                    const currentInput = document.getElementById('warrantyNumber');
+                    const descriptionContainer = document.getElementById('warrantyDescriptionContainer');
+                    const timeContainer = document.getElementById('warrantyTimeContainer');
+                    
+                    if (!container || !currentInput) {
+                        console.error('Container or input not found');
+                        return;
+                    }
+                    
+                    // Remove existing input
+                    currentInput.remove();
+                    
+                    // Create new input based on selection
+                    const newInput = document.createElement('input');
+                    newInput.className = 'form-input';
+                    newInput.id = 'warrantyNumber';
+                    newInput.style.cssText = 'width: 100%; text-align: right;';
+                    
+                    // Add mobile-specific styling if needed
+                    if (window.innerWidth <= 480) {
+                        newInput.style.height = '44px';
+                        newInput.style.padding = '10px 14px';
+                        newInput.style.fontSize = '16px';
+                        newInput.style.borderWidth = '1px';
+                    }
+                    
+                    if (value === 'טקסט חופשי') {
+                        // Text input for free text
+                        newInput.type = 'text';
+                        newInput.placeholder = 'לדוגמה: לכל החיים';
+                        
+                        // Adjust layout - shrink description, expand time container
+                        descriptionContainer.style.flex = '2';
+                        timeContainer.style.flex = '3';
+                    } else {
+                        // Number input for time units
+                        newInput.type = 'number';
+                        newInput.placeholder = 'מספר';
+                        newInput.setAttribute('min', '1');
+                        
+                        // Reset layout - original proportions
+                        descriptionContainer.style.flex = '3';
+                        timeContainer.style.flex = '2';
+                    }
+                    
+                    // Add the new input to container
+                    container.appendChild(newInput);
+                    
+                    // Add event listeners to new input
+                    newInput.addEventListener('blur', checkAndAddWarranty);
+                    newInput.addEventListener('keypress', function(e) {
+                        if (e.key === 'Enter') {
+                            e.preventDefault();
+                            checkAndAddWarranty();
+                        }
+                    });
+                    
+                    checkAndAddWarranty();
+                }
+            });
+            
+            warrantyDescription.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    e.preventDefault();
+                    warrantyUnitSelect.click();
+                }
+            });
+            
+            // Close dropdown when clicking outside
+            document.addEventListener('click', function(e) {
+                if (!warrantyUnitSelect.contains(e.target) && !warrantyUnitDropdown.contains(e.target)) {
+                    warrantyUnitDropdown.style.display = 'none';
+                }
+            });
+            
+            warrantyNumber.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    e.preventDefault();
+                    checkAndAddWarranty();
+                }
+            });
+
+            // Global function for removing insurance tags (Question 11)
+            window.removeInsuranceTag = function(insurance) {
+                const index = insurances.indexOf(insurance);
+                if (index > -1) {
+                    insurances.splice(index, 1);
+                    updateInsuranceTags();
+                }
+            };
+
+            // New insurance functionality (Question 11)
+            const insuranceDescription = document.getElementById('insuranceDescription');
+            const insuranceNumber = document.getElementById('insuranceNumber');
+            const insuranceUnitSelect = document.getElementById('insuranceUnitSelect');
+            const insuranceUnitText = document.getElementById('insuranceUnitText');
+            const insuranceUnitDropdown = document.getElementById('insuranceUnitDropdown');
+            const insuranceTags = document.getElementById('insuranceTags');
+            let insurances = [];
+            let selectedInsuranceUnit = '';
+
+            function addInsurance() {
+                const description = insuranceDescription.value.trim();
+                const number = insuranceNumber.value.trim();
+                const unit = selectedInsuranceUnit;
+                
+                if (description && number && unit) {
+                    let insuranceText;
+                    if (unit === 'טקסט חופשי') {
+                        insuranceText = `${description} - ${number}`;
+                    } else {
+                        insuranceText = `${description} - ${number} ${unit}`;
+                    }
+                    
+                    if (!insurances.includes(insuranceText)) {
+                        insurances.push(insuranceText);
+                        updateInsuranceTags();
+                        insuranceDescription.value = '';
+                        insuranceNumber.value = '';
+                        selectedInsuranceUnit = '';
+                        insuranceUnitText.textContent = 'יחידה';
+                        insuranceUnitText.style.color = 'var(--text-muted)';
+                    }
+                }
+            }
+
+            function updateInsuranceTags() {
+                insuranceTags.innerHTML = '';
+                insurances.forEach(insurance => {
+                    const tag = document.createElement('span');
+                    tag.className = 'restriction-tag';
+                    tag.innerHTML = `
+                        ${insurance}
+                        <span class="remove-tag" onclick="removeInsuranceTag('${insurance}')">&times;</span>
+                    `;
+                    insuranceTags.appendChild(tag);
+                });
+            }
+
+            // Auto-add when all fields are filled
+            function checkAndAddInsurance() {
+                const description = insuranceDescription.value.trim();
+                const number = insuranceNumber.value.trim();
+                const unit = selectedInsuranceUnit;
+                
+                if (description && number && unit) {
+                    addInsurance();
+                }
+            }
+            
+            insuranceDescription.addEventListener('blur', checkAndAddInsurance);
+            insuranceNumber.addEventListener('blur', checkAndAddInsurance);
+            
+            // Handle insurance unit dropdown
+            insuranceUnitSelect.addEventListener('click', function() {
+                insuranceUnitDropdown.style.display = insuranceUnitDropdown.style.display === 'block' ? 'none' : 'block';
+            });
+            
+            // Handle dropdown option selection
+            insuranceUnitDropdown.addEventListener('click', function(e) {
+                if (e.target.classList.contains('dropdown-option')) {
+                    const value = e.target.getAttribute('data-value');
+                    selectedInsuranceUnit = value;
+                    insuranceUnitText.textContent = value;
+                    insuranceUnitText.style.color = 'var(--text-primary)';
+                    insuranceUnitDropdown.style.display = 'none';
+                    
+                    // Handle input type change and layout adjustment
+                    const container = document.getElementById('insuranceInputContainer');
+                    const currentInput = document.getElementById('insuranceNumber');
+                    const descriptionContainer = document.getElementById('insuranceDescriptionContainer');
+                    const timeContainer = document.getElementById('insuranceTimeContainer');
+                    
+                    if (!container || !currentInput) {
+                        console.error('Container or input not found');
+                        return;
+                    }
+                    
+                    // Remove existing input
+                    currentInput.remove();
+                    
+                    // Create new input based on selection
+                    const newInput = document.createElement('input');
+                    newInput.className = 'form-input';
+                    newInput.id = 'insuranceNumber';
+                    newInput.style.cssText = 'width: 100%; text-align: right;';
+                    
+                    // Add mobile-specific styling if needed
+                    if (window.innerWidth <= 480) {
+                        newInput.style.height = '44px';
+                        newInput.style.padding = '10px 14px';
+                        newInput.style.fontSize = '16px';
+                        newInput.style.borderWidth = '1px';
+                    }
+                    
+                    if (value === 'טקסט חופשי') {
+                        // Text input for free text
+                        newInput.type = 'text';
+                        newInput.placeholder = 'לדוגמה: לכל החיים';
+                        
+                        // Adjust layout - shrink description, expand time container
+                        descriptionContainer.style.flex = '2';
+                        timeContainer.style.flex = '3';
+                    } else {
+                        // Number input for time units
+                        newInput.type = 'number';
+                        newInput.placeholder = 'מספר';
+                        newInput.setAttribute('min', '1');
+                        
+                        // Reset layout - original proportions
+                        descriptionContainer.style.flex = '3';
+                        timeContainer.style.flex = '2';
+                    }
+                    
+                    // Add the new input to container
+                    container.appendChild(newInput);
+                    
+                    // Add event listeners to new input
+                    newInput.addEventListener('blur', checkAndAddInsurance);
+                    newInput.addEventListener('keypress', function(e) {
+                        if (e.key === 'Enter') {
+                            e.preventDefault();
+                            checkAndAddInsurance();
+                        }
+                    });
+                    
+                    checkAndAddInsurance();
+                }
+            });
+            
+            insuranceDescription.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    e.preventDefault();
+                    insuranceUnitSelect.click();
+                }
+            });
+            
+            // Close dropdown when clicking outside
+            document.addEventListener('click', function(e) {
+                if (!insuranceUnitSelect.contains(e.target) && !insuranceUnitDropdown.contains(e.target)) {
+                    insuranceUnitDropdown.style.display = 'none';
+                }
+            });
+            
+            insuranceNumber.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    e.preventDefault();
+                    checkAndAddInsurance();
+                }
+            });
+
+            // Form submission
+            document.getElementById('clientForm').addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Collect form data
+                const formData = new FormData(this);
+                const data = {};
+                
+                for (let [key, value] of formData.entries()) {
+                    if (key === 'work_area') {
+                        // Handle multiple checkboxes for work_area
+                        if (!data[key]) {
+                            data[key] = [];
+                        }
+                        data[key].push(value);
+                    } else {
+                        data[key] = value;
+                    }
+                }
+                
+                // Convert to JSON
+                const jsonData = JSON.stringify(data, null, 2);
+                
+                // Create downloadable file
+                const blob = new Blob([jsonData], { type: 'application/json' });
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = `client_data_${new Date().toISOString().split('T')[0]}.json`;
+                a.click();
+                
+                alert('הטופס נשלח בהצלחה! הקובץ ירד למחשב שלכם.');
+                
+                // Reset form
+                this.reset();
+                
+                // Remove all selected classes
+                radioItems.forEach(item => {
+                    item.classList.remove('selected');
+                });
+            });
+
+        });
+    </script>
+</body>
+</html>

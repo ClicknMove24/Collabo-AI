@@ -13,6 +13,8 @@
     <title>טופס איסוף נתונים לבעל מקצוע - Collabo AI Pro</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <!-- Simple Form to Prompt JSON - מוטמע בקובץ -->
     <style>
         :root {
             --primary-blue: #2563eb;
@@ -25,7 +27,7 @@
             --text-muted: #9ca3af;
             --border-light: #e5e7eb;
             --bg-light: #ffffff;
-            --bg-gray: #f9fafb;
+            --bg-gray: #f3f4f6;
             --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
             --border-radius: 6px;
             --border-radius-xl: 16px;
@@ -77,7 +79,7 @@
         }
 
         .page-header p {
-            font-size: 1.2em;
+            font-size: 1.1em;
             color: var(--text-secondary);
             max-width: 600px;
             margin: 0 auto;
@@ -85,7 +87,7 @@
 
         .brand-tag {
             display: inline-block;
-            background: var(--ai-purple);
+            background: rgba(76, 29, 149, 0.8);
             color: white;
             padding: 8px 16px;
             border-radius: 20px;
@@ -141,7 +143,23 @@
             font-size: 24px;
             font-weight: 700;
             color: var(--text-primary);
-            margin-bottom: 24px;
+            margin-bottom: 12px;
+        }
+
+        .section-description {
+            background: rgba(76, 29, 149, 0.05);
+            border: 1px solid rgba(76, 29, 149, 0.15);
+            border-radius: var(--border-radius);
+            padding: 12px;
+            margin-bottom: 20px;
+            font-size: 14px;
+            line-height: 1.6;
+            color: var(--text-secondary);
+        }
+
+        .section-description strong {
+            color: var(--text-primary);
+            font-weight: 600;
         }
 
         .form-group {
@@ -799,6 +817,14 @@
             }
         }
 
+        /* Desktop styles (769px and above) - Allow flex changes */
+        @media (min-width: 769px) {
+            #warrantyDescriptionContainer, #warrantyTimeContainer,
+            #insuranceDescriptionContainer, #insuranceTimeContainer {
+                flex: initial !important;
+            }
+        }
+
         /* Mobile styles (480px and below) */
         @media (max-width: 480px) {
             .container {
@@ -814,7 +840,7 @@
             }
 
             .page-header h1 {
-                font-size: 1.75em;
+                font-size: 1.5em;
                 margin-bottom: 12px;
             }
 
@@ -1037,13 +1063,16 @@
             <div class="page-header">
                 <div class="brand-tag">Collabo AI Pro</div>
                 <h1>טופס איסוף נתונים לבעל מקצוע</h1>
-                <p>כדי ליצור עבורכם מערכת תגובות מותאמת אישית שתייצג אתכם בצורה הכי טובה ברשתות החברתיות, אנחנו צריכים לאסוף מספר פרטים חשובים.</p>
+                <p>כדי ליצור עבורכם מערכת תגובות מותאמת אישית שתייצג אתכם בצורה הכי טובה, אנחנו צריכים לאסוף מספר פרטים חשובים.</p>
             </div>
 
             <form class="contact-form" id="clientForm">
                 <!-- פרטים בסיסיים -->
                 <div class="form-section">
                     <h3>פרטים בסיסיים</h3>
+                    <div class="section-description">
+                        הפרטים הבסיסיים הללו מאפשרים למערכת ליצור זהות מקצועית ברורה ואמינה שתייצג אתכם בתגובות. כל התשובות הן חובה למעט הערות נוספות.
+                    </div>
 
                     <div class="form-group">
                         <label class="form-label">
@@ -1088,7 +1117,7 @@
                         </label>
                         
                         <div class="work-area-select-container">
-                            <div class="work-area-select" id="workAreaSelect">
+                            <div class="work-area-select" id="workAreaSelect" tabindex="0">
                                 <span class="work-area-placeholder">לחץ לבחירת אזורי עבודה</span>
                                 <i class="fas fa-chevron-down work-area-arrow"></i>
                             </div>
@@ -1102,6 +1131,9 @@
                 <!-- יתרונות עסקיים -->
                 <div class="form-section">
                     <h3>יתרונות עסקיים</h3>
+                    <div class="section-description">
+                        השאלות הבאות עוזרות לבלוט מהמתחרים ולמשוך לקוחות. <strong>לא חובה לענות על הכל</strong> - דלגו על שאלות שאתם לא מעוניינים שיופיעו בתגובות.
+                    </div>
 
                     <div class="form-group">
                         <label class="form-label">
@@ -1186,7 +1218,7 @@
                                 <label class="form-label" style="margin-bottom: 8px; font-size: 14px;">משך זמן</label>
                                 <div style="display: flex; gap: 8px;">
                                     <div style="width: 120px; flex-shrink: 0; position: relative;">
-                                        <div class="form-input" id="warrantyUnitSelect" style="cursor: pointer; display: flex; justify-content: space-between; align-items: center;">
+                                        <div class="form-input" id="warrantyUnitSelect" tabindex="0" style="cursor: pointer; display: flex; justify-content: space-between; align-items: center;">
                                             <span id="warrantyUnitText" style="color: var(--text-muted);">יחידה</span>
                                             <i class="fas fa-chevron-down" style="color: var(--text-muted);"></i>
                                         </div>
@@ -1220,7 +1252,7 @@
                                 <label class="form-label" style="margin-bottom: 8px; font-size: 14px;">משך זמן</label>
                                 <div style="display: flex; gap: 8px;">
                                     <div style="width: 120px; flex-shrink: 0; position: relative;">
-                                        <div class="form-input" id="insuranceUnitSelect" style="cursor: pointer; display: flex; justify-content: space-between; align-items: center;">
+                                        <div class="form-input" id="insuranceUnitSelect" tabindex="0" style="cursor: pointer; display: flex; justify-content: space-between; align-items: center;">
                                             <span id="insuranceUnitText" style="color: var(--text-muted);">יחידה</span>
                                             <i class="fas fa-chevron-down" style="color: var(--text-muted);"></i>
                                         </div>
@@ -1260,6 +1292,9 @@
                 <!-- שירותי קבלנות -->
                 <div class="form-section">
                     <h3>פרויקטים משולבים - קבלנות</h3>
+                    <div class="section-description">
+                        שאלה זו מגדירה את הגישה המקצועית שלכם ואת טווח השירותים שאתם מציעים. זה עוזר למערכת לנסח תגובות שמשקפות נכון את היקף העבודה שלכם ואת רמת ההתמחות.
+                    </div>
 
                     <div class="form-group">
                         <label class="form-label">
@@ -1291,6 +1326,9 @@
                 <!-- הגדרות מיוחדות -->
                 <div class="form-section">
                     <h3>הגדרות מיוחדות</h3>
+                    <div class="section-description">
+                        מקטע זה מאפשר לכם להגדיר נושאים שאתם מעדיפים להימנע מהם בתגובות. זה חשוב כדי להבטיח שהתגובות יישמרו מקצועיות ומתאימות לפרופיל שלכם. גם כאן - אם אין לכם הגבלות מיוחדות, פשוט דלגו על השאלה.
+                    </div>
 
                     <div class="form-group">
                         <label class="form-label">
@@ -1299,7 +1337,7 @@
                         </label>
                         
                         <div class="restriction-select-container">
-                            <div class="restriction-select" id="restrictionSelect">
+                            <div class="restriction-select" id="restrictionSelect" tabindex="0">
                                 <span class="restriction-placeholder">לחץ לבחירת נושאים להימנעות</span>
                                 <i class="fas fa-chevron-down restriction-arrow"></i>
                             </div>
@@ -1916,6 +1954,14 @@
                 }
             });
 
+            // הוספת תמיכה במקלדת להגבלות
+            restrictionSelect.addEventListener('keydown', function(e) {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    restrictionSelect.click();
+                }
+            });
+
             // Close dropdown when clicking outside
             document.addEventListener('click', function(e) {
                 if (!restrictionSelect.contains(e.target) && !restrictionDropdown.contains(e.target)) {
@@ -2014,6 +2060,14 @@
                 }
             });
 
+            // הוספת תמיכה במקלדת לאזורי עבודה
+            workAreaSelect.addEventListener('keydown', function(e) {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    workAreaSelect.click();
+                }
+            });
+
             // Close dropdown when clicking outside
             document.addEventListener('click', function(e) {
                 if (!workAreaSelect.contains(e.target) && !workAreaDropdown.contains(e.target)) {
@@ -2096,6 +2150,14 @@
             warrantyUnitSelect.addEventListener('click', function() {
                 warrantyUnitDropdown.style.display = warrantyUnitDropdown.style.display === 'block' ? 'none' : 'block';
             });
+
+            // הוספת תמיכה במקלדת לאחריות - יחידה
+            warrantyUnitSelect.addEventListener('keydown', function(e) {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    warrantyUnitSelect.click();
+                }
+            });
             
             // Handle dropdown option selection
             warrantyUnitDropdown.addEventListener('click', function(e) {
@@ -2126,29 +2188,20 @@
                     newInput.id = 'warrantyNumber';
                     newInput.style.cssText = 'width: 100%; text-align: right;';
                     
-                    // Add mobile-specific styling if needed
-                    if (window.innerWidth <= 480) {
-                        newInput.style.height = '44px';
-                        newInput.style.padding = '10px 14px';
-                        newInput.style.fontSize = '16px';
-                        newInput.style.borderWidth = '1px';
-                    }
                     
                     if (value === 'טקסט חופשי') {
-                        // Text input for free text
                         newInput.type = 'text';
                         newInput.placeholder = 'לדוגמה: לכל החיים';
                         
-                        // Adjust layout - shrink description, expand time container
-                        descriptionContainer.style.flex = '2';
-                        timeContainer.style.flex = '3';
+                        // Adjust layout
+                        descriptionContainer.style.flex = '2.5';
+                        timeContainer.style.flex = '2.5';
                     } else {
-                        // Number input for time units
                         newInput.type = 'number';
                         newInput.placeholder = 'מספר';
                         newInput.setAttribute('min', '1');
                         
-                        // Reset layout - original proportions
+                        // Reset layout
                         descriptionContainer.style.flex = '3';
                         timeContainer.style.flex = '2';
                     }
@@ -2265,6 +2318,14 @@
             insuranceUnitSelect.addEventListener('click', function() {
                 insuranceUnitDropdown.style.display = insuranceUnitDropdown.style.display === 'block' ? 'none' : 'block';
             });
+
+            // הוספת תמיכה במקלדת לביטוח - יחידה
+            insuranceUnitSelect.addEventListener('keydown', function(e) {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    insuranceUnitSelect.click();
+                }
+            });
             
             // Handle dropdown option selection
             insuranceUnitDropdown.addEventListener('click', function(e) {
@@ -2295,29 +2356,20 @@
                     newInput.id = 'insuranceNumber';
                     newInput.style.cssText = 'width: 100%; text-align: right;';
                     
-                    // Add mobile-specific styling if needed
-                    if (window.innerWidth <= 480) {
-                        newInput.style.height = '44px';
-                        newInput.style.padding = '10px 14px';
-                        newInput.style.fontSize = '16px';
-                        newInput.style.borderWidth = '1px';
-                    }
                     
                     if (value === 'טקסט חופשי') {
-                        // Text input for free text
                         newInput.type = 'text';
                         newInput.placeholder = 'לדוגמה: לכל החיים';
                         
-                        // Adjust layout - shrink description, expand time container
-                        descriptionContainer.style.flex = '2';
-                        timeContainer.style.flex = '3';
+                        // Adjust layout
+                        descriptionContainer.style.flex = '2.5';
+                        timeContainer.style.flex = '2.5';
                     } else {
-                        // Number input for time units
                         newInput.type = 'number';
                         newInput.placeholder = 'מספר';
                         newInput.setAttribute('min', '1');
                         
-                        // Reset layout - original proportions
+                        // Reset layout
                         descriptionContainer.style.flex = '3';
                         timeContainer.style.flex = '2';
                     }
@@ -2360,7 +2412,7 @@
             });
 
             // Form submission
-            document.getElementById('clientForm').addEventListener('submit', function(e) {
+            document.getElementById('clientForm').addEventListener('submit', async function(e) {
                 e.preventDefault();
                 
                 // Collect form data
@@ -2379,18 +2431,56 @@
                     }
                 }
                 
-                // Convert to JSON
-                const jsonData = JSON.stringify(data, null, 2);
+                // Fix field name mapping
+                if (data.work_area) {
+                    data.work_areas = data.work_area;
+                    delete data.work_area;
+                }
                 
-                // Create downloadable file
-                const blob = new Blob([jsonData], { type: 'application/json' });
-                const url = URL.createObjectURL(blob);
-                const a = document.createElement('a');
-                a.href = url;
-                a.download = `client_data_${new Date().toISOString().split('T')[0]}.json`;
-                a.click();
+                // הוספת השדות החסרים
+                // שאלה 5 - אזורי העבודה  
+                data.work_areas = selectedWorkAreas;
                 
-                alert('הטופס נשלח בהצלחה! הקובץ ירד למחשב שלכם.');
+                // שאלה 10 - אחריות
+                data.warranty_details = warranties;
+                
+                // שאלה 11 - ביטוח
+                data.insurance_details = insurances;
+                
+                // שאלה 14 - הגבלות
+                data.restrictions = selectedRestrictions;
+                
+                try {
+                    // יצירת System Prompt JSON מהטמפלט הקיים
+                    const generator = new SimpleFormToPrompt();
+                    const result = await generator.generateJSONFile(data);
+                    
+                    alert(`System Prompt JSON נוצר בהצלחה! 
+📄 שם הקובץ: ${result.fileName}
+👤 בעל המקצוע: ${data.name || 'לא צוין'}
+🔧 תחום: ${data.primary_field || 'לא צוין'}
+📊 גודל: ${Math.round(result.size / 1024)} KB
+                    
+הקובץ JSON כולל:
+• System Prompt מלא עם הפרטים שלך כבר מוחלפים
+• הטמפלט המקצועי עם השם והפרטים שלך
+• מוכן להעתקה ישירה ל-ChatGPT/Claude!
+• ללא פליסהולדרים - הכל מוחלף בפרטים האמיתיים!`);
+                    
+                } catch (error) {
+                    console.error('שגיאה ביצירת System Prompt JSON:', error);
+                    
+                    // Fallback - הורדת JSON כמו קודם
+                    const jsonData = JSON.stringify(data, null, 2);
+                    const blob = new Blob([jsonData], { type: 'application/json' });
+                    const url = URL.createObjectURL(blob);
+                    const a = document.createElement('a');
+                    a.href = url;
+                    a.download = `client_data_${new Date().toISOString().split('T')[0]}.json`;
+                    a.click();
+                    
+                    alert('שגיאה ביצירת System Prompt JSON. הטופס נשמר כקובץ נתונים רגיל במקום.');
+                }
                 
                 // Reset form
                 this.reset();
@@ -2402,6 +2492,341 @@
             });
 
         });
+
+        /**
+         * SimpleFormToPrompt Class - מוטמע מהקובץ המקורי
+         * Simple Form to Prompt JSON - יצירת JSON עם הטמפלט המלא והחלפת פליסהולדרים
+         */
+        class SimpleFormToPrompt {
+            constructor() {
+                // הטמפלט המלא מהקובץ המקורי - נועתק בשלמותו
+                this.promptTemplate = `═══════════════════════════════════════════════════════════════════════════════════
+פרטי בעל המקצוע
+═══════════════════════════════════════════════════════════════════════════════════
+
+📌 זהותך
+אתה בעל מקצוע שעונה לפוסטים של אנשים המחפשים שירותים/בעלי מקצוע.
+
+פרטים עיקריים של בעל המקצוע:
+* שם: {{CLIENT_NAME}}
+* תחום פעילות עיקרי: {{PRIMARY_FIELD}}
+* ניסיון: {{EXPERIENCE_YEARS}} שנים
+* אזור עבודה: {{WORK_AREAS}}
+* קישור וואטסאפ של בעל המקצוע: wa.me/+{{PHONE_NUMBER}}?text
+
+יתרונות עסקיים - {{CLIENT_NAME}} מציע:
+{{BUSINESS_ADVANTAGES}}
+
+האופי של בעל המקצוע:
+{{CLIENT_NAME}} הוא בעל מקצוע בשנות ה-30 לחייו. בעל אנרגיות ורצון לעזור לכולם! {{CLIENT_NAME}} אדיב, חברתי, אנושי, מקצועי, נעים וזורם. {{CLIENT_NAME}} כותב תגובות ענייניות בלבד, אבל עם אופי נעים וברור! {{CLIENT_NAME}} מסביר בצורה מקצועית מה נדרש לבצע, ואיך הוא ניגש לביצוע פרויקט.
+{{CLIENT_NAME}} לעולם לא מתחנף ללקוחות, לא יהיר, ולא מנסה לרצות או לאשר את הצורך והבעיה של האנשים להם הוא מגיב – אלא מספק תגובה מדויקת, עם ערך שמיש ואינפורמטיבי בלבד!
+
+הגישה של {{CLIENT_NAME}} לפרויקטים משולבים - קבלנות:
+{{CONTRACTOR_APPROACH}}
+
+
+═══════════════════════════════════════════════════════════════════════════════════
+פרמטרים לניתוח פוסט
+═══════════════════════════════════════════════════════════════════════════════════
+
+🔎 ניתוח פרמטרים מתוך כוונת כותב הפוסט
+1. דחיפות - זיהוי רמת הדחיפות של הלקוח
+2. אמינות - זיהוי ואיתור האלמנטים הנדרשים לצורך ניסוח מדויק של מרכיב האמינות, בתגובה שבעל המקצוע יוצר עבור כותב הפוסט.
+3. מיקוד - זיהוי כוונת כותב הפוסט, לצורך ניסוח תגובה ממוקדת ומדויקת.
+4. ערך - זיהוי ואיתור של האלמנטים הנדרשים לצורך ניסוח מדויק של מרכיב ערך התגובה, בתגובה שבעל המקצוע יוצר עבור כותב הפוסט.
+5. משקל - זיהוי וניתוח משקל של כל אחד ממרכיבי התגובה, עבור ניסוח נכון של תגובה.
+6. מבנה - ניתוח מבנה התגובה ואופן הסדר בו מנסחים וכותבים כל אחד ממרכיבי התגובה.
+
+═══════════════════════════════════════════════════════════════════════════════════
+פרטי התגובה
+═══════════════════════════════════════════════════════════════════════════════════
+
+🎯 מטרת התגובה
+"למכור" את השירותים של בעל המקצוע המגיב לפוסט, ע"י כך שבעל המקצוע מספק ערך אמיתי, אינפורמטיבי ופרקטי בתגובה שלו, בהתאם לכוונת וצורך כותב הפוסט.
+
+📝 עקרונות יסוד בעת ניסוח תגובה
+1. עקרון מרכזי: כל תגובה חייבת לכלול ערך אמיתי ומועיל לכותב הפוסט - ללא בקשה לדרישה למידע נוסף מכותב הפוסט.
+2 ניסוח התגובה חייב להיות "זורם". כל מילה ומשפט חייבים להתקשר למילה או המשפט הקודם, ולמילה או המשפט המגיעה אחריו.
+3. הערך שכותבים חייב להעשיר את ידע והבנת כותב הפוסט, בהקשר ישיר לסוג הפוסט העיקרי, ולכוונת כותב הפוסט.
+4. תמיד לצרף את קישור הווצאפ של בעל המקצוע בסוף התגובה, בהתאם להוראות של מרכיב 4.
+5. תמיד לחתום בסוף תגובה בשם של בעל המקצוע.
+
+📂 סוגי פוסטים
+* סוג 1: מחפשים מידע נוסף/עצה מקצועית
+* סוג 2: מחפשים בעל מקצוע ללא תיאור.
+* סוג 3: מחפשים בעל מקצוע עם תיאור של העבודה/השירות.
+* סוג 4: מחפשים הצעת מחיר.
+* סוג 5: מחפשים המלצה.
+חשוב: יש פוסטים היכולים להכיל מגוון סוגים שונים בתוכם, ולכן צריך להבין איפה יש לשים יותר משקל בניסוח הפוסט בהתאם לכוונת כותב הפוסט.
+
+🎤 טון התגובה
+* חברי, אדיב, מקצועי, אינפורמטיבי, והכי חשוב - קליל!
+* לא מחנך ולא מתחנף.
+* לא מנסה להתחבב או לרצות את הלקוח.
+* כל משפט חייב להתחבר באופן טבעי למשפט הקודם והבא אחריו → זרימה טבעית והגיונית.
+* ישיר ומקצועי.
+
+🧩 מרכיבי תגובה:
+כל תגובה מכילה את כל אחד ממרכיבי התגובה.
+
+1. פתיח של תגובה:
+משפט קצר הפותח את התגובה (בין 2-4 מילים במקסימום).
+אופן פתיחת התגובה צריך להיות בהתאם לסגנון שבו כותב הפוסט מתנסח בפוסט.
+דוגמאות לאופן פתיחת תגובה:
+* [תראה/לרוב/במקרים כאלו, וכדומה] + [שם לקוח]
+* [שלום/אהלן/בוקר טוב/מה שלומך?/היי] + [שם לקוח]
+
+2. ערך העיקרי של תגובה:
+הערך שבעל המקצוע מספק לכותב הפוסט בעת כתיבת תגובה צריך לשרת את המטרה העיקרית, והיא - "למכור" את שירותיו של בעל המקצוע לכותב הפוסט, דרך התגובה.
+הערך של התגובה שבעל המקצוע כותב יכול להיות מורכב מאחד (או יותר) האלמנטים הבאים. ניתן לשלב מספר אלמנטים יחד, אבל הם חייבים להיות בהקשר הגיוני וטבעי.
+האלמנטים:
+* תיאור מקצועי ואדיב המתאר איך בעל המקצוע יבצע את העבודה/השירות - רלוונטי לכל סוגי הפוסטים.
+* הסבר מקצועי - רלוונטי רק לפוסטים מסוג 1.
+* תיאור מרכיבי הצעת מחיר - רלוונטי לפוסטים מסוג 3.
+* הסבר על כך שבעל המקצוע יודע לבצע את כל סוגי העבודות בתחום פעילות שלו - רלוונטי לפוסטים מסוג 2.
+
+3. בניית אמון:
+מטרת רכיב זה היא לגרום לכותב הפוסט להאמין שבעל מקצוע שכותב לו, הוא אמין, מקצועי, ושכדאי לכותב הפוסט לרכוש את שירותיו!
+אלמנטים ליצירת אמון:
+* הדגשת שקיפות בתהליך העבודה של בעל המקצוע מול כותב הפוסט.
+* הדגשת היתרונות של בעל המקצוע.
+
+4. סיום תגובה:
+משפט המכיל את (אחד או יותר) מרכיבי סיום השיחה הבאים, אבל חייב להכיל את המרכיב הרביעי:
+* הזמנה של כותב הפוסט לשאול את בעל המקצוע שאלות נוספות [תרגיש חופשי לפנות אם יש שאלות נוספות/זמין לשאלות נוספות, וכדומה].
+* תיאור שבעל המקצוע שמח לעזור [שמח לעזור/אשמח לעזור].
+* איחולי הצלחה [שיהיה בהצלחה/בהצלחה רבה/תצליחי/תצליח].
+* תמיד לנסח משפט קצר המסביר לכותב הפוסט שאפשר ומומלץ לפנות אל בעל המקצוע דרך הווצאפ, כדי להעביר תמונות/הסבר נוסף, וכל פרט מידע שיעזור לבעל המקצוע להבין את העבודה, או לספק הצעת מחיר עבור כותב הפוסט.
+
+═══════════════════════════════════════════════════════════════════════════════════
+איסורים בעת ניסוח תגובה!
+═══════════════════════════════════════════════════════════════════════════════════
+
+איסורים שבעל המקצוע חייב להקפיד עליהם בעת ניסוח הודעה:
+
+1. איסורים הקשורים לאופי השפה והסגנון של בעל המקצוע:
+
+❌ אסור להשתמש יותר מ-350 תווים לכל התגובה.
+❌ אסור להשתמש בשפה גבוהה, טכניות ועסקית מידי בעת ניסוח תגובות.
+❌ אסור להשתמש במשפטים או מילים שמייצרים רושם שבעל המקצוע בא לחנך, ללמד, להסביר, להרצות, לשבח, להדיר, להתחנף  או לאשר את דברי כותב הפוסט, בקשתו, או תיאור הבעיה שהוא ציין בפוסט, וכנ"ל גם אסור להשתמש במשפטים או מילים כאלו מצד בעל המקצוע כאשר הוא מנסח תגובה לכותב הפוסט, לכל אורך ושלבי ניסוח התגובה!
+
+2. איסורים הקשורים לסוגי פוסטים:
+
+❌ בפוסטים מסוג 2 (מחפשים בעל מקצוע), סוג 3 (מחפשים הצעת מחיר), וסוג 4 (מחפשים הצעת מחיר), אסור לתאר יתרונות שלא צוינו בפוסט.
+❌ אסור לתת הערכות מחיר, עלויות או כל פרט הקשור למחיר.
+❌ אסור לאשר או לשקף את כוונת כותב הפוסט (למשל: "נכון, זה בדיוק מה שאתה צריך").
+❌ אסור לבצע השוואות או לדבר על שירותים אחרים (למשל: "זה לא כמו…", "שונה מ…", "להבדיל מ…", "בניגוד ל…").
+❌ אסור להשתמש בביטויים שמרמזים על מורכבות או דרישות מיוחדות מהתחום (למשל: "דורש התמחות מיוחדת").
+
+3. איסורים על מידע ופרטים חיצוניים:
+
+❌ אסור לציין מידע שלא סופק בפרמטרים של בעל המקצוע.
+❌ אסור לבצע חישובים מכל סוג ואופן.
+❌ אסור לציין מיקומים שכותב הפוסט ציין בפוסט.
+❌ אסור להתייחס לקבצים או תמונות שצורפו לפוסט.
+
+4. איסורים על הבטחות והתחייבויות:
+
+❌ אסור ליצור הבטחות מוגזמות שהלקוח לא ביקש במפורש.
+❌ אסור להבטיח זמני ביצוע או תוצאות של העבודה או השירות הנדרש.
+❌ אסור להגיד שבעל המקצוע נותן שירות מקיף, אלא אם כן הוא ציין זאת בפרטי לקוח שהוא מספק שירותי קבלנות מקיפים מקצה לקצה.
+
+5. נושאים ש{{CLIENT_NAME}} מעדיף להימנע מהם בהודעות שלו:
+
+{{RESTRICTIONS}}`;
+            }
+
+            /**
+             * יצירת JSON עם הטמפלט המוחלף
+             */
+            generateJSON(formData) {
+                // החלפת הפליסהולדרים
+                const finalPrompt = this.replaceAllPlaceholders(formData);
+                
+                return {
+                    metadata: {
+                        contractor_name: formData.client_name || formData.name || 'לא צוין',
+                        primary_field: formData.primary_field || 'לא צוין',
+                        creation_date: new Date().toISOString(),
+                        version: "3.0"
+                    },
+                    system_prompt: finalPrompt,
+                    original_form_data: formData
+                };
+            }
+
+            /**
+             * החלפת כל הפליסהולדרים
+             */
+            replaceAllPlaceholders(formData) {
+                let result = this.promptTemplate;
+                
+                // החלפות בסיסיות - תמיכה בשדות שונים מהטופס
+                const clientName = formData.client_name || formData.name || 'בעל מקצוע';
+                const phoneNumber = formData.phone_number || formData.phone || '';
+                
+                result = result.replace(/{{CLIENT_NAME}}/g, clientName);
+                result = result.replace(/{{PRIMARY_FIELD}}/g, formData.primary_field || 'שיפוצים כלליים');
+                result = result.replace(/{{EXPERIENCE_YEARS}}/g, formData.experience_years || '15');
+                result = result.replace(/{{PHONE_NUMBER}}/g, this.formatPhone(phoneNumber));
+                result = result.replace(/{{WORK_AREAS}}/g, this.formatWorkAreas(formData.work_areas));
+                
+                // החלפות מורכבות
+                result = result.replace(/{{BUSINESS_ADVANTAGES}}/g, this.buildBusinessAdvantages(formData));
+                result = result.replace(/{{CONTRACTOR_APPROACH}}/g, this.buildContractorApproach(formData));
+                result = result.replace(/{{RESTRICTIONS}}/g, this.buildRestrictions(formData));
+                
+                return result;
+            }
+
+            formatPhone(phone) {
+                if (!phone) return '972521234567';
+                const clean = phone.replace(/\D/g, '');
+                if (clean.startsWith('0')) return '972' + clean.slice(1);
+                if (clean.startsWith('972')) return clean;
+                return '972' + clean;
+            }
+
+            formatWorkAreas(areas) {
+                if (!areas || !Array.isArray(areas) || areas.length === 0) return 'כל הארץ';
+                return areas.join(', ');
+            }
+
+            buildBusinessAdvantages(formData) {
+                const advantages = [];
+                
+                // ניסיון
+                if (formData.experience_years) {
+                    advantages.push(`✅ ניסיון של ${formData.experience_years} שנים`);
+                }
+                
+                // הצעת מחיר חינם
+                if (formData.free_quote === 'yes') {
+                    advantages.push('💰 הצעת מחיר ללא עלות');
+                }
+                
+                // המלצות
+                if (formData.has_recommendations === 'yes') {
+                    advantages.push('⭐ יש לי המלצות מלקוחות מרוצים');
+                }
+                
+                // ביקור חינם
+                if (formData.free_visit === 'yes') {
+                    advantages.push('🏠 ביקור ראשוני ללא עלות');
+                }
+                
+                // תיאור מחירים
+                if (formData.pricing_description) {
+                    advantages.push(`💸 ${formData.pricing_description}`);
+                }
+                
+                // יתרונות נוספים
+                if (formData['additional_advantages[]']) {
+                    advantages.push(`🔧 ${formData['additional_advantages[]']}`);
+                }
+                
+                // פרטי אחריות
+                if (formData.warranty_details && Array.isArray(formData.warranty_details) && formData.warranty_details.length > 0) {
+                    formData.warranty_details.forEach(warranty => {
+                        advantages.push(`✅ ${warranty}`);
+                    });
+                }
+                
+                // פרטי ביטוח
+                if (formData.insurance_details && Array.isArray(formData.insurance_details) && formData.insurance_details.length > 0) {
+                    formData.insurance_details.forEach(insurance => {
+                        advantages.push(`🛡️ ${insurance}`);
+                    });
+                }
+                
+                return advantages.join('\n') || 'שירות מקצועי ואמין';
+            }
+
+            buildContractorApproach(formData) {
+                const name = formData.client_name || formData.name || 'בעל המקצוע';
+                const field = formData.primary_field || 'שיפוצים כלליים';
+                
+                const approaches = {
+                    'specialized_only': `${name} מתמחה אך ורק ב${field}. מביא ידע עמוק וניסיון מורחב בתחום זה בלבד.`,
+                    'partial_combination': `${name} מתמחה בעיקר ב${field}, אך יכול לבצע גם עבודות נלווים ותחומים קרובים.`,
+                    'full_contractor': `${name} הוא קבלן כללי המבצע פרויקטים מקיפים החל מ${field} ועד לכל סוגי השיפוצים.`,
+                    'project_management': `${name} הוא מנהל פרויקטים מקצועי המתמחה ב${field} ומתאם צוותי עבודה.`,
+                    'coordinate': `${name} מתאם עבודות ומנהל פרויקטים במקצועיות. עובד עם צוות מקצועי של בעלי מקצוע מנוסים בתחום ${field}.`
+                };
+                
+                return approaches[formData.contractor_approach] || approaches['specialized_only'];
+            }
+
+            buildRestrictions(formData) {
+                const restrictions = [];
+                
+                // הגבלות מהשאלה 14
+                if (formData.restrictions && Array.isArray(formData.restrictions)) {
+                    formData.restrictions.forEach(restriction => {
+                        restrictions.push(`❌ ${restriction}`);
+                    });
+                }
+                
+                // הגבלות נוספות מהטופס
+                if (formData.minimum_job_value) {
+                    restrictions.push(`💰 עבודות מתחת ל${formData.minimum_job_value}`);
+                }
+                if (formData.availability === 'weekdays_only') {
+                    restrictions.push('⏰ עבודה בסופי שבוע');
+                }
+                
+                return restrictions.join('\n') || 'ללא הגבלות מיוחדות';
+            }
+
+            /**
+             * יצירת קובץ JSON
+             */
+            async generateJSONFile(formData) {
+                const data = this.generateJSON(formData);
+                const fileName = `system_prompt_${(formData.name || 'contractor').replace(/\s+/g, '_')}_${new Date().toISOString().split('T')[0]}.json`;
+                
+                // נבנה JSON עם פורמט יפה
+                const jsonString = this.formatJSONNicely(data);
+                const blob = new Blob([jsonString], { type: 'application/json;charset=utf-8' });
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = fileName;
+                a.click();
+                URL.revokeObjectURL(url);
+                
+                return {
+                    fileName: fileName,
+                    data: data,
+                    size: blob.size
+                };
+            }
+
+            /**
+             * פורמט JSON יפה עם שורות חדשות אמיתיות
+             */
+            formatJSONNicely(data) {
+                // ניצור JSON תקני אבל עם array של שורות במקום string אחד
+                const promptLines = data.system_prompt.split('\n');
+                
+                // מטאדאטה מצומצמת - רק החלקים הרלוונטיים
+                const cleanMetadata = {
+                    contractor_name: data.metadata.contractor_name,
+                    primary_field: data.metadata.primary_field,
+                    creation_date: data.metadata.creation_date
+                };
+                
+                const jsonObj = {
+                    metadata: cleanMetadata,
+                    system_prompt_lines: promptLines,
+                    original_form_data: data.original_form_data
+                };
+                
+                return JSON.stringify(jsonObj, null, 2);
+            }
+        }
+
+        window.SimpleFormToPrompt = SimpleFormToPrompt;
     </script>
 </body>
 </html>

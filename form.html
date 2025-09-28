@@ -436,7 +436,8 @@
 
         .restriction-tags,
         .work-area-tags,
-        .insurance-tags {
+        .insurance-tags,
+        .advantage-tags {
             display: flex;
             flex-wrap: wrap;
             gap: 8px;
@@ -446,13 +447,15 @@
 
         .restriction-tags:not(:empty),
         .work-area-tags:not(:empty),
-        .insurance-tags:not(:empty) {
+        .insurance-tags:not(:empty),
+        .advantage-tags:not(:empty) {
             margin-top: 0;
         }
 
         .restriction-tag,
         .work-area-tag,
-        .insurance-tag {
+        .insurance-tag,
+        .advantage-tag {
             display: inline-flex;
             align-items: center;
             gap: 6px;
@@ -467,7 +470,8 @@
 
         .restriction-tag .remove-tag,
         .work-area-tag .remove-tag,
-        .insurance-tag .remove-tag {
+        .insurance-tag .remove-tag,
+        .advantage-tag .remove-tag {
             cursor: pointer;
             font-weight: bold;
             font-size: 16px;
@@ -485,7 +489,8 @@
 
         .restriction-tag .remove-tag:hover,
         .work-area-tag .remove-tag:hover,
-        .insurance-tag .remove-tag:hover {
+        .insurance-tag .remove-tag:hover,
+        .advantage-tag .remove-tag:hover {
             background: rgba(76, 29, 149, 0.3);
         }
 
@@ -715,7 +720,7 @@
             font-weight: 600;
             cursor: pointer;
             transition: all 0.3s ease;
-            margin-top: 16px;
+            margin-top: 0px;
         }
 
         .contact-form button:hover {
@@ -1042,7 +1047,7 @@
             }
             
             /* Mobile form containers responsive */
-            .warranty-tags, .insurance-tags, .work-area-tags, .restriction-tags {
+            .warranty-tags, .insurance-tags, .work-area-tags, .restriction-tags, .advantage-tags {
                 margin-top: 0 !important;
             }
             
@@ -1286,7 +1291,8 @@
                             <div id="advantagesDropdown" style="display: none; position: absolute; top: 100%; left: 0; right: 0; background: white; border: 1px solid #e5e7eb; border-radius: 6px; box-shadow: 0 4px 12px rgba(0,0,0,0.15); z-index: 1000; max-height: 240px; overflow-y: auto;">
                             </div>
                         </div>
-
+                        
+                        <div class="advantage-tags" id="advantageTags"></div>
                     </div>
                 </div>
 
@@ -1775,25 +1781,45 @@
                 if (selectedAdvantages.length === 0) {
                     advantagesDisplay.appendChild(advantagesPlaceholder);
                 } else {
-                    selectedAdvantages.forEach(advantage => {
-                        const tag = document.createElement('div');
-                        tag.className = 'advantage-tag';
-                        tag.innerHTML = `
-                            <span>${advantage}</span>
-                            <span class="remove-tag">×</span>
-                            <input type="hidden" name="additional_advantages[]" value="${advantage}">
-                        `;
-                        
-                        tag.querySelector('.remove-tag').addEventListener('click', function(e) {
-                            e.stopPropagation();
-                            selectedAdvantages = selectedAdvantages.filter(adv => adv !== advantage);
-                            updateAdvantagesDisplay();
-                            updateDropdownStates();
-                        });
-                        
-                        advantagesDisplay.appendChild(tag);
-                    });
+                    // Show selected count in main display
+                    const countSpan = document.createElement('span');
+                    countSpan.textContent = `נבחרו ${selectedAdvantages.length} יתרונות`;
+                    countSpan.style.color = 'var(--text-primary)';
+                    advantagesDisplay.appendChild(countSpan);
                 }
+                
+                // Add chevron
+                const chevron = document.createElement('i');
+                chevron.className = 'fas fa-chevron-down';
+                chevron.style.cssText = 'position: absolute; left: 16px; top: 50%; transform: translateY(-50%); color: var(--text-muted);';
+                advantagesDisplay.appendChild(chevron);
+                
+                // Update separate tags display
+                updateAdvantageTags();
+            }
+            
+            function updateAdvantageTags() {
+                const advantageTags = document.getElementById('advantageTags');
+                advantageTags.innerHTML = '';
+                
+                selectedAdvantages.forEach(advantage => {
+                    const tag = document.createElement('div');
+                    tag.className = 'advantage-tag';
+                    tag.innerHTML = `
+                        <span>${advantage}</span>
+                        <span class="remove-tag">×</span>
+                        <input type="hidden" name="additional_advantages[]" value="${advantage}">
+                    `;
+                    
+                    tag.querySelector('.remove-tag').addEventListener('click', function(e) {
+                        e.stopPropagation();
+                        selectedAdvantages = selectedAdvantages.filter(adv => adv !== advantage);
+                        updateAdvantagesDisplay();
+                        updateDropdownStates();
+                    });
+                    
+                    advantageTags.appendChild(tag);
+                });
             }
 
             function updateDropdownStates() {
@@ -2087,7 +2113,7 @@
 
             // New warranty functionality (Question 10)
             const warrantyDescription = document.getElementById('warrantyDescription');
-            const warrantyNumber = document.getElementById('warrantyNumber');
+            let warrantyNumber = document.getElementById('warrantyNumber');
             const warrantyUnitSelect = document.getElementById('warrantyUnitSelect');
             const warrantyUnitText = document.getElementById('warrantyUnitText');
             const warrantyUnitDropdown = document.getElementById('warrantyUnitDropdown');
@@ -2210,6 +2236,9 @@
                     // Add the new input to container
                     container.appendChild(newInput);
                     
+                    // Update the global reference to the new input
+                    warrantyNumber = newInput;
+                    
                     // Add event listeners to new input
                     newInput.addEventListener('blur', checkAndAddWarranty);
                     newInput.addEventListener('keypress', function(e) {
@@ -2255,7 +2284,7 @@
 
             // New insurance functionality (Question 11)
             const insuranceDescription = document.getElementById('insuranceDescription');
-            const insuranceNumber = document.getElementById('insuranceNumber');
+            let insuranceNumber = document.getElementById('insuranceNumber');
             const insuranceUnitSelect = document.getElementById('insuranceUnitSelect');
             const insuranceUnitText = document.getElementById('insuranceUnitText');
             const insuranceUnitDropdown = document.getElementById('insuranceUnitDropdown');
@@ -2377,6 +2406,9 @@
                     
                     // Add the new input to container
                     container.appendChild(newInput);
+                    
+                    // Update the global reference to the new input
+                    insuranceNumber = newInput;
                     
                     // Add event listeners to new input
                     newInput.addEventListener('blur', checkAndAddInsurance);

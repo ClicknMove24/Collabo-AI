@@ -3251,7 +3251,7 @@
             appendWhatsAppLink(response, phoneNumber) {
                 // Append WhatsApp link in the format wa.me/+9725XXXXXXXX
                 if (!phoneNumber) return response;
-                return `${response}\nwa.me/+${phoneNumber}`;
+                return `${response}\nhttps://wa.me/+${phoneNumber}`;
             }
 
             generateMockResponse(userMessage, phoneNumber) {
@@ -3555,11 +3555,8 @@ ${clientName}`;
                 }
                 
                 // Question 7: Specializations (OPTIONAL - not required)
-                
-                // Question 8: Restrictions/limitations (REQUIRED - at least 2 items)
-                if (!formData.restrictions || formData.restrictions.length < 2) {
-                    missingFields.push('8. נושאים להימנעות (נדרשים לפחות 2 נושאים)');
-                }
+
+                // Question 8: Restrictions/limitations (OPTIONAL - not required)
                 
                 if (missingFields.length > 0) {
                     const errorMessage = `חסרים הפרטים הבאים:\n${missingFields.join('\n')}`;

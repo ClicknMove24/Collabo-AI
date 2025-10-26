@@ -239,40 +239,10 @@
             font-weight: 600;
         }
 
-        /* Dropdown styling */
-        .dropdown-list {
-            font-size: 14px;
-            max-height: 240px; /* Height for exactly 5 items (48px each) */
-        }
-
-        .dropdown-item {
-            padding: 12px 16px;
-            cursor: pointer;
-            border-bottom: 1px solid #f3f4f6;
-            text-align: right;
-            transition: background-color 0.2s ease;
-            height: 48px;
-            display: flex;
-            align-items: center;
-        }
-
-        .dropdown-item:last-child {
-            border-bottom: none;
-        }
-
-        .dropdown-item:hover {
-            background-color: #f8fafc;
-        }
-
-        .dropdown-item.highlighted {
-            background-color: rgba(76, 29, 149, 0.1);
-            color: rgba(76, 29, 149, 0.8);
-        }
 
 
 
-        /* Checkbox styling in dropdown */
-        .restriction-checkbox-item,
+        /* Checkbox styling */
         .work-area-checkbox-item {
             padding: 12px 16px;
             border-bottom: 1px solid #f3f4f6;
@@ -284,84 +254,22 @@
             transition: background-color 0.2s ease;
         }
 
-        .restriction-checkbox-item:hover,
         .work-area-checkbox-item:hover {
             background-color: #f8fafc;
         }
 
-        .restriction-checkbox-item:last-child,
         .work-area-checkbox-item:last-child {
             border-bottom: none;
         }
 
-        .restriction-checkbox-item input[type="checkbox"],
         .work-area-checkbox-item input[type="checkbox"] {
             accent-color: rgba(76, 29, 149, 0.8);
         }
 
 
 
-        /* Restriction dropdown styling */
-        .restriction-select-container {
-            position: relative;
-            width: 100%;
-        }
-
-        .restriction-select {
-            width: 100%;
-            height: 48px;
-            padding: 12px 20px;
-            border: 2px solid var(--border-light);
-            border-radius: var(--border-radius);
-            background: white;
-            cursor: pointer;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-size: 16px;
-            transition: all 0.3s ease;
-            box-sizing: border-box;
-        }
-
-        .restriction-select:hover {
-            border-color: var(--ai-purple);
-        }
-
-        .restriction-select.active {
-            border-color: var(--ai-purple);
-            box-shadow: 0 0 0 3px rgba(76, 29, 149, 0.2);
-        }
-
-        .restriction-placeholder {
-            color: var(--text-muted);
-        }
-
-        .restriction-arrow {
-            transition: transform 0.3s ease;
-            color: var(--text-muted);
-        }
-
-        .restriction-select.active .restriction-arrow {
-            transform: rotate(180deg);
-        }
-
-        .restriction-dropdown {
-            position: absolute;
-            top: 100%;
-            left: 0;
-            right: 0;
-            background: white;
-            border: 1px solid #e5e7eb;
-            border-radius: 6px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-            z-index: 1000;
-            display: none;
-            max-height: 300px;
-            overflow-y: auto;
-        }
 
 
-        .restriction-tags,
         .work-area-tags,
         .business-benefits-tags {
             display: flex;
@@ -371,10 +279,7 @@
             min-height: 0;
         }
 
-        /* Business benefits dropdown styling */
-        #businessBenefitsContainer {
-            position: relative;
-        }
+        /* Business benefits display styling */
 
         #businessBenefitsDisplay {
             cursor: pointer;
@@ -385,23 +290,6 @@
             border-color: var(--ai-purple);
         }
 
-        #businessBenefitsDropdown {
-            position: absolute;
-            top: 100%;
-            left: 0;
-            right: 0;
-            background: white;
-            border: 1px solid #e5e7eb;
-            border-radius: 6px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-            z-index: 1000;
-            max-height: 300px;
-            overflow-y: auto;
-        }
-
-        #businessBenefitsDropdown[style*="block"] {
-            display: block !important;
-        }
 
         /* Business benefit input styling */
         .business-benefit-input {
@@ -417,13 +305,11 @@
             border-color: #d1d5db;
         }
 
-        .restriction-tags:not(:empty),
         .work-area-tags:not(:empty),
         .business-benefits-tags:not(:empty) {
             margin-top: 0;
         }
 
-        .restriction-tag,
         .work-area-tag,
         .business-benefit-tag {
             display: inline-flex;
@@ -438,7 +324,6 @@
             border: 1px solid rgba(76, 29, 149, 0.2);
         }
 
-        .restriction-tag .remove-tag,
         .work-area-tag .remove-tag,
         .business-benefit-tag .remove-tag {
             cursor: pointer;
@@ -456,56 +341,13 @@
             color: rgba(76, 29, 149, 0.8);
         }
 
-        .restriction-tag .remove-tag:hover,
         .work-area-tag .remove-tag:hover,
         .business-benefit-tag .remove-tag:hover {
             background: rgba(76, 29, 149, 0.3);
         }
 
-        /* Custom restriction input styling */
-        .custom-restriction-container {
-            padding: 16px;
-            border-bottom: 1px solid #e5e7eb;
-            background: #ffffff;
-            border-radius: 0;
-        }
 
-        .custom-restriction-container .input-label {
-            display: block;
-            font-size: 14px;
-            font-weight: 500;
-            color: #374151;
-            margin-bottom: 12px;
-            text-align: right;
-        }
-
-        .custom-restriction-input-group {
-            width: 100%;
-        }
-
-        .custom-restriction-container input,
-        .custom-restriction-input {
-            width: 100%;
-            padding: 10px 12px;
-            border: 1px solid #d1d5db;
-            border-radius: 6px;
-            font-size: 14px;
-            text-align: right;
-            transition: border-color 0.2s ease;
-            background: white;
-            box-sizing: border-box;
-            margin: 0;
-            height: 40px;
-        }
-
-        .custom-restriction-container input:focus,
-        .custom-restriction-input:focus {
-            outline: none;
-            border-color: rgba(76, 29, 149, 0.6);
-            box-shadow: 0 0 0 3px rgba(76, 29, 149, 0.1);
-        }
-
-        /* Work area dropdown styling - copied from restriction dropdown */
+        /* Work area styling */
         .work-area-select-container {
             position: relative;
             width: 100%;
@@ -549,31 +391,9 @@
             transform: rotate(180deg);
         }
 
-        .work-area-dropdown {
-            position: absolute;
-            top: 100%;
-            left: 0;
-            right: 0;
-            background: white;
-            border: 1px solid #e5e7eb;
-            border-radius: 6px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-            z-index: 1000;
-            display: none;
-            max-height: 300px;
-            overflow-y: auto;
-        }
 
 
 
-        
-        .dropdown-option:hover {
-            background-color: #f9fafb;
-        }
-        
-        .dropdown-option:last-child {
-            border-bottom: none;
-        }
 
         /* Submit Button - מעתק מדף הנחיתה */
         .contact-form button {
@@ -641,7 +461,7 @@
                 margin-bottom: 40px;
             }
 
-            .form-input, .work-area-select, .restriction-select, .radio-item {
+            .form-input, .work-area-select, .radio-item {
                 height: 44px;
                 padding: 10px 16px;
                 font-size: 16px;
@@ -719,7 +539,7 @@
                 margin-bottom: 24px;
             }
 
-            .form-input, .work-area-select, .restriction-select, .radio-item {
+            .form-input, .work-area-select, .radio-item {
                 height: 44px;
                 padding: 10px 14px;
                 font-size: 14px;
@@ -737,16 +557,11 @@
             }
 
 
-            /* Mobile dropdown adjustments */
+            /* Mobile display adjustments */
             #businessBenefitsDisplay {
                 height: auto;
                 min-height: 44px;
                 padding: 10px 14px;
-            }
-
-            .dropdown-option {
-                padding: 12px 14px;
-                font-size: 14px;
             }
 
             /* Mobile radio buttons - yes/no specific */
@@ -784,7 +599,7 @@
             }
 
             /* Mobile tags */
-            .work-area-tag, .restriction-tag {
+            .work-area-tag {
                 font-size: 12px;
                 padding: 4px 8px;
             }
@@ -813,6 +628,16 @@
                 font-size: 14px !important;
             }
             
+            #specializationsDisplay {
+                padding: 10px 14px !important;
+                border-width: 1px !important;
+                font-size: 14px !important;
+            }
+            
+            #specializationsDisplay span {
+                font-size: 14px !important;
+            }
+            
             /* Mobile business benefit inputs */
             .business-benefit-input {
                 font-size: 14px !important;
@@ -820,14 +645,115 @@
                 text-align: right !important;
             }
             
-            /* Mobile restriction inputs */
-            .restriction-input {
+
+            /* Mobile preview button */
+            #generatePreviewBtn {
+                width: 100% !important;
+                padding: 16px 20px !important;
                 font-size: 14px !important;
-                padding: 10px 14px 10px 35px !important;
-                text-align: right !important;
+                margin: 20px 0 !important;
+                white-space: normal !important;
+                line-height: 1.4 !important;
+                height: auto !important;
+                min-height: 50px !important;
+                word-wrap: break-word !important;
+                overflow-wrap: break-word !important;
+                text-align: center !important;
+                display: block !important;
+                box-sizing: border-box !important;
+            }
+
+            /* Mobile preview container spacing */
+            #previewContainer {
+                margin-top: 30px !important;
+            }
+
+            /* Mobile facebook posts - 20px spacing between posts and expand vertically */
+            .facebook-post-card {
+                margin-bottom: 20px !important;
+                padding: 20px !important;
+                border-radius: 12px !important;
+                background: #ffffff !important;
+                border: 1px solid #e5e7eb !important;
+                box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1) !important;
+                min-height: 300px !important;
+            }
+
+            .post-content {
+                padding: 0 16px 16px !important;
+                min-height: 60px !important;
+                line-height: 1.5 !important;
+            }
+
+            .facebook-post-card h4 {
+                font-size: 16px !important;
+                margin-bottom: 12px !important;
+                line-height: 1.4 !important;
+            }
+
+            .facebook-post-card p {
+                font-size: 14px !important;
+                line-height: 1.5 !important;
+                margin-bottom: 8px !important;
+            }
+
+            .facebook-post-card .response {
+                background: #f8fafc !important;
+                border-right: 4px solid #6366f1 !important;
+                padding: 15px !important;
+                margin-top: 12px !important;
+                border-radius: 8px !important;
+            }
+
+            /* Mobile comments section - fix comment positioning and expand vertically */
+            .comments-section {
+                padding: 20px 16px !important;
+                background: #f8f9fa !important;
+                border-top: 1px solid #f0f2f5 !important;
+                min-height: 80px !important;
             }
             
-            /* Preview Section Styles */
+            
+            
+
+            /* Mobile interaction buttons - remove icons and improve layout */
+            .post-interactions {
+                border-top: none !important;
+                padding: 0 16px !important;
+                margin-top: 0 !important;
+                margin-bottom: 10px !important;
+            }
+
+            .interactions-bar {
+                display: flex !important;
+                justify-content: space-between !important;
+                padding: 0 4px !important;
+                gap: 8px !important;
+                height: 30px !important;
+            }
+
+            .interaction-btn {
+                flex: 1 !important;
+                padding: 0 8px !important;
+                font-size: 13px !important;
+                text-align: center !important;
+                background-color: transparent !important;
+                border-radius: 6px !important;
+                border: none !important;
+                color: #65676b !important;
+                height: 30px !important;
+                display: flex !important;
+                align-items: center !important;
+                justify-content: center !important;
+                line-height: 1 !important;
+            }
+
+            .interaction-btn:hover {
+                background-color: #f0f2f5 !important;
+            }
+        }
+            
+        /* Preview Section Styles */
             @keyframes spin {
                 0% { transform: rotate(0deg); }
                 100% { transform: rotate(360deg); }
@@ -878,12 +804,6 @@
                 white-space: pre-wrap;
             }
 
-            /* Mobile custom inputs */
-            .custom-benefit-input, .custom-restriction-input {
-                font-size: 14px !important;
-                height: 44px !important;
-                padding: 10px 14px !important;
-            }
             
             /* Mobile textarea */
             .form-textarea {
@@ -892,11 +812,6 @@
             }
             
             
-            /* Mobile dropdown options */
-            .dropdown-option {
-                padding: 12px 14px !important;
-                font-size: 14px !important;
-            }
             
             /* Mobile specific spacing fixes */
             .form-section {
@@ -915,14 +830,14 @@
             }
             
             /* Mobile tag styling */
-            .work-area-tag, .restriction-tag, .business-benefit-tag {
+            .work-area-tag, .business-benefit-tag {
                 font-size: 12px !important;
                 padding: 4px 8px !important;
                 margin: 2px !important;
             }
             
             /* Mobile form containers responsive */
-            .work-area-tags, .restriction-tags, .business-benefits-tags {
+            .work-area-tags, .business-benefits-tags {
                 margin-top: 0 !important;
             }
             
@@ -931,10 +846,6 @@
                 transform: none;
             }
             
-            /* Better mobile touch targets for dropdowns */
-            .dropdown-option:hover {
-                background-color: #f3f4f6 !important;
-            }
         }
         /* Facebook-style preview section */
         .facebook-post-card {
@@ -944,6 +855,13 @@
             margin-bottom: 16px;
             box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        }
+
+        /* Mobile override for facebook-post-card spacing */
+        @media (max-width: 480px) {
+            .facebook-post-card {
+                margin-bottom: 20px !important;
+            }
         }
 
         .post-header {
@@ -1014,96 +932,109 @@
             background-color: #f0f2f5;
         }
 
-        .comments-section {
-            border-top: 1px solid #f0f2f5;
-            padding: 12px 16px;
-            background: #f8f9fa;
-        }
 
-        .comment {
-            display: flex;
-            align-items: flex-start;
-        }
+        /* FINAL Mobile Override - Must be last to override all other CSS */
+        @media (max-width: 480px) {
+            /* Facebook posts - spacing and height */
+            .facebook-post-card {
+                margin-bottom: 20px !important;
+                min-height: 300px !important;
+                padding: 20px !important;
+            }
 
-        .comment-avatar {
-            width: 32px;
-            height: 32px;
-            border-radius: 50%;
-            background: #42b883;
-            color: white;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 600;
-            font-size: 14px;
-            margin-left: 8px;
-            flex-shrink: 0;
-        }
+            /* Post content height */
+            .post-content {
+                padding: 0 16px 16px !important;
+                min-height: 60px !important;
+                line-height: 1.5 !important;
+            }
 
-        .comment-content {
-            flex: 1;
-        }
-
-        .comment-author {
-            font-weight: 600;
-            color: #1c1e21;
-            font-size: 13px;
-            margin-bottom: 2px;
-        }
-
-        .comment-text {
-            background: #f0f2f5;
-            padding: 8px 12px;
-            border-radius: 16px;
-            color: #1c1e21;
-            font-size: 14px;
-            line-height: 1.34;
-            margin-bottom: 4px;
-            display: inline-block;
-        }
-
-        .comment-text a {
-            color: #25d366 !important;
-            text-decoration: none;
-            font-weight: 500;
-            transition: color 0.2s ease;
-        }
-
-        .comment-text a:hover {
-            color: #128c7e !important;
-            text-decoration: underline;
-        }
-
-        .comment-actions {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            padding-right: 12px;
-        }
-
-        .comment-action {
-            color: #65676b;
-            font-size: 12px;
-            font-weight: 600;
-            cursor: pointer;
-        }
-
-        .comment-action:hover {
-            text-decoration: underline;
-        }
-
-        .comment-time {
-            color: #65676b;
-            font-size: 12px;
-        }
-
-        .comment-source {
-            color: #1877f2;
-            font-size: 11px;
-            background: #e7f3ff;
-            padding: 2px 6px;
-            border-radius: 10px;
-            margin-right: auto;
+            /* Mobile Comments Section - Copy Post Structure Exactly */
+            .comments-section {
+                background: #f8f9fa !important;
+                border: 1px solid #dddfe2 !important;
+                border-radius: 8px !important;
+                margin-bottom: 20px !important;
+                box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1) !important;
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+                padding: 0 !important;
+            }
+            
+            /* Comment Header - Copy post-header exactly */
+            .comment {
+                display: flex !important;
+                align-items: center !important;
+                padding: 12px 16px !important;
+                background: transparent !important;
+            }
+            
+            .comment-avatar {
+                width: 40px !important;
+                height: 40px !important;
+                border-radius: 50% !important;
+                background: #42b883 !important;
+                color: white !important;
+                display: flex !important;
+                align-items: center !important;
+                justify-content: center !important;
+                font-weight: 600 !important;
+                font-size: 16px !important;
+                margin-left: 12px !important;
+            }
+            
+            .comment-content {
+                flex: 1 !important;
+            }
+            
+            .comment-author {
+                font-weight: 600 !important;
+                color: #1c1e21 !important;
+                font-size: 15px !important;
+                margin-bottom: 2px !important;
+            }
+            
+            .comment-time {
+                color: #65676b !important;
+                font-size: 13px !important;
+            }
+            
+            /* Comment Text - Copy post-content exactly */
+            .comment-text {
+                padding: 0 16px 12px !important;
+                color: #1c1e21 !important;
+                line-height: 1.34 !important;
+                font-size: 15px !important;
+            }
+            
+            /* Comment Interactions - Copy post-interactions exactly */
+            .comment-actions {
+                border-top: 1px solid #f0f2f5 !important;
+                padding: 8px 16px !important;
+                display: flex !important;
+                justify-content: space-between !important;
+                gap: 8px !important;
+            }
+            
+            .comment-action {
+                flex: 1 !important;
+                padding: 0 8px !important;
+                font-size: 13px !important;
+                text-align: center !important;
+                background-color: transparent !important;
+                border-radius: 6px !important;
+                border: none !important;
+                color: #65676b !important;
+                height: 30px !important;
+                display: flex !important;
+                align-items: center !important;
+                justify-content: center !important;
+                line-height: 1 !important;
+                cursor: pointer !important;
+            }
+            
+            .comment-action:hover {
+                background-color: #f0f2f5 !important;
+            }
         }
     </style>
 </head>
@@ -1137,9 +1068,9 @@
                             <span class="question-number">2.</span>
                             תחום פעילות העיקרי שלכם:
                         </label>
-                        <div class="dropdown-container" style="position: relative;">
+                        <div style="position: relative;">
                             <input type="text" class="form-input" id="primaryFieldInput" name="primary_field" placeholder="הקלידו לחיפוש תחום פעילות..." required style="text-align: right;" autocomplete="off">
-                            <div id="dropdownList" class="dropdown-list" style="display: none; position: absolute; top: 100%; left: 0; right: 0; background: white; border: 1px solid #e5e7eb; border-radius: 6px; box-shadow: 0 4px 12px rgba(0,0,0,0.15); z-index: 1000; max-height: 200px; overflow-y: auto;">
+                            <div id="dropdownList" style="display: none; position: absolute; top: 100%; left: 0; right: 0; background: white; border: 1px solid #e5e7eb; border-radius: 6px; box-shadow: 0 4px 12px rgba(0,0,0,0.15); z-index: 1000; max-height: 200px; overflow-y: auto; font-size: 16px;">
                             </div>
                         </div>
                     </div>
@@ -1171,7 +1102,7 @@
                                 <span class="work-area-placeholder">לחץ לבחירת אזורי עבודה</span>
                                 <i class="fas fa-chevron-down work-area-arrow"></i>
                             </div>
-                            <div class="work-area-dropdown" id="workAreaDropdown"></div>
+                            <div id="workAreaDropdown" style="position: absolute; top: 100%; left: 0; right: 0; background: white; border: 1px solid #e5e7eb; border-radius: 6px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); z-index: 1000; display: none; max-height: 300px; overflow-y: auto;"></div>
                         </div>
                         
                         <div class="work-area-tags" id="workAreaTags"></div>
@@ -1192,11 +1123,34 @@
                         </label>
                         
                         <div id="businessBenefitsContainer" style="position: relative;">
-                            <div id="businessBenefitsDisplay" style="padding: 12px 20px; border: 2px solid var(--border-light); border-radius: var(--border-radius); background: var(--bg-light); cursor: pointer; display: flex; flex-wrap: wrap; gap: 8px; align-items: center; min-height: 48px; position: relative; box-sizing: border-box;">
+                            <div id="businessBenefitsDisplay" tabindex="-1" style="padding: 12px 20px; border: 2px solid var(--border-light); border-radius: var(--border-radius); background: var(--bg-light); cursor: pointer; display: flex; flex-wrap: wrap; gap: 8px; align-items: center; min-height: 48px; position: relative; box-sizing: border-box; font-size: 14px; font-family: inherit; outline: none;">
                                 <span id="businessBenefitsPlaceholder" style="color: var(--text-muted);">לחצו לבחירת יתרונות עסקיים</span>
                                 <i class="fas fa-chevron-down" style="position: absolute; left: 16px; top: 16px; color: var(--text-muted);"></i>
                             </div>
-                            <div id="businessBenefitsDropdown" style="display: none; position: absolute; top: 100%; left: 0; right: 0; background: white; border: 1px solid #e5e7eb; border-radius: 6px; box-shadow: 0 4px 12px rgba(0,0,0,0.15); z-index: 1000; max-height: 300px; overflow-y: auto;">
+                        </div>
+                        
+                        <!-- Business Benefits Popup Modal -->
+                        <div id="businessBenefitsPopup" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.3); z-index: 9999; overflow-y: auto;">
+                            <div style="display: flex; align-items: center; justify-content: center; min-height: 100vh; padding: 20px;">
+                                <div id="businessBenefitsPopupContent" style="background: white; border-radius: var(--border-radius); border: 1px solid var(--border-light); max-width: 700px; width: 100%; max-height: 90vh; position: relative; overflow: visible;">
+                                    <!-- Popup Header -->
+                                    <div style="padding: 24px 24px 16px 24px; border-bottom: 1px solid var(--border-light);">
+                                        <div style="display: flex; align-items: center; justify-content: space-between;">
+                                            <h3 style="margin: 0; font-size: 20px; font-weight: 600; color: var(--text-primary);">בחירת יתרונות עסקיים</h3>
+                                            <button type="button" class="popup-close" style="background: none; color: var(--text-muted); border: none; font-size: 24px; cursor: pointer; padding: 0; width: 24px; height: 24px; display: flex; align-items: center; justify-content: center;">×</button>
+                                        </div>
+                                        <p style="margin: 8px 0 0 0; color: var(--text-secondary); font-size: 14px;">בחרו לפחות 4 יתרונות עסקיים שמייחדים אתכם מהמתחרים ומושכים לקוחות</p>
+                                    </div>
+                                    
+                                    <!-- Popup Content -->
+                                    <div id="businessBenefitsPopupBody" style="max-height: calc(90vh - 200px); overflow-y: auto;">
+                                    </div>
+                                    
+                                    <!-- Popup Footer -->
+                                    <div style="padding: 20px 24px 28px 24px; border-top: 1px solid var(--border-light); display: flex; justify-content: center; align-items: center;">
+                                        <div id="selectedBusinessBenefitsCount" style="color: var(--text-secondary); font-size: 14px;">לא נבחרו יתרונות</div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                         
@@ -1217,11 +1171,34 @@
                         </label>
                         
                         <div id="specializationsContainer" style="position: relative;">
-                            <div id="specializationsDisplay" style="padding: 12px 20px; border: 2px solid var(--border-light); border-radius: var(--border-radius); background: var(--bg-light); cursor: pointer; display: flex; flex-wrap: wrap; gap: 8px; align-items: center; min-height: 48px; position: relative; box-sizing: border-box;">
+                            <div id="specializationsDisplay" tabindex="-1" style="padding: 12px 20px; border: 2px solid var(--border-light); border-radius: var(--border-radius); background: var(--bg-light); cursor: pointer; display: flex; flex-wrap: wrap; gap: 8px; align-items: center; min-height: 48px; position: relative; box-sizing: border-box; font-size: 14px; font-family: inherit; outline: none;">
                                 <span id="specializationsPlaceholder" style="color: var(--text-muted);">לחצו לבחירת התמחויות נוספות</span>
                                 <i class="fas fa-chevron-down" style="position: absolute; left: 16px; top: 16px; color: var(--text-muted);"></i>
                             </div>
-                            <div id="specializationsDropdown" style="display: none; position: absolute; top: 100%; left: 0; right: 0; background: white; border: 1px solid #e5e7eb; border-radius: 6px; box-shadow: 0 4px 12px rgba(0,0,0,0.15); z-index: 1000; max-height: 400px; overflow-y: auto;">
+                        </div>
+                        
+                        <!-- Specializations Popup Modal -->
+                        <div id="specializationsPopup" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.3); z-index: 9999; overflow-y: auto;">
+                            <div style="display: flex; align-items: center; justify-content: center; min-height: 100vh; padding: 20px;">
+                                <div id="specializationsPopupContent" style="background: white; border-radius: var(--border-radius); border: 1px solid var(--border-light); max-width: 700px; width: 100%; max-height: 90vh; position: relative; overflow: visible;">
+                                    <!-- Popup Header -->
+                                    <div style="padding: 24px 24px 16px 24px; border-bottom: 1px solid var(--border-light);">
+                                        <div style="display: flex; align-items: center; justify-content: space-between;">
+                                            <h3 style="margin: 0; font-size: 20px; font-weight: 600; color: var(--text-primary);">בחירת התמחויות נוספות</h3>
+                                            <button type="button" id="closeSpecializationsPopup" style="background: none; color: var(--text-muted); border: none; font-size: 24px; cursor: pointer; padding: 0; width: 24px; height: 24px; display: flex; align-items: center; justify-content: center;">×</button>
+                                        </div>
+                                        <p style="margin: 8px 0 0 0; color: var(--text-secondary); font-size: 14px;">בחרו התמחויות נוספות או תתי-תחומים שאתם מספקים שירותים בהם</p>
+                                    </div>
+                                    
+                                    <!-- Popup Content -->
+                                    <div id="specializationsPopupBody" style="max-height: calc(90vh - 200px); overflow-y: auto;">
+                                    </div>
+                                    
+                                    <!-- Popup Footer -->
+                                    <div style="padding: 20px 24px 28px 24px; border-top: 1px solid var(--border-light); display: flex; justify-content: center; align-items: center;">
+                                        <div id="selectedSpecializationsCount" style="color: var(--text-secondary); font-size: 14px;">לא נבחרו התמחויות</div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                         
@@ -1243,12 +1220,36 @@
                             יש נושאים שאתם מעדיפים להימנע מהם בתגובות? <strong>(עד 5 נושאים)</strong>
                         </label>
                         
-                        <div class="restriction-select-container">
-                            <div class="restriction-select" id="restrictionSelect" tabindex="0">
-                                <span class="restriction-placeholder">לחץ לבחירת נושאים להימנעות</span>
-                                <i class="fas fa-chevron-down restriction-arrow"></i>
+                        <div id="restrictionsContainer" style="position: relative;">
+                            <div id="restrictionsDisplay" tabindex="-1" style="padding: 12px 20px; border: 2px solid var(--border-light); border-radius: var(--border-radius); background: var(--bg-light); cursor: pointer; display: flex; flex-wrap: wrap; gap: 8px; align-items: center; min-height: 48px; position: relative; box-sizing: border-box; font-size: 14px; font-family: inherit; outline: none;">
+                                <span id="restrictionsPlaceholder" style="color: var(--text-muted);">לחצו לבחירת נושאים להימנעות</span>
+                                <i class="fas fa-chevron-down" style="position: absolute; left: 16px; top: 16px; color: var(--text-muted);"></i>
                             </div>
-                            <div class="restriction-dropdown" id="restrictionDropdown"></div>
+                        </div>
+                        
+                        <!-- Restrictions Popup Modal -->
+                        <div id="restrictionsPopup" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.3); z-index: 9999; overflow-y: auto;">
+                            <div style="display: flex; align-items: center; justify-content: center; min-height: 100vh; padding: 20px;">
+                                <div id="restrictionsPopupContent" style="background: white; border-radius: var(--border-radius); border: 1px solid var(--border-light); max-width: 700px; width: 100%; max-height: 90vh; position: relative; overflow: visible;">
+                                    <!-- Popup Header -->
+                                    <div style="padding: 24px 24px 16px 24px; border-bottom: 1px solid var(--border-light);">
+                                        <div style="display: flex; align-items: center; justify-content: space-between;">
+                                            <h3 style="margin: 0; font-size: 20px; font-weight: 600; color: var(--text-primary);">בחירת נושאים להימנעות</h3>
+                                            <button type="button" class="popup-close" style="background: none; color: var(--text-muted); border: none; font-size: 24px; cursor: pointer; padding: 0; width: 24px; height: 24px; display: flex; align-items: center; justify-content: center;">×</button>
+                                        </div>
+                                        <p style="margin: 8px 0 0 0; color: var(--text-secondary); font-size: 14px;">בחרו עד 5 נושאים שאתם מעדיפים להימנע מהם בתגובות</p>
+                                    </div>
+                                    
+                                    <!-- Popup Content -->
+                                    <div id="restrictionsPopupBody" style="max-height: calc(90vh - 200px); overflow-y: auto;">
+                                    </div>
+                                    
+                                    <!-- Popup Footer -->
+                                    <div style="padding: 20px 24px 28px 24px; border-top: 1px solid var(--border-light); display: flex; justify-content: center; align-items: center;">
+                                        <div id="selectedRestrictionsCount" style="color: var(--text-secondary); font-size: 14px;">לא נבחרו הגבלות</div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                         
                         <div class="restriction-tags" id="restrictionTags"></div>
@@ -1302,15 +1303,15 @@
         function formatLinksInText(text) {
             if (!text) return text;
             
-            console.log('Original text:', text); // Debug log
             
             // Convert line breaks to <br> tags first
             let formattedText = text.replace(/\n/g, '<br>');
             
+            // Remove automatic period line breaks - handle manually by content structure
+            
             // Convert WhatsApp URLs to clickable links - more aggressive regex
             const whatsappRegex = /(https:\/\/wa\.me\/[^\s<>\n]+)/g;
             const matches = formattedText.match(whatsappRegex);
-            console.log('WhatsApp matches found:', matches); // Debug log
             
             if (matches) {
                 matches.forEach(match => {
@@ -1319,7 +1320,6 @@
                 });
             }
             
-            console.log('Formatted text:', formattedText); // Debug log
             return formattedText;
         }
 
@@ -1327,437 +1327,222 @@
         const API_BASE_URL = 'https://worthy-choice-badger.ngrok-free.app';
 
         document.addEventListener('DOMContentLoaded', function() {
-            // Primary field dropdown functionality
-            const primaryFieldInput = document.getElementById('primaryFieldInput');
-            const dropdownList = document.getElementById('dropdownList');
+            // Load categories and subcategories from JSON
+            let categoriesData = [];
+            let professions = [];
+            let specializations = {};
             
-            const professions = [
-                'חשמל',
-                'אינסטלציה',
-                'שיפוצים כלליים',
-                'צבע ועבודות גמר',
-                'ריצוף וחיפוי',
-                'נגרות',
-                'ברזל ואלומיניום',
-                'מיזוג אוויר',
-                'גינון ונוף',
-                'בטון וחזית',
-                'בידוד וייטום',
-                'ניקיון ואחזקה',
-                'הסעות והובלות',
-                'מנעולנות',
-                'שמשות ומרפסות',
-                'פלמבה וביובים',
-                'אנטנות וויזיון',
-                'פיתוח מגרשים',
-                'עבודות גובה',
-                'חיפוי קירות',
-                'חימום ורדיאטורים',
-                'פתיחת קירות',
-                'עבודות פחזון',
-                'איטום גגות',
-                'תקשורת ורשתות',
-                'אבן טבעית',
-                'מטבחים מעוצבים',
-                'חדרי רחצה',
-                'ארונות ואחסון',
-                'דקינג ופרגולות',
-                'מרצפת אבן',
-                'עבודות עפר',
-                'גדרות ושערים',
-                'בניית מחסנים',
-                'עבודות אספלט',
-                'ציפוי גגות',
-                'תאורה חיצונית',
-                'מעליות ונגישות'
+            // Embedded JSON data
+            const embeddedCategoriesData = [
+                {
+                    "Category": "בנייה",
+                    "Subcategories": [
+                        {"Name": "עבודות שלד"},
+                        {"Name": "עבודות גמר"},
+                        {"Name": "עבודות עפר"},
+                        {"Name": "עבודות פיתוח ותשתיות"},
+                        {"Name": "הריסה ופינוי"}
+                    ]
+                },
+                {
+                    "Category": "שיפוצים",
+                    "Subcategories": [
+                        {"Name": "שיפוץ דירות/משרדים"}
+                    ]
+                },
+                {
+                    "Category": "ניקיון",
+                    "Subcategories": [
+                        {"Name": "ניקיון משרדים"},
+                        {"Name": "ניקיון דירות לפני אכלוס"},
+                        {"Name": "ניקיון דירות אחרי שיפוץ"},
+                        {"Name": "ניקיון חדרי מדרגות"}
+                    ]
+                },
+                {
+                    "Category": "גינון",
+                    "Subcategories": [
+                        {"Name": "פיתוח גינות"},
+                        {"Name": "אחזקת גינות"},
+                        {"Name": "ניקיון גינות ופינוי פסולת"}
+                    ]
+                },
+                {
+                    "Category": "צילום",
+                    "Subcategories": [
+                        {"Name": "צילום אירועים פרטיים"},
+                        {"Name": "צילום תדמית"},
+                        {"Name": "צילום וידאו"},
+                        {"Name": "עריכת תמונות וסרטונים"}
+                    ]
+                },
+                {
+                    "Category": "אינסטלציה",
+                    "Subcategories": [
+                        {"Name": "התקנת כלים סניטריים"},
+                        {"Name": "איתור נזילות"},
+                        {"Name": "תשתיות אינסטלציה"},
+                        {"Name": "החלפת צנרת"},
+                        {"Name": "תיקונים כלליים"}
+                    ]
+                },
+                {
+                    "Category": "חשמל",
+                    "Subcategories": [
+                        {"Name": "התקנת נקודות חשמל"},
+                        {"Name": "לוחות חשמל"},
+                        {"Name": "תשתיות חשמל"},
+                        {"Name": "תיקונים כלליים"}
+                    ]
+                },
+                {
+                    "Category": "מיזוג אוויר",
+                    "Subcategories": [
+                        {"Name": "התקנת מזגנים"},
+                        {"Name": "התקנת מיני מרכזי"},
+                        {"Name": "ניקוי מזגנים"},
+                        {"Name": "תיקונים כלליים"}
+                    ]
+                },
+                {
+                    "Category": "גבס",
+                    "Subcategories": [
+                        {"Name": "עבודות גבס"},
+                        {"Name": "עבודות גבס גדולות"},
+                        {"Name": "תיקונים כלליים"}
+                    ]
+                },
+                {
+                    "Category": "צבע",
+                    "Subcategories": [
+                        {"Name": "צביעת דירות / משרדים"},
+                        {"Name": "עבודות צבע גדולות"},
+                        {"Name": "תיקונים כלליים"}
+                    ]
+                },
+                {
+                    "Category": "טיח ושליכט",
+                    "Subcategories": [
+                        {"Name": "טיח חוץ / פנים"},
+                        {"Name": "שליכט חיצוני"}
+                    ]
+                },
+                {
+                    "Category": "ריצוף וחיפוי",
+                    "Subcategories": [
+                        {"Name": "ריצוף פנים"},
+                        {"Name": "ריצוף חוץ"},
+                        {"Name": "חיפוי קירות"},
+                        {"Name": "פרקטים"},
+                        {"Name": "עבודות ריצוף גדולות"},
+                        {"Name": "תיקונים כלליים"}
+                    ]
+                },
+                {
+                    "Category": "סוככים והצללות",
+                    "Subcategories": [
+                        {"Name": "סוכך זרועות"},
+                        {"Name": "סוכך קבוע"},
+                        {"Name": "רשתות הצללה"},
+                        {"Name": "תיקונים ואחזקה"}
+                    ]
+                },
+                {
+                    "Category": "אלומיניום",
+                    "Subcategories": [
+                        {"Name": "פרגולה מאלומיניום"},
+                        {"Name": "פרגולה חשמלית"},
+                        {"Name": "שערים"},
+                        {"Name": "גדרות"},
+                        {"Name": "חלונות ודלתות"},
+                        {"Name": "סגירת מרפסת"},
+                        {"Name": "מעקות ומדרגות"},
+                        {"Name": "תיקונים ואחזקה"}
+                    ]
+                },
+                {
+                    "Category": "חלונות וזגגות",
+                    "Subcategories": [
+                        {"Name": "התקנת זכוכיות ופתחים"},
+                        {"Name": "החלפת זכוכית"},
+                        {"Name": "סגירת חללים בזכוכית"},
+                        {"Name": "תיקונים ואחזקה"}
+                    ]
+                },
+                {
+                    "Category": "עבודות עץ",
+                    "Subcategories": [
+                        {"Name": "פרגולה מעץ"},
+                        {"Name": "דק עץ"},
+                        {"Name": "גדרות מעץ"},
+                        {"Name": "ריהוט חוץ מעץ"},
+                        {"Name": "תיקונים ואחזקה"}
+                    ]
+                },
+                {
+                    "Category": "נגרות",
+                    "Subcategories": [
+                        {"Name": "מטבחים"},
+                        {"Name": "ארונות"},
+                        {"Name": "דלתות פנים"},
+                        {"Name": "נגרות בהתאמה אישית"},
+                        {"Name": "תיקונים ואחזקה"}
+                    ]
+                }
             ];
 
-            // התמחויות נוספות - תתי-קטגוריות לכל תחום
-            const specializations = {
-                'חשמל': [
-                    'תיקון תקלות חשמל',
-                    'התקנת לוח חשמל',
-                    'הוספת נקודות חשמל',
-                    'חיווט מבנים',
-                    'התקנת מערכות תאורה',
-                    'חשמל תלת פאזי',
-                    'מערכות חירום ובטיחות',
-                    'מערכות סולאריות'
-                ],
-                'אינסטלציה': [
-                    'תיקון צנרת',
-                    'התקנת מערכות מים',
-                    'פתיחת סתימות',
-                    'התקנת ברזים ואביזרים',
-                    'מערכות השקיה',
-                    'מערכות ניקוז',
-                    'בדיקת לחץ מים',
-                    'תיקון דלפת מים'
-                ],
-                'שיפוצים כלליים': [
-                    'שיפוץ דירות',
-                    'שיפוץ בתים',
-                    'שיפוץ משרדים',
-                    'עבודות תחזוקה',
-                    'הריסות קלות',
-                    'בנייה קלה',
-                    'עבודות גבס',
-                    'התקנת רצפות'
-                ],
-                'צבע ועבודות גמר': [
-                    'צביעת קירות',
-                    'צביעת תקרות',
-                    'עבודות שפכטל',
-                    'צביעת חזיתות',
-                    'עבודות דקורציה',
-                    'הסרת טפטים',
-                    'הדבקת טפטים',
-                    'עבודות אומן'
-                ],
-                'ריצוף וחיפוי': [
-                    'ריצוף דירות',
-                    'חיפוי קירות',
-                    'מקלחונים',
-                    'עבודות פסיפס',
-                    'ריצוף חוץ',
-                    'חיפוי מטבחים',
-                    'תיקון אריחים',
-                    'איטום רטיבות'
-                ],
-                'נגרות': [
-                    'ארונות מטבח',
-                    'דלתות',
-                    'חלונות עץ',
-                    'ריהוט מעוצב',
-                    'פרקט',
-                    'תיקון רהיטים',
-                    'ארונות בגדים',
-                    'נגרות קלה'
-                ],
-                'ברזל ואלומיניום': [
-                    'שערים',
-                    'גדרות',
-                    'סורגים',
-                    'מעקות',
-                    'דלתות ברזל',
-                    'חלונות אלומיניום',
-                    'פרגולות ברזל',
-                    'עבודות ריתוך'
-                ],
-                'מיזוג אוויר': [
-                    'התקנת מזגנים',
-                    'תחזוקת מזגנים',
-                    'תיקון מזגנים',
-                    'מערכות מיזוג מרכזיות',
-                    'VRF מערכות',
-                    'חידוש גז',
-                    'ניקוי מערכות',
-                    'בדיקות תקופתיות'
-                ],
-                'גינון ונוף': [
-                    'עיצוב גינות',
-                    'שתילת עצים',
-                    'מערכות השקיה',
-                    'גיזום עצים',
-                    'טיפוח דשא',
-                    'בניית גינות',
-                    'פיתוח נוף',
-                    'צמחיית נוי'
-                ],
-                'בטון וחזית': [
-                    'יציקת בטון',
-                    'ציפוי חזיתות',
-                    'תיקון סדקים',
-                    'איטום קירות',
-                    'עבודות שיקום',
-                    'בטון מוחלק',
-                    'בטון מוטבע',
-                    'קירות תומכים'
-                ],
-                'בידוד וייטום': [
-                    'בידוד תרמי',
-                    'בידוד אקוסטי',
-                    'איטום גגות',
-                    'איטום מרפסות',
-                    'בידוד קירות',
-                    'איטום מרתפים',
-                    'בידוד צנרת',
-                    'איטום חלונות'
-                ],
-                'ניקיון ואחזקה': [
-                    'ניקיון בתים',
-                    'ניקיון משרדים',
-                    'ניקיון חלונות',
-                    'ניקיון אחרי בנייה',
-                    'שטיפת בניינים',
-                    'אחזקת מבנים',
-                    'ניקיון מיוחד',
-                    'חברות ניקיון'
-                ],
-                'הסעות והובלות': [
-                    'הובלת דירות',
-                    'הסעות עובדים',
-                    'הובלת חפצים',
-                    'מעברי דירה',
-                    'הובלת משרדים',
-                    'הובלות מיוחדות',
-                    'שירותי מנוף',
-                    'אחסון חפצים'
-                ],
-                'מנעולנות': [
-                    'פתיחת דלתות',
-                    'החלפת מנעולים',
-                    'תיקון מנעולים',
-                    'מנעולי בטחון',
-                    'מערכות ביטחון',
-                    'מפתחות מאסטר',
-                    'כספות',
-                    'מנעולים חכמים'
-                ],
-                'שמשות ומרפסות': [
-                    'סגירת מרפסות',
-                    'התקנת שמשות',
-                    'תיקון שמשות',
-                    'זכוכיות מבנה',
-                    'חלונות ודלתות',
-                    'מחיצות זכוכית',
-                    'מקלחונים',
-                    'ויטרינות'
-                ],
-                'פלמבה וביובים': [
-                    'פתיחת סתימות',
-                    'תיקון צנרת ביוב',
-                    'מצלמת ביוב',
-                    'החלפת צנרת',
-                    'ביובים מרכזיים',
-                    'שאיבת בורות',
-                    'ניקוי צנרת',
-                    'בדיקות ביוב'
-                ],
-                'אנטנות וויזיון': [
-                    'התקנת אנטנות',
-                    'תיקון קליטה',
-                    'מערכות לוויין',
-                    'רשתות תקשורת',
-                    'אינטרנט ביתי',
-                    'מערכות אבטחה',
-                    'מצלמות אבטחה',
-                    'מערכות קול'
-                ],
-                'פיתוח מגרשים': [
-                    'פינוי עפר',
-                    'ניקוי מגרשים',
-                    'סלילת דרכים',
-                    'עבודות עפר',
-                    'ניקוז שטחים',
-                    'הכנת יסודות',
-                    'פיתוח תשתיות',
-                    'גנון וחזקה'
-                ],
-                'עבודות גובה': [
-                    'צביעת בניינים',
-                    'תיקון חזיתות',
-                    'ניקוי גגות',
-                    'התקנת שלטים',
-                    'עבודות איטום',
-                    'תחזוקת מבנים',
-                    'עבודות מנוף',
-                    'גישה בחבלים'
-                ],
-                'חיפוי קירות': [
-                    'אבן טבעית',
-                    'אבן מלאכותית',
-                    'חיפוי פנים',
-                    'חיפוי חוץ',
-                    'טיח נוי',
-                    'עבודות דקורציה',
-                    'חיפוי בריקים',
-                    'פנלים מעוצבים'
-                ],
-                'חימום ורדיאטורים': [
-                    'התקנת רדיאטורים',
-                    'תיקון חימום',
-                    'מערכות חימום',
-                    'דוד שמש',
-                    'רצפה חמה',
-                    'חימום מרכזי',
-                    'תחזוקת מערכות',
-                    'בקרות חימום'
-                ],
-                'פתיחת קירות': [
-                    'פתיחת פתחים',
-                    'פתיחת חלונות',
-                    'פתיחת דלתות',
-                    'הריסות מבוקרות',
-                    'חיזוק מבנים',
-                    'עבודות יציבות',
-                    'הסרת קירות',
-                    'עבודות בטון'
-                ],
-                'עבודות פחזון': [
-                    'תיקון פחזון',
-                    'החלפת צנרת',
-                    'פח וביוב',
-                    'תיקון דלפות',
-                    'מערכות ניקוז',
-                    'עבודות אטימה',
-                    'ריתוך צנרת',
-                    'התקנת מערכות'
-                ],
-                'איטום גגות': [
-                    'איטום גגות רעפים',
-                    'איטום גגות בטון',
-                    'תיקון נזילות',
-                    'ציפוי גגות',
-                    'מערכות ניקוז',
-                    'בידוד גגות',
-                    'גגות רעפים',
-                    'גגות מתכת'
-                ],
-                'תקשורת ורשתות': [
-                    'רשתות מחשבים',
-                    'תקשורת מבנים',
-                    'פריסת כבלים',
-                    'מערכות אינטרקום',
-                    'חיווט מובנה',
-                    'רשתות אינטרנט',
-                    'מערכות וידאו',
-                    'בקרה ואוטומציה'
-                ],
-                'אבן טבעית': [
-                    'חיפוי אבן',
-                    'ריצוף אבן',
-                    'עבודות שיש',
-                    'גרניט ושיש',
-                    'אבן קיסרסטון',
-                    'מדרגות אבן',
-                    'חזיתות אבן',
-                    'מעצבות נוף'
-                ],
-                'מטבחים מעוצבים': [
-                    'עיצוב מטבחים',
-                    'ארונות מטבח',
-                    'משטחי עבודה',
-                    'מכשירי חשמל',
-                    'חיפוי זכוכית',
-                    'תאורת מטבח',
-                    'ארגון מטבח',
-                    'מטבחי יוקרה'
-                ],
-                'חדרי רחצה': [
-                    'עיצוב אמבטיות',
-                    'התקנת מקלחונים',
-                    'ארונות אמבטיה',
-                    'אינסטלציה סניטרית',
-                    'חיפוי חדרי רחצה',
-                    'תאורת רחצה',
-                    'אביזרי רחצה',
-                    'מקלחות מעוצבות'
-                ],
-                'ארונות ואחסון': [
-                    'ארונות בגדים',
-                    'פתרונות אחסון',
-                    'חדרי ארונות',
-                    'ארונות מעוצבים',
-                    'מחיצות ארונות',
-                    'ארונות קיר',
-                    'מערכות הזזה',
-                    'ארגון חללים'
-                ],
-                'דקינג ופרגולות': [
-                    'דקים עץ',
-                    'פרגולות עץ',
-                    'פרגולות מתכת',
-                    'סוכות קבועות',
-                    'דקים מחומרים סינתטיים',
-                    'פרגולות בד',
-                    'מבני גן',
-                    'פינות ישיבה'
-                ],
-                'מרצפת אבן': [
-                    'מרצפות חצר',
-                    'שבילי אבן',
-                    'ריצוף חוץ',
-                    'עבודות אבן',
-                    'מדרגות חוץ',
-                    'קירות אבן',
-                    'אמצעות נוי',
-                    'פיתוח נוף'
-                ],
-                'עבודות עפר': [
-                    'חפירות',
-                    'פינוי עפר',
-                    'עבודות חפירה',
-                    'יישור שטחים',
-                    'הכנת יסודות',
-                    'עבודות מחפר',
-                    'בורות ושוחות',
-                    'הכנת קרקע'
-                ],
-                'גדרות ושערים': [
-                    'גדרות מתכת',
-                    'גדרות עץ',
-                    'שערים חשמליים',
-                    'שערים ידניים',
-                    'גדרות ביטחון',
-                    'מעקות גינה',
-                    'גדרות דקורטיביות',
-                    'אוטומציה לשערים'
-                ],
-                'בניית מחסנים': [
-                    'מחסנים מתכת',
-                    'מחסנים בטון',
-                    'מחסנים עץ',
-                    'מבני אחסון',
-                    'סככות',
-                    'מחסנים חקלאיים',
-                    'מבני תעשייה',
-                    'מחסנים מוכנים'
-                ],
-                'עבודות אספלט': [
-                    'סלילת דרכים',
-                    'תיקון אספלט',
-                    'חדשת מדרכות',
-                    'חניות ורחבות',
-                    'אספלט חם',
-                    'סימון דרכים',
-                    'תחזוקת כבישים',
-                    'עבודות ציבוריות'
-                ],
-                'ציפוי גגות': [
-                    'רעפי חרס',
-                    'רעפי מתכת',
-                    'גגות איזופנל',
-                    'גגות ביטומניים',
-                    'גגות רכים',
-                    'תחזוקת גגות',
-                    'בידוד גגות',
-                    'מערכות ניקוז'
-                ],
-                'תאורה חיצונית': [
-                    'תאורת גינה',
-                    'זרקורים',
-                    'תאורת בטיחות',
-                    'תאורה סולארית',
-                    'עמודי תאורה',
-                    'בקרת תאורה',
-                    'תאורה דקורטיבית',
-                    'תאורת LED'
-                ],
-                'מעליות ונגישות': [
-                    'התקנת מעליות',
-                    'תחזוקת מעליות',
-                    'מעליות נכים',
-                    'כיסאות מעלה',
-                    'פלטפורמות הרמה',
-                    'רמפות נגישות',
-                    'מעקות נגישות',
-                    'שיפורי נגישות'
-                ]
-            };
+            // Load JSON data
+            async function loadCategoriesData() {
+                try {
+                    // Try to fetch from file first
+                    const response = await fetch('clicknmove_bot.categories.json');
+                    categoriesData = await response.json();
+                    
+                    // Extract categories for professions dropdown (question 2)
+                    professions = categoriesData.map(item => item.Category);
+                    
+                    // Extract subcategories for specializations (question 7)
+                    specializations = {};
+                    categoriesData.forEach(item => {
+                        if (item.Subcategories && item.Subcategories.length > 0) {
+                            specializations[item.Category] = item.Subcategories.map(sub => sub.Name);
+                        }
+                    });
+                    
+                    console.log('Categories loaded:', professions);
+                    console.log('Specializations loaded:', specializations);
+                } catch (error) {
+                    console.log('Fetch failed, using embedded data:', error.message);
+                    // Use embedded data when fetch fails
+                    categoriesData = embeddedCategoriesData;
+                    
+                    // Extract categories for professions dropdown (question 2)
+                    professions = categoriesData.map(item => item.Category);
+                    
+                    // Extract subcategories for specializations (question 7)
+                    specializations = {};
+                    categoriesData.forEach(item => {
+                        if (item.Subcategories && item.Subcategories.length > 0) {
+                            specializations[item.Category] = item.Subcategories.map(sub => sub.Name);
+                        }
+                    });
+                    
+                    console.log('Using embedded categories:', professions);
+                    console.log('Using embedded specializations:', specializations);
+                }
+            }
+            
+            // Primary field autocomplete functionality
+            const primaryFieldInput = document.getElementById('primaryFieldInput');
+            const dropdownList = document.getElementById('dropdownList');
 
             // מערך לאחסון ההתמחויות הנבחרות
             let selectedSpecializations = [];
+
+            // Load categories data on page load
+            loadCategoriesData().then(() => {
+                console.log('Categories and specializations loaded successfully');
+            });
 
             let currentFocus = -1;
 
@@ -1765,6 +1550,7 @@
                 const value = this.value;
                 if (value.length === 0) {
                     dropdownList.style.display = 'none';
+                    updateSpecializationsPlaceholder(); // Update specializations when field cleared
                     return;
                 }
 
@@ -1780,12 +1566,13 @@
                 dropdownList.innerHTML = '';
                 filtered.forEach((profession, index) => {
                     const item = document.createElement('div');
-                    item.className = 'dropdown-item';
+                    item.style.cssText = 'padding: 12px 16px; cursor: pointer; border-bottom: 1px solid #f3f4f6; text-align: right; transition: background-color 0.2s ease; height: 48px; display: flex; align-items: center;';
                     item.textContent = profession;
                     item.addEventListener('click', function() {
                         primaryFieldInput.value = profession;
                         dropdownList.style.display = 'none';
                         currentFocus = -1;
+                        updateSpecializationsPlaceholder(); // Update specializations when field selected
                     });
                     dropdownList.appendChild(item);
                 });
@@ -1800,7 +1587,7 @@
                     dropdownList.innerHTML = '';
                     professions.forEach((profession, index) => {
                         const item = document.createElement('div');
-                        item.className = 'dropdown-item';
+                        item.style.cssText = 'padding: 12px 16px; cursor: pointer; border-bottom: 1px solid #f3f4f6; text-align: right; transition: background-color 0.2s ease; height: 48px; display: flex; align-items: center;';
                         item.textContent = profession;
                         item.addEventListener('click', function() {
                             primaryFieldInput.value = profession;
@@ -1814,7 +1601,7 @@
             });
 
             primaryFieldInput.addEventListener('keydown', function(e) {
-                const items = dropdownList.querySelectorAll('.dropdown-item');
+                const items = dropdownList.children;
                 if (e.key === 'ArrowDown') {
                     e.preventDefault();
                     currentFocus++;
@@ -1837,16 +1624,18 @@
             });
 
             function setActiveItem(items) {
-                items.forEach((item, index) => {
-                    if (index === currentFocus) {
-                        item.classList.add('highlighted');
+                for (let i = 0; i < items.length; i++) {
+                    if (i === currentFocus) {
+                        items[i].style.backgroundColor = 'rgba(76, 29, 149, 0.1)';
+                        items[i].style.color = 'rgba(76, 29, 149, 0.8)';
                     } else {
-                        item.classList.remove('highlighted');
+                        items[i].style.backgroundColor = '';
+                        items[i].style.color = '';
                     }
-                });
+                }
             }
 
-            // Close dropdown when clicking outside
+            // Close autocomplete when clicking outside
             document.addEventListener('click', function(e) {
                 if (!primaryFieldInput.contains(e.target) && !dropdownList.contains(e.target)) {
                     dropdownList.style.display = 'none';
@@ -1881,7 +1670,7 @@
                 }
             });
 
-            // Business Benefits dropdown functionality
+            // Business Benefits popup functionality
             const businessBenefitsCategories = {
                 'שירות ומחירים': [
                     'הצעת מחיר מפורטת ללא התחייבות',
@@ -1935,35 +1724,67 @@
             let selectedBusinessBenefits = [];
             
             const businessBenefitsDisplay = document.getElementById('businessBenefitsDisplay');
-            const businessBenefitsDropdown = document.getElementById('businessBenefitsDropdown');
+            const businessBenefitsPopup = document.getElementById('businessBenefitsPopup');
+            const businessBenefitsPopupBody = document.getElementById('businessBenefitsPopupBody');
             const businessBenefitsPlaceholder = document.getElementById('businessBenefitsPlaceholder');
 
             // Specializations functionality
             const specializationsDisplay = document.getElementById('specializationsDisplay');
-            const specializationsDropdown = document.getElementById('specializationsDropdown');
+            const specializationsPopup = document.getElementById('specializationsPopup');
+            const specializationsPopupBody = document.getElementById('specializationsPopupBody');
             const specializationsPlaceholder = document.getElementById('specializationsPlaceholder');
 
-            function initializeBusinessBenefitsDropdown() {
-                if (!businessBenefitsDropdown) {
-                    console.error('businessBenefitsDropdown element not found!');
+            function initializeBusinessBenefitsPopup() {
+                if (!businessBenefitsPopupBody) {
+                    console.error('businessBenefitsPopupBody element not found!');
                     return;
                 }
-                businessBenefitsDropdown.innerHTML = '';
+                businessBenefitsPopupBody.innerHTML = '';
                 
-                // Add custom option input at the top
+                
+                // Add custom option input
                 const customInputContainer = document.createElement('div');
-                customInputContainer.className = 'custom-restriction-container';
+                customInputContainer.style.cssText = 'padding: 16px 24px; border-bottom: 1px solid var(--border-light);';
                 customInputContainer.innerHTML = `
-                    <div class="input-label">✨ הוסף יתרון בשפה חופשית</div>
-                    <div class="custom-restriction-input-group">
-                        <input type="text" placeholder="לדוגמה: מחזיר טלפונים תמיד..." class="custom-restriction-input">
+                    <div style="color: var(--text-primary); font-weight: 500; margin-bottom: 8px; font-size: 14px;">✨ הוסף יתרון בשפה חופשית</div>
+                    <div style="display: flex; gap: 8px;">
+                        <input type="text" placeholder="לדוגמה: מחזיר טלפונים תמיד..." style="flex: 1; padding: 10px 12px; border: 1px solid var(--border-light); border-radius: var(--border-radius); font-size: 14px; text-align: right;" id="customBusinessBenefitInput">
+                        <button type="button" style="background: var(--ai-purple); color: white; border: none; padding: 10px 16px; border-radius: var(--border-radius); cursor: pointer; font-weight: 500; font-size: 14px; white-space: nowrap;" id="addCustomBusinessBenefit">הוסף</button>
                     </div>
                 `;
-                businessBenefitsDropdown.appendChild(customInputContainer);
+                businessBenefitsPopupBody.appendChild(customInputContainer);
                 
-                // Add event listeners for custom input
-                const customInput = customInputContainer.querySelector('.custom-restriction-input');
+                // Add categories
+                Object.entries(businessBenefitsCategories).forEach(([category, benefits]) => {
+                    const categoryDiv = document.createElement('div');
+                    categoryDiv.className = 'category-div';
+                    categoryDiv.style.cssText = 'border-bottom: 1px solid var(--border-light);';
+                    
+                    const categoryHeader = document.createElement('div');
+                    categoryHeader.style.cssText = 'padding: 16px 24px; background: var(--bg-gray); font-weight: 600; color: var(--text-primary); font-size: 16px; border-bottom: 1px solid var(--border-light);';
+                    categoryHeader.textContent = category;
+                    categoryDiv.appendChild(categoryHeader);
+                    
+                    benefits.forEach(benefit => {
+                        const isSelected = selectedBusinessBenefits.find(b => b.text === benefit);
+                        const benefitItem = document.createElement('label');
+                        benefitItem.className = 'benefit-item';
+                        benefitItem.style.cssText = 'display: flex; align-items: center; gap: 12px; padding: 12px 24px; cursor: pointer; user-select: none;';
+                        benefitItem.innerHTML = `
+                            <input type="checkbox" ${isSelected ? 'checked' : ''} data-benefit="${benefit}" data-category="${category}" style="margin: 0; cursor: pointer;">
+                            <span style="flex: 1; text-align: right; color: var(--text-primary); font-size: 16px;">${benefit}</span>
+                        `;
+                        categoryDiv.appendChild(benefitItem);
+                    });
+                    
+                    businessBenefitsPopupBody.appendChild(categoryDiv);
+                });
                 
+                // Add event listeners
+                const customInput = document.getElementById('customBusinessBenefitInput');
+                const addBtn = document.getElementById('addCustomBusinessBenefit');
+                
+                // Custom input functionality
                 function addCustomBenefit() {
                     const customValue = customInput.value.trim();
                     if (customValue && !selectedBusinessBenefits.find(b => b.text === customValue)) {
@@ -1974,11 +1795,13 @@
                             isCustom: true
                         });
                         updateBusinessBenefitsDisplay();
+                        updateBusinessBenefitsCounter();
                         customInput.value = '';
-                        businessBenefitsDropdown.style.display = 'none';
+                        closeBusinessBenefitsPopup();
                     }
                 }
                 
+                addBtn.addEventListener('click', addCustomBenefit);
                 customInput.addEventListener('keypress', function(e) {
                     if (e.key === 'Enter') {
                         e.preventDefault();
@@ -1986,63 +1809,27 @@
                     }
                 });
                 
-                customInput.addEventListener('blur', function() {
-                    addCustomBenefit();
-                });
-                
-                // Add categories
-                Object.entries(businessBenefitsCategories).forEach(([category, benefits]) => {
-                    const categoryHeader = document.createElement('div');
-                    categoryHeader.className = 'category-header';
-                    categoryHeader.style.cssText = 'padding: 12px 16px; background: #f3f4f6; font-weight: 600; color: #374151; border-bottom: 1px solid #e5e7eb;';
-                    categoryHeader.textContent = category;
-                    businessBenefitsDropdown.appendChild(categoryHeader);
-                    
-                    benefits.forEach(benefit => {
-                        const item = document.createElement('div');
-                        item.className = 'benefit-item';
-                        item.style.cssText = 'padding: 12px 16px; cursor: pointer; border-bottom: 1px solid #f3f4f6; display: flex; align-items: center; gap: 12px;';
+                // Checkbox functionality
+                businessBenefitsPopupBody.addEventListener('change', function(e) {
+                    if (e.target.type === 'checkbox') {
+                        const benefit = e.target.dataset.benefit;
+                        const category = e.target.dataset.category;
+                        const existingIndex = selectedBusinessBenefits.findIndex(b => b.text === benefit);
                         
-                        const isSelected = selectedBusinessBenefits.find(b => b.text === benefit);
-                        item.innerHTML = `
-                            <div style="width: 18px; height: 18px; border: 2px solid #d1d5db; border-radius: 3px; display: flex; align-items: center; justify-content: center; ${isSelected ? 'background: #4f46e5; border-color: #4f46e5;' : ''}">
-                                ${isSelected ? '<i class="fas fa-check" style="color: white; font-size: 12px;"></i>' : ''}
-                            </div>
-                            <span style="flex: 1; text-align: right; color: #374151;">${benefit}</span>
-                        `;
+                        if (e.target.checked && existingIndex === -1) {
+                            selectedBusinessBenefits.push({
+                                id: Date.now(),
+                                text: benefit,
+                                category: category,
+                                isCustom: false
+                            });
+                        } else if (!e.target.checked && existingIndex >= 0) {
+                            selectedBusinessBenefits.splice(existingIndex, 1);
+                        }
                         
-                        item.addEventListener('click', function(e) {
-                            e.stopPropagation();
-                            const existingIndex = selectedBusinessBenefits.findIndex(b => b.text === benefit);
-                            
-                            if (existingIndex >= 0) {
-                                console.log(`DEBUG: Removing benefit: "${benefit}"`);
-                                selectedBusinessBenefits.splice(existingIndex, 1);
-                            } else {
-                                console.log(`DEBUG: Adding benefit: "${benefit}" from category: "${category}"`);
-                                selectedBusinessBenefits.push({
-                                    id: Date.now(),
-                                    text: benefit,
-                                    category: category,
-                                    isCustom: false
-                                });
-                            }
-                            console.log(`DEBUG: selectedBusinessBenefits after change:`, selectedBusinessBenefits);
-                            
-                            updateBusinessBenefitsDisplay();
-                            initializeBusinessBenefitsDropdown();
-                        });
-                        
-                        item.addEventListener('mouseenter', function() {
-                            this.style.backgroundColor = '#f9fafb';
-                        });
-                        
-                        item.addEventListener('mouseleave', function() {
-                            this.style.backgroundColor = 'white';
-                        });
-                        
-                        businessBenefitsDropdown.appendChild(item);
-                    });
+                        updateBusinessBenefitsDisplay();
+                        updateBusinessBenefitsCounter();
+                    }
                 });
             }
 
@@ -2085,9 +1872,7 @@
                     hiddenInput.type = 'hidden';
                     hiddenInput.name = 'business_benefits[]';
                     hiddenInput.value = benefit.text;
-                    hiddenInput.setAttribute('data-debug', `sync-input-${index}`);
                     form.appendChild(hiddenInput);
-                    console.log(`DEBUG: Created sync input ${index}: "${benefit.text}"`);
                 });
             }
             
@@ -2215,48 +2000,124 @@
                 }
             }
 
-            // Specializations dropdown functionality
-            function initializeSpecializationsDropdown() {
-                if (!specializationsDropdown) {
-                    console.error('specializationsDropdown element not found!');
+            // Specializations popup functionality
+            function initializeSpecializationsPopup() {
+                if (!specializationsPopupBody) {
+                    console.error('specializationsPopupBody element not found!');
                     return;
                 }
                 
-                // Clear dropdown
-                specializationsDropdown.innerHTML = '';
+                // Clear popup body
+                specializationsPopupBody.innerHTML = '';
+                
+                // Get selected primary field from question 2
+                const primaryFieldInput = document.querySelector('input[name="primary_field"]');
+                const selectedPrimaryField = primaryFieldInput ? primaryFieldInput.value.trim() : '';
+                
+                // Check if primary field is selected
+                if (!selectedPrimaryField) {
+                    // Show warning message instead of popup
+                    const warningContainer = document.createElement('div');
+                    warningContainer.style.cssText = 'padding: 40px 24px; text-align: center; margin: 24px; border: 1px solid var(--border-light); border-radius: var(--border-radius); background: var(--bg-light);';
+                    warningContainer.innerHTML = `
+                        <div style="color: var(--text-primary); font-weight: 600; font-size: 18px; margin-bottom: 12px;">
+                            ⚠️ יש לבחור תחום פעילות עיקרי קודם
+                        </div>
+                        <div style="color: var(--text-secondary); font-size: 16px; line-height: 1.5; margin-bottom: 20px;">
+                            כדי לגשת להתמחויות נוספות, יש לבחור תחילה תחום פעילות עיקרי בשאלה 2
+                        </div>
+                        <button type="button" id="backToQuestion2Btn" style="background: var(--text-primary); color: white; border: none; padding: 12px 24px; border-radius: var(--border-radius); font-size: 16px; cursor: pointer; font-weight: 500;">
+                            חזור לשאלה 2
+                        </button>
+                    `;
+                    specializationsPopupBody.appendChild(warningContainer);
+                    
+                    // Add event listener to the button
+                    const backBtn = document.getElementById('backToQuestion2Btn');
+                    if (backBtn) {
+                        backBtn.addEventListener('click', function() {
+                            specializationsPopup.style.display = 'none';
+                            document.getElementById('primaryFieldInput').scrollIntoView({ behavior: 'smooth' });
+                            setTimeout(() => {
+                                document.getElementById('primaryFieldInput').focus();
+                            }, 500);
+                        });
+                    }
+                    
+                    return;
+                }
                 
                 // Add search input at the top
                 const searchContainer = document.createElement('div');
-                searchContainer.style.cssText = 'padding: 12px; border-bottom: 1px solid #e5e7eb; background: #f9fafb;';
+                searchContainer.style.cssText = 'padding: 20px 24px; border-bottom: 1px solid var(--border-light);';
                 searchContainer.innerHTML = `
-                    <input type="text" placeholder="חיפוש התמחויות..." style="width: 100%; padding: 8px 12px; border: 1px solid #d1d5db; border-radius: 4px; font-size: 14px; text-align: right;" id="specializationsSearch">
+                    <input type="text" placeholder="חיפוש התמחויות..." style="width: 100%; padding: 12px 16px; border: 1px solid var(--border-light); border-radius: var(--border-radius); font-size: 16px; text-align: right; background: var(--bg-light); color: var(--text-primary);" id="specializationsSearch">
                 `;
-                specializationsDropdown.appendChild(searchContainer);
+                specializationsPopupBody.appendChild(searchContainer);
                 
-                // Create categories
-                Object.keys(specializations).forEach(category => {
+                // Show all categories but prioritize the selected primary field
+                const allCategories = Object.keys(specializations);
+                
+                // Sort categories: primary field first, then alphabetically
+                const sortedCategories = allCategories.sort((a, b) => {
+                    if (a === selectedPrimaryField) return -1;
+                    if (b === selectedPrimaryField) return 1;
+                    return a.localeCompare(b, 'he');
+                });
+                
+                sortedCategories.forEach(category => {
+                    const isPrimaryField = category === selectedPrimaryField;
                     const categoryDiv = document.createElement('div');
-                    categoryDiv.style.cssText = 'border-bottom: 1px solid #f3f4f6;';
+                    categoryDiv.className = 'category-div';
+                    categoryDiv.style.cssText = 'border-bottom: 1px solid var(--border-light);';
                     
                     // Category header with checkbox to select all
                     const categoryHeader = document.createElement('div');
-                    categoryHeader.style.cssText = 'padding: 12px 16px; background: #f8fafc; font-weight: 600; color: #374151; display: flex; align-items: center; cursor: pointer; border-bottom: 1px solid #e5e7eb;';
+                    categoryHeader.style.cssText = `padding: 16px 24px; background: var(--bg-gray); font-weight: 600; color: var(--text-primary); display: flex; align-items: center; cursor: pointer; border-bottom: 1px solid var(--border-light); ${isPrimaryField ? 'border-right: 3px solid var(--text-primary);' : ''}`;
                     
                     const allSelected = specializations[category].every(spec => 
                         selectedSpecializations.find(s => s.text === spec && s.category === category)
                     );
                     
-                    categoryHeader.innerHTML = `
-                        <div style="width: 18px; height: 18px; border: 2px solid #d1d5db; border-radius: 3px; display: flex; align-items: center; justify-content: center; margin-left: 12px; ${allSelected ? 'background: #4f46e5; border-color: #4f46e5;' : ''}">
-                            ${allSelected ? '<i class="fas fa-check" style="color: white; font-size: 10px;"></i>' : ''}
-                        </div>
-                        <span>${category} - בחירת הכל</span>
-                    `;
+                    if (isPrimaryField) {
+                        categoryHeader.innerHTML = `
+                            <div style="width: 100%; display: flex; flex-direction: column; gap: 8px;">
+                                <div style="display: flex; justify-content: space-between; align-items: center;">
+                                    <span style="font-size: 16px; font-weight: 600;">🎯 ${category}</span>
+                                    <span style="background: var(--text-muted); color: white; padding: 4px 8px; border-radius: var(--border-radius); font-size: 12px; font-weight: 400;">עיקרי</span>
+                                </div>
+                                <div style="display: flex; align-items: center; gap: 12px;">
+                                    <div style="width: 18px; height: 18px; border: 1px solid var(--border-light); border-radius: var(--border-radius); display: flex; align-items: center; justify-content: center; ${allSelected ? 'background: var(--text-primary); border-color: var(--text-primary);' : 'background: var(--bg-light);'}">
+                                        ${allSelected ? '<i class="fas fa-check" style="color: white; font-size: 10px;"></i>' : ''}
+                                    </div>
+                                    <span style="font-size: 14px; color: var(--text-secondary);">בחירת הכל</span>
+                                </div>
+                            </div>
+                        `;
+                    } else {
+                        categoryHeader.innerHTML = `
+                            <div style="width: 18px; height: 18px; border: 1px solid var(--border-light); border-radius: var(--border-radius); display: flex; align-items: center; justify-content: center; margin-left: 16px; ${allSelected ? 'background: var(--text-primary); border-color: var(--text-primary);' : 'background: var(--bg-light);'}">
+                                ${allSelected ? '<i class="fas fa-check" style="color: white; font-size: 10px;"></i>' : ''}
+                            </div>
+                            <span style="font-size: 16px;">${category} - בחירת הכל</span>
+                        `;
+                    }
                     
                     // Toggle all specializations in category
                     categoryHeader.addEventListener('click', function(e) {
                         e.stopPropagation();
-                        const checkbox = this.querySelector('div');
+                        // Find the checkbox (different for primary vs regular categories)
+                        let checkbox;
+                        if (isPrimaryField) {
+                            // In primary field, the checkbox is in the second div with the specific styling
+                            const secondRow = this.querySelector('div[style*="display: flex; align-items: center; gap: 12px"]');
+                            if (secondRow) {
+                                checkbox = secondRow.querySelector('div[style*="width: 18px"]');
+                            }
+                        } else {
+                            // In regular categories, checkbox is the first div with width 18px
+                            checkbox = this.querySelector('div[style*="width: 18px"]');
+                        }
                         const isAllSelected = specializations[category].every(spec => 
                             selectedSpecializations.find(s => s.text === spec && s.category === category)
                         );
@@ -2278,60 +2139,23 @@
                         }
                         
                         updateSpecializationsDisplay();
-                        initializeSpecializationsDropdown();
+                        updateSpecializationsCheckboxes(); // Update checkboxes without recreating popup
                     });
                     
                     categoryDiv.appendChild(categoryHeader);
                     
-                    // Custom input for this category
-                    const customInputContainer = document.createElement('div');
-                    customInputContainer.style.cssText = 'padding: 8px 16px; background: #fefefe; border-bottom: 1px solid #f0f0f0;';
-                    customInputContainer.innerHTML = `
-                        <div style="display: flex; gap: 8px; align-items: center;">
-                            <input type="text" placeholder="הוסיפו התמחות מותאמת ב${category}..." style="width: 80%; padding: 6px 10px; border: 1px solid #d1d5db; border-radius: 4px; font-size: 13px; text-align: right;" class="custom-specialization-input">
-                            <button type="button" style="width: 20%; padding: 6px 4px; background: #3b82f6; color: white; border: none; border-radius: 4px; font-size: 12px; cursor: pointer;" class="add-custom-specialization">הוסף</button>
-                        </div>
-                    `;
-                    
-                    const customInput = customInputContainer.querySelector('.custom-specialization-input');
-                    const addBtn = customInputContainer.querySelector('.add-custom-specialization');
-                    
-                    function addCustomSpecialization() {
-                        const customValue = customInput.value.trim();
-                        if (customValue && !selectedSpecializations.find(s => s.text === customValue)) {
-                            selectedSpecializations.push({
-                                id: Date.now(),
-                                text: customValue,
-                                category: category,
-                                isCustom: true
-                            });
-                            customInput.value = '';
-                            updateSpecializationsDisplay();
-                            initializeSpecializationsDropdown();
-                        }
-                    }
-                    
-                    addBtn.addEventListener('click', addCustomSpecialization);
-                    customInput.addEventListener('keypress', function(e) {
-                        if (e.key === 'Enter') {
-                            e.preventDefault();
-                            addCustomSpecialization();
-                        }
-                    });
-                    
-                    categoryDiv.appendChild(customInputContainer);
                     
                     // Individual specializations
                     specializations[category].forEach(specialization => {
                         const item = document.createElement('div');
-                        item.style.cssText = 'padding: 10px 16px; cursor: pointer; border-bottom: 1px solid #f9fafb; display: flex; align-items: center; gap: 12px;';
+                        item.style.cssText = 'padding: 12px 24px; cursor: pointer; border-bottom: 1px solid var(--border-light); display: flex; align-items: center; gap: 16px;';
                         
                         const isSelected = selectedSpecializations.find(s => s.text === specialization && s.category === category);
                         item.innerHTML = `
-                            <div style="width: 18px; height: 18px; border: 2px solid #d1d5db; border-radius: 3px; display: flex; align-items: center; justify-content: center; ${isSelected ? 'background: #4f46e5; border-color: #4f46e5;' : ''}">
-                                ${isSelected ? '<i class="fas fa-check" style="color: white; font-size: 10px;"></i>' : ''}
+                            <div style="width: 16px; height: 16px; border: 1px solid var(--border-light); border-radius: var(--border-radius); display: flex; align-items: center; justify-content: center; ${isSelected ? 'background: var(--text-primary); border-color: var(--text-primary);' : 'background: var(--bg-light);'}">
+                                ${isSelected ? '<i class="fas fa-check" style="color: white; font-size: 9px;"></i>' : ''}
                             </div>
-                            <span style="flex: 1; text-align: right;">${specialization}</span>
+                            <span style="flex: 1; text-align: right; color: var(--text-primary);">${specialization}</span>
                         `;
                         
                         item.addEventListener('click', function(e) {
@@ -2350,11 +2174,11 @@
                             }
                             
                             updateSpecializationsDisplay();
-                            initializeSpecializationsDropdown();
+                            updateSpecializationsCheckboxes(); // Update checkboxes without recreating popup
                         });
                         
                         item.addEventListener('mouseenter', function() {
-                            this.style.backgroundColor = '#f3f4f6';
+                            this.style.backgroundColor = 'var(--bg-gray)';
                         });
                         
                         item.addEventListener('mouseleave', function() {
@@ -2364,40 +2188,210 @@
                         categoryDiv.appendChild(item);
                     });
                     
-                    specializationsDropdown.appendChild(categoryDiv);
+                    specializationsPopupBody.appendChild(categoryDiv);
                 });
                 
-                // Search functionality
-                const searchInput = specializationsDropdown.querySelector('#specializationsSearch');
+                // Search functionality with autocomplete
+                const searchInput = specializationsPopupBody.querySelector('#specializationsSearch');
                 if (searchInput) {
                     searchInput.addEventListener('input', function() {
-                        const searchTerm = this.value.toLowerCase();
-                        const categoryDivs = specializationsDropdown.querySelectorAll('div[style*="border-bottom: 1px solid #f3f4f6"]');
+                        const searchTerm = this.value.toLowerCase().trim();
+                        
+                        // If search is empty, show all
+                        if (searchTerm === '') {
+                            const categoryDivs = specializationsPopupBody.querySelectorAll('.category-div');
+                            const items = specializationsPopupBody.querySelectorAll('div[style*="padding: 12px 24px"]');
+                            categoryDivs.forEach(el => el.style.display = 'block');
+                            items.forEach(el => el.style.display = 'flex');
+                            return;
+                        }
+                        
+                        // Find category divs (use class selector for reliability)
+                        const categoryDivs = specializationsPopupBody.querySelectorAll('.category-div');
                         
                         categoryDivs.forEach(categoryDiv => {
-                            const categoryName = categoryDiv.querySelector('span').textContent.replace(' - בחירת הכל', '');
-                            const specializationItems = categoryDiv.querySelectorAll('div[style*="padding: 10px 16px"]');
+                            // Get category name from header
+                            const categoryHeader = categoryDiv.querySelector('div[style*="background: var(--bg-gray)"]');
+                            let categoryName = '';
+                            
+                            if (categoryHeader) {
+                                if (categoryHeader.textContent.includes('🎯')) {
+                                    // Primary field - get name from first span
+                                    const firstSpan = categoryHeader.querySelector('span');
+                                    if (firstSpan) {
+                                        categoryName = firstSpan.textContent.replace('🎯 ', '').toLowerCase();
+                                    }
+                                } else {
+                                    // Regular category
+                                    categoryName = categoryHeader.textContent.replace(' - בחירת הכל', '').toLowerCase();
+                                }
+                            }
+                            
+                            // Get specialization items in this category
+                            const specializationItems = categoryDiv.querySelectorAll('div[style*="padding: 12px 24px"]');
                             let hasVisibleItems = false;
                             
-                            if (categoryName.toLowerCase().includes(searchTerm)) {
-                                categoryDiv.style.display = 'block';
-                                hasVisibleItems = true;
-                            } else {
-                                specializationItems.forEach(item => {
-                                    const text = item.textContent.toLowerCase();
-                                    if (text.includes(searchTerm)) {
-                                        item.style.display = 'flex';
-                                        hasVisibleItems = true;
-                                    } else {
-                                        item.style.display = 'none';
-                                    }
-                                });
-                                categoryDiv.style.display = hasVisibleItems ? 'block' : 'none';
-                            }
+                            // Check if category name matches (for showing whole category)
+                            const categoryMatches = categoryName.includes(searchTerm);
+                            
+                            // Check each specialization item
+                            specializationItems.forEach(item => {
+                                const itemText = item.querySelector('span') ? item.querySelector('span').textContent.toLowerCase() : '';
+                                const itemMatches = itemText.includes(searchTerm);
+                                
+                                if (categoryMatches || itemMatches) {
+                                    item.style.display = 'flex';
+                                    hasVisibleItems = true;
+                                } else {
+                                    item.style.display = 'none';
+                                }
+                            });
+                            
+                            // Show/hide entire category based on matches
+                            categoryDiv.style.display = hasVisibleItems || categoryMatches ? 'block' : 'none';
                         });
                     });
                 }
+                
+                updateSpecializationsCounter();
             }
+            
+            // Function to update specializations counter in popup footer
+            function updateSpecializationsCounter() {
+                const counterElement = document.getElementById('selectedSpecializationsCount');
+                if (counterElement) {
+                    const count = selectedSpecializations.length;
+                    if (count === 0) {
+                        counterElement.textContent = 'לא נבחרו התמחויות';
+                        counterElement.style.color = 'var(--text-secondary)';
+                    } else {
+                        counterElement.textContent = `נבחרו ${count} התמחויות`;
+                        counterElement.style.color = 'var(--text-primary)';
+                    }
+                }
+            }
+            
+            function updateBusinessBenefitsCounter() {
+                const counterElement = document.getElementById('selectedBusinessBenefitsCount');
+                if (counterElement) {
+                    const count = selectedBusinessBenefits.length;
+                    const remainingNeeded = Math.max(0, minBusinessBenefits - count);
+                    
+                    if (count === 0) {
+                        counterElement.textContent = 'לא נבחרו יתרונות';
+                        counterElement.style.color = 'var(--text-secondary)';
+                    } else if (remainingNeeded > 0) {
+                        counterElement.textContent = `נבחרו ${count} יתרונות (נדרש עוד ${remainingNeeded})`;
+                        counterElement.style.color = '#dc2626';
+                    } else {
+                        counterElement.textContent = `נבחרו ${count} יתרונות`;
+                        counterElement.style.color = '#059669';
+                    }
+                }
+            }
+            
+            // Function to open business benefits popup
+            function openBusinessBenefitsPopup() {
+                initializeBusinessBenefitsPopup();
+                businessBenefitsPopup.style.display = 'flex';
+            }
+            
+            // Function to close business benefits popup
+            function closeBusinessBenefitsPopup() {
+                businessBenefitsPopup.style.display = 'none';
+            }
+            
+            // Function to update only checkboxes in the popup without recreating the whole content
+            function updateSpecializationsCheckboxes() {
+                const popupBody = document.getElementById('specializationsPopupBody');
+                if (!popupBody) return;
+                
+                // Update category headers
+                const categoryHeaders = popupBody.querySelectorAll('div[style*="background: var(--bg-gray)"]');
+                categoryHeaders.forEach(header => {
+                    // Check if this is a primary field (has emoji)
+                    const isPrimaryField = header.textContent.includes('🎯');
+                    let category;
+                    
+                    if (isPrimaryField) {
+                        // For primary field, extract category from the first line
+                        const firstLine = header.querySelector('span');
+                        if (firstLine) {
+                            category = firstLine.textContent.replace('🎯 ', '').trim();
+                        }
+                    } else {
+                        // For regular categories
+                        category = header.textContent.replace(' - בחירת הכל', '').trim();
+                    }
+                    
+                    if (category && specializations[category]) {
+                        const allSelected = specializations[category].every(spec => 
+                            selectedSpecializations.find(s => s.text === spec && s.category === category)
+                        );
+                        
+                        // Find the checkbox - different locations for primary vs regular
+                        let checkbox;
+                        if (isPrimaryField) {
+                            // In primary field, checkbox is in the second row
+                            const secondRow = header.querySelector('div[style*="display: flex; align-items: center; gap: 12px"]');
+                            if (secondRow) {
+                                checkbox = secondRow.querySelector('div[style*="width: 18px"]');
+                            }
+                        } else {
+                            // In regular categories, checkbox is in the main row
+                            checkbox = header.querySelector('div[style*="width: 18px"]');
+                        }
+                        
+                        if (checkbox) {
+                            if (allSelected) {
+                                checkbox.style.background = 'var(--text-primary)';
+                                checkbox.style.borderColor = 'var(--text-primary)';
+                                checkbox.innerHTML = '<i class="fas fa-check" style="color: white; font-size: 10px;"></i>';
+                            } else {
+                                checkbox.style.background = 'var(--bg-light)';
+                                checkbox.style.borderColor = 'var(--border-light)';
+                                checkbox.innerHTML = '';
+                            }
+                        }
+                    }
+                });
+                
+                // Update individual items
+                const items = popupBody.querySelectorAll('div[style*="padding: 12px 24px"]');
+                items.forEach(item => {
+                    const text = item.querySelector('span').textContent;
+                    const isSelected = selectedSpecializations.find(s => s.text === text);
+                    const checkbox = item.querySelector('div[style*="width: 16px"]');
+                    
+                    if (checkbox) {
+                        if (isSelected) {
+                            checkbox.style.background = 'var(--text-primary)';
+                            checkbox.style.borderColor = 'var(--text-primary)';
+                            checkbox.innerHTML = '<i class="fas fa-check" style="color: white; font-size: 9px;"></i>';
+                        } else {
+                            checkbox.style.background = 'var(--bg-light)';
+                            checkbox.style.borderColor = 'var(--border-light)';
+                            checkbox.innerHTML = '';
+                        }
+                    }
+                });
+                
+                updateSpecializationsCounter();
+            }
+            
+            // Function to open specializations popup
+            function openSpecializationsPopup() {
+                initializeSpecializationsPopup();
+                specializationsPopup.style.display = 'block';
+            }
+            
+            // Function to close specializations popup
+            function closeSpecializationsPopup() {
+                specializationsPopup.style.display = 'none';
+            }
+            
+            // Make function globally accessible
+            window.closeSpecializationsPopup = closeSpecializationsPopup;
 
             function updateSpecializationsDisplay() {
                 // Clear current display
@@ -2436,7 +2430,6 @@
                         category: specialization.category,
                         isCustom: specialization.isCustom
                     });
-                    hiddenInput.setAttribute('data-debug', `specialization-input-${index}`);
                     form.appendChild(hiddenInput);
                 });
             }
@@ -2514,54 +2507,92 @@
                 });
             }
 
-            // Initialize dropdown with a small delay to ensure DOM is ready
+            // Initialize with a small delay to ensure DOM is ready
             setTimeout(function() {
-                initializeBusinessBenefitsDropdown();
-                initializeSpecializationsDropdown();
+                initializeBusinessBenefitsPopup();
+                updateSpecializationsPlaceholder();
             }, 100);
 
-            // Handle dropdown toggle
-            if (businessBenefitsDisplay && businessBenefitsDropdown) {
+            // Handle popup toggle
+            if (businessBenefitsDisplay && businessBenefitsPopup) {
                 businessBenefitsDisplay.addEventListener('click', function(e) {
                     e.preventDefault();
                     e.stopPropagation();
                     
-                    const isVisible = businessBenefitsDropdown.style.display === 'block';
-                    businessBenefitsDropdown.style.display = isVisible ? 'none' : 'block';
+                    openBusinessBenefitsPopup();
                 });
             } else {
-                console.error('Business benefits elements not found:', {
-                    display: !!businessBenefitsDisplay,
-                    dropdown: !!businessBenefitsDropdown
+            }
+            
+            // Handle popup close
+            if (businessBenefitsPopup) {
+                const closeBtn = businessBenefitsPopup.querySelector('.popup-close');
+                
+                if (closeBtn) {
+                    closeBtn.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        closeBusinessBenefitsPopup();
+                    });
+                }
+                
+                // Close popup when clicking outside
+                businessBenefitsPopup.addEventListener('click', function(e) {
+                    if (e.target === this) {
+                        closeBusinessBenefitsPopup();
+                    }
                 });
             }
 
-            // Handle specializations dropdown toggle
-            if (specializationsDisplay && specializationsDropdown) {
+            // Function to update specializations placeholder based on primary field selection
+            function updateSpecializationsPlaceholder() {
+                const primaryFieldInput = document.querySelector('input[name="primary_field"]');
+                const selectedPrimaryField = primaryFieldInput ? primaryFieldInput.value.trim() : '';
+                const placeholder = document.getElementById('specializationsPlaceholder');
+                
+                if (placeholder) {
+                    if (!selectedPrimaryField) {
+                        placeholder.textContent = 'יש לבחור תחום פעילות עיקרי תחילה בשאלה 2';
+                        placeholder.style.color = '#dc2626'; // Red color for warning
+                    } else {
+                        placeholder.textContent = 'לחצו לבחירת התמחויות נוספות';
+                        placeholder.style.color = 'var(--text-muted)'; // Original color
+                    }
+                }
+            }
+
+            // Handle specializations popup toggle
+            if (specializationsDisplay && specializationsPopup) {
                 specializationsDisplay.addEventListener('click', function(e) {
                     e.preventDefault();
                     e.stopPropagation();
                     
-                    const isVisible = specializationsDropdown.style.display === 'block';
-                    specializationsDropdown.style.display = isVisible ? 'none' : 'block';
+                    openSpecializationsPopup();
                 });
             }
-
-            // Close dropdowns when clicking outside
-            document.addEventListener('click', function(e) {
-                const businessBenefitsContainer = document.getElementById('businessBenefitsContainer');
-                const specializationsContainer = document.getElementById('specializationsContainer');
+            
+            // Popup event handlers
+            if (specializationsPopup) {
+                // Close popup when clicking on overlay
+                specializationsPopup.addEventListener('click', function(e) {
+                    if (e.target === this) {
+                        closeSpecializationsPopup();
+                    }
+                });
                 
-                if (businessBenefitsContainer && !businessBenefitsContainer.contains(e.target)) {
-                    businessBenefitsDropdown.style.display = 'none';
+                // Close button
+                const closeBtn = document.getElementById('closeSpecializationsPopup');
+                if (closeBtn) {
+                    closeBtn.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        closeSpecializationsPopup();
+                    });
                 }
-                
-                if (specializationsContainer && !specializationsContainer.contains(e.target)) {
-                    specializationsDropdown.style.display = 'none';
-                }
-            });
+            }
 
-            // Restriction dropdown functionality
+
+            // Restriction popup functionality
             const restrictionOptions = [
                 'מחירים ספציפיים',
                 'פרטים אישיים של לקוחות',
@@ -2575,41 +2606,73 @@
                 'סודות מקצועיים'
             ];
 
-            const restrictionSelect = document.getElementById('restrictionSelect');
-            const restrictionDropdown = document.getElementById('restrictionDropdown');
+            const restrictionsDisplay = document.getElementById('restrictionsDisplay');
+            const restrictionsPopup = document.getElementById('restrictionsPopup');
+            const restrictionsPopupBody = document.getElementById('restrictionsPopupBody');
+            const restrictionsPlaceholder = document.getElementById('restrictionsPlaceholder');
             const restrictionTags = document.getElementById('restrictionTags');
             let selectedRestrictions = [];
             const maxRestrictions = 5;
 
-            function initializeRestrictionsDropdown() {
-                // Clear dropdown
-                restrictionDropdown.innerHTML = '';
-
-                // Add custom option input at the top
+            function initializeRestrictionsPopup() {
+                if (!restrictionsPopupBody) {
+                    console.error('restrictionsPopupBody element not found!');
+                    return;
+                }
+                restrictionsPopupBody.innerHTML = '';
+                
+                // Add custom option input
                 const customInputContainer = document.createElement('div');
-                customInputContainer.className = 'custom-restriction-container';
+                customInputContainer.style.cssText = 'padding: 16px 24px; border-bottom: 1px solid var(--border-light);';
                 customInputContainer.innerHTML = `
-                    <div class="input-label">✨ הוסף נושא בשפה חופשית</div>
-                    <div class="custom-restriction-input-group">
-                        <input type="text" placeholder="לדוגמה: לא לדבר על פרויקטים ישנים..." class="custom-restriction-input">
+                    <div style="color: var(--text-primary); font-weight: 500; margin-bottom: 8px; font-size: 14px;">✨ הוסף נושא בשפה חופשית</div>
+                    <div style="display: flex; gap: 8px;">
+                        <input type="text" placeholder="לדוגמה: לא לדבר על פרויקטים ישנים..." style="flex: 1; padding: 10px 12px; border: 1px solid var(--border-light); border-radius: var(--border-radius); font-size: 14px; text-align: right;" id="customRestrictionInput">
+                        <button type="button" style="background: var(--ai-purple); color: white; border: none; padding: 10px 16px; border-radius: var(--border-radius); cursor: pointer; font-weight: 500; font-size: 14px; white-space: nowrap;" id="addCustomRestriction">הוסף</button>
                     </div>
                 `;
-                restrictionDropdown.appendChild(customInputContainer);
+                restrictionsPopupBody.appendChild(customInputContainer);
                 
-                // Add event listeners for custom input
-                const customInput = customInputContainer.querySelector('.custom-restriction-input');
+                // Add predefined options
+                const restrictionsContainer = document.createElement('div');
+                restrictionsContainer.style.cssText = 'border-bottom: 1px solid var(--border-light);';
                 
+                const restrictionsHeader = document.createElement('div');
+                restrictionsHeader.style.cssText = 'padding: 16px 24px; background: var(--bg-gray); font-weight: 600; color: var(--text-primary); font-size: 16px; border-bottom: 1px solid var(--border-light);';
+                restrictionsHeader.textContent = 'נושאים נפוצים להימנעות';
+                restrictionsContainer.appendChild(restrictionsHeader);
+                
+                restrictionOptions.forEach(option => {
+                    const isSelected = selectedRestrictions.includes(option);
+                    const restrictionItem = document.createElement('label');
+                    restrictionItem.className = 'restriction-item';
+                    restrictionItem.style.cssText = 'display: flex; align-items: center; gap: 12px; padding: 12px 24px; cursor: pointer; user-select: none;';
+                    restrictionItem.innerHTML = `
+                        <input type="checkbox" ${isSelected ? 'checked' : ''} data-restriction="${option}" style="margin: 0; cursor: pointer;">
+                        <span style="flex: 1; text-align: right; color: var(--text-primary); font-size: 16px;">${option}</span>
+                    `;
+                    restrictionsContainer.appendChild(restrictionItem);
+                });
+                
+                restrictionsPopupBody.appendChild(restrictionsContainer);
+                
+                // Add event listeners
+                const customInput = document.getElementById('customRestrictionInput');
+                const addBtn = document.getElementById('addCustomRestriction');
+                
+                // Custom input functionality
                 function addCustomRestriction() {
                     const customValue = customInput.value.trim();
-                    if (customValue && selectedRestrictions.length < maxRestrictions && !selectedRestrictions.includes(customValue)) {
+                    if (customValue && !selectedRestrictions.includes(customValue) && selectedRestrictions.length < maxRestrictions) {
                         selectedRestrictions.push(customValue);
                         updateRestrictionsDisplay();
-                        updateRestrictionDropdownStates();
+                        updateRestrictionsCounter();
                         customInput.value = '';
-                        restrictionDropdown.style.display = 'none';
+                        closeRestrictionsPopup();
                     }
                 }
                 
+                addBtn.addEventListener('click', addCustomRestriction);
                 customInput.addEventListener('keypress', function(e) {
                     if (e.key === 'Enter') {
                         e.preventDefault();
@@ -2617,52 +2680,54 @@
                     }
                 });
                 
-                // Add predefined options with clickable containers
-                restrictionOptions.forEach((option) => {
-                    const item = document.createElement('div');
-                    item.className = 'restriction-item';
-                    item.style.cssText = 'padding: 12px 16px; cursor: pointer; border-bottom: 1px solid #f3f4f6; display: flex; align-items: center; gap: 12px; transition: background-color 0.2s ease;';
-                    
-                    // Add hover effects
-                    item.addEventListener('mouseenter', function() {
-                        if (!selectedRestrictions.includes(option) || selectedRestrictions.length < maxRestrictions) {
-                            this.style.backgroundColor = '#f9fafb';
-                        }
-                    });
-                    
-                    item.addEventListener('mouseleave', function() {
-                        this.style.backgroundColor = '';
-                    });
-                    
-                    const isSelected = selectedRestrictions.includes(option);
-                    item.innerHTML = `
-                        <div style="width: 18px; height: 18px; border: 2px solid #d1d5db; border-radius: 3px; display: flex; align-items: center; justify-content: center; ${isSelected ? 'background: #4f46e5; border-color: #4f46e5;' : ''}">
-                            ${isSelected ? '<i class="fas fa-check" style="color: white; font-size: 12px;"></i>' : ''}
-                        </div>
-                        <span style="flex: 1; text-align: right; color: #374151;">${option}</span>
-                    `;
-                    
-                    item.addEventListener('click', function(e) {
-                        e.stopPropagation();
-                        const existingIndex = selectedRestrictions.indexOf(option);
+                // Checkbox functionality
+                restrictionsPopupBody.addEventListener('change', function(e) {
+                    if (e.target.type === 'checkbox') {
+                        const restriction = e.target.dataset.restriction;
+                        const existingIndex = selectedRestrictions.indexOf(restriction);
                         
-                        if (existingIndex >= 0) {
-                            // Remove restriction
+                        if (e.target.checked && existingIndex === -1 && selectedRestrictions.length < maxRestrictions) {
+                            selectedRestrictions.push(restriction);
+                        } else if (!e.target.checked && existingIndex >= 0) {
                             selectedRestrictions.splice(existingIndex, 1);
-                        } else if (selectedRestrictions.length < maxRestrictions) {
-                            // Add restriction
-                            selectedRestrictions.push(option);
                         }
                         
                         updateRestrictionsDisplay();
-                        updateRestrictionDropdownStates();
-                    });
-                    
-                    restrictionDropdown.appendChild(item);
+                        updateRestrictionsCounter();
+                    }
                 });
             }
 
             function updateRestrictionsDisplay() {
+                // Clear current display
+                restrictionsDisplay.innerHTML = '';
+                
+                if (selectedRestrictions.length === 0) {
+                    restrictionsDisplay.appendChild(restrictionsPlaceholder);
+                } else {
+                    const countSpan = document.createElement('span');
+                    const remainingNeeded = Math.max(0, maxRestrictions - selectedRestrictions.length);
+                    if (remainingNeeded > 0) {
+                        countSpan.textContent = `נבחרו ${selectedRestrictions.length} הגבלות (ניתן עוד ${remainingNeeded})`;
+                        countSpan.style.color = 'var(--text-primary)';
+                    } else {
+                        countSpan.textContent = `נבחרו ${selectedRestrictions.length} הגבלות (מקסימום)`;
+                        countSpan.style.color = '#059669';
+                    }
+                    restrictionsDisplay.appendChild(countSpan);
+                }
+                
+                // Add chevron
+                const chevron = document.createElement('i');
+                chevron.className = 'fas fa-chevron-down';
+                chevron.style.cssText = 'position: absolute; left: 16px; top: 16px; color: var(--text-muted);';
+                restrictionsDisplay.appendChild(chevron);
+                
+                // Update separate tags display
+                updateRestrictionTags();
+            }
+
+            function updateRestrictionTags() {
                 // Clear current display
                 restrictionTags.innerHTML = '';
                 
@@ -2705,7 +2770,7 @@
                         removeBtn.addEventListener('click', function() {
                             selectedRestrictions = selectedRestrictions.filter((_, i) => i !== index);
                             updateRestrictionsDisplay();
-                            updateRestrictionDropdownStates();
+                            updateRestrictionsCounter();
                         });
                         
                         inputContainer.appendChild(textInput);
@@ -2715,74 +2780,74 @@
                 }
             }
 
-            function updateRestrictionDropdownStates() {
-                const restrictionItems = restrictionDropdown.querySelectorAll('.restriction-item');
-                restrictionItems.forEach(item => {
-                    const optionText = item.querySelector('span').textContent;
-                    const isSelected = selectedRestrictions.includes(optionText);
-                    const checkboxContainer = item.querySelector('div');
+            function updateRestrictionsCounter() {
+                const counterElement = document.getElementById('selectedRestrictionsCount');
+                if (counterElement) {
+                    const count = selectedRestrictions.length;
+                    const remainingAllowed = Math.max(0, maxRestrictions - count);
                     
-                    // Update visual state
-                    if (isSelected) {
-                        checkboxContainer.style.background = '#4f46e5';
-                        checkboxContainer.style.borderColor = '#4f46e5';
-                        checkboxContainer.innerHTML = '<i class="fas fa-check" style="color: white; font-size: 12px;"></i>';
+                    if (count === 0) {
+                        counterElement.textContent = 'לא נבחרו הגבלות';
+                        counterElement.style.color = 'var(--text-secondary)';
+                    } else if (remainingAllowed > 0) {
+                        counterElement.textContent = `נבחרו ${count} הגבלות (ניתן עוד ${remainingAllowed})`;
+                        counterElement.style.color = 'var(--text-primary)';
                     } else {
-                        checkboxContainer.style.background = '';
-                        checkboxContainer.style.borderColor = '#d1d5db';
-                        checkboxContainer.innerHTML = '';
+                        counterElement.textContent = `נבחרו ${count} הגבלות (מקסימום)`;
+                        counterElement.style.color = '#059669';
                     }
+                }
+            }
+            
+            // Function to open restrictions popup
+            function openRestrictionsPopup() {
+                initializeRestrictionsPopup();
+                restrictionsPopup.style.display = 'flex';
+            }
+            
+            // Function to close restrictions popup
+            function closeRestrictionsPopup() {
+                restrictionsPopup.style.display = 'none';
+            }
+
+            // Initialize restrictions popup in a timeout to ensure DOM is ready
+            setTimeout(function() {
+                initializeRestrictionsPopup();
+                updateRestrictionsCounter(); // Initialize counter state
+            }, 100);
+
+            // Handle popup toggle
+            if (restrictionsDisplay && restrictionsPopup) {
+                restrictionsDisplay.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
                     
-                    // Disable if max reached and not selected
-                    if (!isSelected && selectedRestrictions.length >= maxRestrictions) {
-                        item.style.opacity = '0.5';
-                        item.style.cursor = 'not-allowed';
-                        // Remove hover effect when disabled
-                        item.onmouseenter = null;
-                        item.onmouseleave = null;
-                    } else {
-                        item.style.opacity = '1';
-                        item.style.cursor = 'pointer';
-                        // Re-add hover effects when enabled
-                        item.onmouseenter = function() {
-                            this.style.backgroundColor = '#f9fafb';
-                        };
-                        item.onmouseleave = function() {
-                            this.style.backgroundColor = '';
-                        };
+                    openRestrictionsPopup();
+                });
+            } else {
+            }
+            
+            // Handle popup close
+            if (restrictionsPopup) {
+                const closeBtn = restrictionsPopup.querySelector('.popup-close');
+                
+                if (closeBtn) {
+                    closeBtn.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        closeRestrictionsPopup();
+                    });
+                }
+                
+                // Close popup when clicking outside
+                restrictionsPopup.addEventListener('click', function(e) {
+                    if (e.target === this) {
+                        closeRestrictionsPopup();
                     }
                 });
             }
 
-            // Initialize restriction dropdown
-            initializeRestrictionsDropdown();
-
-            restrictionSelect.addEventListener('click', function(e) {
-                e.preventDefault();
-                if (restrictionDropdown.style.display === 'block') {
-                    restrictionDropdown.style.display = 'none';
-                } else {
-                    restrictionDropdown.style.display = 'block';
-                    updateRestrictionDropdownStates();
-                }
-            });
-
-            // הוספת תמיכה במקלדת להגבלות
-            restrictionSelect.addEventListener('keydown', function(e) {
-                if (e.key === 'Enter' || e.key === ' ') {
-                    e.preventDefault();
-                    restrictionSelect.click();
-                }
-            });
-
-            // Close dropdown when clicking outside
-            document.addEventListener('click', function(e) {
-                if (!restrictionSelect.contains(e.target) && !restrictionDropdown.contains(e.target)) {
-                    restrictionDropdown.style.display = 'none';
-                }
-            });
-
-            // Work area dropdown functionality
+            // Work area popup functionality
             const workAreaOptions = [
                 'צפון',
                 'השרון', 
@@ -2798,8 +2863,8 @@
             const workAreaTags = document.getElementById('workAreaTags');
             let selectedWorkAreas = [];
 
-            function initializeWorkAreaDropdown() {
-                // Clear dropdown
+            function initializeWorkAreaPopup() {
+                // Clear popup
                 workAreaDropdown.innerHTML = '';
                 
                 // Add predefined options with checkboxes
@@ -2833,7 +2898,7 @@
                             updateWorkAreaDisplay();
                             updateWorkAreaDropdownStates();
                         }
-                        // Close dropdown after selection
+                        // Close popup after selection
                         workAreaDropdown.style.display = 'none';
                     });
                     
@@ -2873,8 +2938,8 @@
                 });
             }
 
-            // Initialize work area dropdown
-            initializeWorkAreaDropdown();
+            // Initialize work area popup
+            initializeWorkAreaPopup();
 
             workAreaSelect.addEventListener('click', function(e) {
                 e.preventDefault();
@@ -2894,7 +2959,7 @@
                 }
             });
 
-            // Close dropdown when clicking outside
+            // Close autocomplete when clicking outside
             document.addEventListener('click', function(e) {
                 if (!workAreaSelect.contains(e.target) && !workAreaDropdown.contains(e.target)) {
                     workAreaDropdown.style.display = 'none';
@@ -2928,18 +2993,6 @@
                 const businessBenefitsArray = Array.isArray(businessBenefits) ? businessBenefits : [businessBenefits];
                 const validBenefits = businessBenefitsArray.filter(b => b && b.trim());
                 
-                // DEBUG: Log detailed validation info
-                console.log('=== BUSINESS BENEFITS DEBUG ===');
-                console.log('selectedBusinessBenefits array:', selectedBusinessBenefits);
-                console.log('selectedBusinessBenefits.length:', selectedBusinessBenefits.length);
-                console.log('Raw form data business_benefits[]:', data['business_benefits[]']);
-                console.log('businessBenefitsArray:', businessBenefitsArray);
-                console.log('validBenefits after filter:', validBenefits);
-                console.log('validBenefits.length:', validBenefits.length);
-                console.log('All form data keys:', Object.keys(data));
-                console.log('All hidden inputs with name business_benefits[]:', 
-                    document.querySelectorAll('input[name="business_benefits[]"]'));
-                console.log('================================');
                 
                 if (validBenefits.length < 4) {
                     alert(`נדרש לבחור לפחות 4 יתרונות עסקיים. נמצאו ${validBenefits.length} יתרונות: ${validBenefits.join(', ')}`);
@@ -3049,7 +3102,6 @@
                     businessBenefitsDisplay.style.borderColor = '';
                 }
                 
-                console.log('DEBUG: Form reset completed - all arrays and displays cleared');
             });
 
         }); // End of DOMContentLoaded
@@ -3186,10 +3238,16 @@
                 // Add location context if work areas are specified
                 const locations = workAreas && workAreas.length > 0 ? workAreas : ['אזור המרכז'];
                 
+                // Fixed list of author names
+                const authorNames = ['דני כהן', 'שרה לוי', 'יוסי אברהם'];
+                
                 return templates.map(template => {
                     const location = locations[Math.floor(Math.random() * locations.length)];
+                    const authorName = authorNames[Math.floor(Math.random() * authorNames.length)];
                     return {
-                        content: template,
+                        content: `${authorName}: ${template}`,
+                        displayContent: template,
+                        authorName: authorName,
                         location: location
                     };
                 });
@@ -3295,13 +3353,14 @@ ${clientName}`;
                     
                     // Generate sample posts
                     const samplePosts = this.generateSamplePosts(formData.primary_field, formData.work_areas);
-                    const postsContent = samplePosts.slice(0, 3).map(p => p.content);
+                    const selectedPosts = samplePosts.slice(0, 3);
+                    const postsContent = selectedPosts.map(p => p.content);
                     
                     // Call local API to generate responses
                     const apiResponse = await this.callLocalPreviewAPI(formData, postsContent);
                     
                     if (apiResponse.success) {
-                        this.updatePreviewResults(apiResponse.responses);
+                        this.updatePreviewResults(apiResponse.responses, selectedPosts);
                         
                         // Show API status
                         if (!apiResponse.apiKeyAvailable) {
@@ -3329,10 +3388,6 @@ ${clientName}`;
             }
 
             collectFormData() {
-                // Debug: Check global variables
-                console.log('DEBUG: selectedWorkAreas:', typeof selectedWorkAreas !== 'undefined' ? selectedWorkAreas : 'undefined');
-                console.log('DEBUG: selectedBusinessBenefits:', typeof selectedBusinessBenefits !== 'undefined' ? selectedBusinessBenefits : 'undefined');
-                console.log('DEBUG: selectedSpecializations:', typeof selectedSpecializations !== 'undefined' ? selectedSpecializations : 'undefined');
                 
                 // Collect work areas from multiple sources
                 let workAreas = [];
@@ -3340,23 +3395,17 @@ ${clientName}`;
                 // Try global variable first
                 if (typeof selectedWorkAreas !== 'undefined' && selectedWorkAreas.length > 0) {
                     workAreas = selectedWorkAreas;
-                    console.log('DEBUG: workAreas from global variable:', workAreas);
                 } else {
                     // Try to read from the display element
                     const workAreaTags = document.getElementById('workAreaTags');
-                    console.log('DEBUG: workAreaTags element:', workAreaTags);
-                    console.log('DEBUG: workAreaTags children count:', workAreaTags ? workAreaTags.children.length : 'null');
                     if (workAreaTags && workAreaTags.children.length > 0) {
                         workAreas = Array.from(workAreaTags.children).map(span => {
-                            console.log('DEBUG: processing work area span:', span.textContent);
                             return span.textContent.replace('×', '').trim();
                         }).filter(v => v);
-                        console.log('DEBUG: workAreas from display element:', workAreas);
                     } else {
                         // Fallback: read from hidden inputs
                         const workAreaInputs = document.querySelectorAll('input[name="work_areas[]"]');
                         workAreas = Array.from(workAreaInputs).map(input => input.value).filter(v => v);
-                        console.log('DEBUG: workAreas from hidden inputs:', workAreas);
                     }
                 }
 
@@ -3368,7 +3417,6 @@ ${clientName}`;
                     // Fallback: read from hidden inputs
                     const benefitInputs = document.querySelectorAll('input[name="business_benefits[]"]');
                     businessBenefits = Array.from(benefitInputs).map(input => input.value).filter(v => v);
-                    console.log('DEBUG: businessBenefits from hidden inputs:', businessBenefits);
                 }
 
                 // Collect specializations from multiple sources
@@ -3377,23 +3425,17 @@ ${clientName}`;
                 // Try global variable first
                 if (typeof selectedSpecializations !== 'undefined' && selectedSpecializations.length > 0) {
                     specializations = selectedSpecializations.map(s => s.text || s);
-                    console.log('DEBUG: specializations from global variable:', specializations);
                 } else {
                     // Try to read from the display element
                     const specializationsDisplay = document.getElementById('specializationsDisplay');
-                    console.log('DEBUG: specializationsDisplay element:', specializationsDisplay);
-                    console.log('DEBUG: specializationsDisplay children count:', specializationsDisplay ? specializationsDisplay.children.length : 'null');
                     if (specializationsDisplay && specializationsDisplay.children.length > 0) {
                         specializations = Array.from(specializationsDisplay.children).map(span => {
-                            console.log('DEBUG: processing span:', span.textContent);
                             return span.textContent.replace('×', '').trim();
                         }).filter(v => v && v !== 'לחצו לבחירת התמחויות נוספות');
-                        console.log('DEBUG: specializations from display element:', specializations);
                     } else {
                         // Fallback: read from hidden inputs
                         const specInputs = document.querySelectorAll('input[name="specializations[]"]');
                         specializations = Array.from(specInputs).map(input => input.value).filter(v => v);
-                        console.log('DEBUG: specializations from hidden inputs:', specializations);
                     }
                 }
 
@@ -3422,7 +3464,6 @@ ${clientName}`;
                     restrictions: restrictions
                 };
 
-                console.log('DEBUG: Final form data:', formData);
                 return formData;
             }
 
@@ -3432,52 +3473,15 @@ ${clientName}`;
                 return generator.replaceAllPlaceholders(formData);
             }
 
-            updatePreviewResults(results) {
+            updatePreviewResults(results, selectedPosts) {
                 const resultsDiv = document.getElementById('previewResults');
                 
                 resultsDiv.innerHTML = results.map((result, index) => {
-                    // Extract name and content from post
-                    console.log('Raw post:', result.post); // Debug log
-                    const postLines = result.post.split('\n').filter(line => line.trim() !== '');
-                    console.log('Post lines (filtered):', postLines); // Debug log
+                    // Get post data from selectedPosts
+                    const postData = selectedPosts[index];
+                    const authorName = postData.authorName;
+                    const postContent = postData.displayContent;
                     
-                    let authorName, postContent;
-                    
-                    if (postLines.length >= 2) {
-                        // Format: Name\n\nContent or Name\nContent
-                        let rawAuthorName = postLines[0];
-                        
-                        // Remove number prefix if exists (e.g., "1. דני כהן" -> "דני כהן")
-                        authorName = rawAuthorName.replace(/^\d+\.\s*/, '');
-                        
-                        postContent = postLines.slice(1).join(' ');
-                    } else if (postLines.length === 1) {
-                        // Only content, generate a name
-                        let singleLine = postLines[0];
-                        
-                        // Check if it starts with a number and name
-                        const nameMatch = singleLine.match(/^(\d+\.\s*)?([א-ת]+\s+[א-ת]+)/);
-                        if (nameMatch) {
-                            authorName = nameMatch[2];
-                            const remainingText = singleLine.replace(/^(\d+\.\s*)?[א-ת]+\s+[א-ת]+\s*/, '');
-                            postContent = remainingText || 'מחפש בעל מקצוע אמין בתחום.';
-                        } else {
-                            // If line doesn't contain a name, treat entire line as content
-                            authorName = 'משתמש אנונימי';
-                            postContent = singleLine;
-                        }
-                    } else {
-                        // Fallback
-                        authorName = 'משתמש';
-                        postContent = result.post || 'מחפש בעל מקצוע לעבודה.';
-                    }
-                    
-                    // Ensure we have content
-                    if (!postContent || postContent.trim() === '') {
-                        postContent = 'מחפש בעל מקצוע אמין לעבודה.';
-                    }
-                    
-                    console.log('Author:', authorName, 'Content:', postContent); // Debug log
                     
                     // Get first letter for avatar
                     const avatarLetter = authorName.charAt(0);
@@ -3495,9 +3499,9 @@ ${clientName}`;
                             
                             <div class="post-interactions">
                                 <div class="interactions-bar">
-                                    <span class="interaction-btn">👍 אהבתי</span>
-                                    <span class="interaction-btn">💬 תגובה</span>
-                                    <span class="interaction-btn">📤 שתף</span>
+                                    <span class="interaction-btn">אהבתי</span>
+                                    <span class="interaction-btn">תגובה</span>
+                                    <span class="interaction-btn">שתף</span>
                                 </div>
                             </div>
                             
@@ -3505,15 +3509,16 @@ ${clientName}`;
                                 <div class="comment">
                                     <div class="comment-avatar">ס</div>
                                     <div class="comment-content">
-                                        <div class="comment-author">הסוכן שלך</div>
-                                        <div class="comment-text">${formatLinksInText(result.response)}</div>
-                                        <div class="comment-actions">
-                                            <span class="comment-action">אהבתי</span>
-                                            <span class="comment-action">השב</span>
-                                            <span class="comment-time">עכשיו</span>
-                                            <span class="comment-source">${result.source === 'claude' ? 'Claude AI' : 'הדמיה'}</span>
-                                        </div>
+                                        <div class="comment-author">הסוכן שלך (${document.querySelector('[name="client_name"]').value || 'בעל המקצוע'})</div>
+                                        <div class="comment-time">עכשיו</div>
                                     </div>
+                                </div>
+                                <div class="comment-text">${formatLinksInText(result.response)}</div>
+                                
+                                <div class="comment-actions">
+                                    <span class="comment-action">אהבתי</span>
+                                    <span class="comment-action">תגובה</span>
+                                    <span class="comment-action">שתף</span>
                                 </div>
                             </div>
                         </div>
@@ -3643,7 +3648,7 @@ ${clientName}`;
 3. הערך שכותבים חייב להעשיר את ידע והבנת כותב הפוסט, בהקשר ישיר לסוג הפוסט העיקרי, ולכוונת כותב הפוסט.
 4. לפני כתיבת התגובה, נתח את כוונת כותב הפוסט ובחר 1-2 יתרונות עסקיים הכי רלוונטיים למצבו הספציפי
 5. תמיד לחתום בסוף תגובה בשם של בעל המקצוע.
-6. עיקרון חשוב מאוד - כל תגובה של בעל מקצוע צריכה להיות מינימום 70 מילים, עד מקסימום של 75 מילים!
+6. עיקרון חשוב מאוד - כל תגובה של בעל מקצוע צריכה להיות בין 70 ל-75 מילים בלבד! 
         
 📂 סוגי פוסטים
 * סוג 1: מחפשים מידע נוסף/עצה מקצועית
@@ -3700,7 +3705,6 @@ ${clientName}`;
 
 1. איסורים הקשורים לאופי השפה והסגנון של בעל המקצוע:
 
-❌ אסור לכתוב תגובה שהיא פחות מ-70 מילים, ויותר מ-70 מילים במקסימום!.
 ❌ אסור להשתמש בשפה גבוהה, טכניות ועסקית מידי בעת ניסוח תגובות.
 ❌ אסור להשתמש במשפטים או מילים שמייצרים רושם שבעל המקצוע בא לחנך, ללמד, להסביר, להרצות, לשבח, להדיר, להתחנף  או לאשר את דברי כותב הפוסט, בקשתו, או תיאור הבעיה שהוא ציין בפוסט, וכנ"ל גם אסור להשתמש במשפטים או מילים כאלו מצד בעל המקצוע כאשר הוא מנסח תגובה לכותב הפוסט, לכל אורך ושלבי ניסוח התגובה!
 

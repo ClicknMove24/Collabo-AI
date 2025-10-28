@@ -262,18 +262,101 @@
             border-bottom: none;
         }
 
-        .work-area-checkbox-item input[type="checkbox"] {
+        /* ==============================================
+           CHECKBOX STYLING - UNIFIED ACROSS ALL POPUPS
+        ============================================== */
+        
+        /* Standard checkbox styling for all popup checkboxes */
+        input[type="checkbox"] {
             accent-color: rgba(76, 29, 149, 0.8);
+            width: 16px;
+            height: 16px;
+            margin: 0;
+            cursor: pointer;
+        }
+
+        /* Specific styling for popup checkboxes */
+        .popup-checkbox {
+            width: 16px;
+            height: 16px;
+            margin: 0;
+            cursor: pointer;
+            accent-color: rgba(76, 29, 149, 0.8);
+        }
+
+        /* Popup item containers - unified styling */
+        .benefit-item,
+        .restriction-item,
+        .subcategory-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 24px;
+            cursor: pointer;
+            user-select: none;
+            transition: background-color 0.2s ease;
+        }
+
+        .benefit-item:hover,
+        .restriction-item:hover,
+        .subcategory-item:hover {
+            background-color: rgba(76, 29, 149, 0.05);
         }
 
 
 
 
 
-        .work-area-tags,
-        .business-benefits-tags {
+        /* ==============================================
+           TAG CONTAINERS ARCHITECTURE
+        ============================================== */
+        
+        /* Base layout for all dynamic content containers */
+        .dynamic-content-container {
+            display: flex;
+            gap: 8px;
+            margin-top: 0;
+            min-height: 0;
+        }
+
+        /* Layout modifiers */
+        .layout--inline-wrap {
+            flex-wrap: wrap;
+        }
+
+        .layout--vertical-stack {
+            flex-direction: column;
+        }
+
+        /* ==============================================
+           COMPONENT-SPECIFIC IMPLEMENTATIONS
+        ============================================== */
+
+        /* Area selection tags - wrap horizontally */
+        .work-area-tags {
+            /* inherits: display: flex, gap: 8px, margin-top: 0, min-height: 0 */
             display: flex;
             flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 0;
+            min-height: 0;
+        }
+
+        /* Business benefits categories - stack vertically */
+        .business-benefits-tags {
+            /* inherits: display: flex, gap: 8px, margin-top: 0, min-height: 0 */
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            margin-top: 0;
+            min-height: 0;
+        }
+
+        /* Restriction input containers - stack vertically */
+        .restriction-tags {
+            /* inherits: display: flex, gap: 8px, margin-top: 0, min-height: 0 */
+            display: flex;
+            flex-direction: column;
             gap: 8px;
             margin-top: 0;
             min-height: 0;
@@ -291,8 +374,16 @@
         }
 
 
-        /* Business benefit input styling */
+        /* ==============================================
+           BUSINESS BENEFIT INPUT STYLING
+        ============================================== */
+        
         .business-benefit-input {
+            /* Desktop base styling */
+            padding: 12px 16px 12px 40px;
+            font-size: 14px;
+            text-align: right;
+            direction: rtl;
             transition: all 0.2s ease;
         }
 
@@ -305,11 +396,38 @@
             border-color: #d1d5db;
         }
 
+        /* ==============================================
+           RESTRICTION INPUT STYLING
+        ============================================== */
+        
+        .restriction-input {
+            /* Desktop base styling */
+            padding: 12px 16px 12px 40px;
+            font-size: 14px;
+            text-align: right;
+            direction: rtl;
+        }
+
+        .restriction-input:focus {
+            border-color: var(--ai-purple);
+            box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+        }
+
+        .restriction-input:hover {
+            border-color: #d1d5db;
+        }
+
+        /* Reset margins when containers have content */
         .work-area-tags:not(:empty),
-        .business-benefits-tags:not(:empty) {
+        .business-benefits-tags:not(:empty),
+        .restriction-tags:not(:empty) {
             margin-top: 0;
         }
 
+        /* ==============================================
+           TAG ELEMENTS (Individual items within containers)
+        ============================================== */
+        
         .work-area-tag,
         .business-benefit-tag {
             display: inline-flex;
@@ -337,13 +455,13 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            background: rgba(76, 29, 149, 0.2);
-            color: rgba(76, 29, 149, 0.8);
+            background: rgba(220, 38, 38, 0.1);
+            color: #dc2626;
         }
 
         .work-area-tag .remove-tag:hover,
         .business-benefit-tag .remove-tag:hover {
-            background: rgba(76, 29, 149, 0.3);
+            background: rgba(220, 38, 38, 0.2);
         }
 
 
@@ -467,6 +585,13 @@
                 font-size: 16px;
             }
 
+            /* Tablet: Container margins */
+            .work-area-tags,
+            .business-benefits-tags,
+            .restriction-tags {
+                margin-top: 0;
+            }
+
             .form-label {
                 font-size: 15px;
                 margin-bottom: 0;
@@ -491,8 +616,331 @@
             }
         }
 
-        /* Desktop styles (769px and above) - Allow flex changes */
+        /* Universal popup styling - ensure consistency across all devices */
+        #saveCombinedSpecializations,
+        #saveBusinessBenefits,
+        #saveRestrictions {
+            width: 120px !important;
+            font-size: 14px !important;
+            padding: 10px 12px !important;
+            min-height: 44px !important;
+        }
+        
+        .set-primary-btn {
+            width: 90px !important;
+            height: 32px !important;
+            font-size: 12px !important;
+            padding: 4px 8px !important;
+            min-height: 32px !important;
+        }
+
+        /* Desktop styles (769px and above) - Force same styling as mobile */
         @media (min-width: 769px) {
+            /* Force all popup containers to look exactly like mobile */
+            #combinedSpecializationsPopupContent,
+            #businessBenefitsPopupContent,
+            #restrictionsPopupContent {
+                max-height: 85vh !important;
+                margin: 20px !important;
+            }
+            
+            /* Force popup headers to match mobile */
+            #combinedSpecializationsPopup div[style*="padding: 24px"],
+            #businessBenefitsPopup div[style*="padding: 24px"],
+            #restrictionsPopup div[style*="padding: 24px"] {
+                padding: 16px !important;
+            }
+            
+            /* Force save buttons to be exactly like mobile */
+            #saveCombinedSpecializations,
+            #saveBusinessBenefits,
+            #saveRestrictions {
+                width: 120px !important;
+                font-size: 14px !important;
+                padding: 10px 12px !important;
+                min-height: 44px !important;
+            }
+            
+            /* Force category buttons to match mobile */
+            .set-primary-btn {
+                width: 90px !important;
+                height: 32px !important;
+                font-size: 12px !important;
+                padding: 4px 8px !important;
+                min-height: 32px !important;
+            }
+            
+            /* Force popup category headers to match mobile height */
+            #combinedSpecializationsPopup div[style*="padding: 10px"],
+            #businessBenefitsPopup div[style*="padding: 10px"],
+            #restrictionsPopup div[style*="padding: 10px"] {
+                padding: 10px !important;
+            }
+        }
+
+        /* Live Preview Section - Force consistent styling across all devices */
+        #livePreviewSection {
+            padding: 20px 32px !important;
+            margin: 60px 0 !important;
+            border: 2px dashed #6366f1 !important;
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.05), rgba(139, 92, 246, 0.05)) !important;
+            border-radius: 12px !important;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06) !important;
+        }
+
+        #livePreviewSection h3 {
+            text-align: center !important;
+            margin-top: 0 !important;
+            font-size: 24px !important;
+            font-weight: 700 !important;
+            color: var(--text-primary) !important;
+        }
+
+        #livePreviewSection h4 {
+            text-align: center !important;
+            color: var(--text-secondary) !important;
+            font-weight: 400 !important;
+            margin-top: 8px !important;
+            margin-bottom: 20px !important;
+        }
+
+        #generatePreviewBtn {
+            width: auto !important;
+            padding: 12px 24px !important;
+            background: linear-gradient(135deg, #6366f1, #8b5cf6) !important;
+            color: white !important;
+            border: none !important;
+            border-radius: 8px !important;
+            font-size: 16px !important;
+            font-weight: 600 !important;
+            cursor: pointer !important;
+            margin: 20px auto 0 auto !important;
+            display: block !important;
+        }
+
+        /* Responsive adjustments for Live Preview */
+        @media (max-width: 768px) {
+            #livePreviewSection {
+                padding: 16px 20px !important;
+                margin: 40px 0 !important;
+            }
+        }
+
+        @media (max-width: 480px) {
+            #livePreviewSection {
+                padding: 12px 12px 4px 12px !important;
+                margin: 24px 0 !important;
+            }
+
+            #livePreviewSection h3 {
+                font-size: 20px !important;
+            }
+
+            #livePreviewSection h4 {
+                font-size: 14px !important;
+                margin-bottom: 12px !important;
+            }
+
+            #generatePreviewBtn {
+                font-size: 14px !important;
+                padding: 10px 20px !important;
+                margin: 0 auto !important;
+            }
+        }
+
+        /* Facebook-style posts and comments - Force consistent styling across all devices */
+        .facebook-post-card {
+            background: #ffffff !important;
+            border: 1px solid #e5e7eb !important;
+            border-radius: 12px !important;
+            margin-bottom: 20px !important;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1) !important;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+            padding: 20px !important;
+            min-height: 300px !important;
+        }
+
+        .post-header {
+            display: flex !important;
+            align-items: center !important;
+            padding: 12px 16px !important;
+            border-bottom: 1px solid #f0f2f5 !important;
+        }
+
+        .post-content {
+            padding: 0 16px 16px !important;
+            color: #1c1e21 !important;
+            line-height: 1.5 !important;
+            font-size: 15px !important;
+            min-height: 60px !important;
+        }
+
+        .facebook-post-card h4 {
+            font-size: 16px !important;
+            margin-bottom: 12px !important;
+            line-height: 1.4 !important;
+        }
+
+        .facebook-post-card p {
+            font-size: 14px !important;
+            line-height: 1.5 !important;
+            margin-bottom: 8px !important;
+        }
+
+        .facebook-post-card .response {
+            background: #f8fafc !important;
+            border-right: 4px solid #6366f1 !important;
+            padding: 15px !important;
+            margin-top: 12px !important;
+            border-radius: 8px !important;
+        }
+
+        .comments-section {
+            background: #f8f9fa !important;
+            border: 1px solid #dddfe2 !important;
+            border-radius: 8px !important;
+            margin-bottom: 20px !important;
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1) !important;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+            padding: 0 !important;
+            border-top: 1px solid #f0f2f5 !important;
+            min-height: 80px !important;
+        }
+
+        .comment {
+            display: flex !important;
+            align-items: flex-start !important;
+            padding: 12px 16px !important;
+            border-bottom: 1px solid #f0f2f5 !important;
+        }
+
+        .comment-avatar {
+            width: 32px !important;
+            height: 32px !important;
+            border-radius: 50% !important;
+            background: #6366f1 !important;
+            color: white !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            font-weight: 600 !important;
+            font-size: 14px !important;
+            margin-left: 8px !important;
+        }
+
+        .comment-content {
+            flex: 1 !important;
+        }
+
+        .comment-author {
+            font-weight: 600 !important;
+            color: #365899 !important;
+            font-size: 13px !important;
+            margin-bottom: 2px !important;
+        }
+
+        .comment-time {
+            color: #90949c !important;
+            font-size: 12px !important;
+            margin-bottom: 4px !important;
+        }
+
+        .comment-text {
+            padding: 0 16px 12px !important;
+            color: #1c1e21 !important;
+            line-height: 1.34 !important;
+            font-size: 15px !important;
+        }
+
+        .post-interactions {
+            border-top: 1px solid #f0f2f5 !important;
+            padding: 8px 16px !important;
+        }
+
+        .interactions-bar {
+            display: flex !important;
+            justify-content: space-between !important;
+            padding: 0 4px !important;
+            gap: 8px !important;
+            height: 30px !important;
+        }
+
+        .interaction-btn {
+            flex: 1 !important;
+            padding: 0 8px !important;
+            font-size: 13px !important;
+            text-align: center !important;
+            background-color: transparent !important;
+            border-radius: 6px !important;
+            border: none !important;
+            color: #65676b !important;
+            height: 30px !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            line-height: 1 !important;
+            cursor: pointer !important;
+            font-weight: 600 !important;
+            transition: background-color 0.2s ease !important;
+        }
+
+        .interaction-btn:hover {
+            background-color: #f0f2f5 !important;
+        }
+
+        /* Post avatar and meta elements */
+        .post-avatar {
+            width: 40px !important;
+            height: 40px !important;
+            border-radius: 50% !important;
+            background: #1877f2 !important;
+            color: white !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            font-weight: 600 !important;
+            font-size: 16px !important;
+            margin-left: 12px !important;
+        }
+
+        .post-meta {
+            flex: 1 !important;
+        }
+
+        .post-author {
+            font-weight: 600 !important;
+            color: #1c1e21 !important;
+            font-size: 15px !important;
+            margin-bottom: 2px !important;
+        }
+
+        .post-time {
+            color: #65676b !important;
+            font-size: 13px !important;
+        }
+
+        /* Single consistent styling - no device variations */
+        /* All devices get the same mobile-optimized design */
+
+        /* API Status Indicator */
+        .api-status-indicator {
+            background: #fef3c7 !important;
+            border: 1px solid #f59e0b !important;
+            border-radius: 8px !important;
+            padding: 12px 16px !important;
+            margin-bottom: 20px !important;
+            text-align: center !important;
+            font-size: 14px !important;
+            color: #92400e !important;
+            display: none !important;
+        }
+
+        .api-status-indicator.show {
+            display: block !important;
+        }
+
+        .api-status-indicator strong {
+            color: #78350f !important;
         }
 
         /* Mobile styles (480px and below) */
@@ -598,11 +1046,7 @@
                 word-wrap: break-word;
             }
 
-            /* Mobile tags */
-            .work-area-tag {
-                font-size: 12px;
-                padding: 4px 8px;
-            }
+            /* Mobile tags - removed duplicate, handled below */
 
             .contact-form button {
                 padding: 12px 16px;
@@ -638,8 +1082,9 @@
                 font-size: 14px !important;
             }
             
-            /* Mobile business benefit inputs */
-            .business-benefit-input {
+            /* Mobile: Special input types */
+            .business-benefit-input,
+            .restriction-input {
                 font-size: 14px !important;
                 padding: 10px 14px 10px 35px !important;
                 text-align: right !important;
@@ -668,88 +1113,48 @@
                 margin-top: 30px !important;
             }
 
-            /* Mobile facebook posts - 20px spacing between posts and expand vertically */
-            .facebook-post-card {
-                margin-bottom: 20px !important;
-                padding: 20px !important;
-                border-radius: 12px !important;
-                background: #ffffff !important;
-                border: 1px solid #e5e7eb !important;
-                box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1) !important;
-                min-height: 300px !important;
+            /* All post styling now handled by single global CSS system above */
+            
+            /* Ensure popup mobile responsiveness */
+            #combinedSpecializationsPopupContent,
+            #businessBenefitsPopupContent,
+            #restrictionsPopupContent {
+                margin: 10px !important;
+                max-height: 85vh !important;
+                max-width: calc(100vw - 20px) !important;
             }
-
-            .post-content {
-                padding: 0 16px 16px !important;
-                min-height: 60px !important;
-                line-height: 1.5 !important;
+            
+            /* Popup headers compact on mobile */
+            #combinedSpecializationsPopup .popup-header,
+            #businessBenefitsPopup .popup-header,
+            #restrictionsPopup .popup-header {
+                padding: 16px !important;
             }
-
-            .facebook-post-card h4 {
-                font-size: 16px !important;
-                margin-bottom: 12px !important;
-                line-height: 1.4 !important;
+            
+            /* Popup titles readable on mobile */
+            #combinedSpecializationsPopup h3,
+            #businessBenefitsPopup h3,
+            #restrictionsPopup h3 {
+                font-size: 18px !important;
             }
-
-            .facebook-post-card p {
+            
+            /* Save buttons touch-friendly */
+            #saveCombinedSpecializations,
+            #saveBusinessBenefits,
+            #saveRestrictions {
+                min-height: 44px !important;
+                width: 120px !important;
+                padding: 12px !important;
                 font-size: 14px !important;
-                line-height: 1.5 !important;
-                margin-bottom: 8px !important;
-            }
-
-            .facebook-post-card .response {
-                background: #f8fafc !important;
-                border-right: 4px solid #6366f1 !important;
-                padding: 15px !important;
-                margin-top: 12px !important;
-                border-radius: 8px !important;
-            }
-
-            /* Mobile comments section - fix comment positioning and expand vertically */
-            .comments-section {
-                padding: 20px 16px !important;
-                background: #f8f9fa !important;
-                border-top: 1px solid #f0f2f5 !important;
-                min-height: 80px !important;
             }
             
-            
-            
-
-            /* Mobile interaction buttons - remove icons and improve layout */
-            .post-interactions {
-                border-top: none !important;
-                padding: 0 16px !important;
-                margin-top: 0 !important;
-                margin-bottom: 10px !important;
-            }
-
-            .interactions-bar {
-                display: flex !important;
-                justify-content: space-between !important;
-                padding: 0 4px !important;
-                gap: 8px !important;
-                height: 30px !important;
-            }
-
-            .interaction-btn {
-                flex: 1 !important;
-                padding: 0 8px !important;
-                font-size: 13px !important;
-                text-align: center !important;
-                background-color: transparent !important;
-                border-radius: 6px !important;
-                border: none !important;
-                color: #65676b !important;
-                height: 30px !important;
-                display: flex !important;
-                align-items: center !important;
-                justify-content: center !important;
-                line-height: 1 !important;
-            }
-
-            .interaction-btn:hover {
-                background-color: #f0f2f5 !important;
+            /* Category buttons in popups - mobile friendly */
+            .set-primary-btn {
+                width: 90px !important;
+                height: 32px !important;
+                font-size: 12px !important;
+                padding: 4px 8px !important;
+                min-height: 32px !important;
             }
         }
             
@@ -829,15 +1234,18 @@
                 -webkit-font-smoothing: antialiased;
             }
             
-            /* Mobile tag styling */
-            .work-area-tag, .business-benefit-tag {
+            /* Mobile: All tag elements */
+            .work-area-tag, 
+            .business-benefit-tag {
                 font-size: 12px !important;
                 padding: 4px 8px !important;
                 margin: 2px !important;
             }
             
-            /* Mobile form containers responsive */
-            .work-area-tags, .business-benefits-tags {
+            /* Mobile: Reset margins for all dynamic containers */
+            .work-area-tags,
+            .business-benefits-tags, 
+            .restriction-tags {
                 margin-top: 0 !important;
             }
             
@@ -847,194 +1255,7 @@
             }
             
         }
-        /* Facebook-style preview section */
-        .facebook-post-card {
-            background: white;
-            border: 1px solid #dddfe2;
-            border-radius: 8px;
-            margin-bottom: 16px;
-            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-        }
-
-        /* Mobile override for facebook-post-card spacing */
-        @media (max-width: 480px) {
-            .facebook-post-card {
-                margin-bottom: 20px !important;
-            }
-        }
-
-        .post-header {
-            display: flex;
-            align-items: center;
-            padding: 12px 16px;
-            border-bottom: 1px solid #f0f2f5;
-        }
-
-        .post-avatar {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background: #1877f2;
-            color: white;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 600;
-            font-size: 16px;
-            margin-left: 12px;
-        }
-
-        .post-meta {
-            flex: 1;
-        }
-
-        .post-author {
-            font-weight: 600;
-            color: #1c1e21;
-            font-size: 15px;
-            margin-bottom: 2px;
-        }
-
-        .post-time {
-            color: #65676b;
-            font-size: 13px;
-        }
-
-        .post-content {
-            padding: 0 16px 12px;
-            color: #1c1e21;
-            line-height: 1.34;
-            font-size: 15px;
-        }
-
-        .post-interactions {
-            border-top: 1px solid #f0f2f5;
-            padding: 8px 16px;
-        }
-
-        .interactions-bar {
-            display: flex;
-            justify-content: space-around;
-        }
-
-        .interaction-btn {
-            color: #65676b;
-            font-size: 15px;
-            font-weight: 600;
-            padding: 8px 12px;
-            border-radius: 6px;
-            cursor: pointer;
-            transition: background-color 0.2s;
-        }
-
-        .interaction-btn:hover {
-            background-color: #f0f2f5;
-        }
-
-
-        /* FINAL Mobile Override - Must be last to override all other CSS */
-        @media (max-width: 480px) {
-            /* Facebook posts - spacing and height */
-            .facebook-post-card {
-                margin-bottom: 20px !important;
-                min-height: 300px !important;
-                padding: 20px !important;
-            }
-
-            /* Post content height */
-            .post-content {
-                padding: 0 16px 16px !important;
-                min-height: 60px !important;
-                line-height: 1.5 !important;
-            }
-
-            /* Mobile Comments Section - Copy Post Structure Exactly */
-            .comments-section {
-                background: #f8f9fa !important;
-                border: 1px solid #dddfe2 !important;
-                border-radius: 8px !important;
-                margin-bottom: 20px !important;
-                box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1) !important;
-                font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
-                padding: 0 !important;
-            }
-            
-            /* Comment Header - Copy post-header exactly */
-            .comment {
-                display: flex !important;
-                align-items: center !important;
-                padding: 12px 16px !important;
-                background: transparent !important;
-            }
-            
-            .comment-avatar {
-                width: 40px !important;
-                height: 40px !important;
-                border-radius: 50% !important;
-                background: #42b883 !important;
-                color: white !important;
-                display: flex !important;
-                align-items: center !important;
-                justify-content: center !important;
-                font-weight: 600 !important;
-                font-size: 16px !important;
-                margin-left: 12px !important;
-            }
-            
-            .comment-content {
-                flex: 1 !important;
-            }
-            
-            .comment-author {
-                font-weight: 600 !important;
-                color: #1c1e21 !important;
-                font-size: 15px !important;
-                margin-bottom: 2px !important;
-            }
-            
-            .comment-time {
-                color: #65676b !important;
-                font-size: 13px !important;
-            }
-            
-            /* Comment Text - Copy post-content exactly */
-            .comment-text {
-                padding: 0 16px 12px !important;
-                color: #1c1e21 !important;
-                line-height: 1.34 !important;
-                font-size: 15px !important;
-            }
-            
-            /* Comment Interactions - Copy post-interactions exactly */
-            .comment-actions {
-                border-top: 1px solid #f0f2f5 !important;
-                padding: 8px 16px !important;
-                display: flex !important;
-                justify-content: space-between !important;
-                gap: 8px !important;
-            }
-            
-            .comment-action {
-                flex: 1 !important;
-                padding: 0 8px !important;
-                font-size: 13px !important;
-                text-align: center !important;
-                background-color: transparent !important;
-                border-radius: 6px !important;
-                border: none !important;
-                color: #65676b !important;
-                height: 30px !important;
-                display: flex !important;
-                align-items: center !important;
-                justify-content: center !important;
-                line-height: 1 !important;
-                cursor: pointer !important;
-            }
-            
-            .comment-action:hover {
-                background-color: #f0f2f5 !important;
-            }
+        /* Clean CSS architecture - single source of truth for all post styling */
         }
     </style>
 </head>
@@ -1066,18 +1287,6 @@
                     <div class="form-group">
                         <label class="form-label">
                             <span class="question-number">2.</span>
-                            תחום פעילות העיקרי שלכם:
-                        </label>
-                        <div style="position: relative;">
-                            <input type="text" class="form-input" id="primaryFieldInput" name="primary_field" placeholder="הקלידו לחיפוש תחום פעילות..." required style="text-align: right;" autocomplete="off">
-                            <div id="dropdownList" style="display: none; position: absolute; top: 100%; left: 0; right: 0; background: white; border: 1px solid #e5e7eb; border-radius: 6px; box-shadow: 0 4px 12px rgba(0,0,0,0.15); z-index: 1000; max-height: 200px; overflow-y: auto; font-size: 16px;">
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label class="form-label">
-                            <span class="question-number">3.</span>
                             כמה שנים העסק שלכם פעיל?
                         </label>
                         <input type="number" class="form-input" name="experience_years" placeholder="לדוגמה: 12" required min="1" max="50">
@@ -1085,10 +1294,63 @@
 
                     <div class="form-group">
                         <label class="form-label">
-                            <span class="question-number">4.</span>
+                            <span class="question-number">3.</span>
                             מספר טלפון ליצירת קשר:
                         </label>
                         <input type="tel" class="form-input" name="phone_number" placeholder="לדוגמה: 050-1234567" required style="text-align: right;">
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">
+                            <span class="question-number">4.</span>
+                            תחומי פעילות והתמחויות:
+                        </label>
+                        
+                        <div id="combinedSpecializationsContainer" style="position: relative;">
+                            <div id="combinedSpecializationsDisplay" class="form-input" tabindex="0" style="cursor: pointer; display: flex; flex-wrap: wrap; gap: 8px; align-items: center; position: relative; font-size: 14px;">
+                                <span id="combinedSpecializationsPlaceholder" style="color: var(--text-muted);">לחצו לבחירת תחום ראשי והתמחויות</span>
+                                <i class="fas fa-chevron-down" style="position: absolute; left: 16px; top: 16px; color: var(--text-muted);"></i>
+                            </div>
+                            
+                            <!-- Hidden inputs for form submission -->
+                            <input type="hidden" id="primaryFieldHidden" name="primary_field" required>
+                        </div>
+                        
+                        <div class="work-area-tags" id="combinedSpecializationsTags"></div>
+                        
+                        <!-- Combined Specializations Popup Modal -->
+                        <div id="combinedSpecializationsPopup" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.3); z-index: 9999; overflow-y: auto;">
+                            <div style="display: flex; align-items: center; justify-content: center; min-height: 100vh; padding: 20px;">
+                                <div id="combinedSpecializationsPopupContent" style="background: white; border-radius: var(--border-radius); border: 1px solid var(--border-light); max-width: 700px; width: 100%; max-height: 85vh; position: relative; overflow: hidden; display: flex; flex-direction: column;">
+                                    <!-- Popup Header -->
+                                    <div style="padding: 24px 24px 16px 24px; border-bottom: 1px solid var(--border-light);">
+                                        <div style="display: flex; align-items: center; justify-content: space-between;">
+                                            <h3 style="margin: 0; font-size: 20px; font-weight: 600; color: var(--text-primary);">בחירת תחום ראשי והתמחויות</h3>
+                                            <button type="button" id="closeCombinedSpecializationsPopup" style="background: none; color: var(--text-muted); border: none; font-size: 24px; cursor: pointer; padding: 0; width: 24px; height: 24px; display: flex; align-items: center; justify-content: center;">×</button>
+                                        </div>
+                                        <p style="margin: 8px 0 0 0; color: var(--text-secondary); font-size: 14px;">בחרו תחום פעילות ראשי (חובה) והתמחויות נוספות. התחום הראשי יקבל את מירב הפניות.</p>
+                                    </div>
+                                    
+                                    <!-- Search Section - Fixed -->
+                                    <div id="combinedSearchSection" style="padding: 20px 20px 0 20px; border-bottom: 1px solid var(--border-light);">
+                                        <div style="margin-bottom: 20px;">
+                                            <input type="text" id="combinedSearchInput" placeholder="חיפוש תחומים והתמחויות..." 
+                                                   style="width: 100%; padding: 12px; border: 1px solid var(--border-light); border-radius: var(--border-radius); font-size: 16px;">
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- Popup Content - Scrollable -->
+                                    <div id="combinedSpecializationsPopupBody" style="flex: 1; overflow-y: auto; min-height: 0;">
+                                    </div>
+                                    
+                                    <!-- Popup Footer -->
+                                    <div style="padding: 16px; border-top: 1px solid var(--border-light); flex-shrink: 0; display: flex; justify-content: space-between; align-items: center;">
+                                        <div id="selectedCombinedCount" style="color: var(--text-secondary); font-size: 14px;">יש לבחור תחום ראשי</div>
+                                        <button type="button" id="saveCombinedSpecializations" style="background: var(--ai-purple); color: white; border: none; padding: 10px 12px; border-radius: var(--border-radius); font-size: 14px; cursor: pointer; font-weight: 500; width: 120px;">שמור בחירות</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
                     <div class="form-group">
@@ -1123,7 +1385,7 @@
                         </label>
                         
                         <div id="businessBenefitsContainer" style="position: relative;">
-                            <div id="businessBenefitsDisplay" tabindex="-1" style="padding: 12px 20px; border: 2px solid var(--border-light); border-radius: var(--border-radius); background: var(--bg-light); cursor: pointer; display: flex; flex-wrap: wrap; gap: 8px; align-items: center; min-height: 48px; position: relative; box-sizing: border-box; font-size: 14px; font-family: inherit; outline: none;">
+                            <div id="businessBenefitsDisplay" class="form-input" tabindex="-1" style="cursor: pointer; display: flex; flex-wrap: wrap; gap: 8px; align-items: center; position: relative; font-size: 14px;">
                                 <span id="businessBenefitsPlaceholder" style="color: var(--text-muted);">לחצו לבחירת יתרונות עסקיים</span>
                                 <i class="fas fa-chevron-down" style="position: absolute; left: 16px; top: 16px; color: var(--text-muted);"></i>
                             </div>
@@ -1132,7 +1394,7 @@
                         <!-- Business Benefits Popup Modal -->
                         <div id="businessBenefitsPopup" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.3); z-index: 9999; overflow-y: auto;">
                             <div style="display: flex; align-items: center; justify-content: center; min-height: 100vh; padding: 20px;">
-                                <div id="businessBenefitsPopupContent" style="background: white; border-radius: var(--border-radius); border: 1px solid var(--border-light); max-width: 700px; width: 100%; max-height: 90vh; position: relative; overflow: visible;">
+                                <div id="businessBenefitsPopupContent" style="background: white; border-radius: var(--border-radius); border: 1px solid var(--border-light); max-width: 700px; width: 100%; max-height: 85vh; position: relative; overflow: hidden; display: flex; flex-direction: column;">
                                     <!-- Popup Header -->
                                     <div style="padding: 24px 24px 16px 24px; border-bottom: 1px solid var(--border-light);">
                                         <div style="display: flex; align-items: center; justify-content: space-between;">
@@ -1142,13 +1404,14 @@
                                         <p style="margin: 8px 0 0 0; color: var(--text-secondary); font-size: 14px;">בחרו לפחות 4 יתרונות עסקיים שמייחדים אתכם מהמתחרים ומושכים לקוחות</p>
                                     </div>
                                     
-                                    <!-- Popup Content -->
-                                    <div id="businessBenefitsPopupBody" style="max-height: calc(90vh - 200px); overflow-y: auto;">
+                                    <!-- Popup Content - Scrollable -->
+                                    <div id="businessBenefitsPopupBody" style="flex: 1; overflow-y: auto; min-height: 0;">
                                     </div>
                                     
                                     <!-- Popup Footer -->
-                                    <div style="padding: 20px 24px 28px 24px; border-top: 1px solid var(--border-light); display: flex; justify-content: center; align-items: center;">
+                                    <div style="padding: 16px; border-top: 1px solid var(--border-light); flex-shrink: 0; display: flex; justify-content: space-between; align-items: center;">
                                         <div id="selectedBusinessBenefitsCount" style="color: var(--text-secondary); font-size: 14px;">לא נבחרו יתרונות</div>
+                                        <button type="button" id="saveBusinessBenefits" style="background: var(--ai-purple); color: white; border: none; padding: 10px 12px; border-radius: var(--border-radius); font-size: 14px; cursor: pointer; font-weight: 500; width: 120px;">שמור בחירות</button>
                                     </div>
                                 </div>
                             </div>
@@ -1158,53 +1421,6 @@
                     </div>
                 </div>
 
-                <!-- התמחויות נוספות -->
-                <div class="form-section">
-                    <h3>התמחויות נוספות</h3>
-                    <div class="section-description">
-                        בחרו התמחויות נוספות או תתי-תחומים שאתם מספקים שירותים בהם. ניתן לבחור מהתחום העיקרי שלכם או מתחומים אחרים.
-                    </div>
-                    <div class="form-group">
-                        <label class="form-label">
-                            <span class="question-number">7.</span>
-                            התמחויות נוספות <strong>(אופציונלי)</strong>
-                        </label>
-                        
-                        <div id="specializationsContainer" style="position: relative;">
-                            <div id="specializationsDisplay" tabindex="-1" style="padding: 12px 20px; border: 2px solid var(--border-light); border-radius: var(--border-radius); background: var(--bg-light); cursor: pointer; display: flex; flex-wrap: wrap; gap: 8px; align-items: center; min-height: 48px; position: relative; box-sizing: border-box; font-size: 14px; font-family: inherit; outline: none;">
-                                <span id="specializationsPlaceholder" style="color: var(--text-muted);">לחצו לבחירת התמחויות נוספות</span>
-                                <i class="fas fa-chevron-down" style="position: absolute; left: 16px; top: 16px; color: var(--text-muted);"></i>
-                            </div>
-                        </div>
-                        
-                        <!-- Specializations Popup Modal -->
-                        <div id="specializationsPopup" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.3); z-index: 9999; overflow-y: auto;">
-                            <div style="display: flex; align-items: center; justify-content: center; min-height: 100vh; padding: 20px;">
-                                <div id="specializationsPopupContent" style="background: white; border-radius: var(--border-radius); border: 1px solid var(--border-light); max-width: 700px; width: 100%; max-height: 90vh; position: relative; overflow: visible;">
-                                    <!-- Popup Header -->
-                                    <div style="padding: 24px 24px 16px 24px; border-bottom: 1px solid var(--border-light);">
-                                        <div style="display: flex; align-items: center; justify-content: space-between;">
-                                            <h3 style="margin: 0; font-size: 20px; font-weight: 600; color: var(--text-primary);">בחירת התמחויות נוספות</h3>
-                                            <button type="button" id="closeSpecializationsPopup" style="background: none; color: var(--text-muted); border: none; font-size: 24px; cursor: pointer; padding: 0; width: 24px; height: 24px; display: flex; align-items: center; justify-content: center;">×</button>
-                                        </div>
-                                        <p style="margin: 8px 0 0 0; color: var(--text-secondary); font-size: 14px;">בחרו התמחויות נוספות או תתי-תחומים שאתם מספקים שירותים בהם</p>
-                                    </div>
-                                    
-                                    <!-- Popup Content -->
-                                    <div id="specializationsPopupBody" style="max-height: calc(90vh - 200px); overflow-y: auto;">
-                                    </div>
-                                    
-                                    <!-- Popup Footer -->
-                                    <div style="padding: 20px 24px 28px 24px; border-top: 1px solid var(--border-light); display: flex; justify-content: center; align-items: center;">
-                                        <div id="selectedSpecializationsCount" style="color: var(--text-secondary); font-size: 14px;">לא נבחרו התמחויות</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="specializations-tags" id="specializationsTags" style="margin-top: 12px;"></div>
-                    </div>
-                </div>
 
 
                 <!-- הגדרות מיוחדות -->
@@ -1216,12 +1432,12 @@
 
                     <div class="form-group">
                         <label class="form-label">
-                            <span class="question-number">8.</span>
+                            <span class="question-number">7.</span>
                             יש נושאים שאתם מעדיפים להימנע מהם בתגובות? <strong>(עד 5 נושאים)</strong>
                         </label>
                         
                         <div id="restrictionsContainer" style="position: relative;">
-                            <div id="restrictionsDisplay" tabindex="-1" style="padding: 12px 20px; border: 2px solid var(--border-light); border-radius: var(--border-radius); background: var(--bg-light); cursor: pointer; display: flex; flex-wrap: wrap; gap: 8px; align-items: center; min-height: 48px; position: relative; box-sizing: border-box; font-size: 14px; font-family: inherit; outline: none;">
+                            <div id="restrictionsDisplay" class="form-input" tabindex="-1" style="cursor: pointer; display: flex; flex-wrap: wrap; gap: 8px; align-items: center; position: relative; font-size: 14px;">
                                 <span id="restrictionsPlaceholder" style="color: var(--text-muted);">לחצו לבחירת נושאים להימנעות</span>
                                 <i class="fas fa-chevron-down" style="position: absolute; left: 16px; top: 16px; color: var(--text-muted);"></i>
                             </div>
@@ -1230,7 +1446,7 @@
                         <!-- Restrictions Popup Modal -->
                         <div id="restrictionsPopup" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.3); z-index: 9999; overflow-y: auto;">
                             <div style="display: flex; align-items: center; justify-content: center; min-height: 100vh; padding: 20px;">
-                                <div id="restrictionsPopupContent" style="background: white; border-radius: var(--border-radius); border: 1px solid var(--border-light); max-width: 700px; width: 100%; max-height: 90vh; position: relative; overflow: visible;">
+                                <div id="restrictionsPopupContent" style="background: white; border-radius: var(--border-radius); border: 1px solid var(--border-light); max-width: 700px; width: 100%; max-height: 85vh; position: relative; overflow: hidden; display: flex; flex-direction: column;">
                                     <!-- Popup Header -->
                                     <div style="padding: 24px 24px 16px 24px; border-bottom: 1px solid var(--border-light);">
                                         <div style="display: flex; align-items: center; justify-content: space-between;">
@@ -1240,13 +1456,14 @@
                                         <p style="margin: 8px 0 0 0; color: var(--text-secondary); font-size: 14px;">בחרו עד 5 נושאים שאתם מעדיפים להימנע מהם בתגובות</p>
                                     </div>
                                     
-                                    <!-- Popup Content -->
-                                    <div id="restrictionsPopupBody" style="max-height: calc(90vh - 200px); overflow-y: auto;">
+                                    <!-- Popup Content - Scrollable -->
+                                    <div id="restrictionsPopupBody" style="flex: 1; overflow-y: auto; min-height: 0;">
                                     </div>
                                     
                                     <!-- Popup Footer -->
-                                    <div style="padding: 20px 24px 28px 24px; border-top: 1px solid var(--border-light); display: flex; justify-content: center; align-items: center;">
+                                    <div style="padding: 16px; border-top: 1px solid var(--border-light); flex-shrink: 0; display: flex; justify-content: space-between; align-items: center;">
                                         <div id="selectedRestrictionsCount" style="color: var(--text-secondary); font-size: 14px;">לא נבחרו הגבלות</div>
+                                        <button type="button" id="saveRestrictions" style="background: var(--ai-purple); color: white; border: none; padding: 10px 12px; border-radius: var(--border-radius); font-size: 14px; cursor: pointer; font-weight: 500; width: 120px;">שמור בחירות</button>
                                     </div>
                                 </div>
                             </div>
@@ -1258,7 +1475,7 @@
 
                     <div class="form-group">
                         <label class="form-label">
-                            <span class="question-number">9.</span>
+                            <span class="question-number">8.</span>
                             הערות נוספות או בקשות מיוחדות:
                         </label>
                         <textarea class="form-input form-textarea" name="additional_notes" placeholder="כל מידע נוסף שחשוב לכם שנדע..."></textarea>
@@ -1266,7 +1483,7 @@
                 </div>
 
                 <!-- Live Preview Section -->
-                <div class="form-section" id="livePreviewSection" style="display: block; border: 2px dashed #6366f1; background: linear-gradient(135deg, rgba(99, 102, 241, 0.05), rgba(139, 92, 246, 0.05)); padding: 20px 32px !important; margin: 60px 0 !important;">
+                <div class="form-section" id="livePreviewSection" style="display: block;">
                     <h3 style="text-align: center; margin-top: 0;">תצוגה מקדימה - איך הסוכן שלך יגיב לפוסטים</h3>
                     <h4 style="text-align: center; color: var(--text-secondary); font-weight: 400; margin-top: 8px; margin-bottom: 20px;">לפני שליחת הטופס, בואו נראה איך הסוכן שלך יגיב לפוסטים דומים בתחום שלך</h4>
                     
@@ -1278,6 +1495,11 @@
                         <div id="previewLoading" style="text-align: center; padding: 20px; display: none;">
                             <div style="display: inline-block; width: 40px; height: 40px; border: 4px solid #f3f3f3; border-top: 4px solid #6366f1; border-radius: 50%; animation: spin 1s linear infinite;"></div>
                             <p style="margin-top: 10px; color: #6b7280;">יוצר דוגמאות פוסטים ותשובות...</p>
+                        </div>
+                        
+                        <!-- API Status Indicator -->
+                        <div id="apiStatusIndicator" class="api-status-indicator">
+                            <strong>📡 מצב דמו:</strong> אין חיבור לשרת AI - התגובות שמוצגות הן לדוגמה בלבד
                         </div>
                         
                         <div id="previewResults"></div>
@@ -1532,18 +1754,296 @@
                 }
             }
             
-            // Primary field autocomplete functionality
-            const primaryFieldInput = document.getElementById('primaryFieldInput');
-            const dropdownList = document.getElementById('dropdownList');
-
-            // מערך לאחסון ההתמחויות הנבחרות
-            let selectedSpecializations = [];
+            // Combined specializations functionality (replaces old primary field + specializations)
+            let selectedCombinedSpecializations = [];
+            let primaryField = null;
+            let additionalSpecializations = [];
+            
+            // Initialize combined specializations popup functionality
+            function initializeCombinedSpecializationsPopup() {
+                const display = document.getElementById('combinedSpecializationsDisplay');
+                const popup = document.getElementById('combinedSpecializationsPopup');
+                const popupBody = document.getElementById('combinedSpecializationsPopupBody');
+                const closeBtn = document.getElementById('closeCombinedSpecializationsPopup');
+                const saveBtn = document.getElementById('saveCombinedSpecializations');
+                const countDisplay = document.getElementById('selectedCombinedCount');
+                
+                if (!display || !popup || !popupBody) return;
+                
+                // Open popup on click
+                display.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    openCombinedSpecializationsPopup();
+                });
+                
+                // Close popup handlers
+                closeBtn?.addEventListener('click', closeCombinedSpecializationsPopup);
+                popup.addEventListener('click', function(e) {
+                    if (e.target === popup) {
+                        closeCombinedSpecializationsPopup();
+                    }
+                });
+                
+                // Save selections handler
+                saveBtn?.addEventListener('click', saveCombinedSpecializations);
+            }
+            
+            function openCombinedSpecializationsPopup() {
+                const popup = document.getElementById('combinedSpecializationsPopup');
+                const popupBody = document.getElementById('combinedSpecializationsPopupBody');
+                
+                if (!popup || !popupBody) return;
+                
+                // Build popup content
+                buildCombinedPopupContent();
+                
+                // Show popup
+                popup.style.display = 'block';
+                document.body.style.overflow = 'hidden';
+            }
+            
+            function closeCombinedSpecializationsPopup() {
+                const popup = document.getElementById('combinedSpecializationsPopup');
+                if (!popup) return;
+                
+                popup.style.display = 'none';
+                document.body.style.overflow = '';
+            }
+            
+            function buildCombinedPopupContent() {
+                const popupBody = document.getElementById('combinedSpecializationsPopupBody');
+                if (!popupBody) return;
+                
+                popupBody.innerHTML = '';
+                
+                // Build categories and subcategories
+                Object.keys(specializations).forEach(category => {
+                    const categoryContainer = document.createElement('div');
+                    categoryContainer.style.marginBottom = '24px';
+                    
+                    // Category header with primary option
+                    const isPrimaryField = primaryField === category;
+                    const categoryHeader = document.createElement('div');
+                    categoryHeader.innerHTML = `
+                        <div style="display: flex; justify-content: space-between; align-items: center; padding: 10px; background: var(--bg-gray); border-radius: var(--border-radius); margin-bottom: 8px;">
+                            <div style="display: flex; align-items: center; gap: 12px;">
+                                <span style="font-weight: 600; font-size: 16px;">${category}</span>
+                                ${isPrimaryField ? '<span style="color: #d97706; font-size: 12px;">🏆 תחום ראשי</span>' : ''}
+                            </div>
+                            <button type="button" class="set-primary-btn" data-category="${category}" 
+                                    style="padding: 4px 8px; border: 1px solid ${isPrimaryField ? '#d97706' : 'var(--border-light)'}; 
+                                           background: ${isPrimaryField ? '#fef3c7' : 'white'}; color: ${isPrimaryField ? '#d97706' : 'var(--text-primary)'}; 
+                                           border-radius: 4px; font-size: 12px; cursor: pointer; width: 90px; white-space: nowrap; overflow: hidden; height: 32px;">
+                                ${isPrimaryField ? 'ראשי' : 'הפוך לראשי'}
+                            </button>
+                        </div>
+                    `;
+                    categoryContainer.appendChild(categoryHeader);
+                    
+                    // Add subcategories
+                    if (specializations[category] && specializations[category].length > 0) {
+                        const subcategoriesContainer = document.createElement('div');
+                        subcategoriesContainer.style.paddingRight = '20px';
+                        
+                        specializations[category].forEach(subcategory => {
+                            const isSelected = additionalSpecializations.includes(subcategory);
+                            const subcategoryDiv = document.createElement('div');
+                            subcategoryDiv.innerHTML = `
+                                <label class="subcategory-item" data-subcategory="${subcategory}">
+                                    <input type="checkbox" class="popup-checkbox" ${isSelected ? 'checked' : ''} data-subcategory="${subcategory}">
+                                    <span style="flex: 1; text-align: right; color: var(--text-primary); font-size: 16px;">${subcategory}</span>
+                                </label>
+                            `;
+                            subcategoriesContainer.appendChild(subcategoryDiv);
+                        });
+                        
+                        categoryContainer.appendChild(subcategoriesContainer);
+                    }
+                    
+                    popupBody.appendChild(categoryContainer);
+                });
+                
+                // Add event listeners
+                addCombinedPopupEventListeners();
+                updateCombinedSelectionCount();
+            }
+            
+            function addCombinedPopupEventListeners() {
+                const popupBody = document.getElementById('combinedSpecializationsPopupBody');
+                if (!popupBody) return;
+                
+                // Primary field buttons
+                popupBody.querySelectorAll('.set-primary-btn').forEach(btn => {
+                    btn.addEventListener('click', function(e) {
+                        e.stopPropagation();
+                        const category = this.dataset.category;
+                        setPrimaryField(category);
+                        buildCombinedPopupContent(); // Rebuild to update UI
+                    });
+                });
+                
+                // Subcategory selection - updated for checkbox inputs
+                popupBody.querySelectorAll('.subcategory-item input[type="checkbox"]').forEach(checkbox => {
+                    checkbox.addEventListener('change', function() {
+                        const subcategory = this.dataset.subcategory;
+                        
+                        if (this.checked) {
+                            if (!additionalSpecializations.includes(subcategory)) {
+                                additionalSpecializations.push(subcategory);
+                            }
+                        } else {
+                            const index = additionalSpecializations.indexOf(subcategory);
+                            if (index >= 0) {
+                                additionalSpecializations.splice(index, 1);
+                            }
+                        }
+                        
+                        updateCombinedSelectionCount();
+                    });
+                });
+                
+                // Search functionality
+                const searchInput = document.getElementById('combinedSearchInput');
+                if (searchInput) {
+                    searchInput.addEventListener('input', function() {
+                        const searchTerm = this.value.toLowerCase();
+                        filterCombinedCategories(searchTerm);
+                    });
+                }
+            }
+            
+            function setPrimaryField(category) {
+                primaryField = category;
+                
+                // Update hidden input
+                const hiddenInput = document.getElementById('primaryFieldHidden');
+                if (hiddenInput) {
+                    hiddenInput.value = category;
+                }
+                
+                updateCombinedSelectionCount();
+            }
+            
+            function toggleAdditionalSpecialization(subcategory) {
+                const index = additionalSpecializations.indexOf(subcategory);
+                if (index > -1) {
+                    additionalSpecializations.splice(index, 1);
+                } else {
+                    additionalSpecializations.push(subcategory);
+                }
+            }
+            
+            function updateCombinedSelectionCount() {
+                const countDisplay = document.getElementById('selectedCombinedCount');
+                if (!countDisplay) return;
+                
+                const primaryCount = primaryField ? 1 : 0;
+                const additionalCount = additionalSpecializations.length;
+                
+                if (primaryCount === 0) {
+                    countDisplay.textContent = 'יש לבחור תחום ראשי';
+                    countDisplay.style.color = '#dc2626';
+                } else if (additionalCount === 0) {
+                    countDisplay.textContent = `תחום ראשי: ${primaryField}`;
+                    countDisplay.style.color = 'var(--text-secondary)';
+                } else {
+                    countDisplay.textContent = `תחום ראשי: ${primaryField} | התמחויות נוספות: ${additionalCount}`;
+                    countDisplay.style.color = 'var(--text-secondary)';
+                }
+            }
+            
+            function saveCombinedSpecializations() {
+                if (!primaryField) {
+                    alert('יש לבחור תחום פעילות ראשי');
+                    return;
+                }
+                
+                // Update the display
+                updateCombinedDisplay();
+                
+                // Close popup
+                closeCombinedSpecializationsPopup();
+            }
+            
+            function updateCombinedDisplay() {
+                const display = document.getElementById('combinedSpecializationsDisplay');
+                const placeholder = document.getElementById('combinedSpecializationsPlaceholder');
+                const tagsContainer = document.getElementById('combinedSpecializationsTags');
+                
+                if (!display || !placeholder || !tagsContainer) return;
+                
+                // Clear existing tags
+                tagsContainer.innerHTML = '';
+                
+                // Placeholder always visible since tags are now below
+                placeholder.style.display = 'inline';
+                
+                // Add primary field tag
+                if (primaryField) {
+                    const primaryTag = document.createElement('div');
+                    primaryTag.className = 'work-area-tag primary-tag';
+                    primaryTag.innerHTML = `
+                        <span>🏆 ${primaryField}</span>
+                        <span class="remove-tag" onclick="removePrimaryField()">&times;</span>
+                    `;
+                    tagsContainer.appendChild(primaryTag);
+                }
+                
+                // Add additional specializations tags
+                additionalSpecializations.forEach(spec => {
+                    const tag = document.createElement('div');
+                    tag.className = 'work-area-tag additional-tag';
+                    tag.innerHTML = `
+                        <span>${spec}</span>
+                        <span class="remove-tag" onclick="removeAdditionalSpecialization('${spec}')">&times;</span>
+                    `;
+                    tagsContainer.appendChild(tag);
+                });
+            }
+            
+            function filterCombinedCategories(searchTerm) {
+                const popupBody = document.getElementById('combinedSpecializationsPopupBody');
+                if (!popupBody) return;
+                
+                popupBody.querySelectorAll('div[style*="margin-bottom: 24px"]').forEach(categoryContainer => {
+                    const categoryText = categoryContainer.textContent.toLowerCase();
+                    const shouldShow = categoryText.includes(searchTerm);
+                    categoryContainer.style.display = shouldShow ? 'block' : 'none';
+                });
+            }
+            
+            // Global functions for removing tags
+            window.removePrimaryField = function() {
+                primaryField = null;
+                const hiddenInput = document.getElementById('primaryFieldHidden');
+                if (hiddenInput) {
+                    hiddenInput.value = '';
+                }
+                updateCombinedDisplay();
+            };
+            
+            window.removeAdditionalSpecialization = function(spec) {
+                const index = additionalSpecializations.indexOf(spec);
+                if (index > -1) {
+                    additionalSpecializations.splice(index, 1);
+                }
+                updateCombinedDisplay();
+            };
 
             // Load categories data on page load
             loadCategoriesData().then(() => {
                 console.log('Categories and specializations loaded successfully');
+                // Initialize the new combined specializations popup
+                setTimeout(() => {
+                    initializeCombinedSpecializationsPopup();
+                }, 100);
             });
 
+            // Old code removed - replaced with combined specializations functionality
+            
+            // Commented out old primary field code
+            /*
             let currentFocus = -1;
 
             primaryFieldInput.addEventListener('input', function() {
@@ -1642,6 +2142,7 @@
                     currentFocus = -1;
                 }
             });
+            */
 
 
             // Handle radio button and checkbox styling
@@ -1769,9 +2270,9 @@
                         const isSelected = selectedBusinessBenefits.find(b => b.text === benefit);
                         const benefitItem = document.createElement('label');
                         benefitItem.className = 'benefit-item';
-                        benefitItem.style.cssText = 'display: flex; align-items: center; gap: 12px; padding: 12px 24px; cursor: pointer; user-select: none;';
+                        /* Styling handled by CSS class */
                         benefitItem.innerHTML = `
-                            <input type="checkbox" ${isSelected ? 'checked' : ''} data-benefit="${benefit}" data-category="${category}" style="margin: 0; cursor: pointer;">
+                            <input type="checkbox" class="popup-checkbox" ${isSelected ? 'checked' : ''} data-benefit="${benefit}" data-category="${category}">
                             <span style="flex: 1; text-align: right; color: var(--text-primary); font-size: 16px;">${benefit}</span>
                         `;
                         categoryDiv.appendChild(benefitItem);
@@ -1917,10 +2418,7 @@
                         textInput.type = 'text';
                         textInput.value = benefit.text;
                         textInput.className = 'form-input business-benefit-input';
-                        textInput.style.padding = '12px 16px 12px 40px';
-                        textInput.style.fontSize = '14px';
-                        textInput.style.textAlign = 'right';
-                        textInput.style.direction = 'rtl';
+                        /* Styling handled by CSS class */
                         textInput.placeholder = 'הכנס את תיאור היתרון...';
                         
                         // Update benefit text when input changes
@@ -1968,12 +2466,12 @@
                         // Focus styling
                         textInput.addEventListener('focus', function() {
                             this.style.borderColor = 'var(--ai-purple)';
-                            this.style.outline = '0 0 0 3px rgba(79, 70, 229, 0.1)';
+                            this.style.boxShadow = '0 0 0 3px rgba(79, 70, 229, 0.1)';
                         });
                         
                         textInput.addEventListener('blur', function() {
                             this.style.borderColor = 'var(--border-light)';
-                            this.style.outline = 'none';
+                            this.style.boxShadow = 'none';
                         });
                         
                         inputContainer.appendChild(textInput);
@@ -2024,10 +2522,10 @@
                             ⚠️ יש לבחור תחום פעילות עיקרי קודם
                         </div>
                         <div style="color: var(--text-secondary); font-size: 16px; line-height: 1.5; margin-bottom: 20px;">
-                            כדי לגשת להתמחויות נוספות, יש לבחור תחילה תחום פעילות עיקרי בשאלה 2
+                            כדי לגשת להתמחויות נוספות, יש לבחור תחילה תחום פעילות עיקרי בשאלה 4
                         </div>
                         <button type="button" id="backToQuestion2Btn" style="background: var(--text-primary); color: white; border: none; padding: 12px 24px; border-radius: var(--border-radius); font-size: 16px; cursor: pointer; font-weight: 500;">
-                            חזור לשאלה 2
+                            חזור לשאלה 4
                         </button>
                     `;
                     specializationsPopupBody.appendChild(warningContainer);
@@ -2293,12 +2791,14 @@
             // Function to open business benefits popup
             function openBusinessBenefitsPopup() {
                 initializeBusinessBenefitsPopup();
-                businessBenefitsPopup.style.display = 'flex';
+                businessBenefitsPopup.style.display = 'block';
+                document.body.style.overflow = 'hidden';
             }
             
             // Function to close business benefits popup
             function closeBusinessBenefitsPopup() {
                 businessBenefitsPopup.style.display = 'none';
+                document.body.style.overflow = '';
             }
             
             // Function to update only checkboxes in the popup without recreating the whole content
@@ -2542,6 +3042,17 @@
                         closeBusinessBenefitsPopup();
                     }
                 });
+                
+                // Save button functionality
+                const saveBtn = document.getElementById('saveBusinessBenefits');
+                if (saveBtn) {
+                    saveBtn.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        updateBusinessBenefitsDisplay();
+                        closeBusinessBenefitsPopup();
+                    });
+                }
             }
 
             // Function to update specializations placeholder based on primary field selection
@@ -2552,7 +3063,7 @@
                 
                 if (placeholder) {
                     if (!selectedPrimaryField) {
-                        placeholder.textContent = 'יש לבחור תחום פעילות עיקרי תחילה בשאלה 2';
+                        placeholder.textContent = 'יש לבחור תחום פעילות עיקרי תחילה בשאלה 4';
                         placeholder.style.color = '#dc2626'; // Red color for warning
                     } else {
                         placeholder.textContent = 'לחצו לבחירת התמחויות נוספות';
@@ -2646,9 +3157,9 @@
                     const isSelected = selectedRestrictions.includes(option);
                     const restrictionItem = document.createElement('label');
                     restrictionItem.className = 'restriction-item';
-                    restrictionItem.style.cssText = 'display: flex; align-items: center; gap: 12px; padding: 12px 24px; cursor: pointer; user-select: none;';
+                    /* Styling handled by CSS class */
                     restrictionItem.innerHTML = `
-                        <input type="checkbox" ${isSelected ? 'checked' : ''} data-restriction="${option}" style="margin: 0; cursor: pointer;">
+                        <input type="checkbox" class="popup-checkbox" ${isSelected ? 'checked' : ''} data-restriction="${option}">
                         <span style="flex: 1; text-align: right; color: var(--text-primary); font-size: 16px;">${option}</span>
                     `;
                     restrictionsContainer.appendChild(restrictionItem);
@@ -2734,17 +3245,14 @@
                 if (selectedRestrictions.length > 0) {
                     selectedRestrictions.forEach((restriction, index) => {
                         const inputContainer = document.createElement('div');
-                        inputContainer.style.cssText = 'position: relative; margin-bottom: 12px;';
+                        inputContainer.style.cssText = 'position: relative; margin-bottom: 12px; width: 100%;';
                         
                         const textInput = document.createElement('input');
                         textInput.type = 'text';
                         textInput.value = restriction;
                         textInput.name = 'restrictions[]';
                         textInput.className = 'form-input restriction-input';
-                        textInput.style.padding = '12px 16px 12px 40px';
-                        textInput.style.fontSize = '14px';
-                        textInput.style.textAlign = 'right';
-                        textInput.style.direction = 'rtl';
+                        /* Styling handled by CSS class */
                         textInput.placeholder = 'הכנס את תיאור ההגבלה...';
                         
                         // Update restriction text when input changes
@@ -2759,18 +3267,44 @@
                         
                         textInput.addEventListener('blur', function() {
                             this.style.borderColor = 'var(--border-light)';
-                            this.style.outline = 'none';
+                            this.style.boxShadow = 'none';
                         });
                         
                         const removeBtn = document.createElement('button');
                         removeBtn.type = 'button';
                         removeBtn.innerHTML = '×';
-                        removeBtn.style.cssText = 'position: absolute; left: 12px; top: 50%; transform: translateY(-50%); background: none; border: none; color: #9ca3af; cursor: pointer; font-size: 18px; font-weight: bold; padding: 0; width: 20px; height: 20px; display: flex; align-items: center; justify-content: center;';
+                        removeBtn.style.cssText = `
+                            position: absolute;
+                            top: 50%;
+                            left: 12px;
+                            transform: translateY(-50%);
+                            background: none;
+                            border: none;
+                            font-size: 18px;
+                            font-weight: bold;
+                            color: #dc2626;
+                            cursor: pointer;
+                            width: 24px;
+                            height: 24px;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            border-radius: 50%;
+                            transition: background-color 0.2s;
+                        `;
                         
                         removeBtn.addEventListener('click', function() {
                             selectedRestrictions = selectedRestrictions.filter((_, i) => i !== index);
                             updateRestrictionsDisplay();
                             updateRestrictionsCounter();
+                        });
+                        
+                        removeBtn.addEventListener('mouseenter', function() {
+                            this.style.backgroundColor = 'rgba(220, 38, 38, 0.1)';
+                        });
+                        
+                        removeBtn.addEventListener('mouseleave', function() {
+                            this.style.backgroundColor = 'transparent';
                         });
                         
                         inputContainer.appendChild(textInput);
@@ -2802,12 +3336,14 @@
             // Function to open restrictions popup
             function openRestrictionsPopup() {
                 initializeRestrictionsPopup();
-                restrictionsPopup.style.display = 'flex';
+                restrictionsPopup.style.display = 'block';
+                document.body.style.overflow = 'hidden';
             }
             
             // Function to close restrictions popup
             function closeRestrictionsPopup() {
                 restrictionsPopup.style.display = 'none';
+                document.body.style.overflow = '';
             }
 
             // Initialize restrictions popup in a timeout to ensure DOM is ready
@@ -2845,6 +3381,17 @@
                         closeRestrictionsPopup();
                     }
                 });
+                
+                // Save button functionality
+                const saveBtn = document.getElementById('saveRestrictions');
+                if (saveBtn) {
+                    saveBtn.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        updateRestrictionsDisplay();
+                        closeRestrictionsPopup();
+                    });
+                }
             }
 
             // Work area popup functionality
@@ -3362,9 +3909,12 @@ ${clientName}`;
                     if (apiResponse.success) {
                         this.updatePreviewResults(apiResponse.responses, selectedPosts);
                         
-                        // Show API status
+                        // Show API status indicator
+                        const apiIndicator = document.getElementById('apiStatusIndicator');
                         if (!apiResponse.apiKeyAvailable) {
-                            resultsDiv.innerHTML += '<div style="color: #f59e0b; text-align: center; margin-top: 10px; font-size: 14px;">⚠️ משתמש בתשובות דמה - מפתח API לא זמין</div>';
+                            apiIndicator.classList.add('show');
+                        } else {
+                            apiIndicator.classList.remove('show');
                         }
                     } else {
                         throw new Error('API response failed');
@@ -3419,19 +3969,19 @@ ${clientName}`;
                     businessBenefits = Array.from(benefitInputs).map(input => input.value).filter(v => v);
                 }
 
-                // Collect specializations from multiple sources
+                // Collect specializations from the new combined system
                 let specializations = [];
                 
-                // Try global variable first
-                if (typeof selectedSpecializations !== 'undefined' && selectedSpecializations.length > 0) {
-                    specializations = selectedSpecializations.map(s => s.text || s);
+                // Try global variable first (for the new combined system)
+                if (typeof additionalSpecializations !== 'undefined' && additionalSpecializations.length > 0) {
+                    specializations = additionalSpecializations;
                 } else {
                     // Try to read from the display element
-                    const specializationsDisplay = document.getElementById('specializationsDisplay');
-                    if (specializationsDisplay && specializationsDisplay.children.length > 0) {
-                        specializations = Array.from(specializationsDisplay.children).map(span => {
-                            return span.textContent.replace('×', '').trim();
-                        }).filter(v => v && v !== 'לחצו לבחירת התמחויות נוספות');
+                    const combinedDisplay = document.getElementById('combinedSpecializationsDisplay');
+                    if (combinedDisplay && combinedDisplay.children.length > 0) {
+                        specializations = Array.from(combinedDisplay.querySelectorAll('.additional-tag')).map(tag => {
+                            return tag.querySelector('span').textContent.trim();
+                        }).filter(v => v);
                     } else {
                         // Fallback: read from hidden inputs
                         const specInputs = document.querySelectorAll('input[name="specializations[]"]');
@@ -3455,7 +4005,7 @@ ${clientName}`;
 
                 const formData = {
                     client_name: document.querySelector('[name="client_name"]').value || 'המקצוען',
-                    primary_field: document.querySelector('[name="primary_field"]').value || 'שיפוצים כלליים',
+                    primary_field: document.getElementById('primaryFieldHidden').value || 'שיפוצים כלליים',
                     experience_years: document.querySelector('[name="experience_years"]').value || '10',
                     phone_number: phoneNumber,
                     work_areas: workAreas,
@@ -3534,19 +4084,19 @@ ${clientName}`;
                     missingFields.push('1. שם העסק שלכם');
                 }
                 
-                // Question 2: Primary field (required)
-                if (!formData.primary_field || formData.primary_field.trim() === '') {
-                    missingFields.push('2. תחום פעילות עיקרי');
-                }
-                
-                // Question 3: Experience years (required)
+                // Question 2: Experience years (required)
                 if (!formData.experience_years || formData.experience_years.trim() === '') {
-                    missingFields.push('3. כמה שנים העסק שלכם פעיל');
+                    missingFields.push('2. כמה שנים העסק שלכם פעיל');
                 }
                 
-                // Question 4: Phone number (required)
+                // Question 3: Phone number (required)
                 if (!formData.phone_number || formData.phone_number.trim() === '') {
-                    missingFields.push('4. מספר טלפון');
+                    missingFields.push('3. מספר טלפון');
+                }
+                
+                // Question 4: Primary field (required)
+                if (!formData.primary_field || formData.primary_field.trim() === '') {
+                    missingFields.push('4. תחום פעילות ראשי');
                 }
                 
                 // Question 5: Work areas (required)

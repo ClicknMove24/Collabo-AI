@@ -641,7 +641,7 @@
             #businessBenefitsPopupContent,
             #restrictionsPopupContent {
                 max-height: 85vh !important;
-                margin: 20px !important;
+                margin: 0 auto !important;
             }
             
             /* Force popup headers to match mobile */
@@ -768,11 +768,13 @@
         }
 
         .post-content {
-            padding: 0 16px 16px !important;
+            padding: 16px !important;
             color: #1c1e21 !important;
             line-height: 1.5 !important;
             font-size: 15px !important;
             min-height: 60px !important;
+            display: flex !important;
+            align-items: center !important;
         }
 
         .facebook-post-card h4 {
@@ -1119,7 +1121,7 @@
             #combinedSpecializationsPopupContent,
             #businessBenefitsPopupContent,
             #restrictionsPopupContent {
-                margin: 10px !important;
+                margin: 0 auto !important;
                 max-height: 85vh !important;
                 max-width: calc(100vw - 20px) !important;
             }
@@ -1254,9 +1256,8 @@
                 transform: none;
             }
             
-        }
+        
         /* Clean CSS architecture - single source of truth for all post styling */
-        }
     </style>
 </head>
 <body>
@@ -3788,9 +3789,9 @@
                 // Fixed list of author names
                 const authorNames = ['דני כהן', 'שרה לוי', 'יוסי אברהם'];
                 
-                return templates.map(template => {
-                    const location = locations[Math.floor(Math.random() * locations.length)];
-                    const authorName = authorNames[Math.floor(Math.random() * authorNames.length)];
+                return templates.map((template, index) => {
+                    const location = locations[index % locations.length];
+                    const authorName = authorNames[index % authorNames.length];
                     return {
                         content: `${authorName}: ${template}`,
                         displayContent: template,
@@ -4064,12 +4065,6 @@ ${clientName}`;
                                     </div>
                                 </div>
                                 <div class="comment-text">${formatLinksInText(result.response)}</div>
-                                
-                                <div class="comment-actions">
-                                    <span class="comment-action">אהבתי</span>
-                                    <span class="comment-action">תגובה</span>
-                                    <span class="comment-action">שתף</span>
-                                </div>
                             </div>
                         </div>
                     `;

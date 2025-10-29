@@ -385,6 +385,7 @@
             text-align: right;
             direction: rtl;
             transition: all 0.2s ease;
+            background: #f9fafb;
         }
 
         .business-benefit-input:focus {
@@ -406,6 +407,7 @@
             font-size: 14px;
             text-align: right;
             direction: rtl;
+            background: #f9fafb;
         }
 
         .restriction-input:focus {
@@ -434,34 +436,35 @@
             align-items: center;
             gap: 6px;
             padding: 6px 12px;
-            background: rgba(76, 29, 149, 0.1);
-            color: rgba(76, 29, 149, 0.8);
+            background: #f9fafb;
+            color: #374151;
             border-radius: 20px;
             font-size: 14px;
             font-weight: 500;
-            border: 1px solid rgba(76, 29, 149, 0.2);
+            border: 1px solid #d1d5db;
         }
 
         .work-area-tag .remove-tag,
         .business-benefit-tag .remove-tag {
             cursor: pointer;
             font-weight: bold;
-            font-size: 16px;
+            font-size: 18px;
             line-height: 1;
-            padding: 2px;
             border-radius: 50%;
-            width: 18px;
-            height: 18px;
+            width: 24px;
+            height: 24px;
             display: flex;
             align-items: center;
             justify-content: center;
-            background: rgba(220, 38, 38, 0.1);
+            background: none;
+            border: none;
             color: #dc2626;
+            transition: background-color 0.2s;
         }
 
         .work-area-tag .remove-tag:hover,
         .business-benefit-tag .remove-tag:hover {
-            background: rgba(220, 38, 38, 0.2);
+            background: rgba(220, 38, 38, 0.1);
         }
 
 
@@ -1304,6 +1307,31 @@
                     <div class="form-group">
                         <label class="form-label">
                             <span class="question-number">4.</span>
+                            באילו אזורים אתם עובדים? <strong>(ניתן לבחור כמה אפשרויות)</strong>
+                        </label>
+                        
+                        <div class="work-area-select-container">
+                            <div class="work-area-select" id="workAreaSelect" tabindex="0">
+                                <span class="work-area-placeholder">לחץ לבחירת אזורי עבודה</span>
+                                <i class="fas fa-chevron-down work-area-arrow"></i>
+                            </div>
+                            <div id="workAreaDropdown" style="position: absolute; top: 100%; left: 0; right: 0; background: white; border: 1px solid #e5e7eb; border-radius: 6px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); z-index: 1000; display: none; max-height: 300px; overflow-y: auto;"></div>
+                        </div>
+                        
+                        <div class="work-area-tags" id="workAreaTags"></div>
+                    </div>
+                </div>
+
+                <!-- תחומי פעילות והתמחויות -->
+                <div class="form-section">
+                    <h3>תחומי פעילות והתמחויות</h3>
+                    <div class="section-description">
+                        תחום ראשי - ההתמחויות תחתיו יקבלו את מירב הפניות (עדיפות ראשונה). התמחויות תחת תחומים נוספים יהיו בסדר עדיפות שני.
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">
+                            <span class="question-number">5.</span>
                             תחומי פעילות והתמחויות:
                         </label>
                         
@@ -1317,7 +1345,7 @@
                             <input type="hidden" id="primaryFieldHidden" name="primary_field" required>
                         </div>
                         
-                        <div class="work-area-tags" id="combinedSpecializationsTags"></div>
+                        <div class="business-benefits-tags" id="combinedSpecializationsTags" style="margin-top: 12px;"></div>
                         
                         <!-- Combined Specializations Popup Modal -->
                         <div id="combinedSpecializationsPopup" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.3); z-index: 9999; overflow-y: auto;">
@@ -1329,7 +1357,7 @@
                                             <h3 style="margin: 0; font-size: 20px; font-weight: 600; color: var(--text-primary);">בחירת תחום ראשי והתמחויות</h3>
                                             <button type="button" id="closeCombinedSpecializationsPopup" style="background: none; color: var(--text-muted); border: none; font-size: 24px; cursor: pointer; padding: 0; width: 24px; height: 24px; display: flex; align-items: center; justify-content: center;">×</button>
                                         </div>
-                                        <p style="margin: 8px 0 0 0; color: var(--text-secondary); font-size: 14px;">בחרו תחום פעילות ראשי (חובה) והתמחויות נוספות. התחום הראשי יקבל את מירב הפניות.</p>
+                                        <p style="margin: 8px 0 0 0; color: var(--text-secondary); font-size: 14px;">בחרו תחום ראשי (חובה) - ההתמחויות תחתיו יקבלו עדיפות ראשונה. התמחויות תחת תחומים נוספים יקבלו עדיפות שנייה.</p>
                                     </div>
                                     
                                     <!-- Search Section - Fixed -->
@@ -1352,23 +1380,6 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label class="form-label">
-                            <span class="question-number">5.</span>
-                            באילו אזורים אתם עובדים? <strong>(ניתן לבחור כמה אפשרויות)</strong>
-                        </label>
-                        
-                        <div class="work-area-select-container">
-                            <div class="work-area-select" id="workAreaSelect" tabindex="0">
-                                <span class="work-area-placeholder">לחץ לבחירת אזורי עבודה</span>
-                                <i class="fas fa-chevron-down work-area-arrow"></i>
-                            </div>
-                            <div id="workAreaDropdown" style="position: absolute; top: 100%; left: 0; right: 0; background: white; border: 1px solid #e5e7eb; border-radius: 6px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); z-index: 1000; display: none; max-height: 300px; overflow-y: auto;"></div>
-                        </div>
-                        
-                        <div class="work-area-tags" id="workAreaTags"></div>
                     </div>
                 </div>
 
@@ -1711,6 +1722,16 @@
                         {"Name": "נגרות בהתאמה אישית"},
                         {"Name": "תיקונים ואחזקה"}
                     ]
+                },
+                {
+                    "Category": "אדריכלות ועיצוב",
+                    "Subcategories": [
+                        {"Name": "אדריכלות ותכנון"},
+                        {"Name": "עיצוב פנים"},
+                        {"Name": "עיצוב גינות ונוף"},
+                        {"Name": "עיצוב מסחרי"},
+                        {"Name": "יעוץ עיצובי"}
+                    ]
                 }
             ];
 
@@ -1721,10 +1742,10 @@
                     const response = await fetch('clicknmove_bot.categories.json');
                     categoriesData = await response.json();
                     
-                    // Extract categories for professions dropdown (question 2)
+                    // Extract categories for professions dropdown - only Category names
                     professions = categoriesData.map(item => item.Category);
                     
-                    // Extract subcategories for specializations (question 7)
+                    // Extract subcategories for specializations (question 5) - only Category and Name fields
                     specializations = {};
                     categoriesData.forEach(item => {
                         if (item.Subcategories && item.Subcategories.length > 0) {
@@ -1739,10 +1760,10 @@
                     // Use embedded data when fetch fails
                     categoriesData = embeddedCategoriesData;
                     
-                    // Extract categories for professions dropdown (question 2)
+                    // Extract categories for professions dropdown - only Category names
                     professions = categoriesData.map(item => item.Category);
                     
-                    // Extract subcategories for specializations (question 7)
+                    // Extract subcategories for specializations (question 5) - only Category and Name fields
                     specializations = {};
                     categoriesData.forEach(item => {
                         if (item.Subcategories && item.Subcategories.length > 0) {
@@ -1911,6 +1932,15 @@
                         const searchTerm = this.value.toLowerCase();
                         filterCombinedCategories(searchTerm);
                     });
+                    
+                    // Prevent form submission on Enter key
+                    searchInput.addEventListener('keypress', function(e) {
+                        if (e.key === 'Enter') {
+                            e.preventDefault();
+                            e.stopPropagation();
+                            return false;
+                        }
+                    });
                 }
             }
             
@@ -1923,7 +1953,24 @@
                     hiddenInput.value = category;
                 }
                 
+                // Auto-select all subcategories under the selected primary field
+                autoSelectSubcategoriesForPrimary(category);
+                
                 updateCombinedSelectionCount();
+            }
+            
+            function autoSelectSubcategoriesForPrimary(category) {
+                // Clear current additional specializations first
+                additionalSpecializations = [];
+                
+                // Add all subcategories of the selected primary field to additional specializations
+                if (specializations[category] && Array.isArray(specializations[category])) {
+                    specializations[category].forEach(subcategory => {
+                        if (!additionalSpecializations.includes(subcategory)) {
+                            additionalSpecializations.push(subcategory);
+                        }
+                    });
+                }
             }
             
             function toggleAdditionalSpecialization(subcategory) {
@@ -1980,26 +2027,104 @@
                 // Placeholder always visible since tags are now below
                 placeholder.style.display = 'inline';
                 
-                // Add primary field tag
+                // Group specializations by category for organized display
+                updateCombinedSpecializationsTags();
+            }
+            
+            function updateCombinedSpecializationsTags() {
+                const tagsContainer = document.getElementById('combinedSpecializationsTags');
+                if (!tagsContainer) return;
+                
+                tagsContainer.innerHTML = '';
+                
+                // Group specializations by category
+                const specializationsByCategory = {};
+                
+                // Add primary field
                 if (primaryField) {
-                    const primaryTag = document.createElement('div');
-                    primaryTag.className = 'work-area-tag primary-tag';
-                    primaryTag.innerHTML = `
-                        <span>🏆 ${primaryField}</span>
-                        <span class="remove-tag" onclick="removePrimaryField()">&times;</span>
-                    `;
-                    tagsContainer.appendChild(primaryTag);
+                    specializationsByCategory[primaryField] = [primaryField];
                 }
                 
-                // Add additional specializations tags
+                // Add additional specializations
                 additionalSpecializations.forEach(spec => {
-                    const tag = document.createElement('div');
-                    tag.className = 'work-area-tag additional-tag';
-                    tag.innerHTML = `
-                        <span>${spec}</span>
-                        <span class="remove-tag" onclick="removeAdditionalSpecialization('${spec}')">&times;</span>
+                    // Find which category this specialization belongs to
+                    let categoryName = 'התמחויות נוספות'; // default category
+                    
+                    Object.keys(specializations).forEach(category => {
+                        if (specializations[category] && specializations[category].includes(spec)) {
+                            categoryName = category;
+                        }
+                    });
+                    
+                    // Don't add to primary field category if it's not the primary field itself
+                    if (categoryName === primaryField && spec !== primaryField) {
+                        if (!specializationsByCategory[categoryName]) {
+                            specializationsByCategory[categoryName] = [];
+                        }
+                        specializationsByCategory[categoryName].push(spec);
+                    } else if (categoryName !== primaryField) {
+                        if (!specializationsByCategory[categoryName]) {
+                            specializationsByCategory[categoryName] = [];
+                        }
+                        specializationsByCategory[categoryName].push(spec);
+                    }
+                });
+                
+                // Create display for each category - exactly like in question 6
+                Object.keys(specializationsByCategory).forEach(categoryName => {
+                    const items = specializationsByCategory[categoryName];
+                    if (items.length === 0) return;
+                    
+                    const categoryContainer = document.createElement('div');
+                    categoryContainer.style.cssText = 'margin-bottom: 20px;';
+                    
+                    // Create category header (only once per category) - same style as question 6
+                    const categoryHeader = document.createElement('div');
+                    categoryHeader.style.cssText = `
+                        color: #374151;
+                        font-size: 14px;
+                        margin-bottom: 12px;
+                        padding: 8px 0;
+                        border-bottom: 1px solid #e5e7eb;
                     `;
-                    tagsContainer.appendChild(tag);
+                    
+                    if (categoryName === primaryField) {
+                        categoryHeader.innerHTML = `<span style="font-weight: 600;">🏆 ${categoryName} (תחום ראשי)</span> <span style="font-weight: 400;">- עדיפות ראשונה לקבלת לידים</span>`;
+                    } else {
+                        categoryHeader.innerHTML = `<span style="font-weight: 600;">${categoryName}</span> <span style="font-weight: 400;">- עדיפות שנייה לקבלת לידים</span>`;
+                    }
+                    
+                    categoryContainer.appendChild(categoryHeader);
+                    
+                    // Create tags container for this category
+                    const tagsInCategory = document.createElement('div');
+                    tagsInCategory.style.cssText = `
+                        display: flex;
+                        flex-wrap: wrap;
+                        gap: 8px;
+                    `;
+                    
+                    items.forEach(item => {
+                        const tag = document.createElement('div');
+                        tag.className = item === primaryField ? 'work-area-tag primary-tag' : 'work-area-tag additional-tag';
+                        
+                        if (item === primaryField) {
+                            tag.innerHTML = `
+                                <span>${item}</span>
+                                <span class="remove-tag" onclick="removePrimaryField()">&times;</span>
+                            `;
+                        } else {
+                            tag.innerHTML = `
+                                <span>${item}</span>
+                                <span class="remove-tag" onclick="removeAdditionalSpecialization('${item}')">&times;</span>
+                            `;
+                        }
+                        
+                        tagsInCategory.appendChild(tag);
+                    });
+                    
+                    categoryContainer.appendChild(tagsInCategory);
+                    tagsContainer.appendChild(categoryContainer);
                 });
             }
             
@@ -2007,7 +2132,7 @@
                 const popupBody = document.getElementById('combinedSpecializationsPopupBody');
                 if (!popupBody) return;
                 
-                popupBody.querySelectorAll('div[style*="margin-bottom: 24px"]').forEach(categoryContainer => {
+                popupBody.querySelectorAll('div[style*="margin-bottom: 20px"]').forEach(categoryContainer => {
                     const categoryText = categoryContainer.textContent.toLowerCase();
                     const shouldShow = categoryText.includes(searchTerm);
                     categoryContainer.style.display = shouldShow ? 'block' : 'none';
@@ -2395,7 +2520,7 @@
                 // Create display for each category
                 Object.keys(benefitsByCategory).forEach(categoryName => {
                     const categoryContainer = document.createElement('div');
-                    categoryContainer.style.cssText = 'margin-bottom: 24px;';
+                    categoryContainer.style.cssText = 'margin-bottom: 20px;';
                     
                     // Create category header (only once per category)
                     const categoryHeader = document.createElement('div');
@@ -2956,7 +3081,7 @@
                 // Create display for each category
                 Object.keys(specializationsByCategory).forEach(categoryName => {
                     const categoryContainer = document.createElement('div');
-                    categoryContainer.style.cssText = 'margin-bottom: 24px;';
+                    categoryContainer.style.cssText = 'margin-bottom: 20px;';
                     
                     // Create category header
                     const categoryHeader = document.createElement('div');

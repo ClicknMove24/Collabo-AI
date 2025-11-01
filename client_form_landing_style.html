@@ -1843,6 +1843,8 @@
                 Object.keys(specializations).forEach(category => {
                     const categoryContainer = document.createElement('div');
                     categoryContainer.style.marginBottom = '24px';
+                    categoryContainer.className = 'combined-category-container';
+                    categoryContainer.dataset.categoryName = category;
                     
                     // Category header with primary option
                     const isPrimaryField = primaryField === category;
@@ -1867,10 +1869,13 @@
                     if (specializations[category] && specializations[category].length > 0) {
                         const subcategoriesContainer = document.createElement('div');
                         subcategoriesContainer.style.paddingRight = '20px';
-                        
+                        subcategoriesContainer.className = 'subcategories-list';
+
                         specializations[category].forEach(subcategory => {
                             const isSelected = additionalSpecializations.includes(subcategory);
                             const subcategoryDiv = document.createElement('div');
+                            subcategoryDiv.className = 'subcategory-wrapper';
+                            subcategoryDiv.dataset.subcategoryName = subcategory;
                             subcategoryDiv.innerHTML = `
                                 <label class="subcategory-item" data-subcategory="${subcategory}">
                                     <input type="checkbox" class="popup-checkbox" ${isSelected ? 'checked' : ''} data-subcategory="${subcategory}">
@@ -1879,7 +1884,7 @@
                             `;
                             subcategoriesContainer.appendChild(subcategoryDiv);
                         });
-                        
+
                         categoryContainer.appendChild(subcategoriesContainer);
                     }
                     
@@ -1909,18 +1914,44 @@
                 popupBody.querySelectorAll('.subcategory-item input[type="checkbox"]').forEach(checkbox => {
                     checkbox.addEventListener('change', function() {
                         const subcategory = this.dataset.subcategory;
-                        
+
                         if (this.checked) {
                             if (!additionalSpecializations.includes(subcategory)) {
                                 additionalSpecializations.push(subcategory);
+                            }
+
+                            // If no primary field is set, find which category this subcategory belongs to
+                            // and set it as primary automatically (without auto-selecting all subs)
+                            if (!primaryField) {
+                                const categoryForSubcategory = findCategoryForSubcategory(subcategory);
+                                if (categoryForSubcategory) {
+                                    // Set primary field but don't auto-select all subs
+                                    primaryField = categoryForSubcategory;
+                                    const hiddenInput = document.getElementById('primaryFieldHidden');
+                                    if (hiddenInput) {
+                                        hiddenInput.value = categoryForSubcategory;
+                                    }
+                                    buildCombinedPopupContent(); // Rebuild to show new primary
+                                    return; // Exit early since we rebuilt
+                                }
                             }
                         } else {
                             const index = additionalSpecializations.indexOf(subcategory);
                             if (index >= 0) {
                                 additionalSpecializations.splice(index, 1);
                             }
+
+                            // Check if this was the last subcategory of the primary field
+                            const primaryWasDeselected = checkAndDeselectPrimaryIfEmpty();
+
+                            // If primary was deselected, update everything
+                            if (primaryWasDeselected) {
+                                updateCombinedDisplay(); // Update the main display
+                                buildCombinedPopupContent(); // Rebuild popup UI
+                                return; // Exit early since we rebuilt everything
+                            }
                         }
-                        
+
                         updateCombinedSelectionCount();
                     });
                 });
@@ -1929,7 +1960,7 @@
                 const searchInput = document.getElementById('combinedSearchInput');
                 if (searchInput) {
                     searchInput.addEventListener('input', function() {
-                        const searchTerm = this.value.toLowerCase();
+                        const searchTerm = this.value;
                         filterCombinedCategories(searchTerm);
                     });
                     
@@ -1962,7 +1993,7 @@
             function autoSelectSubcategoriesForPrimary(category) {
                 // Clear current additional specializations first
                 additionalSpecializations = [];
-                
+
                 // Add all subcategories of the selected primary field to additional specializations
                 if (specializations[category] && Array.isArray(specializations[category])) {
                     specializations[category].forEach(subcategory => {
@@ -1971,6 +2002,65 @@
                         }
                     });
                 }
+            }
+
+            function findCategoryForSubcategory(subcategory) {
+                // Search through all categories to find which one contains this subcategory
+                for (const category in specializations) {
+                    if (specializations[category] && specializations[category].includes(subcategory)) {
+                        return category;
+                    }
+                }
+                return null;
+            }
+
+            // Make it globally accessible
+            window.findCategoryForSubcategory = findCategoryForSubcategory;
+
+            function buildCategoriesHierarchy() {
+                // Build hierarchical structure of categories and their selected subcategories
+                const hierarchy = {};
+
+                // Go through all selected subcategories and group them by category
+                additionalSpecializations.forEach(subcategory => {
+                    const category = findCategoryForSubcategory(subcategory);
+                    if (category) {
+                        if (!hierarchy[category]) {
+                            hierarchy[category] = [];
+                        }
+                        hierarchy[category].push(subcategory);
+                    }
+                });
+
+                return hierarchy;
+            }
+
+            // Make it globally accessible
+            window.buildCategoriesHierarchy = buildCategoriesHierarchy;
+
+            function checkAndDeselectPrimaryIfEmpty() {
+                // If there's no primary field set, nothing to check
+                if (!primaryField) return false;
+
+                // Get all subcategories that belong to the primary field
+                const primaryFieldSubcategories = specializations[primaryField] || [];
+
+                // Check if any subcategory from the primary field is still selected
+                const hasAnyPrimarySubcategory = primaryFieldSubcategories.some(sub =>
+                    additionalSpecializations.includes(sub)
+                );
+
+                // If no subcategories from primary field are selected, deselect the primary field
+                if (!hasAnyPrimarySubcategory) {
+                    primaryField = null;
+                    const hiddenInput = document.getElementById('primaryFieldHidden');
+                    if (hiddenInput) {
+                        hiddenInput.value = '';
+                    }
+                    return true; // Primary field was deselected
+                }
+
+                return false; // Primary field still has subcategories
             }
             
             function toggleAdditionalSpecialization(subcategory) {
@@ -2131,11 +2221,49 @@
             function filterCombinedCategories(searchTerm) {
                 const popupBody = document.getElementById('combinedSpecializationsPopupBody');
                 if (!popupBody) return;
-                
-                popupBody.querySelectorAll('div[style*="margin-bottom: 20px"]').forEach(categoryContainer => {
-                    const categoryText = categoryContainer.textContent.toLowerCase();
-                    const shouldShow = categoryText.includes(searchTerm);
-                    categoryContainer.style.display = shouldShow ? 'block' : 'none';
+
+                // If search is empty, show everything
+                if (!searchTerm || searchTerm.trim() === '') {
+                    popupBody.querySelectorAll('.combined-category-container').forEach(container => {
+                        container.style.display = 'block';
+                        container.querySelectorAll('.subcategory-wrapper').forEach(sub => {
+                            sub.style.display = 'block';
+                        });
+                    });
+                    return;
+                }
+
+                const normalizedSearch = searchTerm.toLowerCase().trim();
+
+                // Search through each category
+                popupBody.querySelectorAll('.combined-category-container').forEach(categoryContainer => {
+                    const categoryName = categoryContainer.dataset.categoryName?.toLowerCase() || '';
+                    const categoryMatches = categoryName.includes(normalizedSearch);
+
+                    // Get all subcategory wrappers in this category
+                    const subcategoryWrappers = categoryContainer.querySelectorAll('.subcategory-wrapper');
+                    let hasVisibleSubcategory = false;
+
+                    // Check each subcategory
+                    subcategoryWrappers.forEach(subWrapper => {
+                        const subcategoryName = subWrapper.dataset.subcategoryName?.toLowerCase() || '';
+                        const subcategoryMatches = subcategoryName.includes(normalizedSearch);
+
+                        // Show subcategory if it matches OR if the category matches
+                        if (categoryMatches || subcategoryMatches) {
+                            subWrapper.style.display = 'block';
+                            hasVisibleSubcategory = true;
+                        } else {
+                            subWrapper.style.display = 'none';
+                        }
+                    });
+
+                    // Show category if its name matches OR any subcategory is visible
+                    if (categoryMatches || hasVisibleSubcategory) {
+                        categoryContainer.style.display = 'block';
+                    } else {
+                        categoryContainer.style.display = 'none';
+                    }
                 });
             }
             
@@ -2154,7 +2282,17 @@
                 if (index > -1) {
                     additionalSpecializations.splice(index, 1);
                 }
+                // Check if primary field should be deselected
+                const primaryWasDeselected = checkAndDeselectPrimaryIfEmpty();
+
+                // Update the display
                 updateCombinedDisplay();
+
+                // If popup is open and primary was deselected, rebuild it
+                const popup = document.getElementById('combinedSpecializationsPopup');
+                if (popup && popup.style.display === 'block' && primaryWasDeselected) {
+                    buildCombinedPopupContent();
+                }
             };
 
             // Load categories data on page load
@@ -3040,24 +3178,8 @@
                 
                 // Update separate tags display
                 updateSpecializationsTags();
-                
-                // Sync form data - remove existing hidden inputs first
-                const form = document.querySelector('form');
-                const existingInputs = form.querySelectorAll('input[name="specializations[]"]');
-                existingInputs.forEach(input => input.remove());
-                
-                // Add hidden inputs for each selected specialization
-                selectedSpecializations.forEach((specialization, index) => {
-                    const hiddenInput = document.createElement('input');
-                    hiddenInput.type = 'hidden';
-                    hiddenInput.name = 'specializations[]';
-                    hiddenInput.value = JSON.stringify({
-                        text: specialization.text,
-                        category: specialization.category,
-                        isCustom: specialization.isCustom
-                    });
-                    form.appendChild(hiddenInput);
-                });
+
+                // Note: We no longer create hidden inputs - the new system uses categories_hierarchy
             }
 
             function updateSpecializationsTags() {
@@ -3650,7 +3772,7 @@
                 const data = {};
                 
                 for (let [key, value] of formData.entries()) {
-                    if (key === 'work_area' || key === 'business_benefits[]' || key === 'specializations[]') {
+                    if (key === 'work_area' || key === 'business_benefits[]') {
                         // Handle multiple values for these fields
                         if (!data[key]) {
                             data[key] = [];
@@ -3685,7 +3807,12 @@
                     data.work_areas = data.work_area;
                     delete data.work_area;
                 }
-                
+
+                // Normalize business_benefits[] to business_benefits
+                if (data['business_benefits[]']) {
+                    data.business_benefits = data['business_benefits[]'];
+                }
+
                 // הוספת השדות החסרים
                 // שאלה 5 - אזורי העבודה
                 data.work_areas = selectedWorkAreas;
@@ -3698,20 +3825,13 @@
                 if (data.phone_number) {
                     data.phone_number = formatPhoneNumber(data.phone_number);
                 }
-                
-                // Process specializations data
-                if (data['specializations[]']) {
-                    const specializationsData = data['specializations[]'].map(spec => {
-                        try {
-                            return JSON.parse(spec);
-                        } catch (e) {
-                            return { text: spec, category: 'אחר', isCustom: false };
-                        }
-                    });
-                    data.specializations = specializationsData;
-                } else {
-                    data.specializations = [];
-                }
+
+                // Build hierarchical categories structure
+                data.categories = buildCategoriesHierarchy();
+
+                // Clean up old/unused field names
+                delete data['specializations[]'];
+                delete data['business_benefits[]'];
                 
                 try {
                     // יצירת System Prompt JSON מהטמפלט הקיים
@@ -4095,26 +4215,6 @@ ${clientName}`;
                     businessBenefits = Array.from(benefitInputs).map(input => input.value).filter(v => v);
                 }
 
-                // Collect specializations from the new combined system
-                let specializations = [];
-                
-                // Try global variable first (for the new combined system)
-                if (typeof additionalSpecializations !== 'undefined' && additionalSpecializations.length > 0) {
-                    specializations = additionalSpecializations;
-                } else {
-                    // Try to read from the display element
-                    const combinedDisplay = document.getElementById('combinedSpecializationsDisplay');
-                    if (combinedDisplay && combinedDisplay.children.length > 0) {
-                        specializations = Array.from(combinedDisplay.querySelectorAll('.additional-tag')).map(tag => {
-                            return tag.querySelector('span').textContent.trim();
-                        }).filter(v => v);
-                    } else {
-                        // Fallback: read from hidden inputs
-                        const specInputs = document.querySelectorAll('input[name="specializations[]"]');
-                        specializations = Array.from(specInputs).map(input => input.value).filter(v => v);
-                    }
-                }
-
                 // Collect restrictions from the global array (if available) or hidden inputs
                 let restrictions = [];
                 if (typeof selectedRestrictions !== 'undefined' && selectedRestrictions.length > 0) {
@@ -4129,6 +4229,9 @@ ${clientName}`;
                 const rawPhone = document.querySelector('[name="phone_number"]').value || '';
                 const phoneNumber = formatPhoneNumber(rawPhone);
 
+                // Build hierarchical categories structure
+                const categories = buildCategoriesHierarchy();
+
                 const formData = {
                     client_name: document.querySelector('[name="client_name"]').value || 'המקצוען',
                     primary_field: document.getElementById('primaryFieldHidden').value || 'שיפוצים כלליים',
@@ -4136,7 +4239,7 @@ ${clientName}`;
                     phone_number: phoneNumber,
                     work_areas: workAreas,
                     business_benefits: businessBenefits,
-                    additional_specializations: specializations,
+                    categories: categories,
                     restrictions: restrictions
                 };
 
@@ -4467,23 +4570,23 @@ ${clientName}`;
 
             buildBusinessAdvantages(formData) {
                 const advantages = [];
-                
+
                 // ניסיון (תמיד כולל)
                 if (formData.experience_years) {
                     advantages.push(`✅ ניסיון של ${formData.experience_years} שנים`);
                 }
-                
+
                 // יתרונות עסקיים שנבחרו
-                if (formData['business_benefits[]']) {
-                    const businessBenefits = Array.isArray(formData['business_benefits[]']) 
-                        ? formData['business_benefits[]'] 
-                        : [formData['business_benefits[]']];
-                    
-                    businessBenefits.forEach(benefit => {
+                // Support both business_benefits (new) and business_benefits[] (fallback)
+                const businessBenefits = formData.business_benefits || formData['business_benefits[]'] || [];
+                const benefitsArray = Array.isArray(businessBenefits) ? businessBenefits : [businessBenefits];
+
+                benefitsArray.forEach(benefit => {
+                    if (benefit) {
                         advantages.push(`🔧 ${benefit}`);
-                    });
-                }
-                
+                    }
+                });
+
                 return advantages.join('\n') || 'שירות מקצועי ואמין';
             }
 
@@ -4514,30 +4617,25 @@ ${clientName}`;
              */
             buildSpecializations(formData) {
                 const specializations = [];
-                
-                if (formData.specializations && Array.isArray(formData.specializations) && formData.specializations.length > 0) {
-                    // קיבוץ לפי קטגוריה
-                    const groupedSpecializations = {};
-                    formData.specializations.forEach(spec => {
-                        const category = spec.category || 'התמחויות נוספות';
-                        if (!groupedSpecializations[category]) {
-                            groupedSpecializations[category] = [];
-                        }
-                        groupedSpecializations[category].push(spec);
-                    });
-                    
+
+                // Use categories (hierarchical format)
+                if (formData.categories && Object.keys(formData.categories).length > 0) {
+                    const primaryField = formData.primary_field;
+
                     // בניית הטקסט לפי קטגוריות
-                    Object.keys(groupedSpecializations).forEach(category => {
-                        specializations.push(`\n🔧 ${category}:`);
-                        groupedSpecializations[category].forEach(spec => {
-                            const icon = spec.isCustom ? '⭐' : '•';
-                            specializations.push(`${icon} ${spec.text}`);
+                    Object.keys(formData.categories).forEach(category => {
+                        const isPrimary = category === primaryField;
+                        const icon = isPrimary ? '🏆' : '🔧';
+                        specializations.push(`\n${icon} ${category}${isPrimary ? ' (תחום ראשי)' : ''}:`);
+
+                        formData.categories[category].forEach(subcategory => {
+                            specializations.push(`• ${subcategory}`);
                         });
                     });
-                    
-                    return `${formData.client_name || 'בעל המקצוע'} מתמחה גם בתחומים הבאים:${specializations.join('\n')}`;
+
+                    return `${formData.client_name || 'בעל המקצוע'} מתמחה בתחומים הבאים:${specializations.join('\n')}`;
                 }
-                
+
                 return `${formData.client_name || 'בעל המקצוע'} מתמחה אך ורק בתחום העיקרי שלו: ${formData.primary_field || 'תחום הפעילות'}.`;
             }
 

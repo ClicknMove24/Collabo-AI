@@ -2713,7 +2713,14 @@
                                 hiddenInputs[benefitIndex].value = this.value.trim();
                             }
                         });
-                        
+
+                        // Prevent Enter key from submitting form
+                        textInput.addEventListener('keydown', function(e) {
+                            if (e.key === 'Enter') {
+                                e.preventDefault();
+                            }
+                        });
+
                         // Create remove button
                         const removeBtn = document.createElement('button');
                         removeBtn.type = 'button';
@@ -3536,7 +3543,14 @@
                         textInput.addEventListener('input', function() {
                             selectedRestrictions[index] = this.value.trim();
                         });
-                        
+
+                        // Prevent Enter key from submitting form
+                        textInput.addEventListener('keydown', function(e) {
+                            if (e.key === 'Enter') {
+                                e.preventDefault();
+                            }
+                        });
+
                         textInput.addEventListener('focus', function() {
                             this.style.borderColor = 'var(--ai-purple)';
                             this.style.boxShadow = '0 0 0 3px rgba(79, 70, 229, 0.1)';

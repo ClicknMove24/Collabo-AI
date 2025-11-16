@@ -2704,6 +2704,14 @@
                         // Update benefit text when input changes
                         textInput.addEventListener('input', function() {
                             benefit.text = this.value.trim();
+
+                            // Also update the corresponding hidden input for form submission
+                            const form = document.querySelector('form');
+                            const hiddenInputs = form.querySelectorAll('input[name="business_benefits[]"]');
+                            const benefitIndex = selectedBusinessBenefits.findIndex(b => b.id === benefit.id);
+                            if (benefitIndex >= 0 && hiddenInputs[benefitIndex]) {
+                                hiddenInputs[benefitIndex].value = this.value.trim();
+                            }
                         });
                         
                         // Create remove button
@@ -3520,7 +3528,6 @@
                         const textInput = document.createElement('input');
                         textInput.type = 'text';
                         textInput.value = restriction;
-                        textInput.name = 'restrictions[]';
                         textInput.className = 'form-input restriction-input';
                         /* Styling handled by CSS class */
                         textInput.placeholder = 'הכנס את תיאור ההגבלה...';
@@ -4240,14 +4247,10 @@ ${clientName}`;
                     businessBenefits = Array.from(benefitInputs).map(input => input.value).filter(v => v);
                 }
 
-                // Collect restrictions from the global array (if available) or hidden inputs
+                // Collect restrictions from the global array
                 let restrictions = [];
                 if (typeof selectedRestrictions !== 'undefined' && selectedRestrictions.length > 0) {
                     restrictions = selectedRestrictions;
-                } else {
-                    // Fallback: read from hidden inputs
-                    const restrictionInputs = document.querySelectorAll('input[name="restrictions[]"]');
-                    restrictions = Array.from(restrictionInputs).map(input => input.value).filter(v => v);
                 }
 
                 // Format phone number to 9725XXXXXXXX

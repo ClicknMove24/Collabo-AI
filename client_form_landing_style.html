@@ -1307,9 +1307,9 @@
                     <div class="form-group">
                         <label class="form-label">
                             <span class="question-number">4.</span>
-                            באילו אזורים אתם עובדים? <strong>(ניתן לבחור כמה אפשרויות)</strong>
+                            באילו אזורים אתם נותנים שירות? <strong>(ניתן לבחור כמה אפשרויות)</strong>
                         </label>
-                        
+
                         <div class="work-area-select-container">
                             <div class="work-area-select" id="workAreaSelect" tabindex="0">
                                 <span class="work-area-placeholder">לחץ לבחירת אזורי עבודה</span>
@@ -1317,8 +1317,16 @@
                             </div>
                             <div id="workAreaDropdown" style="position: absolute; top: 100%; left: 0; right: 0; background: white; border: 1px solid #e5e7eb; border-radius: 6px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); z-index: 1000; display: none; max-height: 300px; overflow-y: auto;"></div>
                         </div>
-                        
+
                         <div class="work-area-tags" id="workAreaTags"></div>
+
+                        <!-- Address sub-question (appears when at least one area is selected) -->
+                        <div id="addressSubQuestion" style="display: none; margin-top: 16px;">
+                            <label class="form-label" style="font-size: 14px; color: var(--text-secondary); font-weight: 400;">
+                                ניתן להוסיף כתובת שתופיע בתגובות שלך (לא חובה)
+                            </label>
+                            <input type="text" class="form-input" name="address" placeholder="לדוגמה: רחוב הרצל 123, תל אביב" style="margin-top: 8px;">
+                        </div>
                     </div>
                 </div>
 
@@ -1430,14 +1438,19 @@
                         </div>
                         
                         <div class="business-benefits-tags" id="businessBenefitsTags" style="margin-top: 12px;"></div>
+
+                        <!-- Editable notice for business benefits -->
+                        <div id="businessBenefitsEditableNotice" style="display: none; margin-top: 12px; padding: 12px; background: #f0f9ff; border: 1px solid #bae6fd; border-radius: 8px; color: #0369a1; font-size: 14px;">
+                            💡 שימו לב שניתן ומומלץ לערוך את הטקסט של היתרונות שבחרתם, להכניס התאמות, הערות וכדומה...
+                        </div>
                     </div>
                 </div>
 
 
 
-                <!-- הגדרות מיוחדות -->
+                <!-- נושאים להימנעות בתגובות -->
                 <div class="form-section">
-                    <h3>הגדרות מיוחדות</h3>
+                    <h3>נושאים להימנעות בתגובות</h3>
                     <div class="section-description">
                         הגדירו נושאים להימנעות בתגובות. זה שומר על מקצועיות ומתאים לפרופיל שלכם. אם אין לכם הגבלות מיוחדות, דלגו על השאלה.
                     </div>
@@ -1483,14 +1496,11 @@
                         
                         <div class="restriction-tags" id="restrictionTags"></div>
 
-                    </div>
+                        <!-- Editable notice for restrictions -->
+                        <div id="restrictionsEditableNotice" style="display: none; margin-top: 12px; padding: 12px; background: #f0f9ff; border: 1px solid #bae6fd; border-radius: 8px; color: #0369a1; font-size: 14px;">
+                            💡 שימו לב שניתן ומומלץ לערוך את הטקסט של הנושאים שבחרתם, להכניס התאמות, הערות וכדומה...
+                        </div>
 
-                    <div class="form-group">
-                        <label class="form-label">
-                            <span class="question-number">8.</span>
-                            הערות נוספות או בקשות מיוחדות:
-                        </label>
-                        <textarea class="form-input form-textarea" name="additional_notes" placeholder="כל מידע נוסף שחשוב לכם שנדע..."></textarea>
                     </div>
                 </div>
 
@@ -2625,7 +2635,13 @@
                 
                 // Update separate tags display
                 updateBusinessBenefitsTags();
-                
+
+                // Show/hide editable notice
+                const noticeElement = document.getElementById('businessBenefitsEditableNotice');
+                if (noticeElement) {
+                    noticeElement.style.display = selectedBusinessBenefits.length > 0 ? 'block' : 'none';
+                }
+
                 // Sync form data - remove ALL existing business_benefits[] inputs first
                 const form = document.querySelector('form');
                 const existingInputs = form.querySelectorAll('input[name="business_benefits[]"]');
@@ -3484,6 +3500,12 @@
                 
                 // Update separate tags display
                 updateRestrictionTags();
+
+                // Show/hide editable notice
+                const noticeElement = document.getElementById('restrictionsEditableNotice');
+                if (noticeElement) {
+                    noticeElement.style.display = selectedRestrictions.length > 0 ? 'block' : 'none';
+                }
             }
 
             function updateRestrictionTags() {
@@ -3704,7 +3726,7 @@
             function updateWorkAreaDisplay() {
                 // Clear current display
                 workAreaTags.innerHTML = '';
-                
+
                 if (selectedWorkAreas.length > 0) {
                     selectedWorkAreas.forEach(area => {
                         const tag = document.createElement('div');
@@ -3713,16 +3735,22 @@
                             <span>${area}</span>
                             <span class="remove-tag">×</span>
                         `;
-                        
+
                         tag.querySelector('.remove-tag').addEventListener('click', function(e) {
                             e.stopPropagation();
                             selectedWorkAreas = selectedWorkAreas.filter(wa => wa !== area);
                             updateWorkAreaDisplay();
                             updateWorkAreaDropdownStates();
                         });
-                        
+
                         workAreaTags.appendChild(tag);
                     });
+                }
+
+                // Show/hide address sub-question
+                const addressSubQuestion = document.getElementById('addressSubQuestion');
+                if (addressSubQuestion) {
+                    addressSubQuestion.style.display = selectedWorkAreas.length > 0 ? 'block' : 'none';
                 }
             }
 

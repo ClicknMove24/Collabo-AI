@@ -3797,6 +3797,12 @@
             });
 
 
+            // Prevent Enter key from submitting the form
+            document.getElementById('clientForm').addEventListener('keydown', function(e) {
+                if (e.key === 'Enter') {
+                    e.preventDefault();
+                }
+            });
 
             // Form submission
             document.getElementById('clientForm').addEventListener('submit', async function(e) {

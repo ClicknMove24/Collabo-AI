@@ -91,6 +91,45 @@
             letter-spacing: 0.5px;
         }
 
+        /* שאלה 7 - עיצוב שדות הגבלות חדשים */
+        .restriction-field-wrapper {
+            position: relative;
+            margin-bottom: 12px;
+        }
+
+        .restriction-field {
+            width: 100%;
+            text-align: right;
+            padding-right: 16px;
+        }
+
+        .remove-restriction-btn:hover {
+            background-color: rgba(220, 38, 38, 0.1);
+            border-radius: 50%;
+        }
+
+        /* אנימציה למנורה מהבהבת */
+        @keyframes lightbulb-glow {
+            0%, 100% {
+                opacity: 1;
+                text-shadow: 0 0 5px rgba(245, 158, 11, 0.5);
+            }
+            50% {
+                opacity: 0.7;
+                text-shadow: 0 0 10px rgba(245, 158, 11, 0.8);
+            }
+        }
+
+        /* טולטיפ מותאם למובייל */
+        @media (max-width: 768px) {
+            .fas.fa-lightbulb {
+                font-size: 16px !important;
+                padding: 4px;
+                border-radius: 50%;
+                background: rgba(245, 158, 11, 0.1);
+            }
+        }
+
         /* Contact Form Styles - מעתק מדף הנחיתה */
         .contact-form {
             max-width: 700px;
@@ -641,16 +680,14 @@
         @media (min-width: 769px) {
             /* Force all popup containers to look exactly like mobile */
             #combinedSpecializationsPopupContent,
-            #businessBenefitsPopupContent,
-            #restrictionsPopupContent {
+            #businessBenefitsPopupContent {
                 max-height: 85vh !important;
                 margin: 0 auto !important;
             }
             
             /* Force popup headers to match mobile */
             #combinedSpecializationsPopup div[style*="padding: 24px"],
-            #businessBenefitsPopup div[style*="padding: 24px"],
-            #restrictionsPopup div[style*="padding: 24px"] {
+            #businessBenefitsPopup div[style*="padding: 24px"] {
                 padding: 16px !important;
             }
             
@@ -675,8 +712,7 @@
             
             /* Force popup category headers to match mobile height */
             #combinedSpecializationsPopup div[style*="padding: 10px"],
-            #businessBenefitsPopup div[style*="padding: 10px"],
-            #restrictionsPopup div[style*="padding: 10px"] {
+            #businessBenefitsPopup div[style*="padding: 10px"] {
                 padding: 10px !important;
             }
         }
@@ -1122,8 +1158,7 @@
             
             /* Ensure popup mobile responsiveness */
             #combinedSpecializationsPopupContent,
-            #businessBenefitsPopupContent,
-            #restrictionsPopupContent {
+            #businessBenefitsPopupContent {
                 margin: 0 auto !important;
                 max-height: 85vh !important;
                 max-width: calc(100vw - 20px) !important;
@@ -1131,15 +1166,13 @@
             
             /* Popup headers compact on mobile */
             #combinedSpecializationsPopup .popup-header,
-            #businessBenefitsPopup .popup-header,
-            #restrictionsPopup .popup-header {
+            #businessBenefitsPopup .popup-header {
                 padding: 16px !important;
             }
             
             /* Popup titles readable on mobile */
             #combinedSpecializationsPopup h3,
-            #businessBenefitsPopup h3,
-            #restrictionsPopup h3 {
+            #businessBenefitsPopup h3 {
                 font-size: 18px !important;
             }
             
@@ -1456,45 +1489,59 @@
                     </div>
 
                     <div class="form-group">
-                        <label class="form-label">
+                        <label class="form-label" style="position: relative;">
                             <span class="question-number">7.</span>
                             יש נושאים שאתם מעדיפים להימנע מהם בתגובות? <strong>(עד 5 נושאים)</strong>
+                            <i class="fas fa-lightbulb restriction-tooltip-trigger" style="color: #f59e0b; margin-right: 8px; cursor: pointer; font-size: 16px; transition: all 0.2s; animation: lightbulb-glow 2s ease-in-out infinite;"></i>
+                            <div class="restriction-tooltip" id="restrictionTooltip" style="
+                                display: none;
+                                position: absolute;
+                                background: white;
+                                border: 2px solid #f59e0b;
+                                padding: 16px 20px;
+                                border-radius: 12px;
+                                font-size: 14px;
+                                max-width: 350px;
+                                z-index: 1000;
+                                top: 100%;
+                                right: 0;
+                                margin-top: 8px;
+                                box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+                                line-height: 1.6;
+                                color: var(--text-primary);
+                            "></div>
                         </label>
                         
-                        <div id="restrictionsContainer" style="position: relative;">
-                            <div id="restrictionsDisplay" class="form-input" tabindex="-1" style="cursor: pointer; display: flex; flex-wrap: wrap; gap: 8px; align-items: center; position: relative; font-size: 14px;">
-                                <span id="restrictionsPlaceholder" style="color: var(--text-muted);">לחצו לבחירת נושאים להימנעות</span>
-                                <i class="fas fa-chevron-down" style="position: absolute; left: 16px; top: 16px; color: var(--text-muted);"></i>
-                            </div>
-                        </div>
-                        
-                        <!-- Restrictions Popup Modal -->
-                        <div id="restrictionsPopup" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.3); z-index: 9999; overflow-y: auto;">
-                            <div style="display: flex; align-items: center; justify-content: center; min-height: 100vh; padding: 20px;">
-                                <div id="restrictionsPopupContent" style="background: white; border-radius: var(--border-radius); border: 1px solid var(--border-light); max-width: 700px; width: 100%; max-height: 85vh; position: relative; overflow: hidden; display: flex; flex-direction: column;">
-                                    <!-- Popup Header -->
-                                    <div style="padding: 24px 24px 16px 24px; border-bottom: 1px solid var(--border-light);">
-                                        <div style="display: flex; align-items: center; justify-content: space-between;">
-                                            <h3 style="margin: 0; font-size: 20px; font-weight: 600; color: var(--text-primary);">בחירת נושאים להימנעות</h3>
-                                            <button type="button" class="popup-close" style="background: none; color: var(--text-muted); border: none; font-size: 24px; cursor: pointer; padding: 0; width: 24px; height: 24px; display: flex; align-items: center; justify-content: center;">×</button>
-                                        </div>
-                                        <p style="margin: 8px 0 0 0; color: var(--text-secondary); font-size: 14px;">בחרו עד 5 נושאים שאתם מעדיפים להימנע מהם בתגובות</p>
-                                    </div>
-                                    
-                                    <!-- Popup Content - Scrollable -->
-                                    <div id="restrictionsPopupBody" style="flex: 1; overflow-y: auto; min-height: 0;">
-                                    </div>
-                                    
-                                    <!-- Popup Footer -->
-                                    <div style="padding: 16px; border-top: 1px solid var(--border-light); flex-shrink: 0; display: flex; justify-content: space-between; align-items: center;">
-                                        <div id="selectedRestrictionsCount" style="color: var(--text-secondary); font-size: 14px;">לא נבחרו הגבלות</div>
-                                        <button type="button" id="saveRestrictions" style="background: var(--ai-purple); color: white; border: none; padding: 10px 12px; border-radius: var(--border-radius); font-size: 14px; cursor: pointer; font-weight: 500; width: 120px;">שמור בחירות</button>
-                                    </div>
+                        <div id="restrictionsContainer">
+                            <div id="restrictionFields">
+                                <!-- שדה ראשון -->
+                                <div class="restriction-field-wrapper" style="position: relative; margin-bottom: 12px;">
+                                    <input type="text" class="form-input restriction-field" placeholder="לדוגמה: לא לדבר על מחירים">
+                                    <button type="button" class="remove-restriction-btn" style="position: absolute; left: 12px; top: 50%; transform: translateY(-50%); background: none; border: none; color: #dc2626; font-size: 18px; cursor: pointer; width: 24px; height: 24px; display: none; align-items: center; justify-content: center;">×</button>
                                 </div>
                             </div>
+                            
+                            <div style="display: flex; align-items: center; gap: 12px; margin-top: 12px;">
+                                <button type="button" id="addRestrictionBtn" style="
+                                    background: var(--ai-purple);
+                                    color: white;
+                                    border: none;
+                                    padding: 12px;
+                                    border-radius: 5px;
+                                    cursor: pointer;
+                                    font-size: 14px;
+                                    font-weight: 500;
+                                    display: flex;
+                                    align-items: center;
+                                    justify-content: center;
+                                    width: 20px;
+                                    height: 20px;
+                                ">
+                                    <i class="fas fa-plus"></i>
+                                </button>
+                                <span id="restrictionCounter" style="color: var(--text-secondary); font-size: 14px;">הוסף נושא נוסף (עד 5 מקסימום)</span>
+                            </div>
                         </div>
-                        
-                        <div class="restriction-tags" id="restrictionTags"></div>
 
                         <!-- Editable notice for restrictions -->
                         <div id="restrictionsEditableNotice" style="display: none; margin-top: 12px; padding: 12px; background: #f0f9ff; border: 1px solid #bae6fd; border-radius: 8px; color: #0369a1; font-size: 14px;">
@@ -3396,291 +3443,182 @@
                 'סודות מקצועיים'
             ];
 
-            const restrictionsDisplay = document.getElementById('restrictionsDisplay');
-            const restrictionsPopup = document.getElementById('restrictionsPopup');
-            const restrictionsPopupBody = document.getElementById('restrictionsPopupBody');
-            const restrictionsPlaceholder = document.getElementById('restrictionsPlaceholder');
-            const restrictionTags = document.getElementById('restrictionTags');
+            // שאלה 7 - משתנים וקוד חדש להגבלות
             let selectedRestrictions = [];
             const maxRestrictions = 5;
+            let restrictionFieldsCount = 1;
 
-            function initializeRestrictionsPopup() {
-                if (!restrictionsPopupBody) {
-                    console.error('restrictionsPopupBody element not found!');
-                    return;
-                }
-                restrictionsPopupBody.innerHTML = '';
+            // פונקציות עבור שדות ההגבלות החדשים
+            function initializeRestrictions() {
+                const addBtn = document.getElementById('addRestrictionBtn');
+                const restrictionFields = document.getElementById('restrictionFields');
                 
-                // Add custom option input
-                const customInputContainer = document.createElement('div');
-                customInputContainer.style.cssText = 'padding: 16px 24px; border-bottom: 1px solid var(--border-light);';
-                customInputContainer.innerHTML = `
-                    <div style="color: var(--text-primary); font-weight: 500; margin-bottom: 8px; font-size: 14px;">✨ הוסף נושא בשפה חופשית</div>
-                    <div style="display: flex; gap: 8px;">
-                        <input type="text" placeholder="לדוגמה: לא לדבר על פרויקטים ישנים..." style="flex: 1; padding: 10px 12px; border: 1px solid var(--border-light); border-radius: var(--border-radius); font-size: 14px; text-align: right;" id="customRestrictionInput">
-                        <button type="button" style="background: var(--ai-purple); color: white; border: none; padding: 10px 16px; border-radius: var(--border-radius); cursor: pointer; font-weight: 500; font-size: 14px; white-space: nowrap;" id="addCustomRestriction">הוסף</button>
-                    </div>
+                // הוספת שדה חדש
+                addBtn.addEventListener('click', function() {
+                    if (restrictionFieldsCount < maxRestrictions) {
+                        addRestrictionField();
+                        updateAddButton();
+                    }
+                });
+
+                // מעקב אחר שינויים בשדות
+                restrictionFields.addEventListener('input', function(e) {
+                    if (e.target.classList.contains('restriction-field')) {
+                        updateRestrictionsArray();
+                        updateNoticeVisibility();
+                    }
+                });
+
+                // טיפול במחיקת שדות
+                restrictionFields.addEventListener('click', function(e) {
+                    if (e.target.classList.contains('remove-restriction-btn')) {
+                        removeRestrictionField(e.target);
+                    }
+                });
+
+                updateRemoveButtons();
+            }
+
+            function addRestrictionField() {
+                const restrictionFields = document.getElementById('restrictionFields');
+                restrictionFieldsCount++;
+                
+                // דוגמאות מהטולטיפ לפי סדר השדות
+                const examples = [
+                    "לדוגמה: לא לדבר על מחירים",  // שדה ראשון (כבר קיים)
+                    "לא לפרסם מחירים בפוסטים",   // שדה שני
+                    "לא לדבר על פרויקטים באזורים מסוימים", // שדה שלישי  
+                    "לא לחשוף פרטים על לקוחות",   // שדה רביעי
+                    "לא להמליץ על ספקים חיצוניים" // שדה חמישי
+                ];
+                
+                const placeholder = examples[restrictionFieldsCount - 1] || "לדוגמה: הכנס הגבלה";
+                
+                const wrapper = document.createElement('div');
+                wrapper.className = 'restriction-field-wrapper';
+                wrapper.style.cssText = 'position: relative; margin-bottom: 12px;';
+                wrapper.innerHTML = `
+                    <input type="text" class="form-input restriction-field" placeholder="${placeholder}" style="padding-left: 50px;">
+                    <button type="button" class="remove-restriction-btn" style="position: absolute; left: 12px; top: 50%; transform: translateY(-50%); background: none; border: none; color: #dc2626; font-size: 18px; cursor: pointer; width: 24px; height: 24px; display: flex; align-items: center; justify-content: center;">×</button>
                 `;
-                restrictionsPopupBody.appendChild(customInputContainer);
                 
-                // Add predefined options
-                const restrictionsContainer = document.createElement('div');
-                restrictionsContainer.style.cssText = 'border-bottom: 1px solid var(--border-light);';
-                
-                const restrictionsHeader = document.createElement('div');
-                restrictionsHeader.style.cssText = 'padding: 16px 24px; background: var(--bg-gray); font-weight: 600; color: var(--text-primary); font-size: 16px; border-bottom: 1px solid var(--border-light);';
-                restrictionsHeader.textContent = 'נושאים נפוצים להימנעות';
-                restrictionsContainer.appendChild(restrictionsHeader);
-                
-                restrictionOptions.forEach(option => {
-                    const isSelected = selectedRestrictions.includes(option);
-                    const restrictionItem = document.createElement('label');
-                    restrictionItem.className = 'restriction-item';
-                    /* Styling handled by CSS class */
-                    restrictionItem.innerHTML = `
-                        <input type="checkbox" class="popup-checkbox" ${isSelected ? 'checked' : ''} data-restriction="${option}">
-                        <span style="flex: 1; text-align: right; color: var(--text-primary); font-size: 16px;">${option}</span>
-                    `;
-                    restrictionsContainer.appendChild(restrictionItem);
-                });
-                
-                restrictionsPopupBody.appendChild(restrictionsContainer);
-                
-                // Add event listeners
-                const customInput = document.getElementById('customRestrictionInput');
-                const addBtn = document.getElementById('addCustomRestriction');
-                
-                // Custom input functionality
-                function addCustomRestriction() {
-                    const customValue = customInput.value.trim();
-                    if (customValue && !selectedRestrictions.includes(customValue) && selectedRestrictions.length < maxRestrictions) {
-                        selectedRestrictions.push(customValue);
-                        updateRestrictionsDisplay();
-                        updateRestrictionsCounter();
-                        customInput.value = '';
-                        closeRestrictionsPopup();
-                    }
-                }
-                
-                addBtn.addEventListener('click', addCustomRestriction);
-                customInput.addEventListener('keypress', function(e) {
-                    if (e.key === 'Enter') {
-                        e.preventDefault();
-                        addCustomRestriction();
-                    }
-                });
-                
-                // Checkbox functionality
-                restrictionsPopupBody.addEventListener('change', function(e) {
-                    if (e.target.type === 'checkbox') {
-                        const restriction = e.target.dataset.restriction;
-                        const existingIndex = selectedRestrictions.indexOf(restriction);
-                        
-                        if (e.target.checked && existingIndex === -1 && selectedRestrictions.length < maxRestrictions) {
-                            selectedRestrictions.push(restriction);
-                        } else if (!e.target.checked && existingIndex >= 0) {
-                            selectedRestrictions.splice(existingIndex, 1);
-                        }
-                        
-                        updateRestrictionsDisplay();
-                        updateRestrictionsCounter();
+                restrictionFields.appendChild(wrapper);
+                updateRemoveButtons();
+                updateRestrictionsArray();
+            }
+
+            function removeRestrictionField(button) {
+                const wrapper = button.parentElement;
+                wrapper.remove();
+                restrictionFieldsCount--;
+                updateRemoveButtons();
+                updateAddButton();
+                updateRestrictionsArray();
+                updateNoticeVisibility();
+            }
+
+            function updateRemoveButtons() {
+                const wrappers = document.querySelectorAll('.restriction-field-wrapper');
+                wrappers.forEach((wrapper, index) => {
+                    const removeBtn = wrapper.querySelector('.remove-restriction-btn');
+                    if (removeBtn) {
+                        // השדה הראשון (index 0) לא יהיה בו כפתור מחיקה
+                        removeBtn.style.display = index > 0 ? 'flex' : 'none';
                     }
                 });
             }
 
-            function updateRestrictionsDisplay() {
-                // Clear current display
-                restrictionsDisplay.innerHTML = '';
+            function updateAddButton() {
+                const addBtn = document.getElementById('addRestrictionBtn');
+                const counter = document.getElementById('restrictionCounter');
                 
-                if (selectedRestrictions.length === 0) {
-                    restrictionsDisplay.appendChild(restrictionsPlaceholder);
+                if (restrictionFieldsCount >= maxRestrictions) {
+                    addBtn.parentElement.style.display = 'none';
                 } else {
-                    const countSpan = document.createElement('span');
-                    const remainingNeeded = Math.max(0, maxRestrictions - selectedRestrictions.length);
-                    if (remainingNeeded > 0) {
-                        countSpan.textContent = `נבחרו ${selectedRestrictions.length} הגבלות (ניתן עוד ${remainingNeeded})`;
-                        countSpan.style.color = 'var(--text-primary)';
-                    } else {
-                        countSpan.textContent = `נבחרו ${selectedRestrictions.length} הגבלות (מקסימום)`;
-                        countSpan.style.color = '#059669';
-                    }
-                    restrictionsDisplay.appendChild(countSpan);
+                    addBtn.parentElement.style.display = 'flex';
+                    const remaining = maxRestrictions - restrictionFieldsCount;
+                    counter.textContent = `הוסף נושא נוסף (עוד ${remaining} אפשריים)`;
                 }
-                
-                // Add chevron
-                const chevron = document.createElement('i');
-                chevron.className = 'fas fa-chevron-down';
-                chevron.style.cssText = 'position: absolute; left: 16px; top: 16px; color: var(--text-muted);';
-                restrictionsDisplay.appendChild(chevron);
-                
-                // Update separate tags display
-                updateRestrictionTags();
+            }
 
-                // Show/hide editable notice
+            function updateRestrictionsArray() {
+                const fields = document.querySelectorAll('.restriction-field');
+                selectedRestrictions = [];
+                fields.forEach(field => {
+                    const value = field.value.trim();
+                    if (value) {
+                        selectedRestrictions.push(value);
+                    }
+                });
+            }
+
+            function updateNoticeVisibility() {
                 const noticeElement = document.getElementById('restrictionsEditableNotice');
                 if (noticeElement) {
-                    noticeElement.style.display = selectedRestrictions.length > 0 ? 'block' : 'none';
+                    const hasContent = selectedRestrictions.some(restriction => restriction.length > 0);
+                    noticeElement.style.display = hasContent ? 'block' : 'none';
                 }
             }
 
-            function updateRestrictionTags() {
-                // Clear current display
-                restrictionTags.innerHTML = '';
-                
-                if (selectedRestrictions.length > 0) {
-                    selectedRestrictions.forEach((restriction, index) => {
-                        const inputContainer = document.createElement('div');
-                        inputContainer.style.cssText = 'position: relative; margin-bottom: 12px; width: 100%;';
-                        
-                        const textInput = document.createElement('input');
-                        textInput.type = 'text';
-                        textInput.value = restriction;
-                        textInput.className = 'form-input restriction-input';
-                        /* Styling handled by CSS class */
-                        textInput.placeholder = 'הכנס את תיאור ההגבלה...';
-                        
-                        // Update restriction text when input changes
-                        textInput.addEventListener('input', function() {
-                            selectedRestrictions[index] = this.value.trim();
-                        });
-
-                        // Prevent Enter key from submitting form
-                        textInput.addEventListener('keydown', function(e) {
-                            if (e.key === 'Enter') {
-                                e.preventDefault();
-                            }
-                        });
-
-                        textInput.addEventListener('focus', function() {
-                            this.style.borderColor = 'var(--ai-purple)';
-                            this.style.boxShadow = '0 0 0 3px rgba(79, 70, 229, 0.1)';
-                        });
-                        
-                        textInput.addEventListener('blur', function() {
-                            this.style.borderColor = 'var(--border-light)';
-                            this.style.boxShadow = 'none';
-                        });
-                        
-                        const removeBtn = document.createElement('button');
-                        removeBtn.type = 'button';
-                        removeBtn.innerHTML = '×';
-                        removeBtn.style.cssText = `
-                            position: absolute;
-                            top: 50%;
-                            left: 12px;
-                            transform: translateY(-50%);
-                            background: none;
-                            border: none;
-                            font-size: 18px;
-                            font-weight: bold;
-                            color: #dc2626;
-                            cursor: pointer;
-                            width: 24px;
-                            height: 24px;
-                            display: flex;
-                            align-items: center;
-                            justify-content: center;
-                            border-radius: 50%;
-                            transition: background-color 0.2s;
-                        `;
-                        
-                        removeBtn.addEventListener('click', function() {
-                            selectedRestrictions = selectedRestrictions.filter((_, i) => i !== index);
-                            updateRestrictionsDisplay();
-                            updateRestrictionsCounter();
-                        });
-                        
-                        removeBtn.addEventListener('mouseenter', function() {
-                            this.style.backgroundColor = 'rgba(220, 38, 38, 0.1)';
-                        });
-                        
-                        removeBtn.addEventListener('mouseleave', function() {
-                            this.style.backgroundColor = 'transparent';
-                        });
-                        
-                        inputContainer.appendChild(textInput);
-                        inputContainer.appendChild(removeBtn);
-                        restrictionTags.appendChild(inputContainer);
-                    });
-                }
-            }
-
-            function updateRestrictionsCounter() {
-                const counterElement = document.getElementById('selectedRestrictionsCount');
-                if (counterElement) {
-                    const count = selectedRestrictions.length;
-                    const remainingAllowed = Math.max(0, maxRestrictions - count);
-                    
-                    if (count === 0) {
-                        counterElement.textContent = 'לא נבחרו הגבלות';
-                        counterElement.style.color = 'var(--text-secondary)';
-                    } else if (remainingAllowed > 0) {
-                        counterElement.textContent = `נבחרו ${count} הגבלות (ניתן עוד ${remainingAllowed})`;
-                        counterElement.style.color = 'var(--text-primary)';
-                    } else {
-                        counterElement.textContent = `נבחרו ${count} הגבלות (מקסימום)`;
-                        counterElement.style.color = '#059669';
-                    }
-                }
-            }
-            
-            // Function to open restrictions popup
-            function openRestrictionsPopup() {
-                initializeRestrictionsPopup();
-                restrictionsPopup.style.display = 'block';
-                document.body.style.overflow = 'hidden';
-            }
-            
-            // Function to close restrictions popup
-            function closeRestrictionsPopup() {
-                restrictionsPopup.style.display = 'none';
-                document.body.style.overflow = '';
-            }
-
-            // Initialize restrictions popup in a timeout to ensure DOM is ready
-            setTimeout(function() {
-                initializeRestrictionsPopup();
-                updateRestrictionsCounter(); // Initialize counter state
+            // אתחול השדות כשהדף נטען
+            setTimeout(() => {
+                initializeRestrictions();
+                initializeRestrictionTooltip();
             }, 100);
 
-            // Handle popup toggle
-            if (restrictionsDisplay && restrictionsPopup) {
-                restrictionsDisplay.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    e.stopPropagation();
+            // פונקציה לטולטיפ הלחיץ
+            function initializeRestrictionTooltip() {
+                const trigger = document.querySelector('.restriction-tooltip-trigger');
+                const tooltip = document.getElementById('restrictionTooltip');
+                
+                if (trigger && tooltip) {
+                    // תוכן מובנה היררכית
+                    tooltip.innerHTML = `
+                        <div style="font-weight: 600; color: #f59e0b; margin-bottom: 12px; font-size: 15px;">💡 דוגמאות להגבלות:</div>
+                        <div style="margin-bottom: 8px;">• לא לפרסם מחירים בפוסטים</div>
+                        <div style="margin-bottom: 8px;">• לא לדבר על פרויקטים באזורים מסוימים</div>
+                        <div style="margin-bottom: 8px;">• לא לחשוף פרטים על לקוחות</div>
+                        <div>• לא להמליץ על ספקים חיצוניים</div>
+                    `;
+                    console.log('Tooltip initialized with structured content');
                     
-                    openRestrictionsPopup();
-                });
-            } else {
-            }
-            
-            // Handle popup close
-            if (restrictionsPopup) {
-                const closeBtn = restrictionsPopup.querySelector('.popup-close');
-                
-                if (closeBtn) {
-                    closeBtn.addEventListener('click', function(e) {
+                    let isTooltipVisible = false;
+                    
+                    trigger.addEventListener('click', function(e) {
                         e.preventDefault();
                         e.stopPropagation();
-                        closeRestrictionsPopup();
+                        
+                        if (isTooltipVisible) {
+                            tooltip.style.display = 'none';
+                            isTooltipVisible = false;
+                            trigger.style.color = '#f59e0b';
+                        } else {
+                            tooltip.style.display = 'block';
+                            isTooltipVisible = true;
+                            trigger.style.color = '#d97706';
+                        }
                     });
-                }
-                
-                // Close popup when clicking outside
-                restrictionsPopup.addEventListener('click', function(e) {
-                    if (e.target === this) {
-                        closeRestrictionsPopup();
-                    }
-                });
-                
-                // Save button functionality
-                const saveBtn = document.getElementById('saveRestrictions');
-                if (saveBtn) {
-                    saveBtn.addEventListener('click', function(e) {
-                        e.preventDefault();
-                        e.stopPropagation();
-                        updateRestrictionsDisplay();
-                        closeRestrictionsPopup();
+                    
+                    // סגירה בלחיצה מחוץ לטולטיפ
+                    document.addEventListener('click', function(e) {
+                        if (!trigger.contains(e.target) && !tooltip.contains(e.target)) {
+                            tooltip.style.display = 'none';
+                            isTooltipVisible = false;
+                            trigger.style.color = '#f59e0b';
+                        }
+                    });
+                    
+                    // הוספת אפקט hover
+                    trigger.addEventListener('mouseenter', function() {
+                        if (!isTooltipVisible) {
+                            this.style.color = '#d97706';
+                        }
+                    });
+                    
+                    trigger.addEventListener('mouseleave', function() {
+                        if (!isTooltipVisible) {
+                            this.style.color = '#f59e0b';
+                        }
                     });
                 }
             }

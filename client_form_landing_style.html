@@ -1521,7 +1521,7 @@
                                 </div>
                             </div>
                             
-                            <div style="display: flex; align-items: center; gap: 12px; margin-top: 12px;">
+                            <div id="addRestrictionContainer" style="display: flex; align-items: center; gap: 12px; margin-top: 12px; cursor: pointer; padding: 8px; border-radius: 6px; transition: background-color 0.2s;" onmouseover="this.style.backgroundColor='rgba(76, 29, 149, 0.05)'" onmouseout="this.style.backgroundColor='transparent'">
                                 <button type="button" id="addRestrictionBtn" style="
                                     background: var(--ai-purple);
                                     color: white;
@@ -1536,10 +1536,11 @@
                                     justify-content: center;
                                     width: 20px;
                                     height: 20px;
+                                    pointer-events: none;
                                 ">
                                     <i class="fas fa-plus"></i>
                                 </button>
-                                <span id="restrictionCounter" style="color: var(--text-secondary); font-size: 14px;">הוסף נושא נוסף (עד 5 מקסימום)</span>
+                                <span id="restrictionCounter" style="color: var(--text-secondary); font-size: 14px; pointer-events: none;">הוסף נושא נוסף (עד 5 מקסימום)</span>
                             </div>
                         </div>
 
@@ -3450,11 +3451,12 @@
 
             // פונקציות עבור שדות ההגבלות החדשים
             function initializeRestrictions() {
+                const addContainer = document.getElementById('addRestrictionContainer');
                 const addBtn = document.getElementById('addRestrictionBtn');
                 const restrictionFields = document.getElementById('restrictionFields');
                 
-                // הוספת שדה חדש
-                addBtn.addEventListener('click', function() {
+                // הוספת שדה חדש - לחיצה על כל המיכל
+                addContainer.addEventListener('click', function() {
                     if (restrictionFieldsCount < maxRestrictions) {
                         addRestrictionField();
                         updateAddButton();
@@ -3529,13 +3531,13 @@
             }
 
             function updateAddButton() {
-                const addBtn = document.getElementById('addRestrictionBtn');
+                const addContainer = document.getElementById('addRestrictionContainer');
                 const counter = document.getElementById('restrictionCounter');
                 
                 if (restrictionFieldsCount >= maxRestrictions) {
-                    addBtn.parentElement.style.display = 'none';
+                    addContainer.style.display = 'none';
                 } else {
-                    addBtn.parentElement.style.display = 'flex';
+                    addContainer.style.display = 'flex';
                     const remaining = maxRestrictions - restrictionFieldsCount;
                     counter.textContent = `הוסף נושא נוסף (עוד ${remaining} אפשריים)`;
                 }

@@ -1788,39 +1788,71 @@
                     console.log('Categories loaded:', professions);
                     console.log('Specializations loaded:', specializations);
                 } catch (error) {
-                    console.error('CRITICAL ERROR: Failed to load categories.json:', error);
+                    console.error('Failed to load categories.json:', error);
 
-                    // Display error message to user
-                    const formContainer = document.querySelector('.container');
-                    if (formContainer) {
-                        formContainer.innerHTML = `
-                            <div style="text-align: center; padding: 40px 20px; background: #fee; border: 2px solid #c00; border-radius: 8px; margin: 20px auto; max-width: 600px;">
-                                <h2 style="color: #c00; margin-bottom: 16px;">❌ שגיאה קריטית</h2>
-                                <p style="color: #333; font-size: 16px; line-height: 1.6; margin-bottom: 20px;">
-                                    לא ניתן לטעון את קובץ הקטגוריות (categories.json).
-                                    <br><br>
-                                    הטופס אינו יכול לפעול ללא קובץ זה.
-                                    <br><br>
-                                    אנא וודא שהקובץ categories.json קיים באותה תיקייה כמו דף זה.
-                                </p>
-                                <details style="text-align: right; background: #fff; padding: 12px; border-radius: 4px; margin-top: 16px;">
-                                    <summary style="cursor: pointer; font-weight: 600; color: #666;">פרטי שגיאה טכניים</summary>
-                                    <pre style="text-align: left; margin-top: 12px; color: #666; font-size: 12px; overflow-x: auto;">${error.message}\n\nStack: ${error.stack || 'לא זמין'}</pre>
-                                </details>
+                    // Use dummy categories for testing
+                    categoriesData = [
+                        {
+                            "Category": "חשמל",
+                            "Subcategories": [
+                                {"Name": "התקנת נקודות חשמל"},
+                                {"Name": "לוחות חשמל"},
+                                {"Name": "תשתיות חשמל"},
+                                {"Name": "תיקונים כלליים"}
+                            ]
+                        },
+                        {
+                            "Category": "אינסטלציה",
+                            "Subcategories": [
+                                {"Name": "התקנת כלים סניטריים"},
+                                {"Name": "איתור נזילות"},
+                                {"Name": "תשתיות אינסטלציה"},
+                                {"Name": "החלפת צנרת"},
+                                {"Name": "תיקונים כלליים"}
+                            ]
+                        },
+                        {
+                            "Category": "שיפוצים",
+                            "Subcategories": [
+                                {"Name": "שיפוץ דירות/משרדים"}
+                            ]
+                        },
+                        {
+                            "Category": "מיזוג אוויר",
+                            "Subcategories": [
+                                {"Name": "התקנת מזגנים"},
+                                {"Name": "התקנת מיני מרכזי"},
+                                {"Name": "ניקוי מזגנים"},
+                                {"Name": "תיקונים כלליים"}
+                            ]
+                        }
+                    ];
+
+                    professions = categoriesData.map(item => item.Category);
+                    specializations = {};
+                    categoriesData.forEach(item => {
+                        if (item.Subcategories && item.Subcategories.length > 0) {
+                            specializations[item.Category] = item.Subcategories.map(sub => sub.Name);
+                        }
+                    });
+
+                    console.warn('Using dummy categories due to load failure');
+
+                    // Display warning in categories section
+                    const categoriesSection = document.getElementById('combinedSpecializationsDisplay')?.closest('.form-section');
+                    if (categoriesSection) {
+                        const warningBanner = document.createElement('div');
+                        warningBanner.style.cssText = 'background: #fff3cd; border: 2px solid #ffc107; border-radius: 8px; padding: 16px; margin-bottom: 20px; text-align: center;';
+                        warningBanner.innerHTML = `
+                            <div style="color: #856404; font-weight: 600; font-size: 18px; margin-bottom: 8px;">
+                                ⚠️ שגיאה בטעינת קטגוריות
+                            </div>
+                            <div style="color: #856404; font-size: 14px;">
+                                קובץ הקטגוריות (categories.json) לא נטען. הקטגוריות המוצגות למטה הן קטגוריות דמה בלבד!
                             </div>
                         `;
+                        categoriesSection.insertBefore(warningBanner, categoriesSection.firstChild.nextSibling);
                     }
-
-                    // Disable form submission
-                    const form = document.getElementById('clientForm');
-                    if (form) {
-                        form.addEventListener('submit', function(e) {
-                            e.preventDefault();
-                            alert('הטופס אינו זמין עקב שגיאת טעינה קריטית');
-                        });
-                    }
-
-                    throw new Error('Cannot proceed without categories data');
                 }
             }
             

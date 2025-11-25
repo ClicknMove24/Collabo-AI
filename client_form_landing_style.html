@@ -1656,11 +1656,6 @@
                             </div>
                         </div>
 
-                        <!-- Editable notice for restrictions -->
-                        <div id="restrictionsEditableNotice" style="display: none; margin-top: 12px; padding: 12px; background: #f0f9ff; border: 1px solid #bae6fd; border-radius: 8px; color: #0369a1; font-size: 14px;">
-                            💡 שימו לב שניתן ומומלץ לערוך את הטקסט של הנושאים שבחרתם, להכניס התאמות, הערות וכדומה...
-                        </div>
-
                     </div>
                 </div>
 
@@ -1894,12 +1889,15 @@
             function openCombinedSpecializationsPopup() {
                 const popup = document.getElementById('combinedSpecializationsPopup');
                 const popupBody = document.getElementById('combinedSpecializationsPopupBody');
-                
+
                 if (!popup || !popupBody) return;
-                
+
                 // Build popup content
                 buildCombinedPopupContent();
-                
+
+                // Update button state on open
+                updateCombinedSelectionCount();
+
                 // Show popup
                 popup.style.display = 'block';
                 document.body.style.overflow = 'hidden';
@@ -2155,10 +2153,11 @@
             function updateCombinedSelectionCount() {
                 const countDisplay = document.getElementById('selectedCombinedCount');
                 if (!countDisplay) return;
-                
+
                 const primaryCount = primaryField ? 1 : 0;
                 const additionalCount = additionalSpecializations.length;
-                
+                const isSatisfied = primaryCount > 0 && additionalCount > 0;
+
                 if (primaryCount === 0) {
                     countDisplay.textContent = 'יש לבחור תחום ראשי';
                     countDisplay.style.color = '#dc2626';
@@ -2168,6 +2167,18 @@
                 } else {
                     countDisplay.textContent = `תחום ראשי: ${primaryField} | התמחויות נוספות: ${additionalCount}`;
                     countDisplay.style.color = 'var(--text-secondary)';
+                }
+
+                // Update save button appearance
+                const saveBtn = document.getElementById('saveCombinedSpecializations');
+                if (saveBtn) {
+                    if (isSatisfied) {
+                        saveBtn.style.opacity = '1';
+                        saveBtn.style.filter = 'none';
+                    } else {
+                        saveBtn.style.opacity = '0.5';
+                        saveBtn.style.filter = 'grayscale(50%)';
+                    }
                 }
             }
             
@@ -2697,11 +2708,12 @@
                     businessBenefitsDisplay.appendChild(countSpan);
                 }
                 
-                // Add chevron
-                const chevron = document.createElement('i');
-                chevron.className = 'fas fa-chevron-down';
-                chevron.style.cssText = 'position: absolute; left: 16px; top: 16px; color: var(--text-muted);';
-                businessBenefitsDisplay.appendChild(chevron);
+                // Update existing chevron color
+                const chevron = businessBenefitsDisplay.querySelector('.fa-chevron-down');
+                if (chevron) {
+                    const isSatisfied = selectedBusinessBenefits.length >= 4;
+                    chevron.style.color = isSatisfied ? 'var(--ai-purple)' : 'var(--text-muted)';
+                }
                 
                 // Update separate tags display
                 updateBusinessBenefitsTags();
@@ -3139,7 +3151,8 @@
                 if (counterElement) {
                     const count = selectedBusinessBenefits.length;
                     const remainingNeeded = Math.max(0, minBusinessBenefits - count);
-                    
+                    const isSatisfied = count >= minBusinessBenefits;
+
                     if (count === 0) {
                         counterElement.textContent = 'לא נבחרו יתרונות';
                         counterElement.style.color = 'var(--text-secondary)';
@@ -3150,12 +3163,25 @@
                         counterElement.textContent = `נבחרו ${count} יתרונות`;
                         counterElement.style.color = '#059669';
                     }
+
+                    // Update save button appearance
+                    const saveBtn = document.getElementById('saveBusinessBenefits');
+                    if (saveBtn) {
+                        if (isSatisfied) {
+                            saveBtn.style.opacity = '1';
+                            saveBtn.style.filter = 'none';
+                        } else {
+                            saveBtn.style.opacity = '0.5';
+                            saveBtn.style.filter = 'grayscale(50%)';
+                        }
+                    }
                 }
             }
             
             // Function to open business benefits popup
             function openBusinessBenefitsPopup() {
                 initializeBusinessBenefitsPopup();
+                updateBusinessBenefitsCounter(); // Update button state on open
                 businessBenefitsPopup.style.display = 'block';
                 document.body.style.overflow = 'hidden';
             }
@@ -3271,11 +3297,12 @@
                     specializationsDisplay.appendChild(countSpan);
                 }
                 
-                // Add chevron
-                const chevron = document.createElement('i');
-                chevron.className = 'fas fa-chevron-down';
-                chevron.style.cssText = 'position: absolute; left: 16px; top: 16px; color: var(--text-muted);';
-                specializationsDisplay.appendChild(chevron);
+                // Update existing chevron color
+                const chevron = specializationsDisplay.querySelector('.fa-chevron-down');
+                if (chevron) {
+                    const isSatisfied = primaryField && additionalSpecializations.length > 0;
+                    chevron.style.color = isSatisfied ? 'var(--ai-purple)' : 'var(--text-muted)';
+                }
                 
                 // Update separate tags display
                 updateSpecializationsTags();
@@ -3489,7 +3516,6 @@
                 restrictionFields.addEventListener('input', function(e) {
                     if (e.target.classList.contains('restriction-field')) {
                         updateRestrictionsArray();
-                        updateNoticeVisibility();
                     }
                 });
 
@@ -3538,7 +3564,6 @@
                 updateRemoveButtons();
                 updateAddButton();
                 updateRestrictionsArray();
-                updateNoticeVisibility();
             }
 
             function updateRemoveButtons() {
@@ -3576,13 +3601,6 @@
                 });
             }
 
-            function updateNoticeVisibility() {
-                const noticeElement = document.getElementById('restrictionsEditableNotice');
-                if (noticeElement) {
-                    const hasContent = selectedRestrictions.some(restriction => restriction.length > 0);
-                    noticeElement.style.display = hasContent ? 'block' : 'none';
-                }
-            }
 
             // אתחול השדות כשהדף נטען
             setTimeout(() => {
@@ -3734,6 +3752,12 @@
                 const addressSubQuestion = document.getElementById('addressSubQuestion');
                 if (addressSubQuestion) {
                     addressSubQuestion.style.display = selectedWorkAreas.length > 0 ? 'block' : 'none';
+                }
+
+                // Update arrow color based on selection
+                const arrow = document.querySelector('.work-area-arrow');
+                if (arrow) {
+                    arrow.style.color = selectedWorkAreas.length > 0 ? 'var(--ai-purple)' : 'var(--text-muted)';
                 }
             }
 

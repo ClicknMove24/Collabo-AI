@@ -1293,7 +1293,118 @@
                 transform: none;
             }
             
-        
+
+        /* Image Upload Section Styles */
+        .image-upload-btn {
+            display: inline-flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            padding: 14px 32px !important;
+            background: linear-gradient(135deg, #6366f1, #8b5cf6) !important;
+            color: white !important;
+            border-radius: 8px !important;
+            cursor: pointer !important;
+            text-align: center !important;
+            font-weight: 600 !important;
+            font-size: 16px !important;
+            transition: all 0.2s !important;
+            border: none !important;
+            box-shadow: 0 2px 8px rgba(99, 102, 241, 0.2) !important;
+        }
+
+        .image-upload-btn:hover {
+            transform: translateY(-2px) !important;
+            box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3) !important;
+        }
+
+        .image-upload-btn:active {
+            transform: translateY(0) !important;
+        }
+
+        .image-upload-btn svg {
+            flex-shrink: 0 !important;
+        }
+
+        .image-preview-container {
+            display: none;
+            position: relative !important;
+            border: 2px dashed #e5e7eb !important;
+            border-radius: 8px !important;
+            padding: 20px !important;
+            text-align: center !important;
+            background: #fafafa !important;
+        }
+
+        .remove-image-btn {
+            position: absolute !important;
+            top: 12px !important;
+            right: 12px !important;
+            background: #ef4444 !important;
+            color: white !important;
+            border: none !important;
+            border-radius: 50% !important;
+            width: 36px !important;
+            height: 36px !important;
+            min-width: 36px !important;
+            min-height: 36px !important;
+            max-width: 36px !important;
+            max-height: 36px !important;
+            cursor: pointer !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            transition: all 0.2s !important;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2) !important;
+            z-index: 10 !important;
+            padding: 0 !important;
+        }
+
+        .remove-image-btn:hover {
+            background: #dc2626 !important;
+            transform: scale(1.1) !important;
+        }
+
+        .remove-image-btn:active {
+            transform: scale(0.95) !important;
+        }
+
+        .remove-image-btn svg {
+            flex-shrink: 0 !important;
+            width: 16px !important;
+            height: 16px !important;
+        }
+
+        .image-preview {
+            max-width: 100%;
+            max-height: 300px;
+            border-radius: var(--border-radius);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            display: block;
+            margin: 0 auto;
+        }
+
+        .image-file-name {
+            margin-top: 12px;
+            color: var(--text-secondary);
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        @media (max-width: 480px) {
+            .image-upload-btn {
+                width: 100%;
+                padding: 12px 24px;
+                font-size: 15px;
+            }
+
+            .remove-image-btn {
+                width: 32px;
+                height: 32px;
+                top: 8px;
+                right: 8px;
+            }
+        }
+
         /* Clean CSS architecture - single source of truth for all post styling */
     </style>
 </head>
@@ -1550,6 +1661,37 @@
                             💡 שימו לב שניתן ומומלץ לערוך את הטקסט של הנושאים שבחרתם, להכניס התאמות, הערות וכדומה...
                         </div>
 
+                    </div>
+                </div>
+
+                <!-- Image Upload Section -->
+                <div class="form-section">
+                    <h3>הוספת תמונה (לא חובה)</h3>
+                    <p style="color: var(--text-secondary); margin-bottom: 20px;">
+                        העלה תמונה שתצורף אוטומטית לכל התגובות של הסוכן שלך (לוגו, תמונה מייצגת של העסק, וכו')
+                    </p>
+
+                    <div style="display: flex; flex-direction: column; gap: 16px;">
+                        <label for="commentImage" class="image-upload-btn">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-left: 8px; vertical-align: middle;">
+                                <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                                <circle cx="8.5" cy="8.5" r="1.5"></circle>
+                                <polyline points="21 15 16 10 5 21"></polyline>
+                            </svg>
+                            בחר תמונה
+                            <input type="file" id="commentImage" name="comment_image" accept="image/png, image/jpeg, image/jpg" style="display: none;">
+                        </label>
+
+                        <div id="imagePreviewContainer" class="image-preview-container">
+                            <button type="button" id="removeImageBtn" class="remove-image-btn" title="הסר תמונה">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="flex-shrink: 0;">
+                                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                                </svg>
+                            </button>
+                            <img id="imagePreview" src="" alt="תצוגה מקדימה" class="image-preview">
+                            <p id="imageFileName" class="image-file-name"></p>
+                        </div>
                     </div>
                 </div>
 
@@ -3751,6 +3893,62 @@
                 }
             });
 
+            // Image upload handling
+            window.uploadedImage = null; // Store the image data globally for later server upload
+            const commentImageInput = document.getElementById('commentImage');
+            const imagePreviewContainer = document.getElementById('imagePreviewContainer');
+            const imagePreview = document.getElementById('imagePreview');
+            const imageFileName = document.getElementById('imageFileName');
+            const removeImageBtn = document.getElementById('removeImageBtn');
+
+            commentImageInput.addEventListener('change', function(e) {
+                const file = e.target.files[0];
+                if (file) {
+                    // Validate file type
+                    const validTypes = ['image/png', 'image/jpeg', 'image/jpg'];
+                    if (!validTypes.includes(file.type)) {
+                        alert('אנא בחר קובץ תמונה בפורמט PNG, JPG או JPEG');
+                        return;
+                    }
+
+                    // Validate file size (max 5MB)
+                    if (file.size > 5 * 1024 * 1024) {
+                        alert('גודל הקובץ חייב להיות עד 5MB');
+                        return;
+                    }
+
+                    // Read file and create preview
+                    const reader = new FileReader();
+                    reader.onload = function(event) {
+                        window.uploadedImage = {
+                            data: event.target.result, // base64 data
+                            name: file.name,
+                            type: file.type,
+                            size: file.size
+                        };
+
+                        // Show preview
+                        imagePreview.src = event.target.result;
+                        imageFileName.textContent = file.name;
+                        imagePreviewContainer.style.display = 'block';
+                    };
+                    reader.readAsDataURL(file);
+                }
+            });
+
+            removeImageBtn.addEventListener('click', function() {
+                window.uploadedImage = null;
+                commentImageInput.value = '';
+                imagePreview.src = '';
+                imageFileName.textContent = '';
+                imagePreviewContainer.style.display = 'none';
+            });
+
+            // Getter function for accessing the uploaded image
+            window.getUploadedImage = function() {
+                return window.uploadedImage;
+            };
+
 
             // Prevent Enter key from submitting the form
             document.getElementById('clientForm').addEventListener('keydown', function(e) {
@@ -3828,6 +4026,18 @@
                 // Clean up old/unused field names
                 delete data['specializations[]'];
                 delete data['business_benefits[]'];
+                delete data['comment_image']; // Remove the file input field from FormData
+
+                // Add uploaded image if exists (after cleanup)
+                const uploadedImg = window.getUploadedImage ? window.getUploadedImage() : null;
+                if (uploadedImg) {
+                    data.comment_image = {
+                        data: uploadedImg.data,
+                        name: uploadedImg.name,
+                        type: uploadedImg.type,
+                        size: uploadedImg.size
+                    };
+                }
                 
                 try {
                     // יצירת System Prompt JSON מהטמפלט הקיים
@@ -4237,17 +4447,25 @@ ${clientName}`;
 
             updatePreviewResults(results, selectedPosts) {
                 const resultsDiv = document.getElementById('previewResults');
-                
+
+                // Get the uploaded image if exists
+                const uploadedImg = window.getUploadedImage ? window.getUploadedImage() : null;
+                const imageHTML = uploadedImg ? `
+                    <div style="margin-top: 8px; padding: 0 16px 12px;">
+                        <img src="${uploadedImg.data}" alt="תמונה מצורפת" style="max-width: 100%; max-height: 400px; border-radius: 8px; border: 1px solid #e4e6eb; object-fit: contain; display: block;">
+                    </div>
+                ` : '';
+
                 resultsDiv.innerHTML = results.map((result, index) => {
                     // Get post data from selectedPosts
                     const postData = selectedPosts[index];
                     const authorName = postData.authorName;
                     const postContent = postData.displayContent;
-                    
-                    
+
+
                     // Get first letter for avatar
                     const avatarLetter = authorName.charAt(0);
-                    
+
                     return `
                         <div class="facebook-post-card">
                             <div class="post-header">
@@ -4258,7 +4476,7 @@ ${clientName}`;
                                 </div>
                             </div>
                             <div class="post-content">${postContent}</div>
-                            
+
                             <div class="post-interactions">
                                 <div class="interactions-bar">
                                     <span class="interaction-btn">אהבתי</span>
@@ -4266,7 +4484,7 @@ ${clientName}`;
                                     <span class="interaction-btn">שתף</span>
                                 </div>
                             </div>
-                            
+
                             <div class="comments-section">
                                 <div class="comment">
                                     <div class="comment-avatar">ס</div>
@@ -4276,6 +4494,7 @@ ${clientName}`;
                                     </div>
                                 </div>
                                 <div class="comment-text">${formatLinksInText(result.response)}</div>
+                                ${imageHTML}
                             </div>
                         </div>
                     `;

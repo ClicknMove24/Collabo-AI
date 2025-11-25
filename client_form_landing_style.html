@@ -1766,181 +1766,12 @@
             let categoriesData = [];
             let professions = [];
             let specializations = {};
-            
-            // Embedded JSON data
-            const embeddedCategoriesData = [
-                {
-                    "Category": "בנייה",
-                    "Subcategories": [
-                        {"Name": "עבודות שלד"},
-                        {"Name": "עבודות גמר"},
-                        {"Name": "עבודות עפר"},
-                        {"Name": "עבודות פיתוח ותשתיות"},
-                        {"Name": "הריסה ופינוי"}
-                    ]
-                },
-                {
-                    "Category": "שיפוצים",
-                    "Subcategories": [
-                        {"Name": "שיפוץ דירות/משרדים"}
-                    ]
-                },
-                {
-                    "Category": "ניקיון",
-                    "Subcategories": [
-                        {"Name": "ניקיון משרדים"},
-                        {"Name": "ניקיון דירות לפני אכלוס"},
-                        {"Name": "ניקיון דירות אחרי שיפוץ"},
-                        {"Name": "ניקיון חדרי מדרגות"}
-                    ]
-                },
-                {
-                    "Category": "גינון",
-                    "Subcategories": [
-                        {"Name": "פיתוח גינות"},
-                        {"Name": "אחזקת גינות"},
-                        {"Name": "ניקיון גינות ופינוי פסולת"}
-                    ]
-                },
-                {
-                    "Category": "צילום",
-                    "Subcategories": [
-                        {"Name": "צילום אירועים פרטיים"},
-                        {"Name": "צילום תדמית"},
-                        {"Name": "צילום וידאו"},
-                        {"Name": "עריכת תמונות וסרטונים"}
-                    ]
-                },
-                {
-                    "Category": "אינסטלציה",
-                    "Subcategories": [
-                        {"Name": "התקנת כלים סניטריים"},
-                        {"Name": "איתור נזילות"},
-                        {"Name": "תשתיות אינסטלציה"},
-                        {"Name": "החלפת צנרת"},
-                        {"Name": "תיקונים כלליים"}
-                    ]
-                },
-                {
-                    "Category": "חשמל",
-                    "Subcategories": [
-                        {"Name": "התקנת נקודות חשמל"},
-                        {"Name": "לוחות חשמל"},
-                        {"Name": "תשתיות חשמל"},
-                        {"Name": "תיקונים כלליים"}
-                    ]
-                },
-                {
-                    "Category": "מיזוג אוויר",
-                    "Subcategories": [
-                        {"Name": "התקנת מזגנים"},
-                        {"Name": "התקנת מיני מרכזי"},
-                        {"Name": "ניקוי מזגנים"},
-                        {"Name": "תיקונים כלליים"}
-                    ]
-                },
-                {
-                    "Category": "גבס",
-                    "Subcategories": [
-                        {"Name": "עבודות גבס"},
-                        {"Name": "עבודות גבס גדולות"},
-                        {"Name": "תיקונים כלליים"}
-                    ]
-                },
-                {
-                    "Category": "צבע",
-                    "Subcategories": [
-                        {"Name": "צביעת דירות / משרדים"},
-                        {"Name": "עבודות צבע גדולות"},
-                        {"Name": "תיקונים כלליים"}
-                    ]
-                },
-                {
-                    "Category": "טיח ושליכט",
-                    "Subcategories": [
-                        {"Name": "טיח חוץ / פנים"},
-                        {"Name": "שליכט חיצוני"}
-                    ]
-                },
-                {
-                    "Category": "ריצוף וחיפוי",
-                    "Subcategories": [
-                        {"Name": "ריצוף פנים"},
-                        {"Name": "ריצוף חוץ"},
-                        {"Name": "חיפוי קירות"},
-                        {"Name": "פרקטים"},
-                        {"Name": "עבודות ריצוף גדולות"},
-                        {"Name": "תיקונים כלליים"}
-                    ]
-                },
-                {
-                    "Category": "סוככים והצללות",
-                    "Subcategories": [
-                        {"Name": "סוכך זרועות"},
-                        {"Name": "סוכך קבוע"},
-                        {"Name": "רשתות הצללה"},
-                        {"Name": "תיקונים ואחזקה"}
-                    ]
-                },
-                {
-                    "Category": "אלומיניום",
-                    "Subcategories": [
-                        {"Name": "פרגולה מאלומיניום"},
-                        {"Name": "פרגולה חשמלית"},
-                        {"Name": "שערים"},
-                        {"Name": "גדרות"},
-                        {"Name": "חלונות ודלתות"},
-                        {"Name": "סגירת מרפסת"},
-                        {"Name": "מעקות ומדרגות"},
-                        {"Name": "תיקונים ואחזקה"}
-                    ]
-                },
-                {
-                    "Category": "חלונות וזגגות",
-                    "Subcategories": [
-                        {"Name": "התקנת זכוכיות ופתחים"},
-                        {"Name": "החלפת זכוכית"},
-                        {"Name": "סגירת חללים בזכוכית"},
-                        {"Name": "תיקונים ואחזקה"}
-                    ]
-                },
-                {
-                    "Category": "עבודות עץ",
-                    "Subcategories": [
-                        {"Name": "פרגולה מעץ"},
-                        {"Name": "דק עץ"},
-                        {"Name": "גדרות מעץ"},
-                        {"Name": "ריהוט חוץ מעץ"},
-                        {"Name": "תיקונים ואחזקה"}
-                    ]
-                },
-                {
-                    "Category": "נגרות",
-                    "Subcategories": [
-                        {"Name": "מטבחים"},
-                        {"Name": "ארונות"},
-                        {"Name": "דלתות פנים"},
-                        {"Name": "נגרות בהתאמה אישית"},
-                        {"Name": "תיקונים ואחזקה"}
-                    ]
-                },
-                {
-                    "Category": "אדריכלות ועיצוב",
-                    "Subcategories": [
-                        {"Name": "אדריכלות ותכנון"},
-                        {"Name": "עיצוב פנים"},
-                        {"Name": "עיצוב גינות ונוף"},
-                        {"Name": "עיצוב מסחרי"},
-                        {"Name": "יעוץ עיצובי"}
-                    ]
-                }
-            ];
 
             // Load JSON data
             async function loadCategoriesData() {
                 try {
                     // Try to fetch from file first
-                    const response = await fetch('clicknmove_bot.categories.json');
+                    const response = await fetch('categories.json');
                     categoriesData = await response.json();
                     
                     // Extract categories for professions dropdown - only Category names
@@ -1957,23 +1788,39 @@
                     console.log('Categories loaded:', professions);
                     console.log('Specializations loaded:', specializations);
                 } catch (error) {
-                    console.log('Fetch failed, using embedded data:', error.message);
-                    // Use embedded data when fetch fails
-                    categoriesData = embeddedCategoriesData;
-                    
-                    // Extract categories for professions dropdown - only Category names
-                    professions = categoriesData.map(item => item.Category);
-                    
-                    // Extract subcategories for specializations (question 5) - only Category and Name fields
-                    specializations = {};
-                    categoriesData.forEach(item => {
-                        if (item.Subcategories && item.Subcategories.length > 0) {
-                            specializations[item.Category] = item.Subcategories.map(sub => sub.Name);
-                        }
-                    });
-                    
-                    console.log('Using embedded categories:', professions);
-                    console.log('Using embedded specializations:', specializations);
+                    console.error('CRITICAL ERROR: Failed to load categories.json:', error);
+
+                    // Display error message to user
+                    const formContainer = document.querySelector('.container');
+                    if (formContainer) {
+                        formContainer.innerHTML = `
+                            <div style="text-align: center; padding: 40px 20px; background: #fee; border: 2px solid #c00; border-radius: 8px; margin: 20px auto; max-width: 600px;">
+                                <h2 style="color: #c00; margin-bottom: 16px;">❌ שגיאה קריטית</h2>
+                                <p style="color: #333; font-size: 16px; line-height: 1.6; margin-bottom: 20px;">
+                                    לא ניתן לטעון את קובץ הקטגוריות (categories.json).
+                                    <br><br>
+                                    הטופס אינו יכול לפעול ללא קובץ זה.
+                                    <br><br>
+                                    אנא וודא שהקובץ categories.json קיים באותה תיקייה כמו דף זה.
+                                </p>
+                                <details style="text-align: right; background: #fff; padding: 12px; border-radius: 4px; margin-top: 16px;">
+                                    <summary style="cursor: pointer; font-weight: 600; color: #666;">פרטי שגיאה טכניים</summary>
+                                    <pre style="text-align: left; margin-top: 12px; color: #666; font-size: 12px; overflow-x: auto;">${error.message}\n\nStack: ${error.stack || 'לא זמין'}</pre>
+                                </details>
+                            </div>
+                        `;
+                    }
+
+                    // Disable form submission
+                    const form = document.getElementById('clientForm');
+                    if (form) {
+                        form.addEventListener('submit', function(e) {
+                            e.preventDefault();
+                            alert('הטופס אינו זמין עקב שגיאת טעינה קריטית');
+                        });
+                    }
+
+                    throw new Error('Cannot proceed without categories data');
                 }
             }
             

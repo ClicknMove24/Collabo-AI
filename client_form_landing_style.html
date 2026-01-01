@@ -1452,6 +1452,14 @@
                     <div class="form-group">
                         <label class="form-label">
                             <span class="question-number">4.</span>
+                            מספר לקוח (זאפ):
+                        </label>
+                        <input type="text" class="form-input" name="zap_customer_number" placeholder="לדוגמה: 12345" style="text-align: right;">
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">
+                            <span class="question-number">5.</span>
                             באילו אזורים אתם נותנים שירות? <strong>(ניתן לבחור כמה אפשרויות)</strong>
                         </label>
 
@@ -1484,7 +1492,7 @@
 
                     <div class="form-group">
                         <label class="form-label">
-                            <span class="question-number">5.</span>
+                            <span class="question-number">6.</span>
                             תחומי פעילות והתמחויות:
                         </label>
                         
@@ -1545,7 +1553,7 @@
 
                     <div class="form-group">
                         <label class="form-label">
-                            <span class="question-number">6.</span>
+                            <span class="question-number">7.</span>
                             בחרו יתרונות עסקיים <strong>(לפחות 4 יתרונות)</strong>
                         </label>
                         
@@ -1602,7 +1610,7 @@
 
                     <div class="form-group">
                         <label class="form-label" style="position: relative;">
-                            <span class="question-number">7.</span>
+                            <span class="question-number">8.</span>
                             יש נושאים שאתם מעדיפים להימנע מהם בתגובות? <strong>(עד 5 נושאים)</strong>
                             <i class="fas fa-lightbulb restriction-tooltip-trigger" style="color: #f59e0b; margin-right: 8px; cursor: pointer; font-size: 16px; transition: all 0.2s; animation: lightbulb-glow 2s ease-in-out infinite;"></i>
                             <div class="restriction-tooltip" id="restrictionTooltip" style="
@@ -4339,6 +4347,7 @@ ${clientName}`;
                     primary_field: document.getElementById('primaryFieldHidden').value || 'שיפוצים כלליים',
                     experience_years: document.querySelector('[name="experience_years"]').value || '10',
                     phone_number: phoneNumber,
+                    zap_customer_number: document.querySelector('[name="zap_customer_number"]').value || '',
                     work_areas: workAreas,
                     business_benefits: businessBenefits,
                     categories: categories,
@@ -4421,25 +4430,27 @@ ${clientName}`;
                 if (!formData.phone_number || formData.phone_number.trim() === '') {
                     missingFields.push('3. מספר טלפון');
                 }
-                
-                // Question 4: Primary field (required)
-                if (!formData.primary_field || formData.primary_field.trim() === '') {
-                    missingFields.push('4. תחום פעילות ראשי');
-                }
-                
-                // Question 5: Work areas (required)
-                if (!formData.work_areas || formData.work_areas.length === 0) {
-                    missingFields.push('5. אזורי פעילות');
-                }
-                
-                // Question 6: Business benefits (required - at least 4)
-                if (!formData.business_benefits || formData.business_benefits.length < 4) {
-                    missingFields.push('6. יתרונות עסקיים (נדרשים לפחות 4)');
-                }
-                
-                // Question 7: Specializations (OPTIONAL - not required)
 
-                // Question 8: Restrictions/limitations (OPTIONAL - not required)
+                // Question 4: Zap customer number (OPTIONAL - not required)
+
+                // Question 5: Primary field (required)
+                if (!formData.primary_field || formData.primary_field.trim() === '') {
+                    missingFields.push('5. תחום פעילות ראשי');
+                }
+
+                // Question 6: Work areas (required)
+                if (!formData.work_areas || formData.work_areas.length === 0) {
+                    missingFields.push('6. אזורי פעילות');
+                }
+
+                // Question 7: Business benefits (required - at least 4)
+                if (!formData.business_benefits || formData.business_benefits.length < 4) {
+                    missingFields.push('7. יתרונות עסקיים (נדרשים לפחות 4)');
+                }
+
+                // Question 8: Specializations (OPTIONAL - not required)
+
+                // Question 9: Restrictions/limitations (OPTIONAL - not required)
                 
                 if (missingFields.length > 0) {
                     const errorMessage = `חסרים הפרטים הבאים:\n${missingFields.join('\n')}`;

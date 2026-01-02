@@ -1769,7 +1769,110 @@
             let categoriesData = [];
             let professions = [];
             let specializations = {};
+            
+            // District hierarchy data
+            let districtData = {};
+            let workAreaOptions = [];
 
+            // Load district hierarchy data
+            async function loadDistrictData() {
+                try {
+                    const response = await fetch('district_hierarchy.json');
+                    districtData = await response.json();
+                    
+                    // Extract district names for work areas dropdown
+                    workAreaOptions = districtData.Districts.map(district => district.District);
+                    workAreaOptions.push('כל הארץ'); // Add "All Country" option
+                    
+                    console.log('District hierarchy loaded:', workAreaOptions);
+                } catch (error) {
+                    console.error('Failed to load district_hierarchy.json:', error);
+                    
+                    // Use dummy district data with same structure as JSON
+                    districtData = {
+                        "Districts": [
+                            {
+                                "Counties": [
+                                    {
+                                        "County": "תל אביב",
+                                        "Cities": [
+                                            "תל אביב - יפו",
+                                            "הרצליה",
+                                            "רמת השרון"
+                                        ]
+                                    },
+                                    {
+                                        "County": "רמת גן",
+                                        "Cities": [
+                                            "רמת גן",
+                                            "בני ברק",
+                                            "גבעתיים"
+                                        ]
+                                    }
+                                ],
+                                "District": "גוש דן"
+                            },
+                            {
+                                "Counties": [
+                                    {
+                                        "County": "ירושלים",
+                                        "Cities": [
+                                            "ירושלים",
+                                            "בית שמש",
+                                            "מבשרת ציון"
+                                        ]
+                                    }
+                                ],
+                                "District": "ירושלים והסביבה"
+                            },
+                            {
+                                "Counties": [
+                                    {
+                                        "County": "חיפה",
+                                        "Cities": [
+                                            "חיפה",
+                                            "נשר",
+                                            "קרית מוצקין"
+                                        ]
+                                    }
+                                ],
+                                "District": "חיפה והסביבה"
+                            },
+                            {
+                                "Counties": [
+                                    {
+                                        "County": "באר שבע",
+                                        "Cities": [
+                                            "באר שבע",
+                                            "דימונה",
+                                            "אשקלון"
+                                        ]
+                                    }
+                                ],
+                                "District": "דרום"
+                            }
+                        ]
+                    };
+                    
+                    workAreaOptions = districtData.Districts.map(district => district.District);
+                    workAreaOptions.push('כל הארץ');
+                    
+                    console.warn('Using dummy district data due to load failure');
+                    
+                    // Display warning in work areas section
+                    const workAreaSection = document.querySelector('.work-area-select-container')?.closest('.form-group');
+                    if (workAreaSection) {
+                        const warningBanner = document.createElement('div');
+                        warningBanner.style.cssText = 'background: #fff3cd; border: 2px solid #ffc107; border-radius: 8px; padding: 16px; margin-bottom: 20px; text-align: center;';
+                        warningBanner.innerHTML = `
+                            <strong>⚠️ שים לב!</strong><br>
+                            קובץ המחוזות (district_hierarchy.json) לא נטען. המחוזות המוצגים למטה הם מחוזות דמה בלבד!
+                        `;
+                        workAreaSection.insertBefore(warningBanner, workAreaSection.firstChild);
+                    }
+                }
+            }
+            
             // Load JSON data
             async function loadCategoriesData() {
                 try {
@@ -2394,12 +2497,29 @@
                 }
             };
 
-            // Load categories data on page load
-            loadCategoriesData().then(() => {
+            // Load categories and district data on page load
+            Promise.all([
+                loadCategoriesData(),
+                loadDistrictData()
+            ]).then(() => {
                 console.log('Categories and specializations loaded successfully');
+                console.log('District hierarchy loaded successfully');
+                
                 // Initialize the new combined specializations popup
                 setTimeout(() => {
                     initializeCombinedSpecializationsPopup();
+                }, 100);
+                
+                // Initialize work area popup with loaded district data
+                setTimeout(() => {
+                    initializeWorkAreaPopup();
+                }, 100);
+            }).catch(error => {
+                console.error('Error loading data:', error);
+                // Still initialize popups with dummy data
+                setTimeout(() => {
+                    initializeCombinedSpecializationsPopup();
+                    initializeWorkAreaPopup();
                 }, 100);
             });
 
@@ -2537,49 +2657,49 @@
             // Business Benefits popup functionality
             const businessBenefitsCategories = {
                 'שירות ומחירים': [
-                    'הצעת מחיר מפורטת ללא התחייבות',
-                    'המלצות חמות מלקוחות קיימים',
-                    'ביקור ראשוני להערכת העבודה ללא תשלום',
-                    'מחירים הוגנים ושקופים',
-                    'יחס איכות-מחיר מעולה',
-                    'תשלום מותאם לתקציב הלקוח',
-                    'ללא עלויות נסתרות'
+                    'אני מציע הצעת מחיר מפורטת ללא התחייבות',
+                    'בעל המלצות חמות מלקוחות מרוצים',
+                    'אני מבצע ביקור ראשוני להערכת העבודה ללא תשלום',
+                    'עובד במחירים הוגנים ושקופים',
+                    'נותן יחס איכות-מחיר מעולה',
+                    'מתאים את התשלום לתקציב הלקוח',
+                    'אני עובד ללא עלויות נסתרות'
                 ],
                 'זמינות וגמישות': [
-                    'זמינות מיידית לקריאות דחופות',
-                    'שירות מהיר ואמין בכל שעה',
-                    'תגובה מהירה לפניות ושאלות',
-                    'גמישות מלאה בתיאום זמנים',
-                    'אפשרות עבודה בסופי שבוע וחגים',
-                    'התאמה ללוחות זמנים צמודים',
-                    'זמינות לייעוץ וקבלת הנחיות'
+                    'אני זמין באופן מיידי לקריאות דחופות',
+                    'נותן שירות מהיר ואמין בכל שעה',
+                    'מגיב במהירות לפניות ושאלות',
+                    'אני גמיש לחלוטין בתיאום זמנים',
+                    'עובד גם בסופי שבוע וחגים',
+                    'מתאים עצמי ללוחות זמנים צמודים',
+                    'זמין לייעוץ ולמתן הנחיות'
                 ],
                 'ניסיון ומקצועיות': [
-                    'ניסיון מוכח של שנים בתחום',
-                    'צוות עובדים מקצועי ומיומן',
-                    'שימוש בציוד מתקדם ואיכותי',
-                    'עובדים קבועים עם ניסיון רב',
-                    'מומחיות בפתרון בעיות מורכבות',
-                    'השתלמויות מקצועיות שוטפות',
-                    'הסמכות ורישיונות מקצועיים'
+                    'בעל ניסיון מוכח של שנים בתחום',
+                    'אני עובד עם צוות מקצועי ומיומן',
+                    'אני משתמש בציוד מתקדם ואיכותי',
+                    'עובד עם צוות קבוע בעל ניסיון רב',
+                    'מתמחה בפתרון בעיות מורכבות',
+                    'משתלם באופן שוטף ומתעדכן',
+                    'בעל הסמכות ורישיונות מקצועיים'
                 ],
                 'איכות ושירות': [
-                    'ביצוע עבודה נקייה ומסודרת',
-                    'שימוש בחומרים ורכיבים איכותיים בלבד',
+                    'אני עובד בצורה נקייה ומסודרת',
+                    'אני משתמש בחומרים ורכיבים איכותיים בלבד',
                     'ניקיון יסודי של אתר העבודה בסיום',
-                    'התחייבות מלאה לשביעות רצון הלקוח',
-                    'שירות לקוחות אדיב ומקצועי',
-                    'דיווח שוטף על התקדמות העבודה',
-                    'אחריות מלאה על איכות הביצוע'
+                    'מתחייב לשביעות רצון מלאה של הלקוח',
+                    'נותן שירות אדיב ומקצועי',
+                    'מדווח באופן שוטף על התקדמות העבודה',
+                    'נותן אחריות מלאה על איכות הביצוע'
                 ],
                 'יעוץ ופתרונות': [
-                    'ייעוץ מקצועי חינם לפני תחילת העבודה',
-                    'פתרונות חכמים ויעילים לכל בעיה',
-                    'התאמה אישית לצרכים הספציפיים',
+                    'אני נותן ייעוץ מקצועי חינם לפני תחילת העבודה',
+                    'מציע פתרונות חכמים ויעילים לכל בעיה',
+                    'מתאים את השירות לצרכים הספציפיים',
                     'בדיקה ותכנון מקיפים מראש',
-                    'הצעת חלופות וחיסכון בעלויות',
-                    'ליווי וטיפול לאורך כל הפרויקט',
-                    'שירות לאחר מכירה ותמיכה שוטפת'
+                    'מציע חלופות וחיסכון בעלויות',
+                    'מלווה ומטפל לאורך כל הפרויקט',
+                    'נותן שירות לאחר מכירה ותמיכה שוטפת'
                 ]
             };
 
@@ -3674,15 +3794,7 @@
             }
 
             // Work area popup functionality
-            const workAreaOptions = [
-                'צפון',
-                'השרון', 
-                'מרכז',
-                'ירושלים והסביבה',
-                'דרום',
-                'אילת',
-                'כל הארץ'
-            ];
+            // workAreaOptions is now loaded from district_hierarchy.json or set to dummy data
 
             const workAreaSelect = document.getElementById('workAreaSelect');
             const workAreaDropdown = document.getElementById('workAreaDropdown');
@@ -3776,8 +3888,7 @@
                 });
             }
 
-            // Initialize work area popup
-            initializeWorkAreaPopup();
+            // Initialize work area popup - now called after district data is loaded
 
             workAreaSelect.addEventListener('click', function(e) {
                 e.preventDefault();

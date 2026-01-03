@@ -5014,22 +5014,12 @@
                     return;
                 }
 
-                // Fix field name mapping
-                if (data.work_area) {
-                    data.work_areas = data.work_area;
-                    delete data.work_area;
-                }
-
                 // Normalize business_benefits[] to business_benefits
                 if (data['business_benefits[]']) {
                     data.business_benefits = data['business_benefits[]'];
                 }
 
                 // הוספת השדות החסרים
-                // שאלה 5 - אזורי העבודה
-                data.work_areas = selectedWorkAreas;
-
-
                 // שאלה 7 - הגבלות
                 data.restrictions = selectedRestrictions;
 
@@ -5105,12 +5095,12 @@
                 selectedSpecializations = [];
                 updateSpecializationsDisplay();
                 
-                // Reset work areas if they exist
-                if (typeof selectedWorkAreas !== 'undefined') {
-                    selectedWorkAreas = [];
-                    if (typeof updateWorkAreaDisplay === 'function') {
-                        updateWorkAreaDisplay();
-                    }
+                // Reset subcategory selections
+                if (typeof selectedSubcategories !== 'undefined') {
+                    selectedSubcategories.clear();
+                    primaryField = null;
+                    updateCombinedDisplay();
+                    updateSubcategoryTable();
                 }
                 
                 // Clear any error styles
@@ -5538,9 +5528,9 @@ ${clientName}`;
                     missingFields.push('5. תחום פעילות ראשי');
                 }
 
-                // Question 6: Work areas (required)
+                // Question 6: Categories with locations (work_areas derived from categories)
                 if (!formData.work_areas || formData.work_areas.length === 0) {
-                    missingFields.push('6. אזורי פעילות');
+                    missingFields.push('6. תחומים ואזורי שירות');
                 }
 
                 // Question 7: Business benefits (required - at least 4)

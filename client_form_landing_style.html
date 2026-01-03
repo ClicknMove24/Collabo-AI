@@ -552,7 +552,531 @@
             transform: rotate(180deg);
         }
 
+        /* ==============================================
+           COMBINED CATEGORY-LOCATION COMPONENT STYLES
+        ============================================== */
 
+        /* Subcategory Table - matching location_selection_final.html */
+        .subcategory-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            margin-top: 16px;
+        }
+
+        .subcategory-table thead tr {
+            background: var(--bg-gray);
+        }
+
+        .subcategory-table th {
+            padding: 12px 16px;
+            text-align: right;
+            font-weight: 600;
+            color: var(--text-primary);
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        .subcategory-table td {
+            padding: 12px 16px;
+            vertical-align: top;
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        .subcategory-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .subcategory-name {
+            font-weight: 500;
+        }
+
+        .subcategory-category {
+            font-size: 12px;
+            color: var(--text-muted);
+            margin-top: 2px;
+        }
+
+        .primary-badge {
+            display: inline-block;
+            background: var(--ai-purple);
+            color: white;
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-size: 11px;
+            font-weight: 500;
+            margin-right: 8px;
+        }
+
+        .locations-cell {
+            display: flex;
+            gap: 12px;
+            align-items: flex-start;
+            width: 100%;
+            justify-content: center;
+        }
+
+        .locations-content {
+            flex: 1;
+            min-width: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .no-locations-text {
+            color: var(--text-muted);
+            font-style: italic;
+            text-align: center;
+            display: block;
+        }
+
+        .location-district-group {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .edit-locations-btn {
+            background: transparent !important;
+            border: none !important;
+            color: #7c3aed !important;
+            cursor: pointer;
+            padding: 4px !important;
+            border-radius: 4px;
+            display: inline-flex !important;
+            align-items: center;
+            justify-content: center;
+            transition: background-color 0.2s ease;
+            flex-shrink: 0;
+            width: 28px !important;
+            height: 28px !important;
+            min-width: 28px !important;
+            max-width: 28px !important;
+        }
+
+        .edit-locations-btn:hover {
+            background-color: rgba(124, 58, 237, 0.1) !important;
+        }
+
+        .edit-locations-btn i {
+            font-size: 16px !important;
+            color: #7c3aed !important;
+        }
+
+        /* Location tags in table */
+        .location-district-group:last-child {
+            margin-bottom: 0;
+        }
+
+        .district-label {
+            font-size: 13px;
+            color: #7c3aed;
+            font-weight: 500;
+            margin-bottom: 6px;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            justify-content: center;
+        }
+
+        .district-label .pin-icon {
+            font-size: 14px;
+        }
+
+        .county-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            justify-content: center;
+        }
+
+        .county-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 6px 10px;
+            background: #f3f4f6;
+            color: var(--text-primary);
+            border-radius: 16px;
+            font-size: 13px;
+            border: 1px solid #e5e7eb;
+        }
+
+        .county-tag .remove-county {
+            cursor: pointer;
+            color: var(--text-muted);
+            font-size: 14px;
+            line-height: 1;
+            transition: color 0.2s ease;
+        }
+
+        .county-tag .remove-county:hover {
+            color: #dc2626;
+        }
+
+        /* Category selection popup - hierarchy styles */
+        .category-hierarchy-item {
+            border-bottom: 1px solid #f3f4f6;
+        }
+
+        .category-hierarchy-item:last-child {
+            border-bottom: none;
+        }
+
+        .category-header {
+            display: flex;
+            align-items: center;
+            padding: 12px 16px;
+            background: #fafbfc;
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+            gap: 12px;
+        }
+
+        .category-header:hover {
+            background-color: rgba(76, 29, 149, 0.05);
+        }
+
+        .category-header.expanded {
+            background-color: rgba(76, 29, 149, 0.08);
+        }
+
+        .category-toggle {
+            font-size: 12px;
+            color: var(--text-muted);
+            transition: transform 0.2s ease;
+            width: 16px;
+        }
+
+        .category-header.expanded .category-toggle {
+            transform: rotate(90deg);
+        }
+
+        .category-name {
+            flex: 1;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .category-checkbox {
+            margin-left: 8px;
+        }
+
+        .set-primary-btn {
+            padding: 4px 10px;
+            border: 1px solid var(--border-light);
+            background: white;
+            color: var(--text-secondary);
+            border-radius: 4px;
+            font-size: 11px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            white-space: nowrap;
+        }
+
+        .set-primary-btn:hover {
+            border-color: var(--ai-purple);
+            color: var(--ai-purple);
+        }
+
+        .set-primary-btn.is-primary {
+            background: #fef3c7;
+            border-color: #d97706;
+            color: #d97706;
+        }
+
+        .subcategories-list {
+            display: none;
+            background: white;
+        }
+
+        .subcategories-list.expanded {
+            display: block;
+        }
+
+        .subcategory-select-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 10px 16px 10px 40px;
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+        }
+
+        .subcategory-select-item:hover {
+            background-color: rgba(76, 29, 149, 0.03);
+        }
+
+        .subcategory-select-item.selected {
+            background-color: rgba(76, 29, 149, 0.08);
+        }
+
+        /* Location edit modal */
+        .location-modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 10000;
+            overflow-y: auto;
+        }
+
+        .location-modal-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .location-modal-content {
+            background: white;
+            border-radius: 12px;
+            border: 1px solid var(--border-light);
+            max-width: 500px;
+            width: 100%;
+            max-height: 80vh;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .location-modal-header {
+            padding: 20px 20px 16px 20px;
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        .location-modal-title {
+            margin: 0;
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .location-modal-close {
+            background: none;
+            color: var(--text-muted);
+            border: none;
+            font-size: 20px;
+            cursor: pointer;
+            padding: 4px;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background-color 0.2s ease;
+        }
+
+        .location-modal-close:hover {
+            background: var(--bg-gray);
+        }
+
+        .location-modal-body {
+            flex: 1;
+            overflow-y: auto;
+            min-height: 0;
+        }
+
+        .location-modal-footer {
+            padding: 16px 20px;
+            border-top: 1px solid var(--border-light);
+            flex-shrink: 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: var(--bg-gray);
+        }
+
+        .location-count-text {
+            color: var(--text-secondary);
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .save-locations-btn {
+            background: var(--ai-purple);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: var(--border-radius);
+            font-size: 14px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.2s ease;
+        }
+
+        .save-locations-btn:hover {
+            background: rgba(76, 29, 149, 0.9);
+        }
+
+        /* Location hierarchy in modal */
+        .district-item {
+            border-bottom: 1px solid #f3f4f6;
+        }
+
+        .district-header {
+            display: flex;
+            align-items: center;
+            padding: 12px 16px;
+            cursor: pointer;
+            font-weight: 600;
+            color: var(--text-primary);
+            background: #fafbfc;
+            transition: background-color 0.2s ease;
+            gap: 8px;
+        }
+
+        .district-header:hover {
+            background-color: rgba(76, 29, 149, 0.05);
+        }
+
+        .district-header.expanded {
+            background-color: rgba(76, 29, 149, 0.08);
+        }
+
+        .district-checkbox {
+            margin-left: 8px;
+        }
+
+        .counties-list {
+            display: none;
+            background: white;
+        }
+
+        .counties-list.expanded {
+            display: block;
+        }
+
+        .county-item {
+            display: flex;
+            align-items: center;
+            padding: 10px 16px 10px 32px;
+            padding-right: 40px; /* RTL indent under district */
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+            gap: 8px;
+            border-bottom: 1px solid #f8f9fa;
+        }
+
+        .county-item:hover {
+            background-color: rgba(76, 29, 149, 0.03);
+        }
+
+        .county-item.selected {
+            background-color: rgba(76, 29, 149, 0.08);
+        }
+
+        .county-item:last-child {
+            border-bottom: none;
+        }
+
+        .county-name {
+            flex: 1;
+            font-weight: 500;
+        }
+
+        .county-expand-toggle {
+            font-size: 10px;
+            color: var(--text-muted);
+            transition: transform 0.2s ease;
+            cursor: pointer;
+            padding: 4px;
+        }
+
+        .county-expand-toggle.expanded {
+            transform: rotate(90deg);
+        }
+
+        .cities-list {
+            display: none;
+            padding-right: 64px; /* RTL indent under county */
+            background: #fafbfc;
+        }
+
+        .cities-list.expanded {
+            display: block;
+        }
+
+        .city-item {
+            padding: 6px 16px;
+            font-size: 13px;
+            color: var(--text-secondary);
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+        }
+
+        .city-item:hover {
+            background-color: rgba(76, 29, 149, 0.05);
+            color: var(--text-primary);
+        }
+
+        .city-item:hover .county-highlight-hint {
+            display: inline;
+        }
+
+        .county-highlight-hint {
+            display: none;
+            font-size: 11px;
+            color: var(--ai-purple);
+            margin-right: 8px;
+        }
+
+        /* Search in location modal */
+        .location-search-section {
+            padding: 16px 20px;
+            border-bottom: 1px solid var(--border-light);
+            background: #f9fafb;
+        }
+
+        .location-search-input {
+            width: 100%;
+            padding: 12px 16px;
+            border: 1px solid var(--border-light);
+            border-radius: var(--border-radius);
+            font-size: 14px;
+            color: var(--text-primary);
+            background: white;
+            direction: rtl;
+            text-align: right;
+        }
+
+        .location-search-input:focus {
+            outline: none;
+            border-color: var(--ai-purple);
+            box-shadow: 0 0 0 2px rgba(76, 29, 149, 0.1);
+        }
+
+        .search-result-item {
+            padding: 10px 16px;
+            cursor: pointer;
+            border-bottom: 1px solid #f9fafb;
+            transition: background-color 0.2s ease;
+        }
+
+        .search-result-item:hover {
+            background-color: rgba(76, 29, 149, 0.05);
+        }
+
+        .search-result-path {
+            color: var(--text-muted);
+            font-size: 12px;
+            margin-top: 2px;
+        }
+
+        .no-results {
+            padding: 20px 16px;
+            text-align: center;
+            color: var(--text-muted);
+            font-style: italic;
+        }
 
 
 
@@ -1460,34 +1984,18 @@
                     <div class="form-group">
                         <label class="form-label">
                             <span class="question-number">5.</span>
-                            באילו אזורים אתם נותנים שירות? <strong>(ניתן לבחור כמה אפשרויות)</strong>
+                            כתובת העסק (לא חובה):
                         </label>
-
-                        <div class="work-area-select-container">
-                            <div class="work-area-select" id="workAreaSelect" tabindex="0">
-                                <span class="work-area-placeholder">לחץ לבחירת אזורי עבודה</span>
-                                <i class="fas fa-chevron-down work-area-arrow"></i>
-                            </div>
-                            <div id="workAreaDropdown" style="position: absolute; top: 100%; left: 0; right: 0; background: white; border: 1px solid #e5e7eb; border-radius: 6px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); z-index: 1000; display: none; max-height: 300px; overflow-y: auto;"></div>
-                        </div>
-
-                        <div class="work-area-tags" id="workAreaTags"></div>
-
-                        <!-- Address sub-question (appears when at least one area is selected) -->
-                        <div id="addressSubQuestion" style="display: none; margin-top: 16px;">
-                            <label class="form-label" style="font-size: 14px; color: var(--text-secondary); font-weight: 400;">
-                                ניתן להוסיף כתובת שתופיע בתגובות שלך (לא חובה)
-                            </label>
-                            <input type="text" class="form-input" name="address" placeholder="לדוגמה: רחוב הרצל 123, תל אביב" style="margin-top: 8px;">
-                        </div>
+                        <input type="text" class="form-input" name="address" placeholder="לדוגמה: רחוב הרצל 123, תל אביב" style="text-align: right;">
                     </div>
                 </div>
 
-                <!-- תחומי פעילות והתמחויות -->
+                <!-- תחומי פעילות, התמחויות ואזורי שירות -->
                 <div class="form-section">
-                    <h3>תחומי פעילות והתמחויות</h3>
+                    <h3>תחומי פעילות, התמחויות ואזורי שירות</h3>
                     <div class="section-description">
-                        תחום ראשי - ההתמחויות תחתיו יקבלו את מירב הפניות (עדיפות ראשונה). התמחויות תחת תחומים נוספים יהיו בסדר עדיפות שני.
+                        בחרו תחומי פעילות והתמחויות, ולאחר מכן הגדירו באילו אזורים אתם מספקים כל שירות.
+                        תחום ראשי - ההתמחויות תחתיו יקבלו את מירב הפניות (עדיפות ראשונה).
                     </div>
 
                     <div class="form-group">
@@ -1495,19 +2003,32 @@
                             <span class="question-number">6.</span>
                             תחומי פעילות והתמחויות:
                         </label>
-                        
+
                         <div id="combinedSpecializationsContainer" style="position: relative;">
                             <div id="combinedSpecializationsDisplay" class="form-input" tabindex="0" style="cursor: pointer; display: flex; flex-wrap: wrap; gap: 8px; align-items: center; position: relative; font-size: 14px;">
-                                <span id="combinedSpecializationsPlaceholder" style="color: var(--text-muted);">לחצו לבחירת תחום ראשי והתמחויות</span>
+                                <span id="combinedSpecializationsPlaceholder" style="color: var(--text-muted);">לחצו לבחירת תחומים והתמחויות</span>
                                 <i class="fas fa-chevron-down" style="position: absolute; left: 16px; top: 16px; color: var(--text-muted);"></i>
                             </div>
-                            
+
                             <!-- Hidden inputs for form submission -->
                             <input type="hidden" id="primaryFieldHidden" name="primary_field" required>
                         </div>
-                        
-                        <div class="business-benefits-tags" id="combinedSpecializationsTags" style="margin-top: 12px;"></div>
-                        
+
+                        <!-- Subcategory Table - appears after selections made -->
+                        <div id="subcategoryTableContainer" style="display: none; margin-top: 16px;">
+                            <table class="subcategory-table">
+                                <thead>
+                                    <tr>
+                                        <th>התמחות/תחום</th>
+                                        <th>אזורי שירות</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="subcategoryTableBody">
+                                    <!-- Table rows will be populated by JavaScript -->
+                                </tbody>
+                            </table>
+                        </div>
+
                         <!-- Combined Specializations Popup Modal -->
                         <div id="combinedSpecializationsPopup" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.3); z-index: 9999; overflow-y: auto;">
                             <div style="display: flex; align-items: center; justify-content: center; min-height: 100vh; padding: 20px;">
@@ -1515,28 +2036,58 @@
                                     <!-- Popup Header -->
                                     <div style="padding: 24px 24px 16px 24px; border-bottom: 1px solid var(--border-light);">
                                         <div style="display: flex; align-items: center; justify-content: space-between;">
-                                            <h3 style="margin: 0; font-size: 20px; font-weight: 600; color: var(--text-primary);">בחירת תחום ראשי והתמחויות</h3>
+                                            <h3 style="margin: 0; font-size: 20px; font-weight: 600; color: var(--text-primary);">בחירת תחומים והתמחויות</h3>
                                             <button type="button" id="closeCombinedSpecializationsPopup" style="background: none; color: var(--text-muted); border: none; font-size: 24px; cursor: pointer; padding: 0; width: 24px; height: 24px; display: flex; align-items: center; justify-content: center;">×</button>
                                         </div>
-                                        <p style="margin: 8px 0 0 0; color: var(--text-secondary); font-size: 14px;">בחרו תחום ראשי (חובה) - ההתמחויות תחתיו יקבלו עדיפות ראשונה. התמחויות תחת תחומים נוספים יקבלו עדיפות שנייה.</p>
+                                        <p style="margin: 8px 0 0 0; color: var(--text-secondary); font-size: 14px;">לחיצה על תחום בוחרת את כל ההתמחויות תחתיו. ניתן גם לבחור התמחויות בודדות.</p>
                                     </div>
-                                    
+
                                     <!-- Search Section - Fixed -->
-                                    <div id="combinedSearchSection" style="padding: 20px 20px 0 20px; border-bottom: 1px solid var(--border-light);">
-                                        <div style="margin-bottom: 20px;">
-                                            <input type="text" id="combinedSearchInput" placeholder="חיפוש תחומים והתמחויות..." 
-                                                   style="width: 100%; padding: 12px; border: 1px solid var(--border-light); border-radius: var(--border-radius); font-size: 16px;">
-                                        </div>
+                                    <div id="combinedSearchSection" style="padding: 16px 20px; border-bottom: 1px solid var(--border-light); background: #f9fafb;">
+                                        <input type="text" id="combinedSearchInput" placeholder="חיפוש תחומים והתמחויות..."
+                                               style="width: 100%; padding: 12px; border: 1px solid var(--border-light); border-radius: var(--border-radius); font-size: 14px;">
                                     </div>
-                                    
+
                                     <!-- Popup Content - Scrollable -->
                                     <div id="combinedSpecializationsPopupBody" style="flex: 1; overflow-y: auto; min-height: 0;">
                                     </div>
-                                    
+
                                     <!-- Popup Footer -->
-                                    <div style="padding: 16px; border-top: 1px solid var(--border-light); flex-shrink: 0; display: flex; justify-content: space-between; align-items: center;">
-                                        <div id="selectedCombinedCount" style="color: var(--text-secondary); font-size: 14px;">יש לבחור תחום ראשי</div>
-                                        <button type="button" id="saveCombinedSpecializations" style="background: var(--ai-purple); color: white; border: none; padding: 10px 12px; border-radius: var(--border-radius); font-size: 14px; cursor: pointer; font-weight: 500; width: 120px;">שמור בחירות</button>
+                                    <div style="padding: 16px; border-top: 1px solid var(--border-light); flex-shrink: 0; display: flex; justify-content: space-between; align-items: center; background: var(--bg-gray);">
+                                        <div id="selectedCombinedCount" style="color: var(--text-secondary); font-size: 14px;">לא נבחרו התמחויות</div>
+                                        <button type="button" id="saveCombinedSpecializations" style="background: var(--ai-purple); color: white; border: none; padding: 10px 20px; border-radius: var(--border-radius); font-size: 14px; cursor: pointer; font-weight: 500;">שמור בחירות</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Location Edit Modal -->
+                        <div id="locationEditModal" class="location-modal-overlay">
+                            <div class="location-modal-container">
+                                <div class="location-modal-content">
+                                    <!-- Modal Header -->
+                                    <div class="location-modal-header">
+                                        <div style="display: flex; align-items: center; justify-content: space-between;">
+                                            <h3 id="locationEditModalTitle" class="location-modal-title">בחירת אזורי שירות</h3>
+                                            <button type="button" id="closeLocationEditModal" class="location-modal-close">×</button>
+                                        </div>
+                                        <p style="margin: 8px 0 0 0; color: var(--text-secondary); font-size: 13px;">בחרו נפות (אזורים). לחיצה על עיר תבחר את הנפה שלה.</p>
+                                    </div>
+
+                                    <!-- Search Section -->
+                                    <div class="location-search-section">
+                                        <input type="text" id="locationSearchInput" class="location-search-input" placeholder="חיפוש מחוז, נפה או עיר...">
+                                    </div>
+
+                                    <!-- Modal Content - Location Hierarchy -->
+                                    <div class="location-modal-body" id="locationHierarchyContainer">
+                                        <!-- Location hierarchy will be populated by JavaScript -->
+                                    </div>
+
+                                    <!-- Modal Footer -->
+                                    <div class="location-modal-footer">
+                                        <div id="selectedLocationCount" class="location-count-text">לא נבחרו מיקומים</div>
+                                        <button type="button" id="saveLocationEdit" class="save-locations-btn">שמור שינויים</button>
                                     </div>
                                 </div>
                             </div>
@@ -1962,29 +2513,48 @@
                 }
             }
             
-            // Combined specializations functionality (replaces old primary field + specializations)
-            let selectedCombinedSpecializations = [];
+            // ===========================================
+            // COMBINED CATEGORY-LOCATION FUNCTIONALITY
+            // ===========================================
+
+            // State variables
             let primaryField = null;
-            let additionalSpecializations = [];
-            
+            // Map: subcategoryKey => { category, subcategory, locations: null | [{district, counties: []}] }
+            let selectedSubcategories = new Map();
+            let expandedCategories = new Set();
+
+            // Current editing state for location modal
+            let currentEditingSubcategoryKey = null;
+            let tempSelectedCounties = new Set(); // Temporary selection during modal editing
+
+            // Helper to create subcategory key
+            function getSubcategoryKey(category, subcategory) {
+                return `${category}|${subcategory}`;
+            }
+
+            // Helper to parse subcategory key
+            function parseSubcategoryKey(key) {
+                const [category, subcategory] = key.split('|');
+                return { category, subcategory };
+            }
+
             // Initialize combined specializations popup functionality
             function initializeCombinedSpecializationsPopup() {
                 const display = document.getElementById('combinedSpecializationsDisplay');
                 const popup = document.getElementById('combinedSpecializationsPopup');
-                const popupBody = document.getElementById('combinedSpecializationsPopupBody');
                 const closeBtn = document.getElementById('closeCombinedSpecializationsPopup');
                 const saveBtn = document.getElementById('saveCombinedSpecializations');
-                const countDisplay = document.getElementById('selectedCombinedCount');
-                
-                if (!display || !popup || !popupBody) return;
-                
+                const searchInput = document.getElementById('combinedSearchInput');
+
+                if (!display || !popup) return;
+
                 // Open popup on click
                 display.addEventListener('click', function(e) {
                     e.preventDefault();
                     e.stopPropagation();
                     openCombinedSpecializationsPopup();
                 });
-                
+
                 // Close popup handlers
                 closeBtn?.addEventListener('click', closeCombinedSpecializationsPopup);
                 popup.addEventListener('click', function(e) {
@@ -1992,209 +2562,967 @@
                         closeCombinedSpecializationsPopup();
                     }
                 });
-                
+
                 // Save selections handler
                 saveBtn?.addEventListener('click', saveCombinedSpecializations);
+
+                // Search functionality
+                searchInput?.addEventListener('input', function() {
+                    filterCombinedCategories(this.value);
+                });
+
+                // Initialize location modal
+                initializeLocationModal();
             }
-            
+
             function openCombinedSpecializationsPopup() {
                 const popup = document.getElementById('combinedSpecializationsPopup');
-                const popupBody = document.getElementById('combinedSpecializationsPopupBody');
-
-                if (!popup || !popupBody) return;
+                if (!popup) return;
 
                 // Build popup content
                 buildCombinedPopupContent();
-
-                // Update button state on open
                 updateCombinedSelectionCount();
 
                 // Show popup
                 popup.style.display = 'block';
                 document.body.style.overflow = 'hidden';
             }
-            
+
             function closeCombinedSpecializationsPopup() {
                 const popup = document.getElementById('combinedSpecializationsPopup');
                 if (!popup) return;
-                
+
                 popup.style.display = 'none';
                 document.body.style.overflow = '';
+
+                // Clear search
+                const searchInput = document.getElementById('combinedSearchInput');
+                if (searchInput) searchInput.value = '';
             }
-            
+
             function buildCombinedPopupContent() {
                 const popupBody = document.getElementById('combinedSpecializationsPopupBody');
                 if (!popupBody) return;
-                
+
                 popupBody.innerHTML = '';
-                
-                // Build categories and subcategories
+
+                // Build categories and subcategories hierarchy
                 Object.keys(specializations).forEach(category => {
-                    const categoryContainer = document.createElement('div');
-                    categoryContainer.style.marginBottom = '24px';
-                    categoryContainer.className = 'combined-category-container';
-                    categoryContainer.dataset.categoryName = category;
-                    
-                    // Category header with primary option
-                    const isPrimaryField = primaryField === category;
-                    const categoryHeader = document.createElement('div');
-                    categoryHeader.innerHTML = `
-                        <div style="display: flex; justify-content: space-between; align-items: center; padding: 10px; background: var(--bg-gray); border-radius: var(--border-radius); margin-bottom: 8px;">
-                            <div style="display: flex; align-items: center; gap: 12px;">
-                                <span style="font-weight: 600; font-size: 16px;">${category}</span>
-                                ${isPrimaryField ? '<span style="color: #d97706; font-size: 12px;">🏆 תחום ראשי</span>' : ''}
-                            </div>
-                            <button type="button" class="set-primary-btn" data-category="${category}" 
-                                    style="padding: 4px 8px; border: 1px solid ${isPrimaryField ? '#d97706' : 'var(--border-light)'}; 
-                                           background: ${isPrimaryField ? '#fef3c7' : 'white'}; color: ${isPrimaryField ? '#d97706' : 'var(--text-primary)'}; 
-                                           border-radius: 4px; font-size: 12px; cursor: pointer; width: 90px; white-space: nowrap; overflow: hidden; height: 32px;">
-                                ${isPrimaryField ? 'ראשי' : 'הפוך לראשי'}
-                            </button>
-                        </div>
+                    const categoryDiv = document.createElement('div');
+                    categoryDiv.className = 'category-hierarchy-item';
+                    categoryDiv.dataset.categoryName = category;
+
+                    // Check selection states
+                    const categorySubcategories = specializations[category] || [];
+                    const selectedInCategory = categorySubcategories.filter(sub =>
+                        selectedSubcategories.has(getSubcategoryKey(category, sub))
+                    );
+                    const allSelected = selectedInCategory.length === categorySubcategories.length && categorySubcategories.length > 0;
+                    const someSelected = selectedInCategory.length > 0 && !allSelected;
+                    const isPrimary = primaryField === category;
+                    const isExpanded = expandedCategories.has(category);
+
+                    // Category header
+                    const header = document.createElement('div');
+                    header.className = `category-header${isExpanded ? ' expanded' : ''}`;
+                    header.innerHTML = `
+                        <span class="category-toggle">▶</span>
+                        <input type="checkbox" class="category-checkbox" data-category="${category}"
+                               ${allSelected ? 'checked' : ''}>
+                        <span class="category-name">${category}</span>
+                        ${isPrimary ? '<span class="primary-badge">תחום ראשי</span>' : ''}
+                        <button type="button" class="set-primary-btn${isPrimary ? ' is-primary' : ''}" data-category="${category}">
+                            ${isPrimary ? '🏆 ראשי' : 'הפוך לראשי'}
+                        </button>
                     `;
-                    categoryContainer.appendChild(categoryHeader);
-                    
-                    // Add subcategories
-                    if (specializations[category] && specializations[category].length > 0) {
-                        const subcategoriesContainer = document.createElement('div');
-                        subcategoriesContainer.style.paddingRight = '20px';
-                        subcategoriesContainer.className = 'subcategories-list';
 
-                        specializations[category].forEach(subcategory => {
-                            const isSelected = additionalSpecializations.includes(subcategory);
-                            const subcategoryDiv = document.createElement('div');
-                            subcategoryDiv.className = 'subcategory-wrapper';
-                            subcategoryDiv.dataset.subcategoryName = subcategory;
-                            subcategoryDiv.innerHTML = `
-                                <label class="subcategory-item" data-subcategory="${subcategory}">
-                                    <input type="checkbox" class="popup-checkbox" ${isSelected ? 'checked' : ''} data-subcategory="${subcategory}">
-                                    <span style="flex: 1; text-align: right; color: var(--text-primary); font-size: 16px;">${subcategory}</span>
-                                </label>
-                            `;
-                            subcategoriesContainer.appendChild(subcategoryDiv);
-                        });
-
-                        categoryContainer.appendChild(subcategoriesContainer);
+                    // Set indeterminate state
+                    const checkbox = header.querySelector('.category-checkbox');
+                    if (someSelected) {
+                        checkbox.indeterminate = true;
                     }
-                    
-                    popupBody.appendChild(categoryContainer);
+
+                    // Subcategories list
+                    const subcatList = document.createElement('div');
+                    subcatList.className = `subcategories-list${isExpanded ? ' expanded' : ''}`;
+
+                    categorySubcategories.forEach(subcategory => {
+                        const key = getSubcategoryKey(category, subcategory);
+                        const isSelected = selectedSubcategories.has(key);
+
+                        const subItem = document.createElement('div');
+                        subItem.className = `subcategory-select-item${isSelected ? ' selected' : ''}`;
+                        subItem.innerHTML = `
+                            <input type="checkbox" class="subcategory-checkbox"
+                                   data-category="${category}" data-subcategory="${subcategory}"
+                                   ${isSelected ? 'checked' : ''}>
+                            <span>${subcategory}</span>
+                        `;
+                        subcatList.appendChild(subItem);
+                    });
+
+                    categoryDiv.appendChild(header);
+                    categoryDiv.appendChild(subcatList);
+                    popupBody.appendChild(categoryDiv);
                 });
-                
+
                 // Add event listeners
                 addCombinedPopupEventListeners();
-                updateCombinedSelectionCount();
             }
-            
+
             function addCombinedPopupEventListeners() {
                 const popupBody = document.getElementById('combinedSpecializationsPopupBody');
                 if (!popupBody) return;
-                
+
+                // Category header click - toggle expand
+                popupBody.querySelectorAll('.category-header').forEach(header => {
+                    header.addEventListener('click', function(e) {
+                        // Don't toggle if clicking on checkbox or button
+                        if (e.target.type === 'checkbox' || e.target.classList.contains('set-primary-btn')) {
+                            return;
+                        }
+                        const category = this.closest('.category-hierarchy-item').dataset.categoryName;
+                        toggleCategoryExpanded(category);
+                    });
+                });
+
+                // Category checkbox - select/deselect all subcategories
+                popupBody.querySelectorAll('.category-checkbox').forEach(checkbox => {
+                    checkbox.addEventListener('change', function(e) {
+                        e.stopPropagation();
+                        const category = this.dataset.category;
+                        toggleCategorySelection(category, this.checked);
+                    });
+                });
+
+                // Subcategory checkbox
+                popupBody.querySelectorAll('.subcategory-checkbox').forEach(checkbox => {
+                    checkbox.addEventListener('change', function(e) {
+                        e.stopPropagation();
+                        const category = this.dataset.category;
+                        const subcategory = this.dataset.subcategory;
+                        toggleSubcategorySelection(category, subcategory, this.checked);
+                    });
+                });
+
+                // Subcategory item click (on the row, not just checkbox)
+                popupBody.querySelectorAll('.subcategory-select-item').forEach(item => {
+                    item.addEventListener('click', function(e) {
+                        if (e.target.type === 'checkbox') return;
+                        const checkbox = this.querySelector('.subcategory-checkbox');
+                        checkbox.checked = !checkbox.checked;
+                        checkbox.dispatchEvent(new Event('change', { bubbles: true }));
+                    });
+                });
+
                 // Primary field buttons
                 popupBody.querySelectorAll('.set-primary-btn').forEach(btn => {
                     btn.addEventListener('click', function(e) {
                         e.stopPropagation();
                         const category = this.dataset.category;
                         setPrimaryField(category);
-                        buildCombinedPopupContent(); // Rebuild to update UI
                     });
                 });
-                
-                // Subcategory selection - updated for checkbox inputs
-                popupBody.querySelectorAll('.subcategory-item input[type="checkbox"]').forEach(checkbox => {
-                    checkbox.addEventListener('change', function() {
-                        const subcategory = this.dataset.subcategory;
-
-                        if (this.checked) {
-                            if (!additionalSpecializations.includes(subcategory)) {
-                                additionalSpecializations.push(subcategory);
-                            }
-
-                            // If no primary field is set, find which category this subcategory belongs to
-                            // and set it as primary automatically (without auto-selecting all subs)
-                            if (!primaryField) {
-                                const categoryForSubcategory = findCategoryForSubcategory(subcategory);
-                                if (categoryForSubcategory) {
-                                    // Set primary field but don't auto-select all subs
-                                    primaryField = categoryForSubcategory;
-                                    const hiddenInput = document.getElementById('primaryFieldHidden');
-                                    if (hiddenInput) {
-                                        hiddenInput.value = categoryForSubcategory;
-                                    }
-                                    buildCombinedPopupContent(); // Rebuild to show new primary
-                                    return; // Exit early since we rebuilt
-                                }
-                            }
-                        } else {
-                            const index = additionalSpecializations.indexOf(subcategory);
-                            if (index >= 0) {
-                                additionalSpecializations.splice(index, 1);
-                            }
-
-                            // Check if this was the last subcategory of the primary field
-                            const primaryWasDeselected = checkAndDeselectPrimaryIfEmpty();
-
-                            // If primary was deselected, update everything
-                            if (primaryWasDeselected) {
-                                updateCombinedDisplay(); // Update the main display
-                                buildCombinedPopupContent(); // Rebuild popup UI
-                                return; // Exit early since we rebuilt everything
-                            }
-                        }
-
-                        updateCombinedSelectionCount();
-                    });
-                });
-                
-                // Search functionality
-                const searchInput = document.getElementById('combinedSearchInput');
-                if (searchInput) {
-                    searchInput.addEventListener('input', function() {
-                        const searchTerm = this.value;
-                        filterCombinedCategories(searchTerm);
-                    });
-                    
-                    // Prevent form submission on Enter key
-                    searchInput.addEventListener('keypress', function(e) {
-                        if (e.key === 'Enter') {
-                            e.preventDefault();
-                            e.stopPropagation();
-                            return false;
-                        }
-                    });
-                }
             }
-            
-            function setPrimaryField(category) {
-                primaryField = category;
-                
-                // Update hidden input
-                const hiddenInput = document.getElementById('primaryFieldHidden');
-                if (hiddenInput) {
-                    hiddenInput.value = category;
+
+            function toggleCategoryExpanded(category) {
+                if (expandedCategories.has(category)) {
+                    expandedCategories.delete(category);
+                } else {
+                    expandedCategories.add(category);
                 }
-                
-                // Auto-select all subcategories under the selected primary field
-                autoSelectSubcategoriesForPrimary(category);
-                
+                buildCombinedPopupContent();
                 updateCombinedSelectionCount();
             }
-            
-            function autoSelectSubcategoriesForPrimary(category) {
-                // Clear current additional specializations first
-                additionalSpecializations = [];
 
-                // Add all subcategories of the selected primary field to additional specializations
-                if (specializations[category] && Array.isArray(specializations[category])) {
-                    specializations[category].forEach(subcategory => {
-                        if (!additionalSpecializations.includes(subcategory)) {
-                            additionalSpecializations.push(subcategory);
+            function toggleCategorySelection(category, selected) {
+                const subcategories = specializations[category] || [];
+
+                subcategories.forEach(subcategory => {
+                    const key = getSubcategoryKey(category, subcategory);
+                    if (selected) {
+                        if (!selectedSubcategories.has(key)) {
+                            selectedSubcategories.set(key, {
+                                category,
+                                subcategory,
+                                locations: null // null = never set, eligible for default inheritance
+                            });
                         }
+                    } else {
+                        selectedSubcategories.delete(key);
+                    }
+                });
+
+                // Auto-set primary if none set and selecting
+                if (selected && !primaryField) {
+                    primaryField = category;
+                    document.getElementById('primaryFieldHidden').value = category;
+                }
+
+                // Clear primary if deselecting the primary category
+                if (!selected && primaryField === category) {
+                    primaryField = null;
+                    document.getElementById('primaryFieldHidden').value = '';
+                }
+
+                buildCombinedPopupContent();
+                updateCombinedSelectionCount();
+            }
+
+            function toggleSubcategorySelection(category, subcategory, selected) {
+                const key = getSubcategoryKey(category, subcategory);
+
+                if (selected) {
+                    if (!selectedSubcategories.has(key)) {
+                        selectedSubcategories.set(key, {
+                            category,
+                            subcategory,
+                            locations: null
+                        });
+                    }
+
+                    // Auto-set primary if none set
+                    if (!primaryField) {
+                        primaryField = category;
+                        document.getElementById('primaryFieldHidden').value = category;
+                    }
+                } else {
+                    selectedSubcategories.delete(key);
+
+                    // Check if primary category has any selections left
+                    if (primaryField === category) {
+                        const hasAnyInCategory = Array.from(selectedSubcategories.values())
+                            .some(item => item.category === category);
+                        if (!hasAnyInCategory) {
+                            primaryField = null;
+                            document.getElementById('primaryFieldHidden').value = '';
+                        }
+                    }
+                }
+
+                // Update parent category checkbox state
+                updateCategoryCheckboxState(category);
+                updateCombinedSelectionCount();
+            }
+
+            function updateCategoryCheckboxState(category) {
+                const popupBody = document.getElementById('combinedSpecializationsPopupBody');
+                if (!popupBody) return;
+
+                const categoryItem = popupBody.querySelector(`[data-category-name="${category}"]`);
+                if (!categoryItem) return;
+
+                const checkbox = categoryItem.querySelector('.category-checkbox');
+                if (!checkbox) return;
+
+                const subcategories = specializations[category] || [];
+                const selectedCount = subcategories.filter(sub =>
+                    selectedSubcategories.has(getSubcategoryKey(category, sub))
+                ).length;
+
+                checkbox.checked = selectedCount === subcategories.length && subcategories.length > 0;
+                checkbox.indeterminate = selectedCount > 0 && selectedCount < subcategories.length;
+            }
+
+            function setPrimaryField(category) {
+                // If clicking on already primary, don't change
+                if (primaryField === category) return;
+
+                primaryField = category;
+                document.getElementById('primaryFieldHidden').value = category;
+
+                // Also select all subcategories of this category if none selected
+                const subcategories = specializations[category] || [];
+                const hasAnySelected = subcategories.some(sub =>
+                    selectedSubcategories.has(getSubcategoryKey(category, sub))
+                );
+
+                if (!hasAnySelected) {
+                    subcategories.forEach(subcategory => {
+                        const key = getSubcategoryKey(category, subcategory);
+                        selectedSubcategories.set(key, {
+                            category,
+                            subcategory,
+                            locations: null
+                        });
                     });
+                }
+
+                buildCombinedPopupContent();
+                updateCombinedSelectionCount();
+            }
+
+            function updateCombinedSelectionCount() {
+                const countDisplay = document.getElementById('selectedCombinedCount');
+                if (!countDisplay) return;
+
+                const count = selectedSubcategories.size;
+
+                if (count === 0) {
+                    countDisplay.textContent = 'לא נבחרו התמחויות';
+                    countDisplay.style.color = 'var(--text-muted)';
+                } else if (!primaryField) {
+                    countDisplay.textContent = `נבחרו ${count} התמחויות - יש לבחור תחום ראשי`;
+                    countDisplay.style.color = '#d97706';
+                } else {
+                    countDisplay.textContent = `תחום ראשי: ${primaryField} | ${count} התמחויות`;
+                    countDisplay.style.color = 'var(--text-secondary)';
                 }
             }
 
+            function saveCombinedSpecializations() {
+                if (selectedSubcategories.size === 0) {
+                    alert('יש לבחור לפחות התמחות אחת');
+                    return;
+                }
+
+                if (!primaryField) {
+                    alert('יש לבחור תחום ראשי');
+                    return;
+                }
+
+                // Update the display
+                updateCombinedDisplay();
+                updateSubcategoryTable();
+
+                // Close popup
+                closeCombinedSpecializationsPopup();
+            }
+
+            function updateCombinedDisplay() {
+                const placeholder = document.getElementById('combinedSpecializationsPlaceholder');
+                if (!placeholder) return;
+
+                if (primaryField) {
+                    placeholder.textContent = `תחום ראשי: ${primaryField}`;
+                    placeholder.style.color = 'var(--text-primary)';
+                } else if (selectedSubcategories.size > 0) {
+                    placeholder.textContent = `${selectedSubcategories.size} התמחויות נבחרו`;
+                    placeholder.style.color = 'var(--text-secondary)';
+                } else {
+                    placeholder.textContent = 'לחצו לבחירת תחומים והתמחויות';
+                    placeholder.style.color = 'var(--text-muted)';
+                }
+            }
+
+            // ===========================================
+            // SUBCATEGORY TABLE
+            // ===========================================
+
+            function updateSubcategoryTable() {
+                const container = document.getElementById('subcategoryTableContainer');
+                const tbody = document.getElementById('subcategoryTableBody');
+
+                if (!container || !tbody) return;
+
+                if (selectedSubcategories.size === 0) {
+                    container.style.display = 'none';
+                    return;
+                }
+
+                container.style.display = 'block';
+                tbody.innerHTML = '';
+
+                // Sort: primary category first, then by category name
+                const sortedEntries = Array.from(selectedSubcategories.entries()).sort((a, b) => {
+                    const catA = a[1].category;
+                    const catB = b[1].category;
+                    if (catA === primaryField && catB !== primaryField) return -1;
+                    if (catB === primaryField && catA !== primaryField) return 1;
+                    if (catA !== catB) return catA.localeCompare(catB);
+                    return a[1].subcategory.localeCompare(b[1].subcategory);
+                });
+
+                sortedEntries.forEach(([key, data]) => {
+                    const row = document.createElement('tr');
+                    const isPrimary = data.category === primaryField;
+
+                    // First column: subcategory name + category (with primary badge on category)
+                    const nameCell = document.createElement('td');
+                    nameCell.innerHTML = `
+                        <div class="subcategory-name">${data.subcategory}</div>
+                        <div class="subcategory-category">
+                            ${data.category}
+                            ${isPrimary ? '<span class="primary-badge">תחום ראשי</span>' : ''}
+                        </div>
+                    `;
+
+                    // Second column: locations + edit button (edit on left in RTL, so it comes last in HTML)
+                    const locCell = document.createElement('td');
+                    const locationsHtml = buildLocationDisplayHtml(data.locations, key);
+                    locCell.innerHTML = `
+                        <div class="locations-cell">
+                            <div class="locations-content">
+                                ${locationsHtml}
+                            </div>
+                            <button type="button" class="edit-locations-btn" data-subcategory-key="${key}" title="עריכת אזורי שירות">
+                                <i class="fas fa-edit"></i>
+                            </button>
+                        </div>
+                    `;
+
+                    row.appendChild(nameCell);
+                    row.appendChild(locCell);
+                    tbody.appendChild(row);
+                });
+
+                // Add event listeners for edit buttons
+                tbody.querySelectorAll('.edit-locations-btn').forEach(btn => {
+                    btn.addEventListener('click', function() {
+                        const key = this.dataset.subcategoryKey;
+                        openLocationEditModal(key);
+                    });
+                });
+
+                // Add event listeners for remove county buttons
+                tbody.querySelectorAll('.remove-county').forEach(btn => {
+                    btn.addEventListener('click', function(e) {
+                        e.stopPropagation();
+                        const key = this.dataset.subcategoryKey;
+                        const county = this.dataset.county;
+                        const district = this.dataset.district;
+                        removeCountyFromSubcategory(key, county, district);
+                    });
+                });
+            }
+
+            function buildLocationDisplayHtml(locations, subcategoryKey) {
+                if (locations === null || locations === undefined) {
+                    return '<span class="no-locations-text">לא נבחרו אזורים</span>';
+                }
+
+                if (locations.length === 0) {
+                    return '<span class="no-locations-text">לא נבחרו אזורים</span>';
+                }
+
+                let html = '';
+                locations.forEach(districtData => {
+                    if (districtData.counties && districtData.counties.length > 0) {
+                        html += `
+                            <div class="location-district-group">
+                                <div class="district-label">
+                                    <span>${districtData.district}</span>
+                                    <span class="pin-icon">📍</span>
+                                </div>
+                                <div class="county-tags">
+                                    ${districtData.counties.map(c => `
+                                        <span class="county-tag">
+                                            <span class="remove-county" data-subcategory-key="${subcategoryKey}" data-county="${c}" data-district="${districtData.district}">×</span>
+                                            <span>${c}</span>
+                                        </span>
+                                    `).join('')}
+                                </div>
+                            </div>
+                        `;
+                    }
+                });
+
+                return html || '<span class="no-locations-text">לא נבחרו אזורים</span>';
+            }
+
+            function removeCountyFromSubcategory(subcategoryKey, county, district) {
+                const data = selectedSubcategories.get(subcategoryKey);
+                if (!data || !data.locations) return;
+
+                // Find the district and remove the county
+                data.locations.forEach(loc => {
+                    if (loc.district === district) {
+                        loc.counties = loc.counties.filter(c => c !== county);
+                    }
+                });
+
+                // Remove empty districts
+                data.locations = data.locations.filter(loc => loc.counties.length > 0);
+
+                // If no locations left, set to empty array (not null, since it was explicitly edited)
+                if (data.locations.length === 0) {
+                    data.locations = [];
+                }
+
+                // Update the table
+                updateSubcategoryTable();
+            }
+
+            // ===========================================
+            // LOCATION EDIT MODAL
+            // ===========================================
+
+            function initializeLocationModal() {
+                const modal = document.getElementById('locationEditModal');
+                const closeBtn = document.getElementById('closeLocationEditModal');
+                const saveBtn = document.getElementById('saveLocationEdit');
+                const searchInput = document.getElementById('locationSearchInput');
+
+                if (!modal) return;
+
+                closeBtn?.addEventListener('click', closeLocationEditModal);
+                modal.addEventListener('click', function(e) {
+                    if (e.target === modal) {
+                        closeLocationEditModal();
+                    }
+                });
+
+                saveBtn?.addEventListener('click', saveLocationEdit);
+
+                searchInput?.addEventListener('input', function() {
+                    filterLocationHierarchy(this.value);
+                });
+            }
+
+            function openLocationEditModal(subcategoryKey) {
+                currentEditingSubcategoryKey = subcategoryKey;
+                const modal = document.getElementById('locationEditModal');
+                const title = document.getElementById('locationEditModalTitle');
+
+                if (!modal) return;
+
+                const data = selectedSubcategories.get(subcategoryKey);
+                if (data) {
+                    title.textContent = `אזורי שירות: ${data.subcategory}`;
+                }
+
+                // Initialize temp selection from current locations
+                tempSelectedCounties = new Set();
+                if (data && data.locations) {
+                    data.locations.forEach(districtData => {
+                        districtData.counties.forEach(county => {
+                            tempSelectedCounties.add(county);
+                        });
+                    });
+                }
+
+                buildLocationHierarchy();
+                updateLocationCount();
+
+                modal.style.display = 'block';
+                document.body.style.overflow = 'hidden';
+            }
+
+            function closeLocationEditModal() {
+                const modal = document.getElementById('locationEditModal');
+                if (modal) {
+                    modal.style.display = 'none';
+                    document.body.style.overflow = '';
+                }
+
+                currentEditingSubcategoryKey = null;
+                tempSelectedCounties.clear();
+
+                // Clear search
+                const searchInput = document.getElementById('locationSearchInput');
+                if (searchInput) searchInput.value = '';
+            }
+
+            function buildLocationHierarchy() {
+                const container = document.getElementById('locationHierarchyContainer');
+                if (!container || !districtData.Districts) return;
+
+                container.innerHTML = '';
+
+                districtData.Districts.forEach(district => {
+                    const districtDiv = document.createElement('div');
+                    districtDiv.className = 'district-item';
+                    districtDiv.dataset.districtName = district.District;
+
+                    // Check if all counties in this district are selected
+                    const allCounties = district.Counties.map(c => c.County);
+                    const selectedCountiesInDistrict = allCounties.filter(c => tempSelectedCounties.has(c));
+                    const allSelected = selectedCountiesInDistrict.length === allCounties.length;
+                    const someSelected = selectedCountiesInDistrict.length > 0 && !allSelected;
+
+                    // District header
+                    const header = document.createElement('div');
+                    header.className = 'district-header expanded';
+                    header.innerHTML = `
+                        <input type="checkbox" class="district-checkbox" data-district="${district.District}"
+                               ${allSelected ? 'checked' : ''}>
+                        <span class="category-toggle">▼</span>
+                        <span style="flex: 1;">${district.District}</span>
+                    `;
+
+                    const districtCheckbox = header.querySelector('.district-checkbox');
+                    if (someSelected) {
+                        districtCheckbox.indeterminate = true;
+                    }
+
+                    // Counties list
+                    const countiesList = document.createElement('div');
+                    countiesList.className = 'counties-list expanded';
+
+                    district.Counties.forEach(county => {
+                        const isSelected = tempSelectedCounties.has(county.County);
+
+                        // County row
+                        const countyDiv = document.createElement('div');
+                        countyDiv.className = `county-item${isSelected ? ' selected' : ''}`;
+                        countyDiv.dataset.countyName = county.County;
+                        countyDiv.dataset.districtName = district.District;
+
+                        const hasCities = county.Cities && county.Cities.length > 0;
+                        countyDiv.innerHTML = `
+                            <input type="checkbox" ${isSelected ? 'checked' : ''} data-county="${county.County}">
+                            ${hasCities ? '<span class="county-expand-toggle">▶</span>' : '<span style="width: 18px;"></span>'}
+                            <span class="county-name">${county.County}</span>
+                        `;
+
+                        // Cities list (collapsed by default)
+                        if (hasCities) {
+                            const citiesList = document.createElement('div');
+                            citiesList.className = 'cities-list';
+                            citiesList.dataset.countyName = county.County;
+
+                            county.Cities.forEach(city => {
+                                const cityDiv = document.createElement('div');
+                                cityDiv.className = 'city-item';
+                                cityDiv.dataset.countyName = county.County;
+                                cityDiv.innerHTML = `
+                                    ${city}
+                                    <span class="county-highlight-hint">(יבחר: ${county.County})</span>
+                                `;
+                                citiesList.appendChild(cityDiv);
+                            });
+
+                            countyDiv.appendChild(citiesList);
+                        }
+
+                        countiesList.appendChild(countyDiv);
+                    });
+
+                    districtDiv.appendChild(header);
+                    districtDiv.appendChild(countiesList);
+                    container.appendChild(districtDiv);
+                });
+
+                // Add event listeners
+                addLocationHierarchyEventListeners();
+            }
+
+            function addLocationHierarchyEventListeners() {
+                const container = document.getElementById('locationHierarchyContainer');
+                if (!container) return;
+
+                // District header click - toggle expand
+                container.querySelectorAll('.district-header').forEach(header => {
+                    header.addEventListener('click', function(e) {
+                        if (e.target.type === 'checkbox') return;
+                        const countiesList = this.nextElementSibling;
+                        const toggle = this.querySelector('.category-toggle');
+
+                        if (countiesList.classList.contains('expanded')) {
+                            countiesList.classList.remove('expanded');
+                            this.classList.remove('expanded');
+                            toggle.textContent = '▶';
+                        } else {
+                            countiesList.classList.add('expanded');
+                            this.classList.add('expanded');
+                            toggle.textContent = '▼';
+                        }
+                    });
+                });
+
+                // District checkbox - select all counties
+                container.querySelectorAll('.district-checkbox').forEach(checkbox => {
+                    checkbox.addEventListener('change', function(e) {
+                        e.stopPropagation();
+                        const districtName = this.dataset.district;
+                        const district = districtData.Districts.find(d => d.District === districtName);
+
+                        if (district) {
+                            district.Counties.forEach(county => {
+                                if (this.checked) {
+                                    tempSelectedCounties.add(county.County);
+                                } else {
+                                    tempSelectedCounties.delete(county.County);
+                                }
+                            });
+                        }
+
+                        buildLocationHierarchy();
+                        updateLocationCount();
+                    });
+                });
+
+                // County checkbox
+                container.querySelectorAll('.county-item > input[type="checkbox"]').forEach(checkbox => {
+                    checkbox.addEventListener('change', function(e) {
+                        e.stopPropagation();
+                        const county = this.dataset.county;
+
+                        if (this.checked) {
+                            tempSelectedCounties.add(county);
+                        } else {
+                            tempSelectedCounties.delete(county);
+                        }
+
+                        // Update district checkbox state
+                        const countyItem = this.closest('.county-item');
+                        const districtName = countyItem.dataset.districtName;
+                        updateDistrictCheckboxState(districtName);
+                        updateLocationCount();
+
+                        // Update visual state
+                        countyItem.classList.toggle('selected', this.checked);
+                    });
+                });
+
+                // County row click (not on checkbox)
+                container.querySelectorAll('.county-item').forEach(item => {
+                    item.addEventListener('click', function(e) {
+                        if (e.target.type === 'checkbox' || e.target.classList.contains('county-expand-toggle')) return;
+                        if (e.target.classList.contains('city-item')) return;
+
+                        const checkbox = this.querySelector('input[type="checkbox"]');
+                        checkbox.checked = !checkbox.checked;
+                        checkbox.dispatchEvent(new Event('change', { bubbles: true }));
+                    });
+                });
+
+                // County expand toggle
+                container.querySelectorAll('.county-expand-toggle').forEach(toggle => {
+                    toggle.addEventListener('click', function(e) {
+                        e.stopPropagation();
+                        const countyItem = this.closest('.county-item');
+                        const citiesList = countyItem.querySelector('.cities-list');
+
+                        if (citiesList) {
+                            if (citiesList.classList.contains('expanded')) {
+                                citiesList.classList.remove('expanded');
+                                this.classList.remove('expanded');
+                                this.textContent = '▶';
+                            } else {
+                                citiesList.classList.add('expanded');
+                                this.classList.add('expanded');
+                                this.textContent = '▼';
+                            }
+                        }
+                    });
+                });
+
+                // City click - selects parent county
+                container.querySelectorAll('.city-item').forEach(item => {
+                    item.addEventListener('click', function(e) {
+                        e.stopPropagation();
+                        const countyName = this.dataset.countyName;
+
+                        // Select the county
+                        tempSelectedCounties.add(countyName);
+
+                        // Update UI
+                        buildLocationHierarchy();
+                        updateLocationCount();
+                    });
+
+                    // Highlight parent county on hover
+                    item.addEventListener('mouseenter', function() {
+                        const countyName = this.dataset.countyName;
+                        const countyItem = this.closest('.county-item');
+                        if (countyItem) {
+                            countyItem.style.backgroundColor = 'rgba(76, 29, 149, 0.1)';
+                        }
+                    });
+
+                    item.addEventListener('mouseleave', function() {
+                        const countyItem = this.closest('.county-item');
+                        if (countyItem) {
+                            const isSelected = tempSelectedCounties.has(countyItem.dataset.countyName);
+                            countyItem.style.backgroundColor = isSelected ? 'rgba(76, 29, 149, 0.08)' : '';
+                        }
+                    });
+                });
+            }
+
+            function updateDistrictCheckboxState(districtName) {
+                const container = document.getElementById('locationHierarchyContainer');
+                const districtItem = container?.querySelector(`[data-district-name="${districtName}"]`);
+                if (!districtItem) return;
+
+                const checkbox = districtItem.querySelector('.district-checkbox');
+                if (!checkbox) return;
+
+                const district = districtData.Districts.find(d => d.District === districtName);
+                if (!district) return;
+
+                const allCounties = district.Counties.map(c => c.County);
+                const selectedCount = allCounties.filter(c => tempSelectedCounties.has(c)).length;
+
+                checkbox.checked = selectedCount === allCounties.length;
+                checkbox.indeterminate = selectedCount > 0 && selectedCount < allCounties.length;
+            }
+
+            function updateLocationCount() {
+                const countDisplay = document.getElementById('selectedLocationCount');
+                if (!countDisplay) return;
+
+                const count = tempSelectedCounties.size;
+                countDisplay.textContent = count === 0 ? 'לא נבחרו מיקומים' : `${count} נפות נבחרו`;
+            }
+
+            function saveLocationEdit() {
+                if (!currentEditingSubcategoryKey) return;
+
+                const data = selectedSubcategories.get(currentEditingSubcategoryKey);
+                if (!data) return;
+
+                // Build locations structure grouped by district
+                const locations = [];
+
+                if (tempSelectedCounties.size > 0) {
+                    districtData.Districts.forEach(district => {
+                        const countiesInDistrict = district.Counties
+                            .map(c => c.County)
+                            .filter(c => tempSelectedCounties.has(c));
+
+                        if (countiesInDistrict.length > 0) {
+                            locations.push({
+                                district: district.District,
+                                counties: countiesInDistrict
+                            });
+                        }
+                    });
+                }
+
+                // Update the subcategory with new locations
+                data.locations = locations.length > 0 ? locations : [];
+
+                // Apply default inheritance: if this is the first location set,
+                // apply to all subcategories with locations === null
+                applyDefaultLocationsIfNeeded(locations);
+
+                // Update table
+                updateSubcategoryTable();
+
+                // Close modal
+                closeLocationEditModal();
+            }
+
+            function applyDefaultLocationsIfNeeded(newLocations) {
+                // Only apply if newLocations has content
+                if (!newLocations || newLocations.length === 0) return;
+
+                // Find all subcategories with locations === null (never set)
+                selectedSubcategories.forEach((data, key) => {
+                    if (key === currentEditingSubcategoryKey) return; // Skip the one we just edited
+
+                    if (data.locations === null) {
+                        // Deep copy the locations
+                        data.locations = JSON.parse(JSON.stringify(newLocations));
+                    }
+                });
+            }
+
+            function filterLocationHierarchy(searchTerm) {
+                const container = document.getElementById('locationHierarchyContainer');
+                if (!container) return;
+
+                const normalizedSearch = searchTerm.toLowerCase().trim();
+
+                if (!normalizedSearch) {
+                    // Show all
+                    container.querySelectorAll('.district-item').forEach(item => item.style.display = '');
+                    container.querySelectorAll('.county-item').forEach(item => item.style.display = '');
+                    container.querySelectorAll('.city-item').forEach(item => item.style.display = '');
+                    return;
+                }
+
+                // Search and show matching items
+                container.querySelectorAll('.district-item').forEach(districtItem => {
+                    const districtName = districtItem.dataset.districtName?.toLowerCase() || '';
+                    const districtMatches = districtName.includes(normalizedSearch);
+
+                    let hasVisibleCounty = false;
+
+                    districtItem.querySelectorAll('.county-item').forEach(countyItem => {
+                        const countyName = countyItem.dataset.countyName?.toLowerCase() || '';
+                        const countyMatches = countyName.includes(normalizedSearch);
+
+                        let hasVisibleCity = false;
+
+                        countyItem.querySelectorAll('.city-item').forEach(cityItem => {
+                            const cityText = cityItem.textContent?.toLowerCase() || '';
+                            const cityMatches = cityText.includes(normalizedSearch);
+
+                            if (cityMatches || countyMatches || districtMatches) {
+                                cityItem.style.display = '';
+                                hasVisibleCity = true;
+                            } else {
+                                cityItem.style.display = 'none';
+                            }
+                        });
+
+                        if (districtMatches || countyMatches || hasVisibleCity) {
+                            countyItem.style.display = '';
+                            hasVisibleCounty = true;
+
+                            // Expand cities if searching
+                            const citiesList = countyItem.querySelector('.cities-list');
+                            if (citiesList && hasVisibleCity) {
+                                citiesList.classList.add('expanded');
+                            }
+                        } else {
+                            countyItem.style.display = 'none';
+                        }
+                    });
+
+                    if (districtMatches || hasVisibleCounty) {
+                        districtItem.style.display = '';
+                        // Expand district
+                        const countiesList = districtItem.querySelector('.counties-list');
+                        if (countiesList) countiesList.classList.add('expanded');
+                    } else {
+                        districtItem.style.display = 'none';
+                    }
+                });
+            }
+
+            function filterCombinedCategories(searchTerm) {
+                const popupBody = document.getElementById('combinedSpecializationsPopupBody');
+                if (!popupBody) return;
+
+                const normalizedSearch = searchTerm.toLowerCase().trim();
+
+                if (!normalizedSearch) {
+                    popupBody.querySelectorAll('.category-hierarchy-item').forEach(item => {
+                        item.style.display = '';
+                    });
+                    popupBody.querySelectorAll('.subcategory-select-item').forEach(item => {
+                        item.style.display = '';
+                    });
+                    return;
+                }
+
+                popupBody.querySelectorAll('.category-hierarchy-item').forEach(categoryItem => {
+                    const categoryName = categoryItem.dataset.categoryName?.toLowerCase() || '';
+                    const categoryMatches = categoryName.includes(normalizedSearch);
+
+                    let hasVisibleSubcategory = false;
+
+                    categoryItem.querySelectorAll('.subcategory-select-item').forEach(subItem => {
+                        const subName = subItem.textContent?.toLowerCase() || '';
+                        const subMatches = subName.includes(normalizedSearch);
+
+                        if (categoryMatches || subMatches) {
+                            subItem.style.display = '';
+                            hasVisibleSubcategory = true;
+                        } else {
+                            subItem.style.display = 'none';
+                        }
+                    });
+
+                    if (categoryMatches || hasVisibleSubcategory) {
+                        categoryItem.style.display = '';
+                        // Expand category
+                        const subcatList = categoryItem.querySelector('.subcategories-list');
+                        if (subcatList) subcatList.classList.add('expanded');
+                        const header = categoryItem.querySelector('.category-header');
+                        if (header) header.classList.add('expanded');
+                    } else {
+                        categoryItem.style.display = 'none';
+                    }
+                });
+            }
+
+            // Helper function to find category for a subcategory
             function findCategoryForSubcategory(subcategory) {
-                // Search through all categories to find which one contains this subcategory
                 for (const category in specializations) {
                     if (specializations[category] && specializations[category].includes(subcategory)) {
                         return category;
@@ -2202,300 +3530,76 @@
                 }
                 return null;
             }
-
-            // Make it globally accessible
             window.findCategoryForSubcategory = findCategoryForSubcategory;
 
+            // Build categories hierarchy for form submission
             function buildCategoriesHierarchy() {
-                // Build hierarchical structure of categories and their selected subcategories
-                const hierarchy = {};
+                const result = [];
 
-                // Go through all selected subcategories and group them by category
-                additionalSpecializations.forEach(subcategory => {
-                    const category = findCategoryForSubcategory(subcategory);
-                    if (category) {
-                        if (!hierarchy[category]) {
-                            hierarchy[category] = [];
-                        }
-                        hierarchy[category].push(subcategory);
+                // Group by category
+                const byCategory = {};
+                selectedSubcategories.forEach((data, key) => {
+                    if (!byCategory[data.category]) {
+                        byCategory[data.category] = [];
                     }
+                    byCategory[data.category].push({
+                        subcategory: data.subcategory,
+                        locations: data.locations || []
+                    });
                 });
 
-                return hierarchy;
-            }
+                // Build final structure
+                Object.keys(byCategory).forEach(category => {
+                    result.push({
+                        category: category,
+                        subcategories: byCategory[category]
+                    });
+                });
 
-            // Make it globally accessible
+                return result;
+            }
             window.buildCategoriesHierarchy = buildCategoriesHierarchy;
 
+            // Global remove functions (for tag removal if needed later)
+            window.removeSubcategory = function(key) {
+                selectedSubcategories.delete(key);
+                const { category } = parseSubcategoryKey(key);
+
+                // Check if primary field still has selections
+                if (primaryField === category) {
+                    const hasAnyInCategory = Array.from(selectedSubcategories.values())
+                        .some(item => item.category === category);
+                    if (!hasAnyInCategory) {
+                        primaryField = null;
+                        document.getElementById('primaryFieldHidden').value = '';
+                    }
+                }
+
+                updateCombinedDisplay();
+                updateSubcategoryTable();
+            };
+
+            // Legacy compatibility - keep additionalSpecializations as getter
+            Object.defineProperty(window, 'additionalSpecializations', {
+                get: function() {
+                    return Array.from(selectedSubcategories.values()).map(d => d.subcategory);
+                }
+            });
+
+            // Placeholder for legacy function call pattern
             function checkAndDeselectPrimaryIfEmpty() {
-                // If there's no primary field set, nothing to check
                 if (!primaryField) return false;
 
-                // Get all subcategories that belong to the primary field
-                const primaryFieldSubcategories = specializations[primaryField] || [];
+                const hasAnyInPrimary = Array.from(selectedSubcategories.values())
+                    .some(item => item.category === primaryField);
 
-                // Check if any subcategory from the primary field is still selected
-                const hasAnyPrimarySubcategory = primaryFieldSubcategories.some(sub =>
-                    additionalSpecializations.includes(sub)
-                );
-
-                // If no subcategories from primary field are selected, deselect the primary field
-                if (!hasAnyPrimarySubcategory) {
+                if (!hasAnyInPrimary) {
                     primaryField = null;
-                    const hiddenInput = document.getElementById('primaryFieldHidden');
-                    if (hiddenInput) {
-                        hiddenInput.value = '';
-                    }
-                    return true; // Primary field was deselected
+                    document.getElementById('primaryFieldHidden').value = '';
+                    return true;
                 }
-
-                return false; // Primary field still has subcategories
+                return false;
             }
-            
-            function toggleAdditionalSpecialization(subcategory) {
-                const index = additionalSpecializations.indexOf(subcategory);
-                if (index > -1) {
-                    additionalSpecializations.splice(index, 1);
-                } else {
-                    additionalSpecializations.push(subcategory);
-                }
-            }
-            
-            function updateCombinedSelectionCount() {
-                const countDisplay = document.getElementById('selectedCombinedCount');
-                if (!countDisplay) return;
-
-                const primaryCount = primaryField ? 1 : 0;
-                const additionalCount = additionalSpecializations.length;
-                const isSatisfied = primaryCount > 0 && additionalCount > 0;
-
-                if (primaryCount === 0) {
-                    countDisplay.textContent = 'יש לבחור תחום ראשי';
-                    countDisplay.style.color = '#dc2626';
-                } else if (additionalCount === 0) {
-                    countDisplay.textContent = `תחום ראשי: ${primaryField}`;
-                    countDisplay.style.color = 'var(--text-secondary)';
-                } else {
-                    countDisplay.textContent = `תחום ראשי: ${primaryField} | התמחויות נוספות: ${additionalCount}`;
-                    countDisplay.style.color = 'var(--text-secondary)';
-                }
-
-                // Update save button appearance
-                const saveBtn = document.getElementById('saveCombinedSpecializations');
-                if (saveBtn) {
-                    if (isSatisfied) {
-                        saveBtn.style.opacity = '1';
-                        saveBtn.style.filter = 'none';
-                    } else {
-                        saveBtn.style.opacity = '0.5';
-                        saveBtn.style.filter = 'grayscale(50%)';
-                    }
-                }
-            }
-            
-            function saveCombinedSpecializations() {
-                if (!primaryField) {
-                    alert('יש לבחור תחום פעילות ראשי');
-                    return;
-                }
-                
-                // Update the display
-                updateCombinedDisplay();
-                
-                // Close popup
-                closeCombinedSpecializationsPopup();
-            }
-            
-            function updateCombinedDisplay() {
-                const display = document.getElementById('combinedSpecializationsDisplay');
-                const placeholder = document.getElementById('combinedSpecializationsPlaceholder');
-                const tagsContainer = document.getElementById('combinedSpecializationsTags');
-                
-                if (!display || !placeholder || !tagsContainer) return;
-                
-                // Clear existing tags
-                tagsContainer.innerHTML = '';
-                
-                // Placeholder always visible since tags are now below
-                placeholder.style.display = 'inline';
-                
-                // Group specializations by category for organized display
-                updateCombinedSpecializationsTags();
-            }
-            
-            function updateCombinedSpecializationsTags() {
-                const tagsContainer = document.getElementById('combinedSpecializationsTags');
-                if (!tagsContainer) return;
-                
-                tagsContainer.innerHTML = '';
-                
-                // Group specializations by category
-                const specializationsByCategory = {};
-                
-                // Add primary field
-                if (primaryField) {
-                    specializationsByCategory[primaryField] = [primaryField];
-                }
-                
-                // Add additional specializations
-                additionalSpecializations.forEach(spec => {
-                    // Find which category this specialization belongs to
-                    let categoryName = 'התמחויות נוספות'; // default category
-                    
-                    Object.keys(specializations).forEach(category => {
-                        if (specializations[category] && specializations[category].includes(spec)) {
-                            categoryName = category;
-                        }
-                    });
-                    
-                    // Don't add to primary field category if it's not the primary field itself
-                    if (categoryName === primaryField && spec !== primaryField) {
-                        if (!specializationsByCategory[categoryName]) {
-                            specializationsByCategory[categoryName] = [];
-                        }
-                        specializationsByCategory[categoryName].push(spec);
-                    } else if (categoryName !== primaryField) {
-                        if (!specializationsByCategory[categoryName]) {
-                            specializationsByCategory[categoryName] = [];
-                        }
-                        specializationsByCategory[categoryName].push(spec);
-                    }
-                });
-                
-                // Create display for each category - exactly like in question 6
-                Object.keys(specializationsByCategory).forEach(categoryName => {
-                    const items = specializationsByCategory[categoryName];
-                    if (items.length === 0) return;
-                    
-                    const categoryContainer = document.createElement('div');
-                    categoryContainer.style.cssText = 'margin-bottom: 20px;';
-                    
-                    // Create category header (only once per category) - same style as question 6
-                    const categoryHeader = document.createElement('div');
-                    categoryHeader.style.cssText = `
-                        color: #374151;
-                        font-size: 14px;
-                        margin-bottom: 12px;
-                        padding: 8px 0;
-                        border-bottom: 1px solid #e5e7eb;
-                    `;
-                    
-                    if (categoryName === primaryField) {
-                        categoryHeader.innerHTML = `<span style="font-weight: 600;">🏆 ${categoryName} (תחום ראשי)</span> <span style="font-weight: 400;">- עדיפות ראשונה לקבלת לידים</span>`;
-                    } else {
-                        categoryHeader.innerHTML = `<span style="font-weight: 600;">${categoryName}</span> <span style="font-weight: 400;">- עדיפות שנייה לקבלת לידים</span>`;
-                    }
-                    
-                    categoryContainer.appendChild(categoryHeader);
-                    
-                    // Create tags container for this category
-                    const tagsInCategory = document.createElement('div');
-                    tagsInCategory.style.cssText = `
-                        display: flex;
-                        flex-wrap: wrap;
-                        gap: 8px;
-                    `;
-                    
-                    items.forEach(item => {
-                        const tag = document.createElement('div');
-                        tag.className = item === primaryField ? 'work-area-tag primary-tag' : 'work-area-tag additional-tag';
-                        
-                        if (item === primaryField) {
-                            tag.innerHTML = `
-                                <span>${item}</span>
-                                <span class="remove-tag" onclick="removePrimaryField()">&times;</span>
-                            `;
-                        } else {
-                            tag.innerHTML = `
-                                <span>${item}</span>
-                                <span class="remove-tag" onclick="removeAdditionalSpecialization('${item}')">&times;</span>
-                            `;
-                        }
-                        
-                        tagsInCategory.appendChild(tag);
-                    });
-                    
-                    categoryContainer.appendChild(tagsInCategory);
-                    tagsContainer.appendChild(categoryContainer);
-                });
-            }
-            
-            function filterCombinedCategories(searchTerm) {
-                const popupBody = document.getElementById('combinedSpecializationsPopupBody');
-                if (!popupBody) return;
-
-                // If search is empty, show everything
-                if (!searchTerm || searchTerm.trim() === '') {
-                    popupBody.querySelectorAll('.combined-category-container').forEach(container => {
-                        container.style.display = 'block';
-                        container.querySelectorAll('.subcategory-wrapper').forEach(sub => {
-                            sub.style.display = 'block';
-                        });
-                    });
-                    return;
-                }
-
-                const normalizedSearch = searchTerm.toLowerCase().trim();
-
-                // Search through each category
-                popupBody.querySelectorAll('.combined-category-container').forEach(categoryContainer => {
-                    const categoryName = categoryContainer.dataset.categoryName?.toLowerCase() || '';
-                    const categoryMatches = categoryName.includes(normalizedSearch);
-
-                    // Get all subcategory wrappers in this category
-                    const subcategoryWrappers = categoryContainer.querySelectorAll('.subcategory-wrapper');
-                    let hasVisibleSubcategory = false;
-
-                    // Check each subcategory
-                    subcategoryWrappers.forEach(subWrapper => {
-                        const subcategoryName = subWrapper.dataset.subcategoryName?.toLowerCase() || '';
-                        const subcategoryMatches = subcategoryName.includes(normalizedSearch);
-
-                        // Show subcategory if it matches OR if the category matches
-                        if (categoryMatches || subcategoryMatches) {
-                            subWrapper.style.display = 'block';
-                            hasVisibleSubcategory = true;
-                        } else {
-                            subWrapper.style.display = 'none';
-                        }
-                    });
-
-                    // Show category if its name matches OR any subcategory is visible
-                    if (categoryMatches || hasVisibleSubcategory) {
-                        categoryContainer.style.display = 'block';
-                    } else {
-                        categoryContainer.style.display = 'none';
-                    }
-                });
-            }
-            
-            // Global functions for removing tags
-            window.removePrimaryField = function() {
-                primaryField = null;
-                const hiddenInput = document.getElementById('primaryFieldHidden');
-                if (hiddenInput) {
-                    hiddenInput.value = '';
-                }
-                updateCombinedDisplay();
-            };
-            
-            window.removeAdditionalSpecialization = function(spec) {
-                const index = additionalSpecializations.indexOf(spec);
-                if (index > -1) {
-                    additionalSpecializations.splice(index, 1);
-                }
-                // Check if primary field should be deselected
-                const primaryWasDeselected = checkAndDeselectPrimaryIfEmpty();
-
-                // Update the display
-                updateCombinedDisplay();
-
-                // If popup is open and primary was deselected, rebuild it
-                const popup = document.getElementById('combinedSpecializationsPopup');
-                if (popup && popup.style.display === 'block' && primaryWasDeselected) {
-                    buildCombinedPopupContent();
-                }
-            };
 
             // Load categories and district data on page load
             Promise.all([
@@ -2504,22 +3608,16 @@
             ]).then(() => {
                 console.log('Categories and specializations loaded successfully');
                 console.log('District hierarchy loaded successfully');
-                
-                // Initialize the new combined specializations popup
+
+                // Initialize the combined specializations popup
                 setTimeout(() => {
                     initializeCombinedSpecializationsPopup();
-                }, 100);
-                
-                // Initialize work area popup with loaded district data
-                setTimeout(() => {
-                    initializeWorkAreaPopup();
                 }, 100);
             }).catch(error => {
                 console.error('Error loading data:', error);
-                // Still initialize popups with dummy data
+                // Still initialize popup with dummy data
                 setTimeout(() => {
                     initializeCombinedSpecializationsPopup();
-                    initializeWorkAreaPopup();
                 }, 100);
             });
 
@@ -3793,127 +4891,8 @@
                 }
             }
 
-            // Work area popup functionality
-            // workAreaOptions is now loaded from district_hierarchy.json or set to dummy data
-
-            const workAreaSelect = document.getElementById('workAreaSelect');
-            const workAreaDropdown = document.getElementById('workAreaDropdown');
-            const workAreaTags = document.getElementById('workAreaTags');
-            let selectedWorkAreas = [];
-
-            function initializeWorkAreaPopup() {
-                // Clear popup
-                workAreaDropdown.innerHTML = '';
-                
-                // Add predefined options with checkboxes
-                workAreaOptions.forEach((option) => {
-                    const item = document.createElement('div');
-                    item.className = 'work-area-checkbox-item';
-                    item.style.cursor = 'pointer';
-                    item.innerHTML = `
-                        <input type="checkbox" value="${option}" id="work_area_${option.replace(/\s+/g, '_')}">
-                        <label for="work_area_${option.replace(/\s+/g, '_')}">${option}</label>
-                    `;
-                    
-                    const checkbox = item.querySelector('input[type="checkbox"]');
-                    
-                    // Make the entire item clickable
-                    item.addEventListener('click', function(e) {
-                        // Prevent double triggering when clicking directly on checkbox
-                        if (e.target.type !== 'checkbox') {
-                            checkbox.checked = !checkbox.checked;
-                            checkbox.dispatchEvent(new Event('change'));
-                        }
-                    });
-                    
-                    checkbox.addEventListener('change', function() {
-                        if (this.checked) {
-                            selectedWorkAreas.push(option);
-                            updateWorkAreaDisplay();
-                            updateWorkAreaDropdownStates();
-                        } else {
-                            selectedWorkAreas = selectedWorkAreas.filter(area => area !== option);
-                            updateWorkAreaDisplay();
-                            updateWorkAreaDropdownStates();
-                        }
-                        // Close popup after selection
-                        workAreaDropdown.style.display = 'none';
-                    });
-                    
-                    workAreaDropdown.appendChild(item);
-                });
-            }
-
-            function updateWorkAreaDisplay() {
-                // Clear current display
-                workAreaTags.innerHTML = '';
-
-                if (selectedWorkAreas.length > 0) {
-                    selectedWorkAreas.forEach(area => {
-                        const tag = document.createElement('div');
-                        tag.className = 'work-area-tag';
-                        tag.innerHTML = `
-                            <span>${area}</span>
-                            <span class="remove-tag">×</span>
-                        `;
-
-                        tag.querySelector('.remove-tag').addEventListener('click', function(e) {
-                            e.stopPropagation();
-                            selectedWorkAreas = selectedWorkAreas.filter(wa => wa !== area);
-                            updateWorkAreaDisplay();
-                            updateWorkAreaDropdownStates();
-                        });
-
-                        workAreaTags.appendChild(tag);
-                    });
-                }
-
-                // Show/hide address sub-question
-                const addressSubQuestion = document.getElementById('addressSubQuestion');
-                if (addressSubQuestion) {
-                    addressSubQuestion.style.display = selectedWorkAreas.length > 0 ? 'block' : 'none';
-                }
-
-                // Update arrow color based on selection
-                const arrow = document.querySelector('.work-area-arrow');
-                if (arrow) {
-                    arrow.style.color = selectedWorkAreas.length > 0 ? 'var(--ai-purple)' : 'var(--text-muted)';
-                }
-            }
-
-            function updateWorkAreaDropdownStates() {
-                const checkboxes = workAreaDropdown.querySelectorAll('input[type="checkbox"]');
-                checkboxes.forEach(checkbox => {
-                    checkbox.checked = selectedWorkAreas.includes(checkbox.value);
-                });
-            }
-
-            // Initialize work area popup - now called after district data is loaded
-
-            workAreaSelect.addEventListener('click', function(e) {
-                e.preventDefault();
-                if (workAreaDropdown.style.display === 'block') {
-                    workAreaDropdown.style.display = 'none';
-                } else {
-                    workAreaDropdown.style.display = 'block';
-                    updateWorkAreaDropdownStates();
-                }
-            });
-
-            // הוספת תמיכה במקלדת לאזורי עבודה
-            workAreaSelect.addEventListener('keydown', function(e) {
-                if (e.key === 'Enter' || e.key === ' ') {
-                    e.preventDefault();
-                    workAreaSelect.click();
-                }
-            });
-
-            // Close autocomplete when clicking outside
-            document.addEventListener('click', function(e) {
-                if (!workAreaSelect.contains(e.target) && !workAreaDropdown.contains(e.target)) {
-                    workAreaDropdown.style.display = 'none';
-                }
-            });
+            // Work area popup functionality - REMOVED
+            // Location selection is now integrated into the category/subcategory table
 
             // Image upload handling
             window.uploadedImage = null; // Store the image data globally for later server upload
@@ -4017,7 +4996,24 @@
                     }
                     return;
                 }
-                
+
+                // Validate that all subcategories have locations selected
+                const subcategoriesWithoutLocations = [];
+                selectedSubcategories.forEach((subData, key) => {
+                    if (!subData.locations || subData.locations.length === 0) {
+                        subcategoriesWithoutLocations.push(subData.subcategory);
+                    }
+                });
+
+                if (subcategoriesWithoutLocations.length > 0) {
+                    alert(`יש לבחור אזורי שירות עבור כל ההתמחויות.\n\nהתמחויות ללא אזורים:\n• ${subcategoriesWithoutLocations.join('\n• ')}`);
+                    const tableContainer = document.getElementById('subcategoryTableContainer');
+                    if (tableContainer) {
+                        tableContainer.scrollIntoView({ behavior: 'smooth' });
+                    }
+                    return;
+                }
+
                 // Fix field name mapping
                 if (data.work_area) {
                     data.work_areas = data.work_area;
@@ -4409,26 +5405,20 @@ ${clientName}`;
             }
 
             collectFormData() {
-                
-                // Collect work areas from multiple sources
-                let workAreas = [];
-                
-                // Try global variable first
-                if (typeof selectedWorkAreas !== 'undefined' && selectedWorkAreas.length > 0) {
-                    workAreas = selectedWorkAreas;
-                } else {
-                    // Try to read from the display element
-                    const workAreaTags = document.getElementById('workAreaTags');
-                    if (workAreaTags && workAreaTags.children.length > 0) {
-                        workAreas = Array.from(workAreaTags.children).map(span => {
-                            return span.textContent.replace('×', '').trim();
-                        }).filter(v => v);
-                    } else {
-                        // Fallback: read from hidden inputs
-                        const workAreaInputs = document.querySelectorAll('input[name="work_areas[]"]');
-                        workAreas = Array.from(workAreaInputs).map(input => input.value).filter(v => v);
-                    }
-                }
+
+                // Extract unique work areas (counties) from categories structure
+                const categories = buildCategoriesHierarchy();
+                const workAreasSet = new Set();
+                categories.forEach(cat => {
+                    cat.subcategories.forEach(sub => {
+                        if (sub.locations && sub.locations.length > 0) {
+                            sub.locations.forEach(loc => {
+                                loc.counties.forEach(county => workAreasSet.add(county));
+                            });
+                        }
+                    });
+                });
+                const workAreas = Array.from(workAreasSet);
 
                 // Collect business benefits from the global array (if available) or hidden inputs
                 let businessBenefits = [];
@@ -4450,8 +5440,7 @@ ${clientName}`;
                 const rawPhone = document.querySelector('[name="phone_number"]').value || '';
                 const phoneNumber = formatPhoneNumber(rawPhone);
 
-                // Build hierarchical categories structure
-                const categories = buildCategoriesHierarchy();
+                // categories already built above for work areas extraction
 
                 const formData = {
                     client_name: document.querySelector('[name="client_name"]').value || 'המקצוען',

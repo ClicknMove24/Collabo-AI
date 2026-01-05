@@ -1978,10 +1978,11 @@
                             <span class="question-number">4.</span>
                             מספר לקוח (זאפ):
                         </label>
-                        <input type="text" class="form-input" name="zap_customer_number" placeholder="לדוגמה: 12345" style="text-align: right;">
+                        <input type="text" class="form-input" name="zap_customer_number" placeholder="לדוגמה: 12345" style="text-align: right;" required>
                     </div>
 
-                    <div class="form-group">
+                    <!-- DISABLED: Address field hidden but preserved for future use -->
+                    <div class="form-group" style="display: none;">
                         <label class="form-label">
                             <span class="question-number">5.</span>
                             כתובת העסק (לא חובה):
@@ -2099,13 +2100,13 @@
                 <div class="form-section">
                     <h3>יתרונות עסקיים</h3>
                     <div class="section-description">
-                        הוסיפו לפחות 4 יתרונות עסקיים שמייחדים אתכם מהמתחרים ומושכים לקוחות.
+                        בחרו 4 יתרונות עסקיים שמייחדים אתכם מהמתחרים ומושכים לקוחות.
                     </div>
 
                     <div class="form-group">
                         <label class="form-label">
                             <span class="question-number">7.</span>
-                            בחרו יתרונות עסקיים <strong>(לפחות 4 יתרונות)</strong>
+                            בחרו יתרונות עסקיים <strong>(בדיוק 4 יתרונות)</strong>
                         </label>
                         
                         <div id="businessBenefitsContainer" style="position: relative;">
@@ -2125,7 +2126,7 @@
                                             <h3 style="margin: 0; font-size: 20px; font-weight: 600; color: var(--text-primary);">בחירת יתרונות עסקיים</h3>
                                             <button type="button" class="popup-close" style="background: none; color: var(--text-muted); border: none; font-size: 24px; cursor: pointer; padding: 0; width: 24px; height: 24px; display: flex; align-items: center; justify-content: center;">×</button>
                                         </div>
-                                        <p style="margin: 8px 0 0 0; color: var(--text-secondary); font-size: 14px;">בחרו לפחות 4 יתרונות עסקיים שמייחדים אתכם מהמתחרים ומושכים לקוחות</p>
+                                        <p style="margin: 8px 0 0 0; color: var(--text-secondary); font-size: 14px;">בחרו 4 יתרונות עסקיים שמייחדים אתכם מהמתחרים ומושכים לקוחות</p>
                                     </div>
                                     
                                     <!-- Popup Content - Scrollable -->
@@ -2323,19 +2324,13 @@
             
             // District hierarchy data
             let districtData = {};
-            let workAreaOptions = [];
-
             // Load district hierarchy data
             async function loadDistrictData() {
                 try {
                     const response = await fetch('district_hierarchy.json');
                     districtData = await response.json();
-                    
-                    // Extract district names for work areas dropdown
-                    workAreaOptions = districtData.Districts.map(district => district.District);
-                    workAreaOptions.push('כל הארץ'); // Add "All Country" option
-                    
-                    console.log('District hierarchy loaded:', workAreaOptions);
+
+                    console.log('District hierarchy loaded:', districtData.Districts.length, 'districts');
                 } catch (error) {
                     console.error('Failed to load district_hierarchy.json:', error);
                     
@@ -2404,23 +2399,8 @@
                             }
                         ]
                     };
-                    
-                    workAreaOptions = districtData.Districts.map(district => district.District);
-                    workAreaOptions.push('כל הארץ');
-                    
+
                     console.warn('Using dummy district data due to load failure');
-                    
-                    // Display warning in work areas section
-                    const workAreaSection = document.querySelector('.work-area-select-container')?.closest('.form-group');
-                    if (workAreaSection) {
-                        const warningBanner = document.createElement('div');
-                        warningBanner.style.cssText = 'background: #fff3cd; border: 2px solid #ffc107; border-radius: 8px; padding: 16px; margin-bottom: 20px; text-align: center;';
-                        warningBanner.innerHTML = `
-                            <strong>⚠️ שים לב!</strong><br>
-                            קובץ המחוזות (district_hierarchy.json) לא נטען. המחוזות המוצגים למטה הם מחוזות דמה בלבד!
-                        `;
-                        workAreaSection.insertBefore(warningBanner, workAreaSection.firstChild);
-                    }
                 }
             }
             
@@ -3868,6 +3848,7 @@
                 
                 // Custom input functionality
                 function addCustomBenefit() {
+                    if (selectedBusinessBenefits.length >= 4) return;
                     const customValue = customInput.value.trim();
                     if (customValue && !selectedBusinessBenefits.find(b => b.text === customValue)) {
                         selectedBusinessBenefits.push({
@@ -3897,8 +3878,13 @@
                         const benefit = e.target.dataset.benefit;
                         const category = e.target.dataset.category;
                         const existingIndex = selectedBusinessBenefits.findIndex(b => b.text === benefit);
-                        
+
                         if (e.target.checked && existingIndex === -1) {
+                            // Cap at 4 benefits
+                            if (selectedBusinessBenefits.length >= 4) {
+                                e.target.checked = false;
+                                return;
+                            }
                             selectedBusinessBenefits.push({
                                 id: Date.now(),
                                 text: benefit,
@@ -3908,7 +3894,7 @@
                         } else if (!e.target.checked && existingIndex >= 0) {
                             selectedBusinessBenefits.splice(existingIndex, 1);
                         }
-                        
+
                         updateBusinessBenefitsDisplay();
                         updateBusinessBenefitsCounter();
                     }
@@ -3928,7 +3914,7 @@
                         countSpan.textContent = `נבחרו ${selectedBusinessBenefits.length} יתרונות (נדרש עוד ${remainingNeeded})`;
                         countSpan.style.color = '#dc2626';
                     } else {
-                        countSpan.textContent = `נבחרו ${selectedBusinessBenefits.length} יתרונות`;
+                        countSpan.textContent = `נבחרו ${selectedBusinessBenefits.length} יתרונות ✓`;
                         countSpan.style.color = '#059669';
                     }
                     businessBenefitsDisplay.appendChild(countSpan);
@@ -4092,7 +4078,7 @@
                     if (submitBtn) {
                         if (selectedBusinessBenefits.length < minBusinessBenefits) {
                             submitBtn.style.opacity = '0.6';
-                            submitBtn.title = `נדרש לבחור לפחות ${minBusinessBenefits} יתרונות עסקיים`;
+                            submitBtn.title = `נדרש לבחור בדיוק ${minBusinessBenefits} יתרונות עסקיים`;
                         } else {
                             submitBtn.style.opacity = '1';
                             submitBtn.title = '';
@@ -4386,7 +4372,7 @@
                         counterElement.textContent = `נבחרו ${count} יתרונות (נדרש עוד ${remainingNeeded})`;
                         counterElement.style.color = '#dc2626';
                     } else {
-                        counterElement.textContent = `נבחרו ${count} יתרונות`;
+                        counterElement.textContent = `נבחרו ${count} יתרונות ✓`;
                         counterElement.style.color = '#059669';
                     }
 
@@ -4399,6 +4385,37 @@
                         } else {
                             saveBtn.style.opacity = '0.5';
                             saveBtn.style.filter = 'grayscale(50%)';
+                        }
+                    }
+
+                    // Disable unchecked checkboxes when 4 are selected
+                    const allCheckboxes = document.querySelectorAll('#businessBenefitsPopupBody input[type="checkbox"]');
+                    allCheckboxes.forEach(cb => {
+                        if (!cb.checked && count >= 4) {
+                            cb.disabled = true;
+                            cb.parentElement.style.opacity = '0.4';
+                            cb.parentElement.style.cursor = 'not-allowed';
+                        } else {
+                            cb.disabled = false;
+                            cb.parentElement.style.opacity = '1';
+                            cb.parentElement.style.cursor = 'pointer';
+                        }
+                    });
+
+                    // Disable custom input when 4 are selected
+                    const customInput = document.getElementById('customBusinessBenefitInput');
+                    const addBtn = document.getElementById('addCustomBusinessBenefit');
+                    if (customInput && addBtn) {
+                        if (count >= 4) {
+                            customInput.disabled = true;
+                            customInput.style.opacity = '0.4';
+                            addBtn.disabled = true;
+                            addBtn.style.opacity = '0.4';
+                        } else {
+                            customInput.disabled = false;
+                            customInput.style.opacity = '1';
+                            addBtn.disabled = false;
+                            addBtn.style.opacity = '1';
                         }
                     }
                 }
@@ -4985,7 +5002,7 @@
                 
                 
                 if (validBenefits.length < 4) {
-                    alert(`נדרש לבחור לפחות 4 יתרונות עסקיים. נמצאו ${validBenefits.length} יתרונות: ${validBenefits.join(', ')}`);
+                    alert(`נדרש לבחור בדיוק 4 יתרונות עסקיים. נמצאו ${validBenefits.length} יתרונות: ${validBenefits.join(', ')}`);
                     const businessBenefitsDisplay = document.getElementById('businessBenefitsDisplay');
                     if (businessBenefitsDisplay) {
                         businessBenefitsDisplay.scrollIntoView({ behavior: 'smooth' });
@@ -5150,7 +5167,7 @@
                 }, 1000);
             }
 
-            generateSamplePosts(primaryField, workAreas) {
+            generateSamplePosts(primaryField) {
                 const postTemplates = {
                     'חשמל': [
                         'שלום, אני צריך חשמלאי בדחיפות! יש לי בעיה עם הלוח חשמל ונופל לי המגן. מישהו יכול להגיע היום?',
@@ -5242,8 +5259,7 @@
 
                 const templates = postTemplates[primaryField] || defaultPosts;
                 
-                // Add location context if work areas are specified
-                const locations = workAreas && workAreas.length > 0 ? workAreas : ['אזור המרכז'];
+                const locations = ['אזור המרכז'];
                 
                 // Fixed list of author names
                 const authorNames = ['דני כהן', 'שרה לוי', 'יוסי אברהם'];
@@ -5356,7 +5372,7 @@ ${clientName}`;
                     }
                     
                     // Generate sample posts
-                    const samplePosts = this.generateSamplePosts(formData.primary_field, formData.work_areas);
+                    const samplePosts = this.generateSamplePosts(formData.primary_field);
                     const selectedPosts = samplePosts.slice(0, 3);
                     const postsContent = selectedPosts.map(p => p.content);
                     
@@ -5396,20 +5412,7 @@ ${clientName}`;
 
             collectFormData() {
 
-                // Extract unique work areas (counties) from categories structure
                 const categories = buildCategoriesHierarchy();
-                const workAreasSet = new Set();
-                categories.forEach(cat => {
-                    cat.subcategories.forEach(sub => {
-                        if (sub.locations && sub.locations.length > 0) {
-                            sub.locations.forEach(loc => {
-                                loc.counties.forEach(county => workAreasSet.add(county));
-                            });
-                        }
-                    });
-                });
-                const workAreas = Array.from(workAreasSet);
-
                 // Collect business benefits from the global array (if available) or hidden inputs
                 let businessBenefits = [];
                 if (typeof selectedBusinessBenefits !== 'undefined' && selectedBusinessBenefits.length > 0) {
@@ -5430,15 +5433,12 @@ ${clientName}`;
                 const rawPhone = document.querySelector('[name="phone_number"]').value || '';
                 const phoneNumber = formatPhoneNumber(rawPhone);
 
-                // categories already built above for work areas extraction
-
                 const formData = {
                     client_name: document.querySelector('[name="client_name"]').value || 'המקצוען',
                     primary_field: document.getElementById('primaryFieldHidden').value || 'שיפוצים כלליים',
                     experience_years: document.querySelector('[name="experience_years"]').value || '10',
                     phone_number: phoneNumber,
                     zap_customer_number: document.querySelector('[name="zap_customer_number"]').value || '',
-                    work_areas: workAreas,
                     business_benefits: businessBenefits,
                     categories: categories,
                     restrictions: restrictions
@@ -5521,21 +5521,24 @@ ${clientName}`;
                     missingFields.push('3. מספר טלפון');
                 }
 
-                // Question 4: Zap customer number (OPTIONAL - not required)
+                // Question 4: Zap customer number (required)
+                if (!formData.zap_customer_number || formData.zap_customer_number.trim() === '') {
+                    missingFields.push('4. מספר לקוח (זאפ)');
+                }
 
                 // Question 5: Primary field (required)
                 if (!formData.primary_field || formData.primary_field.trim() === '') {
                     missingFields.push('5. תחום פעילות ראשי');
                 }
 
-                // Question 6: Categories with locations (work_areas derived from categories)
-                if (!formData.work_areas || formData.work_areas.length === 0) {
+                // Question 6: Categories with locations
+                if (!formData.categories || formData.categories.length === 0) {
                     missingFields.push('6. תחומים ואזורי שירות');
                 }
 
-                // Question 7: Business benefits (required - at least 4)
-                if (!formData.business_benefits || formData.business_benefits.length < 4) {
-                    missingFields.push('7. יתרונות עסקיים (נדרשים לפחות 4)');
+                // Question 7: Business benefits (required - exactly 4)
+                if (!formData.business_benefits || formData.business_benefits.length !== 4) {
+                    missingFields.push('7. יתרונות עסקיים (נדרשים בדיוק 4)');
                 }
 
                 // Question 8: Specializations (OPTIONAL - not required)

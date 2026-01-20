@@ -591,6 +591,29 @@
 
         .subcategory-name {
             font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .subcategory-name .remove-subcategory {
+            cursor: pointer;
+            color: var(--text-muted);
+            font-size: 14px;
+            line-height: 1;
+            transition: color 0.2s ease;
+            width: 18px;
+            height: 18px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: #f3f4f6;
+        }
+
+        .subcategory-name .remove-subcategory:hover {
+            color: white;
+            background: #dc2626;
         }
 
         .subcategory-category {
@@ -2920,7 +2943,10 @@
                     // First column: subcategory name + category (with primary badge on category)
                     const nameCell = document.createElement('td');
                     nameCell.innerHTML = `
-                        <div class="subcategory-name">${data.subcategory}</div>
+                        <div class="subcategory-name">
+                            <span class="remove-subcategory" data-subcategory-key="${key}" title="הסר התמחות">×</span>
+                            ${data.subcategory}
+                        </div>
                         <div class="subcategory-category">
                             ${data.category}
                             ${isPrimary ? '<span class="primary-badge">תחום ראשי</span>' : ''}
@@ -2964,6 +2990,38 @@
                         removeCountyFromSubcategory(key, county, district);
                     });
                 });
+
+                // Add event listeners for remove subcategory buttons
+                tbody.querySelectorAll('.remove-subcategory').forEach(btn => {
+                    btn.addEventListener('click', function(e) {
+                        e.stopPropagation();
+                        const key = this.dataset.subcategoryKey;
+                        removeSubcategoryFromTable(key);
+                    });
+                });
+            }
+
+            function removeSubcategoryFromTable(subcategoryKey) {
+                const data = selectedSubcategories.get(subcategoryKey);
+                if (!data) return;
+
+                // Remove from selectedSubcategories
+                selectedSubcategories.delete(subcategoryKey);
+
+                // Check if primary category has any selections left
+                if (primaryField === data.category) {
+                    const hasAnyInCategory = Array.from(selectedSubcategories.values())
+                        .some(item => item.category === data.category);
+                    if (!hasAnyInCategory) {
+                        primaryField = null;
+                        document.getElementById('primaryFieldHidden').value = '';
+                    }
+                }
+
+                // Update displays
+                updateSubcategoryTable();
+                updateCombinedDisplay();
+                updateCombinedSelectionCount();
             }
 
             function buildLocationDisplayHtml(locations, subcategoryKey) {

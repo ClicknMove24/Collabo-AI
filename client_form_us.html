@@ -616,88 +616,6 @@
             background: #dc2626;
         }
 
-        .locations-cell {
-            display: flex;
-            gap: 12px;
-            align-items: flex-start;
-            width: 100%;
-            justify-content: center;
-        }
-
-        .locations-content {
-            flex: 1;
-            min-width: 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        .no-locations-text {
-            color: var(--text-muted);
-            font-style: italic;
-            text-align: center;
-            display: block;
-        }
-
-        .zipcode-display-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 6px;
-            justify-content: center;
-        }
-
-        .edit-locations-btn {
-            background: transparent !important;
-            border: none !important;
-            color: #7c3aed !important;
-            cursor: pointer;
-            padding: 4px !important;
-            border-radius: 4px;
-            display: inline-flex !important;
-            align-items: center;
-            justify-content: center;
-            transition: background-color 0.2s ease;
-            flex-shrink: 0;
-            width: 28px !important;
-            height: 28px !important;
-            min-width: 28px !important;
-            max-width: 28px !important;
-        }
-
-        .edit-locations-btn:hover {
-            background-color: rgba(124, 58, 237, 0.1) !important;
-        }
-
-        .edit-locations-btn i {
-            font-size: 16px !important;
-            color: #7c3aed !important;
-        }
-
-        /* Zipcode tags in table */
-        .zipcode-display-tag {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            padding: 6px 10px;
-            background: #f3f4f6;
-            color: var(--text-primary);
-            border-radius: 16px;
-            font-size: 13px;
-            border: 1px solid #e5e7eb;
-        }
-
-        .zipcode-display-tag .remove-zipcode-inline {
-            cursor: pointer;
-            color: var(--text-muted);
-            font-size: 14px;
-            line-height: 1;
-            transition: color 0.2s ease;
-        }
-
-        .zipcode-display-tag .remove-zipcode-inline:hover {
-            color: #dc2626;
-        }
-
         /* Category selection popup - hierarchy styles */
         .category-hierarchy-item {
             border-bottom: 1px solid #f3f4f6;
@@ -735,118 +653,7 @@
             margin-right: 8px;
         }
 
-        /* Location edit modal */
-        .location-modal-overlay {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.5);
-            z-index: 10000;
-            overflow-y: auto;
-        }
-
-        .location-modal-container {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            min-height: 100vh;
-            padding: 20px;
-        }
-
-        .location-modal-content {
-            background: white;
-            border-radius: 12px;
-            border: 1px solid var(--border-light);
-            max-width: 500px;
-            width: 100%;
-            max-height: 80vh;
-            position: relative;
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .location-modal-header {
-            padding: 20px 20px 16px 20px;
-            border-bottom: 1px solid var(--border-light);
-        }
-
-        .location-modal-title {
-            margin: 0;
-            font-size: 18px;
-            font-weight: 600;
-            color: var(--text-primary);
-        }
-
-        .location-modal-close {
-            background: none !important;
-            color: var(--text-muted) !important;
-            border: none !important;
-            font-size: 20px !important;
-            cursor: pointer;
-            padding: 4px !important;
-            width: 32px !important;
-            height: 32px !important;
-            border-radius: 4px !important;
-            display: flex !important;
-            align-items: center;
-            justify-content: center;
-            transition: background-color 0.2s ease;
-            transform: none !important;
-        }
-
-        .location-modal-close:hover {
-            background: var(--bg-gray) !important;
-            transform: none !important;
-            box-shadow: none !important;
-        }
-
-        .location-modal-body {
-            flex: 1;
-            overflow-y: auto;
-            min-height: 0;
-        }
-
-        .location-modal-footer {
-            padding: 16px 20px;
-            border-top: 1px solid var(--border-light);
-            flex-shrink: 0;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background: var(--bg-gray);
-        }
-
-        .location-count-text {
-            color: var(--text-secondary);
-            font-size: 14px;
-            font-weight: 500;
-        }
-
-        .save-locations-btn {
-            background: var(--ai-purple) !important;
-            color: white !important;
-            border: none !important;
-            padding: 10px 20px !important;
-            width: auto !important;
-            border-radius: var(--border-radius) !important;
-            font-size: 14px !important;
-            cursor: pointer;
-            font-weight: 500 !important;
-            transition: all 0.2s ease;
-            transform: none !important;
-        }
-
-        .save-locations-btn:hover {
-            background: rgba(76, 29, 149, 0.9) !important;
-            transform: none !important;
-            box-shadow: none !important;
-        }
-
-        /* Zipcode input in modal */
+        /* Zipcode input section */
         .zipcode-input-section {
             display: flex;
             gap: 8px;
@@ -1605,11 +1412,11 @@
                     </div>
                 </div>
 
-                <!-- Service Areas, Specializations & Locations -->
+                <!-- Service Categories -->
                 <div class="form-section">
-                    <h3>Service Categories & Locations</h3>
+                    <h3>Service Categories</h3>
                     <div class="section-description">
-                        Select your service categories, then define which areas you serve for each one.
+                        Select your service categories.
                     </div>
 
                     <div class="form-group">
@@ -1632,8 +1439,7 @@
                             <table class="subcategory-table">
                                 <thead>
                                     <tr>
-                                        <th>Category</th>
-                                        <th>Service Areas</th>
+                                        <th>Selected Categories</th>
                                     </tr>
                                 </thead>
                                 <tbody id="subcategoryTableBody">
@@ -1674,47 +1480,41 @@
                             </div>
                         </div>
 
-                        <!-- Location Edit Modal -->
-                        <div id="locationEditModal" class="location-modal-overlay">
-                            <div class="location-modal-container">
-                                <div class="location-modal-content">
-                                    <!-- Modal Header -->
-                                    <div class="location-modal-header">
-                                        <div style="display: flex; align-items: center; justify-content: space-between;">
-                                            <h3 id="locationEditModalTitle" class="location-modal-title">Select Service Areas</h3>
-                                            <button type="button" id="closeLocationEditModal" class="location-modal-close">×</button>
-                                        </div>
-                                        <p style="margin: 8px 0 0 0; color: var(--text-secondary); font-size: 13px;">Enter zip codes for the areas you serve.</p>
-                                    </div>
+                    </div>
+                </div>
 
-                                    <!-- Zipcode Input and Tags -->
-                                    <div class="location-modal-body" id="locationModalBody">
-                                        <div class="zipcode-input-section">
-                                            <input type="text" id="zipcodeInput" class="zipcode-field" placeholder="Enter zip code..."
-                                                   maxlength="5" inputmode="numeric" pattern="[0-9]*">
-                                            <button type="button" id="addZipcodeBtn" class="zipcode-add-btn">Add</button>
-                                            <button type="button" id="bulkUploadToggle" class="bulk-upload-toggle">Bulk Upload</button>
-                                        </div>
-                                        <div id="bulkUploadSection" class="bulk-upload-section">
-                                            <textarea id="bulkZipcodeInput" placeholder="Paste zip codes in either format:&#10;&#10;91301&#10;91302&#10;91303&#10;&#10;or:&#10;&#10;91301, 91302, 91303, 91304"></textarea>
-                                            <div class="bulk-upload-hint">Supported formats: one zip code per line, or comma-separated.</div>
-                                            <div class="bulk-upload-actions">
-                                                <button type="button" id="bulkAddBtn">Add All</button>
-                                            </div>
-                                        </div>
-                                        <div id="zipcodeTagsContainer" class="zipcode-tags-container">
-                                            <!-- Zipcode tags populated by JS -->
-                                        </div>
-                                    </div>
+                <!-- Service Areas -->
+                <div class="form-section">
+                    <h3>Service Areas</h3>
+                    <div class="section-description">
+                        Enter the zip codes for the areas you serve. These apply to all your selected categories.
+                    </div>
 
-                                    <!-- Modal Footer -->
-                                    <div class="location-modal-footer">
-                                        <div id="selectedLocationCount" class="location-count-text">No locations selected</div>
-                                        <button type="button" id="saveLocationEdit" class="save-locations-btn">Save Changes</button>
-                                    </div>
+                    <div class="form-group">
+                        <label class="form-label">
+                            <span class="question-number">8.</span>
+                            Zip codes you serve:
+                        </label>
+
+                        <div style="border: 1px solid var(--border-light); border-radius: var(--border-radius); overflow: hidden;">
+                            <div class="zipcode-input-section">
+                                <input type="text" id="serviceAreaZipcodeInput" class="zipcode-field" placeholder="Enter zip code..."
+                                       maxlength="5" inputmode="numeric" pattern="[0-9]*">
+                                <button type="button" id="addServiceAreaZipcodeBtn" class="zipcode-add-btn">Add</button>
+                                <button type="button" id="serviceAreaBulkUploadToggle" class="bulk-upload-toggle">Bulk Upload</button>
+                            </div>
+                            <div id="serviceAreaBulkUploadSection" class="bulk-upload-section">
+                                <textarea id="serviceAreaBulkZipcodeInput" placeholder="Paste zip codes in either format:&#10;&#10;91301&#10;91302&#10;91303&#10;&#10;or:&#10;&#10;91301, 91302, 91303, 91304"></textarea>
+                                <div class="bulk-upload-hint">Supported formats: one zip code per line, or comma-separated.</div>
+                                <div class="bulk-upload-actions">
+                                    <button type="button" id="serviceAreaBulkAddBtn">Add All</button>
                                 </div>
                             </div>
+                            <div id="serviceAreaZipcodeTagsContainer" class="zipcode-tags-container">
+                                <span class="no-zipcodes-text">No zip codes entered</span>
+                            </div>
                         </div>
+                        <div id="serviceAreaLocationCount" style="color: var(--text-secondary); font-size: 14px; margin-top: 8px;">No zip codes entered</div>
                     </div>
                 </div>
 
@@ -1727,7 +1527,7 @@
 
                     <div class="form-group">
                         <label class="form-label">
-                            <span class="question-number">8.</span>
+                            <span class="question-number">9.</span>
                             Select business benefits <strong>(exactly 4 benefits)</strong>
                         </label>
                         
@@ -1784,7 +1584,7 @@
 
                     <div class="form-group">
                         <label class="form-label" style="position: relative;">
-                            <span class="question-number">9.</span>
+                            <span class="question-number">10.</span>
                             Are there topics you'd prefer to avoid in responses? <strong>(up to 5 topics)</strong>
                             <i class="fas fa-lightbulb restriction-tooltip-trigger" style="color: #f59e0b; margin-left: 8px; cursor: pointer; font-size: 16px; transition: all 0.2s; animation: lightbulb-glow 2s ease-in-out infinite;"></i>
                             <div class="restriction-tooltip" id="restrictionTooltip" style="
@@ -2051,12 +1851,11 @@
             // ===========================================
 
             // State variables
-            // Map: categoryName => { category, locations: null | ["12345", ...] }
+            // Map: categoryName => { category }
             let selectedCategories = new Map();
 
-            // Current editing state for location modal
-            let currentEditingCategoryKey = null;
-            let tempSelectedZipcodes = new Set(); // Temporary selection during modal editing
+            // Global zip codes for all categories
+            let selectedZipcodes = new Set();
 
             // Initialize combined specializations popup functionality
             function initializeCombinedSpecializationsPopup() {
@@ -2090,9 +1889,6 @@
                 searchInput?.addEventListener('input', function() {
                     filterCombinedCategories(this.value);
                 });
-
-                // Initialize location modal
-                initializeLocationModal();
             }
 
             function openCombinedSpecializationsPopup() {
@@ -2177,10 +1973,7 @@
             function toggleCategorySelection(category, selected) {
                 if (selected) {
                     if (!selectedCategories.has(category)) {
-                        selectedCategories.set(category, {
-                            category,
-                            locations: null // null = never set, eligible for default inheritance
-                        });
+                        selectedCategories.set(category, { category });
                     }
                 } else {
                     selectedCategories.delete(category);
@@ -2258,7 +2051,6 @@
                 sortedEntries.forEach(([key, data]) => {
                     const row = document.createElement('tr');
 
-                    // First column: category name
                     const nameCell = document.createElement('td');
                     nameCell.innerHTML = `
                         <div class="subcategory-name">
@@ -2267,41 +2059,8 @@
                         </div>
                     `;
 
-                    // Second column: locations + edit button
-                    const locCell = document.createElement('td');
-                    const locationsHtml = buildLocationDisplayHtml(data.locations, key);
-                    locCell.innerHTML = `
-                        <div class="locations-cell">
-                            <div class="locations-content">
-                                ${locationsHtml}
-                            </div>
-                            <button type="button" class="edit-locations-btn" data-category-key="${key}" title="Edit service areas">
-                                <i class="fas fa-edit"></i>
-                            </button>
-                        </div>
-                    `;
-
                     row.appendChild(nameCell);
-                    row.appendChild(locCell);
                     tbody.appendChild(row);
-                });
-
-                // Add event listeners for edit buttons
-                tbody.querySelectorAll('.edit-locations-btn').forEach(btn => {
-                    btn.addEventListener('click', function() {
-                        const key = this.dataset.categoryKey;
-                        openLocationEditModal(key);
-                    });
-                });
-
-                // Add event listeners for remove zipcode buttons
-                tbody.querySelectorAll('.remove-zipcode-inline').forEach(btn => {
-                    btn.addEventListener('click', function(e) {
-                        e.stopPropagation();
-                        const key = this.dataset.categoryKey;
-                        const zipcode = this.dataset.zipcode;
-                        removeZipcodeFromCategory(key, zipcode);
-                    });
                 });
 
                 // Add event listeners for remove category buttons
@@ -2323,135 +2082,99 @@
                 updateCombinedSelectionCount();
             }
 
-            function buildLocationDisplayHtml(locations, categoryKey) {
-                if (locations === null || locations === undefined || locations.length === 0) {
-                    return '<span class="no-locations-text">No areas selected</span>';
-                }
-
-                return `
-                    <div class="zipcode-display-tags">
-                        ${locations.map(zip => `
-                            <span class="zipcode-display-tag">
-                                <span class="remove-zipcode-inline" data-category-key="${categoryKey}" data-zipcode="${zip}">×</span>
-                                <span>${zip}</span>
-                            </span>
-                        `).join('')}
-                    </div>
-                `;
-            }
-
-            function removeZipcodeFromCategory(categoryKey, zipcode) {
-                const data = selectedCategories.get(categoryKey);
-                if (!data || !data.locations) return;
-
-                data.locations = data.locations.filter(z => z !== zipcode);
-
-                // Update the table
-                updateCategoryTable();
-            }
-
             // ===========================================
-            // LOCATION EDIT MODAL
+            // SERVICE AREA ZIP CODES (GLOBAL)
             // ===========================================
 
-            function initializeLocationModal() {
-                const modal = document.getElementById('locationEditModal');
-                const closeBtn = document.getElementById('closeLocationEditModal');
-                const saveBtn = document.getElementById('saveLocationEdit');
-                const addBtn = document.getElementById('addZipcodeBtn');
-                const zipcodeInput = document.getElementById('zipcodeInput');
+            function initializeServiceAreaInput() {
+                const input = document.getElementById('serviceAreaZipcodeInput');
+                const addBtn = document.getElementById('addServiceAreaZipcodeBtn');
+                const bulkToggle = document.getElementById('serviceAreaBulkUploadToggle');
+                const bulkSection = document.getElementById('serviceAreaBulkUploadSection');
+                const bulkAddBtn = document.getElementById('serviceAreaBulkAddBtn');
 
-                if (!modal) return;
+                addBtn?.addEventListener('click', addServiceAreaZipcode);
 
-                closeBtn?.addEventListener('click', closeLocationEditModal);
-                modal.addEventListener('click', function(e) {
-                    if (e.target === modal) {
-                        closeLocationEditModal();
-                    }
-                });
-
-                saveBtn?.addEventListener('click', saveLocationEdit);
-
-                addBtn?.addEventListener('click', addZipcode);
-
-                zipcodeInput?.addEventListener('keydown', function(e) {
+                input?.addEventListener('keydown', function(e) {
                     if (e.key === 'Enter') {
                         e.preventDefault();
-                        addZipcode();
+                        addServiceAreaZipcode();
                     }
                 });
-
-                // Bulk upload toggle
-                const bulkToggle = document.getElementById('bulkUploadToggle');
-                const bulkSection = document.getElementById('bulkUploadSection');
-                const bulkAddBtn = document.getElementById('bulkAddBtn');
 
                 bulkToggle?.addEventListener('click', function() {
                     bulkSection.classList.toggle('active');
                     this.textContent = bulkSection.classList.contains('active') ? 'Single Entry' : 'Bulk Upload';
                 });
 
-                bulkAddBtn?.addEventListener('click', bulkAddZipcodes);
+                bulkAddBtn?.addEventListener('click', bulkAddServiceAreaZipcodes);
             }
 
-            function openLocationEditModal(categoryKey) {
-                currentEditingCategoryKey = categoryKey;
-                const modal = document.getElementById('locationEditModal');
-                const title = document.getElementById('locationEditModalTitle');
+            function addServiceAreaZipcode() {
+                const input = document.getElementById('serviceAreaZipcodeInput');
+                if (!input) return;
 
-                if (!modal) return;
+                const value = input.value.trim();
 
-                const data = selectedCategories.get(categoryKey);
-                if (data) {
-                    title.textContent = `Service areas: ${data.category}`;
+                if (!/^\d{5}$/.test(value)) {
+                    input.style.borderColor = '#dc2626';
+                    setTimeout(() => { input.style.borderColor = ''; }, 1500);
+                    return;
                 }
 
-                // Initialize temp selection from current locations
-                tempSelectedZipcodes = new Set();
-                if (data && data.locations) {
-                    data.locations.forEach(zip => {
-                        tempSelectedZipcodes.add(zip);
-                    });
+                if (selectedZipcodes.has(value)) {
+                    input.value = '';
+                    return;
                 }
 
-                renderZipcodeTags();
-                updateLocationCount();
-
-                modal.style.display = 'block';
-                document.body.style.overflow = 'hidden';
+                selectedZipcodes.add(value);
+                input.value = '';
+                renderServiceAreaZipcodeTags();
+                updateServiceAreaLocationCount();
+                input.focus();
             }
 
-            function closeLocationEditModal() {
-                const modal = document.getElementById('locationEditModal');
-                if (modal) {
-                    modal.style.display = 'none';
-                    document.body.style.overflow = '';
-                }
+            function bulkAddServiceAreaZipcodes() {
+                const textarea = document.getElementById('serviceAreaBulkZipcodeInput');
+                if (!textarea) return;
 
-                currentEditingCategoryKey = null;
-                tempSelectedZipcodes.clear();
+                const raw = textarea.value.trim();
+                if (!raw) return;
 
-                // Clear inputs
-                const zipcodeInput = document.getElementById('zipcodeInput');
-                if (zipcodeInput) zipcodeInput.value = '';
-                const bulkInput = document.getElementById('bulkZipcodeInput');
-                if (bulkInput) bulkInput.value = '';
-                const bulkSection = document.getElementById('bulkUploadSection');
+                const tokens = raw.split(/[\n,]+/);
+                tokens.forEach(token => {
+                    const zip = token.trim();
+                    if (/^\d{5}$/.test(zip)) {
+                        selectedZipcodes.add(zip);
+                    }
+                });
+
+                textarea.value = '';
+                renderServiceAreaZipcodeTags();
+                updateServiceAreaLocationCount();
+
+                const bulkSection = document.getElementById('serviceAreaBulkUploadSection');
+                const bulkToggle = document.getElementById('serviceAreaBulkUploadToggle');
                 if (bulkSection) bulkSection.classList.remove('active');
-                const bulkToggle = document.getElementById('bulkUploadToggle');
                 if (bulkToggle) bulkToggle.textContent = 'Bulk Upload';
             }
 
-            function renderZipcodeTags() {
-                const container = document.getElementById('zipcodeTagsContainer');
+            function removeServiceAreaZipcode(zip) {
+                selectedZipcodes.delete(zip);
+                renderServiceAreaZipcodeTags();
+                updateServiceAreaLocationCount();
+            }
+
+            function renderServiceAreaZipcodeTags() {
+                const container = document.getElementById('serviceAreaZipcodeTagsContainer');
                 if (!container) return;
 
-                if (tempSelectedZipcodes.size === 0) {
+                if (selectedZipcodes.size === 0) {
                     container.innerHTML = '<span class="no-zipcodes-text">No zip codes entered</span>';
                     return;
                 }
 
-                const sorted = Array.from(tempSelectedZipcodes).sort();
+                const sorted = Array.from(selectedZipcodes).sort();
                 container.innerHTML = sorted.map(zip => `
                     <span class="zipcode-tag">
                         <span>${zip}</span>
@@ -2459,120 +2182,19 @@
                     </span>
                 `).join('');
 
-                // Add remove listeners
                 container.querySelectorAll('.remove-zipcode').forEach(btn => {
                     btn.addEventListener('click', function() {
-                        removeZipcode(this.dataset.zipcode);
+                        removeServiceAreaZipcode(this.dataset.zipcode);
                     });
                 });
             }
 
-            function addZipcode() {
-                const input = document.getElementById('zipcodeInput');
-                if (!input) return;
-
-                const value = input.value.trim();
-
-                // Validate: must be exactly 5 digits
-                if (!/^\d{5}$/.test(value)) {
-                    input.style.borderColor = '#dc2626';
-                    setTimeout(() => { input.style.borderColor = ''; }, 1500);
-                    return;
-                }
-
-                if (tempSelectedZipcodes.has(value)) {
-                    // Already exists — just clear input
-                    input.value = '';
-                    return;
-                }
-
-                tempSelectedZipcodes.add(value);
-                input.value = '';
-                renderZipcodeTags();
-                updateLocationCount();
-                input.focus();
-            }
-
-            function bulkAddZipcodes() {
-                const textarea = document.getElementById('bulkZipcodeInput');
-                if (!textarea) return;
-
-                const raw = textarea.value.trim();
-                if (!raw) return;
-
-                // Split by newlines and/or commas
-                const tokens = raw.split(/[\n,]+/);
-                let addedCount = 0;
-
-                tokens.forEach(token => {
-                    const zip = token.trim();
-                    if (/^\d{5}$/.test(zip) && !tempSelectedZipcodes.has(zip)) {
-                        tempSelectedZipcodes.add(zip);
-                        addedCount++;
-                    }
-                });
-
-                textarea.value = '';
-                renderZipcodeTags();
-                updateLocationCount();
-
-                // Collapse the bulk section after adding
-                const bulkSection = document.getElementById('bulkUploadSection');
-                const bulkToggle = document.getElementById('bulkUploadToggle');
-                if (bulkSection) bulkSection.classList.remove('active');
-                if (bulkToggle) bulkToggle.textContent = 'Bulk Upload';
-            }
-
-            function removeZipcode(zip) {
-                tempSelectedZipcodes.delete(zip);
-                renderZipcodeTags();
-                updateLocationCount();
-            }
-
-            function updateLocationCount() {
-                const countDisplay = document.getElementById('selectedLocationCount');
+            function updateServiceAreaLocationCount() {
+                const countDisplay = document.getElementById('serviceAreaLocationCount');
                 if (!countDisplay) return;
 
-                const count = tempSelectedZipcodes.size;
-                countDisplay.textContent = count === 0 ? 'No zip codes entered' : `${count} zip codes entered`;
-            }
-
-            function saveLocationEdit() {
-                if (!currentEditingCategoryKey) return;
-
-                const data = selectedCategories.get(currentEditingCategoryKey);
-                if (!data) return;
-
-                // Build flat array of zip codes
-                const locations = Array.from(tempSelectedZipcodes);
-
-                // Update the category with new locations
-                data.locations = locations;
-
-                // Apply default inheritance: if this is the first location set,
-                // apply to all categories with locations === null
-                applyDefaultLocationsIfNeeded(locations);
-
-                // Update table
-                updateCategoryTable();
-
-                // Close modal
-                closeLocationEditModal();
-            }
-
-            function applyDefaultLocationsIfNeeded(newLocations) {
-                // Only apply if newLocations has content
-                if (!newLocations || newLocations.length === 0) return;
-
-                // Find all categories with locations === null (never set)
-                selectedCategories.forEach((data, key) => {
-                    if (key === currentEditingCategoryKey) return; // Skip the one we just edited
-
-                    if (data.locations === null) {
-                        // Copy the flat array of zip strings
-                        data.locations = [...newLocations];
-                    }
-                });
+                const count = selectedZipcodes.size;
+                countDisplay.textContent = count === 0 ? 'No zip codes entered' : `${count} zip code${count !== 1 ? 's' : ''} entered`;
             }
 
             function filterCombinedCategories(searchTerm) {
@@ -2593,11 +2215,12 @@
 
             // Build categories list for form submission
             function buildCategoriesHierarchy() {
+                const globalLocations = Array.from(selectedZipcodes);
                 const result = [];
                 selectedCategories.forEach((data, key) => {
                     result.push({
                         category: data.category,
-                        locations: data.locations || []
+                        locations: globalLocations
                     });
                 });
                 return result;
@@ -2612,9 +2235,10 @@
                 updateCategoryTable();
             };
 
-            // Initialize popup on page load
+            // Initialize popup and service area input on page load
             setTimeout(() => {
                 initializeCombinedSpecializationsPopup();
+                initializeServiceAreaInput();
             }, 100);
 
             // Old code removed - replaced with combined specializations functionality
@@ -3891,19 +3515,14 @@
                     return;
                 }
 
-                // Validate that all categories have locations selected
-                const categoriesWithoutLocations = [];
-                selectedCategories.forEach((catData, key) => {
-                    if (!catData.locations || catData.locations.length === 0) {
-                        categoriesWithoutLocations.push(catData.category);
-                    }
-                });
-
-                if (categoriesWithoutLocations.length > 0) {
-                    alert(`Please select service areas for all categories.\n\nCategories without areas:\n${categoriesWithoutLocations.join('\n• ')}`);
-                    const tableContainer = document.getElementById('subcategoryTableContainer');
-                    if (tableContainer) {
-                        tableContainer.scrollIntoView({ behavior: 'smooth' });
+                // Validate that at least one zip code is entered
+                if (selectedZipcodes.size === 0) {
+                    alert('Please enter at least one zip code for the areas you serve.');
+                    const serviceAreaInput = document.getElementById('serviceAreaZipcodeInput');
+                    if (serviceAreaInput) {
+                        serviceAreaInput.scrollIntoView({ behavior: 'smooth' });
+                        serviceAreaInput.style.borderColor = '#dc2626';
+                        setTimeout(() => { serviceAreaInput.style.borderColor = ''; }, 3000);
                     }
                     return;
                 }
@@ -3982,6 +3601,11 @@ The JSON file includes:
                     updateCombinedDisplay();
                     updateCategoryTable();
                 }
+
+                // Reset service area zip codes
+                selectedZipcodes.clear();
+                renderServiceAreaZipcodeTags();
+                updateServiceAreaLocationCount();
                 
                 // Clear any error styles
                 const businessBenefitsDisplay = document.getElementById('businessBenefitsDisplay');

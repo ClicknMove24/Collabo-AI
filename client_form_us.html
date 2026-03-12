@@ -616,17 +616,6 @@
             background: #dc2626;
         }
 
-        .primary-badge {
-            display: inline-block;
-            background: var(--ai-purple);
-            color: white;
-            padding: 2px 8px;
-            border-radius: 12px;
-            font-size: 11px;
-            font-weight: 500;
-            margin-left: 8px;
-        }
-
         .locations-cell {
             display: flex;
             gap: 12px;
@@ -744,29 +733,6 @@
 
         .category-checkbox {
             margin-right: 8px;
-        }
-
-        .set-primary-btn {
-            padding: 4px 10px;
-            border: 1px solid var(--border-light);
-            background: white;
-            color: var(--text-secondary);
-            border-radius: 4px;
-            font-size: 11px;
-            cursor: pointer;
-            transition: all 0.2s ease;
-            white-space: nowrap;
-        }
-
-        .set-primary-btn:hover {
-            border-color: var(--ai-purple);
-            color: var(--ai-purple);
-        }
-
-        .set-primary-btn.is-primary {
-            background: #fef3c7;
-            border-color: #d97706;
-            color: #d97706;
         }
 
         /* Location edit modal */
@@ -926,6 +892,97 @@
         }
 
         .zipcode-input-section .zipcode-add-btn:hover {
+            background: rgba(76, 29, 149, 0.9) !important;
+            transform: none !important;
+            box-shadow: none !important;
+        }
+
+        .bulk-upload-toggle {
+            flex-shrink: 0;
+            width: auto !important;
+            height: 40px !important;
+            padding: 0 14px !important;
+            background: transparent !important;
+            color: var(--ai-purple) !important;
+            border: 1px solid var(--ai-purple) !important;
+            border-radius: var(--border-radius) !important;
+            font-size: 13px !important;
+            font-weight: 500 !important;
+            cursor: pointer;
+            white-space: nowrap;
+            transform: none !important;
+        }
+
+        .bulk-upload-toggle:hover {
+            background: rgba(76, 29, 149, 0.08) !important;
+            transform: none !important;
+            box-shadow: none !important;
+        }
+
+        .bulk-upload-section {
+            display: none;
+            padding: 16px 20px;
+            border-bottom: 1px solid var(--border-light);
+            background: #f9fafb;
+        }
+
+        .bulk-upload-section.active {
+            display: block;
+        }
+
+        .bulk-upload-section textarea {
+            width: 100%;
+            min-height: 100px;
+            padding: 10px 12px;
+            border: 1px solid var(--border-light);
+            border-radius: var(--border-radius);
+            font-size: 14px;
+            font-family: monospace;
+            background: white;
+            color: var(--text-primary);
+            resize: vertical;
+            box-sizing: border-box;
+        }
+
+        .bulk-upload-section textarea:focus {
+            outline: none;
+            border-color: var(--ai-purple);
+            box-shadow: 0 0 0 2px rgba(76, 29, 149, 0.15);
+        }
+
+        .bulk-upload-section textarea::placeholder {
+            font-family: monospace;
+            font-size: 13px;
+            color: var(--text-muted);
+        }
+
+        .bulk-upload-hint {
+            font-size: 12px;
+            color: var(--text-muted);
+            margin-top: 8px;
+        }
+
+        .bulk-upload-actions {
+            display: flex;
+            justify-content: flex-end;
+            margin-top: 10px;
+        }
+
+        .bulk-upload-actions button {
+            width: auto !important;
+            height: 36px !important;
+            padding: 0 18px !important;
+            background: var(--ai-purple) !important;
+            color: white !important;
+            border: none !important;
+            border-radius: var(--border-radius) !important;
+            font-size: 13px !important;
+            font-weight: 500 !important;
+            cursor: pointer;
+            transform: none !important;
+        }
+
+        .bulk-upload-actions button:hover {
             background: rgba(76, 29, 149, 0.9) !important;
             transform: none !important;
             box-shadow: none !important;
@@ -1218,14 +1275,6 @@
             padding: 10px 12px !important;
             min-height: 44px !important;
         }
-        
-        .set-primary-btn {
-            width: 90px !important;
-            height: 32px !important;
-            font-size: 12px !important;
-            padding: 4px 8px !important;
-            min-height: 32px !important;
-        }
 
         /* Desktop styles (769px and above) - Force same styling as mobile */
         @media (min-width: 769px) {
@@ -1251,16 +1300,7 @@
                 padding: 10px 12px !important;
                 min-height: 44px !important;
             }
-            
-            /* Force category buttons to match mobile */
-            .set-primary-btn {
-                width: 90px !important;
-                height: 32px !important;
-                font-size: 12px !important;
-                padding: 4px 8px !important;
-                min-height: 32px !important;
-            }
-            
+
             /* Force popup category headers to match mobile height */
             #combinedSpecializationsPopup div[style*="padding: 10px"],
             #businessBenefitsPopup div[style*="padding: 10px"] {
@@ -1446,15 +1486,6 @@
                 padding: 12px !important;
                 font-size: 14px !important;
             }
-            
-            /* Category buttons in popups - mobile friendly */
-            .set-primary-btn {
-                width: 90px !important;
-                height: 32px !important;
-                font-size: 12px !important;
-                padding: 4px 8px !important;
-                min-height: 32px !important;
-            }
         }
             
 
@@ -1578,7 +1609,7 @@
                 <div class="form-section">
                     <h3>Service Categories & Locations</h3>
                     <div class="section-description">
-                        Select your service categories, then define which areas you serve for each one. Primary field receives top priority referrals.
+                        Select your service categories, then define which areas you serve for each one.
                     </div>
 
                     <div class="form-group">
@@ -1594,7 +1625,6 @@
                             </div>
 
                             <!-- Hidden inputs for form submission -->
-                            <input type="hidden" id="primaryFieldHidden" name="primary_field" required>
                         </div>
 
                         <!-- Subcategory Table - appears after selections made -->
@@ -1663,6 +1693,14 @@
                                             <input type="text" id="zipcodeInput" class="zipcode-field" placeholder="Enter zip code..."
                                                    maxlength="5" inputmode="numeric" pattern="[0-9]*">
                                             <button type="button" id="addZipcodeBtn" class="zipcode-add-btn">Add</button>
+                                            <button type="button" id="bulkUploadToggle" class="bulk-upload-toggle">Bulk Upload</button>
+                                        </div>
+                                        <div id="bulkUploadSection" class="bulk-upload-section">
+                                            <textarea id="bulkZipcodeInput" placeholder="Paste zip codes in either format:&#10;&#10;91301&#10;91302&#10;91303&#10;&#10;or:&#10;&#10;91301, 91302, 91303, 91304"></textarea>
+                                            <div class="bulk-upload-hint">Supported formats: one zip code per line, or comma-separated.</div>
+                                            <div class="bulk-upload-actions">
+                                                <button type="button" id="bulkAddBtn">Add All</button>
+                                            </div>
                                         </div>
                                         <div id="zipcodeTagsContainer" class="zipcode-tags-container">
                                             <!-- Zipcode tags populated by JS -->
@@ -2013,7 +2051,6 @@
             // ===========================================
 
             // State variables
-            let primaryField = null;
             // Map: categoryName => { category, locations: null | ["12345", ...] }
             let selectedCategories = new Map();
 
@@ -2096,7 +2133,6 @@
                     categoryDiv.dataset.categoryName = category;
 
                     const isSelected = selectedCategories.has(category);
-                    const isPrimary = primaryField === category;
 
                     const header = document.createElement('div');
                     header.className = `category-header${isSelected ? ' expanded' : ''}`;
@@ -2104,10 +2140,6 @@
                         <input type="checkbox" class="category-checkbox" data-category="${category}"
                                ${isSelected ? 'checked' : ''}>
                         <span class="category-name">${category}</span>
-                        ${isPrimary ? '<span class="primary-badge">Primary Field</span>' : ''}
-                        <button type="button" class="set-primary-btn${isPrimary ? ' is-primary' : ''}" data-category="${category}">
-                            ${isPrimary ? '🏆 Primary' : 'Set as Primary'}
-                        </button>
                     `;
 
                     categoryDiv.appendChild(header);
@@ -2131,22 +2163,13 @@
                     });
                 });
 
-                // Category row click (not on checkbox or button)
+                // Category row click (not on checkbox)
                 popupBody.querySelectorAll('.category-header').forEach(header => {
                     header.addEventListener('click', function(e) {
-                        if (e.target.type === 'checkbox' || e.target.classList.contains('set-primary-btn')) return;
+                        if (e.target.type === 'checkbox') return;
                         const checkbox = this.querySelector('.category-checkbox');
                         checkbox.checked = !checkbox.checked;
                         checkbox.dispatchEvent(new Event('change', { bubbles: true }));
-                    });
-                });
-
-                // Primary field buttons
-                popupBody.querySelectorAll('.set-primary-btn').forEach(btn => {
-                    btn.addEventListener('click', function(e) {
-                        e.stopPropagation();
-                        const category = this.dataset.category;
-                        setPrimaryField(category);
                     });
                 });
             }
@@ -2159,39 +2182,8 @@
                             locations: null // null = never set, eligible for default inheritance
                         });
                     }
-
-                    // Auto-set primary if none set
-                    if (!primaryField) {
-                        primaryField = category;
-                        document.getElementById('primaryFieldHidden').value = category;
-                    }
                 } else {
                     selectedCategories.delete(category);
-
-                    // Clear primary if deselecting the primary category
-                    if (primaryField === category) {
-                        primaryField = null;
-                        document.getElementById('primaryFieldHidden').value = '';
-                    }
-                }
-
-                buildCombinedPopupContent();
-                updateCombinedSelectionCount();
-            }
-
-            function setPrimaryField(category) {
-                // If clicking on already primary, don't change
-                if (primaryField === category) return;
-
-                primaryField = category;
-                document.getElementById('primaryFieldHidden').value = category;
-
-                // Also select this category if not already selected
-                if (!selectedCategories.has(category)) {
-                    selectedCategories.set(category, {
-                        category,
-                        locations: null
-                    });
                 }
 
                 buildCombinedPopupContent();
@@ -2207,11 +2199,8 @@
                 if (count === 0) {
                     countDisplay.textContent = 'No categories selected';
                     countDisplay.style.color = 'var(--text-muted)';
-                } else if (!primaryField) {
-                    countDisplay.textContent = `${count} categories selected - please select a primary field`;
-                    countDisplay.style.color = '#d97706';
                 } else {
-                    countDisplay.textContent = `Primary field: ${primaryField} | ${count} categories`;
+                    countDisplay.textContent = `${count} ${count === 1 ? 'category' : 'categories'} selected`;
                     countDisplay.style.color = 'var(--text-secondary)';
                 }
             }
@@ -2219,11 +2208,6 @@
             function saveCombinedSpecializations() {
                 if (selectedCategories.size === 0) {
                     alert('Please select at least one category');
-                    return;
-                }
-
-                if (!primaryField) {
-                    alert('Please select a primary field');
                     return;
                 }
 
@@ -2239,12 +2223,9 @@
                 const placeholder = document.getElementById('combinedSpecializationsPlaceholder');
                 if (!placeholder) return;
 
-                if (primaryField) {
-                    placeholder.textContent = `Primary field: ${primaryField}`;
+                if (selectedCategories.size > 0) {
+                    placeholder.textContent = `${selectedCategories.size} ${selectedCategories.size === 1 ? 'category' : 'categories'} selected`;
                     placeholder.style.color = 'var(--text-primary)';
-                } else if (selectedCategories.size > 0) {
-                    placeholder.textContent = `${selectedCategories.size} categories selected`;
-                    placeholder.style.color = 'var(--text-secondary)';
                 } else {
                     placeholder.textContent = 'Click to select categories';
                     placeholder.style.color = 'var(--text-muted)';
@@ -2269,24 +2250,20 @@
                 container.style.display = 'block';
                 tbody.innerHTML = '';
 
-                // Sort: primary category first, then alphabetically
+                // Sort alphabetically
                 const sortedEntries = Array.from(selectedCategories.entries()).sort((a, b) => {
-                    if (a[0] === primaryField && b[0] !== primaryField) return -1;
-                    if (b[0] === primaryField && a[0] !== primaryField) return 1;
                     return a[0].localeCompare(b[0]);
                 });
 
                 sortedEntries.forEach(([key, data]) => {
                     const row = document.createElement('tr');
-                    const isPrimary = key === primaryField;
 
-                    // First column: category name + primary badge
+                    // First column: category name
                     const nameCell = document.createElement('td');
                     nameCell.innerHTML = `
                         <div class="subcategory-name">
                             <span class="remove-category" data-category-key="${key}" title="Remove category">×</span>
                             ${data.category}
-                            ${isPrimary ? '<span class="primary-badge">Primary Field</span>' : ''}
                         </div>
                     `;
 
@@ -2339,12 +2316,6 @@
 
             function removeCategoryFromTable(categoryKey) {
                 selectedCategories.delete(categoryKey);
-
-                // Clear primary if removing the primary category
-                if (primaryField === categoryKey) {
-                    primaryField = null;
-                    document.getElementById('primaryFieldHidden').value = '';
-                }
 
                 // Update displays
                 updateCategoryTable();
@@ -2409,6 +2380,18 @@
                         addZipcode();
                     }
                 });
+
+                // Bulk upload toggle
+                const bulkToggle = document.getElementById('bulkUploadToggle');
+                const bulkSection = document.getElementById('bulkUploadSection');
+                const bulkAddBtn = document.getElementById('bulkAddBtn');
+
+                bulkToggle?.addEventListener('click', function() {
+                    bulkSection.classList.toggle('active');
+                    this.textContent = bulkSection.classList.contains('active') ? 'Single Entry' : 'Bulk Upload';
+                });
+
+                bulkAddBtn?.addEventListener('click', bulkAddZipcodes);
             }
 
             function openLocationEditModal(categoryKey) {
@@ -2448,9 +2431,15 @@
                 currentEditingCategoryKey = null;
                 tempSelectedZipcodes.clear();
 
-                // Clear input
+                // Clear inputs
                 const zipcodeInput = document.getElementById('zipcodeInput');
                 if (zipcodeInput) zipcodeInput.value = '';
+                const bulkInput = document.getElementById('bulkZipcodeInput');
+                if (bulkInput) bulkInput.value = '';
+                const bulkSection = document.getElementById('bulkUploadSection');
+                if (bulkSection) bulkSection.classList.remove('active');
+                const bulkToggle = document.getElementById('bulkUploadToggle');
+                if (bulkToggle) bulkToggle.textContent = 'Bulk Upload';
             }
 
             function renderZipcodeTags() {
@@ -2502,6 +2491,36 @@
                 renderZipcodeTags();
                 updateLocationCount();
                 input.focus();
+            }
+
+            function bulkAddZipcodes() {
+                const textarea = document.getElementById('bulkZipcodeInput');
+                if (!textarea) return;
+
+                const raw = textarea.value.trim();
+                if (!raw) return;
+
+                // Split by newlines and/or commas
+                const tokens = raw.split(/[\n,]+/);
+                let addedCount = 0;
+
+                tokens.forEach(token => {
+                    const zip = token.trim();
+                    if (/^\d{5}$/.test(zip) && !tempSelectedZipcodes.has(zip)) {
+                        tempSelectedZipcodes.add(zip);
+                        addedCount++;
+                    }
+                });
+
+                textarea.value = '';
+                renderZipcodeTags();
+                updateLocationCount();
+
+                // Collapse the bulk section after adding
+                const bulkSection = document.getElementById('bulkUploadSection');
+                const bulkToggle = document.getElementById('bulkUploadToggle');
+                if (bulkSection) bulkSection.classList.remove('active');
+                if (bulkToggle) bulkToggle.textContent = 'Bulk Upload';
             }
 
             function removeZipcode(zip) {
@@ -2588,11 +2607,6 @@
             // Global remove function
             window.removeCategory = function(key) {
                 selectedCategories.delete(key);
-
-                if (primaryField === key) {
-                    primaryField = null;
-                    document.getElementById('primaryFieldHidden').value = '';
-                }
 
                 updateCombinedDisplay();
                 updateCategoryTable();
@@ -3098,43 +3112,6 @@
                 // Clear popup body
                 specializationsPopupBody.innerHTML = '';
                 
-                // Get selected primary field from question 2
-                const primaryFieldInput = document.querySelector('input[name="primary_field"]');
-                const selectedPrimaryField = primaryFieldInput ? primaryFieldInput.value.trim() : '';
-                
-                // Check if primary field is selected
-                if (!selectedPrimaryField) {
-                    // Show warning message instead of popup
-                    const warningContainer = document.createElement('div');
-                    warningContainer.style.cssText = 'padding: 40px 24px; text-align: center; margin: 24px; border: 1px solid var(--border-light); border-radius: var(--border-radius); background: var(--bg-light);';
-                    warningContainer.innerHTML = `
-                        <div style="color: var(--text-primary); font-weight: 600; font-size: 18px; margin-bottom: 12px;">
-                            ⚠️ Please select a primary field first
-                        </div>
-                        <div style="color: var(--text-secondary); font-size: 16px; line-height: 1.5; margin-bottom: 20px;">
-                            To access additional specializations, please first select a primary field in question 4
-                        </div>
-                        <button type="button" id="backToQuestion2Btn" style="background: var(--text-primary); color: white; border: none; padding: 12px 24px; border-radius: var(--border-radius); font-size: 16px; cursor: pointer; font-weight: 500;">
-                            Go back to question 4
-                        </button>
-                    `;
-                    specializationsPopupBody.appendChild(warningContainer);
-                    
-                    // Add event listener to the button
-                    const backBtn = document.getElementById('backToQuestion2Btn');
-                    if (backBtn) {
-                        backBtn.addEventListener('click', function() {
-                            specializationsPopup.style.display = 'none';
-                            document.getElementById('primaryFieldInput').scrollIntoView({ behavior: 'smooth' });
-                            setTimeout(() => {
-                                document.getElementById('primaryFieldInput').focus();
-                            }, 500);
-                        });
-                    }
-                    
-                    return;
-                }
-                
                 // Add search input at the top
                 const searchContainer = document.createElement('div');
                 searchContainer.style.cssText = 'padding: 20px 24px; border-bottom: 1px solid var(--border-light);';
@@ -3142,70 +3119,38 @@
                     <input type="text" placeholder="Search specializations..." style="width: 100%; padding: 12px 16px; border: 1px solid var(--border-light); border-radius: var(--border-radius); font-size: 16px; text-align: left; background: var(--bg-light); color: var(--text-primary);" id="specializationsSearch">
                 `;
                 specializationsPopupBody.appendChild(searchContainer);
-                
-                // Show all categories but prioritize the selected primary field
+
+                // Show all categories sorted alphabetically
                 const allCategories = Object.keys(specializations);
-                
-                // Sort categories: primary field first, then alphabetically
+
                 const sortedCategories = allCategories.sort((a, b) => {
-                    if (a === selectedPrimaryField) return -1;
-                    if (b === selectedPrimaryField) return 1;
                     return a.localeCompare(b, 'he');
                 });
-                
+
                 sortedCategories.forEach(category => {
-                    const isPrimaryField = category === selectedPrimaryField;
                     const categoryDiv = document.createElement('div');
                     categoryDiv.className = 'category-div';
                     categoryDiv.style.cssText = 'border-bottom: 1px solid var(--border-light);';
-                    
+
                     // Category header with checkbox to select all
                     const categoryHeader = document.createElement('div');
-                    categoryHeader.style.cssText = `padding: 16px 24px; background: var(--bg-gray); font-weight: 600; color: var(--text-primary); display: flex; align-items: center; cursor: pointer; border-bottom: 1px solid var(--border-light); ${isPrimaryField ? 'border-right: 3px solid var(--text-primary);' : ''}`;
-                    
-                    const allSelected = specializations[category].every(spec => 
+                    categoryHeader.style.cssText = 'padding: 16px 24px; background: var(--bg-gray); font-weight: 600; color: var(--text-primary); display: flex; align-items: center; cursor: pointer; border-bottom: 1px solid var(--border-light);';
+
+                    const allSelected = specializations[category].every(spec =>
                         selectedSpecializations.find(s => s.text === spec && s.category === category)
                     );
-                    
-                    if (isPrimaryField) {
-                        categoryHeader.innerHTML = `
-                            <div style="width: 100%; display: flex; flex-direction: column; gap: 8px;">
-                                <div style="display: flex; justify-content: space-between; align-items: center;">
-                                    <span style="font-size: 16px; font-weight: 600;">🎯 ${category}</span>
-                                    <span style="background: var(--text-muted); color: white; padding: 4px 8px; border-radius: var(--border-radius); font-size: 12px; font-weight: 400;">Primary</span>
-                                </div>
-                                <div style="display: flex; align-items: center; gap: 12px;">
-                                    <div style="width: 18px; height: 18px; border: 1px solid var(--border-light); border-radius: var(--border-radius); display: flex; align-items: center; justify-content: center; ${allSelected ? 'background: var(--text-primary); border-color: var(--text-primary);' : 'background: var(--bg-light);'}">
-                                        ${allSelected ? '<i class="fas fa-check" style="color: white; font-size: 10px;"></i>' : ''}
-                                    </div>
-                                    <span style="font-size: 14px; color: var(--text-secondary);">Select All</span>
-                                </div>
-                            </div>
-                        `;
-                    } else {
-                        categoryHeader.innerHTML = `
-                            <div style="width: 18px; height: 18px; border: 1px solid var(--border-light); border-radius: var(--border-radius); display: flex; align-items: center; justify-content: center; margin-left: 16px; ${allSelected ? 'background: var(--text-primary); border-color: var(--text-primary);' : 'background: var(--bg-light);'}">
-                                ${allSelected ? '<i class="fas fa-check" style="color: white; font-size: 10px;"></i>' : ''}
-                            </div>
-                            <span style="font-size: 16px;">${category} - Select All</span>
-                        `;
-                    }
-                    
+
+                    categoryHeader.innerHTML = `
+                        <div style="width: 18px; height: 18px; border: 1px solid var(--border-light); border-radius: var(--border-radius); display: flex; align-items: center; justify-content: center; margin-left: 16px; ${allSelected ? 'background: var(--text-primary); border-color: var(--text-primary);' : 'background: var(--bg-light);'}">
+                            ${allSelected ? '<i class="fas fa-check" style="color: white; font-size: 10px;"></i>' : ''}
+                        </div>
+                        <span style="font-size: 16px;">${category} - Select All</span>
+                    `;
+
                     // Toggle all specializations in category
                     categoryHeader.addEventListener('click', function(e) {
                         e.stopPropagation();
-                        // Find the checkbox (different for primary vs regular categories)
-                        let checkbox;
-                        if (isPrimaryField) {
-                            // In primary field, the checkbox is in the second div with the specific styling
-                            const secondRow = this.querySelector('div[style*="display: flex; align-items: center; gap: 12px"]');
-                            if (secondRow) {
-                                checkbox = secondRow.querySelector('div[style*="width: 18px"]');
-                            }
-                        } else {
-                            // In regular categories, checkbox is the first div with width 18px
-                            checkbox = this.querySelector('div[style*="width: 18px"]');
-                        }
+                        const checkbox = this.querySelector('div[style*="width: 18px"]');
                         const isAllSelected = specializations[category].every(spec => 
                             selectedSpecializations.find(s => s.text === spec && s.category === category)
                         );
@@ -3303,16 +3248,7 @@
                             let categoryName = '';
                             
                             if (categoryHeader) {
-                                if (categoryHeader.textContent.includes('🎯')) {
-                                    // Primary field - get name from first span
-                                    const firstSpan = categoryHeader.querySelector('span');
-                                    if (firstSpan) {
-                                        categoryName = firstSpan.textContent.replace('🎯 ', '').toLowerCase();
-                                    }
-                                } else {
-                                    // Regular category
-                                    categoryName = categoryHeader.textContent.replace(' - Select All', '').toLowerCase();
-                                }
+                                categoryName = categoryHeader.textContent.replace(' - Select All', '').toLowerCase();
                             }
                             
                             // Get specialization items in this category
@@ -3444,38 +3380,14 @@
                 // Update category headers
                 const categoryHeaders = popupBody.querySelectorAll('div[style*="background: var(--bg-gray)"]');
                 categoryHeaders.forEach(header => {
-                    // Check if this is a primary field (has emoji)
-                    const isPrimaryField = header.textContent.includes('🎯');
-                    let category;
-                    
-                    if (isPrimaryField) {
-                        // For primary field, extract category from the first line
-                        const firstLine = header.querySelector('span');
-                        if (firstLine) {
-                            category = firstLine.textContent.replace('🎯 ', '').trim();
-                        }
-                    } else {
-                        // For regular categories
-                        category = header.textContent.replace(' - Select All', '').trim();
-                    }
-                    
+                    const category = header.textContent.replace(' - Select All', '').trim();
+
                     if (category && specializations[category]) {
-                        const allSelected = specializations[category].every(spec => 
+                        const allSelected = specializations[category].every(spec =>
                             selectedSpecializations.find(s => s.text === spec && s.category === category)
                         );
-                        
-                        // Find the checkbox - different locations for primary vs regular
-                        let checkbox;
-                        if (isPrimaryField) {
-                            // In primary field, checkbox is in the second row
-                            const secondRow = header.querySelector('div[style*="display: flex; align-items: center; gap: 12px"]');
-                            if (secondRow) {
-                                checkbox = secondRow.querySelector('div[style*="width: 18px"]');
-                            }
-                        } else {
-                            // In regular categories, checkbox is in the main row
-                            checkbox = header.querySelector('div[style*="width: 18px"]');
-                        }
+
+                        const checkbox = header.querySelector('div[style*="width: 18px"]');
                         
                         if (checkbox) {
                             if (allSelected) {
@@ -3544,8 +3456,7 @@
                 // Update existing chevron color
                 const chevron = specializationsDisplay.querySelector('.fa-chevron-down');
                 if (chevron) {
-                    const isSatisfied = primaryField && additionalSpecializations.length > 0;
-                    chevron.style.color = isSatisfied ? 'var(--ai-purple)' : 'var(--text-muted)';
+                    chevron.style.color = selectedSpecializations.length > 0 ? 'var(--ai-purple)' : 'var(--text-muted)';
                 }
                 
                 // Update separate tags display
@@ -3675,20 +3586,12 @@
                 }
             }
 
-            // Function to update specializations placeholder based on primary field selection
+            // Function to update specializations placeholder
             function updateSpecializationsPlaceholder() {
-                const primaryFieldInput = document.querySelector('input[name="primary_field"]');
-                const selectedPrimaryField = primaryFieldInput ? primaryFieldInput.value.trim() : '';
                 const placeholder = document.getElementById('specializationsPlaceholder');
-                
                 if (placeholder) {
-                    if (!selectedPrimaryField) {
-                        placeholder.textContent = 'Please select a primary field first in question 4';
-                        placeholder.style.color = '#dc2626'; // Red color for warning
-                    } else {
-                        placeholder.textContent = 'Click to select additional specializations';
-                        placeholder.style.color = 'var(--text-muted)'; // Original color
-                    }
+                    placeholder.textContent = 'Click to select additional specializations';
+                    placeholder.style.color = 'var(--text-muted)';
                 }
             }
 
@@ -4037,7 +3940,7 @@
                     alert(`System Prompt JSON created successfully!
 📄 File name: ${result.fileName}
 👤 Professional: ${data.name || 'Not specified'}
-🔧 Field: ${data.primary_field || 'Not specified'}
+📊 Categories: ${selectedCategories.size} selected
 📊 Size: ${Math.round(result.size / 1024)} KB
 
 The JSON file includes:
@@ -4076,7 +3979,6 @@ The JSON file includes:
                 // Reset category selections
                 if (typeof selectedCategories !== 'undefined') {
                     selectedCategories.clear();
-                    primaryField = null;
                     updateCombinedDisplay();
                     updateCategoryTable();
                 }
@@ -4103,7 +4005,6 @@ The JSON file includes:
                 return {
                     metadata: {
                         client_name: formData.client_name || formData.name || 'Not specified',
-                        primary_field: formData.primary_field || 'Not specified',
                         creation_date: new Date().toISOString(),
                         version: "3.0"
                     },
@@ -4150,7 +4051,6 @@ The JSON file includes:
                 // Minimal metadata - only relevant parts
                 const cleanMetadata = {
                     client_name: data.metadata.client_name,
-                    primary_field: data.metadata.primary_field,
                     creation_date: data.metadata.creation_date
                 };
 

@@ -1,0 +1,300 @@
+[
+  {
+    "Category": "Construction",
+    "Description": "Professional building and construction services for residential and commercial projects.",
+    "Subcategories": [
+      { "Name": "General Contractor", "Description": "Full-service project management and construction oversight." },
+      { "Name": "Building Contractor", "Description": "New building construction for residential and commercial properties." },
+      { "Name": "Finish Contractor", "Description": "Interior finishing work including trim, molding, and final touches." },
+      { "Name": "Earthwork Contractor", "Description": "Excavation, grading, and land preparation services." },
+      { "Name": "Concrete Work", "Description": "Foundations, slabs, driveways, sidewalks, and decorative concrete." },
+      { "Name": "Light Construction", "Description": "Small-scale construction projects and minor structural work." },
+      { "Name": "High-Density Construction", "Description": "Multi-unit residential and large-scale commercial construction." },
+      { "Name": "Site Development & Infrastructure", "Description": "Land development, utilities, and infrastructure preparation." },
+      { "Name": "Demolition", "Description": "Structural demolition and selective interior demolition services." },
+      { "Name": "Waste Removal", "Description": "Construction debris hauling and job site cleanup." }
+    ]
+  },
+  {
+    "Category": "Remodeling",
+    "Description": "Renovation and remodeling services to transform existing spaces.",
+    "Subcategories": [
+      { "Name": "Apartment/Office Remodeling", "Description": "Complete renovation of apartments, condos, and office spaces." },
+      { "Name": "Kitchen & Bathroom Remodeling", "Description": "Full kitchen and bathroom design, demolition, and rebuild." },
+      { "Name": "Commercial Remodeling", "Description": "Tenant improvements and commercial space renovations." },
+      { "Name": "Roof Repair & Installation", "Description": "Roof replacement, repair, and new roof installation." },
+      { "Name": "Basement Remodeling", "Description": "Basement finishing, waterproofing, and conversion to livable space." }
+    ]
+  },
+  {
+    "Category": "Cleaning",
+    "Description": "Professional cleaning services for homes, offices, and specialized needs.",
+    "Subcategories": [
+      { "Name": "Office Cleaning", "Description": "Routine and deep cleaning for commercial office spaces." },
+      { "Name": "Move-in Cleaning", "Description": "Thorough cleaning before moving into a new home or apartment." },
+      { "Name": "Post-Renovation Cleaning", "Description": "Detailed cleanup after construction or remodeling work." },
+      { "Name": "Common Area Cleaning", "Description": "Cleaning services for lobbies, hallways, and shared spaces." },
+      { "Name": "Window Cleaning", "Description": "Interior and exterior window washing for homes and buildings." },
+      { "Name": "General Cleaning Services", "Description": "Standard residential and commercial cleaning." },
+      { "Name": "Housekeeping", "Description": "Recurring home cleaning and household upkeep." },
+      { "Name": "Carpet Cleaning", "Description": "Deep carpet cleaning, stain removal, and deodorizing." },
+      { "Name": "Upholstery & Mattress Cleaning", "Description": "Professional cleaning for furniture, upholstery, and mattresses." }
+    ]
+  },
+  {
+    "Category": "Landscaping & Gardening",
+    "Description": "Outdoor design, planting, and property maintenance services.",
+    "Subcategories": [
+      { "Name": "Garden Design & Installation", "Description": "Landscape design, planting, and hardscape installation." },
+      { "Name": "Tree & Hedge Trimming", "Description": "Pruning, shaping, and maintenance of trees and hedges." },
+      { "Name": "Garden Maintenance", "Description": "Ongoing lawn care, weeding, and seasonal garden upkeep." },
+      { "Name": "Yard Cleanup & Green Waste Removal", "Description": "Leaf removal, yard debris hauling, and property cleanup." },
+      { "Name": "Tree Removal", "Description": "Safe removal of trees, stumps, and root systems." },
+      { "Name": "Irrigation Repair & Maintenance", "Description": "Sprinkler and drip system troubleshooting and repairs." },
+      { "Name": "Irrigation System Installation", "Description": "Design and installation of new irrigation and sprinkler systems." },
+      { "Name": "Planter Maintenance", "Description": "Care and upkeep of raised beds, planters, and container gardens." }
+    ]
+  },
+  {
+    "Category": "Photography",
+    "Description": "Professional photography and video services for events, business, and personal needs.",
+    "Subcategories": [
+      { "Name": "Event Photography", "Description": "Coverage for weddings, parties, corporate events, and celebrations." },
+      { "Name": "Portrait & Headshot Photography", "Description": "Professional portraits, headshots, and personal branding photos." },
+      { "Name": "Video Production", "Description": "Filming, directing, and producing video content." },
+      { "Name": "Photo & Video Editing", "Description": "Post-production editing, retouching, and color grading." },
+      { "Name": "Real Estate Photography", "Description": "Property photography, virtual tours, and aerial drone shots." },
+      { "Name": "Product Photography", "Description": "Studio and lifestyle product photography for e-commerce and marketing." }
+    ]
+  },
+  {
+    "Category": "Plumbing",
+    "Description": "Licensed plumbing services for repairs, installations, and emergency needs.",
+    "Subcategories": [
+      { "Name": "Leak Detection", "Description": "Non-invasive leak detection for hidden water leaks." },
+      { "Name": "Pipe & Plumbing Infrastructure", "Description": "Pipe installation, replacement, and re-piping services." },
+      { "Name": "General Plumber", "Description": "Faucet repairs, toilet fixes, and everyday plumbing tasks." },
+      { "Name": "Drain & Sewer Services", "Description": "Drain cleaning, sewer line repair, and clog removal." },
+      { "Name": "Water Heater Installation & Repair", "Description": "Tank and tankless water heater installation, repair, and replacement." },
+      { "Name": "Emergency Services", "Description": "24/7 emergency plumbing for burst pipes, floods, and urgent issues." },
+      { "Name": "Plumbing Contractor", "Description": "Large-scale plumbing for new construction and major renovations." }
+    ]
+  },
+  {
+    "Category": "Electrical",
+    "Description": "Licensed electrical services for residential and commercial properties.",
+    "Subcategories": [
+      { "Name": "Electrical Panels", "Description": "Panel upgrades, breaker replacement, and electrical panel installation." },
+      { "Name": "Electrician", "Description": "Outlet installation, wiring repairs, lighting, and general electrical work." },
+      { "Name": "EV Charger Installation", "Description": "Electric vehicle charger installation for homes and businesses." },
+      { "Name": "Electrical Contractor", "Description": "Full electrical systems for new construction and major projects." }
+    ]
+  },
+  {
+    "Category": "HVAC",
+    "Description": "Heating, ventilation, and air conditioning installation and service.",
+    "Subcategories": [
+      { "Name": "AC Installation", "Description": "Window unit, mini-split, and ductless AC installation." },
+      { "Name": "Central Air Installation", "Description": "Central HVAC system design and installation." },
+      { "Name": "AC Cleaning & Maintenance", "Description": "Filter replacement, coil cleaning, and seasonal tune-ups." },
+      { "Name": "HVAC Technician", "Description": "Diagnostics, repairs, and maintenance for all HVAC systems." }
+    ]
+  },
+  {
+    "Category": "Drywall",
+    "Description": "Drywall installation, finishing, and repair services.",
+    "Subcategories": [
+      { "Name": "Drywall Installation", "Description": "New drywall hanging, taping, mudding, and finishing." },
+      { "Name": "Minor Repairs & Patching", "Description": "Hole patching, crack repair, and small drywall fixes." },
+      { "Name": "Decorative Drywall", "Description": "Custom niches, arches, accent walls, and decorative features." },
+      { "Name": "Acoustic Ceilings", "Description": "Drop ceiling, acoustic panel, and soundproofing installation." },
+      { "Name": "Drywall Contractor", "Description": "Large-scale drywall services for new builds and major renovations." }
+    ]
+  },
+  {
+    "Category": "Painting",
+    "Description": "Interior and exterior painting, plastering, and decorative finish services.",
+    "Subcategories": [
+      { "Name": "Interior/Exterior Painting", "Description": "Full painting services for walls, ceilings, trim, and exteriors." },
+      { "Name": "Minor Touch-ups & Repairs", "Description": "Small paint jobs, patching, and touch-up work." },
+      { "Name": "Painting Contractor", "Description": "Large-scale painting for commercial and multi-unit projects." },
+      { "Name": "Interior/Exterior Plastering", "Description": "Plaster application and repair for walls and ceilings." },
+      { "Name": "Stucco", "Description": "Stucco application, repair, and refinishing for exteriors." },
+      { "Name": "Decorative Finishes", "Description": "Faux finishes, textured coatings, and specialty wall treatments." }
+    ]
+  },
+  {
+    "Category": "Flooring & Tiling",
+    "Description": "Flooring installation, tiling, and surface finishing for all spaces.",
+    "Subcategories": [
+      { "Name": "Interior Flooring", "Description": "Tile, vinyl, and engineered flooring installation for interiors." },
+      { "Name": "Outdoor Paving", "Description": "Patio pavers, walkways, and outdoor stone installation." },
+      { "Name": "Wall Tiling", "Description": "Backsplash, shower tile, and decorative wall tile installation." },
+      { "Name": "Marble & Stone", "Description": "Natural stone and marble countertop and surface installation." },
+      { "Name": "Hardwood & Laminate Flooring", "Description": "Hardwood installation, refinishing, and laminate flooring." },
+      { "Name": "Flooring Contractor", "Description": "Large-scale flooring projects for commercial and residential builds." },
+      { "Name": "Minor Repairs", "Description": "Cracked tile replacement, grout repair, and small fixes." }
+    ]
+  },
+  {
+    "Category": "Awnings & Shade Structures",
+    "Description": "Shade solutions and outdoor cover installations for homes and businesses.",
+    "Subcategories": [
+      { "Name": "Retractable Awnings", "Description": "Motorized and manual retractable awning installation." },
+      { "Name": "Fixed Awnings", "Description": "Permanent awning and canopy installation." },
+      { "Name": "Shade Sails & Covers", "Description": "Custom shade sails, pergola covers, and sun shades." },
+      { "Name": "Repairs & Maintenance", "Description": "Awning fabric replacement, motor repair, and upkeep." }
+    ]
+  },
+  {
+    "Category": "Windows & Doors",
+    "Description": "Window, door, and outdoor structure installation and services.",
+    "Subcategories": [
+      { "Name": "Aluminum Pergolas", "Description": "Aluminum pergola design and installation." },
+      { "Name": "Motorized Pergolas", "Description": "Motorized louvered and retractable pergola systems." },
+      { "Name": "Gates", "Description": "Driveway gates, garden gates, and automatic gate systems." },
+      { "Name": "Fencing", "Description": "Privacy fencing, security fencing, and decorative fencing." },
+      { "Name": "Windows & Doors", "Description": "Window and door replacement, installation, and upgrades." },
+      { "Name": "Patio Enclosures", "Description": "Screened-in porches, sunrooms, and enclosed patios." },
+      { "Name": "Shutters & Window Screens", "Description": "Shutter installation and window screen replacement." },
+      { "Name": "Railings & Stairs", "Description": "Stair railings, handrails, and balustrade installation." },
+      { "Name": "Repairs & Maintenance", "Description": "Hardware adjustment, weatherstripping, and general repairs." }
+    ]
+  },
+  {
+    "Category": "Metalwork & Welding",
+    "Description": "Custom metal fabrication and welding services.",
+    "Subcategories": [
+      { "Name": "All Metalwork Services", "Description": "Gates, railings, stairs, structural steel, ornamental iron, and custom metal fabrication." }
+    ]
+  },
+  {
+    "Category": "Glass & Glazing",
+    "Description": "Glass installation, replacement, and repair services.",
+    "Subcategories": [
+      { "Name": "Glass Installation & Replacement", "Description": "Window glass, shower doors, mirrors, and custom glass panels." },
+      { "Name": "Repairs & Maintenance", "Description": "Broken glass replacement, seal repair, and reglazing." }
+    ]
+  },
+  {
+    "Category": "Carpentry & Woodwork",
+    "Description": "Custom woodworking, outdoor structures, and finish carpentry.",
+    "Subcategories": [
+      { "Name": "Wood Pergolas", "Description": "Custom wood pergola design and construction." },
+      { "Name": "Wood Decks", "Description": "Deck building, refinishing, and composite decking installation." },
+      { "Name": "Wood Fencing", "Description": "Privacy fences, picket fences, and cedar fencing." },
+      { "Name": "Outdoor Wood Furniture", "Description": "Custom benches, tables, and outdoor wood furnishings." },
+      { "Name": "Repairs & Maintenance", "Description": "Wood rot repair, deck restoration, and structural fixes." },
+      { "Name": "Custom Cabinetry & Furniture", "Description": "Built-in shelving, custom cabinets, and handcrafted furniture." },
+      { "Name": "Interior Doors", "Description": "Interior door installation, replacement, and trim work." }
+    ]
+  },
+  {
+    "Category": "Kitchens",
+    "Description": "Kitchen design, installation, and renovation services.",
+    "Subcategories": [
+      { "Name": "Custom Kitchens", "Description": "Fully custom kitchen cabinetry, layout, and installation." },
+      { "Name": "Standard Kitchens", "Description": "Pre-fabricated and semi-custom kitchen cabinet installation." },
+      { "Name": "Outdoor Kitchens", "Description": "Outdoor kitchen design and build with grills, counters, and storage." },
+      { "Name": "Commercial/Restaurant Kitchens", "Description": "Commercial kitchen build-out and equipment installation." },
+      { "Name": "Kitchen Remodeling & Refinishing", "Description": "Cabinet refacing, countertop replacement, and kitchen updates." }
+    ]
+  },
+  {
+    "Category": "Architecture & Design",
+    "Description": "Professional design and planning services for buildings, interiors, and landscapes.",
+    "Subcategories": [
+      { "Name": "Architecture & Planning", "Description": "Architectural design, blueprints, and permit documentation." },
+      { "Name": "Interior Design", "Description": "Space planning, material selection, and interior styling." },
+      { "Name": "Landscape Design", "Description": "Outdoor space planning, planting design, and hardscape layout." },
+      { "Name": "Commercial Design", "Description": "Retail, restaurant, and office space design." },
+      { "Name": "Design Consulting", "Description": "Expert advice on design direction, materials, and project feasibility." }
+    ]
+  },
+  {
+    "Category": "Waterproofing",
+    "Description": "Moisture protection and waterproofing services for all building areas.",
+    "Subcategories": [
+      { "Name": "Roof & Deck Waterproofing", "Description": "Waterproof membrane and coating application for roofs and decks." },
+      { "Name": "Wet Room Waterproofing", "Description": "Shower, bathroom, and wet area waterproofing." },
+      { "Name": "Basement Waterproofing", "Description": "Interior and exterior basement waterproofing and drainage systems." },
+      { "Name": "General Repairs", "Description": "Leak remediation and waterproofing touch-ups." },
+      { "Name": "Waterproofing Contractor", "Description": "Large-scale waterproofing for new construction and major projects." }
+    ]
+  },
+  {
+    "Category": "Handyman",
+    "Description": "General home repair and small project services.",
+    "Subcategories": [
+      { "Name": "General Home Repairs", "Description": "Fix-it tasks including doors, cabinets, fixtures, and minor issues." },
+      { "Name": "Furniture Assembly", "Description": "Assembly of flat-pack furniture, shelving, and storage units." },
+      { "Name": "Hanging & Mounting", "Description": "TV mounting, shelf hanging, art installation, and curtain rods." },
+      { "Name": "Minor Fix-ups", "Description": "Caulking, weather stripping, hardware replacement, and odd jobs." }
+    ]
+  },
+  {
+    "Category": "Auto & Mechanics",
+    "Description": "Automotive repair, maintenance, and diagnostic services.",
+    "Subcategories": [
+      { "Name": "Mechanical Repairs", "Description": "Engine, transmission, brake, and suspension repairs." },
+      { "Name": "Electrical Repairs", "Description": "Vehicle electrical system diagnostics and repair." },
+      { "Name": "Inspections & Diagnostics", "Description": "Pre-purchase inspections, OBD diagnostics, and safety checks." },
+      { "Name": "Auto Body & Paint", "Description": "Collision repair, dent removal, and automotive painting." }
+    ]
+  },
+  {
+    "Category": "Security Cameras & Systems",
+    "Description": "Security system installation, monitoring, and maintenance.",
+    "Subcategories": [
+      { "Name": "Security Cameras", "Description": "CCTV, IP camera, and video surveillance system installation." },
+      { "Name": "Intercom Systems", "Description": "Video doorbell and intercom system installation." },
+      { "Name": "Alarm Systems", "Description": "Burglar alarm, smart home security, and monitoring setup." },
+      { "Name": "Maintenance & Repairs", "Description": "System troubleshooting, camera repositioning, and upgrades." }
+    ]
+  },
+  {
+    "Category": "Solar Systems",
+    "Description": "Solar energy installation and maintenance services.",
+    "Subcategories": [
+      { "Name": "Solar Panel Installation", "Description": "Rooftop and ground-mounted solar panel system installation." },
+      { "Name": "Electrical Infrastructure for Solar", "Description": "Inverter, battery storage, and electrical hookup for solar systems." },
+      { "Name": "Solar Panel Cleaning", "Description": "Professional cleaning to maintain solar panel efficiency." },
+      { "Name": "System Maintenance & Repair", "Description": "Monitoring, diagnostics, and repair of solar energy systems." }
+    ]
+  },
+  {
+    "Category": "Vacation Rentals & Hospitality",
+    "Description": "Short-term rental properties and hospitality accommodations.",
+    "Subcategories": [
+      { "Name": "Villas", "Description": "Luxury villa rentals for vacations and events." },
+      { "Name": "Vacation Apartments", "Description": "Furnished apartment rentals for short-term stays." },
+      { "Name": "Cabins & Cottages", "Description": "Rustic and modern cabin and cottage rentals." },
+      { "Name": "Bed & Breakfast", "Description": "B&B accommodations with personalized hospitality." },
+      { "Name": "Boutique Hotels", "Description": "Small-scale, unique hotel experiences." }
+    ]
+  },
+  {
+    "Category": "Catering",
+    "Description": "Food and catering services for events and private dining.",
+    "Subcategories": [
+      { "Name": "Vegan Catering", "Description": "Plant-based menu catering for events and gatherings." },
+      { "Name": "BBQ Catering", "Description": "Barbecue and smoked meat catering for parties and events." },
+      { "Name": "Dairy Catering", "Description": "Dairy-focused and vegetarian catering services." },
+      { "Name": "Private Chef (BBQ/Grill)", "Description": "In-home BBQ and grill chef for private events." },
+      { "Name": "Private Chef (Fine Dining)", "Description": "In-home fine dining experiences with a personal chef." }
+    ]
+  },
+  {
+    "Category": "Moving & Hauling",
+    "Description": "Residential and commercial moving, hauling, and transport services.",
+    "Subcategories": [
+      { "Name": "Small Moves", "Description": "Studio, one-bedroom, and small apartment moves." },
+      { "Name": "Large Moves", "Description": "Full household and multi-bedroom moves." },
+      { "Name": "Office Moving", "Description": "Commercial office relocation and furniture moving." },
+      { "Name": "Heavy Lifting & Hauling", "Description": "Appliance delivery, safe moving, and heavy item transport." },
+      { "Name": "Crane Moving", "Description": "Crane-assisted moves for oversized or high-floor items." },
+      { "Name": "Vehicle Transport", "Description": "Car, motorcycle, and vehicle shipping services." },
+      { "Name": "Equipment & Material Hauling", "Description": "Construction materials, equipment, and bulk item transport." }
+    ]
+  }
+]

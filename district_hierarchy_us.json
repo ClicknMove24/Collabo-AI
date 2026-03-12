@@ -1,0 +1,207 @@
+{
+  "Districts": [
+    {
+      "District": "Los Angeles Metro",
+      "Counties": [
+        {
+          "County": "Los Angeles County",
+          "Cities": [
+            "Los Angeles", "Long Beach", "Santa Clarita", "Glendale", "Pasadena",
+            "Torrance", "Pomona", "West Covina", "Burbank", "Compton", "Downey",
+            "Norwalk", "El Monte", "Inglewood", "Whittier", "Alhambra", "Lakewood",
+            "Arcadia", "Monrovia", "Azusa", "Glendora", "Covina", "Diamond Bar",
+            "Hawthorne", "Carson", "Redondo Beach", "Manhattan Beach", "Hermosa Beach",
+            "Culver City", "Beverly Hills", "Santa Monica", "West Hollywood", "Malibu",
+            "Calabasas", "Lancaster", "Palmdale"
+          ]
+        },
+        {
+          "County": "Orange County",
+          "Cities": [
+            "Anaheim", "Santa Ana", "Irvine", "Huntington Beach", "Garden Grove",
+            "Orange", "Fullerton", "Costa Mesa", "Mission Viejo", "Westminster",
+            "Newport Beach", "Lake Forest", "Buena Park", "Tustin", "Yorba Linda",
+            "San Clemente", "Laguna Niguel", "Laguna Beach", "Dana Point", "Brea",
+            "Placentia", "La Habra", "Cypress", "Fountain Valley", "Aliso Viejo"
+          ]
+        }
+      ]
+    },
+    {
+      "District": "San Francisco Bay Area",
+      "Counties": [
+        {
+          "County": "San Francisco County",
+          "Cities": ["San Francisco"]
+        },
+        {
+          "County": "Santa Clara County",
+          "Cities": [
+            "San Jose", "Sunnyvale", "Santa Clara", "Mountain View", "Milpitas",
+            "Cupertino", "Palo Alto", "Campbell", "Los Gatos", "Gilroy",
+            "Morgan Hill", "Saratoga", "Los Altos"
+          ]
+        },
+        {
+          "County": "Alameda County",
+          "Cities": [
+            "Oakland", "Fremont", "Berkeley", "Hayward", "San Leandro", "Livermore",
+            "Pleasanton", "Dublin", "Union City", "Newark", "Alameda", "Emeryville"
+          ]
+        },
+        {
+          "County": "Contra Costa County",
+          "Cities": [
+            "Concord", "Richmond", "Antioch", "Walnut Creek", "San Ramon", "Pittsburg",
+            "Brentwood", "Danville", "Martinez", "Pleasant Hill", "Oakley", "Lafayette"
+          ]
+        },
+        {
+          "County": "San Mateo County",
+          "Cities": [
+            "Daly City", "San Mateo", "Redwood City", "South San Francisco",
+            "Foster City", "Burlingame", "San Bruno", "Menlo Park", "Half Moon Bay",
+            "Pacifica", "San Carlos", "Belmont"
+          ]
+        },
+        {
+          "County": "Marin County",
+          "Cities": [
+            "San Rafael", "Novato", "Mill Valley", "Tiburon", "Sausalito",
+            "Larkspur", "Corte Madera", "Fairfax"
+          ]
+        }
+      ]
+    },
+    {
+      "District": "San Diego Area",
+      "Counties": [
+        {
+          "County": "San Diego County",
+          "Cities": [
+            "San Diego", "Chula Vista", "Oceanside", "Escondido", "Carlsbad",
+            "El Cajon", "Vista", "San Marcos", "Encinitas", "National City",
+            "La Mesa", "Santee", "Poway", "Imperial Beach", "Solana Beach",
+            "Del Mar", "Coronado"
+          ]
+        }
+      ]
+    },
+    {
+      "District": "Sacramento Area",
+      "Counties": [
+        {
+          "County": "Sacramento County",
+          "Cities": [
+            "Sacramento", "Elk Grove", "Rancho Cordova", "Citrus Heights",
+            "Folsom", "Arden-Arcade"
+          ]
+        },
+        {
+          "County": "Placer County",
+          "Cities": [
+            "Roseville", "Rocklin", "Lincoln", "Auburn", "Loomis", "Granite Bay"
+          ]
+        },
+        {
+          "County": "Yolo County",
+          "Cities": ["Davis", "Woodland", "West Sacramento", "Winters"]
+        },
+        {
+          "County": "El Dorado County",
+          "Cities": [
+            "El Dorado Hills", "Placerville", "Cameron Park", "South Lake Tahoe"
+          ]
+        }
+      ]
+    },
+    {
+      "District": "Central Valley",
+      "Counties": [
+        {
+          "County": "Fresno County",
+          "Cities": ["Fresno", "Clovis", "Sanger", "Selma", "Reedley", "Kerman"]
+        },
+        {
+          "County": "Kern County",
+          "Cities": [
+            "Bakersfield", "Delano", "Tehachapi", "Ridgecrest", "Wasco", "Shafter"
+          ]
+        },
+        {
+          "County": "San Joaquin County",
+          "Cities": ["Stockton", "Tracy", "Manteca", "Lodi", "Lathrop", "Ripon"]
+        },
+        {
+          "County": "Stanislaus County",
+          "Cities": [
+            "Modesto", "Turlock", "Ceres", "Riverbank", "Patterson", "Oakdale"
+          ]
+        },
+        {
+          "County": "Tulare County",
+          "Cities": [
+            "Visalia", "Tulare", "Porterville", "Dinuba", "Lindsay", "Exeter"
+          ]
+        },
+        {
+          "County": "Merced County",
+          "Cities": ["Merced", "Los Banos", "Atwater", "Livingston"]
+        }
+      ]
+    },
+    {
+      "District": "Inland Empire",
+      "Counties": [
+        {
+          "County": "Riverside County",
+          "Cities": [
+            "Riverside", "Moreno Valley", "Corona", "Temecula", "Murrieta",
+            "Menifee", "Indio", "Palm Springs", "Palm Desert", "Hemet", "Perris",
+            "Lake Elsinore", "Beaumont", "Cathedral City", "Rancho Mirage", "La Quinta"
+          ]
+        },
+        {
+          "County": "San Bernardino County",
+          "Cities": [
+            "San Bernardino", "Fontana", "Rancho Cucamonga", "Ontario", "Victorville",
+            "Rialto", "Hesperia", "Upland", "Apple Valley", "Redlands", "Chino",
+            "Chino Hills", "Highland", "Colton", "Yucaipa", "Montclair", "Claremont"
+          ]
+        }
+      ]
+    },
+    {
+      "District": "Central Coast",
+      "Counties": [
+        {
+          "County": "Santa Barbara County",
+          "Cities": [
+            "Santa Barbara", "Santa Maria", "Goleta", "Lompoc", "Carpinteria", "Solvang"
+          ]
+        },
+        {
+          "County": "San Luis Obispo County",
+          "Cities": [
+            "San Luis Obispo", "Paso Robles", "Atascadero", "Arroyo Grande",
+            "Pismo Beach", "Grover Beach", "Morro Bay"
+          ]
+        },
+        {
+          "County": "Ventura County",
+          "Cities": [
+            "Oxnard", "Thousand Oaks", "Simi Valley", "Ventura", "Camarillo",
+            "Moorpark", "Santa Paula", "Fillmore", "Ojai"
+          ]
+        },
+        {
+          "County": "Monterey County",
+          "Cities": [
+            "Salinas", "Monterey", "Seaside", "Marina", "Pacific Grove",
+            "Carmel-by-the-Sea", "King City"
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -596,7 +596,7 @@
             gap: 6px;
         }
 
-        .subcategory-name .remove-subcategory {
+        .subcategory-name .remove-category {
             cursor: pointer;
             color: var(--text-muted);
             font-size: 14px;
@@ -611,15 +611,9 @@
             background: #f3f4f6;
         }
 
-        .subcategory-name .remove-subcategory:hover {
+        .subcategory-name .remove-category:hover {
             color: white;
             background: #dc2626;
-        }
-
-        .subcategory-category {
-            font-size: 12px;
-            color: var(--text-muted);
-            margin-top: 2px;
         }
 
         .primary-badge {
@@ -656,11 +650,11 @@
             display: block;
         }
 
-        .location-district-group {
-            width: 100%;
+        .zipcode-display-tags {
             display: flex;
-            flex-direction: column;
-            align-items: center;
+            flex-wrap: wrap;
+            gap: 6px;
+            justify-content: center;
         }
 
         .edit-locations-btn {
@@ -690,34 +684,8 @@
             color: #7c3aed !important;
         }
 
-        /* Location tags in table */
-        .location-district-group:last-child {
-            margin-bottom: 0;
-        }
-
-        .district-label {
-            font-size: 13px;
-            color: #7c3aed;
-            font-weight: 500;
-            margin-bottom: 6px;
-            display: flex;
-            align-items: center;
-            gap: 4px;
-            justify-content: center;
-        }
-
-        .district-label .pin-icon {
-            font-size: 14px;
-        }
-
-        .county-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 6px;
-            justify-content: center;
-        }
-
-        .county-tag {
+        /* Zipcode tags in table */
+        .zipcode-display-tag {
             display: inline-flex;
             align-items: center;
             gap: 6px;
@@ -729,7 +697,7 @@
             border: 1px solid #e5e7eb;
         }
 
-        .county-tag .remove-county {
+        .zipcode-display-tag .remove-zipcode-inline {
             cursor: pointer;
             color: var(--text-muted);
             font-size: 14px;
@@ -737,7 +705,7 @@
             transition: color 0.2s ease;
         }
 
-        .county-tag .remove-county:hover {
+        .zipcode-display-tag .remove-zipcode-inline:hover {
             color: #dc2626;
         }
 
@@ -766,17 +734,6 @@
 
         .category-header.expanded {
             background-color: rgba(76, 29, 149, 0.08);
-        }
-
-        .category-toggle {
-            font-size: 12px;
-            color: var(--text-muted);
-            transition: transform 0.2s ease;
-            width: 16px;
-        }
-
-        .category-header.expanded .category-toggle {
-            transform: rotate(90deg);
         }
 
         .category-name {
@@ -810,32 +767,6 @@
             background: #fef3c7;
             border-color: #d97706;
             color: #d97706;
-        }
-
-        .subcategories-list {
-            display: none;
-            background: white;
-        }
-
-        .subcategories-list.expanded {
-            display: block;
-        }
-
-        .subcategory-select-item {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            padding: 10px 16px 10px 40px;
-            cursor: pointer;
-            transition: background-color 0.2s ease;
-        }
-
-        .subcategory-select-item:hover {
-            background-color: rgba(76, 29, 149, 0.03);
-        }
-
-        .subcategory-select-item.selected {
-            background-color: rgba(76, 29, 149, 0.08);
         }
 
         /* Location edit modal */
@@ -885,21 +816,26 @@
         }
 
         .location-modal-close {
-            background: none;
-            color: var(--text-muted);
-            border: none;
-            font-size: 20px;
+            background: none !important;
+            color: var(--text-muted) !important;
+            border: none !important;
+            font-size: 20px !important;
             cursor: pointer;
-            padding: 4px;
-            border-radius: 4px;
-            display: flex;
+            padding: 4px !important;
+            width: 32px !important;
+            height: 32px !important;
+            border-radius: 4px !important;
+            display: flex !important;
             align-items: center;
             justify-content: center;
             transition: background-color 0.2s ease;
+            transform: none !important;
         }
 
         .location-modal-close:hover {
-            background: var(--bg-gray);
+            background: var(--bg-gray) !important;
+            transform: none !important;
+            box-shadow: none !important;
         }
 
         .location-modal-body {
@@ -925,180 +861,115 @@
         }
 
         .save-locations-btn {
-            background: var(--ai-purple);
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: var(--border-radius);
-            font-size: 14px;
+            background: var(--ai-purple) !important;
+            color: white !important;
+            border: none !important;
+            padding: 10px 20px !important;
+            width: auto !important;
+            border-radius: var(--border-radius) !important;
+            font-size: 14px !important;
             cursor: pointer;
-            font-weight: 500;
+            font-weight: 500 !important;
             transition: all 0.2s ease;
+            transform: none !important;
         }
 
         .save-locations-btn:hover {
-            background: rgba(76, 29, 149, 0.9);
+            background: rgba(76, 29, 149, 0.9) !important;
+            transform: none !important;
+            box-shadow: none !important;
         }
 
-        /* Location hierarchy in modal */
-        .district-item {
-            border-bottom: 1px solid #f3f4f6;
-        }
-
-        .district-header {
+        /* Zipcode input in modal */
+        .zipcode-input-section {
             display: flex;
-            align-items: center;
-            padding: 12px 16px;
-            cursor: pointer;
-            font-weight: 600;
-            color: var(--text-primary);
-            background: #fafbfc;
-            transition: background-color 0.2s ease;
             gap: 8px;
-        }
-
-        .district-header:hover {
-            background-color: rgba(76, 29, 149, 0.05);
-        }
-
-        .district-header.expanded {
-            background-color: rgba(76, 29, 149, 0.08);
-        }
-
-        .district-checkbox {
-            margin-right: 8px;
-        }
-
-        .counties-list {
-            display: none;
-            background: white;
-        }
-
-        .counties-list.expanded {
-            display: block;
-        }
-
-        .county-item {
-            display: flex;
-            align-items: center;
-            padding: 10px 16px 10px 32px;
-            padding-left: 40px; /* LTR indent under district */
-            cursor: pointer;
-            transition: background-color 0.2s ease;
-            gap: 8px;
-            border-bottom: 1px solid #f8f9fa;
-        }
-
-        .county-item:hover {
-            background-color: rgba(76, 29, 149, 0.03);
-        }
-
-        .county-item.selected {
-            background-color: rgba(76, 29, 149, 0.08);
-        }
-
-        .county-item:last-child {
-            border-bottom: none;
-        }
-
-        .county-name {
-            flex: 1;
-            font-weight: 500;
-        }
-
-        .county-expand-toggle {
-            font-size: 10px;
-            color: var(--text-muted);
-            transition: transform 0.2s ease;
-            cursor: pointer;
-            padding: 4px;
-        }
-
-        .county-expand-toggle.expanded {
-            transform: rotate(90deg);
-        }
-
-        .cities-list {
-            display: none;
-            padding-left: 64px; /* LTR indent under county */
-            background: #fafbfc;
-        }
-
-        .cities-list.expanded {
-            display: block;
-        }
-
-        .city-item {
-            padding: 6px 16px;
-            font-size: 13px;
-            color: var(--text-secondary);
-            cursor: pointer;
-            transition: background-color 0.2s ease;
-        }
-
-        .city-item:hover {
-            background-color: rgba(76, 29, 149, 0.05);
-            color: var(--text-primary);
-        }
-
-        .city-item:hover .county-highlight-hint {
-            display: inline;
-        }
-
-        .county-highlight-hint {
-            display: none;
-            font-size: 11px;
-            color: var(--ai-purple);
-            margin-left: 8px;
-        }
-
-        /* Search in location modal */
-        .location-search-section {
             padding: 16px 20px;
             border-bottom: 1px solid var(--border-light);
             background: #f9fafb;
+            align-items: center;
         }
 
-        .location-search-input {
-            width: 100%;
-            padding: 12px 16px;
+        .zipcode-input-section .zipcode-field {
+            flex: 1;
+            min-width: 0;
+            height: 40px;
+            padding: 8px 12px;
             border: 1px solid var(--border-light);
             border-radius: var(--border-radius);
-            font-size: 14px;
-            color: var(--text-primary);
+            font-size: 15px;
+            font-family: inherit;
             background: white;
-            direction: ltr;
-            text-align: left;
+            color: var(--text-primary);
         }
 
-        .location-search-input:focus {
+        .zipcode-input-section .zipcode-field:focus {
             outline: none;
             border-color: var(--ai-purple);
-            box-shadow: 0 0 0 2px rgba(76, 29, 149, 0.1);
+            box-shadow: 0 0 0 2px rgba(76, 29, 149, 0.15);
         }
 
-        .search-result-item {
-            padding: 10px 16px;
+        .zipcode-input-section .zipcode-add-btn {
+            flex-shrink: 0;
+            width: auto !important;
+            height: 40px !important;
+            padding: 0 20px !important;
+            background: var(--ai-purple) !important;
+            color: white !important;
+            border: none !important;
+            border-radius: var(--border-radius) !important;
+            font-size: 14px !important;
+            font-weight: 500 !important;
             cursor: pointer;
-            border-bottom: 1px solid #f9fafb;
-            transition: background-color 0.2s ease;
+            white-space: nowrap;
+            transform: none !important;
         }
 
-        .search-result-item:hover {
-            background-color: rgba(76, 29, 149, 0.05);
+        .zipcode-input-section .zipcode-add-btn:hover {
+            background: rgba(76, 29, 149, 0.9) !important;
+            transform: none !important;
+            box-shadow: none !important;
         }
 
-        .search-result-path {
+        .zipcode-tags-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            padding: 16px 20px;
+            min-height: 60px;
+            align-content: flex-start;
+        }
+
+        .zipcode-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 6px 10px;
+            background: #f3f4f6;
+            color: var(--text-primary);
+            border-radius: 16px;
+            font-size: 13px;
+            border: 1px solid #e5e7eb;
+        }
+
+        .zipcode-tag .remove-zipcode {
+            cursor: pointer;
             color: var(--text-muted);
-            font-size: 12px;
-            margin-top: 2px;
+            font-size: 14px;
+            line-height: 1;
+            transition: color 0.2s ease;
         }
 
-        .no-results {
-            padding: 20px 16px;
-            text-align: center;
+        .zipcode-tag .remove-zipcode:hover {
+            color: #dc2626;
+        }
+
+        .no-zipcodes-text {
             color: var(--text-muted);
             font-style: italic;
+            width: 100%;
+            text-align: center;
+            padding: 20px 0;
         }
 
 
@@ -1122,6 +993,138 @@
             background: #3730a3;
             transform: translateY(-2px);
             box-shadow: 0 8px 24px rgba(76, 29, 149, 0.3);
+        }
+
+        /* Terms of Service Checkbox */
+        .tos-checkbox-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin: 20px 0 10px 0;
+        }
+
+        .tos-checkbox-wrapper input[type="checkbox"] {
+            width: 20px;
+            height: 20px;
+            accent-color: #6d28d9;
+            cursor: pointer;
+            flex-shrink: 0;
+        }
+
+        .tos-checkbox-wrapper label {
+            color: var(--text-primary);
+            font-size: 15px;
+            cursor: pointer;
+        }
+
+        .tos-checkbox-wrapper label a {
+            color: #818cf8;
+            text-decoration: underline;
+            cursor: pointer;
+        }
+
+        .tos-checkbox-wrapper label a:hover {
+            color: #a5b4fc;
+        }
+
+        /* Terms of Service Modal */
+        .tos-modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 10000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .tos-modal-overlay.active {
+            display: flex;
+        }
+
+        .tos-modal {
+            background: #ffffff;
+            border: 1px solid #e0e0e0;
+            border-radius: 12px;
+            width: 90%;
+            max-width: 700px;
+            max-height: 80vh;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        .tos-modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 24px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .tos-modal-header h2 {
+            margin: 0;
+            color: #1a1a1a;
+            font-size: 20px;
+        }
+
+        .tos-modal-close {
+            background: none;
+            border: none;
+            color: #666;
+            font-size: 24px;
+            cursor: pointer;
+            padding: 4px 8px;
+            border-radius: 6px;
+            transition: background 0.2s;
+            width: auto;
+        }
+
+        .tos-modal-close:hover {
+            background: #f0f0f0;
+            color: #1a1a1a;
+            transform: none;
+            box-shadow: none;
+        }
+
+        .tos-modal-body {
+            padding: 24px;
+            overflow-y: auto;
+            color: #333;
+            font-size: 14px;
+            line-height: 1.7;
+        }
+
+        .tos-modal-body h3 {
+            color: #1a1a1a;
+            font-size: 17px;
+            margin-top: 28px;
+            margin-bottom: 10px;
+            padding-bottom: 6px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .tos-modal-body h4 {
+            color: #1a1a1a;
+            font-size: 15px;
+            margin-top: 18px;
+            margin-bottom: 6px;
+        }
+
+        .tos-modal-body p {
+            margin-bottom: 12px;
+        }
+
+        .tos-modal-body ul {
+            padding-left: 22px;
+            margin-bottom: 12px;
+        }
+
+        .tos-modal-body ul li {
+            margin-bottom: 6px;
         }
 
         .footer-info {
@@ -1501,117 +1504,6 @@
             }
             
 
-        /* Image Upload Section Styles */
-        .image-upload-btn {
-            display: inline-flex !important;
-            align-items: center !important;
-            justify-content: center !important;
-            padding: 14px 32px !important;
-            background: linear-gradient(135deg, #6366f1, #8b5cf6) !important;
-            color: white !important;
-            border-radius: 8px !important;
-            cursor: pointer !important;
-            text-align: center !important;
-            font-weight: 600 !important;
-            font-size: 16px !important;
-            transition: all 0.2s !important;
-            border: none !important;
-            box-shadow: 0 2px 8px rgba(99, 102, 241, 0.2) !important;
-        }
-
-        .image-upload-btn:hover {
-            transform: translateY(-2px) !important;
-            box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3) !important;
-        }
-
-        .image-upload-btn:active {
-            transform: translateY(0) !important;
-        }
-
-        .image-upload-btn svg {
-            flex-shrink: 0 !important;
-        }
-
-        .image-preview-container {
-            display: none;
-            position: relative !important;
-            border: 2px dashed #e5e7eb !important;
-            border-radius: 8px !important;
-            padding: 20px !important;
-            text-align: center !important;
-            background: #fafafa !important;
-        }
-
-        .remove-image-btn {
-            position: absolute !important;
-            top: 12px !important;
-            right: 12px !important;
-            background: #ef4444 !important;
-            color: white !important;
-            border: none !important;
-            border-radius: 50% !important;
-            width: 36px !important;
-            height: 36px !important;
-            min-width: 36px !important;
-            min-height: 36px !important;
-            max-width: 36px !important;
-            max-height: 36px !important;
-            cursor: pointer !important;
-            display: flex !important;
-            align-items: center !important;
-            justify-content: center !important;
-            transition: all 0.2s !important;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2) !important;
-            z-index: 10 !important;
-            padding: 0 !important;
-        }
-
-        .remove-image-btn:hover {
-            background: #dc2626 !important;
-            transform: scale(1.1) !important;
-        }
-
-        .remove-image-btn:active {
-            transform: scale(0.95) !important;
-        }
-
-        .remove-image-btn svg {
-            flex-shrink: 0 !important;
-            width: 16px !important;
-            height: 16px !important;
-        }
-
-        .image-preview {
-            max-width: 100%;
-            max-height: 300px;
-            border-radius: var(--border-radius);
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-            display: block;
-            margin: 0 auto;
-        }
-
-        .image-file-name {
-            margin-top: 12px;
-            color: var(--text-secondary);
-            font-size: 14px;
-            font-weight: 500;
-        }
-
-        @media (max-width: 480px) {
-            .image-upload-btn {
-                width: 100%;
-                padding: 12px 24px;
-                font-size: 15px;
-            }
-
-            .remove-image-btn {
-                width: 32px;
-                height: 32px;
-                top: 8px;
-                right: 8px;
-            }
-        }
-
         /* Clean CSS architecture - single source of truth for all post styling */
     </style>
 </head>
@@ -1635,7 +1527,7 @@
                     <div class="form-group">
                         <label class="form-label">
                             <span class="question-number">1.</span>
-                            What is your name? <strong>(as you'd like it to appear in responses)</strong>:
+                            Contact name:
                         </label>
                         <input type="text" class="form-input" name="client_name" placeholder="e.g., Mike, Danny the Electrician, John" required>
                     </div>
@@ -1643,23 +1535,39 @@
                     <div class="form-group">
                         <label class="form-label">
                             <span class="question-number">2.</span>
-                            How many years has your business been active?
+                            Business name:
+                        </label>
+                        <input type="text" class="form-input" name="business_name" placeholder="e.g., Smith & Sons Electric" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">
+                            <span class="question-number">3.</span>
+                            Years in business:
                         </label>
                         <input type="number" class="form-input" name="experience_years" placeholder="e.g., 12" required min="1" max="50">
                     </div>
 
                     <div class="form-group">
                         <label class="form-label">
-                            <span class="question-number">3.</span>
+                            <span class="question-number">4.</span>
                             Contact phone number:
                         </label>
                         <input type="tel" class="form-input" name="phone_number" placeholder="e.g., (555) 123-4567" required>
                     </div>
 
+                    <div class="form-group">
+                        <label class="form-label">
+                            <span class="question-number">5.</span>
+                            License number:
+                        </label>
+                        <input type="text" class="form-input" name="license_number" placeholder="e.g., #123456" required>
+                    </div>
+
                     <!-- DISABLED: Address field hidden but preserved for future use -->
                     <div class="form-group" style="display: none;">
                         <label class="form-label">
-                            <span class="question-number">4.</span>
+                            <span class="question-number">6.</span>
                             Business address (optional):
                         </label>
                         <input type="text" class="form-input" name="address" placeholder="e.g., 123 Main St, Los Angeles, CA">
@@ -1668,20 +1576,20 @@
 
                 <!-- Service Areas, Specializations & Locations -->
                 <div class="form-section">
-                    <h3>Service Areas, Specializations & Locations</h3>
+                    <h3>Service Categories & Locations</h3>
                     <div class="section-description">
-                        Select your service areas and specializations, then define which regions you serve for each service. Primary field — specializations under it will receive top priority referrals.
+                        Select your service categories, then define which areas you serve for each one. Primary field receives top priority referrals.
                     </div>
 
                     <div class="form-group">
                         <label class="form-label">
-                            <span class="question-number">5.</span>
-                            Service areas and specializations:
+                            <span class="question-number">7.</span>
+                            Service categories:
                         </label>
 
                         <div id="combinedSpecializationsContainer" style="position: relative;">
                             <div id="combinedSpecializationsDisplay" class="form-input" tabindex="0" style="cursor: pointer; display: flex; flex-wrap: wrap; gap: 8px; align-items: center; position: relative; font-size: 14px;">
-                                <span id="combinedSpecializationsPlaceholder" style="color: var(--text-muted);">Click to select areas and specializations</span>
+                                <span id="combinedSpecializationsPlaceholder" style="color: var(--text-muted);">Click to select categories</span>
                                 <i class="fas fa-chevron-down" style="position: absolute; left: 16px; top: 16px; color: var(--text-muted);"></i>
                             </div>
 
@@ -1694,7 +1602,7 @@
                             <table class="subcategory-table">
                                 <thead>
                                     <tr>
-                                        <th>Specialization/Area</th>
+                                        <th>Category</th>
                                         <th>Service Areas</th>
                                     </tr>
                                 </thead>
@@ -1711,15 +1619,15 @@
                                     <!-- Popup Header -->
                                     <div style="padding: 24px 24px 16px 24px; border-bottom: 1px solid var(--border-light);">
                                         <div style="display: flex; align-items: center; justify-content: space-between;">
-                                            <h3 style="margin: 0; font-size: 20px; font-weight: 600; color: var(--text-primary);">Select Areas and Specializations</h3>
+                                            <h3 style="margin: 0; font-size: 20px; font-weight: 600; color: var(--text-primary);">Select Categories</h3>
                                             <button type="button" id="closeCombinedSpecializationsPopup" style="background: none; color: var(--text-muted); border: none; font-size: 24px; cursor: pointer; padding: 0; width: 24px; height: 24px; display: flex; align-items: center; justify-content: center;">×</button>
                                         </div>
-                                        <p style="margin: 8px 0 0 0; color: var(--text-secondary); font-size: 14px;">Clicking an area selects all specializations under it. You can also select individual specializations.</p>
+                                        <p style="margin: 8px 0 0 0; color: var(--text-secondary); font-size: 14px;">Select the categories you serve. Set one as your primary field.</p>
                                     </div>
 
                                     <!-- Search Section - Fixed -->
                                     <div id="combinedSearchSection" style="padding: 16px 20px; border-bottom: 1px solid var(--border-light); background: #f9fafb;">
-                                        <input type="text" id="combinedSearchInput" placeholder="Search areas and specializations..."
+                                        <input type="text" id="combinedSearchInput" placeholder="Search categories..."
                                                style="width: 100%; padding: 12px; border: 1px solid var(--border-light); border-radius: var(--border-radius); font-size: 14px;">
                                     </div>
 
@@ -1729,7 +1637,7 @@
 
                                     <!-- Popup Footer -->
                                     <div style="padding: 16px; border-top: 1px solid var(--border-light); flex-shrink: 0; display: flex; justify-content: space-between; align-items: center; background: var(--bg-gray);">
-                                        <div id="selectedCombinedCount" style="color: var(--text-secondary); font-size: 14px;">No specializations selected</div>
+                                        <div id="selectedCombinedCount" style="color: var(--text-secondary); font-size: 14px;">No categories selected</div>
                                         <button type="button" id="saveCombinedSpecializations" style="background: var(--ai-purple); color: white; border: none; padding: 10px 20px; border-radius: var(--border-radius); font-size: 14px; cursor: pointer; font-weight: 500;">Save Selections</button>
                                     </div>
                                 </div>
@@ -1746,17 +1654,19 @@
                                             <h3 id="locationEditModalTitle" class="location-modal-title">Select Service Areas</h3>
                                             <button type="button" id="closeLocationEditModal" class="location-modal-close">×</button>
                                         </div>
-                                        <p style="margin: 8px 0 0 0; color: var(--text-secondary); font-size: 13px;">Select counties. Clicking a city will select its county.</p>
+                                        <p style="margin: 8px 0 0 0; color: var(--text-secondary); font-size: 13px;">Enter zip codes for the areas you serve.</p>
                                     </div>
 
-                                    <!-- Search Section -->
-                                    <div class="location-search-section">
-                                        <input type="text" id="locationSearchInput" class="location-search-input" placeholder="Search by region, county, or city...">
-                                    </div>
-
-                                    <!-- Modal Content - Location Hierarchy -->
-                                    <div class="location-modal-body" id="locationHierarchyContainer">
-                                        <!-- Location hierarchy will be populated by JavaScript -->
+                                    <!-- Zipcode Input and Tags -->
+                                    <div class="location-modal-body" id="locationModalBody">
+                                        <div class="zipcode-input-section">
+                                            <input type="text" id="zipcodeInput" class="zipcode-field" placeholder="Enter zip code..."
+                                                   maxlength="5" inputmode="numeric" pattern="[0-9]*">
+                                            <button type="button" id="addZipcodeBtn" class="zipcode-add-btn">Add</button>
+                                        </div>
+                                        <div id="zipcodeTagsContainer" class="zipcode-tags-container">
+                                            <!-- Zipcode tags populated by JS -->
+                                        </div>
                                     </div>
 
                                     <!-- Modal Footer -->
@@ -1779,7 +1689,7 @@
 
                     <div class="form-group">
                         <label class="form-label">
-                            <span class="question-number">6.</span>
+                            <span class="question-number">8.</span>
                             Select business benefits <strong>(exactly 4 benefits)</strong>
                         </label>
                         
@@ -1836,7 +1746,7 @@
 
                     <div class="form-group">
                         <label class="form-label" style="position: relative;">
-                            <span class="question-number">7.</span>
+                            <span class="question-number">9.</span>
                             Are there topics you'd prefer to avoid in responses? <strong>(up to 5 topics)</strong>
                             <i class="fas fa-lightbulb restriction-tooltip-trigger" style="color: #f59e0b; margin-left: 8px; cursor: pointer; font-size: 16px; transition: all 0.2s; animation: lightbulb-glow 2s ease-in-out infinite;"></i>
                             <div class="restriction-tooltip" id="restrictionTooltip" style="
@@ -1893,39 +1803,185 @@
                     </div>
                 </div>
 
-                <!-- Image Upload Section -->
-                <div class="form-section">
-                    <h3>Add Image (Optional)</h3>
-                    <p style="color: var(--text-secondary); margin-bottom: 20px;">
-                        Upload an image that will be automatically attached to all your agent's responses (logo, representative business image, etc.)
-                    </p>
-
-                    <div style="display: flex; flex-direction: column; gap: 16px;">
-                        <label for="commentImage" class="image-upload-btn">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right: 8px; vertical-align: middle;">
-                                <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
-                                <circle cx="8.5" cy="8.5" r="1.5"></circle>
-                                <polyline points="21 15 16 10 5 21"></polyline>
-                            </svg>
-                            Choose Image
-                            <input type="file" id="commentImage" name="comment_image" accept="image/png, image/jpeg, image/jpg" style="display: none;">
-                        </label>
-
-                        <div id="imagePreviewContainer" class="image-preview-container">
-                            <button type="button" id="removeImageBtn" class="remove-image-btn" title="Remove image">
-                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="flex-shrink: 0;">
-                                    <line x1="18" y1="6" x2="6" y2="18"></line>
-                                    <line x1="6" y1="6" x2="18" y2="18"></line>
-                                </svg>
-                            </button>
-                            <img id="imagePreview" src="" alt="Preview" class="image-preview">
-                            <p id="imageFileName" class="image-file-name"></p>
-                        </div>
-                    </div>
+                <div class="tos-checkbox-wrapper">
+                    <input type="checkbox" id="tosCheckbox">
+                    <label for="tosCheckbox">I have read and agree to the <a href="#" id="tosLink">Terms of Service</a></label>
                 </div>
 
                 <button type="submit" id="submitBtn">Submit Form</button>
             </form>
+
+            <!-- Terms of Service Modal -->
+            <div class="tos-modal-overlay" id="tosModal">
+                <div class="tos-modal">
+                    <div class="tos-modal-header">
+                        <h2>Terms of Service</h2>
+                        <button class="tos-modal-close" id="tosModalClose">&times;</button>
+                    </div>
+                    <div class="tos-modal-body" id="tosModalBody">
+
+                        <div style="text-align: center; margin-bottom: 24px;">
+                            <h2 style="margin: 0 0 4px 0; font-size: 22px;">COLLABO-AI</h2>
+                            <p style="margin: 0; font-size: 16px; color: #1a1a1a;">Terms of Use &amp; Service Agreement</p>
+                            <p style="margin: 6px 0 0 0; font-size: 13px;">Version: 1.0 &nbsp;|&nbsp; Last Updated: March 12, 2026</p>
+                        </div>
+
+                        <hr style="border: none; border-top: 1px solid #e0e0e0; margin: 20px 0;">
+
+                        <!-- 1. Introduction -->
+                        <h3>1. Introduction</h3>
+                        <p><strong>This Agreement (&ldquo;Terms&rdquo;) is a binding contract between you (&ldquo;User&rdquo;, &ldquo;you&rdquo;) and COLLABO-AI (&ldquo;Company&rdquo;, &ldquo;we&rdquo;, &ldquo;us&rdquo;). By signing this Agreement or using the Service, you confirm that you have read, understood, and accepted these Terms in full.</strong></p>
+                        <p><strong>Definitions:</strong></p>
+                        <ul>
+                            <li><strong>&ldquo;Service&rdquo;</strong> &mdash; the COLLABO-AI platform, including its software, infrastructure, and related tools.</li>
+                            <li><strong>&ldquo;Your Account&rdquo;</strong> &mdash; your Facebook/Meta account that you authorize the Company to access and operate on your behalf.</li>
+                            <li><strong>&ldquo;Credentials&rdquo;</strong> &mdash; your Facebook login information that you voluntarily provide to the Company.</li>
+                            <li><strong>&ldquo;Collected Data&rdquo;</strong> &mdash; data gathered through the Service while operating within Your Account.</li>
+                        </ul>
+                        <p>You represent that you are at least 18 years of age and have the legal capacity to enter into this Agreement.</p>
+
+                        <!-- 2. Service Overview & Authorization -->
+                        <h3>2. Service Overview &amp; Authorization</h3>
+
+                        <h4>2.1 What the Service Does</h4>
+                        <p>COLLABO-AI provides an AI-powered data collection and analysis service that operates within Your Account on your behalf. You voluntarily provide your Credentials, and the Service uses them to access Your Account from the Company&rsquo;s secure servers and perform automated data collection and analysis tasks that you define.</p>
+                        <p><strong>All operations are performed exclusively within Your Account and are limited to content and data accessible to your account as a regular user.</strong></p>
+
+                        <h4>2.2 Your Authorization</h4>
+                        <p><strong>By providing your Credentials and using the Service, you expressly authorize the Company to act as your authorized service provider for the purpose of accessing, browsing, and collecting data within Your Account on your behalf and at your direction. You acknowledge that all actions performed by the Service are carried out under your authorization and that you are the directing party. The Company acts solely as a technical service provider executing your instructions &mdash; any interaction with Meta&rsquo;s platform through the Service is attributable to you as the account holder. For the avoidance of doubt, the Company is an independent service provider and not your fiduciary, legal agent, or trustee.</strong></p>
+
+                        <h4>2.3 Account Safety Measures</h4>
+                        <p>The Service incorporates multiple safety protocols designed to protect Your Account, including activity rate limits, human-like usage patterns, cooldown periods, and real-time monitoring for platform signals.</p>
+                        <p><strong>While these measures significantly reduce risk, they cannot guarantee that Meta will not detect automated activity or take action on Your Account. No technology can provide such a guarantee.</strong></p>
+
+                        <h4>2.4 Your Credentials</h4>
+                        <ul>
+                            <li>Your Credentials are stored using industry-standard encryption and are used solely to operate the Service</li>
+                            <li>The Company will not share your Credentials with any third party</li>
+                            <li>You may revoke access at any time by changing your Facebook password and notifying us</li>
+                            <li>Upon termination, the Company will promptly delete your Credentials</li>
+                        </ul>
+
+                        <!-- 3. Third-Party Platform Terms & Risk Acknowledgment -->
+                        <h3>3. Third-Party Platform Terms &amp; Risk Acknowledgment</h3>
+                        <p>You acknowledge and understand the following:</p>
+
+                        <h4>3.1 Meta/Facebook Policies</h4>
+                        <p><strong>Meta&rsquo;s Terms of Service contain provisions that restrict sharing account credentials with third parties and using automated tools to access or collect data from their platform. Use of the Service may not be fully compliant with Meta&rsquo;s Terms of Service, and Meta retains the right to enforce its policies at its discretion.</strong></p>
+
+                        <h4>3.2 Potential Account Consequences</h4>
+                        <p>As a result of using the Service, Meta may, at its sole discretion and without prior notice:</p>
+                        <ul>
+                            <li>Temporarily restrict or permanently disable Your Account</li>
+                            <li>Remove access to associated Business Pages, ad accounts, or other digital assets</li>
+                            <li>Take action against other accounts linked to yours</li>
+                        </ul>
+                        <p><strong>These are actions taken by Meta, a third party outside the Company&rsquo;s control. The Company bears no responsibility for any enforcement action taken by Meta.</strong></p>
+
+                        <h4>3.3 Applicable Laws</h4>
+                        <p>Use of the Service may be subject to various federal, state, and international laws and regulations &mdash; including computer access laws, data protection regulations, and privacy statutes &mdash; depending on your jurisdiction and the nature of Collected Data.</p>
+                        <p><strong>You are solely responsible for determining whether your use of the Service complies with all applicable laws and regulations. We recommend consulting with a licensed attorney if you have questions.</strong></p>
+
+                        <h4>3.4 Assumption of Risk</h4>
+                        <p><strong>You expressly assume all risks associated with your use of the Service, including but not limited to the risk of account restriction or termination by Meta, loss of digital assets, and any other consequences described in this Agreement. You acknowledge that you are using the Service voluntarily, with full knowledge of these risks, and that the potential benefits of the Service justify the risks in your judgment.</strong></p>
+
+                        <!-- 4. Your Responsibilities -->
+                        <h3>4. Your Responsibilities</h3>
+                        <p>By using the Service, you represent and agree that:</p>
+                        <ul>
+                            <li>You are the rightful owner of Your Account and have full authority to grant access to the Company</li>
+                            <li>Your Account is not currently subject to any restrictions or enforcement actions by Meta</li>
+                            <li>You understand how the Service operates and the associated risks described in Section 3</li>
+                            <li><strong>You bear sole responsibility for your use of the Service, all consequences arising from it, and all use you make of Collected Data</strong></li>
+                            <li>You will not use the Service or Collected Data for any unlawful purpose, including harassment, stalking, or invasion of privacy</li>
+                            <li>You will comply with all applicable data protection regulations regarding any personal information in Collected Data</li>
+                            <li>You will change your Facebook password promptly upon termination of the Service</li>
+                            <li>You will promptly notify the Company if Meta takes any enforcement action on Your Account</li>
+                        </ul>
+
+                        <!-- 5. Confidentiality -->
+                        <h3>5. Confidentiality</h3>
+                        <p>You agree to keep confidential all non-public information about the Service, including but not limited to its technical methods, operational processes, safety protocols, and internal mechanisms. You shall not disclose such information to any third party &mdash; including Meta &mdash; without the Company&rsquo;s prior written consent. This obligation survives termination of this Agreement for a period of two (2) years.</p>
+                        <p>Breach of this confidentiality obligation may cause irreparable harm to the Company, entitling the Company to seek injunctive relief in addition to any other available remedies.</p>
+
+                        <!-- 6. Fees, Cancellation & Refunds -->
+                        <h3>6. Fees, Cancellation &amp; Refunds</h3>
+                        <p>Fees for the Service are as set forth in the applicable order form or pricing page at the time of purchase and are billed on a monthly basis.</p>
+                        <p><strong>You may cancel the Service at any time, for any reason. Upon cancellation, you will receive a pro-rata refund for the remaining unused days in your current billing cycle. For example, if you cancel halfway through the month, you will be refunded for the remaining half.</strong></p>
+                        <p>Refunds are calculated based on the number of full calendar days remaining from the date of cancellation through the end of the current billing period.</p>
+
+                        <!-- 7. Disclaimer of Warranties -->
+                        <h3>7. Disclaimer of Warranties</h3>
+                        <p style="text-transform: uppercase; font-size: 13px;">The Service is provided &ldquo;as-is&rdquo; and &ldquo;as-available.&rdquo; To the fullest extent permitted by law, the Company disclaims all warranties, express or implied, including warranties of merchantability, fitness for a particular purpose, and non-infringement.</p>
+                        <p>The Company does not warrant that:</p>
+                        <ul>
+                            <li>The Service will be uninterrupted, error-free, or meet your specific requirements</li>
+                            <li>Collected Data will be accurate, complete, or fit for any particular purpose</li>
+                            <li>Your Account will remain safe, unrestricted, or unaffected by Meta&rsquo;s enforcement actions</li>
+                            <li>Use of the Service is lawful in your jurisdiction</li>
+                        </ul>
+                        <p><strong>Nothing in this Agreement or the Service constitutes legal advice.</strong></p>
+
+                        <!-- 8. Limitation of Liability -->
+                        <h3>8. Limitation of Liability</h3>
+                        <p><strong style="text-transform: uppercase; font-size: 13px;">To the maximum extent permitted by law, the Company shall not be liable for any direct, indirect, incidental, special, consequential, exemplary, or punitive damages, including but not limited to:</strong></p>
+                        <ul>
+                            <li>Loss of Your Account, associated digital assets, or personal content</li>
+                            <li>Legal proceedings, fines, or penalties imposed by any third party or government authority</li>
+                            <li>Loss of profits, revenue, business, or goodwill</li>
+                            <li>Data loss or security breaches</li>
+                            <li>Any actions taken by Meta or any third-party platform</li>
+                        </ul>
+                        <p>This exclusion applies regardless of the theory of liability (contract, tort, negligence, strict liability, or otherwise), even if the Company has been advised of the possibility of such damages.</p>
+                        <p><strong>Aggregate Liability Cap:</strong> The Company&rsquo;s total cumulative liability for all claims under this Agreement shall not exceed the fees you actually paid to the Company in the three (3) months preceding the event giving rise to the claim, or USD $250, whichever is less.</p>
+                        <p><strong>California Civil Code &sect; 1542 Waiver:</strong> You expressly waive all rights under California Civil Code Section 1542, which states: &ldquo;A general release does not extend to claims that the creditor or releasing party does not know or suspect to exist in his or her favor at the time of executing the release and that, if known by him or her, would have materially affected his or her settlement with the debtor or released party.&rdquo;</p>
+                        <p>You acknowledge that the Company has set its fees in reliance upon these limitations, and that they form an essential basis of the bargain between the parties.</p>
+
+                        <!-- 9. Indemnification -->
+                        <h3>9. Indemnification</h3>
+                        <p>You agree to indemnify, defend, and hold harmless the Company and its officers, directors, employees, and agents from any claims, damages, losses, liabilities, and expenses (including reasonable attorneys&rsquo; fees) arising from:</p>
+                        <ul>
+                            <li>Your use of the Service or Collected Data</li>
+                            <li>Your breach of this Agreement</li>
+                            <li>Your violation of any applicable law, regulation, or third-party terms of service</li>
+                            <li>Any third-party claim related to the Company&rsquo;s access to Your Account using Credentials you provided</li>
+                            <li>Any claim by Meta or any other party arising from activity conducted within Your Account through the Service</li>
+                        </ul>
+                        <p>This indemnification obligation survives termination of this Agreement.</p>
+
+                        <!-- 10. Termination -->
+                        <h3>10. Termination</h3>
+                        <p><strong>By you:</strong> You may terminate at any time by notifying us and changing your Facebook password. The Company will cease access and delete your Credentials promptly.</p>
+                        <p><strong>By us &mdash; for cause:</strong> We may suspend or terminate the Service immediately if you breach this Agreement, engage in suspected misuse, or if Meta takes enforcement action on Your Account. In such cases, no refund will be issued.</p>
+                        <p><strong>By us &mdash; without cause:</strong> We may discontinue the Service for any other reason with fourteen (14) days&rsquo; prior written notice. In such cases, you will receive a pro-rata refund for the remaining unused days in your current billing cycle.</p>
+                        <p><strong>After termination:</strong> You have thirty (30) days from the date of termination to request delivery of Collected Data. If no request is received within this period, the Company will permanently delete all Collected Data. The Company will delete your Credentials promptly upon termination regardless of any data request. Sections 3.4, 4, 5, 7, 8, 9, and 11 survive termination.</p>
+
+                        <!-- 11. Dispute Resolution & Governing Law -->
+                        <h3>11. Dispute Resolution &amp; Governing Law</h3>
+                        <p>This Agreement is governed by the laws of the State of California, without regard to conflict of laws principles.</p>
+                        <p><strong>Pre-Arbitration Notice:</strong> Before initiating arbitration, the complaining party must send a written notice describing the dispute and the requested resolution to the other party. The receiving party shall have thirty (30) days to resolve the dispute informally. If not resolved within this period, either party may proceed to arbitration.</p>
+                        <p><strong>Any dispute shall be resolved by binding arbitration administered by JAMS in Los Angeles County, California. The arbitrator&rsquo;s decision is final and may be entered as judgment in any court of competent jurisdiction.</strong></p>
+                        <p><strong>Class Action Waiver:</strong> You agree that disputes will be resolved only on an individual basis. You waive any right to participate in a class action, collective action, or representative proceeding against the Company.</p>
+                        <p><strong>Jury Trial Waiver:</strong> To the extent permitted by law, both parties waive any right to a jury trial in connection with any dispute arising under this Agreement. Either party may seek injunctive relief in court to prevent irreparable harm.</p>
+
+                        <!-- 12. General -->
+                        <h3>12. General</h3>
+                        <ul>
+                            <li><strong>Service Modifications:</strong> The Company reserves the right to modify, update, limit, or discontinue any aspect of the Service at any time, with or without notice. The Company shall not be liable for any modification, suspension, or discontinuation of the Service or any feature thereof.</li>
+                            <li><strong>Amendments:</strong> We may update these Terms at any time. Continued use after notice of changes constitutes acceptance.</li>
+                            <li><strong>Severability:</strong> If any provision is held unenforceable, the remainder stays in effect.</li>
+                            <li><strong>Entire Agreement:</strong> This Agreement supersedes all prior understandings between the parties regarding the Service.</li>
+                            <li><strong>Assignment:</strong> You may not assign this Agreement without our consent. We may assign it freely.</li>
+                            <li><strong>Force Majeure:</strong> The Company is not liable for delays or failures caused by circumstances beyond its reasonable control, including changes to Meta&rsquo;s platform, policies, or enforcement; internet disruptions; natural disasters; or government actions.</li>
+                            <li><strong>Notices:</strong> All notices must be in writing and sent to the email addresses on file.</li>
+                        </ul>
+
+                        <hr style="border: none; border-top: 1px solid #e0e0e0; margin: 24px 0;">
+                        <p style="font-size: 13px; font-style: italic;">This document does not constitute legal advice. We recommend consulting with a licensed attorney before signing.</p>
+
+                    </div>
+                </div>
+            </div>
 
             <div class="footer-info">
                 ✅ Once completed, the form will be sent to us automatically.<br>
@@ -1943,179 +1999,14 @@
         const API_BASE_URL = 'https://worthy-choice-badger.ngrok-free.app';
 
         document.addEventListener('DOMContentLoaded', function() {
-            // Load categories and subcategories from JSON
-            let categoriesData = [];
-            let professions = [];
-            let specializations = {};
-            
-            // District hierarchy data
-            let districtData = {};
-            // Load district hierarchy data
-            async function loadDistrictData() {
-                try {
-                    const response = await fetch('district_hierarchy_us.json');
-                    districtData = await response.json();
-
-                    console.log('District hierarchy loaded:', districtData.Districts.length, 'districts');
-                } catch (error) {
-                    console.error('Failed to load district_hierarchy.json:', error);
-                    
-                    // Use dummy district data with same structure as JSON
-                    districtData = {
-                        "Districts": [
-                            {
-                                "Counties": [
-                                    {
-                                        "County": "Los Angeles",
-                                        "Cities": [
-                                            "Los Angeles",
-                                            "Long Beach",
-                                            "Santa Clarita"
-                                        ]
-                                    },
-                                    {
-                                        "County": "Orange",
-                                        "Cities": [
-                                            "Anaheim",
-                                            "Santa Ana",
-                                            "Irvine"
-                                        ]
-                                    }
-                                ],
-                                "District": "Los Angeles Metro"
-                            },
-                            {
-                                "Counties": [
-                                    {
-                                        "County": "San Francisco",
-                                        "Cities": [
-                                            "San Francisco",
-                                            "Daly City",
-                                            "South San Francisco"
-                                        ]
-                                    }
-                                ],
-                                "District": "San Francisco Bay Area"
-                            },
-                            {
-                                "Counties": [
-                                    {
-                                        "County": "San Diego",
-                                        "Cities": [
-                                            "San Diego",
-                                            "Chula Vista",
-                                            "Oceanside"
-                                        ]
-                                    }
-                                ],
-                                "District": "San Diego Area"
-                            },
-                            {
-                                "Counties": [
-                                    {
-                                        "County": "Sacramento",
-                                        "Cities": [
-                                            "Sacramento",
-                                            "Elk Grove",
-                                            "Roseville"
-                                        ]
-                                    }
-                                ],
-                                "District": "Sacramento Area"
-                            }
-                        ]
-                    };
-                    console.warn('Using dummy district data due to load failure');
-                }
-            }
-            
-            // Load JSON data
-            async function loadCategoriesData() {
-                try {
-                    // Try to fetch from file first
-                    const response = await fetch('categories_us.json');
-                    categoriesData = await response.json();
-                    
-                    // Extract categories for professions dropdown - only Category names
-                    professions = categoriesData.map(item => item.Category);
-                    
-                    // Extract subcategories for specializations (question 5) - only Category and Name fields
-                    specializations = {};
-                    categoriesData.forEach(item => {
-                        if (item.Subcategories && item.Subcategories.length > 0) {
-                            specializations[item.Category] = item.Subcategories.map(sub => sub.Name);
-                        }
-                    });
-                    
-                    console.log('Categories loaded:', professions);
-                    console.log('Specializations loaded:', specializations);
-                } catch (error) {
-                    console.error('Failed to load categories.json:', error);
-
-                    // Use dummy categories for testing
-                    categoriesData = [
-                        {
-                            "Category": "Electrical",
-                            "Subcategories": [
-                                {"Name": "Electrical Outlet Installation"},
-                                {"Name": "Electrical Panels"},
-                                {"Name": "Electrical Infrastructure"},
-                                {"Name": "General Repairs"}
-                            ]
-                        },
-                        {
-                            "Category": "Plumbing",
-                            "Subcategories": [
-                                {"Name": "Fixture Installation"},
-                                {"Name": "Leak Detection"},
-                                {"Name": "Plumbing Infrastructure"},
-                                {"Name": "Pipe Replacement"},
-                                {"Name": "General Repairs"}
-                            ]
-                        },
-                        {
-                            "Category": "Remodeling",
-                            "Subcategories": [
-                                {"Name": "Home/Office Remodeling"}
-                            ]
-                        },
-                        {
-                            "Category": "HVAC",
-                            "Subcategories": [
-                                {"Name": "AC Installation"},
-                                {"Name": "Mini-Split Installation"},
-                                {"Name": "AC Cleaning"},
-                                {"Name": "General Repairs"}
-                            ]
-                        }
-                    ];
-                    professions = categoriesData.map(item => item.Category);
-                    specializations = {};
-                    categoriesData.forEach(item => {
-                        if (item.Subcategories && item.Subcategories.length > 0) {
-                            specializations[item.Category] = item.Subcategories.map(sub => sub.Name);
-                        }
-                    });
-
-                    console.warn('Using dummy categories due to load failure');
-
-                    // Display warning in categories section
-                    const categoriesSection = document.getElementById('combinedSpecializationsDisplay')?.closest('.form-section');
-                    if (categoriesSection) {
-                        const warningBanner = document.createElement('div');
-                        warningBanner.style.cssText = 'background: #fff3cd; border: 2px solid #ffc107; border-radius: 8px; padding: 16px; margin-bottom: 20px; text-align: center;';
-                        warningBanner.innerHTML = `
-                            <div style="color: #856404; font-weight: 600; font-size: 18px; margin-bottom: 8px;">
-                                ⚠️ Error Loading Categories
-                            </div>
-                            <div style="color: #856404; font-size: 14px;">
-                                Categories file (categories_us.json) failed to load. The categories shown below are dummy data only!
-                            </div>
-                        `;
-                        categoriesSection.insertBefore(warningBanner, categoriesSection.firstChild.nextSibling);
-                    }
-                }
-            }
+            // Hardcoded category list
+            const categories = [
+                "Roofing", "Siding", "Windows", "Kitchen Remodeling", "Bathroom Remodeling",
+                "Flooring", "Interior Painting", "Exterior Painting", "HVAC", "Electrical",
+                "Plumbing", "Insulation", "Landscaping", "Decks and Patios", "Garage Doors",
+                "ADU", "Garage Conversion", "Hardscape", "Tiling", "Air Duct",
+                "Gutters", "Room Addition", "Fencing", "Pools"
+            ];
             
             // ===========================================
             // COMBINED CATEGORY-LOCATION FUNCTIONALITY
@@ -2123,24 +2014,12 @@
 
             // State variables
             let primaryField = null;
-            // Map: subcategoryKey => { category, subcategory, locations: null | [{district, counties: []}] }
-            let selectedSubcategories = new Map();
-            let expandedCategories = new Set();
+            // Map: categoryName => { category, locations: null | ["12345", ...] }
+            let selectedCategories = new Map();
 
             // Current editing state for location modal
-            let currentEditingSubcategoryKey = null;
-            let tempSelectedCounties = new Set(); // Temporary selection during modal editing
-
-            // Helper to create subcategory key
-            function getSubcategoryKey(category, subcategory) {
-                return `${category}|${subcategory}`;
-            }
-
-            // Helper to parse subcategory key
-            function parseSubcategoryKey(key) {
-                const [category, subcategory] = key.split('|');
-                return { category, subcategory };
-            }
+            let currentEditingCategoryKey = null;
+            let tempSelectedZipcodes = new Set(); // Temporary selection during modal editing
 
             // Initialize combined specializations popup functionality
             function initializeCombinedSpecializationsPopup() {
@@ -2210,29 +2089,20 @@
 
                 popupBody.innerHTML = '';
 
-                // Build categories and subcategories hierarchy
-                Object.keys(specializations).forEach(category => {
+                // Build flat list of categories
+                categories.forEach(category => {
                     const categoryDiv = document.createElement('div');
                     categoryDiv.className = 'category-hierarchy-item';
                     categoryDiv.dataset.categoryName = category;
 
-                    // Check selection states
-                    const categorySubcategories = specializations[category] || [];
-                    const selectedInCategory = categorySubcategories.filter(sub =>
-                        selectedSubcategories.has(getSubcategoryKey(category, sub))
-                    );
-                    const allSelected = selectedInCategory.length === categorySubcategories.length && categorySubcategories.length > 0;
-                    const someSelected = selectedInCategory.length > 0 && !allSelected;
+                    const isSelected = selectedCategories.has(category);
                     const isPrimary = primaryField === category;
-                    const isExpanded = expandedCategories.has(category);
 
-                    // Category header
                     const header = document.createElement('div');
-                    header.className = `category-header${isExpanded ? ' expanded' : ''}`;
+                    header.className = `category-header${isSelected ? ' expanded' : ''}`;
                     header.innerHTML = `
-                        <span class="category-toggle">▶</span>
                         <input type="checkbox" class="category-checkbox" data-category="${category}"
-                               ${allSelected ? 'checked' : ''}>
+                               ${isSelected ? 'checked' : ''}>
                         <span class="category-name">${category}</span>
                         ${isPrimary ? '<span class="primary-badge">Primary Field</span>' : ''}
                         <button type="button" class="set-primary-btn${isPrimary ? ' is-primary' : ''}" data-category="${category}">
@@ -2240,33 +2110,7 @@
                         </button>
                     `;
 
-                    // Set indeterminate state
-                    const checkbox = header.querySelector('.category-checkbox');
-                    if (someSelected) {
-                        checkbox.indeterminate = true;
-                    }
-
-                    // Subcategories list
-                    const subcatList = document.createElement('div');
-                    subcatList.className = `subcategories-list${isExpanded ? ' expanded' : ''}`;
-
-                    categorySubcategories.forEach(subcategory => {
-                        const key = getSubcategoryKey(category, subcategory);
-                        const isSelected = selectedSubcategories.has(key);
-
-                        const subItem = document.createElement('div');
-                        subItem.className = `subcategory-select-item${isSelected ? ' selected' : ''}`;
-                        subItem.innerHTML = `
-                            <input type="checkbox" class="subcategory-checkbox"
-                                   data-category="${category}" data-subcategory="${subcategory}"
-                                   ${isSelected ? 'checked' : ''}>
-                            <span>${subcategory}</span>
-                        `;
-                        subcatList.appendChild(subItem);
-                    });
-
                     categoryDiv.appendChild(header);
-                    categoryDiv.appendChild(subcatList);
                     popupBody.appendChild(categoryDiv);
                 });
 
@@ -2278,19 +2122,7 @@
                 const popupBody = document.getElementById('combinedSpecializationsPopupBody');
                 if (!popupBody) return;
 
-                // Category header click - toggle expand
-                popupBody.querySelectorAll('.category-header').forEach(header => {
-                    header.addEventListener('click', function(e) {
-                        // Don't toggle if clicking on checkbox or button
-                        if (e.target.type === 'checkbox' || e.target.classList.contains('set-primary-btn')) {
-                            return;
-                        }
-                        const category = this.closest('.category-hierarchy-item').dataset.categoryName;
-                        toggleCategoryExpanded(category);
-                    });
-                });
-
-                // Category checkbox - select/deselect all subcategories
+                // Category checkbox
                 popupBody.querySelectorAll('.category-checkbox').forEach(checkbox => {
                     checkbox.addEventListener('change', function(e) {
                         e.stopPropagation();
@@ -2299,21 +2131,11 @@
                     });
                 });
 
-                // Subcategory checkbox
-                popupBody.querySelectorAll('.subcategory-checkbox').forEach(checkbox => {
-                    checkbox.addEventListener('change', function(e) {
-                        e.stopPropagation();
-                        const category = this.dataset.category;
-                        const subcategory = this.dataset.subcategory;
-                        toggleSubcategorySelection(category, subcategory, this.checked);
-                    });
-                });
-
-                // Subcategory item click (on the row, not just checkbox)
-                popupBody.querySelectorAll('.subcategory-select-item').forEach(item => {
-                    item.addEventListener('click', function(e) {
-                        if (e.target.type === 'checkbox') return;
-                        const checkbox = this.querySelector('.subcategory-checkbox');
+                // Category row click (not on checkbox or button)
+                popupBody.querySelectorAll('.category-header').forEach(header => {
+                    header.addEventListener('click', function(e) {
+                        if (e.target.type === 'checkbox' || e.target.classList.contains('set-primary-btn')) return;
+                        const checkbox = this.querySelector('.category-checkbox');
                         checkbox.checked = !checkbox.checked;
                         checkbox.dispatchEvent(new Event('change', { bubbles: true }));
                     });
@@ -2329,59 +2151,12 @@
                 });
             }
 
-            function toggleCategoryExpanded(category) {
-                if (expandedCategories.has(category)) {
-                    expandedCategories.delete(category);
-                } else {
-                    expandedCategories.add(category);
-                }
-                buildCombinedPopupContent();
-                updateCombinedSelectionCount();
-            }
-
             function toggleCategorySelection(category, selected) {
-                const subcategories = specializations[category] || [];
-
-                subcategories.forEach(subcategory => {
-                    const key = getSubcategoryKey(category, subcategory);
-                    if (selected) {
-                        if (!selectedSubcategories.has(key)) {
-                            selectedSubcategories.set(key, {
-                                category,
-                                subcategory,
-                                locations: null // null = never set, eligible for default inheritance
-                            });
-                        }
-                    } else {
-                        selectedSubcategories.delete(key);
-                    }
-                });
-
-                // Auto-set primary if none set and selecting
-                if (selected && !primaryField) {
-                    primaryField = category;
-                    document.getElementById('primaryFieldHidden').value = category;
-                }
-
-                // Clear primary if deselecting the primary category
-                if (!selected && primaryField === category) {
-                    primaryField = null;
-                    document.getElementById('primaryFieldHidden').value = '';
-                }
-
-                buildCombinedPopupContent();
-                updateCombinedSelectionCount();
-            }
-
-            function toggleSubcategorySelection(category, subcategory, selected) {
-                const key = getSubcategoryKey(category, subcategory);
-
                 if (selected) {
-                    if (!selectedSubcategories.has(key)) {
-                        selectedSubcategories.set(key, {
+                    if (!selectedCategories.has(category)) {
+                        selectedCategories.set(category, {
                             category,
-                            subcategory,
-                            locations: null
+                            locations: null // null = never set, eligible for default inheritance
                         });
                     }
 
@@ -2391,41 +2166,17 @@
                         document.getElementById('primaryFieldHidden').value = category;
                     }
                 } else {
-                    selectedSubcategories.delete(key);
+                    selectedCategories.delete(category);
 
-                    // Check if primary category has any selections left
+                    // Clear primary if deselecting the primary category
                     if (primaryField === category) {
-                        const hasAnyInCategory = Array.from(selectedSubcategories.values())
-                            .some(item => item.category === category);
-                        if (!hasAnyInCategory) {
-                            primaryField = null;
-                            document.getElementById('primaryFieldHidden').value = '';
-                        }
+                        primaryField = null;
+                        document.getElementById('primaryFieldHidden').value = '';
                     }
                 }
 
-                // Update parent category checkbox state
-                updateCategoryCheckboxState(category);
+                buildCombinedPopupContent();
                 updateCombinedSelectionCount();
-            }
-
-            function updateCategoryCheckboxState(category) {
-                const popupBody = document.getElementById('combinedSpecializationsPopupBody');
-                if (!popupBody) return;
-
-                const categoryItem = popupBody.querySelector(`[data-category-name="${category}"]`);
-                if (!categoryItem) return;
-
-                const checkbox = categoryItem.querySelector('.category-checkbox');
-                if (!checkbox) return;
-
-                const subcategories = specializations[category] || [];
-                const selectedCount = subcategories.filter(sub =>
-                    selectedSubcategories.has(getSubcategoryKey(category, sub))
-                ).length;
-
-                checkbox.checked = selectedCount === subcategories.length && subcategories.length > 0;
-                checkbox.indeterminate = selectedCount > 0 && selectedCount < subcategories.length;
             }
 
             function setPrimaryField(category) {
@@ -2435,20 +2186,11 @@
                 primaryField = category;
                 document.getElementById('primaryFieldHidden').value = category;
 
-                // Also select all subcategories of this category if none selected
-                const subcategories = specializations[category] || [];
-                const hasAnySelected = subcategories.some(sub =>
-                    selectedSubcategories.has(getSubcategoryKey(category, sub))
-                );
-
-                if (!hasAnySelected) {
-                    subcategories.forEach(subcategory => {
-                        const key = getSubcategoryKey(category, subcategory);
-                        selectedSubcategories.set(key, {
-                            category,
-                            subcategory,
-                            locations: null
-                        });
+                // Also select this category if not already selected
+                if (!selectedCategories.has(category)) {
+                    selectedCategories.set(category, {
+                        category,
+                        locations: null
                     });
                 }
 
@@ -2460,23 +2202,23 @@
                 const countDisplay = document.getElementById('selectedCombinedCount');
                 if (!countDisplay) return;
 
-                const count = selectedSubcategories.size;
+                const count = selectedCategories.size;
 
                 if (count === 0) {
-                    countDisplay.textContent = 'No specializations selected';
+                    countDisplay.textContent = 'No categories selected';
                     countDisplay.style.color = 'var(--text-muted)';
                 } else if (!primaryField) {
-                    countDisplay.textContent = `${count} specializations selected - please select a primary field`;
+                    countDisplay.textContent = `${count} categories selected - please select a primary field`;
                     countDisplay.style.color = '#d97706';
                 } else {
-                    countDisplay.textContent = `Primary field: ${primaryField} | ${count} specializations`;
+                    countDisplay.textContent = `Primary field: ${primaryField} | ${count} categories`;
                     countDisplay.style.color = 'var(--text-secondary)';
                 }
             }
 
             function saveCombinedSpecializations() {
-                if (selectedSubcategories.size === 0) {
-                    alert('Please select at least one specialization');
+                if (selectedCategories.size === 0) {
+                    alert('Please select at least one category');
                     return;
                 }
 
@@ -2487,7 +2229,7 @@
 
                 // Update the display
                 updateCombinedDisplay();
-                updateSubcategoryTable();
+                updateCategoryTable();
 
                 // Close popup
                 closeCombinedSpecializationsPopup();
@@ -2500,26 +2242,26 @@
                 if (primaryField) {
                     placeholder.textContent = `Primary field: ${primaryField}`;
                     placeholder.style.color = 'var(--text-primary)';
-                } else if (selectedSubcategories.size > 0) {
-                    placeholder.textContent = `${selectedSubcategories.size} specializations selected`;
+                } else if (selectedCategories.size > 0) {
+                    placeholder.textContent = `${selectedCategories.size} categories selected`;
                     placeholder.style.color = 'var(--text-secondary)';
                 } else {
-                    placeholder.textContent = 'Click to select areas and specializations';
+                    placeholder.textContent = 'Click to select categories';
                     placeholder.style.color = 'var(--text-muted)';
                 }
             }
 
             // ===========================================
-            // SUBCATEGORY TABLE
+            // CATEGORY TABLE
             // ===========================================
 
-            function updateSubcategoryTable() {
+            function updateCategoryTable() {
                 const container = document.getElementById('subcategoryTableContainer');
                 const tbody = document.getElementById('subcategoryTableBody');
 
                 if (!container || !tbody) return;
 
-                if (selectedSubcategories.size === 0) {
+                if (selectedCategories.size === 0) {
                     container.style.display = 'none';
                     return;
                 }
@@ -2527,34 +2269,28 @@
                 container.style.display = 'block';
                 tbody.innerHTML = '';
 
-                // Sort: primary category first, then by category name
-                const sortedEntries = Array.from(selectedSubcategories.entries()).sort((a, b) => {
-                    const catA = a[1].category;
-                    const catB = b[1].category;
-                    if (catA === primaryField && catB !== primaryField) return -1;
-                    if (catB === primaryField && catA !== primaryField) return 1;
-                    if (catA !== catB) return catA.localeCompare(catB);
-                    return a[1].subcategory.localeCompare(b[1].subcategory);
+                // Sort: primary category first, then alphabetically
+                const sortedEntries = Array.from(selectedCategories.entries()).sort((a, b) => {
+                    if (a[0] === primaryField && b[0] !== primaryField) return -1;
+                    if (b[0] === primaryField && a[0] !== primaryField) return 1;
+                    return a[0].localeCompare(b[0]);
                 });
 
                 sortedEntries.forEach(([key, data]) => {
                     const row = document.createElement('tr');
-                    const isPrimary = data.category === primaryField;
+                    const isPrimary = key === primaryField;
 
-                    // First column: subcategory name + category (with primary badge on category)
+                    // First column: category name + primary badge
                     const nameCell = document.createElement('td');
                     nameCell.innerHTML = `
                         <div class="subcategory-name">
-                            <span class="remove-subcategory" data-subcategory-key="${key}" title="Remove specialization">×</span>
-                            ${data.subcategory}
-                        </div>
-                        <div class="subcategory-category">
+                            <span class="remove-category" data-category-key="${key}" title="Remove category">×</span>
                             ${data.category}
                             ${isPrimary ? '<span class="primary-badge">Primary Field</span>' : ''}
                         </div>
                     `;
 
-                    // Second column: locations + edit button (edit on left in RTL, so it comes last in HTML)
+                    // Second column: locations + edit button
                     const locCell = document.createElement('td');
                     const locationsHtml = buildLocationDisplayHtml(data.locations, key);
                     locCell.innerHTML = `
@@ -2562,7 +2298,7 @@
                             <div class="locations-content">
                                 ${locationsHtml}
                             </div>
-                            <button type="button" class="edit-locations-btn" data-subcategory-key="${key}" title="Edit service areas">
+                            <button type="button" class="edit-locations-btn" data-category-key="${key}" title="Edit service areas">
                                 <i class="fas fa-edit"></i>
                             </button>
                         </div>
@@ -2576,110 +2312,71 @@
                 // Add event listeners for edit buttons
                 tbody.querySelectorAll('.edit-locations-btn').forEach(btn => {
                     btn.addEventListener('click', function() {
-                        const key = this.dataset.subcategoryKey;
+                        const key = this.dataset.categoryKey;
                         openLocationEditModal(key);
                     });
                 });
 
-                // Add event listeners for remove county buttons
-                tbody.querySelectorAll('.remove-county').forEach(btn => {
+                // Add event listeners for remove zipcode buttons
+                tbody.querySelectorAll('.remove-zipcode-inline').forEach(btn => {
                     btn.addEventListener('click', function(e) {
                         e.stopPropagation();
-                        const key = this.dataset.subcategoryKey;
-                        const county = this.dataset.county;
-                        const district = this.dataset.district;
-                        removeCountyFromSubcategory(key, county, district);
+                        const key = this.dataset.categoryKey;
+                        const zipcode = this.dataset.zipcode;
+                        removeZipcodeFromCategory(key, zipcode);
                     });
                 });
 
-                // Add event listeners for remove subcategory buttons
-                tbody.querySelectorAll('.remove-subcategory').forEach(btn => {
+                // Add event listeners for remove category buttons
+                tbody.querySelectorAll('.remove-category').forEach(btn => {
                     btn.addEventListener('click', function(e) {
                         e.stopPropagation();
-                        const key = this.dataset.subcategoryKey;
-                        removeSubcategoryFromTable(key);
+                        const key = this.dataset.categoryKey;
+                        removeCategoryFromTable(key);
                     });
                 });
             }
 
-            function removeSubcategoryFromTable(subcategoryKey) {
-                const data = selectedSubcategories.get(subcategoryKey);
-                if (!data) return;
+            function removeCategoryFromTable(categoryKey) {
+                selectedCategories.delete(categoryKey);
 
-                // Remove from selectedSubcategories
-                selectedSubcategories.delete(subcategoryKey);
-
-                // Check if primary category has any selections left
-                if (primaryField === data.category) {
-                    const hasAnyInCategory = Array.from(selectedSubcategories.values())
-                        .some(item => item.category === data.category);
-                    if (!hasAnyInCategory) {
-                        primaryField = null;
-                        document.getElementById('primaryFieldHidden').value = '';
-                    }
+                // Clear primary if removing the primary category
+                if (primaryField === categoryKey) {
+                    primaryField = null;
+                    document.getElementById('primaryFieldHidden').value = '';
                 }
 
                 // Update displays
-                updateSubcategoryTable();
+                updateCategoryTable();
                 updateCombinedDisplay();
                 updateCombinedSelectionCount();
             }
 
-            function buildLocationDisplayHtml(locations, subcategoryKey) {
-                if (locations === null || locations === undefined) {
+            function buildLocationDisplayHtml(locations, categoryKey) {
+                if (locations === null || locations === undefined || locations.length === 0) {
                     return '<span class="no-locations-text">No areas selected</span>';
                 }
 
-                if (locations.length === 0) {
-                    return '<span class="no-locations-text">No areas selected</span>';
-                }
-
-                let html = '';
-                locations.forEach(districtData => {
-                    if (districtData.counties && districtData.counties.length > 0) {
-                        html += `
-                            <div class="location-district-group">
-                                <div class="district-label">
-                                    <span>${districtData.district}</span>
-                                    <span class="pin-icon">📍</span>
-                                </div>
-                                <div class="county-tags">
-                                    ${districtData.counties.map(c => `
-                                        <span class="county-tag">
-                                            <span class="remove-county" data-subcategory-key="${subcategoryKey}" data-county="${c}" data-district="${districtData.district}">×</span>
-                                            <span>${c}</span>
-                                        </span>
-                                    `).join('')}
-                                </div>
-                            </div>
-                        `;
-                    }
-                });
-
-                return html || '<span class="no-locations-text">No areas selected</span>';
+                return `
+                    <div class="zipcode-display-tags">
+                        ${locations.map(zip => `
+                            <span class="zipcode-display-tag">
+                                <span class="remove-zipcode-inline" data-category-key="${categoryKey}" data-zipcode="${zip}">×</span>
+                                <span>${zip}</span>
+                            </span>
+                        `).join('')}
+                    </div>
+                `;
             }
 
-            function removeCountyFromSubcategory(subcategoryKey, county, district) {
-                const data = selectedSubcategories.get(subcategoryKey);
+            function removeZipcodeFromCategory(categoryKey, zipcode) {
+                const data = selectedCategories.get(categoryKey);
                 if (!data || !data.locations) return;
 
-                // Find the district and remove the county
-                data.locations.forEach(loc => {
-                    if (loc.district === district) {
-                        loc.counties = loc.counties.filter(c => c !== county);
-                    }
-                });
-
-                // Remove empty districts
-                data.locations = data.locations.filter(loc => loc.counties.length > 0);
-
-                // If no locations left, set to empty array (not null, since it was explicitly edited)
-                if (data.locations.length === 0) {
-                    data.locations = [];
-                }
+                data.locations = data.locations.filter(z => z !== zipcode);
 
                 // Update the table
-                updateSubcategoryTable();
+                updateCategoryTable();
             }
 
             // ===========================================
@@ -2690,7 +2387,8 @@
                 const modal = document.getElementById('locationEditModal');
                 const closeBtn = document.getElementById('closeLocationEditModal');
                 const saveBtn = document.getElementById('saveLocationEdit');
-                const searchInput = document.getElementById('locationSearchInput');
+                const addBtn = document.getElementById('addZipcodeBtn');
+                const zipcodeInput = document.getElementById('zipcodeInput');
 
                 if (!modal) return;
 
@@ -2703,34 +2401,37 @@
 
                 saveBtn?.addEventListener('click', saveLocationEdit);
 
-                searchInput?.addEventListener('input', function() {
-                    filterLocationHierarchy(this.value);
+                addBtn?.addEventListener('click', addZipcode);
+
+                zipcodeInput?.addEventListener('keydown', function(e) {
+                    if (e.key === 'Enter') {
+                        e.preventDefault();
+                        addZipcode();
+                    }
                 });
             }
 
-            function openLocationEditModal(subcategoryKey) {
-                currentEditingSubcategoryKey = subcategoryKey;
+            function openLocationEditModal(categoryKey) {
+                currentEditingCategoryKey = categoryKey;
                 const modal = document.getElementById('locationEditModal');
                 const title = document.getElementById('locationEditModalTitle');
 
                 if (!modal) return;
 
-                const data = selectedSubcategories.get(subcategoryKey);
+                const data = selectedCategories.get(categoryKey);
                 if (data) {
-                    title.textContent = `Service areas: ${data.subcategory}`;
+                    title.textContent = `Service areas: ${data.category}`;
                 }
 
                 // Initialize temp selection from current locations
-                tempSelectedCounties = new Set();
+                tempSelectedZipcodes = new Set();
                 if (data && data.locations) {
-                    data.locations.forEach(districtData => {
-                        districtData.counties.forEach(county => {
-                            tempSelectedCounties.add(county);
-                        });
+                    data.locations.forEach(zip => {
+                        tempSelectedZipcodes.add(zip);
                     });
                 }
 
-                buildLocationHierarchy();
+                renderZipcodeTags();
                 updateLocationCount();
 
                 modal.style.display = 'block';
@@ -2744,291 +2445,97 @@
                     document.body.style.overflow = '';
                 }
 
-                currentEditingSubcategoryKey = null;
-                tempSelectedCounties.clear();
+                currentEditingCategoryKey = null;
+                tempSelectedZipcodes.clear();
 
-                // Clear search
-                const searchInput = document.getElementById('locationSearchInput');
-                if (searchInput) searchInput.value = '';
+                // Clear input
+                const zipcodeInput = document.getElementById('zipcodeInput');
+                if (zipcodeInput) zipcodeInput.value = '';
             }
 
-            function buildLocationHierarchy() {
-                const container = document.getElementById('locationHierarchyContainer');
-                if (!container || !districtData.Districts) return;
-
-                container.innerHTML = '';
-
-                districtData.Districts.forEach(district => {
-                    const districtDiv = document.createElement('div');
-                    districtDiv.className = 'district-item';
-                    districtDiv.dataset.districtName = district.District;
-
-                    // Check if all counties in this district are selected
-                    const allCounties = district.Counties.map(c => c.County);
-                    const selectedCountiesInDistrict = allCounties.filter(c => tempSelectedCounties.has(c));
-                    const allSelected = selectedCountiesInDistrict.length === allCounties.length;
-                    const someSelected = selectedCountiesInDistrict.length > 0 && !allSelected;
-
-                    // District header
-                    const header = document.createElement('div');
-                    header.className = 'district-header expanded';
-                    header.innerHTML = `
-                        <input type="checkbox" class="district-checkbox" data-district="${district.District}"
-                               ${allSelected ? 'checked' : ''}>
-                        <span class="category-toggle">▼</span>
-                        <span style="flex: 1;">${district.District}</span>
-                    `;
-
-                    const districtCheckbox = header.querySelector('.district-checkbox');
-                    if (someSelected) {
-                        districtCheckbox.indeterminate = true;
-                    }
-
-                    // Counties list
-                    const countiesList = document.createElement('div');
-                    countiesList.className = 'counties-list expanded';
-
-                    district.Counties.forEach(county => {
-                        const isSelected = tempSelectedCounties.has(county.County);
-
-                        // County row
-                        const countyDiv = document.createElement('div');
-                        countyDiv.className = `county-item${isSelected ? ' selected' : ''}`;
-                        countyDiv.dataset.countyName = county.County;
-                        countyDiv.dataset.districtName = district.District;
-
-                        const hasCities = county.Cities && county.Cities.length > 0;
-                        countyDiv.innerHTML = `
-                            <input type="checkbox" ${isSelected ? 'checked' : ''} data-county="${county.County}">
-                            ${hasCities ? '<span class="county-expand-toggle">▶</span>' : '<span style="width: 18px;"></span>'}
-                            <span class="county-name">${county.County}</span>
-                        `;
-
-                        // Cities list (collapsed by default)
-                        if (hasCities) {
-                            const citiesList = document.createElement('div');
-                            citiesList.className = 'cities-list';
-                            citiesList.dataset.countyName = county.County;
-
-                            county.Cities.forEach(city => {
-                                const cityDiv = document.createElement('div');
-                                cityDiv.className = 'city-item';
-                                cityDiv.dataset.countyName = county.County;
-                                cityDiv.innerHTML = `
-                                    ${city}
-                                    <span class="county-highlight-hint">(will select: ${county.County})</span>
-                                `;
-                                citiesList.appendChild(cityDiv);
-                            });
-
-                            countyDiv.appendChild(citiesList);
-                        }
-
-                        countiesList.appendChild(countyDiv);
-                    });
-
-                    districtDiv.appendChild(header);
-                    districtDiv.appendChild(countiesList);
-                    container.appendChild(districtDiv);
-                });
-
-                // Add event listeners
-                addLocationHierarchyEventListeners();
-            }
-
-            function addLocationHierarchyEventListeners() {
-                const container = document.getElementById('locationHierarchyContainer');
+            function renderZipcodeTags() {
+                const container = document.getElementById('zipcodeTagsContainer');
                 if (!container) return;
 
-                // District header click - toggle expand
-                container.querySelectorAll('.district-header').forEach(header => {
-                    header.addEventListener('click', function(e) {
-                        if (e.target.type === 'checkbox') return;
-                        const countiesList = this.nextElementSibling;
-                        const toggle = this.querySelector('.category-toggle');
+                if (tempSelectedZipcodes.size === 0) {
+                    container.innerHTML = '<span class="no-zipcodes-text">No zip codes entered</span>';
+                    return;
+                }
 
-                        if (countiesList.classList.contains('expanded')) {
-                            countiesList.classList.remove('expanded');
-                            this.classList.remove('expanded');
-                            toggle.textContent = '▶';
-                        } else {
-                            countiesList.classList.add('expanded');
-                            this.classList.add('expanded');
-                            toggle.textContent = '▼';
-                        }
-                    });
-                });
+                const sorted = Array.from(tempSelectedZipcodes).sort();
+                container.innerHTML = sorted.map(zip => `
+                    <span class="zipcode-tag">
+                        <span>${zip}</span>
+                        <span class="remove-zipcode" data-zipcode="${zip}">×</span>
+                    </span>
+                `).join('');
 
-                // District checkbox - select all counties
-                container.querySelectorAll('.district-checkbox').forEach(checkbox => {
-                    checkbox.addEventListener('change', function(e) {
-                        e.stopPropagation();
-                        const districtName = this.dataset.district;
-                        const district = districtData.Districts.find(d => d.District === districtName);
-
-                        if (district) {
-                            district.Counties.forEach(county => {
-                                if (this.checked) {
-                                    tempSelectedCounties.add(county.County);
-                                } else {
-                                    tempSelectedCounties.delete(county.County);
-                                }
-                            });
-                        }
-
-                        buildLocationHierarchy();
-                        updateLocationCount();
-                    });
-                });
-
-                // County checkbox
-                container.querySelectorAll('.county-item > input[type="checkbox"]').forEach(checkbox => {
-                    checkbox.addEventListener('change', function(e) {
-                        e.stopPropagation();
-                        const county = this.dataset.county;
-
-                        if (this.checked) {
-                            tempSelectedCounties.add(county);
-                        } else {
-                            tempSelectedCounties.delete(county);
-                        }
-
-                        // Update district checkbox state
-                        const countyItem = this.closest('.county-item');
-                        const districtName = countyItem.dataset.districtName;
-                        updateDistrictCheckboxState(districtName);
-                        updateLocationCount();
-
-                        // Update visual state
-                        countyItem.classList.toggle('selected', this.checked);
-                    });
-                });
-
-                // County row click (not on checkbox)
-                container.querySelectorAll('.county-item').forEach(item => {
-                    item.addEventListener('click', function(e) {
-                        if (e.target.type === 'checkbox' || e.target.classList.contains('county-expand-toggle')) return;
-                        if (e.target.classList.contains('city-item')) return;
-
-                        const checkbox = this.querySelector('input[type="checkbox"]');
-                        checkbox.checked = !checkbox.checked;
-                        checkbox.dispatchEvent(new Event('change', { bubbles: true }));
-                    });
-                });
-
-                // County expand toggle
-                container.querySelectorAll('.county-expand-toggle').forEach(toggle => {
-                    toggle.addEventListener('click', function(e) {
-                        e.stopPropagation();
-                        const countyItem = this.closest('.county-item');
-                        const citiesList = countyItem.querySelector('.cities-list');
-
-                        if (citiesList) {
-                            if (citiesList.classList.contains('expanded')) {
-                                citiesList.classList.remove('expanded');
-                                this.classList.remove('expanded');
-                                this.textContent = '▶';
-                            } else {
-                                citiesList.classList.add('expanded');
-                                this.classList.add('expanded');
-                                this.textContent = '▼';
-                            }
-                        }
-                    });
-                });
-
-                // City click - selects parent county
-                container.querySelectorAll('.city-item').forEach(item => {
-                    item.addEventListener('click', function(e) {
-                        e.stopPropagation();
-                        const countyName = this.dataset.countyName;
-
-                        // Select the county
-                        tempSelectedCounties.add(countyName);
-
-                        // Update UI
-                        buildLocationHierarchy();
-                        updateLocationCount();
-                    });
-
-                    // Highlight parent county on hover
-                    item.addEventListener('mouseenter', function() {
-                        const countyName = this.dataset.countyName;
-                        const countyItem = this.closest('.county-item');
-                        if (countyItem) {
-                            countyItem.style.backgroundColor = 'rgba(76, 29, 149, 0.1)';
-                        }
-                    });
-
-                    item.addEventListener('mouseleave', function() {
-                        const countyItem = this.closest('.county-item');
-                        if (countyItem) {
-                            const isSelected = tempSelectedCounties.has(countyItem.dataset.countyName);
-                            countyItem.style.backgroundColor = isSelected ? 'rgba(76, 29, 149, 0.08)' : '';
-                        }
+                // Add remove listeners
+                container.querySelectorAll('.remove-zipcode').forEach(btn => {
+                    btn.addEventListener('click', function() {
+                        removeZipcode(this.dataset.zipcode);
                     });
                 });
             }
 
-            function updateDistrictCheckboxState(districtName) {
-                const container = document.getElementById('locationHierarchyContainer');
-                const districtItem = container?.querySelector(`[data-district-name="${districtName}"]`);
-                if (!districtItem) return;
+            function addZipcode() {
+                const input = document.getElementById('zipcodeInput');
+                if (!input) return;
 
-                const checkbox = districtItem.querySelector('.district-checkbox');
-                if (!checkbox) return;
+                const value = input.value.trim();
 
-                const district = districtData.Districts.find(d => d.District === districtName);
-                if (!district) return;
+                // Validate: must be exactly 5 digits
+                if (!/^\d{5}$/.test(value)) {
+                    input.style.borderColor = '#dc2626';
+                    setTimeout(() => { input.style.borderColor = ''; }, 1500);
+                    return;
+                }
 
-                const allCounties = district.Counties.map(c => c.County);
-                const selectedCount = allCounties.filter(c => tempSelectedCounties.has(c)).length;
+                if (tempSelectedZipcodes.has(value)) {
+                    // Already exists — just clear input
+                    input.value = '';
+                    return;
+                }
 
-                checkbox.checked = selectedCount === allCounties.length;
-                checkbox.indeterminate = selectedCount > 0 && selectedCount < allCounties.length;
+                tempSelectedZipcodes.add(value);
+                input.value = '';
+                renderZipcodeTags();
+                updateLocationCount();
+                input.focus();
+            }
+
+            function removeZipcode(zip) {
+                tempSelectedZipcodes.delete(zip);
+                renderZipcodeTags();
+                updateLocationCount();
             }
 
             function updateLocationCount() {
                 const countDisplay = document.getElementById('selectedLocationCount');
                 if (!countDisplay) return;
 
-                const count = tempSelectedCounties.size;
-                countDisplay.textContent = count === 0 ? 'No locations selected' : `${count} counties selected`;
+                const count = tempSelectedZipcodes.size;
+                countDisplay.textContent = count === 0 ? 'No zip codes entered' : `${count} zip codes entered`;
             }
 
             function saveLocationEdit() {
-                if (!currentEditingSubcategoryKey) return;
+                if (!currentEditingCategoryKey) return;
 
-                const data = selectedSubcategories.get(currentEditingSubcategoryKey);
+                const data = selectedCategories.get(currentEditingCategoryKey);
                 if (!data) return;
 
-                // Build locations structure grouped by district
-                const locations = [];
+                // Build flat array of zip codes
+                const locations = Array.from(tempSelectedZipcodes);
 
-                if (tempSelectedCounties.size > 0) {
-                    districtData.Districts.forEach(district => {
-                        const countiesInDistrict = district.Counties
-                            .map(c => c.County)
-                            .filter(c => tempSelectedCounties.has(c));
-
-                        if (countiesInDistrict.length > 0) {
-                            locations.push({
-                                district: district.District,
-                                counties: countiesInDistrict
-                            });
-                        }
-                    });
-                }
-
-                // Update the subcategory with new locations
-                data.locations = locations.length > 0 ? locations : [];
+                // Update the category with new locations
+                data.locations = locations;
 
                 // Apply default inheritance: if this is the first location set,
-                // apply to all subcategories with locations === null
+                // apply to all categories with locations === null
                 applyDefaultLocationsIfNeeded(locations);
 
                 // Update table
-                updateSubcategoryTable();
+                updateCategoryTable();
 
                 // Close modal
                 closeLocationEditModal();
@@ -3038,77 +2545,13 @@
                 // Only apply if newLocations has content
                 if (!newLocations || newLocations.length === 0) return;
 
-                // Find all subcategories with locations === null (never set)
-                selectedSubcategories.forEach((data, key) => {
-                    if (key === currentEditingSubcategoryKey) return; // Skip the one we just edited
+                // Find all categories with locations === null (never set)
+                selectedCategories.forEach((data, key) => {
+                    if (key === currentEditingCategoryKey) return; // Skip the one we just edited
 
                     if (data.locations === null) {
-                        // Deep copy the locations
-                        data.locations = JSON.parse(JSON.stringify(newLocations));
-                    }
-                });
-            }
-
-            function filterLocationHierarchy(searchTerm) {
-                const container = document.getElementById('locationHierarchyContainer');
-                if (!container) return;
-
-                const normalizedSearch = searchTerm.toLowerCase().trim();
-
-                if (!normalizedSearch) {
-                    // Show all
-                    container.querySelectorAll('.district-item').forEach(item => item.style.display = '');
-                    container.querySelectorAll('.county-item').forEach(item => item.style.display = '');
-                    container.querySelectorAll('.city-item').forEach(item => item.style.display = '');
-                    return;
-                }
-
-                // Search and show matching items
-                container.querySelectorAll('.district-item').forEach(districtItem => {
-                    const districtName = districtItem.dataset.districtName?.toLowerCase() || '';
-                    const districtMatches = districtName.includes(normalizedSearch);
-
-                    let hasVisibleCounty = false;
-
-                    districtItem.querySelectorAll('.county-item').forEach(countyItem => {
-                        const countyName = countyItem.dataset.countyName?.toLowerCase() || '';
-                        const countyMatches = countyName.includes(normalizedSearch);
-
-                        let hasVisibleCity = false;
-
-                        countyItem.querySelectorAll('.city-item').forEach(cityItem => {
-                            const cityText = cityItem.textContent?.toLowerCase() || '';
-                            const cityMatches = cityText.includes(normalizedSearch);
-
-                            if (cityMatches || countyMatches || districtMatches) {
-                                cityItem.style.display = '';
-                                hasVisibleCity = true;
-                            } else {
-                                cityItem.style.display = 'none';
-                            }
-                        });
-
-                        if (districtMatches || countyMatches || hasVisibleCity) {
-                            countyItem.style.display = '';
-                            hasVisibleCounty = true;
-
-                            // Expand cities if searching
-                            const citiesList = countyItem.querySelector('.cities-list');
-                            if (citiesList && hasVisibleCity) {
-                                citiesList.classList.add('expanded');
-                            }
-                        } else {
-                            countyItem.style.display = 'none';
-                        }
-                    });
-
-                    if (districtMatches || hasVisibleCounty) {
-                        districtItem.style.display = '';
-                        // Expand district
-                        const countiesList = districtItem.querySelector('.counties-list');
-                        if (countiesList) countiesList.classList.add('expanded');
-                    } else {
-                        districtItem.style.display = 'none';
+                        // Copy the flat array of zip strings
+                        data.locations = [...newLocations];
                     }
                 });
             }
@@ -3119,146 +2562,46 @@
 
                 const normalizedSearch = searchTerm.toLowerCase().trim();
 
-                if (!normalizedSearch) {
-                    popupBody.querySelectorAll('.category-hierarchy-item').forEach(item => {
+                popupBody.querySelectorAll('.category-hierarchy-item').forEach(item => {
+                    if (!normalizedSearch) {
                         item.style.display = '';
-                    });
-                    popupBody.querySelectorAll('.subcategory-select-item').forEach(item => {
-                        item.style.display = '';
-                    });
-                    return;
-                }
-
-                popupBody.querySelectorAll('.category-hierarchy-item').forEach(categoryItem => {
-                    const categoryName = categoryItem.dataset.categoryName?.toLowerCase() || '';
-                    const categoryMatches = categoryName.includes(normalizedSearch);
-
-                    let hasVisibleSubcategory = false;
-
-                    categoryItem.querySelectorAll('.subcategory-select-item').forEach(subItem => {
-                        const subName = subItem.textContent?.toLowerCase() || '';
-                        const subMatches = subName.includes(normalizedSearch);
-
-                        if (categoryMatches || subMatches) {
-                            subItem.style.display = '';
-                            hasVisibleSubcategory = true;
-                        } else {
-                            subItem.style.display = 'none';
-                        }
-                    });
-
-                    if (categoryMatches || hasVisibleSubcategory) {
-                        categoryItem.style.display = '';
-                        // Expand category
-                        const subcatList = categoryItem.querySelector('.subcategories-list');
-                        if (subcatList) subcatList.classList.add('expanded');
-                        const header = categoryItem.querySelector('.category-header');
-                        if (header) header.classList.add('expanded');
                     } else {
-                        categoryItem.style.display = 'none';
+                        const name = item.dataset.categoryName?.toLowerCase() || '';
+                        item.style.display = name.includes(normalizedSearch) ? '' : 'none';
                     }
                 });
             }
 
-            // Helper function to find category for a subcategory
-            function findCategoryForSubcategory(subcategory) {
-                for (const category in specializations) {
-                    if (specializations[category] && specializations[category].includes(subcategory)) {
-                        return category;
-                    }
-                }
-                return null;
-            }
-            window.findCategoryForSubcategory = findCategoryForSubcategory;
-
-            // Build categories hierarchy for form submission
+            // Build categories list for form submission
             function buildCategoriesHierarchy() {
                 const result = [];
-
-                // Group by category
-                const byCategory = {};
-                selectedSubcategories.forEach((data, key) => {
-                    if (!byCategory[data.category]) {
-                        byCategory[data.category] = [];
-                    }
-                    byCategory[data.category].push({
-                        subcategory: data.subcategory,
+                selectedCategories.forEach((data, key) => {
+                    result.push({
+                        category: data.category,
                         locations: data.locations || []
                     });
                 });
-
-                // Build final structure
-                Object.keys(byCategory).forEach(category => {
-                    result.push({
-                        category: category,
-                        subcategories: byCategory[category]
-                    });
-                });
-
                 return result;
             }
             window.buildCategoriesHierarchy = buildCategoriesHierarchy;
 
-            // Global remove functions (for tag removal if needed later)
-            window.removeSubcategory = function(key) {
-                selectedSubcategories.delete(key);
-                const { category } = parseSubcategoryKey(key);
+            // Global remove function
+            window.removeCategory = function(key) {
+                selectedCategories.delete(key);
 
-                // Check if primary field still has selections
-                if (primaryField === category) {
-                    const hasAnyInCategory = Array.from(selectedSubcategories.values())
-                        .some(item => item.category === category);
-                    if (!hasAnyInCategory) {
-                        primaryField = null;
-                        document.getElementById('primaryFieldHidden').value = '';
-                    }
+                if (primaryField === key) {
+                    primaryField = null;
+                    document.getElementById('primaryFieldHidden').value = '';
                 }
 
                 updateCombinedDisplay();
-                updateSubcategoryTable();
+                updateCategoryTable();
             };
 
-            // Legacy compatibility - keep additionalSpecializations as getter
-            Object.defineProperty(window, 'additionalSpecializations', {
-                get: function() {
-                    return Array.from(selectedSubcategories.values()).map(d => d.subcategory);
-                }
-            });
-
-            // Placeholder for legacy function call pattern
-            function checkAndDeselectPrimaryIfEmpty() {
-                if (!primaryField) return false;
-
-                const hasAnyInPrimary = Array.from(selectedSubcategories.values())
-                    .some(item => item.category === primaryField);
-
-                if (!hasAnyInPrimary) {
-                    primaryField = null;
-                    document.getElementById('primaryFieldHidden').value = '';
-                    return true;
-                }
-                return false;
-            }
-
-            // Load categories and district data on page load
-            Promise.all([
-                loadCategoriesData(),
-                loadDistrictData()
-            ]).then(() => {
-                console.log('Categories and specializations loaded successfully');
-                console.log('District hierarchy loaded successfully');
-
-                // Initialize the combined specializations popup
-                setTimeout(() => {
-                    initializeCombinedSpecializationsPopup();
-                }, 100);
-            }).catch(error => {
-                console.error('Error loading data:', error);
-                // Still initialize popup with dummy data
-                setTimeout(() => {
-                    initializeCombinedSpecializationsPopup();
-                }, 100);
-            });
+            // Initialize popup on page load
+            setTimeout(() => {
+                initializeCombinedSpecializationsPopup();
+            }, 100);
 
             // Old code removed - replaced with combined specializations functionality
             
@@ -4569,62 +3912,27 @@
             // Work area popup functionality - REMOVED
             // Location selection is now integrated into the category/subcategory table
 
-            // Image upload handling
-            window.uploadedImage = null; // Store the image data globally for later server upload
-            const commentImageInput = document.getElementById('commentImage');
-            const imagePreviewContainer = document.getElementById('imagePreviewContainer');
-            const imagePreview = document.getElementById('imagePreview');
-            const imageFileName = document.getElementById('imageFileName');
-            const removeImageBtn = document.getElementById('removeImageBtn');
 
-            commentImageInput.addEventListener('change', function(e) {
-                const file = e.target.files[0];
-                if (file) {
-                    // Validate file type
-                    const validTypes = ['image/png', 'image/jpeg', 'image/jpg'];
-                    if (!validTypes.includes(file.type)) {
-                        alert('Please select an image file in PNG, JPG, or JPEG format');
-                        return;
-                    }
 
-                    // Validate file size (max 5MB)
-                    if (file.size > 5 * 1024 * 1024) {
-                        alert('File size must be under 5MB');
-                        return;
-                    }
+            // Terms of Service modal logic
+            const tosLink = document.getElementById('tosLink');
+            const tosModal = document.getElementById('tosModal');
+            const tosModalClose = document.getElementById('tosModalClose');
 
-                    // Read file and create preview
-                    const reader = new FileReader();
-                    reader.onload = function(event) {
-                        window.uploadedImage = {
-                            data: event.target.result, // base64 data
-                            name: file.name,
-                            type: file.type,
-                            size: file.size
-                        };
+            tosLink.addEventListener('click', function(e) {
+                e.preventDefault();
+                tosModal.classList.add('active');
+            });
 
-                        // Show preview
-                        imagePreview.src = event.target.result;
-                        imageFileName.textContent = file.name;
-                        imagePreviewContainer.style.display = 'block';
-                    };
-                    reader.readAsDataURL(file);
+            tosModalClose.addEventListener('click', function() {
+                tosModal.classList.remove('active');
+            });
+
+            tosModal.addEventListener('click', function(e) {
+                if (e.target === tosModal) {
+                    tosModal.classList.remove('active');
                 }
             });
-
-            removeImageBtn.addEventListener('click', function() {
-                window.uploadedImage = null;
-                commentImageInput.value = '';
-                imagePreview.src = '';
-                imageFileName.textContent = '';
-                imagePreviewContainer.style.display = 'none';
-            });
-
-            // Getter function for accessing the uploaded image
-            window.getUploadedImage = function() {
-                return window.uploadedImage;
-            };
-
 
             // Prevent Enter key from submitting the form
             document.getElementById('clientForm').addEventListener('keydown', function(e) {
@@ -4636,7 +3944,15 @@
             // Form submission
             document.getElementById('clientForm').addEventListener('submit', async function(e) {
                 e.preventDefault();
-                
+
+                // Validate Terms of Service checkbox
+                const tosCheckbox = document.getElementById('tosCheckbox');
+                if (!tosCheckbox.checked) {
+                    alert('Please read and agree to the Terms of Service before submitting.');
+                    tosCheckbox.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    return;
+                }
+
                 // Collect form data
                 const formData = new FormData(this);
                 const data = {};
@@ -4672,16 +3988,16 @@
                     return;
                 }
 
-                // Validate that all subcategories have locations selected
-                const subcategoriesWithoutLocations = [];
-                selectedSubcategories.forEach((subData, key) => {
-                    if (!subData.locations || subData.locations.length === 0) {
-                        subcategoriesWithoutLocations.push(subData.subcategory);
+                // Validate that all categories have locations selected
+                const categoriesWithoutLocations = [];
+                selectedCategories.forEach((catData, key) => {
+                    if (!catData.locations || catData.locations.length === 0) {
+                        categoriesWithoutLocations.push(catData.category);
                     }
                 });
 
-                if (subcategoriesWithoutLocations.length > 0) {
-                    alert(`Please select service areas for all specializations.\n\nSpecializations without areas:\n• ${subcategoriesWithoutLocations.join('\n• ')}`);
+                if (categoriesWithoutLocations.length > 0) {
+                    alert(`Please select service areas for all categories.\n\nCategories without areas:\n${categoriesWithoutLocations.join('\n• ')}`);
                     const tableContainer = document.getElementById('subcategoryTableContainer');
                     if (tableContainer) {
                         tableContainer.scrollIntoView({ behavior: 'smooth' });
@@ -4709,18 +4025,9 @@
                 // Clean up old/unused field names
                 delete data['specializations[]'];
                 delete data['business_benefits[]'];
-                delete data['comment_image']; // Remove the file input field from FormData
 
-                // Add uploaded image if exists (after cleanup)
-                const uploadedImg = window.getUploadedImage ? window.getUploadedImage() : null;
-                if (uploadedImg) {
-                    data.comment_image = {
-                        data: uploadedImg.data,
-                        name: uploadedImg.name,
-                        type: uploadedImg.type,
-                        size: uploadedImg.size
-                    };
-                }
+                // Add location field
+                data.location = 'USA';
                 
                 try {
                     // Create System Prompt JSON from existing template
@@ -4766,16 +4073,12 @@ The JSON file includes:
                 selectedBusinessBenefits = [];
                 updateBusinessBenefitsDisplay();
                 
-                // Reset specializations
-                selectedSpecializations = [];
-                updateSpecializationsDisplay();
-                
-                // Reset subcategory selections
-                if (typeof selectedSubcategories !== 'undefined') {
-                    selectedSubcategories.clear();
+                // Reset category selections
+                if (typeof selectedCategories !== 'undefined') {
+                    selectedCategories.clear();
                     primaryField = null;
                     updateCombinedDisplay();
-                    updateSubcategoryTable();
+                    updateCategoryTable();
                 }
                 
                 // Clear any error styles

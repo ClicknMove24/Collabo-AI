@@ -835,7 +835,7 @@ details{background:var(--paper)}
 .vbody .rpt{width:100%;max-width:330px;font-size:15px}
 .thumb .rpt{font-size:11px;border-radius:10px;padding:.8em}
 .thumb .rpt mark{padding:.25em;margin:.15em 0}
-#wacont{position:relative}
+#wacont,#wanext{position:relative}
 /* stages 1 and 2: same viewer + yellow marks + list as stages 3 and 4 */
 #wamov{position:relative}
 .fbmov mark{border-radius:4px;padding:0 2px;position:relative}
@@ -894,23 +894,26 @@ details{background:var(--paper)}
 .rpt .reply b{display:block;font-size:.9em}
 .rpt .reply span{display:block;font-size:.88em;color:#3b4a54;line-height:1.35}
 /* business card: a designed image, detailed but calm */
-.rpt.bz{padding:1.1em 1.1em 1em}
-.rpt.bz mark{padding:.6em .6em .7em;margin:.2em -.3em;border-radius:12px}
-.bz .bzh{display:flex;align-items:center;gap:.8em;margin-bottom:.9em}
-.bz .bzh i{flex:none;width:2.8em;height:2.8em;border-radius:50%;background:#0b3d2e;color:#fff;font-style:normal;font-weight:700;font-size:1.1em;display:grid;place-items:center}
-.bz .bzh b{display:block;font-size:1.25em;line-height:1.15}
-.bz .bzh span{display:block;font-size:.88em;color:#65676B;margin-top:.15em}
-.bz .lbl{font-size:.74em;font-weight:700;letter-spacing:.05em;color:#65676B;margin-bottom:.45em}
-.bz .chips{display:flex;gap:.4em;flex-wrap:wrap}
-.bz .chips em{font-style:normal;background:#E6F4EA;color:#147b29;border-radius:999px;padding:.28em .8em;font-size:.88em;font-weight:600}
-.bz .pt{display:flex;align-items:center;gap:.5em;font-size:.95em;margin:.25em 0}
+.rpt.bz{padding:0 0 1em;overflow:hidden;border-radius:18px;background:#fff}
+.bz .bzban{height:3.2em;background:linear-gradient(135deg,#0b3d2e 0%,#1f7a5a 100%)}
+.rpt.bz mark{padding:.4em 1.1em .45em;margin:0;border-radius:0}
+.bz .bzh{display:flex;flex-direction:column;align-items:center;text-align:center;margin-top:-2.2em;margin-bottom:.35em}
+.bz .bzh i.pav{display:block;width:4em;height:4em;border-radius:50%;overflow:hidden;background:#fff;border:.22em solid #fff;box-shadow:0 .25em .8em rgba(10,19,23,.2);margin-bottom:.3em}
+.bz .bzh i.pav svg{width:100%;height:100%;display:block}
+.bz .bzh b{display:block;font-size:1.3em;line-height:1.15}
+.bz .bzh span{display:block;font-size:.88em;color:#65676B;margin-top:.2em}
+.bz .bzd{margin:0 0 .55em;font-size:.9em;line-height:1.4;color:#3b4a54;text-align:center}
+.bz .lbl{display:flex;align-items:center;gap:.5em;font-size:.8em;font-weight:700;color:#0b3d2e;margin-bottom:.4em}
+.bz .lbl .li{flex:none;width:1.9em;height:1.9em;border-radius:50%;background:#E6F4EA;color:#147b29;display:grid;place-items:center}
+.bz .lbl .li svg{width:1em;height:1em}
+.bz mark+mark{border-top:1px solid #eef0f2}
+.bz .chips{display:flex;gap:.45em;flex-wrap:wrap}
+.bz .chips em{font-style:normal;background:#F4F8F5;color:#0b3d2e;border:1px solid #cfe5d6;border-radius:999px;padding:.3em .85em;font-size:.88em;font-weight:600}
+.bz .pt{display:flex;align-items:center;gap:.55em;font-size:.93em;margin:.25em 0}
 .bz .pt svg{flex:none;width:1.1em;height:1.1em;color:#1f9d55}
-.bz .yrs{display:inline-flex;align-items:baseline;gap:.4em;margin-top:.5em;background:#F0F2F5;border-radius:10px;padding:.35em .8em}
-.bz .yrs b{font-size:1.5em;line-height:1}
-.bz .yrs span{font-size:.85em;color:#65676B}
-.bz .ph{display:flex;align-items:center;gap:.6em;margin-top:.5em;padding:.7em .8em;background:#0b3d2e;color:#fff;border-radius:12px;font-weight:600}
+.bz .ph{display:flex;align-items:center;justify-content:center;gap:.6em;margin:.4em 1.1em 0;padding:.65em .8em;background:#0b3d2e;color:#fff;border-radius:14px;font-weight:700;letter-spacing:.02em}
 .bz .ph svg{flex:none;width:1.2em;height:1.2em}
-.thumb .rpt.bz{font-size:10px;padding:.9em}
+.thumb .rpt.bz{font-size:10px;padding:0 0 .9em}
 .vbody .rpt.bz{font-size:15px;max-width:330px}
 .rpt .tiles.one{grid-template-columns:1fr}
 </style>
@@ -945,7 +948,6 @@ details{background:var(--paper)}
       <a href="#faq">לפני שמתחילים</a>
     </nav>
     <div class="top-act">
-      <a class="tel js-wa" href="#" data-cta="top_whatsapp" hidden>וואטסאפ</a>
       <a class="btn btn-primary btn-sm" href="#contact" data-cta="top_form">קבלו שיחה</a>
     </div>
     <a href="#top" class="brand" aria-label="Collabo AI, חזרה לראש הדף"><img src="logo-tight.svg" alt="" width="52" height="52"><span class="brand-name">Collabo<em>AI</em></span></a>
@@ -967,10 +969,6 @@ details{background:var(--paper)}
       <div class="cta-row">
         <a class="btn btn-primary" href="#contact" data-cta="hero_form">קבלו שיחה קצרה
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5"/><path d="M11 6l-6 6 6 6"/></svg>
-        </a>
-        <a class="btn btn-wa js-wa" href="#" data-cta="hero_whatsapp" hidden>
-          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.5 3.5A11 11 0 0 0 3.2 17.3L2 22l4.8-1.2A11 11 0 1 0 20.5 3.5zM12 20.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-2.8.7.8-2.7-.2-.3a8.2 8.2 0 1 1 6.7 3.7zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.6.8-.8 1-.3.2-.6.1a6.700 6.700 0 0 1-3.300-2.900c-.2-.4.2-.4.7-1.300.1-.2 0-.3 0-.5l-.8-1.800c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.200 5.200 5.200 0 0 0 1.100 2.800 11.900 11.900 0 0 0 4.600 4c1.700.7 2.400.8 3.200.7a2.700 2.700 0 0 0 1.800-1.300 2.200 2.200 0 0 0 .2-1.300c-.1-.1-.3-.2-.5-.3z"/></svg>
-          שלחו הודעה בוואטסאפ
         </a>
       </div>
       <ul class="trust">
@@ -1003,7 +1001,7 @@ details{background:var(--paper)}
 <div class="chap"><div class="chap-text"><span class="n">2</span><h3>נעם מחפש את הקבוצות. אתם לא מחפשים כלום.</h3><p>לא כל קבוצה מתאימה לעסק שלכם. נעם בודק כל אחת לפי תחום ואזור, ומפרסם רק איפה שיש מי שיכול להזמין אתכם.</p><ol class="anno-list" id="annolist2"><li data-n="1"><b>הקבוצה בתחום שלכם?</b> נעם קורא את האודות ובודק שהנושא מתאים לעסק.</li><li data-n="2"><b>היא באזור שלכם?</b> הוא בודק שהחברים נמצאים איפה שהלקוחות שלכם.</li><li data-n="3"><b>מבקשים להצטרף.</b> נעם עונה על שאלות המנהלים לפי כרטיס העסק.</li></ol></div><div class="chap-visual"><div class="fbmov" id="fbmov" role="img" aria-label="הדגמה מונפשת: נעם מחפש קבוצות בפייסבוק ומסמן כל תוצאה כמתאימה או לא מתאימה לפי התחום והאזור"></div></div></div>
 <div class="chap flip"><div class="chap-text"><span class="n">3</span><h3>פוסט אחר לכל קבוצה, לא אותה פרסומת בכל מקום</h3><p>אותה פרסומת בכמה קבוצות נראית כספאם. נעם כותב לכל קבוצה פוסט משלה, ומראה לכם את כולם לפני שהם עולים.</p><ol class="anno-list" id="annolist"><li data-n="1"><b>נשמע כמו אדם?</b> הפוסט נפתח בהיכרות קצרה, בלי מחירון ובלי נימה של פרסומת.</li><li data-n="2"><b>יש לאן לפנות?</b> הפנייה מגיעה בהודעה פרטית, בלי קישורים וטלפון בפוסט.</li><li data-n="3"><b>אחר בכל קבוצה?</b> אותה עבודה, ניסוח אחר לכל קהל: שכנים, מעצבים, בעלי עסקים.</li></ol></div><div class="chap-visual"><div class="mini big wa-live" id="wapost" role="img" aria-label="הדגמה מונפשת: נעם כותב פוסט אחר לכל קבוצה ומציג את שלושתם כתמונה שאפשר להגדיל ולעבור ביניהם"></div></div></div>
 
-<div class="chap"><div class="chap-text"><span class="n">4</span><h3>בערב מגיע דוח. אתם לא צריכים לבדוק כלום.</h3><p>פרסום בלי דוח הוא ניחוש. כל ערב מגיע אליכם סיכום קצר בוואטסאפ, בלי להיכנס לאף קבוצה.</p><ol class="anno-list" id="annolist4"><li data-n="1"><b>מה עלה?</b> כמה פוסטים עלו בקבוצות שאישרתם.</li><li data-n="2"><b>מה קרה מאז אתמול?</b> צפיות ותגובות חדשות. הצפיות מופיעות כשיש פרופיל פייסבוק מקצועי, והוא חינמי.</li><li data-n="3"><b>מה נעם למד?</b> הוא משתמש בזה בבחירת הקבוצות הבאה.</li></ol></div><div class="chap-visual"><div class="mini big wa-live" id="wacont" role="img" aria-label="הדגמה מונפשת: נעם שולח דוח יומי בוואטסאפ, ובו מה עלה, צפיות ותגובות, ומה הוא למד"></div><p class="demo-tag dark">דוגמה להמחשה. המספרים מומצאים ואינם תוצאות של לקוח.</p></div></div>
+<div class="chap"><div class="chap-text"><span class="n">4</span><h3>כל ערב מגיע דוח, ונעם לומד ממנו מה לעשות מחר</h3><p>בסוף כל יום מגיע סיכום: מה עבד, מי פנה ומה כדאי לעשות הלאה. נעם בוחר לפיו את הקבוצות הבאות ומציע קמפיין חדש, ואתם מחליטים.</p><ol class="anno-list" id="annolist5"><li data-n="1"><b>מה עבד?</b> באילו קבוצות הפוסטים של היום הביאו תגובות, ובאילו לא.</li><li data-n="2"><b>מי פנה?</b> תגובות של אנשים שמבקשים הצעה או רוצים ליצור קשר, כדי שלא תפספסו אותן.</li><li data-n="3"><b>מה הלאה?</b> נעם מציע קמפיין חדש לפי מה שעבד, ומתחיל רק אחרי שאמרתם כן.</li></ol></div><div class="chap-visual"><div class="mini big wa-live" id="wanext" role="img" aria-label="הדגמה מונפשת: נעם שולח דוח יומי, ובו מה עבד, מי פנה, והצעה לקמפיין הבא שמתחיל רק באישור"></div><p class="demo-tag dark">דוגמה להמחשה. המספרים מומצאים ואינם תוצאות של לקוח.</p></div></div>
   </div>
 </section>
 
@@ -1011,7 +1009,7 @@ details{background:var(--paper)}
 <section class="nums2" id="numbers">
   <div class="wrap">
     <span class="kicker">נעם במספרים</span>
-    <h2>פוסטים לקבוצות של האזור. <em>אתם רק מאשרים.</em></h2>
+    <h2>מה נעם עושה בשבילכם בכל חודש</h2>
     <p class="lead">בקבוצות של האזור יושבים הרבה אנשים שמחפשים בעלי מקצוע. נעם כותב ומפרסם בשבילכם, ואתם מאשרים כל פוסט.</p>
     <div class="n4">
       <div class="n4c">
@@ -1160,8 +1158,6 @@ details{background:var(--paper)}
         <button type="submit" class="btn btn-primary btn-block" >שלחו, ונחזור אליכם</button>
         <div class="fail" id="formFail" role="alert">לא הצלחנו לשלוח. נסו שוב בעוד רגע.</div>
         <p class="micro">4 ימי ניסיון חינם, ביטול בכל עת. הפרטים משמשים רק לחזרה אליכם.</p>
-        <div class="or js-wa" hidden>או</div>
-        <a class="btn btn-wa btn-block js-wa" href="#" data-cta="form_whatsapp" hidden>שלחו הודעה בוואטסאפ</a>
       </form>
       <div class="ok" id="formOk" role="status" tabindex="-1">
         <h3>תודה, קיבלנו.</h3>
@@ -1188,7 +1184,6 @@ details{background:var(--paper)}
     <div class="fcol">
       <b>קבלו שיחה</b>
       <a class="btn btn-primary btn-sm" href="#contact" data-cta="foot_form">קבלו שיחה</a>
-      <a class="js-wa wa-link" href="#" data-cta="foot_whatsapp" hidden>דברו איתנו בוואטסאפ</a>
     </div>
   </div>
   <div class="wrap foot-base">
@@ -1199,7 +1194,6 @@ details{background:var(--paper)}
 
 <div class="bar" id="bar">
   <a class="btn btn-primary" href="#contact" data-cta="sticky_form">קבלו שיחה</a>
-  <a class="btn btn-wa js-wa" href="#" data-cta="sticky_whatsapp" hidden>הודעה בוואטסאפ</a>
 </div>
 
 <script>
@@ -1231,7 +1225,7 @@ window.__chatFollow = function (box, slide) {
     slide.style.transition = 'none';
     slide.style.transform = 'translateY(' + start + 'px)';
     void slide.offsetHeight;
-    slide.style.transition = 'transform ' + Math.round(480 + Math.min(Math.abs(start), 700) * 1.0) + 'ms cubic-bezier(.33,0,.2,1)';
+    slide.style.transition = 'transform ' + Math.round(650 + Math.min(Math.abs(start), 700) * 1.6) + 'ms cubic-bezier(.33,0,.2,1)';
     slide.style.transform = 'translateY(0)';
   }
   var F = {
@@ -1240,8 +1234,8 @@ window.__chatFollow = function (box, slide) {
       el.style.animation = 'none'; el.style.opacity = '0';
       parent.appendChild(el);
       void el.offsetHeight;
-      el.style.transition = 'opacity .4s ease'; el.style.opacity = '1';
-      setTimeout(function () { el.style.transition = ''; el.style.opacity = ''; }, 460);
+      el.style.transition = 'opacity .6s ease'; el.style.opacity = '1';
+      setTimeout(function () { el.style.transition = ''; el.style.opacity = ''; }, 660);
       settle();
     },
     down: function () { settle(); },
@@ -1367,8 +1361,8 @@ document.addEventListener('click', function (e) {
     { from:'agent', card:true, text:'כתבתי לכל קבוצה פוסט אחר. זה הפוסט לתושבי גבעתיים:', t:'09:15' },
     { from:'agent', text:'עוד שניים מחכים: למעצבי פנים ולבעלי עסקים. לפרסם את שלושתם?\nכתוב "כן", "לא", או מה לשנות.', t:'09:15' },
     { from:'me', text:'כן', t:'09:18' },
-    { from:'agent', text:'פורסם. הדוח הראשון מגיע ב-19:00‏.', t:'09:19' },
-    { from:'agent', text:'*דוח יומי*\n3 פוסטים עלו\n240 צפיות\n2 תגובות חדשות', t:'19:00' }
+    { from:'agent', text:'פורסם בקבוצה הראשונה, תושבי גבעתיים. ממשיך לשתי הקבוצות האחרות.', t:'09:19' },
+    { from:'agent', text:'עלו כל שלושת הפוסטים. אחפש עוד קבוצות מתאימות, ואשלח לך כל פוסט חדש לאישור לפני שהוא עולה.', t:'09:52' }
   ];
   function bubble(m) {
     var d = document.createElement('div');
@@ -1457,10 +1451,9 @@ document.addEventListener('click', function (e) {
       (done?'<span class="mk '+g.res+'">'+MK[g.res]+'</span>':'')+'</div>';
   }
   function resultsHTML(st,sum){
-    var h='<div class="fbscr"><div class="fbfilters"><span>הכול</span><span class="on">קבוצות</span><span>אנשים</span><span>פוסטים</span></div>'+
-      '<div class="chk"><span>נעם בדק <b id="chkn">38</b> קבוצות, מתוכן <b id="chkm">'+(st.fin?nOk:0)+'</b> מתאימות</span></div><div class="fbres">';
+    var h='<div class="fbscr"><div class="fbfilters"><span>הכול</span><span class="on">קבוצות</span><span>אנשים</span><span>פוסטים</span></div><div class="fbres">';
     G.forEach(function(g,i){h+=cardEl(g,i,st)});
-    return h+'</div><div class="fbsum'+(sum?'':' hid')+'" id="fsum">'+SUM+'</div></div>';
+    return h+'</div></div>';
   }
   function repaint(i,st){
     var el=sc.querySelectorAll('.fbres-c')[i]; var d=document.createElement('div'); d.innerHTML=cardEl(G[i],i,st);
@@ -1536,12 +1529,10 @@ document.addEventListener('click', function (e) {
     for(var gi=1;gi<G.length;gi++){
       st.cur=gi; sc.querySelectorAll('.fbres-c')[gi].classList.add('cur'); await sleep(900,t);
       st.done[gi]=true; st.cur=undefined; repaint(gi,st);
-      var cm=sc.querySelector('#chkm'); if(cm) cm.textContent=G.slice(0,gi+1).filter(function(g){return g.res==='yes'}).length;
       await sleep(700,t);
     }
     await sleep(500,t);
-    var cm2=sc.querySelector('#chkm'); if(cm2) cm2.textContent=nOk;
-    sc.querySelector('#fsum').classList.remove('hid'); await sleep(1400,t);
+    await sleep(1400,t);
     note.classList.add('on'); await sleep(3600,t); note.classList.remove('on'); await sleep(600,t);
   }
   async function loop(t){ try{ while(t===token){ await once(t); if(t===token) root.dispatchEvent(new CustomEvent('demodone')); } }catch(e){} }
@@ -1569,14 +1560,17 @@ document.addEventListener('click', function (e) {
   function card(){
     var chk='<svg viewBox="0 0 24 24"><path d="M5 12.5 L10 17.5 L19 7" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>';
     function chips(a){return '<div class="chips">'+a.map(function(x){return '<em>'+x+'</em>'}).join('')+'</div>'}
-    return '<div class="rpt bz">'+
-      '<mark data-n="1"><div class="bzh"><i>א</i><div><b>אלון לוי שיפוצים</b><span>קבלן שיפוצים</span></div></div>'+
-        '<div class="lbl">שירותים</div>'+chips(['מטבחים','חדרי רחצה'])+'</mark>'+
-      '<mark data-n="2"><div class="lbl">אזורי פעילות</div>'+chips(['גבעתיים','רמת גן','גוש דן'])+'</mark>'+
-      '<mark data-n="3"><div class="lbl">מה מיוחד</div>'+
+    function ic(d){return '<i class="li"><svg viewBox="0 0 24 24"><path d="'+d+'" fill="currentColor"/></svg></i>'}
+    var GRID='M4 4h7v7H4zM13 4h7v7h-7zM4 13h7v7H4zM13 13h7v7h-7z', PIN='M12 2a7 7 0 0 0-7 7c0 5 7 13 7 13s7-8 7-13a7 7 0 0 0-7-7zm0 9.500A2.500 2.500 0 1 1 12 6.500a2.500 2.500 0 0 1 0 5z', STAR='M12 2l3 6.300 6.900.9-5 4.800 1.200 6.900L12 17.600 5.900 20.900 7.100 14 2.100 9.200 9 8.300z';
+    return '<div class="rpt bz"><div class="bzban"></div>'+
+      '<mark data-n="1"><div class="bzh"><i class="pav"><svg viewBox="0 0 40 40"><use href="#av-alon"/></svg></i><b>אלון לוי שיפוצים</b><span>קבלן שיפוצים · גבעתיים</span></div>'+
+        '<p class="bzd">קבלן שיפוצים שמתמחה במטבחים ובחדרי רחצה. נותן הצעת מחיר בכתב לפני שמתחילים.</p>'+
+        '<div class="lbl">'+ic(GRID)+'שירותים</div>'+chips(['שיפוץ מטבחים','שיפוץ חדרי רחצה'])+'</mark>'+
+      '<mark data-n="2"><div class="lbl">'+ic(PIN)+'אזורי פעילות</div>'+chips(['גבעתיים','רמת גן','גוש דן'])+'</mark>'+
+      '<mark data-n="3"><div class="lbl">'+ic(STAR)+'מה מיוחד</div>'+
         '<div class="pt">'+chk+'<span>הצעת מחיר בכתב</span></div>'+
         '<div class="pt">'+chk+'<span>הבית נשאר נקי בסוף כל יום</span></div>'+
-        '<div class="yrs"><b>12</b><span>שנות ותק</span></div></mark>'+
+        '<div class="pt">'+chk+'<span>12 שנות ותק</span></div></mark>'+
       '<div class="ph"><svg viewBox="0 0 24 24"><path d="M6.6 10.8c1.4 2.8 3.8 5.2 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.600 10.800z" fill="currentColor"/></svg><span>050-1234567</span></div></div>';
   }
   var M=[
@@ -1722,29 +1716,30 @@ document.addEventListener('click', function (e) {
   },{threshold:.35}).observe(root);
 })();
 </script><script>
-/* WhatsApp: autonomous continuation - search and join more groups, daily report, what Noam learned */
+/* WhatsApp: daily report - what worked, who reached out, and the next campaign (starts only on a yes) */
 (function(){
-  var root=document.getElementById('wacont'); if(!root) return;
+  var root=document.getElementById('wanext'); if(!root) return;
   function esc(t){return t.replace(/&/g,'&amp;').replace(/</g,'&lt;')}
   function fmt(t){return esc(t).replace(/\*([^*\n]+)\*/g,'<b>$1</b>')}
-  function stamp(tm){ return '<span class="t">'+tm+'</span>'; }
-  /* the daily report: three parts, each one lights up with its line in the list, while the report is open */
+  var TK='<svg class="tk" viewBox="0 0 16 10"><path d="M1 5.2 L4.2 8.4 L10.6 1.4 M6 8 L6.8 8.8 L13.6 1.4" fill="none" stroke="#53bdeb" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+  function stamp(tm,out){ return '<span class="t">'+tm+(out?TK:'')+'</span>'; }
+  /* the weekly summary: three parts, each one lights up with its line in the list */
   function report(){
     return '<div class="rpt"><div class="rh"><b>דוח יומי</b><small>היום · 19:00</small></div>'+
-      '<mark data-n="1"><div class="tiles one"><div><b>3</b><span>פוסטים עלו</span></div></div></mark>'+
-      '<mark data-n="2"><div class="tiles two"><div><b>240</b><span>צפיות מאז אתמול</span></div><div><b>2</b><span>תגובות חדשות</span></div></div></mark>'+
-      '<mark data-n="3"><div class="learn"><b>מה למדתי</b><p>במעצבי פנים ואדריכלים הפוסט קיבל הכי הרבה תגובות. אשתמש בזה בבחירת הקבוצות הבאה.</p></div></mark></div>';
+      '<mark data-n="1"><div class="learn"><b>מה עבד</b><p>במעצבי פנים ואדריכלים: 3 תגובות. בקבוצת השכנים: אחת.</p></div></mark>'+
+      '<mark data-n="2"><div class="tiles two"><div><b>5</b><span>תגובות היום</span></div><div><b>2</b><span>פניות שביקשו הצעה</span></div></div></mark>'+
+      '<mark data-n="3"><div class="learn"><b>הקמפיין הבא</b><p>שיפוץ אמבטיות, בקבוצות שהגיבו הכי הרבה. מתחיל רק באישור שלך.</p></div></mark></div>';
   }
   var M=[
-    ['d','אתמול'],
-    ['a','10:14','שלושת הפוסטים עלו. אעדכן אותך בערב.'],
     ['d','היום'],
     ['r','19:00','הדוח של היום מוכן. לחץ עליו כדי לראות.'],
-    ['a','19:01','את מה שלמדתי אשתמש בו בבחירת הקבוצות הבאה.']
+    ['a','19:01','הצעה לקמפיין הבא: שיפוץ אמבטיות, בקבוצות שהגיבו הכי הרבה.\nלהתחיל? כתוב "כן", "לא", או מה לשנות.'],
+    ['u','19:03','כן'],
+    ['a','19:03','מתחיל. הפוסט הראשון יגיע אליך לאישור.']
   ];
-  root.innerHTML='<div class="mini-head"><i><img src="logo-tight.svg" alt=""></i><b>נעם · סוכן הפרסום</b></div><div class="mini-chat walive"><div class="waslide" id="wcs"></div></div><div class="wa-foot"><span>הודעה</span><i></i></div>'+
-    '<div class="viewer" id="vw4"><div class="vbar"><span class="vx">&times;</span><b>נעם · סוכן הפרסום</b></div><div class="vbody" id="vb4"></div></div>';
-  var sl=root.querySelector('#wcs'), box=root.querySelector('.walive'), vw=root.querySelector('#vw4'), vb=root.querySelector('#vb4'), list=document.getElementById('annolist4');
+  root.innerHTML='<div class="mini-head"><i><img src="logo-tight.svg" alt=""></i><b>נעם · סוכן הפרסום</b></div><div class="mini-chat walive"><div class="waslide" id="wns"></div></div><div class="wa-foot"><span>הודעה</span><i></i></div>'+
+    '<div class="viewer" id="vw5"><div class="vbar"><span class="vx">&times;</span><b>נעם · סוכן הפרסום</b></div><div class="vbody" id="vb5"></div></div>';
+  var sl=root.querySelector('#wns'), box=root.querySelector('.walive'), vw=root.querySelector('#vw5'), vb=root.querySelector('#vb5'), list=document.getElementById('annolist5');
   function lit(n,on){ if(!list) return; var li=list.querySelector('li[data-n="'+n+'"]'); if(li) li.classList[on?'add':'remove']('lit'); }
   function clearLit(){ if(list) list.querySelectorAll('li.lit').forEach(function(l){l.classList.remove('lit')}); }
   var token=0;
@@ -1755,18 +1750,19 @@ document.addEventListener('click', function (e) {
     var d=document.createElement('div');
     if(m[0]==='d'){ d.className='datechip'; d.textContent=m[1]; }
     else if(m[0]==='r'){ d.className='msg agent imgb'; d.innerHTML='<div class="imgmsg"><div class="thumb">'+report()+'</div><span class="tap"></span></div>'+fmt(m[2])+stamp(m[1]); }
+    else if(m[0]==='u'){ d.className='msg me'; d.innerHTML=fmt(m[2])+stamp(m[1],true); }
     else { d.className='msg agent'; d.innerHTML=fmt(m[2])+stamp(m[1]); }
     F.add(sl,d); return d;
   }
   function typing(){var ty=document.createElement('div'); ty.className='typing'; ty.innerHTML='<i></i><i></i><i></i>'; F.add(sl,ty); return ty}
-  function finalState(){ sl.innerHTML=''; vw.classList.remove('on'); clearLit(); M.slice(2).forEach(add); }
+  function finalState(){ sl.innerHTML=''; vw.classList.remove('on'); clearLit(); M.forEach(add); }
   async function once(t){
     sl.innerHTML=''; F.reset(); vw.classList.remove('on'); clearLit();
-    var rep=null;
     for(var i=0;i<M.length;i++){
       var m=M[i];
       if(m[0]==='d'){ await sleep(900,t); add(m); continue; }
       await sleep(700,t);
+      if(m[0]==='u'){ await sleep(700,t); add(m); await sleep(900,t); continue; }
       var ty=typing(); await sleep(Math.min(2200,900+m[2].length*9),t); sl.removeChild(ty); var el=add(m);
       if(m[0]==='r'){
         await sleep(1500,t); el.querySelector('.tap').classList.add('on'); await sleep(700,t);

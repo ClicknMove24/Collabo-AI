@@ -931,17 +931,20 @@ details{background:var(--paper)}
   .hero .lead{display:none}
   .hero .lead-m{display:block;order:2;font-size:16px;line-height:1.45;margin-bottom:14px}
   .hero .cta-row{order:3;max-width:none;margin-bottom:0}
-  .hero .trust{order:4}
-  .hero .phone-wrap{order:5;margin:16px 0 0}
+  .hero .phone-wrap{order:4;margin:16px 0 0}
+  .hero .trust{order:5;display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
   .cta-row{max-width:none}
   .cta-row .btn{width:100%;justify-content:center}
   .trust{grid-template-columns:1fr;gap:6px;margin-top:12px;font-size:13.5px}
-  .trust li:nth-child(n+3){display:none}
+  .trust li:nth-child(4){display:none}
+  .trust li{padding:7px 14px 7px 14px;padding-inline-start:36px;background:#fff;border:1px solid #e6e0d3;border-radius:999px;font-size:13px;line-height:1.3}
+  .trust li:before{inset-inline-start:13px;top:50%;margin-top:-6px;width:11px;height:6px;border-inline-start-width:2px;border-bottom-width:2px}
   .demo-tag{font-size:12px;margin-top:8px}
   /* the four stages: heading + mockup only, no highlight layer */
   .demo-note{display:none}
   .chap{margin-top:32px;gap:12px}
   .chap-text p,.chap-text .anno-list,.live-note{display:none !important}
+  .chap-text p.cm{display:block !important;font-size:15.5px;line-height:1.45;color:var(--ink-2);margin:6px 0 0}
   .chap-text h3{font-size:21px;line-height:1.25;margin-bottom:0}
   .chap-text .n{width:34px;height:34px;font-size:16px;margin-bottom:8px}
   .viewer mark.on,.fbmov mark.on,.msg mark.on,.pvsheet mark.on{background:transparent !important}
@@ -968,18 +971,102 @@ details{background:var(--paper)}
   .plan2 li:nth-child(n+4){display:none}
   .plan2:last-child ul{display:none}
   /* form */
-  .final .lead{display:none}
+  .final .lead:not(.lead-m){display:none}
+  .final .lead-m{display:block;font-size:16px;line-height:1.45;margin:0 0 4px}
   .final-grid{gap:16px}
   .form h3{display:none}
   /* footer */
-  .brandcol p,.foot-base span:last-child{display:none}
   .fcol:nth-child(2){display:none}
+  .brandcol p{font-size:14.5px;line-height:1.5}
+  .foot-base{flex-direction:column;gap:8px;font-size:12px;line-height:1.5;color:var(--ink-3)}
 }
 .faq-more{display:none}
 @media(max-width:600px){
   .faq-list.short details:nth-of-type(n+6){display:none}
   .faq-more{display:block;width:100%;margin-top:14px;min-height:50px;border:2px solid var(--green);border-radius:999px;background:#fff;color:var(--green);font:inherit;font-weight:700;font-size:16px}
   .faq-list:not(.short)+.faq-more{display:none}
+}
+/* FAQ: each question is its own card, with room between the text and the edges */
+.faq-list{gap:10px}
+.faq details{background:var(--paper);border:1px solid #e6e0d3 !important;border-radius:16px;padding:0 22px;transition:background .2s,border-color .2s,box-shadow .2s}
+.faq details[open]{background:#fff;border-color:var(--sky) !important;box-shadow:0 6px 20px rgba(18,50,74,.08)}
+.faq summary{min-height:62px;padding:16px 0;gap:18px;font-size:17px;line-height:1.35}
+.faq summary:after{width:30px;height:30px;border-radius:50%;background:#fff;display:grid;place-items:center;font-size:20px;line-height:1;color:var(--blue-deep);box-shadow:0 0 0 1px #e6e0d3}
+.faq details[open] summary:after{background:var(--blue-deep);color:#fff;box-shadow:none}
+.faq details[open] summary{padding-bottom:8px}
+.faq details p{padding:0 0 20px;line-height:1.65;max-width:64ch}
+@media(max-width:600px){
+  .faq-list{gap:8px}
+  .faq details{padding:0 16px;border-radius:14px}
+  .faq summary{min-height:58px;padding:14px 0;gap:12px;font-size:16px}
+  .faq details p{font-size:15.5px;padding-bottom:16px}
+}
+.cm{display:none}
+@media(max-width:600px){
+  :root{--mock-h:440px}
+  /* plans: the recommended one first, quieter business card */
+  .plan2.best{order:-1}
+  .plan2 .amount-text{font-size:22px;padding:4px 0}
+  /* comparison: each row is a small card, the two options side by side with their names */
+  .cmp-head{display:none !important}
+  .cmp .cmp-row{display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:12px 0;border-bottom:1px solid #e3e6ea}
+  .cmp .cmp-row .lab{grid-column:1/-1;font-weight:800;font-size:15px;margin-bottom:2px}
+  .cmp .cmp-row>div[data-l]{font-size:14px;line-height:1.4;padding:10px 12px;border-radius:12px;background:#f4f1ea}
+  .cmp .cmp-row>div[data-l]:before{content:attr(data-l);display:block;font-size:11.5px;font-weight:700;color:var(--ink-3);margin-bottom:3px}
+  .cmp .cmp-row .lab{order:-2}
+  .cmp .cmp-row>.us{order:-1;background:#e6f4ea !important;color:#0b3d2e;font-weight:700}
+  .cmp .cmp-row>.us:before{color:#147b29}
+  .cmp-note{display:block !important;font-size:13.5px;margin-top:12px}
+}
+.plan-dots{display:none}
+@media(max-width:600px){
+  .plans{display:flex;flex-direction:row;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;margin:18px -16px 0;padding:10px 16px 6px;scrollbar-width:none;-webkit-overflow-scrolling:touch;overscroll-behavior-x:contain}
+  .plans::-webkit-scrollbar{display:none}
+  .plans .plan2{flex:0 0 84%;scroll-snap-align:center}
+  .plan-dots{display:flex;justify-content:center;gap:8px;margin:8px 0 14px}
+  .plan-dots i{width:8px;height:8px;border-radius:50%;background:#d6d0c2;transition:background .2s,width .2s}
+  .plan-dots i.on{background:var(--green);width:22px;border-radius:99px}
+}
+@media(max-width:600px){
+  /* enlarged items inside the phone mockups: fit the whole item on a small screen */
+  .vbody{padding:0 12px 12px}
+  .vbody .rpt{font-size:14px}
+  .vbody .rpt.bz{font-size:11.8px}
+  .vbody .fbpost,.vbody .fbpost .body{font-size:14px}
+  .vbody .pphoto{height:96px}
+  /* the post already shows its group name: no extra tabs over it */
+  .gtabs{display:none}
+}
+/* mobile header: brand on the right, call button + menu on the left, dimmed page behind the open menu */
+@media(max-width:799px){
+  .top .wrap{gap:10px}
+  .top .brand{order:0;margin:0 0 0 auto}
+  .top .nav{margin:0}
+  .top .top-act{order:1;margin:0}
+  .top .top-act .btn-sm{display:inline-flex;min-height:40px;padding:6px 16px;font-size:14.5px;white-space:nowrap}
+  .top .menu-btn{order:2}
+  .top.open:before{content:"";position:absolute;inset-inline:0;top:100%;height:100vh;background:rgba(10,19,23,.4);z-index:-1}
+  .top.open .nav{padding:6px 20px 14px;border-radius:0 0 22px 22px}
+  .top.open .nav a{display:flex;align-items:center;justify-content:space-between;min-height:54px;padding:0 4px;font-size:18px}
+  .top.open .nav a:after{content:"";width:9px;height:9px;border-left:2px solid #a9a395;border-bottom:2px solid #a9a395;transform:rotate(45deg);margin-inline-end:6px}
+  .top.open .nav a:last-child{border-bottom:0}
+  .top.open .nav a.on{color:var(--green)}
+}
+@media(max-width:360px){
+  .top .brand-name{display:none}
+}
+@media(max-width:600px){
+  /* small previews inside the chats: headline and picture only, the full item opens on tap */
+  .thumb .rpt.bz mark[data-n="2"],.thumb .rpt.bz mark[data-n="3"],.thumb .rpt.bz .bzd{display:none}
+  .thumb .fbpost .body{display:none}
+  .thumb .rpt .learn p{display:none}
+  /* search mockup: no counters or status chips of ours */
+  .fbsrch .cnt,.fbres-c .st{display:none}
+}
+@media(max-width:600px){
+  /* no blue captions over the sections; the disclaimer under the numbers stays, in neutral grey */
+  .kicker{display:none}
+  .n4note{color:var(--ink-3)}
 }
 </style>
 </head>
@@ -1063,11 +1150,11 @@ details{background:var(--paper)}
 <section class="story" id="how">
   <div class="wrap">
 <p class="demo-note">כל הדוגמאות בסעיף הזה הן להמחשה: אלון והעסק שלו בדויים, והמספרים מומצאים.</p>
-<div class="chap flip"><div class="chap-text"><span class="n">1</span><h3>שיחה אחת בוואטסאפ, ונעם מכיר את העסק שלכם</h3><p>אתם מספרים על העסק פעם אחת, בהקלטה. נעם שואל רק על מה שחסר ושולח לכם כרטיס עסק, ומשם הוא כותב כל פוסט.</p><ol class="anno-list" id="annolist1"><li data-n="1"><b>מה העסק עושה?</b> שם, תחום ושירותים.</li><li data-n="2"><b>איפה אתם עובדים?</b> האזורים שבהם אתם רוצים לקוחות.</li><li data-n="3"><b>מה מיוחד אצלכם?</b> מה שמבדיל אתכם, כדי שהפוסטים יישמעו כמוכם.</li></ol></div><div class="chap-visual"><div class="mini big wa-live" id="wamov" role="img" aria-label="הדגמה מונפשת: נעם שואל את אלון שאלה אחת בכל פעם ובונה את כרטיס העסק עד שהוא מוכן"></div></div></div>
-<div class="chap"><div class="chap-text"><span class="n">2</span><h3>נעם מחפש את הקבוצות. אתם לא מחפשים כלום.</h3><p>לא כל קבוצה מתאימה לעסק שלכם. נעם בודק כל אחת לפי תחום ואזור, ומפרסם רק איפה שיש מי שיכול להזמין אתכם.</p><ol class="anno-list" id="annolist2"><li data-n="1"><b>הקבוצה בתחום שלכם?</b> נעם קורא את האודות ובודק שהנושא מתאים לעסק.</li><li data-n="2"><b>היא באזור שלכם?</b> הוא בודק שהחברים נמצאים איפה שהלקוחות שלכם.</li><li data-n="3"><b>מבקשים להצטרף.</b> נעם עונה על שאלות המנהלים לפי כרטיס העסק.</li></ol></div><div class="chap-visual"><div class="fbmov" id="fbmov" role="img" aria-label="הדגמה מונפשת: נעם מחפש קבוצות בפייסבוק ומסמן כל תוצאה כמתאימה או לא מתאימה לפי התחום והאזור"></div></div></div>
-<div class="chap flip"><div class="chap-text"><span class="n">3</span><h3>פוסט אחר לכל קבוצה, לא אותה פרסומת בכל מקום</h3><p>אותה פרסומת בכמה קבוצות נראית כספאם. נעם כותב לכל קבוצה פוסט משלה, ומראה לכם את כולם לפני שהם עולים.</p><ol class="anno-list" id="annolist"><li data-n="1"><b>נשמע כמו אדם?</b> הפוסט נפתח בהיכרות קצרה, בלי מחירון ובלי נימה של פרסומת.</li><li data-n="2"><b>יש לאן לפנות?</b> הפנייה מגיעה בהודעה פרטית, בלי קישורים וטלפון בפוסט.</li><li data-n="3"><b>אחר בכל קבוצה?</b> אותה עבודה, ניסוח אחר לכל קהל: שכנים, מעצבים, בעלי עסקים.</li></ol></div><div class="chap-visual"><div class="mini big wa-live" id="wapost" role="img" aria-label="הדגמה מונפשת: נעם כותב פוסט אחר לכל קבוצה ומציג את שלושתם כתמונה שאפשר להגדיל ולעבור ביניהם"></div></div></div>
+<div class="chap flip"><div class="chap-text"><span class="n">1</span><h3>שיחה אחת בוואטסאפ, ונעם מכיר את העסק שלכם</h3><p>אתם מספרים על העסק פעם אחת, בהקלטה. נעם שואל רק על מה שחסר ושולח לכם כרטיס עסק, ומשם הוא כותב כל פוסט.</p><p class="cm">מספרים על העסק פעם אחת בהקלטה, ונעם בונה מזה כרטיס עסק.</p><ol class="anno-list" id="annolist1"><li data-n="1"><b>מה העסק עושה?</b> שם, תחום ושירותים.</li><li data-n="2"><b>איפה אתם עובדים?</b> האזורים שבהם אתם רוצים לקוחות.</li><li data-n="3"><b>מה מיוחד אצלכם?</b> מה שמבדיל אתכם, כדי שהפוסטים יישמעו כמוכם.</li></ol></div><div class="chap-visual"><div class="mini big wa-live" id="wamov" role="img" aria-label="הדגמה מונפשת: נעם שואל את אלון שאלה אחת בכל פעם ובונה את כרטיס העסק עד שהוא מוכן"></div></div></div>
+<div class="chap"><div class="chap-text"><span class="n">2</span><h3>נעם מחפש את הקבוצות. אתם לא מחפשים כלום.</h3><p>לא כל קבוצה מתאימה לעסק שלכם. נעם בודק כל אחת לפי תחום ואזור, ומפרסם רק איפה שיש מי שיכול להזמין אתכם.</p><p class="cm">נעם בודק כל קבוצה לפי תחום ואזור, ומבקש להצטרף רק לאלה שמתאימות.</p><ol class="anno-list" id="annolist2"><li data-n="1"><b>הקבוצה בתחום שלכם?</b> נעם קורא את האודות ובודק שהנושא מתאים לעסק.</li><li data-n="2"><b>היא באזור שלכם?</b> הוא בודק שהחברים נמצאים איפה שהלקוחות שלכם.</li><li data-n="3"><b>מבקשים להצטרף.</b> נעם עונה על שאלות המנהלים לפי כרטיס העסק.</li></ol></div><div class="chap-visual"><div class="fbmov" id="fbmov" role="img" aria-label="הדגמה מונפשת: נעם מחפש קבוצות בפייסבוק ומסמן כל תוצאה כמתאימה או לא מתאימה לפי התחום והאזור"></div></div></div>
+<div class="chap flip"><div class="chap-text"><span class="n">3</span><h3>פוסט אחר לכל קבוצה, לא אותה פרסומת בכל מקום</h3><p>אותה פרסומת בכמה קבוצות נראית כספאם. נעם כותב לכל קבוצה פוסט משלה, ומראה לכם את כולם לפני שהם עולים.</p><p class="cm">נעם כותב לכל קבוצה פוסט משלה, ואתם מאשרים אותו לפני שהוא עולה.</p><ol class="anno-list" id="annolist"><li data-n="1"><b>נשמע כמו אדם?</b> הפוסט נפתח בהיכרות קצרה, בלי מחירון ובלי נימה של פרסומת.</li><li data-n="2"><b>יש לאן לפנות?</b> הפנייה מגיעה בהודעה פרטית, בלי קישורים וטלפון בפוסט.</li><li data-n="3"><b>אחר בכל קבוצה?</b> אותה עבודה, ניסוח אחר לכל קהל: שכנים, מעצבים, בעלי עסקים.</li></ol></div><div class="chap-visual"><div class="mini big wa-live" id="wapost" role="img" aria-label="הדגמה מונפשת: נעם כותב פוסט אחר לכל קבוצה ומציג את שלושתם כתמונה שאפשר להגדיל ולעבור ביניהם"></div></div></div>
 
-<div class="chap"><div class="chap-text"><span class="n">4</span><h3>כל ערב מגיע דוח, ונעם לומד ממנו מה לעשות מחר</h3><p>בסוף כל יום מגיע סיכום: מה עבד, מי פנה ומה כדאי לעשות הלאה. נעם בוחר לפיו את הקבוצות הבאות ומציע קמפיין חדש, ואתם מחליטים.</p><ol class="anno-list" id="annolist5"><li data-n="1"><b>מה עבד?</b> באילו קבוצות הפוסטים של היום הביאו תגובות, ובאילו לא.</li><li data-n="2"><b>מי פנה?</b> תגובות של אנשים שמבקשים הצעה או רוצים ליצור קשר, כדי שלא תפספסו אותן.</li><li data-n="3"><b>מה הלאה?</b> נעם מציע קמפיין חדש לפי מה שעבד, ומתחיל רק אחרי שאמרתם כן.</li></ol></div><div class="chap-visual"><div class="mini big wa-live" id="wanext" role="img" aria-label="הדגמה מונפשת: נעם שולח דוח יומי, ובו מה עבד, מי פנה, והצעה לקמפיין הבא שמתחיל רק באישור"></div><p class="demo-tag dark">דוגמה להמחשה. המספרים מומצאים ואינם תוצאות של לקוח.</p></div></div>
+<div class="chap"><div class="chap-text"><span class="n">4</span><h3>כל ערב מגיע דוח, ונעם לומד ממנו מה לעשות מחר</h3><p>בסוף כל יום מגיע סיכום: מה עבד, מי פנה ומה כדאי לעשות הלאה. נעם בוחר לפיו את הקבוצות הבאות ומציע קמפיין חדש, ואתם מחליטים.</p><p class="cm">כל ערב מגיע דוח: מה עלה, מי הגיב ומה נעם למד. מפה הוא ממשיך.</p><ol class="anno-list" id="annolist5"><li data-n="1"><b>מה עבד?</b> באילו קבוצות הפוסטים של היום הביאו תגובות, ובאילו לא.</li><li data-n="2"><b>מי פנה?</b> תגובות של אנשים שמבקשים הצעה או רוצים ליצור קשר, כדי שלא תפספסו אותן.</li><li data-n="3"><b>מה הלאה?</b> נעם מציע קמפיין חדש לפי מה שעבד, ומתחיל רק אחרי שאמרתם כן.</li></ol></div><div class="chap-visual"><div class="mini big wa-live" id="wanext" role="img" aria-label="הדגמה מונפשת: נעם שולח דוח יומי, ובו מה עבד, מי פנה, והצעה לקמפיין הבא שמתחיל רק באישור"></div><p class="demo-tag dark">דוגמה להמחשה. המספרים מומצאים ואינם תוצאות של לקוח.</p></div></div>
   </div>
 </section>
 
@@ -1197,6 +1284,7 @@ details{background:var(--paper)}
   <div class="wrap final-grid">
     <div>
       <h2>בואו נבדוק אם זה מתאים לעסק שלכם</h2>
+      <p class="lead lead-m">שם, טלפון ותחום עסק, ובתוך 24 שעות נחזור אליכם לשיחה קצרה. בלי התחייבות.</p>
       <p class="lead">השאירו שם, טלפון ותחום עסק. בשיחה קצרה נבדוק יחד אם נעם מתאים לכם, ואם כן, נקבע מתי מתחילים ומחברים את הפרופיל. בלי התחייבות.</p>
     </div>
     <div class="form" id="formBox">
@@ -1204,7 +1292,7 @@ details{background:var(--paper)}
         <h3>השאירו פרטים לשיחה קצרה</h3>
         <div class="field">
           <label for="fullName">שם</label>
-          <input id="fullName" name="fullName" type="text" autocomplete="name" required>
+          <input id="fullName" name="fullName" type="text" autocomplete="name" placeholder="שם מלא" required>
           <div class="err">איך לקרוא לכם?</div>
         </div>
         <div class="field">
@@ -1569,7 +1657,7 @@ document.addEventListener('click', function (e) {
     await sleep(900,t);
     for(var i=1;i<=Q.length;i++){ q.innerHTML=Q.slice(0,i)+'<span class="caret"></span>'; await sleep(75,t); }
     await sleep(500,t); q.textContent=Q;
-    sc.innerHTML='<div class="fbscr"><div class="fbsrch"><span class="dots"><i></i><i></i><i></i></span> נעם מחפש קבוצות... נבדקו <b id="ldn">0</b></div></div>';
+    sc.innerHTML='<div class="fbscr"><div class="fbsrch"><span class="dots"><i></i><i></i><i></i></span> נעם מחפש קבוצות... <span class="cnt">נבדקו <b id="ldn">0</b></span></div></div>';
     for(var c=1;c<=12;c++){ await sleep(110,t); var ld=sc.querySelector('#ldn'); if(ld) ld.textContent=Math.round(c*38/12); }
     await sleep(300,t);
     st.hid=true; sc.innerHTML=resultsHTML(st,false); st.hid=false;
@@ -1858,6 +1946,7 @@ document.addEventListener('click', function (e) {
   btn.addEventListener('click',function(){ set(!top.classList.contains('open')); });
   nav.addEventListener('click',function(e){ if(e.target.tagName==='A') set(false); });
   document.addEventListener('keydown',function(e){ if(e.key==='Escape') set(false); });
+  top.addEventListener('click',function(e){ if(e.target===top) set(false); });
   if(!('IntersectionObserver' in window)) return;
   var links={}; nav.querySelectorAll('a').forEach(function(a){ links[a.getAttribute('href').slice(1)]=a; });
   var io=new IntersectionObserver(function(es){
@@ -1922,6 +2011,26 @@ document.addEventListener('click', function (e) {
   var b=document.createElement('button'); b.type='button'; b.className='faq-more'; b.textContent='עוד '+(n-5)+' שאלות';
   b.addEventListener('click',function(){ list.classList.remove('short'); });
   list.parentNode.insertBefore(b,list.nextSibling);
+})();
+</script>
+<script>
+/* mobile: plans are a swipeable row with position dots */
+(function(){
+  var row=document.querySelector('.plans'); if(!row||!window.matchMedia('(max-width:600px)').matches) return;
+  var cards=row.querySelectorAll('.plan2'); if(cards.length<2) return;
+  var dots=document.createElement('div'); dots.className='plan-dots'; dots.setAttribute('aria-hidden','true');
+  dots.innerHTML=Array.prototype.map.call(cards,function(){return '<i></i>'}).join('');
+  row.parentNode.insertBefore(dots,row.nextSibling);
+  var d=dots.querySelectorAll('i');
+  function upd(){
+    var c=row.getBoundingClientRect().left+row.clientWidth/2;
+    var list=Array.prototype.map.call(cards,function(el){ var r=el.getBoundingClientRect(); return {x:r.left+r.width/2}; });
+    var order=list.slice().sort(function(m,n){ return n.x-m.x; });   /* RTL: the card on the right is first */
+    var best=0, bd=1e9;
+    order.forEach(function(it,i){ var dd=Math.abs(it.x-c); if(dd<bd){bd=dd;best=i;} });
+    Array.prototype.forEach.call(d,function(x,i){ x.classList.toggle('on',i===best); });
+  }
+  row.addEventListener('scroll',upd,{passive:true}); window.addEventListener('resize',upd); upd();
 })();
 </script>
 </body>

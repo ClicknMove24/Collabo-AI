@@ -916,6 +916,71 @@ details{background:var(--paper)}
 .thumb .rpt.bz{font-size:10px;padding:0 0 .9em}
 .vbody .rpt.bz{font-size:15px;max-width:330px}
 .rpt .tiles.one{grid-template-columns:1fr}
+
+/* ===== MOBILE: short, one idea per screen, mockups first ===== */
+.lead-m{display:none}
+@media(max-width:600px){
+  :root{--mock-h:470px}
+  section{padding:34px 0}
+  .wrap{padding:0 16px}
+  h2{font-size:25px;line-height:1.2;margin-bottom:8px}
+  .hero{padding:10px 0 18px}
+  .hero .wrap{gap:14px}
+  .hero-mark{display:none}
+  .hero h1{font-size:29px;line-height:1.15;margin-bottom:10px}
+  .hero .lead{display:none}
+  .hero .lead-m{display:block;order:2;font-size:16px;line-height:1.45;margin-bottom:14px}
+  .hero .cta-row{order:3;max-width:none;margin-bottom:0}
+  .hero .trust{order:4}
+  .hero .phone-wrap{order:5;margin:16px 0 0}
+  .cta-row{max-width:none}
+  .cta-row .btn{width:100%;justify-content:center}
+  .trust{grid-template-columns:1fr;gap:6px;margin-top:12px;font-size:13.5px}
+  .trust li:nth-child(n+3){display:none}
+  .demo-tag{font-size:12px;margin-top:8px}
+  /* the four stages: heading + mockup only, no highlight layer */
+  .demo-note{display:none}
+  .chap{margin-top:32px;gap:12px}
+  .chap-text p,.chap-text .anno-list,.live-note{display:none !important}
+  .chap-text h3{font-size:21px;line-height:1.25;margin-bottom:0}
+  .chap-text .n{width:34px;height:34px;font-size:16px;margin-bottom:8px}
+  .viewer mark.on,.fbmov mark.on,.msg mark.on,.pvsheet mark.on{background:transparent !important}
+  .viewer mark.on:after,.fbmov mark.on:after,.msg mark.on:after,.pvsheet mark.on:after{display:none !important}
+  /* numbers */
+  .nums2 .lead{display:none}
+  .n4{grid-template-columns:1fr 1fr;gap:10px;margin-top:18px}
+  .n4c{padding:12px 10px}
+  .n4c .big{font-size:27px}
+  .n4c strong{font-size:13px;margin-top:6px}
+  .n4c small{display:none}
+  .n4note{font-size:12px;margin-top:14px}
+  /* comparison */
+  .compare .lead,.cmp-note{display:none}
+  .cmp-tabs{margin-top:14px}
+  /* plans */
+  #price .lead{display:none}
+  .plan2{padding:18px 16px}
+  .plan2 .amount{font-size:36px}
+  .plan2 .for{display:none}
+  .plan2:last-child .for{display:block;min-height:0}
+  .plan2 ul{margin:12px 0 16px;gap:8px}
+  .plan2 li{font-size:15px}
+  .plan2 li:nth-child(n+4){display:none}
+  .plan2:last-child ul{display:none}
+  /* form */
+  .final .lead{display:none}
+  .final-grid{gap:16px}
+  .form h3{display:none}
+  /* footer */
+  .brandcol p,.foot-base span:last-child{display:none}
+  .fcol:nth-child(2){display:none}
+}
+.faq-more{display:none}
+@media(max-width:600px){
+  .faq-list.short details:nth-of-type(n+6){display:none}
+  .faq-more{display:block;width:100%;margin-top:14px;min-height:50px;border:2px solid var(--green);border-radius:999px;background:#fff;color:var(--green);font:inherit;font-weight:700;font-size:16px}
+  .faq-list:not(.short)+.faq-more{display:none}
+}
 </style>
 </head>
 <body>
@@ -966,6 +1031,7 @@ details{background:var(--paper)}
       </div>
       <h1>לקוחות חדשים מקבוצות פייסבוק. <em>בלי לכתוב אפילו פוסט אחד.</em></h1>
       <p class="lead">שולחים לנעם תמונה ומשפט בוואטסאפ. הוא מוצא קבוצות שמתאימות לעסק ומפרסם בכל אחת פוסט אחר, לא אותה פרסומת בכל מקום. הכול מהפרופיל שלכם, רק אחרי שאמרתם "כן".</p>
+      <p class="lead lead-m">שולחים לנעם תמונה בוואטסאפ, והוא מפרסם בקבוצות המתאימות. כל פוסט באישורכם.</p>
       <div class="cta-row">
         <a class="btn btn-primary" href="#contact" data-cta="hero_form">קבלו שיחה קצרה
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5"/><path d="M11 6l-6 6 6 6"/></svg>
@@ -1847,5 +1913,16 @@ document.addEventListener('click', function (e) {
     new MutationObserver(render).observe(list,{attributes:true,subtree:true,attributeFilter:['class']});
   });
 })();
-</script></body>
+</script><script>
+/* mobile: show the first five questions, the rest on tap */
+(function(){
+  var list=document.querySelector('.faq-list'); if(!list||!window.matchMedia('(max-width:600px)').matches) return;
+  var n=list.querySelectorAll('details').length; if(n<=5) return;
+  list.classList.add('short');
+  var b=document.createElement('button'); b.type='button'; b.className='faq-more'; b.textContent='עוד '+(n-5)+' שאלות';
+  b.addEventListener('click',function(){ list.classList.remove('short'); });
+  list.parentNode.insertBefore(b,list.nextSibling);
+})();
+</script>
+</body>
 </html>

@@ -4,11 +4,11 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#0b3d2e">
-<title>Collabo AI: לקוחות מקבוצות פייסבוק בלי לכתוב פוסט</title>
+<title>Collabo AI: הודעה אחת בוואטסאפ, והעסק שלכם בקבוצות פייסבוק</title>
 <meta name="description" content="שולחים לנעם תמונה ומשפט בוואטסאפ. הוא כותב פוסט אחר לכל קבוצה בפייסבוק, מראה לכם קודם, ומפרסם רק אחרי שאמרתם כן. 4 ימי ניסיון חינם, ביטול בכל עת.">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="he_IL">
-<meta property="og:title" content="לקוחות חדשים מקבוצות פייסבוק, בלי לכתוב פוסט">
+<meta property="og:title" content="הודעה אחת בוואטסאפ, והעסק שלכם מפורסם בעשרות קבוצות פייסבוק חדשות בכל שבוע">
 <meta property="og:description" content="שולחים לנעם תמונה ומשפט בוואטסאפ. הוא כותב פוסט לכל קבוצה ומפרסם רק אחרי שאישרתם. 4 ימי ניסיון חינם.">
 <meta property="og:image:alt" content="Collabo AI">
 <meta property="og:url" content="https://collabo-ai.com/">
@@ -924,13 +924,13 @@ details{background:var(--paper)}
   section{padding:34px 0}
   .wrap{padding:0 16px}
   h2{font-size:25px;line-height:1.2;margin-bottom:8px}
-  .hero{padding:10px 0 18px}
+  .hero{padding:30px 0 18px}
   .hero .wrap{gap:14px}
   .hero-mark{display:none}
   .hero h1{font-size:29px;line-height:1.15;margin-bottom:10px}
   .hero .lead{display:none}
-  .hero .lead-m{display:block;order:2;font-size:16px;line-height:1.45;margin-bottom:14px}
-  .hero .cta-row{order:3;max-width:none;margin-bottom:0}
+  .hero .lead-m{display:none}
+  .hero .cta-row{display:none}
   .hero .phone-wrap{order:4;margin:16px 0 0}
   .hero .trust{order:5;display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
   .cta-row{max-width:none}
@@ -1003,7 +1003,7 @@ details{background:var(--paper)}
 }
 .cm{display:none}
 @media(max-width:600px){
-  :root{--mock-h:440px}
+  :root{--mock-h:clamp(500px,74svh,640px)}
   /* plans: the recommended one first, quieter business card */
   .plan2.best{order:-1}
   .plan2 .amount-text{font-size:22px;padding:4px 0}
@@ -1030,10 +1030,10 @@ details{background:var(--paper)}
 @media(max-width:600px){
   /* enlarged items inside the phone mockups: fit the whole item on a small screen */
   .vbody{padding:0 12px 12px}
-  .vbody .rpt{font-size:14px}
-  .vbody .rpt.bz{font-size:11.8px}
-  .vbody .fbpost,.vbody .fbpost .body{font-size:14px}
-  .vbody .pphoto{height:96px}
+  .vbody .rpt{font-size:15px}
+  .vbody .rpt.bz{font-size:13.5px}
+  .vbody .fbpost,.vbody .fbpost .body{font-size:15px}
+  .vbody .pphoto{height:130px}
   /* the post already shows its group name: no extra tabs over it */
   .gtabs{display:none}
 }
@@ -1067,6 +1067,13 @@ details{background:var(--paper)}
   /* no blue captions over the sections; the disclaimer under the numbers stays, in neutral grey */
   .kicker{display:none}
   .n4note{color:var(--ink-3)}
+}
+@media(max-width:600px){
+  /* very narrow phones: a stage never forces the page wider than the screen */
+  .chap{grid-template-columns:minmax(0,1fr)}
+  .chap>*{min-width:0}
+  .chap-visual{width:100%;min-width:0}
+  .chap .mini.big,.wa-live,.fbmov{max-width:100%}
 }
 </style>
 </head>
@@ -1116,7 +1123,7 @@ details{background:var(--paper)}
         <div class="lockup"><img src="logo-tight.svg" alt="" width="72" height="72"><b>Collabo<em>AI</em></b></div>
         <p>נעם, סוכן הפרסום שלכם בקבוצות פייסבוק</p>
       </div>
-      <h1>לקוחות חדשים מקבוצות פייסבוק. <em>בלי לכתוב אפילו פוסט אחד.</em></h1>
+      <h1>הודעה אחת בוואטסאפ, <em>והעסק שלכם מפורסם בעשרות קבוצות פייסבוק חדשות בכל שבוע.</em></h1>
       <p class="lead">שולחים לנעם תמונה ומשפט בוואטסאפ. הוא מוצא קבוצות שמתאימות לעסק ומפרסם בכל אחת פוסט אחר, לא אותה פרסומת בכל מקום. הכול מהפרופיל שלכם, רק אחרי שאמרתם "כן".</p>
       <p class="lead lead-m">שולחים לנעם תמונה בוואטסאפ, והוא מפרסם בקבוצות המתאימות. כל פוסט באישורכם.</p>
       <div class="cta-row">
@@ -1149,7 +1156,9 @@ details{background:var(--paper)}
 <!-- 3. THE STORY: one business, from one message to the evening report -->
 <section class="story" id="how">
   <div class="wrap">
-<p class="demo-note">כל הדוגמאות בסעיף הזה הן להמחשה: אלון והעסק שלו בדויים, והמספרים מומצאים.</p>
+<span class="kicker">בפעולה</span>
+<h2>ארבעה שלבים, מהודעה אחת ועד פוסטים בקבוצות</h2>
+<p class="lead">ככה זה עובד אצל אלון, קבלן שיפוצים בגבעתיים. העסק והמספרים בדויים, להמחשה בלבד.</p>
 <div class="chap flip"><div class="chap-text"><span class="n">1</span><h3>שיחה אחת בוואטסאפ, ונעם מכיר את העסק שלכם</h3><p>אתם מספרים על העסק פעם אחת, בהקלטה. נעם שואל רק על מה שחסר ושולח לכם כרטיס עסק, ומשם הוא כותב כל פוסט.</p><p class="cm">מספרים על העסק פעם אחת בהקלטה, ונעם בונה מזה כרטיס עסק.</p><ol class="anno-list" id="annolist1"><li data-n="1"><b>מה העסק עושה?</b> שם, תחום ושירותים.</li><li data-n="2"><b>איפה אתם עובדים?</b> האזורים שבהם אתם רוצים לקוחות.</li><li data-n="3"><b>מה מיוחד אצלכם?</b> מה שמבדיל אתכם, כדי שהפוסטים יישמעו כמוכם.</li></ol></div><div class="chap-visual"><div class="mini big wa-live" id="wamov" role="img" aria-label="הדגמה מונפשת: נעם שואל את אלון שאלה אחת בכל פעם ובונה את כרטיס העסק עד שהוא מוכן"></div></div></div>
 <div class="chap"><div class="chap-text"><span class="n">2</span><h3>נעם מחפש את הקבוצות. אתם לא מחפשים כלום.</h3><p>לא כל קבוצה מתאימה לעסק שלכם. נעם בודק כל אחת לפי תחום ואזור, ומפרסם רק איפה שיש מי שיכול להזמין אתכם.</p><p class="cm">נעם בודק כל קבוצה לפי תחום ואזור, ומבקש להצטרף רק לאלה שמתאימות.</p><ol class="anno-list" id="annolist2"><li data-n="1"><b>הקבוצה בתחום שלכם?</b> נעם קורא את האודות ובודק שהנושא מתאים לעסק.</li><li data-n="2"><b>היא באזור שלכם?</b> הוא בודק שהחברים נמצאים איפה שהלקוחות שלכם.</li><li data-n="3"><b>מבקשים להצטרף.</b> נעם עונה על שאלות המנהלים לפי כרטיס העסק.</li></ol></div><div class="chap-visual"><div class="fbmov" id="fbmov" role="img" aria-label="הדגמה מונפשת: נעם מחפש קבוצות בפייסבוק ומסמן כל תוצאה כמתאימה או לא מתאימה לפי התחום והאזור"></div></div></div>
 <div class="chap flip"><div class="chap-text"><span class="n">3</span><h3>פוסט אחר לכל קבוצה, לא אותה פרסומת בכל מקום</h3><p>אותה פרסומת בכמה קבוצות נראית כספאם. נעם כותב לכל קבוצה פוסט משלה, ומראה לכם את כולם לפני שהם עולים.</p><p class="cm">נעם כותב לכל קבוצה פוסט משלה, ואתם מאשרים אותו לפני שהוא עולה.</p><ol class="anno-list" id="annolist"><li data-n="1"><b>נשמע כמו אדם?</b> הפוסט נפתח בהיכרות קצרה, בלי מחירון ובלי נימה של פרסומת.</li><li data-n="2"><b>יש לאן לפנות?</b> הפנייה מגיעה בהודעה פרטית, בלי קישורים וטלפון בפוסט.</li><li data-n="3"><b>אחר בכל קבוצה?</b> אותה עבודה, ניסוח אחר לכל קהל: שכנים, מעצבים, בעלי עסקים.</li></ol></div><div class="chap-visual"><div class="mini big wa-live" id="wapost" role="img" aria-label="הדגמה מונפשת: נעם כותב פוסט אחר לכל קבוצה ומציג את שלושתם כתמונה שאפשר להגדיל ולעבור ביניהם"></div></div></div>
@@ -1446,7 +1455,7 @@ document.addEventListener('click', function (e) {
   }
   size(); window.addEventListener('resize', size);
   if ('IntersectionObserver' in window) {
-    /* the bar duplicates the main button, so it stays hidden while the hero button or the form is on screen */
+    /* the bar duplicates the header button, so it stays hidden while the hero headline or the form is on screen */
     var seen = { hero: false, form: false };
     function upd() { bar.classList.toggle('off', seen.hero || seen.form); }
     var io = new IntersectionObserver(function (en) {
@@ -1454,7 +1463,7 @@ document.addEventListener('click', function (e) {
       upd();
     }, { threshold: 0.25 });
     io.observe(document.getElementById('contact'));
-    var hb = document.querySelector('.hero .btn-primary');
+    var hb = document.querySelector('.hero h1');
     if (hb) io.observe(hb);
   }
 })();

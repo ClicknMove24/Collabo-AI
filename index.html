@@ -1209,12 +1209,6 @@ h2+.lead,.lead{margin-top:0;margin-bottom:0}
 .wa-foot i.send{transform:scale(.86);background-color:#008f6f}
 .wa-foot i.rec{transform:scale(1.1);box-shadow:0 0 0 6px rgba(0,168,132,.18)}
 
-/* stage 2: the WhatsApp chat slides over the Facebook screen */
-.fbmov .wal{position:absolute;inset:0;z-index:30;display:flex;flex-direction:column;border-radius:inherit;box-shadow:none;transform:translateY(102%);transition:transform .5s cubic-bezier(.3,.7,.2,1);background:#ece5dd}
-.fbmov .wal.on{transform:none}
-.fbmov .wal .mini-head{padding-top:38px}
-.fbmov .wal .walive{flex:1;height:auto;min-height:0}
-.fbmov .wal .msg{font-size:13.5px}
 
 /* headings: semi-bold instead of black */
 h1,h2,h3,h4{font-weight:700}
@@ -1326,6 +1320,8 @@ h1,h2,h3,h4,.hero h1,.plan2 h3,.plan2 .amount,.plan2 .amount-text,.n4c .big{font
 
 /* mockups use the same Varela Round */
 .fbpost,.fbmov,.fbapp,.rpt{font-family:'Varela Round','Heebo',system-ui,sans-serif}
+
+.fbmov mark.on:after,.pvsheet mark.on:after{display:none !important}
 </style>
 
 <meta property="og:url" content="https://collabo-ai.com/">
@@ -1887,8 +1883,7 @@ document.addEventListener('click', function (e) {
   root.innerHTML='<div class="fbapp"><div class="fbscreen"><div class="fbstat"><b>09:41</b><span class="sb"><i class="sg"></i><i class="sw"></i><i class="bt"></i></span></div>'+
     '<div class="fbappbar"><span class="fbback">'+ICO('back')+'</span><span class="fbsearch" id="fbq"></span></div>'+
     '<div class="fbarea" id="fba"><div class="fbscroll" id="fbs"></div></div>'+
-    '<div class="fbscrim" id="scrim"></div><div class="fbsheet pvsheet" id="pv"></div><div class="fbsheet" id="sheet"></div>'+
-    '<div class="wal mini" id="wal"><div class="mini-head"><i><img src="logo-tight.svg" alt=""></i><b>נעם · סוכן הפרסום</b></div><div class="mini-chat walive"><div class="waslide" id="wals"></div></div><div class="wa-foot"><span>הודעה</span><i></i></div></div></div>';
+    '<div class="fbscrim" id="scrim"></div><div class="fbsheet pvsheet" id="pv"></div><div class="fbsheet" id="sheet"></div></div></div>';
   var q=root.querySelector('#fbq'), sc=root.querySelector('#fbs'), pv=root.querySelector('#pv'), sheet=root.querySelector('#sheet'), scrim=root.querySelector('#scrim');
   function gimg(g){return '<span class="gimg"><svg viewBox="0 0 64 64"><use href="#art-'+g.art+'"/></svg></span>'}
   function cardEl(g,i,st){
@@ -1916,29 +1911,10 @@ document.addEventListener('click', function (e) {
   }
   var token=0;
   function sleep(ms,t){return new Promise(function(res,rej){setTimeout(function(){t===token?res():rej()},ms/(window.DEMO_SPEED||1))})}
-  /* the WhatsApp chat with Alon, shown as the phone switching apps */
-  var wal=root.querySelector('#wal'), wbox=wal.querySelector('.walive'), wsl=wal.querySelector('#wals'), WF=window.__chatFollow(wbox), wclock=9*60+41;
-  wsl.removeChild=function(n){ WF.typH=(n.classList&&n.classList.contains('typing'))?n.offsetHeight:0; return Element.prototype.removeChild.call(this,n); };
-  function wmsg(kind,text){
-    var h=Math.floor(wclock/60), m=wclock%60; wclock+=1;
-    var d=document.createElement('div'); d.className='msg '+(kind==='a'?'agent':'me');
-    d.innerHTML=text.replace(/&/g,'&amp;').replace(/</g,'&lt;')+'<span class="t">'+('0'+h).slice(-2)+':'+('0'+m).slice(-2)+(kind==='a'?'':'<svg class="tk" viewBox="0 0 16 10"><path d="M1 5.2 L4.2 8.4 L10.6 1.4 M6 8 L6.8 8.8 L13.6 1.4" fill="none" stroke="#53bdeb" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>')+'</span>';
-    WF.add(wsl,d); return d;
-  }
-  async function wa(t,steps,oneWay,after){
-    wal.classList.add('on'); await sleep(700,t);
-    for(var i=0;i<steps.length;i++){
-      var m=steps[i];
-      if(m[0]==='a'){ var ty=document.createElement('div'); ty.className='typing'; ty.innerHTML='<i></i><i></i><i></i>'; WF.add(wsl,ty); await sleep(900,t); wsl.removeChild(ty); wmsg('a',m[1]); await sleep(1100+m[1].length*18,t); }
-      else { await sleep(300,t); await window.__wa.type(wal,m[1],sleep,t); wmsg('me',m[1]); await sleep(700,t); }
-    }
-    if(after) after();
-    await sleep(oneWay?300:500,t); wal.classList.remove('on'); await sleep(550,t);
-  }
   function closeAll(){scrim.classList.remove('on');pv.classList.remove('on');sheet.classList.remove('on');setTimeout(function(){sheet.classList.remove('page','popup')},500)}
   function finalState(){
     var st={done:{},sentSet:{0:true,2:true,4:true},fin:true}; G.forEach(function(g,i){st.done[i]=true});
-    q.textContent=Q2; sc.innerHTML=resultsHTML(st,true); closeAll(); wal.classList.remove('on');
+    q.textContent=Q2; sc.innerHTML=resultsHTML(st,true); closeAll();
   }
   async function typeInto(el,text,t){
     for(var i=1;i<=text.length;i++){ el.innerHTML=text.slice(0,i)+'<span class="caret"></span>'; await sleep(22,t); }
@@ -1955,7 +1931,6 @@ document.addEventListener('click', function (e) {
       '<div class="sbody"><p class="sintro">כדי להצטרף, מנהלי הקבוצה מבקשים שתענו על כמה שאלות.</p>'+qh+'</div>'+
       '<div class="sfoot"><span class="ssend" id="sb">שליחה</span></div>';
     sheet.classList.add('page','popup'); sheet.classList.add('on'); await sleep(1000,t);
-    await wa(t,[['a','הקבוצה שואלת למה אתה רוצה להצטרף. אני כותב: "לענות לשכנים בשאלות על שיפוצים". מתאים?'],['me','כן, מתאים']]);
     for(var i=0;i<g.qs.length;i++){
       var x=g.qs[i], el=sheet.querySelector('#a'+i);
       if(x.t==='choice'){ await sleep(500,t); el.querySelectorAll('.opt')[x.a].classList.add('on'); }
@@ -1967,7 +1942,6 @@ document.addEventListener('click', function (e) {
   }
   async function once(t){
     var st={done:{}};
-    wsl.innerHTML=''; WF.reset(); wclock=9*60+41; wal.classList.remove('on');
     closeAll(); q.innerHTML='<span class="caret"></span>';
     sc.innerHTML='<div class="fbscr"></div>';
     await sleep(900,t);
@@ -1998,7 +1972,6 @@ document.addEventListener('click', function (e) {
     m1.classList.add('on'); lit2(1,true); await sleep(1500,t);
     m2.classList.add('on'); lit2(2,true); await sleep(1500,t);
     await sleep(600,t);
-    await wa(t,[['a','קראתי את האודות. זו קבוצה של תושבי גבעתיים, כלומר השכנים שיכולים להזמין אותך. מתאימה, אז אני מבקש להצטרף.']],true);
     clr2(); lit2(3,true);
     await joinFlow(g,t);
     clr2();
@@ -2006,12 +1979,10 @@ document.addEventListener('click', function (e) {
     /* groups 2-5: only marked relevant or not */
     for(var gi=1;gi<G.length;gi++){
       st.cur=gi; sc.querySelectorAll('.fbres-c')[gi].classList.add('cur'); await sleep(900,t);
-      st.done[gi]=true; st.cur=undefined; repaint(gi,st);
+      st.done[gi]=true; if(G[gi].res==='yes') st.sentSet[gi]=true; st.cur=undefined; repaint(gi,st);
       await sleep(700,t);
     }
-    await sleep(500,t);
-    await wa(t,[['a','סיימתי לעבור על הקבוצות. שלוש מתאימות לך: תושבי גבעתיים, בעלי עסקים ברמת גן ומעצבי פנים. שתי קבוצות לא קשורות, בית ונוי ושיפוצים בצפון.'],['a','מבקש להצטרף לשתיים האחרות?'],['me','כן, תבקש'],['a','שלחתי. כשיאשרו אותי אכתוב פוסט לכל קבוצה ואראה לך לפני שהוא עולה.']],false,function(){ st.sentSet={0:true,2:true,4:true}; [2,4].forEach(function(k){ repaint(k,st) }); });
-    await sleep(1400,t);
+    await sleep(2200,t);
   }
   async function loop(t){ try{ while(t===token){ await once(t); if(t===token) root.dispatchEvent(new CustomEvent('demodone')); } }catch(e){} }
   root.__restart=function(){token++; loop(token);};

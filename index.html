@@ -11,7 +11,6 @@
 <meta property="og:title" content="הודעה אחת בוואטסאפ, והעסק שלכם מפורסם בעשרות קבוצות פייסבוק חדשות בכל שבוע">
 <meta property="og:description" content="שולחים לנעם תמונה ומשפט בוואטסאפ. הוא כותב פוסט לכל קבוצה ומפרסם רק אחרי שאישרתם. 4 ימי ניסיון חינם.">
 <meta property="og:image:alt" content="Collabo AI">
-
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="logo.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -1322,8 +1321,12 @@ h1,h2,h3,h4,.hero h1,.plan2 h3,.plan2 .amount,.plan2 .amount-text,.n4c .big{font
 .fbpost,.fbmov,.fbapp,.rpt{font-family:'Varela Round','Heebo',system-ui,sans-serif}
 
 .fbmov mark.on:after,.pvsheet mark.on:after{display:none !important}
-</style>
 
+/* navigation: a plain, steady UI sans (Heebo 500) */
+.top .nav a,.site-foot .fcol a:not(.btn):not(.brand){font-family:'Heebo',system-ui,sans-serif;font-weight:500;font-size:15.5px;letter-spacing:.01em}
+.top.open .nav a{font-weight:500;font-size:18px}
+.top .btn-sm,.site-foot .btn-sm{font-family:'Heebo',system-ui,sans-serif;font-weight:500}
+</style>
 <meta property="og:url" content="https://collabo-ai.com/">
 <meta property="og:image" content="https://collabo-ai.com/og-image.png">
 <link rel="canonical" href="https://collabo-ai.com/">
@@ -1363,10 +1366,10 @@ h1,h2,h3,h4,.hero h1,.plan2 h3,.plan2 .amount,.plan2 .amount-text,.n4c .big{font
   <div class="wrap">
     <button class="menu-btn" id="menuBtn" type="button" aria-expanded="false" aria-controls="nav" aria-label="תפריט"><span></span></button>
     <nav class="nav" id="nav" aria-label="ניווט ראשי">
-      <a href="#how">בפעולה</a>
-      <a href="#compare">ההבדל</a>
-      <a href="#price">מסלולים</a>
-      <a href="#faq">לפני שמתחילים</a>
+      <a href="#how">איך זה עובד</a>
+      <a href="#compare">למה נעם</a>
+      <a href="#price">מחירים</a>
+      <a href="#faq">שאלות נפוצות</a>
     </nav>
     <div class="top-act">
     </div>
@@ -1416,7 +1419,7 @@ h1,h2,h3,h4,.hero h1,.plan2 h3,.plan2 .amount,.plan2 .amount-text,.n4c .big{font
 <!-- 3. THE STORY: one business, from one message to the evening report -->
 <section class="story" id="how">
   <div class="wrap">
-<span class="kicker">בפעולה</span>
+<span class="kicker">איך זה עובד</span>
 <h2>ארבעה שלבים, <em>מהודעה אחת ועד פוסטים בקבוצות</em></h2>
 <p class="lead">ככה זה עובד אצל אלון, קבלן שיפוצים בגבעתיים.</p>
 <div class="chap flip"><div class="chap-text"><span class="n">1</span><h3>שיחה אחת בוואטסאפ, ונעם מכיר את העסק שלכם</h3><p>אתם מספרים על העסק פעם אחת, בהקלטה. נעם שואל רק על מה שחסר ושולח לכם כרטיס עסק, ומשם הוא כותב כל פוסט.</p><p class="cm">מספרים על העסק פעם אחת בהקלטה, ונעם בונה מזה כרטיס עסק.</p><ol class="anno-list" id="annolist1"><li data-n="1"><b>מה העסק עושה?</b> שם, תחום ושירותים.</li><li data-n="2"><b>איפה אתם עובדים?</b> האזורים שבהם אתם רוצים לקוחות.</li><li data-n="3"><b>מה מיוחד אצלכם?</b> מה שמבדיל אתכם, כדי שהפוסטים יישמעו כמוכם.</li></ol></div><div class="chap-visual"><div class="mini big wa-live" id="wamov" role="img" aria-label="הדגמה מונפשת: נעם שואל את אלון שאלה אחת בכל פעם ובונה את כרטיס העסק עד שהוא מוכן"></div></div></div>
@@ -1461,7 +1464,7 @@ h1,h2,h3,h4,.hero h1,.plan2 h3,.plan2 .amount,.plan2 .amount-text,.n4c .big{font
 <!-- 3c. COMPARISON -->
 <section class="compare" id="compare">
   <div class="wrap">
-    <span class="kicker">השוואה</span>
+    <span class="kicker">למה נעם</span>
     <h2>נעם, פרסום ממומן או פרסום לבד: <em>מה כל דרך דורשת ממכם</em></h2>
     <p class="lead">לכל דרך יש יתרון וחיסרון. הנה ההשוואה, בלי לייפות.</p>
     <div class="cmp-tabs" role="tablist" aria-label="בחירת השוואה"><button type="button" class="on" data-s="1" role="tab" aria-selected="true">מול פרסום ממומן</button><button type="button" data-s="2" role="tab" aria-selected="false">מול פרסום לבד</button></div>
@@ -1480,7 +1483,7 @@ h1,h2,h3,h4,.hero h1,.plan2 h3,.plan2 .amount,.plan2 .amount-text,.n4c .big{font
 <!-- 6. PRICE -->
 <section id="price">
   <div class="wrap">
-    <span class="kicker">מסלולים</span>
+    <span class="kicker">מחירים</span>
     <h2>בוחרים קצב, <em>בלי התחייבות לתקופה</em></h2>
     <p class="lead"><b>4 ימי ניסיון חינם</b> בכל תוכנית. בכולן אותו נעם: פוסט נפרד לכל קבוצה, אישור לפני כל פוסט ודוח כל ערב. ההבדל הוא הקצב, כלומר כמה פוסטים עולים.</p>
     <div class="plans">
@@ -1530,7 +1533,7 @@ h1,h2,h3,h4,.hero h1,.plan2 h3,.plan2 .amount,.plan2 .amount-text,.n4c .big{font
 <!-- 7. FAQ -->
 <section class="faq" id="faq">
   <div class="wrap">
-    <span class="kicker">לפני שמתחילים</span>
+    <span class="kicker">שאלות נפוצות</span>
     <h2>מה שבעלי עסקים שואלים <em>לפני שמתחילים</em></h2>
     <div class="faq-list">
       <details><summary>האם זה מסכן את הפרופיל שלי בפייסבוק?</summary><p>יש סיכון, ואי אפשר לבטל אותו לגמרי. הפרסום יוצא מהפרופיל שלכם, ופייסבוק היא שמחליטה מה מותר. נעם מפרסם עד התקרה היומית של התוכנית, פוסט אחר בכל קבוצה, ורק אחרי אישורכם. כל מה שקורה מופיע בדוח הערב.</p></details>
@@ -1598,11 +1601,11 @@ h1,h2,h3,h4,.hero h1,.plan2 h3,.plan2 .amount,.plan2 .amount-text,.n4c .big{font
       <p>Collabo AI בונה סוכני AI לעסקים קטנים. נעם הוא סוכן הפרסום: שולחים הודעה, מאשרים, והוא מפרסם בקבוצות פייסבוק.</p>
     </div>
     <div class="fcol">
-      <b>באתר</b>
-      <a href="#how">בפעולה</a>
-      <a href="#compare">ההבדל</a>
-      <a href="#price">מסלולים</a>
-      <a href="#faq">לפני שמתחילים</a>
+      <b>ניווט</b>
+      <a href="#how">איך זה עובד</a>
+      <a href="#compare">למה נעם</a>
+      <a href="#price">מחירים</a>
+      <a href="#faq">שאלות נפוצות</a>
     </div>
     <div class="fcol">
       <b>קבלו שיחה</b>

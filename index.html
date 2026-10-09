@@ -381,8 +381,6 @@ details[open]{background:none;box-shadow:none}
 .waslide .msg{animation:pop .35s ease-out;max-width:92%}
 .waslide .typing{align-self:flex-start}
 /* post preview image + enlarge viewer */
-#wapost{position:relative}
-#wapost .walive{height:470px}
 .imgmsg{position:relative;margin:-2px -4px 6px}
 .thumb{width:290px;max-width:100%;border-radius:10px;overflow:hidden;pointer-events:none}
 .thumb .fbpost{font-size:10.5px;padding:8px 10px 0;border-radius:10px;box-shadow:0 0 0 1px rgba(10,19,23,.12)}
@@ -820,7 +818,7 @@ details{background:var(--paper)}
 .thumb .rpt mark{padding:.25em;margin:.15em 0}
 #wacont,#wanext{position:relative}
 /* stages 1 and 2: same viewer + yellow marks + list as stages 3 and 4 */
-#wamov{position:relative}
+#wamov,#wafb{position:relative}
 .fbmov mark{border-radius:4px;padding:0 2px;position:relative}
 .fbmov mark.on{background:rgba(245,197,79,.75)}
 .fbmov mark.on:after{content:attr(data-n);position:absolute;top:-9px;inset-inline-start:-6px;width:16px;height:16px;border-radius:50%;background:#0A1317;color:#fff;font-size:10px;font-weight:700;display:grid;place-items:center;line-height:1}
@@ -869,24 +867,6 @@ details{background:var(--paper)}
 .rpt .reply b{display:block;font-size:.9em}
 .rpt .reply span{display:block;font-size:.88em;color:#3b4a54;line-height:1.35}
 /* business card: black and white, editorial */
-.rpt.bz{padding:1.3em 0 1.1em;overflow:hidden;border-radius:16px;background:#fff;color:#111}
-.rpt.bz mark{display:block;padding:.85em 1.4em;margin:0;border-radius:0}
-.bz mark+mark{border-top:1px solid #111}
-.bz .bzh{display:flex;flex-direction:column;align-items:flex-start;text-align:start;margin-bottom:.7em}
-.bz .bzh b{display:block;font-size:1.7em;line-height:1.1;font-weight:800;letter-spacing:-.01em;color:#111}
-.bz .bzh span{display:block;font-size:.85em;color:#555;margin-top:.35em}
-.bz .bzd{margin:0 0 .9em;font-size:.95em;line-height:1.45;color:#111;text-align:start}
-.bz .lbl{font-size:.72em;font-weight:700;letter-spacing:.12em;color:#555;margin-bottom:.6em}
-.bz .chips{display:flex;gap:.4em;flex-wrap:wrap}
-.bz .chips em{font-style:normal;background:#fff;color:#111;border:1px solid #111;border-radius:999px;padding:.28em .85em;font-size:.88em;font-weight:600}
-.bz .pt{display:flex;align-items:center;gap:.6em;font-size:.95em;margin:.4em 0}
-.bz .pt svg{flex:none;width:1.1em;height:1.1em;color:#111}
-.bz .ct{padding:.85em 1.4em 0;border-top:1px solid #111}
-.bz .cr{display:flex;align-items:center;justify-content:flex-start;gap:.65em;font-size:.95em;margin:.45em 0;font-weight:600}
-.bz .cr svg{flex:none;width:1.15em;height:1.15em;color:#111}
-.bz .cr span{unicode-bidi:plaintext}
-.thumb .rpt.bz{font-size:10px;padding:0 0 .9em}
-.vbody .rpt.bz{font-size:12.5px;max-width:290px}
 .rpt .tiles.one{grid-template-columns:1fr}
 
 /* ===== MOBILE: short, one idea per screen, mockups first ===== */
@@ -1005,7 +985,6 @@ details{background:var(--paper)}
   /* enlarged items inside the phone mockups: fit the whole item on a small screen */
   .vbody{padding:0 12px 12px}
   .vbody .rpt{font-size:15px}
-  .vbody .rpt.bz{font-size:12px}
   .vbody .fbpost,.vbody .fbpost .body{font-size:15px}
   .vbody .pphoto{height:130px}
   /* the post already shows its group name: no extra tabs over it */
@@ -1031,7 +1010,6 @@ details{background:var(--paper)}
 }
 @media(max-width:600px){
   /* small previews inside the chats: headline and picture only, the full item opens on tap */
-  .thumb .rpt.bz mark[data-n="2"],.thumb .rpt.bz mark[data-n="3"],.thumb .rpt.bz .bzd{display:none}
   .thumb .rpt .learn p{display:none}
   /* search mockup: no counters or status chips of ours */
   .fbsrch .cnt,.fbres-c .st{display:none}
@@ -1161,8 +1139,10 @@ h2+.lead,.lead{margin-top:0;margin-bottom:0}
 .fbres-c .gimg{width:56px;height:56px;border-radius:10px}
 .fbres-c b{font-size:16px;font-weight:600;color:#050505}
 .fbres-c small{font-size:13px;color:#65676B}
-.jbtn{flex:none;background:#E4E6EB;color:#050505;font-weight:600;font-size:13.5px;border-radius:8px;padding:8px 12px}
-.jbtn.sentb{color:#65676B}
+.jbtn{flex:none;white-space:nowrap;background:#0866FF;color:#fff;font-weight:600;font-size:13.5px;border-radius:8px;padding:8px 12px;transition:transform .15s,box-shadow .15s,background .25s,color .25s}
+.jbtn.press{transform:scale(.93);box-shadow:0 0 0 4px rgba(8,102,255,.28)}
+.jbtn.sentb{background:#E7F3FF;color:#0866FF}
+.jbtn.sentb:before{content:"\2713";margin-inline-end:5px;font-weight:700}
 .sk{display:flex;align-items:center;gap:12px;padding:10px 14px}
 .sk i{flex:none;width:56px;height:56px;border-radius:10px;background:#E4E6EB;animation:skl 1.2s ease-in-out infinite}
 .sk div{flex:1}
@@ -1326,6 +1306,263 @@ h1,h2,h3,h4,.hero h1,.plan2 h3,.plan2 .amount,.plan2 .amount-text,.n4c .big{font
 .top .nav a,.site-foot .fcol a:not(.btn):not(.brand){font-family:'Heebo',system-ui,sans-serif;font-weight:500;font-size:15.5px;letter-spacing:.01em}
 .top.open .nav a{font-weight:500;font-size:18px}
 .top .btn-sm,.site-foot .btn-sm{font-family:'Heebo',system-ui,sans-serif;font-weight:500}
+
+/* ===== v3 depth: scale, a thread through the stages, one moment of surprise ===== */
+.hero .phone-wrap{position:relative}
+.hero .phone{position:relative;z-index:1}
+.hero h1 em{color:var(--green)}
+/* stages: ghost numerals and a thread that fills as you arrive */
+.chap-text .n{font-size:84px !important;line-height:.9;font-weight:400;letter-spacing:0;color:var(--frame) !important;transition:color .9s ease;margin-bottom:6px}
+.chap-text .n:before{content:"0"}
+.chap-text .n:after{display:none}
+.chap.seen .chap-text .n{color:var(--green) !important}
+@media(min-width:800px){
+  .chap{position:relative}
+  .chap:before{content:"";position:absolute;left:50%;top:34px;width:11px;height:11px;margin-left:-5.5px;border-radius:50%;background:var(--paper);box-shadow:0 0 0 1.5px var(--frame);z-index:2;transition:background .6s,box-shadow .6s}
+  .chap.seen:before{background:var(--green);box-shadow:0 0 0 4px rgba(15,122,77,.18)}
+  .chap:not(:last-child):after{content:"";position:absolute;left:50%;top:45px;width:1.5px;margin-left:-.75px;height:calc(100% + 96px - 11px);background:linear-gradient(var(--green),var(--green)) no-repeat top/100% 0,var(--line);transition:background-size 1.6s cubic-bezier(.3,.6,.2,1)}
+  .chap.seen:not(:last-child):after{background-size:100% 100%,auto}
+}
+/* the numbers get real scale */
+@media(min-width:800px){.n4c .big{font-size:62px;line-height:1.05}}
+.n4c .big{color:var(--green-deep) !important}
+.n4c{border-top:2px solid var(--ink)}
+/* small touches: arrow moves, kicker draws its line */
+.btn svg{transition:transform .25s ease}
+.btn:hover svg{transform:translateX(-4px)}
+.kicker{display:inline-flex;align-items:center;gap:10px;color:var(--green);font-weight:700}
+.kicker:after{content:"";width:28px;height:1.5px;background:var(--green);opacity:.5}
+
+/* ===== v3 logo colours: blue = you, gold = the search, green = the result ===== */
+:root{--lb:#1d6fa3;--lg:#e0a912;--lgn:#0f7a4d}
+.chap:nth-of-type(1){--c:var(--lb);--c2:var(--lg)}
+.chap:nth-of-type(2){--c:var(--lg);--c2:var(--lgn)}
+.chap:nth-of-type(3){--c:var(--lgn);--c2:var(--lb)}
+.chap:nth-of-type(4){--c:var(--lgn);--c2:var(--lb)}
+.chap.seen .chap-text .n{color:var(--c) !important}
+.chap:nth-of-type(4).seen .chap-text .n{background:linear-gradient(90deg,var(--lb),var(--lg) 55%,var(--lgn));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent !important}
+.chap:nth-of-type(4){--c:var(--lg)}
+.chap:nth-of-type(1){--cd:#1d6fa3}.chap:nth-of-type(2){--cd:#a87a0a}.chap:nth-of-type(3),.chap:nth-of-type(4){--cd:#0f7a4d}
+.anno-list li:before{color:var(--cd,var(--ink-3))}
+@media(min-width:800px){
+  .chap.seen:before{background:var(--c);box-shadow:0 0 0 4px color-mix(in srgb,var(--c) 22%,transparent)}
+  .chap:not(:last-child):after{background:linear-gradient(var(--c),var(--c2)) no-repeat top/100% 0,var(--line)}
+  .chap.seen:not(:last-child):after{background-size:100% 100%,auto}
+}
+/* one small signature: the three logo colours as a short rule above each section title */
+.kicker:after{width:30px;height:3px;border-radius:2px;opacity:1;background:linear-gradient(90deg,var(--lb) 0 33.3%,var(--lg) 33.3% 66.6%,var(--lgn) 66.6%)}
+.kicker{color:var(--ink-2)}
+/* the four numbers: one colour each, the last uses all three */
+.n4c{border-top:0;position:relative;padding-top:20px}
+.n4c:before{content:"";position:absolute;top:0;inset-inline:0;height:3px;border-radius:2px;background:var(--ink)}
+.n4c:nth-child(1):before{background:var(--lgn)}
+.n4c:nth-child(2):before{background:var(--lb)}
+.n4c:nth-child(3):before{background:var(--lg)}
+.n4c:nth-child(4):before{background:var(--ink)}
+.badge{background:var(--lg) !important;color:#2b2000 !important}
+.cmp-head .us{box-shadow:inset 0 -3px 0 var(--lgn)}
+@media(max-width:700px){.hero .trust li{padding-inline-start:14px}}
+
+/* ===== v3 cast: three partners, one colour each, everywhere ===== */
+:root{--c-y:#e0a912;--c-n:#0f7a4d;--c-f:#1d6fa3}
+.cast{display:flex;flex-wrap:wrap;gap:8px 22px;margin-top:20px;font-size:15px;color:var(--ink-2)}
+.w{display:inline-flex;align-items:center;gap:8px}
+.w i{width:10px;height:10px;border-radius:50%;flex:none}
+.w-y i{background:var(--c-y)}.w-n i{background:var(--c-n)}.w-f i{background:var(--c-f)}
+.who{display:flex;flex-wrap:wrap;gap:6px 16px;margin:8px 0 14px;font-size:13.5px;color:var(--ink-3);direction:rtl}
+/* stages stay one brand green; colour now means a partner, not a step */
+.chap:nth-of-type(n){--c:var(--c-n);--c2:var(--c-n);--cd:var(--c-n)}
+.chap:nth-of-type(4).seen .chap-text .n{background:none;-webkit-text-fill-color:currentColor;color:var(--c-n) !important}
+.chap.seen .chap-text .n{color:var(--c-n) !important}
+.n4c:nth-child(1):before{background:var(--c-n)}
+.n4c:nth-child(2):before{background:var(--c-y)}
+.n4c:nth-child(3):before{background:var(--c-f)}
+.n4c:nth-child(4):before{background:var(--ink)}
+
+/* scenes: each mockup is labelled by where the meeting happens */
+.chap-text .n{font-size:46px !important;line-height:1.1;direction:rtl;width:auto;margin-left:0;letter-spacing:0}
+.chap-text .n:before{content:none !important}
+@media(max-width:799px){.chap-text .n{font-size:38px !important}}
+/* ===== v3 parts: three partners, each gets its own part of the page ===== */
+.chap-text .n,.chap-text .who,.cast{display:none !important}
+.part{margin-top:96px;padding-top:26px;border-top:1px solid var(--line);display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 26px}
+.part:first-of-type{margin-top:56px}
+.part-t{font-family:'Varela Round','Heebo',sans-serif;font-size:clamp(38px,5vw,60px);line-height:1;display:inline-flex;align-items:center;gap:16px}
+.part-t:before{content:"";width:16px;height:16px;border-radius:50%;background:currentColor;flex:none}
+.part-y .part-t{color:var(--c-y)}.part-f .part-t{color:var(--c-f)}.part-n .part-t{color:var(--c-n)}
+.part p{font-size:19px;color:var(--ink-2);max-width:540px;margin:0}
+.part+.chap{margin-top:44px}
+.chap.c-y{--c:var(--c-y);--c2:var(--c-f);--cd:#a87a0a}
+.chap.c-f{--c:var(--c-f);--c2:var(--c-n);--cd:var(--c-f)}
+.chap.c-n{--c:var(--c-n);--c2:var(--c-n);--cd:var(--c-n)}
+@media(max-width:799px){.part{margin-top:64px}.part+.chap{margin-top:28px}}
+
+/* ===== v3 professional parts + the star ===== */
+.part-k{flex-basis:100%;font-size:13px;letter-spacing:.14em;color:var(--ink-3);font-weight:500;font-family:'Heebo',sans-serif}
+.part{align-items:center;position:relative}
+.part-yes{margin-inline-start:auto;font-family:'Varela Round',sans-serif;font-size:132px;line-height:.8;color:var(--c-y);order:5;padding-inline-end:6px}
+@media(max-width:799px){.part-yes{position:absolute;inset-inline-end:0;top:14px;font-size:84px}.part-p{max-width:none}}
+.chap.c-last{--c2:var(--c-f)}
+.chap.c-y{--c2:var(--c-n)}
+.chap.c-y1{--c2:var(--c-y)}
+.part-k{font-size:16px;letter-spacing:.04em;color:var(--ink-2)}
+.part-t{font-size:clamp(34px,4.4vw,54px)}
+
+/* hero headline: three fixed lines, one colour */
+.hero h1{font-size:clamp(26px,8vw,40px) !important;line-height:1.25;color:var(--ink)}
+.hero h1 span{display:block;white-space:nowrap}
+@media(min-width:900px){.hero h1{font-size:clamp(36px,3.6vw,48px) !important}}
+@media(max-width:700px){.hero .lead:not(.lead-m){display:block;order:2;font-size:16px;line-height:1.5;margin:0 0 10px}}
+
+/* part headers: ink title, colour only as a short rule and a small marker */
+.part-y{--pc:var(--c-y)}.part-n{--pc:var(--c-n)}.part-f{--pc:var(--c-f)}
+.part{border-top:1px solid var(--line);position:relative}
+.part:before{content:"";position:absolute;top:-1px;inset-inline-start:0;width:72px;height:3px;background:var(--pc)}
+.part .part-t{color:var(--ink) !important;gap:0}
+.part .part-t:before{display:none}
+.part .part-k{display:flex;align-items:center;gap:10px;font-size:15px;color:var(--ink-2);letter-spacing:.02em}
+.part .part-k:before{content:"";width:9px;height:9px;border-radius:2px;background:var(--pc);flex:none}
+
+/* part descriptions as three short points */
+.part-ul{list-style:none;margin:0;padding:0;max-width:540px;display:grid;gap:6px}
+.part-ul li{position:relative;padding-inline-start:20px;font-size:18px;line-height:1.5;color:var(--ink-2)}
+.part-ul li:before{content:"";position:absolute;inset-inline-start:0;top:.7em;width:8px;height:2px;background:var(--pc)}
+
+/* link from the chat opens Facebook, like any link would */
+.msg.lk{padding:4px 4px 6px}
+.lk .lkp{position:relative;border-radius:8px;overflow:hidden;background:#f0f2f5;margin:4px 0 5px}
+.lk .lkp img{display:block;width:100%;height:84px;object-fit:cover}
+.lk .lkp div{padding:6px 9px 7px}
+.lk .lkp small{display:block;color:#65676B;font-size:11px;direction:ltr;text-align:left}
+.lk .lkp b{display:block;font-size:12.5px;line-height:1.3;color:#050505;margin-top:1px}
+.lk .u{color:#027eb5;direction:ltr;text-align:left;font-size:11.5px;display:block;padding:0 4px;word-break:break-all}
+.lk .lkp .tap{position:absolute;top:30%;inset-inline-start:46%;width:38px;height:38px;border-radius:50%;background:rgba(0,100,224,.28);border:2px solid rgba(0,100,224,.6);opacity:0;transform:scale(.4)}
+.lk .lkp .tap.on{animation:tapr .8s ease-out}
+.viewer.fbapp{background:#F0F2F5;-webkit-backdrop-filter:none;backdrop-filter:none}
+.viewer.fbapp .vbar{display:none}
+.viewer.fbapp .vbody{justify-content:flex-start;align-items:stretch;padding:0;transform:none;overflow:hidden}
+.fbtop{background:#fff;box-shadow:0 1px 3px rgba(0,0,0,.12);padding:10px 14px;display:flex;align-items:center;justify-content:space-between;font-size:13px;position:relative;z-index:1}
+.fbtop .bk{color:#0866FF;font-weight:700;direction:rtl}
+.fbtop .lg{font-weight:800;color:#0866FF;font-size:19px;letter-spacing:-.5px;direction:ltr}
+.fbgh{background:#fff;padding:9px 14px;font-weight:700;font-size:15px;color:#050505;border-bottom:1px solid #DDE2E8}
+.viewer.fbapp .fbpost{max-width:none;width:100%;border-radius:0;box-shadow:none;margin-top:8px}
+
+.lk .lkp.g{display:flex;align-items:center;gap:9px;padding:7px 9px}
+.lk .lkp.g div{padding:0;flex:1;min-width:0}
+.lk .lkp.g .gimg{width:46px;height:46px}
+.lk .lkp small.rt{direction:rtl;text-align:right}
+.viewer.fbapp .fbgp{flex:1;display:flex;flex-direction:column;background:#fff;min-height:0}
+.viewer.fbapp .fbgp .pvbody{overflow:hidden}
+.pvbtn .jn.sent{background:#E7F3FF;color:#0866FF}
+.wa-head .av img.nm,.mini-head i img.nm{width:100%;height:100%;object-fit:cover;border-radius:50%}
+.fbpost .newtxt,.vbody .newtxt{background:rgba(245,197,79,.7);border-radius:4px;padding:0 2px}
+.thumb .newtxt{background:rgba(245,197,79,.7)}
+.rpt.bzc .learn{margin:.3em 0}
+.rpt.bzc .chips{margin-top:.5em}
+.rpt .learn .chips span{background:#fff;border:1px solid #DDE2E8;color:#0A1317;font-size:.85em;padding:.2em .8em}
+.rpt.bzc .pt{display:flex;align-items:flex-start;gap:.55em;font-size:.92em;margin:.4em 0 0;line-height:1.3}
+.rpt.bzc .pt svg{flex:none;width:1.05em;height:1.05em;margin-top:.1em;color:#1f9d55}
+.rpt.bzc .cr{display:flex;align-items:center;gap:.6em;font-size:.95em;margin:.5em 0 0;font-weight:600}
+.rpt.bzc .cr svg{flex:none;width:1.1em;height:1.1em;color:#0866FF}
+.rpt.bzc .cr span{unicode-bidi:plaintext}
+.thumb .rpt.bzc{font-size:10px}
+.thumb .rpt.bzc mark[data-n="2"],.thumb .rpt.bzc mark[data-n="3"],.thumb .rpt.bzc .ct{display:none}
+.vbody .rpt.bzc{font-size:12.5px;max-width:300px}
+/* a picture opens like a normal picture on a phone: no close button, no title bar */
+.viewer .vbar{display:none}
+.viewer mark.tg{border-radius:4px;padding:0 2px;transition:background .4s}
+.viewer mark.tg.blk{display:block;padding:0}
+.viewer mark.tg.on{background:rgba(245,197,79,.75);color:#0A1317;box-shadow:0 0 0 3px rgba(245,197,79,.75)}
+.viewer mark.tg.on:after{display:none !important}
+.rpt mark.tg.on{background:rgba(245,197,79,.35);box-shadow:0 0 0 3px rgba(245,197,79,.9)}
+.rpt .chips{display:flex;flex-wrap:wrap;gap:.4em}
+.rpt .chips em{font-style:normal;background:#fff;border:1px solid #DDE2E8;border-radius:999px;padding:.2em .8em;font-size:.85em;font-weight:600}
+.fbpost .body p{margin:0 0 .7em}
+.fbpost .body p:last-of-type{margin-bottom:.5em}
+.plk div{margin:.15em 0;line-height:1.45}
+.plk u{text-decoration:none;color:#0866FF;direction:ltr;unicode-bidi:isolate;overflow-wrap:anywhere}
+.thumb .plk div:nth-child(n+2){display:none}
+.vbody .fbpost{font-size:13.5px}
+.vbody .fbpost .body{font-size:13.5px;line-height:1.4}
+.vbody .pphoto{height:104px}
+#vw1 .vbody,#vw5 .vbody{padding-bottom:58px}
+.vbody .fbpost{font-size:12.5px}
+.vbody .fbpost .body{font-size:12.5px;line-height:1.38}
+.vbody .fbpost .h{padding-block:8px}
+.vbody .pphoto{height:84px}
+.vbody .fbact{font-size:12px}
+.vbody>*{margin-block:auto}
+.rpt mark.tg.on{background:rgba(245,197,79,.55);box-shadow:0 0 0 3px rgba(245,197,79,.95)}
+.rpt mark.tg.on .learn{background:rgba(255,255,255,.75)}
+.viewer .newtxt.on{box-shadow:0 0 0 3px rgba(245,197,79,.95)}
+.viewer mark.on .newtxt{box-shadow:none}
+.hl{background:rgba(245,197,79,.6) !important;box-shadow:0 0 0 3px rgba(245,197,79,.95)}
+.fbsheet.page .qq .ta.hl{background:rgba(245,197,79,.6)}
+.fbsheet.page .sintro.done{background:#E7F3FF;color:#0866FF;border-radius:8px;padding:10px 12px;font-weight:600}
+.sfoot .ssend.sentf{background:#E7F3FF;color:#0866FF}
+.fbsheet.page.under{top:46px;border-radius:0;z-index:6}
+.fbsheet.page.under .shead{padding:8px 12px 10px}
+.fbsheet.page.under .grab{display:none}
+.viewer.fbapp .vbody>*{margin-block:0}
+.fbsheet.page.under .sbody{padding-top:62px}
+.fbsheet.page.under .qq{margin-bottom:10px}
+.fbsheet.page.under .qq .opt{padding:7px 2px}
+.fbsheet.page.under .qq label{margin-bottom:5px}
+.fbsheet.page.under .sbody{padding-top:62px}
+.fbsheet.page.under .fgrp{display:flex;align-items:center;gap:10px;margin-bottom:10px}
+.fbsheet.page.under .fgrp .gimg{width:44px;height:44px;border-radius:10px}
+.fbsheet.page.under .fgrp b{display:block;font-size:15px;color:#050505}
+.fbsheet.page.under .fgrp small{color:#65676B;font-size:12.5px}
+.fbsheet.page.under .sintro{font-size:13.5px;margin:0 0 12px}
+.frules{display:flex;align-items:center;gap:10px;margin-top:4px;font-size:14px;color:#050505}
+.frules i{flex:none;width:22px;height:22px;border-radius:5px;background:#0866FF;display:grid;place-items:center}
+.frules i svg{width:15px;height:15px}
+.hero .hero-mark{margin-bottom:38px !important}
+@media(max-width:700px){.hero .hero-mark{margin-bottom:22px !important}}
+@keyframes rqin{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+.msg .wl{color:#027eb5;direction:ltr;unicode-bidi:isolate;display:inline-block;border-radius:4px;transition:background .2s}
+.msg .wl.press{background:#cfe8f7}
+/* yellow marking is a frame only, never a filled block */
+.viewer mark.on,.viewer mark.tg.on,.rpt mark.tg.on,.pvsheet mark.on{background:transparent !important;box-shadow:0 0 0 3px rgba(245,197,79,.95) !important;border-radius:6px}
+.rpt mark.tg.on .learn{background:#F0F2F5}
+.hl,.fbsheet.page .qq .ta.hl,.rqp .qa.hl{background:transparent !important;box-shadow:0 0 0 3px rgba(245,197,79,.95) !important}
+.fbpost .newtxt,.vbody .newtxt,.thumb .newtxt,.viewer .newtxt.on{background:transparent !important;box-shadow:0 0 0 2px rgba(245,197,79,.95) !important;border-radius:4px}
+.msg .wl{overflow-wrap:anywhere;font-size:.9em}
+.fbsheet.page.under{background:#F0F2F5}
+.rqp{flex:1;overflow:hidden;background:#F0F2F5;display:flex;flex-direction:column;font-family:"Segoe UI Historic","Segoe UI",Helvetica,Arial,sans-serif}
+.rqp>*{animation:rqin .5s ease-out both}
+.rqp>*:nth-child(2){animation-delay:.07s}.rqp>*:nth-child(3){animation-delay:.14s}.rqp>*:nth-child(4){animation-delay:.22s}
+@keyframes rqin{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.rqp .rcov{height:86px;flex:none;overflow:hidden;background:#dfe8e2}
+.rqp .rcov svg{display:block;width:100%;height:100%}
+.rqp .rhead{background:#fff;padding:12px 16px 10px;flex:none}
+.rqp .rhead b{display:block;font-size:20px;line-height:1.2;color:#050505;font-weight:700}
+.rqp .rhead small{display:flex;align-items:center;gap:5px;margin-top:3px;color:#65676B;font-size:13px}
+.rqp .rhead small svg{width:14px;height:14px;color:#65676B}
+.rqp .rbtns{display:flex;gap:8px;margin-top:12px}
+.rqp .rb1{flex:1;display:flex;align-items:center;justify-content:center;gap:7px;background:#E4E6EB;color:#050505;font-weight:700;font-size:14.5px;border-radius:8px;padding:9px 0}
+.rqp .rb1 svg{width:16px;height:16px}
+.rqp .rb2{flex:none;width:44px;background:#E4E6EB;border-radius:8px;display:flex;align-items:center;justify-content:center;gap:3px}
+.rqp .rb2 i{width:4px;height:4px;border-radius:50%;background:#050505}
+.rqp .rtabs{display:flex;background:#fff;border-top:1px solid #E4E6EB;padding:0 8px;flex:none}
+.rqp .rtabs span{padding:10px 14px 9px;font-size:14px;font-weight:600;color:#65676B;border-bottom:3px solid transparent}
+.rqp .rtabs span.on{color:#0866FF;border-bottom-color:#0866FF}
+.rqp .rans{background:#fff;margin:8px 8px 0;padding:11px 14px 4px;border-radius:10px;box-shadow:0 1px 2px rgba(0,0,0,.12);flex:none}
+.rqp .rans h6{margin:0 0 2px;font-size:15px;font-weight:700;color:#050505}
+.rqp .qa{padding:8px 10px;margin:0 -10px;border-radius:8px}
+.rqp .qa small{display:block;font-size:12px;color:#65676B;margin-bottom:1px}
+.rqp .qa b{display:block;font-size:14.5px;font-weight:600;color:#050505;line-height:1.3}
+.rqp .qa+.qa{border-top:1px solid #EEF0F2;border-radius:0}
+.rqp .qa.hl{border-top-color:transparent;border-radius:8px}
+.plan2 .badge.soft{background:#eceee9 !important;color:var(--ink-2) !important}
+.plan2 .amount{padding-bottom:18px;border-bottom:1px solid #e3e6ea;margin-bottom:0}
+.plan2 ul{margin-top:22px}
+.plan2 li:first-child{padding-bottom:14px;border-bottom:1px dashed #e3e6ea}
+.plan2.biz .amount-text{font-size:26px}
+.plan2 ul{gap:11px}
+.plan2 li{font-size:15.5px;line-height:1.4;font-weight:400}
+.plan2 li b{font-size:15.5px}
+.plan2 li:first-child{padding-bottom:12px}
 </style>
 <meta property="og:url" content="https://collabo-ai.com/">
 <meta property="og:image" content="https://collabo-ai.com/og-image.png">
@@ -1385,27 +1622,24 @@ h1,h2,h3,h4,.hero h1,.plan2 h3,.plan2 .amount,.plan2 .amount-text,.n4c .big{font
     <div>
       <div class="hero-mark">
         <div class="lockup"><img src="logo-tight.svg" alt="" width="72" height="72"><b>Collabo<em>AI</em></b></div>
-        <p>נעם, סוכן הפרסום שלכם בקבוצות פייסבוק</p>
+        <p>נעם, סוכן הפרסום שלכם בפייסבוק</p>
       </div>
-      <h1>הודעה אחת בוואטסאפ, <em>והעסק שלכם מפורסם בעשרות קבוצות פייסבוק חדשות בכל שבוע.</em></h1>
-      <p class="lead">שולחים לנעם תמונה ומשפט בוואטסאפ. הוא מוצא קבוצות שמתאימות לעסק ומפרסם בכל אחת פוסט אחר, לא אותה פרסומת בכל מקום. הכול מהפרופיל שלכם, רק אחרי שאמרתם "כן".</p>
-      <p class="lead lead-m">שולחים לנעם תמונה בוואטסאפ, והוא מפרסם בקבוצות המתאימות. כל פוסט באישורכם.</p>
+      <h1><span>השליטה אצלכם,</span><span>הביצוע אצל נעם,</span><span>הלקוחות בפייסבוק</span></h1>
+      <p class="lead">הודעה אחת בוואטסאפ, והעסק שלכם מפורסם בעשרות קבוצות פייסבוק חדשות בכל שבוע.</p>
+      <p class="lead lead-m">הודעה אחת בוואטסאפ, והעסק שלכם מפורסם בעשרות קבוצות פייסבוק חדשות בכל שבוע.</p>
       <div class="cta-row">
-        <a class="btn btn-primary" href="#contact" data-cta="hero_form">קבלו שיחה קצרה
+        <a class="btn btn-primary js-wa" href="#contact" data-cta="hero_whatsapp">דברו איתנו בוואטסאפ
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5"/><path d="M11 6l-6 6 6 6"/></svg>
         </a>
       </div>
       <ul class="trust">
-        <li>אף פוסט לא עולה בלי ה״כן״ שלכם</li>
-        <li>4 ימי ניסיון חינם</li>
-        <li>מ-99 ש"ח לחודש + מע"מ</li>
         <li>ביטול בכל עת, בלי התחייבות</li>
       </ul>
     </div>
     <div class="phone-wrap">
       <div class="phone" aria-label="דוגמה לשיחת וואטסאפ עם נעם">
         <div class="screen">
-          <div class="wa-head"><div class="av"><img src="logo-tight.svg" alt=""></div><div><b>נעם, סוכן הפרסום</b><small>מחובר</small></div></div>
+          <div class="wa-head"><div class="av"><img class="nm" src="photos/noam.jpg" alt=""></div><div><b>נעם, סוכן הפרסום</b><small>מחובר</small></div></div>
           <div class="chat" id="chat" role="log" aria-live="off"></div>
           <div class="wa-foot"><span>הודעה</span><i></i></div>
         </div>
@@ -1420,13 +1654,14 @@ h1,h2,h3,h4,.hero h1,.plan2 h3,.plan2 .amount,.plan2 .amount-text,.n4c .big{font
 <section class="story" id="how">
   <div class="wrap">
 <span class="kicker">איך זה עובד</span>
-<h2>ארבעה שלבים, <em>מהודעה אחת ועד פוסטים בקבוצות</em></h2>
-<p class="lead">ככה זה עובד אצל אלון, קבלן שיפוצים בגבעתיים.</p>
-<div class="chap flip"><div class="chap-text"><span class="n">1</span><h3>שיחה אחת בוואטסאפ, ונעם מכיר את העסק שלכם</h3><p>אתם מספרים על העסק פעם אחת, בהקלטה. נעם שואל רק על מה שחסר ושולח לכם כרטיס עסק, ומשם הוא כותב כל פוסט.</p><p class="cm">מספרים על העסק פעם אחת בהקלטה, ונעם בונה מזה כרטיס עסק.</p><ol class="anno-list" id="annolist1"><li data-n="1"><b>מה העסק עושה?</b> שם, תחום ושירותים.</li><li data-n="2"><b>איפה אתם עובדים?</b> האזורים שבהם אתם רוצים לקוחות.</li><li data-n="3"><b>מה מיוחד אצלכם?</b> מה שמבדיל אתכם, כדי שהפוסטים יישמעו כמוכם.</li></ol></div><div class="chap-visual"><div class="mini big wa-live" id="wamov" role="img" aria-label="הדגמה מונפשת: נעם שואל את אלון שאלה אחת בכל פעם ובונה את כרטיס העסק עד שהוא מוכן"></div></div></div>
-<div class="chap"><div class="chap-text"><span class="n">2</span><h3>נעם מחפש את הקבוצות. אתם לא מחפשים כלום.</h3><p>לא כל קבוצה מתאימה לעסק שלכם. נעם בודק כל אחת לפי תחום ואזור, ומפרסם רק איפה שיש מי שיכול להזמין אתכם.</p><p class="cm">נעם בודק כל קבוצה לפי תחום ואזור, ומבקש להצטרף רק לאלה שמתאימות.</p><ol class="anno-list" id="annolist2"><li data-n="1"><b>הקבוצה בתחום שלכם?</b> נעם קורא את האודות ובודק שהנושא מתאים לעסק.</li><li data-n="2"><b>היא באזור שלכם?</b> הוא בודק שהחברים נמצאים איפה שהלקוחות שלכם.</li><li data-n="3"><b>מבקשים להצטרף.</b> נעם עונה על שאלות המנהלים לפי כרטיס העסק.</li></ol></div><div class="chap-visual"><div class="fbmov" id="fbmov" role="img" aria-label="הדגמה מונפשת: נעם מחפש קבוצות בפייסבוק ומסמן כל תוצאה כמתאימה או לא מתאימה לפי התחום והאזור"></div></div></div>
-<div class="chap flip"><div class="chap-text"><span class="n">3</span><h3>פוסט אחר לכל קבוצה, לא אותה פרסומת בכל מקום</h3><p>אותה פרסומת בכמה קבוצות נראית כספאם. נעם כותב לכל קבוצה פוסט משלה, ומראה לכם את כולם לפני שהם עולים.</p><p class="cm">נעם כותב לכל קבוצה פוסט משלה, ואתם מאשרים אותו לפני שהוא עולה.</p><ol class="anno-list" id="annolist"><li data-n="1"><b>נשמע כמו אדם?</b> הפוסט נפתח בהיכרות קצרה, בלי מחירון ובלי נימה של פרסומת.</li><li data-n="2"><b>יש לאן לפנות?</b> הפנייה מגיעה בהודעה פרטית, בלי קישורים וטלפון בפוסט.</li><li data-n="3"><b>אחר בכל קבוצה?</b> אותה עבודה, ניסוח אחר לכל קהל: שכנים, מעצבים, בעלי עסקים.</li></ol></div><div class="chap-visual"><div class="mini big wa-live" id="wapost" role="img" aria-label="הדגמה מונפשת: נעם כותב פוסט אחר לכל קבוצה ומציג את שלושתם כתמונה שאפשר להגדיל ולעבור ביניהם"></div></div></div>
-
-<div class="chap"><div class="chap-text"><span class="n">4</span><h3>כל ערב מגיע דוח, ונעם לומד ממנו מה לעשות מחר</h3><p>בסוף כל יום מגיע דוח קצר: מה פורסם, מה למדנו ומה הצעדים הבאים. נעם מתחיל לבצע אותם, ופוסט חדש עולה רק באישורכם.</p><p class="cm">כל ערב מגיע דוח, ונעם ממשיך לפיו לצעדים הבאים.</p><ol class="anno-list" id="annolist5"><li data-n="1"><b>מסרים</b> כמה ראו את הפוסטים, כמה הגיבו וכמה ביקשו הצעה.</li><li data-n="2"><b>מסקנות</b> מה עבד ומה פחות, לפי התגובות בכל קבוצה.</li><li data-n="3"><b>צעדים להמשך</b> מה נעם עושה עכשיו, ובצ'אט רואים אותו מתחיל.</li></ol></div><div class="chap-visual"><div class="mini big wa-live" id="wanext" role="img" aria-label="הדגמה מונפשת: נעם שולח דוח יומי עם מסרים, מסקנות וצעדים להמשך, ואחר כך מתחיל לבצע אותם בשיחה"></div><p class="demo-tag dark">דוגמה להמחשה. המספרים מומצאים ואינם תוצאות של לקוח.</p></div></div>
+<h2>שלושה חלקים, <em>מערכת אחת</em></h2>
+<div class="cast"><span class="w w-y"><i></i>אתם, בעלי העסק</span><span class="w w-n"><i></i>נעם, סוכן ה-AI</span><span class="w w-f"><i></i>פייסבוק, הקבוצות</span></div>
+<div class="part part-y"><span class="part-k">אתם</span><span class="part-t">הקול והשליטה</span><ul class="part-ul"><li>מספרים על העסק, השירות והאזור, פעם אחת</li><li>רואים כל פוסט לפני שהוא עולה</li><li>עונים ״כן״, ״לא״ או מה לשנות</li></ul></div>
+<div class="chap flip c-y"><div class="chap-text"><span class="n">בוואטסאפ</span><div class="who"><span class="w w-y"><i></i>אתם</span><span class="w w-n"><i></i>נעם</span></div><p>שולחים לנעם הקלטה אחת על העסק, והוא בונה ממנה כרטיס עסק וכותב פוסט ראשון. שום דבר לא עולה בלי שאתם מאשרים.</p><ol class="anno-list" id="annolist1"><li data-n="1"><b>מספרים פעם אחת.</b> הקלטה קצרה על העסק, ומשם נבנה כרטיס העסק.</li><li data-n="2"><b>בוחרים נושא ותמונה.</b> נעם כותב מהם פוסט, והוא מגיע אליכם קודם.</li><li data-n="3"><b>״כן״ שלכם מעלה אותו.</b> ואז נעם שולח קישור לפוסט בקבוצה.</li></ol></div><div class="chap-visual"><div class="mini big wa-live" id="wamov" role="img" aria-label="הדגמה מונפשת: נעם שואל את אלון שאלה אחת בכל פעם ובונה את כרטיס העסק עד שהוא מוכן"></div></div></div>
+<div class="part part-n"><span class="part-k">נעם</span><span class="part-t">הביצוע</span><ul class="part-ul"><li>עוקב אחרי התגובות והפניות מכל פוסט, ומדווח בסוף כל יום</li><li>מנתח מה עבד ומה פחות, בכל קבוצה</li><li>משפר את הפוסטים הבאים וממשיך לפרסם בקבוצות שאושרו</li></ul></div>
+<div class="chap c-n c-last"><div class="chap-text"><span class="n">בוואטסאפ</span><div class="who"><span class="w w-n"><i></i>נעם</span><span class="w w-y"><i></i>אתם</span></div><p>בסוף כל יום מגיע דוח קצר: מה פורסם, מה למדנו ומה הצעדים הבאים. נעם מתחיל לבצע אותם, ופוסט חדש עולה רק באישורכם.</p><ol class="anno-list" id="annolist5"><li data-n="1"><b>מסרים</b> כמה ראו את הפוסטים, כמה הגיבו וכמה ביקשו הצעה.</li><li data-n="2"><b>מסקנות</b> מה עבד ומה פחות, לפי התגובות בכל קבוצה.</li><li data-n="3"><b>צעדים להמשך</b> מה נעם עושה עכשיו, ובצ'אט רואים אותו מתחיל.</li></ol></div><div class="chap-visual"><div class="mini big wa-live" id="wanext" role="img" aria-label="הדגמה מונפשת: נעם שולח דוח יומי עם מסרים, מסקנות וצעדים להמשך, ואחר כך מתחיל לבצע אותם בשיחה"></div><p class="demo-tag dark">דוגמה להמחשה. המספרים מומצאים ואינם תוצאות של לקוח.</p></div></div>
+<div class="part part-f"><span class="part-k">פייסבוק</span><span class="part-t">הלקוחות</span><ul class="part-ul"><li>מרחיבים כל שבוע את מאגר הקבוצות שאפשר לפרסם בהן</li><li>מחפשים קבוצות חדשות: של תושבי האזור, וגם קבוצות מקצועיות</li><li>עונים לשאלות של מנהלי הקבוצות, כדי שיקבלו את העסק</li></ul></div>
+<div class="chap flip c-f"><div class="chap-text"><span class="n">בפייסבוק</span><div class="who"><span class="w w-n"><i></i>נעם</span><span class="w w-f"><i></i>פייסבוק</span></div><p>לא כל קבוצה מתאימה לעסק שלכם. נעם בודק כל אחת לפי תחום ואזור, ומפרסם רק איפה שיש מי שיכול להזמין אתכם.</p><ol class="anno-list" id="annolist2"><li data-n="1"><b>הקבוצה בתחום שלכם?</b> נעם קורא את האודות ובודק שהנושא מתאים לעסק.</li><li data-n="2"><b>היא באזור שלכם?</b> הוא בודק שהחברים נמצאים איפה שהלקוחות שלכם.</li><li data-n="3"><b>מבקשים להצטרף.</b> נעם עונה על שאלות המנהלים לפי כרטיס העסק.</li></ol></div><div class="chap-visual"><div class="mini big wa-live" id="wafb" role="img" aria-label="הדגמה מונפשת: נעם מוצא קבוצות ושולח קישור לקבוצה הראשונה. בפייסבוק הוא עונה על שאלות ההצטרפות, והבקשה נשלחת"></div></div></div>
   </div>
 </section>
 
@@ -1438,14 +1673,14 @@ h1,h2,h3,h4,.hero h1,.plan2 h3,.plan2 .amount,.plan2 .amount-text,.n4c .big{font
     <p class="lead">בקבוצות של האזור יושבים הרבה אנשים שמחפשים בעלי מקצוע. נעם כותב ומפרסם בשבילכם, ואתם מאשרים כל פוסט.</p>
     <div class="n4">
       <div class="n4c">
-        <b class="big">עד <span class="cu" data-to="150" data-dec="0">150</span></b>
+        <b class="big">עד <span class="cu" data-to="100" data-dec="0">100</span></b>
         <strong>פוסטים בחודש, וכל אחד כתוב לקבוצה שלו</strong>
-        <small>עד 35 בשבוע, כל פוסט בניסוח אחר לפי הקבוצה</small>
+        <small>בתוכנית מלא, כל פוסט בניסוח אחר לפי הקבוצה</small>
       </div>
       <div class="n4c">
-        <b class="big">כ-<span class="cu" data-to="25" data-dec="0">25</span></b>
+        <b class="big">כ-<span class="cu" data-to="17" data-dec="0">17</span></b>
         <strong>שעות בחודש שחוזרות לכם</strong>
-        <small>במקום לחפש קבוצות ולכתוב כל פוסט: כ-10 דקות לפוסט × כ-150 פוסטים (הערכה)</small>
+        <small>במקום לחפש קבוצות ולכתוב כל פוסט: כ-10 דקות לפוסט × 100 פוסטים (הערכה)</small>
       </div>
       <div class="n4c">
         <b class="big">עד <span class="cu" data-to="100" data-dec="0">100</span></b>
@@ -1476,7 +1711,7 @@ h1,h2,h3,h4,.hero h1,.plan2 h3,.plan2 .amount,.plan2 .amount-text,.n4c .big{font
       <div class="cmp-row" role="row"><div class="lab" role="rowheader">שליטה</div><div data-l="פרסום ממומן">מגדירים מראש</div><div data-l="לפרסם לבד">מלאה</div><div class="us" data-l="נעם">כל פוסט באישורכם</div></div>
       <div class="cmp-row" role="row"><div class="lab" role="rowheader">למי מגיעים</div><div data-l="פרסום ממומן">גם למי שלא בקבוצות. זה יתרון אמיתי</div><div data-l="לפרסם לבד">לקבוצות שאתם חברים בהן</div><div class="us" data-l="נעם">לקבוצות באזור ובתחום שלכם, אחרי בדיקה</div></div>
     </div>
-    <div class="after-cta"><a class="btn btn-primary" href="#contact" data-cta="compare_form">קבלו שיחה קצרה</a></div>
+    <div class="after-cta"><a class="btn btn-primary js-wa" href="#contact" data-cta="compare_whatsapp">דברו איתנו בוואטסאפ</a></div>
   </div>
 </section>
 
@@ -1485,45 +1720,52 @@ h1,h2,h3,h4,.hero h1,.plan2 h3,.plan2 .amount,.plan2 .amount-text,.n4c .big{font
   <div class="wrap">
     <span class="kicker">מחירים</span>
     <h2>בוחרים קצב, <em>בלי התחייבות לתקופה</em></h2>
-    <p class="lead"><b>4 ימי ניסיון חינם</b> בכל תוכנית. בכולן אותו נעם: פוסט נפרד לכל קבוצה, אישור לפני כל פוסט ודוח כל ערב. ההבדל הוא הקצב, כלומר כמה פוסטים עולים.</p>
+    <p class="lead"><b>4 ימי ניסיון חינם</b> בכל תוכנית. בכולן אותו נעם: פוסט נפרד לכל קבוצה, אישור לפני כל פוסט ודוח כל ערב. ההבדל: כמה פוסטים עולים, והאם נעם גם מרחיב את הקבוצות ומשפר לפי התוצאות.</p>
     <div class="plans">
-      <div class="plan2">
+      <div class="plan2 starter">
+        <span class="badge soft">להתחלה</span>
         <h3>התחלה</h3>
-        <p class="for">להתחיל בקטן ולראות איך זה עובד</p>
+        <p class="for">הפרסום עצמו, בשליטה שלכם</p>
         <div class="amount">₪99 <small>לחודש + מע"מ</small></div>
         <ul>
-          <li><b>עד 2 פוסטים ביום</b><small>עד 10 בשבוע</small></li>
-          <li><b>פוסט אחר לכל קבוצה</b><small>לפי הנושא והאזור שלה</small></li>
-          <li><b>אתם מאשרים כל פוסט</b><small>שום דבר לא עולה בלי ה״כן״ שלכם</small></li>
-          <li><b>דוח כל ערב</b><small>מה עלה, כמה ראו ומי הגיב</small></li>
+          <li>40 פוסטים חדשים בכל חודש</li>
+          <li>כתיבה בבינה מלאכותית: פוסט אחר ומותאם לכל קבוצה</li>
+          <li>התאמת קבוצות אוטומטית לפי התחום והאזור שלכם</li>
+          <li>בכל פוסט קישור לוואטסאפ, לתיק עבודות באינסטגרם ולאתר</li>
+          <li>שום פוסט לא עולה בלי ה״כן״ שלכם</li>
+          <li>דוח כל ערב על מה שעלה ומי הגיב</li>
         </ul>
         <p class="trial">4 ימי ניסיון חינם</p>
-        <a class="btn btn-ghost btn-block" href="#contact" data-cta="price_start">קבלו שיחה ותתחילו ניסיון</a>
+        <a class="btn btn-ghost btn-block js-wa" href="#contact" data-cta="price_start_whatsapp">דברו איתנו בוואטסאפ</a>
       </div>
       <div class="plan2 best">
         <span class="badge">הקצב המלא</span>
         <h3>מלא</h3>
-        <p class="for">להגיע ליותר קבוצות באזור שלכם</p>
+        <p class="for">פרסום, הרחבת קבוצות ושיפור לפי התוצאות</p>
         <div class="amount">₪350 <small>לחודש + מע"מ</small></div>
         <ul>
-          <li><b>עד 5 פוסטים ביום</b><small>עד 35 בשבוע</small></li>
-          <li><b>קבוצות חדשות כל שבוע</b><small>נעם מחפש, בודק ומבקש להצטרף, עד 25 בשבוע</small></li>
-          <li><b>עדכון על תגובות ופניות</b><small>מגיע אליכם בוואטסאפ</small></li>
-          <li><b>כל מה שבתוכנית התחלה</b><small>כולל אישור לפני כל פוסט</small></li>
+          <li><b>כל מה שבתוכנית התחלה</b></li>
+          <li>100 פוסטים חדשים בכל חודש, יותר מפי שניים וחצי</li>
+          <li>חיפוש אוטומטי של 100 קבוצות חדשות בכל חודש</li>
+          <li>הצטרפות ומענה אוטומטי לשאלות מנהלי הקבוצות</li>
+          <li>זיהוי פניות של לקוחות בתגובות, והתראה בוואטסאפ</li>
+          <li>למידה ושיפור עצמי: ה-AI לומד מה עובד אצלכם ומשפר את עצמו מפוסט לפוסט</li>
         </ul>
         <p class="trial">4 ימי ניסיון חינם</p>
-        <a class="btn btn-primary btn-block" href="#contact" data-cta="price_full">קבלו שיחה ותתחילו ניסיון</a>
+        <a class="btn btn-primary btn-block js-wa" href="#contact" data-cta="price_full_whatsapp">דברו איתנו בוואטסאפ</a>
       </div>
-      <div class="plan2">
+      <div class="plan2 biz">
+        <span class="badge soft">בהתאמה אישית</span>
         <h3>חברות ועסקים</h3>
         <p class="for">לרשתות ולעסקים עם כמה סניפים</p>
         <div class="amount amount-text">המחיר נקבע בשיחה</div>
         <ul>
-          <li><b>קצב והיקף בהתאמה אישית</b><small>נציג בונה איתכם הצעה</small></li>
-          <li><b>פרופיל נפרד לכל סניף</b><small>כל עסק מנוהל בנפרד</small></li>
-          <li><b>ליווי והקמה אישיים</b><small>מחברים הכול יחד איתכם</small></li>
+          <li><b>כל מה שבתוכנית מלא</b></li>
+          <li>כרטיס עסק ופרופיל נפרד לכל סניף</li>
+          <li>קצב והיקף שנבנים סביבכם</li>
+          <li>הקמה וליווי אישיים צמודים</li>
         </ul>
-        <a class="btn btn-ghost btn-block" href="#contact" data-cta="price_business">קבלו הצעה לעסק שלכם</a>
+        <a class="btn btn-ghost btn-block js-wa" href="#contact" data-cta="price_business_whatsapp">דברו עם נציג בוואטסאפ</a>
       </div>
     </div>
     <p class="fine-print">אחרי 4 ימי הניסיון החינם אין התחייבות לתקופה, ואפשר לבטל בכל עת. חשבון פייסבוק אחד משרת עסק אחד. מחברים אותו פעם אחת, בהתחלה, בליווי אישי.</p>
@@ -1539,7 +1781,7 @@ h1,h2,h3,h4,.hero h1,.plan2 h3,.plan2 .amount,.plan2 .amount-text,.n4c .big{font
       <details><summary>האם זה מסכן את הפרופיל שלי בפייסבוק?</summary><p>יש סיכון, ואי אפשר לבטל אותו לגמרי. הפרסום יוצא מהפרופיל שלכם, ופייסבוק היא שמחליטה מה מותר. נעם מפרסם עד התקרה היומית של התוכנית, פוסט אחר בכל קבוצה, ורק אחרי אישורכם. כל מה שקורה מופיע בדוח הערב.</p></details>
       <details><summary>זה לא נראה כמו ספאם?</summary><p>ספאם הוא אותה פרסומת בכל מקום. נעם כותב לכל קבוצה פוסט אחר, לפי הנושא והאזור שלה, ואתם רואים אותו לפני הפרסום.</p></details>
       <details><summary>אני לא טכני. זה מסובך?</summary><p>לא. הכול בוואטסאפ, בעברית, בלי אפליקציה ובלי לוח בקרה. מספרים על העסק בהודעה קולית או בכתב ומקבלים כרטיס עסק לבדיקה. את החיבור לפייסבוק עושים פעם אחת, בליווי אישי. אחר כך רק מאשרים.</p></details>
-      <details><summary>כמה זה עולה, ומה קורה אחרי הניסיון?</summary><p>יש שלוש תוכניות. התחלה: 99 ש"ח לחודש + מע"מ, עד 2 פוסטים ביום. מלא: 350 ש"ח לחודש + מע"מ, עד 5 פוסטים ביום. לחברות ועסקים המחיר נקבע בשיחה. ארבעת הימים הראשונים חינם, ואחריהם אין התחייבות לתקופה. אין תשלום נפרד לכל פוסט או קבוצה.</p></details>
+      <details><summary>כמה זה עולה, ומה קורה אחרי הניסיון?</summary><p>יש שלוש תוכניות. התחלה: 99 ש"ח לחודש + מע"מ, 40 פוסטים חדשים בחודש. מלא: 350 ש"ח לחודש + מע"מ, 100 פוסטים חדשים בחודש. לחברות ועסקים המחיר נקבע בשיחה. ארבעת הימים הראשונים חינם, ואחריהם אין התחייבות לתקופה. אין תשלום נפרד לכל פוסט או קבוצה.</p></details>
       <details><summary>הפוסטים עולים מהפרופיל שלי?</summary><p>כן. הם עולים מהפרופיל שלכם, בשמכם, ולא מחשבון של Collabo. מחברים אותו פעם אחת, בליווי אישי.</p></details>
       <details><summary>מה אם פוסט לא מוצא חן בעיניי?</summary><p>כותבים לנעם מה לשנות, למשל ״קצר מדי״ או ״תוריד את הכתובת״. הוא כותב מחדש ומראה שוב. פוסט לא עולה עד שאמרתם ״כן״.</p></details>
       <details><summary>מי עונה ללקוחות שמגיבים?</summary><p>תגובות ופניות של לקוחות מגיעות אליכם בדוח הערב. אתם רואים מי פנה וממשיכים איתו. נעם לא עונה בשמכם בלי שביקשתם.</p></details>
@@ -1608,8 +1850,8 @@ h1,h2,h3,h4,.hero h1,.plan2 h3,.plan2 .amount,.plan2 .amount-text,.n4c .big{font
       <a href="#faq">שאלות נפוצות</a>
     </div>
     <div class="fcol">
-      <b>קבלו שיחה</b>
-      <a class="btn btn-primary btn-sm" href="#contact" data-cta="foot_form">קבלו שיחה</a>
+      <b>דברו איתנו</b>
+      <a class="btn btn-primary btn-sm js-wa" href="#contact" data-cta="foot_whatsapp">דברו איתנו בוואטסאפ</a>
     </div>
   </div>
   <div class="wrap foot-base">
@@ -1619,7 +1861,7 @@ h1,h2,h3,h4,.hero h1,.plan2 h3,.plan2 .amount,.plan2 .amount-text,.n4c .big{font
 </footer>
 
 <div class="bar" id="bar">
-  <a class="btn btn-primary" href="#contact" data-cta="sticky_form">קבלו שיחה</a>
+  <a class="btn btn-primary js-wa" href="#contact" data-cta="sticky_whatsapp">דברו איתנו בוואטסאפ</a>
 </div>
 
 <script>
@@ -1627,6 +1869,19 @@ h1,h2,h3,h4,.hero h1,.plan2 h3,.plan2 .amount,.plan2 .amount-text,.n4c .big{font
 /* Real scrollable chat boxes: new messages scroll in smoothly, the user can always scroll back up,
    and auto-follow resumes only when the user is back near the bottom. */
 /* the sender's side of the chat: text appears in the input box and the button is pressed, or the mic is held while recording */
+/* the posts shown in the demos: written like a person, with a soft call to action and three ways to reach Alon */
+window.__postBody=function(which,v){
+  function M(n,t,x,c){ return '<mark class="tg'+(c||'')+'" data-n="'+n+'" data-t="'+t+'">'+x+'</mark>'; }
+  var LINKS='<div class="plk"><div>להצעת מחיר בוואטסאפ: <u>wa.me/972501234567</u></div><div>תיק עבודות באינסטגרם: <u>instagram.com/alon.shiputzim</u></div><div>על העסק ועוד פרויקטים: <u>alon-shiputzim.co.il</u></div></div>';
+  if(which==='g') return '<p>'+M(1,'פותח בהיכרות, כמו אדם ולא כמו פרסומת','שלום שכנים, אני אלון, קבלן שיפוצים מכאן, מגבעתיים.')+'</p>'+
+    '<p>'+M(3,'מה מבדיל אותו: עובדים בעצמם ומשאירים נקי','את המטבח בתמונה סיימנו השבוע, אחרי שלושה שבועות עבודה. אני ובני דן עובדים בעצמנו בכל בית, בלי קבלני משנה, ובסוף כל יום משאירים אותו נקי, כאילו לא היינו שם.')+'</p>'+
+    '<p>'+M(4,'הצעה ברורה, בלי לחץ','אם אתם חושבים על שיפוץ במטבח או באמבטיה, אשמח לבוא, להסתכל ולתת הצעת מחיר בכתב. בלי התחייבות.')+'</p>'+
+    M(5,'לכל קישור יש סיבה: וואטסאפ להצעת מחיר, אינסטגרם לתיק עבודות',LINKS,' blk');
+  return '<p>'+M(1,'פותח בהיכרות, ומזכיר שהוא עובד גם באזור','שלום לכולם, אני אלון, קבלן שיפוצים מגבעתיים, ועובד גם ברמת גן.')+'</p>'+
+    '<p>'+M(3,'מה מבדיל אותו: בלי הפתעות, ובית נקי','את האמבטיה בתמונה סיימנו לפני כמה ימים. אני ובני דן עובדים בעצמנו, בלי קבלני משנה ובלי הפתעות במחיר, ובסוף כל יום משאירים את הבית נקי.')+'</p>'+
+    '<p>'+M(4,'הצעה ברורה, בלי לחץ','אם אתם ברמת גן ומתכננים שיפוץ באמבטיה או במטבח, אשמח לבוא, להסתכל ולתת הצעת מחיר בכתב'+(v?'<span class="newtxt" data-t="השינוי שביקשת: הצעת המחיר בלי עלות">, בלי עלות</span>':'')+'.')+'</p>'+
+    M(5,'לכל קישור יש סיבה: וואטסאפ להצעת מחיר, אינסטגרם לתיק עבודות',LINKS,' blk');
+};
 window.__wa={
   type:async function(root,text,sleep,t){
     var sp=root.querySelector('.wa-foot span'), ic=root.querySelector('.wa-foot i'); if(!sp||!ic) return;
@@ -1807,7 +2062,8 @@ document.addEventListener('click', function (e) {
     { from:'agent', text:'עוד שניים מחכים: למעצבי פנים ולבעלי עסקים. לפרסם את שלושתם?\nכתוב "כן", "לא", או מה לשנות.', t:'09:15' },
     { from:'me', text:'כן', t:'09:18' },
     { from:'agent', text:'פורסם בקבוצה הראשונה, תושבי גבעתיים. ממשיך לשתי הקבוצות האחרות.', t:'09:19' },
-    { from:'agent', text:'עלו כל שלושת הפוסטים. אחפש עוד קבוצות מתאימות, ואשלח לך כל פוסט חדש לאישור לפני שהוא עולה.', t:'09:52' }
+    { from:'agent', text:'עלו כל שלושת הפוסטים. אחפש עוד קבוצות מתאימות, ואשלח לך כל פוסט חדש לאישור לפני שהוא עולה.', t:'09:52' },
+    { from:'agent', text:'הגיעה פנייה ראשונה בהודעה פרטית, מהפוסט בגבעתיים:\n״היי אלון, כמה עולה שיפוץ מטבח?״', t:'11:30' }
   ];
   function bubble(m) {
     var d = document.createElement('div');
@@ -1819,7 +2075,7 @@ document.addEventListener('click', function (e) {
       im.innerHTML = '<div class="thumb"><div class="fbpost pimg"><div class="h"><i class="pav"><svg viewBox="0 0 40 40"><use href="#av-alon"/></svg></i>' +
         '<div class="hn"><b>אלון לוי</b><small>תושבי גבעתיים · עכשיו · <svg class="fi g" viewBox="0 0 24 24"><use href="#i-globe"/></svg></small></div>' +
         '<svg class="fi dots" viewBox="0 0 24 24"><use href="#i-dots"/></svg></div>' +
-        '<div class="body">היי שכנים, אני אלון, קבלן שיפוצים כאן בגבעתיים. מצרף תמונה ממטבח שסיימתי. אם אתם חושבים על שיפוץ במטבח או באמבטיה, אבוא להסתכל אצלכם ואתן הצעת מחיר בכתב. כתבו לי בפרטי.</div>' +
+        '<div class="body">'+window.__postBody('g')+'</div>' +
         '<div class="pphoto"><img src="photos/k1.jpg" alt=""></div>' +
         '<div class="fbact"><span><svg class="fi" viewBox="0 0 24 24"><use href="#i-like"/></svg>לייק</span><span><svg class="fi" viewBox="0 0 24 24"><use href="#i-comment"/></svg>תגובה</span><span><svg class="fi" viewBox="0 0 24 24"><use href="#i-share"/></svg>שיתוף</span></div></div></div>';
       d.appendChild(im);
@@ -1853,139 +2109,109 @@ document.addEventListener('click', function (e) {
 </script>
 
 <script>
-/* Facebook group search: first group shown in full (read the about, join, answer the questions); the rest are only marked relevant or not */
+/* WhatsApp: Noam recommends widening the list of groups and waits for a yes. Then he sends a link to the join form he already submitted */
 (function(){
-  var root=document.getElementById('fbmov'); if(!root) return;
-  var ICO=function(n){return '<svg class="ico" viewBox="0 0 24 24"><use href="#i-'+n+'"/></svg>'};
+  var root=document.getElementById('wafb'); if(!root) return;
+  var list=document.getElementById('annolist2');
+  var clock=10*60+5;
+  function esc(t){return t.replace(/&/g,'&amp;').replace(/</g,'&lt;')}
+  function fmt(t){return esc(t).replace(/\*([^*\n]+)\*/g,'<b>$1</b>')}
+  function stamp(out){
+    var h=Math.floor(clock/60), m=clock%60; clock+=1;
+    var tm=('0'+h).slice(-2)+':'+('0'+m).slice(-2);
+    return '<span class="t">'+tm+(out?'<svg class="tk" viewBox="0 0 16 10"><path d="M1 5.2 L4.2 8.4 L10.6 1.4 M6 8 L6.8 8.8 L13.6 1.4" fill="none" stroke="#53bdeb" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>':'')+'</span>';
+  }
   if(!document.getElementById('art-tools')) document.body.insertAdjacentHTML('beforeend','<svg width="0" height="0" style="position:absolute" aria-hidden="true">'+
     '<symbol id="art-tools" viewBox="0 0 64 64"><rect width="64" height="64" fill="#f3e3c4"/><path d="M14 46 L36 24 L42 30 L20 52 Z" fill="#b58657"/><circle cx="42" cy="22" r="10" fill="#8b8f96"/><rect x="40" y="10" width="6" height="12" fill="#f3e3c4"/><rect x="36" y="44" width="16" height="6" rx="2" fill="#5a6470"/></symbol>'+
     '<symbol id="art-biz" viewBox="0 0 64 64"><rect width="64" height="64" fill="#e7efe4"/><path d="M12 28 L16 14 H48 L52 28 Z" fill="#2f8f5b"/><rect x="14" y="28" width="36" height="24" fill="#fff" stroke="#2f8f5b" stroke-width="2"/><rect x="27" y="36" width="10" height="16" fill="#2f8f5b"/><rect x="18" y="34" width="6" height="8" fill="#cfe6d6"/><rect x="40" y="34" width="6" height="8" fill="#cfe6d6"/></symbol>'+
     '<symbol id="art-north" viewBox="0 0 64 64"><rect width="64" height="64" fill="#cfe6f4"/><path d="M0 46 L18 24 L30 38 L42 18 L64 46 Z" fill="#7aa0b8"/><rect y="46" width="64" height="18" fill="#4f93c4"/><path d="M0 52 q8-5 16 0 t16 0 t16 0 t16 0" stroke="#fff" stroke-width="2" fill="none" opacity=".7"/></symbol></svg>');
-  var G=[
-    {n:'תושבי גבעתיים',art:'city',sub:'קבוצה ציבורית · 14 אלף חברים',res:'yes',
-     about:'קבוצה של <mark data-n="2">תושבי גבעתיים והסביבה</mark>, לשאלות והמלצות על <mark data-n="1">שירותי בית ושיפוצים</mark> בין שכנים.',
-     note:'החברים בה גרים בגבעתיים, כלומר הם הלקוחות של אלון. התחום והאזור מתאימים.',
-     qs:[{q:'באיזה תחום אתם עוסקים?',t:'text',a:'קבלן שיפוצים, מטבחים וחדרי רחצה'},
-         {q:'באיזה אזור אתם פועלים?',t:'choice',opts:['גבעתיים','רמת גן','תל אביב'],a:0},
-         {q:'למה אתם רוצים להצטרף?',t:'text',a:'לענות לשכנים בשאלות על שיפוצים'}]},
-    {n:'בית ונוי גוש דן',art:'sofa',sub:'קבוצה ציבורית · 31 אלף חברים',res:'no'},
-    {n:'בעלי עסקים ברמת גן',art:'biz',sub:'קבוצה ציבורית · 9 אלף חברים',res:'yes',
-     about:'קבוצה של <mark data-n="2">בעלי עסקים ברמת גן</mark>, להמלצות ושיתופי פעולה בין <mark data-n="1">עסקים בעיר</mark>.',
-     note:'בעלי עסקים באזור יכולים להזמין שיפוץ למשרד או לחנות. הקהל והאזור מתאימים.',
-     qs:[{q:'באיזה תחום אתם עוסקים?',t:'text',a:'קבלן שיפוצים, גם למשרדים וחנויות'},
-         {q:'למה אתם רוצים להצטרף?',t:'text',a:'להכיר בעלי עסקים ולהציע שיפוצים'}]},
-    {n:'שיפוצים ובנייה בחיפה והצפון',art:'north',sub:'קבוצה ציבורית · 12 אלף חברים',res:'no'},
-    {n:'מעצבי פנים ואדריכלים',art:'design',sub:'קבוצה פרטית · 6 אלף חברים',res:'yes'}
-  ];
-  var Q='שיפוצי מטבחים גבעתיים', Q2='קבלן שיפוצים רמת גן';
-  var TABS=['home','friends','video','shop','bell','menu'];
-  var nOk=G.filter(function(g){return g.res==='yes'}).length, nNo=G.length-nOk;
-  var SUM=nOk+' קבוצות מתאימות לתחום ולאזור של אלון, ו-'+nNo+' לא. נעם עובר לכתיבת הפוסטים.';
-  var MK={yes:'<svg viewBox="0 0 24 24"><path d="M5 12.5 L10 17.5 L19 7" fill="none" stroke="#fff" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/></svg>',
-          no:'<svg viewBox="0 0 24 24"><path d="M6 6 L18 18 M18 6 L6 18" fill="none" stroke="#fff" stroke-width="3.2" stroke-linecap="round"/></svg>'};
-  root.innerHTML='<div class="fbapp"><div class="fbscreen"><div class="fbstat"><b>09:41</b><span class="sb"><i class="sg"></i><i class="sw"></i><i class="bt"></i></span></div>'+
-    '<div class="fbappbar"><span class="fbback">'+ICO('back')+'</span><span class="fbsearch" id="fbq"></span></div>'+
-    '<div class="fbarea" id="fba"><div class="fbscroll" id="fbs"></div></div>'+
-    '<div class="fbscrim" id="scrim"></div><div class="fbsheet pvsheet" id="pv"></div><div class="fbsheet" id="sheet"></div></div></div>';
-  var q=root.querySelector('#fbq'), sc=root.querySelector('#fbs'), pv=root.querySelector('#pv'), sheet=root.querySelector('#sheet'), scrim=root.querySelector('#scrim');
+  var NAMES=['תושבי גבעתיים','שכנים ברמת גן','בעלי עסקים ברמת גן','מעצבי פנים ואדריכלים','שיפוצים ובנייה בגוש דן'];
+  var OPEN=2;
+  var G1={n:NAMES[OPEN],art:'biz',sub:'ציבורית · 9 אלף חברים',
+    qs:[{q:'באיזה תחום אתם עוסקים?',t:'text',a:'קבלן שיפוצים, גם למשרדים וחנויות'},
+        {q:'באיזה אזור אתם פועלים?',t:'choice',opts:['גבעתיים','רמת גן','תל אביב'],a:1},
+        {q:'למה אתם רוצים להצטרף?',t:'text',a:'להכיר בעלי עסקים ולהציע שיפוצים'}]};
   function gimg(g){return '<span class="gimg"><svg viewBox="0 0 64 64"><use href="#art-'+g.art+'"/></svg></span>'}
-  function cardEl(g,i,st){
-    var done=st.done&&st.done[i];
-    var sent=st.sentSet?st.sentSet[i]:(st.sent&&i===0);
-    var cls='fbres-c'+(st.cur===i?' cur':'')+(st.hid?' hid':'')+(done&&g.res==='no'?' dim':'');
-    return '<div class="'+cls+'" data-i="'+i+'">'+gimg(g)+
-      '<div><b>'+g.n+'</b><small>'+g.sub+'</small></div>'+
-      '<span class="jbtn'+(sent?' sentb':'')+'">'+(sent?'בקשה נשלחה':'הצטרפות')+'</span></div>';
+  /* the join form as Facebook shows it after it was sent: answers filled in, request sent */
+  function formHTML(){
+    var qa=G1.qs.map(function(x,i){
+      var ans=x.t==='choice'?x.opts[x.a]:x.a;
+      return '<div class="qa" id="wa'+i+'"><small>'+x.q+'</small><b>'+ans+'</b></div>';
+    }).join('');
+    var GL='<svg viewBox="0 0 24 24"><use href="#i-globe"/></svg>';
+    var CK='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.600" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.500 L10 17.500 L19 7"/></svg>';
+    var CH='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.600" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9 L12 15 L18 9"/></svg>';
+    return '<div class="rqp"><div class="rcov"><svg viewBox="0 0 64 64" preserveAspectRatio="xMidYMid slice"><use href="#art-'+G1.art+'"/></svg></div>'+
+      '<div class="rhead"><b>'+G1.n+'</b><small>'+GL+'קבוצה '+G1.sub+'</small>'+
+      '<div class="rbtns"><span class="rb1">'+CK+'בקשה נשלחה'+CH+'</span><span class="rb2"><i></i><i></i><i></i></span></div></div>'+
+      '<div class="rtabs"><span class="on">דיון</span><span>אנשים</span><span>אודות</span></div>'+
+      '<div class="rans"><h6>התשובות שלך לשאלות המנהלים</h6>'+qa+'</div></div>';
   }
-  function resultsHTML(st,sum){
-    var h='<div class="fbscr"><div class="fbfilters"><span>הכול</span><span>פוסטים</span><span>אנשים</span><span>תמונות</span><span class="on">קבוצות</span></div><div class="fbres">';
-    G.forEach(function(g,i){h+=cardEl(g,i,st)});
-    return h+'</div></div>';
-  }
-  function repaint(i,st){
-    var el=sc.querySelectorAll('.fbres-c')[i]; var d=document.createElement('div'); d.innerHTML=cardEl(G[i],i,st);
-    el.parentNode.replaceChild(d.firstChild,el);
-  }
-  function previewHTML(g){
-    return '<div class="grab"></div><div class="pvhead">'+gimg(g).replace('gimg','gimg lg2')+'<div class="pvt"><h5>'+g.n+'</h5><small>'+g.sub+'</small></div><span class="sx">&times;</span></div>'+
-      '<div class="pvbody" id="pvb"><div class="pvsec"><b>אודות</b><p>'+g.about+'</p></div>'+
-      '</div>'+
-      '<div class="pvbtn" id="pvbtn"><span class="jn" id="jb">'+ICO('friends')+'הצטרפות לקבוצה</span></div>';
-  }
+  root.innerHTML='<div class="mini-head"><i><img class="nm" src="photos/noam.jpg" alt=""></i><b>נעם · סוכן הפרסום</b></div><div class="mini-chat walive"><div class="waslide" id="wfs"></div></div><div class="wa-foot"><span>הודעה</span><i></i></div>'+
+    '<div class="viewer" id="vwf"><div class="vbody" id="vbf"></div><div class="fbsheet page under" id="wsh"></div></div>';
+  var sl=root.querySelector('#wfs'), box=root.querySelector('.walive'), vw=root.querySelector('#vwf'), vb=root.querySelector('#vbf'), sheet=root.querySelector('#wsh');
   var token=0;
   function sleep(ms,t){return new Promise(function(res,rej){setTimeout(function(){t===token?res():rej()},ms/(window.DEMO_SPEED||1))})}
-  function closeAll(){scrim.classList.remove('on');pv.classList.remove('on');sheet.classList.remove('on');setTimeout(function(){sheet.classList.remove('page','popup')},500)}
+  var F=window.__chatFollow(box);
+  sl.removeChild=function(n){ F.typH=(n.classList&&n.classList.contains('typing'))?n.offsetHeight:0; return Element.prototype.removeChild.call(this,n); };
+  function msg(kind,text){var d=document.createElement('div'); d.className='msg '+(kind==='a'?'agent':'me'); d.innerHTML=fmt(text).replace(/\n/g,'<br>')+stamp(kind!=='a'); F.add(sl,d); return d}
+  var CODES=['1503827469215634','ramatgan.neighbors','781236459027318','interiordesign.il','2194680357714826'];
+  function lkmsg(text){
+    var d=document.createElement('div'); d.className='msg agent';
+    d.innerHTML=fmt(text)+'<br>'+NAMES.map(function(n,k){return '<br>'+(k+1)+'. <b>'+esc(n)+'</b><br><span class="wl" data-k="'+k+'">https://www.facebook.com/groups/'+CODES[k]+'/</span>'}).join('')+stamp(false);
+    F.add(sl,d); return d;
+  }
+  function typing(){var ty=document.createElement('div'); ty.className='typing'; ty.innerHTML='<i></i><i></i><i></i>'; F.add(sl,ty); return ty}
+  function lit(n,on){ if(!list) return; var li=list.querySelector('li[data-n="'+n+'"]'); if(li) li.classList[on?'add':'remove']('lit'); }
+  function clearLit(){ if(!list) return; list.querySelectorAll('li.lit').forEach(function(l){l.classList.remove('lit')}); }
+  function closeView(){ vw.classList.remove('on'); sheet.classList.remove('on'); }
+  var T0='בוקר טוב אלון. כדי שיהיו לנו עוד מקומות לפרסם בהם, אני ממליץ להרחיב את מאגר הקבוצות: קבוצות של תושבי האזור, וגם קבוצות מקצועיות. להתחיל לחפש?';
+  var T1='מעולה, מחפש קבוצות שמתאימות לתחום ולאזור שלך.';
+  var T2='חיפשתי, והגשתי בקשת הצטרפות ל-5 קבוצות שמתאימות. בכל אחת עניתי למנהלים לפי כרטיס העסק שלך. לחץ על קבוצה כדי לראות את הטופס ששלחתי:';
+  var T4='כשהמנהלים יאשרו אותי, אכתוב לכל קבוצה פוסט משלה ואשלח לך אותו לאישור.';
+  /* the chat goes on: Noam reports, answers an admin, and recommends the next step before doing it */
+  var MORE=[
+    ['gap',120],
+    ['a','עדכון: שתי קבוצות כבר אישרו אותי, ואני מתחיל לכתוב להן פוסטים:\n\n1. *תושבי גבעתיים*\n2. *בעלי עסקים ברמת גן*'],
+    ['a','אני ממליץ להוסיף למאגר גם קבוצות של השכונות הסמוכות, כי אנשים שם שואלים על שיפוצים כל שבוע. למצוא ולבקש להצטרף?'],
+    ['me','כן, תמשיך'],
+    ['a','מצוין. אחפש לפי ביטויים חדשים, ואעדכן אותך כשיהיו קבוצות חדשות.']
+  ];
+  function moreStatic(){ MORE.forEach(function(m){ if(m[0]==='gap') clock+=m[1]; else msg(m[0],m[1]); }); }
   function finalState(){
-    var st={done:{},sentSet:{0:true,2:true,4:true},fin:true}; G.forEach(function(g,i){st.done[i]=true});
-    q.textContent=Q2; sc.innerHTML=resultsHTML(st,true); closeAll();
-  }
-  async function typeInto(el,text,t){
-    for(var i=1;i<=text.length;i++){ el.innerHTML=text.slice(0,i)+'<span class="caret"></span>'; await sleep(22,t); }
-    el.textContent=text;
-  }
-  async function joinFlow(g,t){
-    var jb=pv.querySelector('#jb'); if(jb) jb.classList.add('press'); await sleep(800,t);
-    await sleep(300,t);
-    var qh=g.qs.map(function(x,i){
-      if(x.t==='choice') return '<div class="qq"><label>'+x.q+'</label><div class="opts" id="a'+i+'">'+x.opts.map(function(o){return '<span class="opt"><i class="rd"></i>'+o+'</span>'}).join('')+'</div></div>';
-      return '<div class="qq"><label>'+x.q+'</label><div class="ta" id="a'+i+'"></div></div>';
-    }).join('');
-    sheet.innerHTML='<div class="grab"></div><div class="shead"><span class="sx">&times;</span><h5>שאלות להצטרפות</h5><span class="sxs"></span></div>'+
-      '<div class="sbody"><p class="sintro">כדי להצטרף, מנהלי הקבוצה מבקשים שתענו על כמה שאלות.</p>'+qh+'</div>'+
-      '<div class="sfoot"><span class="ssend" id="sb">שליחה</span></div>';
-    sheet.classList.add('page','popup'); sheet.classList.add('on'); await sleep(1000,t);
-    for(var i=0;i<g.qs.length;i++){
-      var x=g.qs[i], el=sheet.querySelector('#a'+i);
-      if(x.t==='choice'){ await sleep(500,t); el.querySelectorAll('.opt')[x.a].classList.add('on'); }
-      else { var sb2=sheet.querySelector('.sbody'); sb2.scrollTo({top:Math.max(0,el.offsetTop-sb2.offsetTop-90),behavior:'smooth'}); await sleep(350,t); el.classList.add('focus'); await typeInto(el,x.a,t); el.classList.remove('focus'); }
-      await sleep(450,t);
-    }
-    var sb=sheet.querySelector('#sb'); sb.classList.add('ready'); await sleep(700,t); sb.classList.add('press'); await sleep(800,t);
-    closeAll(); await sleep(600,t);
+    clock=10*60+5; sl.innerHTML=''; closeView(); vw.classList.remove('fbapp'); clearLit();
+    msg('a',T0); msg('me','כן, תתחיל'); msg('a',T1); lkmsg(T2); msg('a',T4); moreStatic();
   }
   async function once(t){
-    var st={done:{}};
-    closeAll(); q.innerHTML='<span class="caret"></span>';
-    sc.innerHTML='<div class="fbscr"></div>';
-    await sleep(900,t);
-    /* two search phrases, each one with the number of groups it found */
-    var SEARCHES=[[Q,38],[Q2,21]];
-    for(var si=0;si<SEARCHES.length;si++){
-      var qq=SEARCHES[si][0], total=SEARCHES[si][1];
-      if(si>0){ await sleep(700,t); for(var d=qq.length>0?q.textContent.length:0;d>=0;d--){ q.innerHTML=q.textContent.slice(0,d)+'<span class="caret"></span>'; await sleep(25,t); } }
-      for(var i=1;i<=qq.length;i++){ q.innerHTML=qq.slice(0,i)+'<span class="caret"></span>'; await sleep(45,t); }
-      await sleep(500,t); q.textContent=qq;
-      sc.innerHTML='<div class="fbscr"><div class="fbfilters"><span>הכול</span><span>פוסטים</span><span>אנשים</span><span>תמונות</span><span class="on">קבוצות</span></div><div class="chk"><span>נמצאו <b id="ldn">0</b> קבוצות</span></div><div class="fbres">'+'<div class="sk"><i></i><div><b></b><small></small></div></div>'.repeat(3)+'</div></div>';
-      for(var c=1;c<=12;c++){ await sleep(110,t); var ld=sc.querySelector('#ldn'); if(ld) ld.textContent=Math.round(c*total/12); }
-      await sleep(si===0?1300:500,t);
+    clock=10*60+5; sl.innerHTML=''; F.reset(); closeView(); vw.classList.remove('fbapp'); clearLit();
+    await sleep(800,t); var ty=typing(); await sleep(1800,t); sl.removeChild(ty); msg('a',T0);
+    await sleep(1200,t); await window.__wa.type(root,'כן, תתחיל',sleep,t); msg('me','כן, תתחיל');
+    await sleep(800,t); ty=typing(); await sleep(1000,t); sl.removeChild(ty); msg('a',T1);
+    await sleep(1100,t); ty=typing(); await sleep(1500,t); sl.removeChild(ty);
+    lit(1,true); lit(2,true);
+    var el=lkmsg(T2);
+    await sleep(1800,t); var gl=el.querySelector('.wl[data-k="'+OPEN+'"]'); gl.classList.add('press'); await sleep(700,t); gl.classList.remove('press'); await sleep(200,t);
+    /* the link opens the form that was already submitted */
+    clearLit(); lit(3,true);
+    vb.innerHTML='<div class="fbtop"><span class="bk">‹ וואטסאפ</span><span class="lg">facebook</span></div>';
+    sheet.innerHTML=formHTML(); vw.classList.add('fbapp'); vw.classList.add('on'); sheet.classList.add('on'); await sleep(400,t);
+    await sleep(1700,t);
+    var steps=[[sheet.querySelector('#wa0')],[sheet.querySelector('#wa1')],[sheet.querySelector('#wa2')]];
+    for(var d=0;d<steps.length;d++){
+      steps.forEach(function(x){x[0].classList.remove('hl')});
+      steps[d][0].classList.add('hl');
+      await sleep(1800,t);
     }
-    await sleep(300,t);
-    st.hid=true; sc.innerHTML=resultsHTML(st,false); st.hid=false;
-    var cards=sc.querySelectorAll('.fbres-c');
-    for(var n=0;n<cards.length;n++){ await sleep(120,t); cards[n].classList.remove('hid'); await sleep(380,t); }
-    await sleep(900,t);
-    /* group 1: the full path */
-    var g=G[0];
-    st.cur=0; sc.querySelectorAll('.fbres-c')[0].classList.add('cur'); await sleep(900,t);
-    pv.innerHTML=previewHTML(g); scrim.classList.add('on'); pv.classList.add('on'); await sleep(1100,t);
-    var l2=document.getElementById('annolist2');
-    function lit2(n,on){ if(!l2) return; var li=l2.querySelector('li[data-n="'+n+'"]'); if(li) li.classList[on?'add':'remove']('lit'); }
-    function clr2(){ if(l2) l2.querySelectorAll('li.lit').forEach(function(x){x.classList.remove('lit')}); }
-    var m1=pv.querySelector('mark[data-n="1"]'), m2=pv.querySelector('mark[data-n="2"]');
-    m1.classList.add('on'); lit2(1,true); await sleep(1500,t);
-    m2.classList.add('on'); lit2(2,true); await sleep(1500,t);
-    await sleep(600,t);
-    clr2(); lit2(3,true);
-    await joinFlow(g,t);
-    clr2();
-    st.done[0]=true; st.sentSet={0:true}; st.cur=undefined; repaint(0,st); await sleep(1200,t);
-    /* groups 2-5: only marked relevant or not */
-    for(var gi=1;gi<G.length;gi++){
-      st.cur=gi; sc.querySelectorAll('.fbres-c')[gi].classList.add('cur'); await sleep(900,t);
-      st.done[gi]=true; if(G[gi].res==='yes') st.sentSet[gi]=true; st.cur=undefined; repaint(gi,st);
-      await sleep(700,t);
+    steps.forEach(function(x){x[0].classList.remove('hl')}); await sleep(300,t); closeView(); await sleep(450,t); vw.classList.remove('fbapp'); clearLit(); await sleep(500,t);
+    /* back in the chat */
+    ty=typing(); await sleep(1100,t); sl.removeChild(ty); msg('a',T4); await sleep(1200,t);
+    for(var k=0;k<MORE.length;k++){
+      var mm=MORE[k];
+      if(mm[0]==='gap'){ clock+=mm[1]; await sleep(900,t); continue; }
+      if(mm[0]==='me'){ await sleep(700,t); await window.__wa.type(root,mm[1],sleep,t); msg('me',mm[1]); await sleep(900,t); continue; }
+      ty=typing(); await sleep(Math.min(2200,900+mm[1].length*9),t); sl.removeChild(ty); msg('a',mm[1]); await sleep(1100,t);
     }
-    await sleep(2200,t);
+    await sleep(5000,t);
   }
   async function loop(t){ try{ while(t===token){ await once(t); if(t===token) root.dispatchEvent(new CustomEvent('demodone')); } }catch(e){} }
   root.__restart=function(){token++; loop(token);};
@@ -2016,34 +2242,41 @@ document.addEventListener('click', function (e) {
     var GRID='M4 4h7v7H4zM13 4h7v7h-7zM4 13h7v7H4zM13 13h7v7h-7z', PIN='M12 2a7 7 0 0 0-7 7c0 5 7 13 7 13s7-8 7-13a7 7 0 0 0-7-7zm0 9.500A2.500 2.500 0 1 1 12 6.500a2.500 2.500 0 0 1 0 5z', STAR='M12 2l3 6.300 6.900.9-5 4.800 1.200 6.900L12 17.600 5.900 20.900 7.100 14 2.100 9.200 9 8.300z';
     function row(svg,t){return '<div class="cr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">'+svg+'</svg><span dir="ltr">'+t+'</span></div>'}
     var PH_='<path d="M6.6 10.8c1.4 2.8 3.8 5.2 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8z"/>', WEB='<circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c-3.500 3.500-3.500 14.500 0 18M12 3c3.500 3.500 3.500 14.500 0 18"/>', IG='<rect x="3.500" y="3.500" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17" cy="7" r=".6" fill="currentColor"/>';
-    return '<div class="rpt bz">'+
-      '<mark data-n="1"><div class="bzh"><b>אלון שיפוצים</b><span>קבלן שיפוצים · גבעתיים</span></div>'+
-        '<p class="bzd">עסק משפחתי. אלון ובנו עובדים בעצמם בכל בית.</p>'+
-        '<div class="lbl">שירותים</div>'+chips(['שיפוץ מטבחים','שיפוץ חדרי רחצה'])+'</mark>'+
-      '<mark data-n="2"><div class="lbl">אזורי פעילות</div>'+chips(['גבעתיים','רמת גן','גוש דן'])+'</mark>'+
-      '<mark data-n="3"><div class="lbl">מה מיוחד</div>'+
-        '<div class="pt">'+chk+'<span>מתייחסים לבית שלכם כמו לבית שלנו</span></div>'+
+    return '<div class="rpt bzc"><div class="rh"><b>אלון שיפוצים</b><small>כרטיס עסק</small></div>'+
+      '<mark class="tg" data-n="1" data-t="מי העסק ומה הוא עושה"><div class="learn"><b>העסק</b><p>קבלן שיפוצים בגבעתיים. עסק משפחתי: אלון ובנו עובדים בעצמם בכל בית.</p>'+chips(['שיפוץ מטבחים','שיפוץ חדרי רחצה'])+'</div></mark>'+
+      '<mark class="tg" data-n="2" data-t="איפה אתם רוצים לקוחות"><div class="learn"><b>אזורי פעילות</b>'+chips(['גבעתיים','רמת גן','גוש דן'])+'</div></mark>'+
+      '<mark class="tg" data-n="3" data-t="מה מבדיל אתכם, כדי שהפוסטים יישמעו כמוכם"><div class="learn"><b>מה מיוחד</b>'+
+        '<div class="pt">'+chk+'<span>בלי קבלני משנה, אותם אנשים מהתחלה ועד הסוף</span></div>'+
         '<div class="pt">'+chk+'<span>הבית נשאר נקי בסוף כל יום</span></div>'+
-        '<div class="pt">'+chk+'<span>הצעת מחיר בכתב, בלי הפתעות</span></div></mark>'+
-      '<div class="ct"><div class="lbl">יצירת קשר</div>'+
-        row(PH_,'050-1234567')+row(WEB,'alon-shiputzim.co.il')+row(IG,'@alon.shiputzim')+'</div></div>';
+        '<div class="pt">'+chk+'<span>הצעת מחיר בכתב, בלי הפתעות</span></div></div></mark>'+
+      '<mark class="tg" data-n="4" data-t="איך הלקוחות יגיעו אליכם"><div class="learn ct"><b>יצירת קשר</b>'+
+        row(PH_,'050-1234567')+row(WEB,'alon-shiputzim.co.il')+row(IG,'@alon.shiputzim')+'</div></mark></div>';
   }
   var M=[
-    ['a','היי אלון, כאן נעם. אני אפרסם בשבילך בפייסבוק, אבל קודם תספר לי קצת על העסק.'],
-    ['a','תספר לי מה שנוח לך: אפשר להקליד, או לשלוח לי הקלטה קולית.'],
+    ['a','היי אלון, כאן נעם. אני הסוכן שיפרסם בשבילך בפייסבוק, בקבוצות שבהן הלקוחות שלך כבר מחפשים. אני לא מעלה שום דבר בלי שתאשר.'],
+    ['a','ספר לי על העסק איך שנוח לך: אפשר להקליד, או לשלוח לי הקלטה קולית.'],
     ['v','0:28'],
     ['a','אחלה, הבנתי. קבלן שיפוצים בגבעתיים, מטבחים וחדרי רחצה, ועובד גם ברמת גן ובגוש דן. עסק משפחתי, 12 שנה בתחום, והצעת מחיר תמיד בכתב.'],
-    ['a','רק דבר אחד חסר לי: לאיזה מספר שהלקוחות יתקשרו?'],
-    ['me','050-1234567'],
     ['card','הכנתי לך כרטיס עסק. תציץ ותגיד לי אם משהו לא מדויק.'],
-    ['a','הכול מוכן, אני יוצא לחפש לך קבוצות.'],
-    ['a','מצאתי כמה קבוצות טובות בגבעתיים וברמת גן. לכל קבוצה אכתוב פוסט אחר, לפי מה שמתאים לה.'],
-    ['a','כל פוסט יעבור קודם אצלך, שום דבר לא עולה בלי אישור.'],
-    ['me','מעולה, תודה'],
-    ['a','בכיף. הפוסט הראשון אצלך עוד מעט.']
+    ['a','הכול מוכן. על מה נפרסם קודם?\n1. שיפוץ מטבחים\n2. שיפוץ אמבטיות\n3. שיפוץ למשרדים וחנויות'],
+    ['me','1'],
+    ['a','מטבחים, סבבה. שלח לי תמונה מעבודה אחרונה, ואכתוב ממנה פוסט.'],
+    ['ph','סיימתי השבוע מטבח בגבעתיים'],
+    ['a','יפה מאוד. כתבתי ממנה פוסט לקבוצת השכנים בגבעתיים.'],
+    ['p','זה הפוסט. הוא לא יעלה עד שתאשר. כתוב "כן", "לא", או מה לשנות.'],
+    ['me','כן'],
+    ['k','עלה. הנה הפוסט בקבוצה:'],
+    ['a','מחר בערב אשלח לך דוח על איך הלך.']
   ];
-  root.innerHTML='<div class="mini-head"><i><img src="logo-tight.svg" alt=""></i><b>נעם · סוכן הפרסום</b></div><div class="mini-chat walive"><div class="waslide" id="wasl"></div></div><div class="wa-foot"><span>הודעה</span><i></i></div>'+
-    '<div class="viewer" id="vw1"><div class="vbar"><span class="vx">&times;</span><b>נעם · סוכן הפרסום</b></div><div class="vbody" id="vb1"></div></div>';
+  root.innerHTML='<div class="mini-head"><i><img class="nm" src="photos/noam.jpg" alt=""></i><b>נעם · סוכן הפרסום</b></div><div class="mini-chat walive"><div class="waslide" id="wasl"></div></div><div class="wa-foot"><span>הודעה</span><i></i></div>'+
+    '<div class="viewer" id="vw1"><div class="vbody" id="vb1"></div></div>';
+  async function walk(t,ms){
+    var ms_=vb.querySelectorAll('mark[data-t]');
+    for(var i=0;i<ms_.length;i++){
+      ms_.forEach(function(x){x.classList.remove('on')});
+      ms_[i].classList.add('on'); await sleep(ms,t);
+    }
+    ms_.forEach(function(x){x.classList.remove('on')}); }
   var sl=root.querySelector('#wasl'), box=root.querySelector('.walive'), vw=root.querySelector('#vw1'), vb=root.querySelector('#vb1'), list=document.getElementById('annolist1');
   function lit(n,on){ if(!list) return; var li=list.querySelector('li[data-n="'+n+'"]'); if(li) li.classList[on?'add':'remove']('lit'); }
   function clearLit(){ if(list) list.querySelectorAll('li.lit').forEach(function(l){l.classList.remove('lit')}); }
@@ -2056,122 +2289,52 @@ document.addEventListener('click', function (e) {
   function voicemsg(dur){var d=document.createElement('div'); d.className='msg me voice'; d.innerHTML='<span class="pl"><svg viewBox="0 0 24 24"><path d="M8 5 L19 12 L8 19 Z" fill="currentColor"/></svg></span>'+WAVE+'<span class="dur">'+dur+'</span>'+stamp(true); F.add(sl,d); return d}
   function cardmsg(text){var d=document.createElement('div'); d.className='msg agent imgb'; d.innerHTML='<div class="imgmsg"><div class="thumb">'+card()+'</div><span class="tap"></span></div>'+fmt(text)+stamp(false); F.add(sl,d); return d}
   function typing(){var ty=document.createElement('div'); ty.className='typing'; ty.innerHTML='<i></i><i></i><i></i>'; F.add(sl,ty); return ty}
+  /* the first post: shown as a picture in the chat while it waits for a yes, then as a link once it is live */
+  function postHTML(){
+    return '<div class="fbpost pimg"><div class="h"><i class="pav"><svg viewBox="0 0 40 40"><use href="#av-alon"/></svg></i>'+
+      '<div class="hn"><b>אלון לוי</b><small>תושבי גבעתיים · עכשיו · <svg class="fi g" viewBox="0 0 24 24"><use href="#i-globe"/></svg></small></div>'+
+      '<svg class="fi dots" viewBox="0 0 24 24"><use href="#i-dots"/></svg></div>'+
+      '<div class="body">'+window.__postBody('g')+'</div>'+
+      '<mark class="tg blk" data-n="2" data-t="תמונה אמיתית מהעבודה של אלון"><div class="pphoto"><img src="photos/k1.jpg" alt=""></div></mark>'+
+      '<div class="fbact"><span><svg class="fi" viewBox="0 0 24 24"><use href="#i-like"/></svg>לייק</span><span><svg class="fi" viewBox="0 0 24 24"><use href="#i-comment"/></svg>תגובה</span><span><svg class="fi" viewBox="0 0 24 24"><use href="#i-share"/></svg>שיתוף</span></div></div>';
+  }
+  function liveView(){ return '<div class="fbtop"><span class="bk">\u2039 וואטסאפ</span><span class="lg">facebook</span></div><div class="fbgh">תושבי גבעתיים</div>'+postHTML(); }
+  function phmsg(text){var d=document.createElement('div'); d.className='msg me photo'; d.innerHTML='<div class="ph"><img src="photos/k1.jpg" alt=""></div>'+fmt(text)+stamp(true); F.add(sl,d); return d}
+  function postmsg(text){var d=document.createElement('div'); d.className='msg agent imgb'; d.innerHTML='<div class="imgmsg"><div class="thumb">'+postHTML()+'</div><span class="tap"></span></div>'+fmt(text)+stamp(false); F.add(sl,d); return d}
+  function lkmsg(text){var d=document.createElement('div'); d.className='msg agent lk'; d.innerHTML=fmt(text)+'<div class="lkp"><img src="photos/k1.jpg" alt=""><div><small>facebook.com</small><b>אלון לוי · תושבי גבעתיים</b></div><span class="tap"></span></div><span class="u">facebook.com/groups/givatayim/posts/…</span>'+stamp(false); F.add(sl,d); return d}
+  function stat(m){ if(m[0]==='ph') phmsg(m[1]); else if(m[0]==='p') postmsg(m[1]); else if(m[0]==='k') lkmsg(m[1]); else msg(m[0],m[1]); }
   function finalState(){
-    clock=9*60+12; sl.innerHTML=''; vw.classList.remove('on'); clearLit();
-    voicemsg('0:28'); msg('me','050-1234567'); cardmsg(M[6][1]); for(var k=7;k<M.length;k++) msg(M[k][0],M[k][1]);
+    clock=9*60+12; sl.innerHTML=''; vw.classList.remove('on'); vw.classList.remove('fbapp'); clearLit();
+    voicemsg('0:28'); cardmsg(M[4][1]); for(var k=5;k<M.length;k++) stat(M[k]);
   }
   async function once(t){
-    clock=9*60+12; sl.innerHTML=''; F.reset(); vw.classList.remove('on'); clearLit();
+    clock=9*60+12; sl.innerHTML=''; F.reset(); vw.classList.remove('on'); vw.classList.remove('fbapp'); clearLit();
     for(var i=0;i<M.length;i++){
       var m=M[i];
-      if(m[0]==='a'||m[0]==='card'){ var ty=typing(); await sleep(i===0?700:1000,t); sl.removeChild(ty); } else if(m[0]==='v'){ await sleep(600,t); await window.__wa.rec(root,2400,sleep,t); } else { await sleep(500,t); await window.__wa.type(root,m[1],sleep,t); }
+      if(m[0]==='a'||m[0]==='card'||m[0]==='p'||m[0]==='k'){ var ty=typing(); await sleep(i===0?700:1000,t); sl.removeChild(ty); } else if(m[0]==='v'){ await sleep(600,t); await window.__wa.rec(root,2400,sleep,t); } else { await sleep(500,t); await window.__wa.type(root,m[1],sleep,t); }
       if(m[0]==='card'){
         var el=cardmsg(m[1]); clearLit();
         await sleep(1000,t); el.querySelector('.tap').classList.add('on'); await sleep(500,t);
-        vb.innerHTML=card(); vw.classList.add('on'); await sleep(600,t);
-        for(var n=1;n<=3;n++){ var mk=vb.querySelector('mark[data-n="'+n+'"]'); if(mk) mk.classList.add('on'); lit(n,true); await sleep(1100,t); }
-        await sleep(400,t); vw.classList.remove('on'); clearLit(); await sleep(500,t);
+        vb.innerHTML=card(); vw.classList.add('on'); lit(1,true); await sleep(700,t);
+        await walk(t,1500);
+        await sleep(300,t); vw.classList.remove('on'); clearLit(); await sleep(500,t);
+        continue;
+      }
+      if(m[0]==='ph'){ phmsg(m[1]); await sleep(900,t); continue; }
+      if(m[0]==='p'){
+        var pe=postmsg(m[1]); await sleep(1300,t); pe.querySelector('.tap').classList.add('on'); await sleep(600,t);
+        vb.innerHTML='<div class="pw">'+postHTML()+'</div>'; vw.classList.add('on'); lit(2,true); await sleep(700,t);
+        await walk(t,1700);
+        await sleep(300,t); vw.classList.remove('on'); clearLit(); await sleep(600,t);
+        continue;
+      }
+      if(m[0]==='k'){
+        var ke=lkmsg(m[1]); await sleep(1300,t); ke.querySelector('.tap').classList.add('on'); await sleep(600,t);
+        vb.innerHTML=liveView(); vw.classList.add('fbapp'); vw.classList.add('on'); lit(3,true); await sleep(700,t); await sleep(2600,t); vw.classList.remove('on'); await sleep(450,t); vw.classList.remove('fbapp'); clearLit(); await sleep(500,t);
         continue;
       }
       if(m[0]==='v'){ voicemsg(m[1]); continue; }
       msg(m[0],m[1]);
-    }
-    await sleep(5000,t);
-  }
-  async function loop(t){ try{ while(t===token){ await once(t); if(t===token) root.dispatchEvent(new CustomEvent('demodone')); } }catch(e){} }
-  root.__restart=function(){token++; loop(token);};
-  finalState();
-  if((window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches)||!('IntersectionObserver' in window)) return;
-  new IntersectionObserver(function(es){
-    es.forEach(function(e){ if(e.isIntersecting){ token++; loop(token); } else { token++; finalState(); } });
-  },{threshold:.35}).observe(root);
-})();
-</script><script>
-/* WhatsApp: filtered groups -> approve -> post written to the group's rules -> preview image -> tap to enlarge */
-(function(){
-  var root=document.getElementById('wapost'); if(!root) return;
-  var list=document.getElementById('annolist');
-  var clock=9*60+44;
-  function esc(t){return t.replace(/&/g,'&amp;').replace(/</g,'&lt;')}
-  function fmt(t){return esc(t).replace(/\*([^*\n]+)\*/g,'<b>$1</b>')}
-  function stamp(out){
-    var h=Math.floor(clock/60), m=clock%60; clock+=1;
-    var tm=('0'+h).slice(-2)+':'+('0'+m).slice(-2);
-    return '<span class="t">'+tm+(out?'<svg class="tk" viewBox="0 0 16 10"><path d="M1 5.2 L4.2 8.4 L10.6 1.4 M6 8 L6.8 8.8 L13.6 1.4" fill="none" stroke="#53bdeb" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>':'')+'</span>';
-  }
-  /* one job, three groups, three different posts: neighbours, designers, business owners */
-  var POSTS=[
-    {g:'תושבי גבעתיים', photo:'photos/k1.jpg',
-     a:'היי שכנים, אני אלון, קבלן שיפוצים כאן בגבעתיים. ', mid:'מצרף תמונה ממטבח שסיימתי. אם אתם חושבים על שיפוץ במטבח או באמבטיה, אבוא להסתכל אצלכם ואתן הצעת מחיר בכתב. ', c:'כתבו לי בפרטי.'},
-    {g:'מעצבי פנים ואדריכלים', photo:'photos/k2.jpg',
-     a:'שלום לכולם, אני אלון, קבלן ביצוע למטבחים ואמבטיות. ', mid:'אני עובד לפי התוכניות שלכם ומול המעצב, ואשמח להראות עבודות קודמות. יש פרויקט שמחפש קבלן? ', c:'כתבו לי בפרטי.', hot:true},
-    {g:'בעלי עסקים ברמת גן', photo:'photos/k3.jpg',
-     a:'שלום לכולם, אני אלון, קבלן שיפוצים. ', mid:'אני עובד גם עם משרדים וחנויות, ואפשר לתאם את העבודה לשעות שהעסק סגור, כדי שהוא לא יעצור. אשמח לתת הצעת מחיר בכתב. אם יש שיפוץ על הפרק, ', c:'כתבו לי בפרטי.', hot:true}
-  ];
-  function post(i){
-    var P=POSTS[i];
-    var body='<mark data-n="1">'+P.a+'</mark>'+(P.hot?'<mark data-n="3">'+P.mid+'</mark>':P.mid)+'<mark data-n="2">'+P.c+'</mark>';
-    return '<div class="fbpost pimg"><div class="h"><i class="pav"><svg viewBox="0 0 40 40"><use href="#av-alon"/></svg></i>'+
-      '<div class="hn"><b>אלון לוי</b><small>'+P.g+' · עכשיו · <svg class="fi g" viewBox="0 0 24 24"><use href="#i-globe"/></svg></small></div>'+
-      '<svg class="fi dots" viewBox="0 0 24 24"><use href="#i-dots"/></svg></div>'+
-      '<div class="body">'+body+'</div>'+
-      '<div class="pphoto"><img src="'+P.photo+'" alt=""></div>'+
-      '<div class="rxrow"><span class="rxs"><i class="r1"><svg viewBox="0 0 24 24"><use href="#i-like"/></svg></i><i class="r2"><svg viewBox="0 0 24 24"><path d="M12 21 C5 15 3 11 3 8 a4.5 4.5 0 0 1 9-1 a4.5 4.5 0 0 1 9 1 c0 3-2 7-9 13Z" fill="#fff"/></svg></i></span><span>אלון ועוד 11</span><span class="cm">תגובה אחת · 2 שיתופים</span></div>'+
-      '<div class="fbact"><span><svg class="fi" viewBox="0 0 24 24"><use href="#i-like"/></svg>לייק</span><span><svg class="fi" viewBox="0 0 24 24"><use href="#i-comment"/></svg>תגובה</span><span><svg class="fi" viewBox="0 0 24 24"><use href="#i-share"/></svg>שיתוף</span></div></div>';
-  }
-  function tabs(active){ return '<div class="gtabs">'+POSTS.map(function(P,i){return '<span class="'+(i===active?'on':'')+'">'+P.g+'</span>'}).join('')+'</div>'; }
-  root.innerHTML='<div class="mini-head"><i><img src="logo-tight.svg" alt=""></i><b>נעם · סוכן הפרסום</b></div><div class="mini-chat walive"><div class="waslide" id="wps"></div></div><div class="wa-foot"><span>הודעה</span><i></i></div>'+
-    '<div class="viewer" id="vw"><div class="vbar"><span class="vx">&times;</span><b>נעם · סוכן הפרסום</b></div><div class="vbody" id="vb"></div></div>';
-  var sl=root.querySelector('#wps'), box=root.querySelector('.walive'), vw=root.querySelector('#vw'), vb=root.querySelector('#vb');
-  var token=0;
-  function sleep(ms,t){return new Promise(function(res,rej){setTimeout(function(){t===token?res():rej()},ms/(window.DEMO_SPEED||1))})}
-  var F=window.__chatFollow(box);
-  sl.removeChild=function(n){ F.typH=(n.classList&&n.classList.contains('typing'))?n.offsetHeight:0; return Element.prototype.removeChild.call(this,n); };
-  function msg(kind,text){var d=document.createElement('div'); d.className='msg '+(kind==='a'?'agent':'me'); d.innerHTML=fmt(text)+stamp(kind!=='a'); F.add(sl,d); return d}
-  function imgmsg(caption){
-    var d=document.createElement('div'); d.className='msg agent imgb';
-    d.innerHTML='<div class="imgmsg"><div class="thumb">'+post(0)+'</div><span class="tap"></span></div>'+fmt(caption)+stamp(false);
-    F.add(sl,d); return d;
-  }
-  function typing(){var ty=document.createElement('div'); ty.className='typing'; ty.innerHTML='<i></i><i></i><i></i>'; F.add(sl,ty); return ty}
-  function lit(n,on){ if(!list) return; var li=list.querySelector('li[data-n="'+n+'"]'); if(li) li.classList[on?'add':'remove']('lit'); }
-  function clearLit(){ if(!list) return; list.querySelectorAll('li.lit').forEach(function(l){l.classList.remove('lit')}); }
-  function show(i){ vb.innerHTML=tabs(i)+'<div class="pw">'+post(i)+'</div>'; }
-  var TOPICS='היי אלון, מה דעתך על קמפיין חדש?\nהנה כמה נושאים לבחירה, או שתבחר נושא בעצמך:\n1. שיפוץ מטבחים\n2. שיפוץ אמבטיות\n3. שיפוץ למשרדים וחנויות';
-  var GROUPS='מצאתי 3 קבוצות שמתאימות לך:\n1. תושבי גבעתיים\n2. מעצבי פנים ואדריכלים\n3. בעלי עסקים ברמת גן';
-  var MADE='כתבתי לכל קבוצה פוסט אחר, בשפה של הקהל שלה. לחץ על התמונה ותראה את שלושתם.';
-  var ASKQ='לפרסם את שלושתם מהפרופיל שלך? ואם משהו לא טוב, תגיד לי מה לשנות.';
-  var OK='סבבה, מפרסם. בערב אשלח לך סיכום של איך זה הולך.';
-  var MORE=[['a','הפוסטים עלו בשלוש הקבוצות.'],['a','אם מישהו יגיב, אכתוב לך מיד.'],['me','מעולה, תודה'],['a','בכיף, נדבר בערב.']];
-  function finalState(){
-    clock=9*60+44; sl.innerHTML=''; vw.classList.remove('on'); clearLit();
-    msg('a',TOPICS); msg('me','1'); msg('a','מטבחים, סבבה. אני יוצא לחפש קבוצות מתאימות.'); msg('a',GROUPS); imgmsg(MADE); msg('a',ASKQ); msg('me','כן'); msg('a',OK); MORE.forEach(function(m){msg(m[0],m[1])});
-  }
-  async function once(t){
-    clock=9*60+44; sl.innerHTML=''; F.reset(); vw.classList.remove('on'); clearLit();
-    await sleep(800,t); var ty=typing(); await sleep(1300,t); sl.removeChild(ty); msg('a',TOPICS);
-    await sleep(700,t); await window.__wa.type(root,'1',sleep,t); msg('me','1'); await sleep(900,t); ty=typing(); await sleep(900,t); sl.removeChild(ty); msg('a','מטבחים, סבבה. אני יוצא לחפש קבוצות מתאימות.');
-    await sleep(1200,t); ty=typing(); await sleep(1100,t); sl.removeChild(ty); msg('a',GROUPS);
-    await sleep(1100,t); ty=typing(); await sleep(1800,t); sl.removeChild(ty);
-    var m=imgmsg(MADE);
-    await sleep(1500,t); m.querySelector('.tap').classList.add('on'); await sleep(700,t);
-    show(0); vw.classList.add('on'); await sleep(900,t);
-    /* post 1: it reads like a person, and says where to write */
-    var mk=vb.querySelector('mark[data-n="1"]'); if(mk) mk.classList.add('on'); lit(1,true); await sleep(1500,t);
-    mk=vb.querySelector('mark[data-n="2"]'); if(mk) mk.classList.add('on'); lit(2,true); await sleep(1500,t);
-    /* posts 2 and 3: same job, different words for a different audience */
-    for(var i=1;i<POSTS.length;i++){
-      clearLit(); show(i); await sleep(500,t);
-      mk=vb.querySelector('mark[data-n="3"]'); if(mk) mk.classList.add('on'); lit(3,true); await sleep(2300,t);
-    }
-    await sleep(900,t); vw.classList.remove('on'); clearLit(); await sleep(700,t);
-    ty=typing(); await sleep(800,t); sl.removeChild(ty); msg('a',ASKQ);
-    await sleep(500,t); await window.__wa.type(root,'כן',sleep,t); msg('me','כן'); await sleep(900,t); ty=typing(); await sleep(900,t); sl.removeChild(ty);
-    msg('a',OK);
-    for(var k=0;k<MORE.length;k++){
-      var mm=MORE[k];
-      if(mm[0]==='a'){ await sleep(900,t); ty=typing(); await sleep(1000,t); sl.removeChild(ty); } else { await sleep(500,t); await window.__wa.type(root,mm[1],sleep,t); }
-      msg(mm[0],mm[1]);
     }
     await sleep(5000,t);
   }
@@ -2194,23 +2357,43 @@ document.addEventListener('click', function (e) {
   /* the weekly summary: three parts, each one lights up with its line in the list */
   function report(){
     return '<div class="rpt"><div class="rh"><b>דוח יומי</b><small>היום · 19:00</small></div>'+
-      '<mark data-n="1"><div class="learn"><b>מסרים</b><div class="tiles"><div><b>1,240</b><span>צפיות בפוסטים</span></div><div><b>5</b><span>תגובות</span></div><div><b>2</b><span>פניות להצעה</span></div></div></div></mark>'+
-      '<mark data-n="2"><div class="learn"><b>מסקנות</b><p>4 מתוך 5 התגובות הגיעו מקבוצות שכונתיות. שם יש הכי הרבה מעורבות.</p></div></mark>'+
-      '<mark data-n="3"><div class="learn"><b>צעדים להמשך</b><p>1. לחפש עוד קבוצות שכונתיות באזור<br>2. לכתוב להן פוסט אישי, כמו בגבעתיים</p></div></mark></div>';
+      '<mark class="tg" data-n="1" data-t="מסרים: כמה ראו, כמה הגיבו וכמה ביקשו הצעה"><div class="learn"><b>מסרים</b><div class="tiles"><div><b>1,240</b><span>צפיות בפוסטים</span></div><div><b>5</b><span>תגובות</span></div><div><b>2</b><span>פניות להצעה</span></div></div></div></mark>'+
+      '<mark class="tg" data-n="2" data-t="מסקנות: מה עבד ומה פחות, בכל קבוצה"><div class="learn"><b>מסקנות</b><p>4 מתוך 5 התגובות הגיעו מהפוסט האישי לתושבי גבעתיים. כשהפוסט מדבר על השכונה, אנשים מגיבים.</p></div></mark>'+
+      '<mark class="tg" data-n="3" data-t="צעדים להמשך: מה נעם עושה עכשיו"><div class="learn"><b>צעדים להמשך</b><p>1. לכתוב פוסט אישי כזה גם לקבוצה ברמת גן<br>2. להוסיף בו הצעת מחיר בכתב</p></div></mark></div>';
   }
   var M=[
     ['d','היום'],
     ['r','19:00','הסיכום של היום מוכן, תציץ.'],
-    ['a','19:01','שמתי לב שבקבוצות שכונתיות יש הרבה יותר תגובות. אז אני יוצא לחפש עוד כאלה באזור.'],
-    ['a','19:05','מצאתי 6 קבוצות שכונתיות חדשות בגבעתיים וברמת גן, ושלחתי בקשות הצטרפות.'],
-    ['a','19:08','בינתיים כתבתי פוסט לקבוצת השכנים בגבעתיים. לפרסם?'],
+    ['a','19:01','שמתי לב שהפוסט האישי לשכונה הביא הכי הרבה תגובות. אז כתבתי כזה גם לקבוצה ברמת גן.'],
+    ['p','19:05','הנה הפוסט לקבוצת תושבי רמת גן. לפרסם?',0],
     ['u','19:09','תוסיף שהצעת המחיר בלי עלות'],
-    ['a','19:10','סגור, הוספתי. לפרסם?'],
+    ['p','19:10','סגור, הוספתי. לפרסם?',1],
     ['u','19:10','כן'],
-    ['a','19:11','עלה. מחר בערב אעדכן איך הלך.']
+    ['k','19:11','עלה, הנה הפוסט בקבוצה:'],
+    ['a','19:12','מחר בערב אעדכן איך הלך.']
   ];
-  root.innerHTML='<div class="mini-head"><i><img src="logo-tight.svg" alt=""></i><b>נעם · סוכן הפרסום</b></div><div class="mini-chat walive"><div class="waslide" id="wns"></div></div><div class="wa-foot"><span>הודעה</span><i></i></div>'+
-    '<div class="viewer" id="vw5"><div class="vbar"><span class="vx">&times;</span><b>נעם · סוכן הפרסום</b></div><div class="vbody" id="vb5"></div></div>';
+  /* the post Noam wrote for the neighbours: first draft, then with the change Alon asked for */
+  function postHTML(v){
+    return '<div class="fbpost pimg"><div class="h"><i class="pav"><svg viewBox="0 0 40 40"><use href="#av-alon"/></svg></i>'+
+      '<div class="hn"><b>אלון לוי</b><small>תושבי רמת גן · עכשיו · <svg class="fi g" viewBox="0 0 24 24"><use href="#i-globe"/></svg></small></div>'+
+      '<svg class="fi dots" viewBox="0 0 24 24"><use href="#i-dots"/></svg></div>'+
+      '<div class="body">'+window.__postBody('r',v)+'</div>'+
+      '<div class="pphoto"><img src="photos/k3.jpg" alt=""></div>'+
+      '<div class="fbact"><span><svg class="fi" viewBox="0 0 24 24"><use href="#i-like"/></svg>לייק</span><span><svg class="fi" viewBox="0 0 24 24"><use href="#i-comment"/></svg>תגובה</span><span><svg class="fi" viewBox="0 0 24 24"><use href="#i-share"/></svg>שיתוף</span></div></div>';
+  }
+  function liveView(){
+    return '<div class="fbtop"><span class="bk">\u2039 וואטסאפ</span><span class="lg">facebook</span></div><div class="fbgh">תושבי רמת גן</div>'+postHTML(1);
+  }
+  root.innerHTML='<div class="mini-head"><i><img class="nm" src="photos/noam.jpg" alt=""></i><b>נעם · סוכן הפרסום</b></div><div class="mini-chat walive"><div class="waslide" id="wns"></div></div><div class="wa-foot"><span>הודעה</span><i></i></div>'+
+    '<div class="viewer" id="vw5"><div class="vbody" id="vb5"></div></div>';
+  async function walk(t,ms,sel){
+    var ms_=vb.querySelectorAll(sel||'mark[data-t]');
+    for(var i=0;i<ms_.length;i++){
+      ms_.forEach(function(x){x.classList.remove('on')});
+      ms_[i].classList.add('on'); if(!sel) lit(i+1,true);
+      await sleep(ms,t); clearLit();
+    }
+    ms_.forEach(function(x){x.classList.remove('on')}); }
   var sl=root.querySelector('#wns'), box=root.querySelector('.walive'), vw=root.querySelector('#vw5'), vb=root.querySelector('#vb5'), list=document.getElementById('annolist5');
   function lit(n,on){ if(!list) return; var li=list.querySelector('li[data-n="'+n+'"]'); if(li) li.classList[on?'add':'remove']('lit'); }
   function clearLit(){ if(list) list.querySelectorAll('li.lit').forEach(function(l){l.classList.remove('lit')}); }
@@ -2223,13 +2406,15 @@ document.addEventListener('click', function (e) {
     if(m[0]==='d'){ d.className='datechip'; d.textContent=m[1]; }
     else if(m[0]==='r'){ d.className='msg agent imgb'; d.innerHTML='<div class="imgmsg"><div class="thumb">'+report()+'</div><span class="tap"></span></div>'+fmt(m[2])+stamp(m[1]); }
     else if(m[0]==='u'){ d.className='msg me'; d.innerHTML=fmt(m[2])+stamp(m[1],true); }
+    else if(m[0]==='p'){ d.className='msg agent imgb'; d.innerHTML='<div class="imgmsg"><div class="thumb">'+postHTML(m[3])+'</div><span class="tap"></span></div>'+fmt(m[2])+stamp(m[1]); }
+    else if(m[0]==='k'){ d.className='msg agent lk'; d.innerHTML=fmt(m[2])+'<div class="lkp"><img src="photos/k3.jpg" alt=""><div><small>facebook.com</small><b>אלון לוי · תושבי רמת גן</b></div><span class="tap"></span></div><span class="u">facebook.com/groups/ramatgan/posts/…</span>'+stamp(m[1]); }
     else { d.className='msg agent'; d.innerHTML=fmt(m[2])+stamp(m[1]); }
     F.add(sl,d); return d;
   }
   function typing(){var ty=document.createElement('div'); ty.className='typing'; ty.innerHTML='<i></i><i></i><i></i>'; F.add(sl,ty); return ty}
-  function finalState(){ sl.innerHTML=''; vw.classList.remove('on'); clearLit(); M.forEach(add); }
+  function finalState(){ sl.innerHTML=''; vw.classList.remove('on'); vw.classList.remove('fbapp'); clearLit(); M.forEach(add); }
   async function once(t){
-    sl.innerHTML=''; F.reset(); vw.classList.remove('on'); clearLit();
+    sl.innerHTML=''; F.reset(); vw.classList.remove('on'); vw.classList.remove('fbapp'); clearLit();
     for(var i=0;i<M.length;i++){
       var m=M[i];
       if(m[0]==='d'){ await sleep(900,t); add(m); continue; }
@@ -2239,8 +2424,20 @@ document.addEventListener('click', function (e) {
       if(m[0]==='r'){
         await sleep(1500,t); el.querySelector('.tap').classList.add('on'); await sleep(700,t);
         vb.innerHTML=report(); vw.classList.add('on'); await sleep(900,t);
-        for(var n=1;n<=3;n++){ var mk=vb.querySelector('mark[data-n="'+n+'"]'); if(mk) mk.classList.add('on'); lit(n,true); await sleep(1800,t); }
+        await walk(t,2000);
         await sleep(900,t); vw.classList.remove('on'); clearLit(); await sleep(700,t);
+        continue;
+      }
+      if(m[0]==='p'){
+        await sleep(1200,t); el.querySelector('.tap').classList.add('on'); await sleep(600,t);
+        vb.innerHTML='<div class="pw">'+postHTML(m[3])+'</div>'; vw.classList.add('on'); await sleep(700,t);
+        if(m[3]) await walk(t,2600,'.newtxt[data-t]'); else await walk(t,1200);
+        await sleep(300,t); vw.classList.remove('on'); await sleep(600,t);
+        continue;
+      }
+      if(m[0]==='k'){
+        await sleep(1200,t); el.querySelector('.tap').classList.add('on'); await sleep(600,t);
+        vb.innerHTML=liveView(); vw.classList.add('fbapp'); vw.classList.add('on'); await sleep(700,t); await sleep(2400,t); vw.classList.remove('on'); await sleep(450,t); vw.classList.remove('fbapp'); await sleep(500,t);
         continue;
       }
       await sleep(1100,t);
@@ -2349,6 +2546,14 @@ document.addEventListener('click', function (e) {
     Array.prototype.forEach.call(d,function(x,i){ x.classList.toggle('on',i===best); });
   }
   row.addEventListener('scroll',upd,{passive:true}); window.addEventListener('resize',upd); upd();
+})();
+</script>
+<script>
+(function(){
+  var cs=document.querySelectorAll('.chap'); if(!cs.length) return;
+  if(!('IntersectionObserver' in window)){for(var i=0;i<cs.length;i++)cs[i].classList.add('seen');return;}
+  var io=new IntersectionObserver(function(en){en.forEach(function(e){if(e.isIntersecting){e.target.classList.add('seen');io.unobserve(e.target);}});},{rootMargin:'-35% 0px -35% 0px'});
+  for(var i=0;i<cs.length;i++)io.observe(cs[i]);
 })();
 </script>
 </body>

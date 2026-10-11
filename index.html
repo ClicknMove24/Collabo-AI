@@ -477,14 +477,14 @@ section[id]{scroll-margin-top:76px}
 .wa-link{font-weight:700;color:var(--green) !important}
 .foot-base{display:flex;flex-direction:column;gap:6px;margin-top:30px;padding-top:18px;border-top:1px solid #ddd4c4;color:var(--ink-3);font-size:13.5px}
 @media(min-width:800px){
-  .foot-grid{grid-template-columns:1.4fr 1fr 1fr;gap:50px}
+  .foot-grid{grid-template-columns:1.4fr 1fr 1fr 1fr;gap:40px}
   .foot-base{flex-direction:row;justify-content:space-between}
 }
 /* footer layout (beats the older "footer .wrap" rule) */
 .site-foot .wrap.foot-grid{display:grid;grid-template-columns:1fr;gap:30px}
 .site-foot .wrap.foot-base{display:flex;flex-direction:column;gap:6px}
 @media(min-width:800px){
-  .site-foot .wrap.foot-grid{grid-template-columns:1.4fr 1fr 1fr;gap:50px}
+  .site-foot .wrap.foot-grid{grid-template-columns:1.4fr 1fr 1fr 1fr;gap:40px}
   .site-foot .wrap.foot-base{flex-direction:row;justify-content:space-between;gap:24px}
 }
 /* four numbers */
@@ -1563,6 +1563,9 @@ h1,h2,h3,h4,.hero h1,.plan2 h3,.plan2 .amount,.plan2 .amount-text,.n4c .big{font
 .plan2 li{font-size:15.5px;line-height:1.4;font-weight:400}
 .plan2 li b{font-size:15.5px}
 .plan2 li:first-child{padding-bottom:12px}
+.skip{position:absolute;inset-inline-start:12px;top:-60px;background:#0b3d2e;color:#fff;padding:10px 16px;border-radius:8px;z-index:1000;text-decoration:none}.skip:focus{top:12px;outline:3px solid #F4D853}
+.consent{display:flex;gap:10px;align-items:flex-start;margin:4px 0 14px;font-size:14.5px;color:var(--ink-2);line-height:1.5}.consent input{flex:none;width:20px;height:20px;margin-top:2px;accent-color:#0f7a4d}
+.legal-note{margin:2px 0 12px;font-size:14px;color:var(--ink-3);text-align:center}.legal-note a{color:var(--green)}
 </style>
 <meta property="og:url" content="https://collabo-ai.com/">
 <meta property="og:image" content="https://collabo-ai.com/og-image.png">
@@ -1580,6 +1583,7 @@ h1,h2,h3,h4,.hero h1,.plan2 h3,.plan2 .amount,.plan2 .amount-text,.n4c .big{font
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://collabo-ai.com/#org","name":"Collabo AI","url":"https://collabo-ai.com/","logo":"https://collabo-ai.com/logo.svg","image":"https://collabo-ai.com/og-image.png"},{"@type":"WebSite","@id":"https://collabo-ai.com/#site","url":"https://collabo-ai.com/","name":"Collabo AI","inLanguage":"he-IL","publisher":{"@id":"https://collabo-ai.com/#org"}},{"@type":"SoftwareApplication","@id":"https://collabo-ai.com/#noam","name":"נעם, סוכן הפרסום של Collabo AI","applicationCategory":"BusinessApplication","operatingSystem":"WhatsApp","inLanguage":"he-IL","description":"סוכן AI שמפרסם את העסק שלכם בקבוצות פייסבוק: שולחים הודעה בוואטסאפ, מאשרים כל פוסט, והוא מפרסם פוסט אחר בכל קבוצה.","url":"https://collabo-ai.com/","publisher":{"@id":"https://collabo-ai.com/#org"},"offers":[{"@type":"Offer","name":"התחלה","price":"99","priceCurrency":"ILS","description":"עד 2 פוסטים ביום, לחודש, לפני מע\"מ"},{"@type":"Offer","name":"מלא","price":"350","priceCurrency":"ILS","description":"עד 5 פוסטים ביום, לחודש, לפני מע\"מ"}]},{"@type":"FAQPage","inLanguage":"he-IL","mainEntity":[{"@type":"Question","name":"האם זה מסכן את הפרופיל שלי בפייסבוק?","acceptedAnswer":{"@type":"Answer","text":"יש סיכון, ואי אפשר לבטל אותו לגמרי. הפרסום יוצא מהפרופיל שלכם, ופייסבוק היא שמחליטה מה מותר. נעם מפרסם עד התקרה היומית של התוכנית, פוסט אחר בכל קבוצה, ורק אחרי אישורכם. כל מה שקורה מופיע בדוח הערב."}},{"@type":"Question","name":"זה לא נראה כמו ספאם?","acceptedAnswer":{"@type":"Answer","text":"ספאם הוא אותה פרסומת בכל מקום. נעם כותב לכל קבוצה פוסט אחר, לפי הנושא והאזור שלה, ואתם רואים אותו לפני הפרסום."}},{"@type":"Question","name":"אני לא טכני. זה מסובך?","acceptedAnswer":{"@type":"Answer","text":"לא. הכול בוואטסאפ, בעברית, בלי אפליקציה ובלי לוח בקרה. מספרים על העסק בהודעה קולית או בכתב ומקבלים כרטיס עסק לבדיקה. את החיבור לפייסבוק עושים פעם אחת, בליווי אישי. אחר כך רק מאשרים."}},{"@type":"Question","name":"כמה זה עולה, ומה קורה אחרי הניסיון?","acceptedAnswer":{"@type":"Answer","text":"יש שלוש תוכניות. התחלה: 99 ש\"ח לחודש + מע\"מ, עד 2 פוסטים ביום. מלא: 350 ש\"ח לחודש + מע\"מ, עד 5 פוסטים ביום. לחברות ועסקים המחיר נקבע בשיחה. ארבעת הימים הראשונים חינם, ואחריהם אין התחייבות לתקופה. אין תשלום נפרד לכל פוסט או קבוצה."}},{"@type":"Question","name":"הפוסטים עולים מהפרופיל שלי?","acceptedAnswer":{"@type":"Answer","text":"כן. הם עולים מהפרופיל שלכם, בשמכם, ולא מחשבון של Collabo. מחברים אותו פעם אחת, בליווי אישי."}},{"@type":"Question","name":"מה אם פוסט לא מוצא חן בעיניי?","acceptedAnswer":{"@type":"Answer","text":"כותבים לנעם מה לשנות, למשל ״קצר מדי״ או ״תוריד את הכתובת״. הוא כותב מחדש ומראה שוב. פוסט לא עולה עד שאמרתם ״כן״."}},{"@type":"Question","name":"מי עונה ללקוחות שמגיבים?","acceptedAnswer":{"@type":"Answer","text":"תגובות ופניות של לקוחות מגיעות אליכם בדוח הערב. אתם רואים מי פנה וממשיכים איתו. נעם לא עונה בשמכם בלי שביקשתם."}},{"@type":"Question","name":"אפשר לבטל או לעצור?","acceptedAnswer":{"@type":"Answer","text":"אפשר לבטל בכל עת, בלי התחייבות לתקופה. מה שכבר עלה נשאר בקבוצות. ואם אתם לא מאשרים פוסט, הוא לא עולה."}},{"@type":"Question","name":"מה אני מקבל מנעם בכל יום?","acceptedAnswer":{"@type":"Answer","text":"דוח וואטסאפ כל ערב: מה פורסם, מה ממתין לאישורכם, תגובות ופניות של לקוחות, ומה נעם למד לבחירת הקבוצות הבאות. צפיות מופיעות רק אם יש לכם פרופיל מקצועי חינמי בפייסבוק."}},{"@type":"Question","name":"איך נעם בוחר קבוצות?","acceptedAnswer":{"@type":"Answer","text":"לפי תחום העסק והאזור. הוא בודק את הנושא של כל קבוצה ואת מיקום החברים. בקבוצה הראשונה הוא פותח את הדף, קורא את ״אודות״, מבקש להצטרף ועונה לשאלות האדמינים לפי כרטיס העסק."}},{"@type":"Question","name":"מה אם נעם טעה בפרטי העסק?","acceptedAnswer":{"@type":"Answer","text":"אחרי ההודעה הקולית אתם מקבלים כרטיס עסק עם הפרטים. מתקנים אותו לפני הפוסט הראשון. כל פוסט וכל תשובה לאדמינים נכתבים ממנו."}}]}]}</script>
 </head>
 <body>
+<a class="skip" href="#top">דלגו לתוכן</a>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><defs>
 <linearGradient id="gsky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#8fd0f5"/><stop offset="1" stop-color="#e3f3fc"/></linearGradient>
 
@@ -1823,9 +1827,11 @@ h1,h2,h3,h4,.hero h1,.plan2 h3,.plan2 .amount,.plan2 .amount-text,.n4c .big{font
           <label for="location">אזור פעילות <small>(לא חובה)</small></label>
           <input id="location" name="location" type="text" autocomplete="address-level2" placeholder="למשל: גבעתיים ורמת גן">
         </div>
+        <label class="consent"><input type="checkbox" id="mkt" name="mkt"><span>אשמח לקבל עדכונים והצעות מ-Collabo AI בוואטסאפ ובמייל. אפשר להסיר בכל עת.</span></label>
+        <p class="legal-note">בשליחת הטופס אתם מאשרים את <a href="/privacy.html">מדיניות הפרטיות</a> ואת <a href="/terms.html">תנאי השימוש</a>.</p>
         <button type="submit" class="btn btn-primary btn-block" >שלחו, ונחזור אליכם</button>
         <div class="fail" id="formFail" role="alert">לא הצלחנו לשלוח. נסו שוב בעוד רגע.</div>
-        <p class="micro">4 ימי ניסיון חינם, ביטול בכל עת. הפרטים משמשים רק לחזרה אליכם.</p>
+        <p class="micro">4 ימי ניסיון חינם, ביטול בכל עת. הפרטים משמשים לחזרה אליכם, ולשיווק רק אם סימנתם הסכמה.</p>
       </form>
       <div class="ok" id="formOk" role="status" tabindex="-1">
         <h3>תודה, קיבלנו.</h3>
@@ -1849,6 +1855,12 @@ h1,h2,h3,h4,.hero h1,.plan2 h3,.plan2 .amount,.plan2 .amount-text,.n4c .big{font
       <a href="#compare">למה נעם</a>
       <a href="#price">מחירים</a>
       <a href="#faq">שאלות נפוצות</a>
+    </div>
+    <div class="fcol">
+      <b>מידע</b>
+      <a href="/privacy.html">מדיניות פרטיות</a>
+      <a href="/terms.html">תנאי שימוש</a>
+      <a href="/accessibility.html">הצהרת נגישות</a>
     </div>
     <div class="fcol">
       <b>דברו איתנו</b>
@@ -2040,7 +2052,8 @@ document.addEventListener('click', function (e) {
       '\nשם: ' + document.getElementById('fullName').value.trim() +
       '\nטלפון: ' + document.getElementById('phone').value.trim() +
       '\nעסק: ' + document.getElementById('business').value.trim() +
-      '\nאזור: ' + document.getElementById('location').value.trim();
+      '\nאזור: ' + document.getElementById('location').value.trim() +
+      '\nהסכמה לעדכונים: ' + (document.getElementById('mkt').checked ? 'כן' : 'לא');
     var leadLink = 'https://wa.me/' + LEAD_WA + '?text=' + encodeURIComponent(leadText);
     var okLink = document.getElementById('leadWaLink'); if (okLink) okLink.href = leadLink;
     window.open(leadLink, '_blank');

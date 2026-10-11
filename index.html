@@ -1827,8 +1827,8 @@ h1,h2,h3,h4,.hero h1,.plan2 h3,.plan2 .amount,.plan2 .amount-text,.n4c .big{font
           <label for="location">אזור פעילות <small>(לא חובה)</small></label>
           <input id="location" name="location" type="text" autocomplete="address-level2" placeholder="למשל: גבעתיים ורמת גן">
         </div>
+        <div class="field agree" id="agreeBox"><label class="consent"><input type="checkbox" id="agree" name="agree" required aria-describedby="agreeErr"><span>קראתי ואני מסכים/ה ל<a href="/privacy.html" target="_blank" rel="noopener">מדיניות הפרטיות</a> ול<a href="/terms.html" target="_blank" rel="noopener">תנאי השימוש</a>. אני מבין/ה שכל הפעולות והפרסומים יוצאים מחשבון הפייסבוק שלי, הפרטי או העסקי, ושהאחריות עליהם ועל התוכן שאני מאשר/ת היא שלי.</span></label><div class="err" id="agreeErr">כדי להמשיך צריך לאשר את התנאים</div></div>
         <label class="consent"><input type="checkbox" id="mkt" name="mkt"><span>אשמח לקבל עדכונים והצעות מ-Collabo AI בוואטסאפ ובמייל. אפשר להסיר בכל עת.</span></label>
-        <p class="legal-note">בשליחת הטופס אתם מאשרים את <a href="/privacy.html">מדיניות הפרטיות</a> ואת <a href="/terms.html">תנאי השימוש</a>.</p>
         <button type="submit" class="btn btn-primary btn-block" >שלחו, ונחזור אליכם</button>
         <div class="fail" id="formFail" role="alert">לא הצלחנו לשלוח. נסו שוב בעוד רגע.</div>
         <p class="micro">4 ימי ניסיון חינם, ביטול בכל עת. הפרטים משמשים לחזרה אליכם, ולשיווק רק אם סימנתם הסכמה.</p>
@@ -2032,6 +2032,7 @@ document.addEventListener('click', function (e) {
     group(id).classList.toggle('bad', !ok);
     return ok;
   }
+  document.getElementById('agree').addEventListener('change', function () { document.getElementById('agreeBox').classList.remove('bad'); });
   ['fullName', 'phone', 'business'].forEach(function (id) {
     document.getElementById(id).addEventListener('input', function () { group(id).classList.remove('bad'); });
   });
@@ -2041,7 +2042,9 @@ document.addEventListener('click', function (e) {
     var okName = check('fullName', function (v) { return v.length >= 2; });
     var okPhone = check('phone', function (v) { return v.replace(/\D/g, '').length >= 9; });
     var okBiz = check('business', function (v) { return v.length >= 2; });
-    if (!(okName && okPhone && okBiz)) {
+    var okAgree = document.getElementById('agree').checked;
+    document.getElementById('agreeBox').classList.toggle('bad', !okAgree);
+    if (!(okName && okPhone && okBiz && okAgree)) {
       var first = form.querySelector('.field.bad input'); if (first) first.focus();
       return;
     }
@@ -2053,6 +2056,7 @@ document.addEventListener('click', function (e) {
       '\nטלפון: ' + document.getElementById('phone').value.trim() +
       '\nעסק: ' + document.getElementById('business').value.trim() +
       '\nאזור: ' + document.getElementById('location').value.trim() +
+      '\nאישור מדיניות פרטיות, תנאים ואחריות: כן' +
       '\nהסכמה לעדכונים: ' + (document.getElementById('mkt').checked ? 'כן' : 'לא');
     var leadLink = 'https://wa.me/' + LEAD_WA + '?text=' + encodeURIComponent(leadText);
     var okLink = document.getElementById('leadWaLink'); if (okLink) okLink.href = leadLink;

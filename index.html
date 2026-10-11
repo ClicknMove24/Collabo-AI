@@ -1827,7 +1827,7 @@ h1,h2,h3,h4,.hero h1,.plan2 h3,.plan2 .amount,.plan2 .amount-text,.n4c .big{font
           <label for="location">אזור פעילות <small>(לא חובה)</small></label>
           <input id="location" name="location" type="text" autocomplete="address-level2" placeholder="למשל: גבעתיים ורמת גן">
         </div>
-        <div class="field agree" id="agreeBox"><label class="consent"><input type="checkbox" id="agree" name="agree" required aria-describedby="agreeErr"><span>קראתי ואני מסכים/ה ל<a href="/privacy.html" target="_blank" rel="noopener">מדיניות הפרטיות</a> ול<a href="/terms.html" target="_blank" rel="noopener">תנאי השימוש</a>. אני מבין/ה שכל הפעולות והפרסומים יוצאים מחשבון הפייסבוק שלי, הפרטי או העסקי, ושהאחריות עליהם ועל התוכן שאני מאשר/ת היא שלי.</span></label><div class="err" id="agreeErr">כדי להמשיך צריך לאשר את התנאים</div></div>
+        <div class="field agree" id="agreeBox"><label class="consent"><input type="checkbox" id="agree" name="agree" required aria-describedby="agreeErr"><span>קראתי ואני מסכים/ה ל<a href="/privacy.html" target="_blank" rel="noopener">מדיניות הפרטיות</a> ול<a href="/terms.html" target="_blank" rel="noopener">תנאי השימוש</a>.</span></label><div class="err" id="agreeErr">כדי להמשיך צריך לאשר את התנאים</div></div>
         <button type="submit" class="btn btn-primary btn-block" >שלחו, ונחזור אליכם</button>
         <div class="fail" id="formFail" role="alert">לא הצלחנו לשלוח. נסו שוב בעוד רגע.</div>
         <p class="micro">4 ימי ניסיון חינם, ביטול בכל עת. הפרטים משמשים רק לחזרה אליכם.</p>
@@ -2055,7 +2055,7 @@ document.addEventListener('click', function (e) {
       '\nטלפון: ' + document.getElementById('phone').value.trim() +
       '\nעסק: ' + document.getElementById('business').value.trim() +
       '\nאזור: ' + document.getElementById('location').value.trim() +
-      '\nאישור מדיניות פרטיות, תנאים ואחריות: כן';
+      '\nאישור מדיניות פרטיות ותנאי שימוש: כן';
     var leadLink = 'https://wa.me/' + LEAD_WA + '?text=' + encodeURIComponent(leadText);
     var okLink = document.getElementById('leadWaLink'); if (okLink) okLink.href = leadLink;
     window.open(leadLink, '_blank');

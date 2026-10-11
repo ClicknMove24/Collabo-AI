@@ -1564,8 +1564,13 @@ h1,h2,h3,h4,.hero h1,.plan2 h3,.plan2 .amount,.plan2 .amount-text,.n4c .big{font
 .plan2 li b{font-size:15.5px}
 .plan2 li:first-child{padding-bottom:12px}
 .skip{position:absolute;inset-inline-start:12px;top:-60px;background:#0b3d2e;color:#fff;padding:10px 16px;border-radius:8px;z-index:1000;text-decoration:none}.skip:focus{top:12px;outline:3px solid #F4D853}
-.consent{display:flex;gap:10px;align-items:flex-start;margin:4px 0 14px;font-size:14.5px;color:var(--ink-2);line-height:1.5}.consent input{flex:none;width:20px;height:20px;margin-top:2px;accent-color:#0f7a4d}
-.legal-note{margin:2px 0 12px;font-size:14px;color:var(--ink-3);text-align:center}.legal-note a{color:var(--green)}
+.field.agree{margin:6px 0 16px}
+.field.agree .consent{display:flex;align-items:flex-start;gap:12px;margin:0;font-weight:400;font-size:15px;line-height:1.55;color:var(--ink-2);cursor:pointer}
+.field.agree .consent input{flex:none;width:22px;height:22px;min-height:0;padding:0;margin:2px 0 0;border:0;border-radius:4px;box-shadow:none;accent-color:#0f7a4d;cursor:pointer}
+.field.agree .consent input:focus-visible{outline:3px solid #1d6fa3;outline-offset:2px}
+.field.agree .consent a{color:var(--green);text-decoration:underline}
+.field.agree .err{margin-top:6px;margin-inline-start:34px;text-align:start}
+.field.agree.bad .consent input{outline:2px solid var(--rose);outline-offset:2px}
 </style>
 <meta property="og:url" content="https://collabo-ai.com/">
 <meta property="og:image" content="https://collabo-ai.com/og-image.png">

@@ -1571,6 +1571,14 @@ h1,h2,h3,h4,.hero h1,.plan2 h3,.plan2 .amount,.plan2 .amount-text,.n4c .big{font
 .field.agree .consent a{color:var(--green);text-decoration:underline}
 .field.agree .err{margin-top:6px;margin-inline-start:34px;text-align:start}
 .field.agree.bad .consent input{outline:2px solid var(--rose);outline-offset:2px}
+.cookie-bar{position:fixed;left:16px;right:16px;bottom:16px;z-index:1000;max-width:640px;margin:0 auto;background:var(--card);color:var(--ink);border:1px solid var(--line);border-radius:14px;box-shadow:0 12px 30px rgba(20,33,27,.18);padding:16px;font-size:15px;line-height:1.55}
+.cookie-bar[hidden]{display:none}
+.cookie-bar p{margin:0 0 12px}
+.cookie-bar a{color:var(--blue-deep)}
+.cookie-actions{display:flex;gap:8px;flex-wrap:wrap}
+.cookie-bar button{font:inherit;border-radius:10px;padding:8px 14px;cursor:pointer;border:1px solid var(--line);background:var(--paper);color:var(--ink)}
+.cookie-bar button[data-consent="all"]{background:var(--green);border-color:var(--green);color:#fff}
+.cookie-settings{background:none;border:0;padding:0;font:inherit;color:inherit;text-decoration:underline;cursor:pointer}
 </style>
 <meta property="og:url" content="https://collabo-ai.com/">
 <meta property="og:image" content="https://collabo-ai.com/og-image.png">
@@ -1865,6 +1873,7 @@ h1,h2,h3,h4,.hero h1,.plan2 h3,.plan2 .amount,.plan2 .amount-text,.n4c .big{font
       <a href="/privacy.html">מדיניות פרטיות</a>
       <a href="/terms.html">תנאי שימוש</a>
       <a href="/accessibility.html">הצהרת נגישות</a>
+      <button type="button" class="cookie-settings">הגדרות עוגיות</button>
     </div>
     <div class="fcol">
       <b>דברו איתנו</b>
@@ -2585,6 +2594,32 @@ document.addEventListener('click', function (e) {
   if(!('IntersectionObserver' in window)){for(var i=0;i<cs.length;i++)cs[i].classList.add('seen');return;}
   var io=new IntersectionObserver(function(en){en.forEach(function(e){if(e.isIntersecting){e.target.classList.add('seen');io.unobserve(e.target);}});},{rootMargin:'-35% 0px -35% 0px'});
   for(var i=0;i<cs.length;i++)io.observe(cs[i]);
+})();
+</script>
+<!-- Cookies: the choice is a first-party cookie (collabo_consent = all | necessary | reject, 180 days). The Meta Pixel is loaded only on "all"; until then nothing
+     is sent to Meta and the tracking stub above stays silent. "Necessary" is only the cookie that remembers the choice. See privacy.html, section 2. -->
+<div id="cookieBar" class="cookie-bar" role="region" aria-label="הגדרות עוגיות" hidden>
+  <p>האתר משתמש בעוגיות. עוגייה הכרחית אחת שומרת את הבחירה שלכם. בהסכמתכם נשתמש גם בפיקסל של מטא (פייסבוק), שמודד את הפרסום שלנו. <a href="/privacy.html#cookies">פרטים</a></p>
+  <div class="cookie-actions"><button type="button" data-consent="all">אישור הכול</button><button type="button" data-consent="necessary">רק הכרחיות</button><button type="button" data-consent="reject">דחייה</button></div>
+</div>
+<script>
+(function () {
+  var NAME = 'collabo_consent', PIXEL = '1746141043160432', box = document.getElementById('cookieBar');
+  function get() { var m = document.cookie.match(/(?:^|; )collabo_consent=([^;]*)/); return m ? m[1] : null; }
+  function set(v) { document.cookie = NAME + '=' + v + '; max-age=' + 180 * 24 * 3600 + '; path=/; SameSite=Lax' + (location.protocol === 'https:' ? '; Secure' : ''); }
+  function load() {
+    if (window.fbq) return;
+    !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', PIXEL); fbq('track', 'PageView');
+  }
+  var v = get();
+  if (v === 'all') load(); else if (v !== 'necessary' && v !== 'reject') box.hidden = false;
+  box.addEventListener('click', function (e) {
+    var b = e.target.closest('[data-consent]'); if (!b) return;
+    var choice = b.getAttribute('data-consent'); set(choice); box.hidden = true;
+    if (choice === 'all') load(); else if (window.fbq) location.reload();   // consent withdrawn while the pixel was loaded: a clean page without it
+  });
+  document.addEventListener('click', function (e) { if (e.target.closest('.cookie-settings')) { e.preventDefault(); box.hidden = false; } });
 })();
 </script>
 </body>
